@@ -27,6 +27,7 @@ public class LengthOfLongestSubstringTwoDistinct {
         }
         return Math.max(s.length() - i, maxLen);
     }
+
     public static int lengthOfLongestSubstringTwoDistinctB(String s) {
         int[] count = new int[256];
         int i = 0, numDistinct = 0, maxLen = 0;

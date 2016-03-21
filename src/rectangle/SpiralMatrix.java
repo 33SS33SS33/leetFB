@@ -1,4 +1,4 @@
-package medium;
+package rectangle;
 
 import java.util.*;
 

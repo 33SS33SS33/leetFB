@@ -43,7 +43,6 @@ class PopulatingNextRight {
         PopulatingNextRight r=new PopulatingNextRight();
         r.connectA(root);
         r.connectB(root2);
-
     }
     
     /**
@@ -74,7 +73,6 @@ class PopulatingNextRight {
         TreeLinkNode lastCurrent = null;//previous level's pointer
         TreeLinkNode currentHead = null;//currnet level's head
         TreeLinkNode current = null;//current level's pointer
-
         while(lastHead!=null){
             lastCurrent = lastHead;
             while(lastCurrent!=null){

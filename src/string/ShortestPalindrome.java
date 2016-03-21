@@ -4,7 +4,6 @@ package string;
  * Created by GAOSHANSHAN835 on 2015/12/29.
  */
 public class ShortestPalindrome {
-
     public static void main(String[] args) {
         String s = "mississippi";
         System.out.println(shortestPalindrome(s));
@@ -13,9 +12,7 @@ public class ShortestPalindrome {
     public static String shortestPalindrome(String s) {
         if (s == null || s.length() <= 1)
             return s;
-
         String result = null;
-
         int len = s.length();
         int mid = len / 2;
         for (int i = mid; i >= 1; i--) {

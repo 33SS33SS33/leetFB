@@ -1,4 +1,4 @@
-package medium;
+package rectangle;
 
 /**
  * Given an integer n, generate a square matrix filled with elements from 1 to

@@ -42,4 +42,5 @@ public class LengthOfLongestSubstringWithoutRepeat {
         }
         return maxLen;
     }
+
 }

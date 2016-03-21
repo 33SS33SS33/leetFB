@@ -17,6 +17,9 @@ class BestTimeStock {
     public static void main(String[] args) {
         int[] prices = { 1, 4, 2 };
         System.out.println(maxProfit(prices));
+        System.out.println(maxProfitB(prices));
+        System.out.println(maxProfit3(prices));
+        System.out.println(maxProfitA(prices));
     }
 
     /**
@@ -60,7 +63,7 @@ class BestTimeStock {
         }
         return max;
     }
-    public int maxProfit3(int[] prices) {
+    public static int maxProfit3(int[] prices) {
         if(prices==null || prices.length==0)
             return 0;
         int local = 0;
@@ -74,7 +77,7 @@ class BestTimeStock {
     }
 
     /**creek*/
-    public int maxProfitA(int[] prices) {
+    public static int maxProfitA(int[] prices) {
         int profit = 0;
         int minElement = Integer.MAX_VALUE;
         for(int i=0; i<prices.length; i++){

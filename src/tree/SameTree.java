@@ -9,7 +9,6 @@ package tree;
  * Tags: Tree, DFS
  */
 class SameTree {
-
     public static void main(String[] args) {
         TreeNode root1 = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);

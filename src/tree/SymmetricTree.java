@@ -53,7 +53,11 @@ class SymmetricTree {
         n21.right = n23;
         n22.right = n24;
         System.out.println(new SymmetricTree().isSymmetric(root1));
+        System.out.println(new SymmetricTree().isSymmetricRec(root1));
+        System.out.println(new SymmetricTree().isSymmetricC(root1));
         System.out.println(new SymmetricTree().isSymmetric(root2));
+        System.out.println(new SymmetricTree().isSymmetricRec(root2));
+        System.out.println(new SymmetricTree().isSymmetricC(root2));
     }
     
     /**
@@ -62,7 +66,6 @@ class SymmetricTree {
      */
     private boolean isSymmetric(TreeNode root) {
         if (root == null) return true;
-        
         Stack<TreeNode> s = new Stack<TreeNode>();
         s.push(root.left);
         s.push(root.right);
@@ -87,12 +90,10 @@ class SymmetricTree {
         if (root == null) return true;
         return helper(root.left, root.right);
     }
-    
     private boolean helper(TreeNode n1, TreeNode n2) {
         if (n1 == null || n2 == null) return n1 == n2;
         return n1.val == n2.val && helper(n1.left, n2.right) && helper(n1.right, n2.left);
     }
-
 
     /**--------creek--------*/
     public boolean isSymmetricC(TreeNode root) {
@@ -116,7 +117,6 @@ class SymmetricTree {
 
         return true;
     }
-
 
     public static class TreeNode {
         int val;

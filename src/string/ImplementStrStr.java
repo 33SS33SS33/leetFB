@@ -1,6 +1,5 @@
 package string;
 
-
 class ImplementStrStr {
     public static void main(String[] args) {
         String str1 = "14531234";

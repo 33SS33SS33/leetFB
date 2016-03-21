@@ -23,8 +23,9 @@ class BestTimeStock3 {
         BestTimeStock3 b = new BestTimeStock3();
         int[] prices = { 6, 1, 3, 2, 4, 7, 6, 10, 15 };
         System.out.println(b.maxProfit(prices));
+        System.out.println(b.maxProfitA(prices));
     }
-    
+
     /**
      * Goes forward to build single transaction max profit
      * Then goes backward to build max since day i profit
@@ -38,7 +39,7 @@ class BestTimeStock3 {
         int[] maxSince = new int[len];
         int valley = prices[0];
         int peak = prices[len - 1];
-        
+
         for (int i = 1; i < len; i++) {
             valley = Math.min(valley, prices[i]);
             maxBy[i] = Math.max(maxBy[i - 1], prices[i] - valley);

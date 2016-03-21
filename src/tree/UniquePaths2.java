@@ -1,4 +1,4 @@
-package medium;
+package tree;
 
 /**
  * Follow up for "Unique Paths":

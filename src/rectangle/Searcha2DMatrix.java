@@ -1,4 +1,4 @@
-package medium;
+package rectangle;
 
 /**
  * Write an efficient algorithm that searches for a value in an m x n matrix.

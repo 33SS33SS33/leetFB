@@ -34,11 +34,12 @@ class PathSum {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new PathSum().hasPathSum(root,7));
+        System.out.println(new PathSum().hasPathSumA(root,7));
         System.out.println(new PathSum().hasPathSumB(root,7));
-        System.out.println(new PathSum().hasPathSum(root,10));
+        System.out.println(new PathSum().hasPathSumC(root,7));
+        System.out.println(new PathSum().hasPathSumA(root,10));
         System.out.println(new PathSum().hasPathSumB(root,10));
-        System.out.println(new PathSum().hasPathSum(root,4));
+        System.out.println(new PathSum().hasPathSumA(root,4));
         System.out.println(new PathSum().hasPathSumB(root,4));
     }
     /**
@@ -46,11 +47,11 @@ class PathSum {
      * Return leaf node with sum == 0 
      * Or result in left subtree or right subtree
      */
-    public boolean hasPathSum(TreeNode root, int sum) {
+    public boolean hasPathSumA(TreeNode root, int sum) {
         if (root == null) return false; // root == null
         sum -= root.val; // update sum
         // leaf? sum == 0? left subtree? right subtree?
-        return root.left == null && root.right == null && sum == 0 || hasPathSum(root.left, sum) || hasPathSum(root.right, sum); 
+        return root.left == null && root.right == null && sum == 0 || hasPathSumA(root.left, sum) || hasPathSumA(root.right, sum);
     }
 
     /**Recursion creek*/
@@ -59,18 +60,15 @@ class PathSum {
             return false;
         if (root.val == sum && (root.left == null && root.right == null))
             return true;
-
-        return hasPathSum(root.left, sum - root.val)
-                || hasPathSum(root.right, sum - root.val);
+        return hasPathSumC(root.left, sum - root.val)
+                || hasPathSumC(root.right, sum - root.val);
     }
 
     /**creek---*/
     public boolean hasPathSumB(TreeNode root, int sum) {
         if(root == null) return false;
-
         LinkedList<TreeNode> nodes = new LinkedList<TreeNode>();
         LinkedList<Integer> values = new LinkedList<Integer>();
-
         nodes.add(root);
         values.add(root.val);
         while(!nodes.isEmpty()){

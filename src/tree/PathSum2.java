@@ -42,12 +42,16 @@ class PathSum2 {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new PathSum2().pathSum(root, 7).toString());
-        System.out.println(new PathSum2().pathSum(root, 10).toString());
-        System.out.println(new PathSum2().pathSum(root, 4).toString());
+        System.out.println(new PathSum2().pathSumA(root, 7).toString());
+        System.out.println(new PathSum2().pathSumB(root, 7).toString());
+        System.out.println(new PathSum2().pathSumA(root, 10).toString());
+        System.out.println(new PathSum2().pathSumB(root, 10).toString());
+        /**?????为何为空*/
+        System.out.println(new PathSum2().pathSumA(root, 4).toString());
+        System.out.println(new PathSum2().pathSumB(root, 4).toString());
     }
 
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+    public List<List<Integer>> pathSumA(TreeNode root, int sum) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (root == null)
             return res;

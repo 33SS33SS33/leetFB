@@ -16,8 +16,9 @@ class BestTimeStock2 {
     public static void main(String[] args) {
         int[] prices = { 1, 2, 10, 100 };
         System.out.println(maxProfit(prices));
+        System.out.println(maxProfitA(prices));
     }
-    
+
     /**
      * Sell whenever there is profit.
      * If next value is bigger, add the difference up to the profit
@@ -30,7 +31,7 @@ class BestTimeStock2 {
     }
 
     /**creek*/
-    public int maxProfitA(int[] prices) {
+    public  static int maxProfitA(int[] prices) {
         int profit = 0;
         for(int i=1; i<prices.length; i++){
             int diff = prices[i]-prices[i-1];
