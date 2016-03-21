@@ -25,6 +25,11 @@ public class WordBreak2 {
         for (String l : res) {
             System.out.println(l.toString());
         }
+        System.out.println("------------------");
+        List<String> res2=new WordBreak2().wordBreakB(s,dict);
+        for (String l : res2) {
+            System.out.println(l.toString());
+        }
     }
     /**
      * Memory function
@@ -76,14 +81,14 @@ public class WordBreak2 {
      * Get the result list, and concat prefix with those results
      * Add the concatenated string to result and return
      */
-    public List<String> wordBreak2(String s, Set<String> dict) {
+    public List<String> wordBreakB(String s, Set<String> dict) {
         List<String> words = new ArrayList<String>();
-
         int len = s.length();
         for (int i = 1; i <= len; i++) {
             String pref = s.substring(0, i);
             if (dict.contains(pref)) {
-                if (i == len) words.add(pref);
+                if (i == len)
+                    words.add(pref);
                 else {
                     String remain = s.substring(i, len);
                     List<String> remainDecomp = wordBreak(remain, dict);

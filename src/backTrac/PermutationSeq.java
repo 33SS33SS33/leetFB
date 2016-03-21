@@ -34,6 +34,8 @@ class PermutationSeq {
         System.out.println(getPermutationB(3, 5)); // 312
         System.out.println(getPermutation(3, 6)); // 321
         System.out.println(getPermutationB(3, 6)); // 321
+        System.out.println(getPermutationC(3, 6)); // 321
+        System.out.println(getPermutationD(3, 6)); // 321
     }
     
     /**
@@ -89,7 +91,7 @@ class PermutationSeq {
     }
 
     /**creek*/
-    public String getPermutationC(int n, int k) {
+    public static String getPermutationC(int n, int k) {
         // initialize all numbers
         ArrayList<Integer> numberList = new ArrayList<Integer>();
         for (int i = 1; i <= n; i++) {
@@ -110,7 +112,6 @@ class PermutationSeq {
             int curIndex = k / mod;
             // update k
             k = k % mod;
-
             // get number according to curIndex
             result += numberList.get(curIndex);
             // remove from list
@@ -119,35 +120,30 @@ class PermutationSeq {
         return result.toString();
     }
 
-    /**creek */
-    public String getPermutationD(int n, int k) {
+    /**
+     * creek
+     */
+    public static String getPermutationD(int n, int k) {
         boolean[] output = new boolean[n];
         StringBuilder buf = new StringBuilder("");
-
         int[] res = new int[n];
         res[0] = 1;
-
         for (int i = 1; i < n; i++)
             res[i] = res[i - 1] * i;
-
         for (int i = n - 1; i >= 0; i--) {
             int s = 1;
-
             while (k > res[i]) {
                 s++;
                 k = k - res[i];
             }
-
             for (int j = 0; j < n; j++) {
                 if (j + 1 <= s && output[j]) {
                     s++;
                 }
             }
-
             output[s - 1] = true;
             buf.append(Integer.toString(s));
         }
-
         return buf.toString();
     }
 }

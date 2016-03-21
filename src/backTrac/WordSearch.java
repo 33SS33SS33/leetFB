@@ -31,15 +31,15 @@ class WordSearch {
         String word = "SEE";
         // String word = "ABCCED";
         // String word = "ABCB";
-        System.out.println(exist(board, word));
-        System.out.println(exist2(board, word));
+        System.out.println(existA(board, word));
+        System.out.println(existB(board, word));
     }
     
     /**
      * Use boolean array to remember whether a word is used
      * Traverse each position and do DFS
      */
-    public static boolean exist(char[][] board, String word) {
+    public static boolean existA(char[][] board, String word) {
         if (board == null || board.length == 0 || board[0].length == 0 || word == null) return false;
         if (word.length() == 0) return true;
 
@@ -66,34 +66,36 @@ class WordSearch {
         return res;
     }
 
-    /**solution2*/
-    public static boolean exist2 ( char[][] board, String word) {
-        if(word==null || word.length()==0)
+    /**
+     * solution2
+     */
+    public static boolean existB(char[][] board, String word) {
+        if (word == null || word.length() == 0)
             return true;
-        if(board==null || board.length==0 || board[0].length==0)
+        if (board == null || board.length == 0 || board[0].length == 0)
             return false;
         boolean[][] used = new boolean[board.length][board[0].length];
-        for(int i=0;i<board.length;i++)
-        {
-            for(int j=0;j<board[0].length;j++)
-            {
-                if(search(board,word,0,i,j,used))
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (search(board, word, 0, i, j, used))
                     return true;
             }
         }
         return false;
     }
-    private static boolean search(char[][] board, String word, int index, int i, int j, boolean[][] used)
-    {
-        if(index == word.length())
+
+    private static boolean search(char[][] board, String word, int index, int i, int j,
+            boolean[][] used) {
+        if (index == word.length())
             return true;
-        if(i<0 || j<0 || i>=board.length || j>=board[0].length || used[i][j] || board[i][j]!=word.charAt(index))
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j]
+                || board[i][j] != word.charAt(index))
             return false;
         used[i][j] = true;
-        boolean res = search(board,word,index+1,i-1,j,used)
-                || search(board,word,index+1,i+1,j,used)
-                || search(board,word,index+1,i,j-1,used)
-                || search(board,word,index+1,i,j+1,used);
+        boolean res =
+                search(board, word, index + 1, i - 1, j, used) || search(board, word, index + 1,
+                        i + 1, j, used) || search(board, word, index + 1, i, j - 1, used) || search(
+                        board, word, index + 1, i, j + 1, used);
         used[i][j] = false;
         return res;
     }

@@ -26,11 +26,27 @@ import java.util.*;
  */
 class Subsets {
     public static void main(String[] args) {
-        int[] nums = { 1, 2, 3 };
+        int[] nums = { 1, 2};
         List<List<Integer>> res = subsetsA(nums);
         for (List<Integer> l : res) {
             System.out.println(l.toString());
         }
+        List<List<Integer>> resB = subsetsB(nums);
+        for (List<Integer> l : resB) {
+            System.out.println(l.toString());
+        }
+/*        ArrayList<ArrayList<Integer>> res1 = subsets1(nums);
+        for (List<Integer> l : res1) {
+            System.out.println(l.toString());
+        }
+        ArrayList<ArrayList<Integer>> res2 = subsets2(nums);
+        for (List<Integer> l : res2) {
+            System.out.println(l.toString());
+        }
+        ArrayList<ArrayList<Integer>> res3 = subsets3(nums);
+        for (List<Integer> l : res3) {
+            System.out.println(l.toString());
+        }*/
     }
     
     /**
@@ -73,14 +89,15 @@ class Subsets {
         copy.add(s[start]);
         subsetsA(s, start + 1, copy, result); // with
     }
+
     /**递归 时间和空间都是取决于结果的数量，也就是O(2^n)*/
-    public ArrayList<ArrayList<Integer>> subsets(int[] num) {
+    public static ArrayList<ArrayList<Integer>> subsets1(int[] num) {
         if(num == null)
             return null;
         Arrays.sort(num);
         return helper(num, num.length-1);
     }
-    private ArrayList<ArrayList<Integer>> helper(int[] num, int index)
+    private static ArrayList<ArrayList<Integer>> helper(int[] num, int index)
     {
         if(index == -1)
         {
@@ -99,18 +116,17 @@ class Subsets {
         }
         return res;
     }
+
     /**非递归*/
-    public ArrayList<ArrayList<Integer>> subsets2(int[] S) {
-        ArrayList<ArrayList<Integer>> res = new  ArrayList<ArrayList<Integer>>();
+    public static ArrayList<ArrayList<Integer>> subsets2(int[] S) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         res.add(new ArrayList<Integer>());
-        if(S == null || S.length == 0)
+        if (S == null || S.length == 0)
             return res;
         Arrays.sort(S);
-        for(int i=0;i<S.length;i++)
-        {
+        for (int i = 0; i < S.length; i++) {
             int size = res.size();
-            for(int j=0;j<size;j++)
-            {
+            for (int j = 0; j < size; j++) {
                 ArrayList<Integer> item = new ArrayList<Integer>(res.get(j));
                 item.add(S[i]);
                 res.add(item);
@@ -123,38 +139,29 @@ class Subsets {
      * Given a set S of n distinct integers, there is a relation between Sn and Sn-1.
      * The subset of Sn-1 is the union of {subset of Sn-1} and {each element in Sn-1 + one more element}.
      * Therefore, a Java solution can be quickly formalized.*/
-    public ArrayList<ArrayList<Integer>> subsets3(int[] S) {
+    public static ArrayList<ArrayList<Integer>> subsets3(int[] S) {
         if (S == null)
             return null;
-
         Arrays.sort(S);
-
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-
         for (int i = 0; i < S.length; i++) {
             ArrayList<ArrayList<Integer>> temp = new ArrayList<ArrayList<Integer>>();
-
             //get sets that are already in result
             for (ArrayList<Integer> a : result) {
                 temp.add(new ArrayList<Integer>(a));
             }
-
             //add S[i] to existing sets
             for (ArrayList<Integer> a : temp) {
                 a.add(S[i]);
             }
-
             //add S[i] only as a set
             ArrayList<Integer> single = new ArrayList<Integer>();
             single.add(S[i]);
             temp.add(single);
-
             result.addAll(temp);
         }
-
         //add empty set
         result.add(new ArrayList<Integer>());
-
         return result;
     }
 }

@@ -24,7 +24,6 @@ import java.util.*;
  * Tags: Array, Backtracking
  */
 class SubsetsWithDup {
-    
     public static void main(String[] args) {
         int[] num = {1, 2, 2};
         List<List<Integer>> res= subsetsWithDup(num);
@@ -34,6 +33,11 @@ class SubsetsWithDup {
         System.out.print("------------------");
         List<List<Integer>> res2= subsetsWithDupB(num);
         for (List<Integer> l2 : res2) {
+            System.out.println(l2.toString());
+        }
+        System.out.print("------------------");
+        ArrayList<ArrayList<Integer>> res3= subsetsWithDupC(num);
+        for (List<Integer> l2 : res3) {
             System.out.println(l2.toString());
         }
     }
@@ -83,9 +87,10 @@ class SubsetsWithDup {
     public static List<List<Integer>> subsetsWithDupB(int[] num) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         res.add(new ArrayList<Integer>()); // empty set
-        if (null == num || num.length == 0) return res;
+        if (null == num || num.length == 0)
+            return res;
         Arrays.sort(num); // sort first
-        
+
         int j, prevSize = 0;
         for (int i = 0; i < num.length; i++) {
             if (i != 0 && num[i] == num[i - 1]) // dup number
@@ -94,7 +99,7 @@ class SubsetsWithDup {
                 j = 0;
             prevSize = res.size(); // # of previous sets
             /*add to previous sets with same num*/
-            for (; j < prevSize; j++) { 
+            for (; j < prevSize; j++) {
                 List<Integer> temp = new ArrayList<Integer>(res.get(j));
                 temp.add(num[i]);
                 res.add(temp);
@@ -103,18 +108,17 @@ class SubsetsWithDup {
         return res;
     }
 
-    /**creek ----*/
-    public ArrayList<ArrayList<Integer>> subsetsWithDupC(int[] num) {
+    /**
+     * creek ----
+     */
+    public static ArrayList<ArrayList<Integer>> subsetsWithDupC(int[] num) {
         if (num == null)
             return null;
-
         Arrays.sort(num);
 
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         ArrayList<ArrayList<Integer>> prev = new ArrayList<ArrayList<Integer>>();
-
-        for (int i = num.length-1; i >= 0; i--) {
-
+        for (int i = num.length - 1; i >= 0; i--) {
             //get existing sets
             if (i == num.length - 1 || num[i] != num[i + 1] || prev.size() == 0) {
                 prev = new ArrayList<ArrayList<Integer>>();
@@ -122,28 +126,23 @@ class SubsetsWithDup {
                     prev.add(new ArrayList<Integer>(result.get(j)));
                 }
             }
-
             //add current number to each element of the set
             for (ArrayList<Integer> temp : prev) {
                 temp.add(0, num[i]);
             }
-
             //add each single number as a set, only if current element is different with previous
             if (i == num.length - 1 || num[i] != num[i + 1]) {
                 ArrayList<Integer> temp = new ArrayList<Integer>();
                 temp.add(num[i]);
                 prev.add(temp);
             }
-
             //add all set created in this iteration
             for (ArrayList<Integer> temp : prev) {
                 result.add(new ArrayList<Integer>(temp));
             }
         }
-
         //add empty set
         result.add(new ArrayList<Integer>());
-
         return result;
     }
 }

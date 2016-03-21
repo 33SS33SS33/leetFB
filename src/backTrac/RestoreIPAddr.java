@@ -22,6 +22,7 @@ class RestoreIPAddr {
         for(String s2:r2){
             System.out.println(s2);
         }
+
     }
     
     /**
@@ -66,7 +67,7 @@ class RestoreIPAddr {
     }
 
     /**creek This is a typical search problem and it can be solved by using DFS.*/
-    public List<String> restoreIpAddressesB(String s) {
+    public static List<String> restoreIPAddressesB(String s) {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         ArrayList<String> t = new ArrayList<String>();
         dfs(result, s, 0, t);
@@ -85,37 +86,32 @@ class RestoreIPAddr {
         return finalResult;
     }
 
-    public void dfs(ArrayList<ArrayList<String>> result, String s, int start, ArrayList<String> t){
+    public static void dfs(ArrayList<ArrayList<String>> result, String s, int start,
+            ArrayList<String> t){
         //if already get 4 numbers, but s is not consumed, return
         if(t.size()>=4 && start!=s.length())
             return;
-
         //make sure t's size + remaining string's length >=4
         if((t.size()+s.length()-start+1)<4)
             return;
-
         //t's size is 4 and no remaining part that is not consumed.
         if(t.size()==4 && start==s.length()){
             ArrayList<String> temp = new ArrayList<String>(t);
             result.add(temp);
             return;
         }
-
         for(int i=1; i<=3; i++){
             //make sure the index is within the boundary
             if(start+i>s.length())
                 break;
-
             String sub = s.substring(start, start+i);
             //handle case like 001. i.e., if length > 1 and first char is 0, ignore the case.
             if(i>1 && s.charAt(start)=='0'){
                 break;
             }
-
             //make sure each number <= 255
             if(Integer.valueOf(sub)>255)
                 break;
-
             t.add(sub);
             dfs(result, s, start+i, t);
             t.remove(t.size()-1);

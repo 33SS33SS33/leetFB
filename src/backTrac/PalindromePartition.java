@@ -23,9 +23,14 @@ class PalindromePartition {
         System.out.println(partition("aab"));
         System.out.println(new PalindromePartition().partitionB("aab"));
         System.out.println(new PalindromePartition().partitionC("aab"));
+        System.out.println(new PalindromePartition().palindromePartitioning("aab"));
+        System.out.println(new PalindromePartition().partitionD("aab"));
+
         System.out.println(partition("aa"));
         System.out.println(new PalindromePartition().partitionB("aa"));
         System.out.println(new PalindromePartition().partitionC("aa"));
+        System.out.println(new PalindromePartition().partitionD("aa"));
+        System.out.println(new PalindromePartition().palindromePartitioning("aa"));
     }
     
     /**
@@ -129,23 +134,19 @@ class PalindromePartition {
         return rt;
     }
 
-    /**creek DP*/
+    /**
+     * creek DP
+     */
     public static List<String> palindromePartitioning(String s) {
-
         List<String> result = new ArrayList<String>();
-
         if (s == null)
             return result;
-
         if (s.length() <= 1) {
             result.add(s);
             return result;
         }
-
         int length = s.length();
-
         int[][] table = new int[length][length];
-
         // l is length, i is index of left boundary, j is index of right boundary
         for (int l = 1; l <= length; l++) {
             for (int i = 0; i <= length - l; i++) {
@@ -164,7 +165,6 @@ class PalindromePartition {
                 }
             }
         }
-
         return result;
     }
 
