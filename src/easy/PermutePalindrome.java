@@ -7,31 +7,31 @@ import java.util.Map;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class PermutePalindrome {
+    public static void main(String[] args) {
+        PermutePalindrome p = new PermutePalindrome();
+        String k = "ewewi";
+        System.out.println(p.canPermutePalindrome(k));
+    }
+
     public boolean canPermutePalindrome(String s) {
         Map<Character, Integer> m = new HashMap<Character, Integer>();
-
-        for(char c : s.toCharArray()){
+        for (char c : s.toCharArray()) {
             Integer i = m.get(c);
-
-            if(i == null){
+            if (i == null) {
                 m.put(c, 1);
             } else {
                 m.put(c, i + 1);
             }
         }
-
         int single = 0;
-
-        for(int v : m.values()){
-            if(v % 2 == 1){
+        for (int v : m.values()) {
+            if (v % 2 == 1) {
                 single++;
             }
-
-            if(single > 1){
+            if (single > 1) {
                 return false;
             }
         }
-
         return true;
     }
 }

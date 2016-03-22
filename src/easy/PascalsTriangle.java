@@ -4,10 +4,10 @@ import java.util.*;
 
 /**
  * Given numRows, generate the first numRows of Pascal's triangle.
- * 
+ * <p/>
  * For example, given numRows = 5,
  * Return
- * 
+ * <p/>
  * [
  *      [1],
  *     [1,1],
@@ -15,7 +15,7 @@ import java.util.*;
  *   [1,3,3,1],
  *  [1,4,6,4,1]
  * ]
- * 
+ * <p/>
  * Tags: Array
  */
 class PascalsTriangle {
@@ -25,22 +25,21 @@ class PascalsTriangle {
         System.out.println(p.generate(k).toString());
         System.out.println(p.generateB(k).toString());
     }
-    
+
     /**
      * Definition
      */
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> triangle = new ArrayList<List<Integer>>();
-        if (numRows <= 0) return triangle;
-    
+        if (numRows <= 0)
+            return triangle;
         List<Integer> firstRow = new ArrayList<Integer>();
         firstRow.add(1);
         triangle.add(firstRow);
-    
         for (int i = 1; i < numRows; i++) {
             List<Integer> lastRow = triangle.get(i - 1);
             List<Integer> row = new ArrayList<Integer>(i + 1);
-        
+
             for (int j = 0; j < i + 1; j++) {
                 if (j == 0 || j == i) {
                     row.add(1);
@@ -52,16 +51,17 @@ class PascalsTriangle {
         }
         return triangle;
     }
-    /**creek----*/
+
+    /**
+     * creek----
+     */
     public ArrayList<ArrayList<Integer>> generateB(int numRows) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (numRows <= 0)
             return result;
-
         ArrayList<Integer> pre = new ArrayList<Integer>();
         pre.add(1);
         result.add(pre);
-
         for (int i = 2; i <= numRows; i++) {
             ArrayList<Integer> cur = new ArrayList<Integer>();
             cur.add(1); //first
@@ -73,7 +73,6 @@ class PascalsTriangle {
             result.add(cur);
             pre = cur;
         }
-
         return result;
     }
 }
