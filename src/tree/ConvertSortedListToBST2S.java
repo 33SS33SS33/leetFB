@@ -48,7 +48,7 @@ public class ConvertSortedListToBST2S {
 
     //  Definition for singly-linked list.
     class ListNode {
-        int val;
+        int      val;
         ListNode next;
 
         ListNode(int x) {
@@ -59,7 +59,7 @@ public class ConvertSortedListToBST2S {
 
     // Definition for binary tree
     class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
 

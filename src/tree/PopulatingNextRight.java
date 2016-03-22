@@ -2,55 +2,56 @@ package tree;
 
 /**
  * Given a binary tree
- * 
- *     struct TreeLinkNode {
- *       TreeLinkNode *left;
- *       TreeLinkNode *right;
- *       TreeLinkNode *next;
- *     }
- * 
+ * <p/>
+ * struct TreeLinkNode {
+ * TreeLinkNode *left;
+ * TreeLinkNode *right;
+ * TreeLinkNode *next;
+ * }
+ * <p/>
  * Populate each next pointer to point to its next right node. If there is no
  * next right node, the next pointer should be set to NULL.
- * 
+ * <p/>
  * Initially, all next pointers are set to NULL.
- * 
+ * <p/>
  * Note:
- * 
+ * <p/>
  * You may only use constant extra space.
  * You may assume that it is a perfect binary tree (ie, all leaves are at the
  * same level, and every parent has two children).
  * For example,
  * Given the following perfect binary tree,
- *          1
- *        /  \
- *       2    3
- *      / \  / \
- *     4  5  6  7
- * 
+ * 1
+ * /  \
+ * 2    3
+ * / \  / \
+ * 4  5  6  7
+ * <p/>
  * After calling your function, the tree should look like:
- *          1 -> NULL
- *        /  \
- *       2 -> 3 -> NULL
- *      / \  / \
- *     4->5->6->7 -> NULL
- * 
+ * 1 -> NULL
+ * /  \
+ * 2 -> 3 -> NULL
+ * / \  / \
+ * 4->5->6->7 -> NULL
+ * <p/>
  * Tags: Tree, DFS
  */
 class PopulatingNextRight {
     public static void main(String[] args) {
-        TreeLinkNode root= buildTree();
-        TreeLinkNode root2= buildTree();
-        PopulatingNextRight r=new PopulatingNextRight();
+        TreeLinkNode root = buildTree();
+        TreeLinkNode root2 = buildTree();
+        PopulatingNextRight r = new PopulatingNextRight();
         r.connectA(root);
         r.connectB(root2);
     }
-    
+
     /**
      * Iterative
      * Store node in previous line
      */
     public void connectA(TreeLinkNode root) {
-        if(root == null) return;
+        if (root == null)
+            return;
         TreeLinkNode pre = root;
         TreeLinkNode cur = null;
         while (pre.left != null) { // no more level if left child is null
@@ -58,32 +59,35 @@ class PopulatingNextRight {
             while (cur != null) { // work on next level
                 cur.left.next = cur.right; // connect left and right
                 // connect right child with next node's left child
-                if (cur.next != null) cur.right.next = cur.next.left;
+                if (cur.next != null)
+                    cur.right.next = cur.next.left;
                 cur = cur.next; // move current to next node
             }
             pre = pre.left; // move to next line
         }
     }
 
-    /**creek---*/
+    /**
+     * creek---
+     */
     public void connectB(TreeLinkNode root) {
-        if(root == null)
+        if (root == null)
             return;
         TreeLinkNode lastHead = root;//prevous level's head
         TreeLinkNode lastCurrent = null;//previous level's pointer
         TreeLinkNode currentHead = null;//currnet level's head
         TreeLinkNode current = null;//current level's pointer
-        while(lastHead!=null){
+        while (lastHead != null) {
             lastCurrent = lastHead;
-            while(lastCurrent!=null){
-                if(currentHead == null){
+            while (lastCurrent != null) {
+                if (currentHead == null) {
                     currentHead = lastCurrent.left;
                     current = lastCurrent.left;
-                }else{
+                } else {
                     current.next = lastCurrent.left;
                     current = current.next;
                 }
-                if(currentHead != null){
+                if (currentHead != null) {
                     current.next = lastCurrent.right;
                     current = current.next;
                 }
@@ -95,8 +99,8 @@ class PopulatingNextRight {
         }
     }
 
-    static class TreeLinkNode{
-        int val;
+    static class TreeLinkNode {
+        int          val;
         TreeLinkNode left;
         TreeLinkNode right;
         TreeLinkNode next;
@@ -105,6 +109,7 @@ class PopulatingNextRight {
             this.val = val;
         }
     }
+
     private static TreeLinkNode buildTree() {
         TreeLinkNode t0 = new TreeLinkNode(20);
         TreeLinkNode t1 = new TreeLinkNode(9);

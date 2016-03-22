@@ -6,18 +6,18 @@ import java.util.Stack;
 
 /**
  * Given a binary tree, return the preorder traversal of its nodes' values.
- * 
+ * <p/>
  * For example:
  * Given binary tree {1,#,2,3},
- *    1
- *     \
- *      2
- *     /
- *    3
+ * 1
+ * \
+ * 2
+ * /
+ * 3
  * return [1,2,3].
- * 
+ * <p/>
  * Note: Recursive solution is trivial, could you do it iteratively?
- * 
+ * <p/>
  * Tags: Tree, Stack
  */
 class BTPreOrder {
@@ -44,23 +44,29 @@ class BTPreOrder {
      */
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         Stack<TreeNode> s = new Stack<TreeNode>();
         s.push(root);
         while (!s.isEmpty()) {
             TreeNode curNode = s.pop();
             res.add(curNode.val); // visit
-            if (curNode.right != null) s.push(curNode.right);
-            if (curNode.left != null) s.push(curNode.left); // left pop first
+            if (curNode.right != null)
+                s.push(curNode.right);
+            if (curNode.left != null)
+                s.push(curNode.left); // left pop first
         }
         return res;
     }
 
     static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
     /**
@@ -68,18 +74,19 @@ class BTPreOrder {
      */
 
     List<Integer> result = new ArrayList<Integer>();
+
     public List<Integer> preorderTraversalB(TreeNode root) {
-        if(root !=null){
+        if (root != null) {
             helper(root);
         }
         return result;
     }
 
-    public void helper(TreeNode p){
+    public void helper(TreeNode p) {
         result.add(p.val);
-        if(p.left!=null)
+        if (p.left != null)
             helper(p.left);
-        if(p.right!=null)
+        if (p.right != null)
             helper(p.right);
     }
 

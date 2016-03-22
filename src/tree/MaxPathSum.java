@@ -4,7 +4,9 @@ package tree;
  * Created by GAOSHANSHAN835 on 2015/12/28.
  */
 
-/**树的路径的最大值，不一定从根开始*/
+/**
+ * 树的路径的最大值，不一定从根开始
+ */
 public class MaxPathSum {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -23,13 +25,16 @@ public class MaxPathSum {
     }
 
     private int maxSum;
+
     public int maxPathSum(TreeNode root) {
         maxSum = Integer.MIN_VALUE;
         findMax(root);
         return maxSum;
     }
+
     private int findMax(TreeNode p) {
-        if (p == null) return 0;
+        if (p == null)
+            return 0;
         int left = findMax(p.left);
         int right = findMax(p.right);
         maxSum = Math.max(p.val + left + right, maxSum);
@@ -37,8 +42,9 @@ public class MaxPathSum {
         return ret > 0 ? ret : 0;
     }
 
-
-    /**creek-----*/
+    /**
+     * creek-----
+     */
     public int maxPathSumB(TreeNode root) {
         int max[] = new int[1];
         max[0] = Integer.MIN_VALUE;

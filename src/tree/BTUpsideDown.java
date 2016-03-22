@@ -21,19 +21,22 @@ public class BTUpsideDown {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
+        System.out.println(
+                new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
     }
+
     LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
 
-    void inOrder(TreeNode root){
-        if(root == null) return;
+    void inOrder(TreeNode root) {
+        if (root == null)
+            return;
         inOrder(root.left);
         queue.add(root);
-        if(root.left != null) {
+        if (root.left != null) {
             queue.add(root.right);
         }
         // bad side effect
-        root.left  = null;
+        root.left = null;
         root.right = null;
     }
 
@@ -41,9 +44,9 @@ public class BTUpsideDown {
         inOrder(root);
         TreeNode newRoot = queue.poll();
         root = newRoot;
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             root.right = queue.poll();
-            root.left  = queue.poll();
+            root.left = queue.poll();
             root = root.right;
         }
         return newRoot;
@@ -51,19 +54,20 @@ public class BTUpsideDown {
 
     private List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) return res;
-
+        if (root == null)
+            return res;
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
-
         while (!queue.isEmpty()) {
             List<Integer> curLevel = new ArrayList<Integer>();
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode n = queue.poll();
                 curLevel.add(n.val);
-                if (n.left != null) queue.add(n.left);
-                if (n.right != null) queue.add(n.right);
+                if (n.left != null)
+                    queue.add(n.left);
+                if (n.right != null)
+                    queue.add(n.right);
             }
             res.add(curLevel);
         }
@@ -71,9 +75,12 @@ public class BTUpsideDown {
     }
 
     static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

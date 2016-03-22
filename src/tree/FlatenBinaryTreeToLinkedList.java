@@ -4,32 +4,32 @@ import java.util.*;
 
 /**
  * Given a binary tree, flatten it to a linked list in-place.
- * 
+ * <p/>
  * For example,
  * Given
- * 
- *          1
- *         / \
- *        2   5
- *       / \   \
- *      3   4   6
+ * <p/>
+ * 1
+ * / \
+ * 2   5
+ * / \   \
+ * 3   4   6
  * The flattened tree should look like:
- *    1
- *     \
- *      2
- *       \
- *        3
- *         \
- *          4
- *           \
- *            5
- *             \
- *              6
- * 
+ * 1
+ * \
+ * 2
+ * \
+ * 3
+ * \
+ * 4
+ * \
+ * 5
+ * \
+ * 6
+ * <p/>
  * Hints:
  * If you notice carefully in the flattened tree, each node's right child
  * points to the next node of a pre-order traversal.
- * 
+ * <p/>
  * Tags: Tree, DFS
  */
 class FlatenBinaryTreeToLinkedList {
@@ -48,7 +48,7 @@ class FlatenBinaryTreeToLinkedList {
         new FlatenBinaryTreeToLinkedList().flattenC(root);
         System.out.println(levelOrder(root));
     }
-    
+
     /**
      * Add root's right subtree to left node's rightmost child
      * Then set that subtree as root's right subtree
@@ -59,7 +59,8 @@ class FlatenBinaryTreeToLinkedList {
         while (root != null) {
             if (root.left != null) { // check left child
                 TreeNode n = root.left;
-                while (n.right != null) n = n.right; // rightmost child of left
+                while (n.right != null)
+                    n = n.right; // rightmost child of left
                 n.right = root.right; // insert right subtree to its right
                 root.right = root.left; // set left subtree as right subtree
                 root.left = null; // set left to null
@@ -68,50 +69,55 @@ class FlatenBinaryTreeToLinkedList {
         }
     }
 
-    /** creek------*/
+    /**
+     * creek------
+     */
     public void flattenB(TreeNode root) {
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode p = root;
-        while(p != null || !stack.empty()){
-            if(p.right != null){
+        while (p != null || !stack.empty()) {
+            if (p.right != null) {
                 stack.push(p.right);
             }
-            if(p.left != null){
+            if (p.left != null) {
                 p.right = p.left;
                 p.left = null;
-            }else if(!stack.empty()){
+            } else if (!stack.empty()) {
                 TreeNode temp = stack.pop();
-                p.right=temp;
+                p.right = temp;
             }
             p = p.right;
         }
     }
 
-    /** Num 2*/
+    /**
+     * Num 2
+     */
     public ArrayList<TreeNode> flattenC(TreeNode root) {
         ArrayList<TreeNode> pre = new ArrayList<TreeNode>();
         pre.add(null);
-        ArrayList<TreeNode> res= helper(root, pre);
+        ArrayList<TreeNode> res = helper(root, pre);
         return res;
     }
 
-    private  ArrayList<TreeNode>  helper(TreeNode root, ArrayList<TreeNode> pre) {
-        if(root == null)
+    private ArrayList<TreeNode> helper(TreeNode root, ArrayList<TreeNode> pre) {
+        if (root == null)
             return null;
         TreeNode right = root.right;
-        if(pre.get(0)!=null) {
+        if (pre.get(0) != null) {
             pre.get(0).left = null;
             pre.get(0).right = root;
         }
-        pre.set(0,root);
+        pre.set(0, root);
         helper(root.left, pre);
         helper(right, pre);
         return pre;
     }
 
-    private  static List<List<Integer>> levelOrder(TreeNode root) {
+    private static List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
         while (!queue.isEmpty()) {
@@ -120,18 +126,24 @@ class FlatenBinaryTreeToLinkedList {
             for (int i = 0; i < size; i++) {
                 TreeNode n = queue.poll();
                 curLevel.add(n.val);
-                if (n.left != null) queue.add(n.left);
-                if (n.right != null) queue.add(n.right);
+                if (n.left != null)
+                    queue.add(n.left);
+                if (n.right != null)
+                    queue.add(n.right);
             }
             res.add(curLevel);
         }
         return res;
     }
+
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
 }

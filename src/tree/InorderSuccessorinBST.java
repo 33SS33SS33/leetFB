@@ -4,7 +4,9 @@ package tree;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class InorderSuccessorinBST {
-    /**错的  */
+    /**
+     * 错的
+     */
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
@@ -17,17 +19,17 @@ public class InorderSuccessorinBST {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        TreeNode res=new InorderSuccessorinBST().inorderSuccessor(root,n1);
+        TreeNode res = new InorderSuccessorinBST().inorderSuccessor(root, n1);
         System.out.println(res.val);
     }
 
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
-        if(root == p) {
+        if (root == p) {
             return leftMost(p.right);
         }
-        if(p.val < root.val) {
+        if (p.val < root.val) {
             p = inorderSuccessor(root.left, p);
-            if(p == null){
+            if (p == null) {
                 return root;
             }
             return p;
@@ -35,16 +37,21 @@ public class InorderSuccessorinBST {
         return inorderSuccessor(root.right, p);
     }
 
-    TreeNode leftMost(TreeNode root){
-        if(root == null) return null;
-        if(root.left != null) return leftMost(root.left);
+    TreeNode leftMost(TreeNode root) {
+        if (root == null)
+            return null;
+        if (root.left != null)
+            return leftMost(root.left);
         return root;
     }
 
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

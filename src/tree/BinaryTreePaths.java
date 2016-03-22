@@ -9,35 +9,37 @@ import java.util.List;
  */
 public class BinaryTreePaths {
     public static void main(String[] args) {
-        TreeNode head= buildTree();
+        TreeNode head = buildTree();
         System.out.println(new BinaryTreePaths().binaryTreePaths(head).toString());
     }
-//
-//    List<String> merge(int v, List<String> subPath){
-//        return subPath.stream()
-//                .map(p -> v + "->" + p)
-//                .collect(Collectors.toList());
-//    }
+    //
+    //    List<String> merge(int v, List<String> subPath){
+    //        return subPath.stream()
+    //                .map(p -> v + "->" + p)
+    //                .collect(Collectors.toList());
+    //    }
 
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> path = new ArrayList<String>();
-        if(root == null) return path;
+        if (root == null)
+            return path;
 
-        if(root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) {
             // leaf
             return Arrays.asList("" + root.val);
         }
 
-//        if(root.left != null){
-//            path.addAll(merge(root.val, binaryTreePaths(root.left)));
-//        }
-//
-//        if(root.right != null) {
-//            path.addAll(merge(root.val, binaryTreePaths(root.right)));
-//        }
+        //        if(root.left != null){
+        //            path.addAll(merge(root.val, binaryTreePaths(root.left)));
+        //        }
+        //
+        //        if(root.right != null) {
+        //            path.addAll(merge(root.val, binaryTreePaths(root.right)));
+        //        }
 
         return path;
     }
+
     private static TreeNode buildTree() {
         TreeNode t0 = new TreeNode(20);
         TreeNode t1 = new TreeNode(9);
