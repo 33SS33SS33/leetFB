@@ -11,7 +11,6 @@ import java.util.Map;
  * For example,"egg" and "add" are isomorphic, "foo" and "bar" are not.
  */
 public class IsIsomorphic {
-
     public static void main(String[] args) {
         String s = "foo";
         String t = "bar";
@@ -43,6 +42,7 @@ public class IsIsomorphic {
         }
         return true;
     }
+
     // a method for getting key of a target value
     public Character getKey(HashMap<Character, Character> map, Character target) {
         for (Map.Entry<Character, Character> entry : map.entrySet()) {
@@ -53,7 +53,6 @@ public class IsIsomorphic {
         return null;
     }
 
-
     public boolean isIsomorphicB(String s, String t) {
         char[] S = s.toCharArray();
         char[] T = t.toCharArray();
@@ -61,6 +60,7 @@ public class IsIsomorphic {
             return false;
         return isIsomorphic(S, T) && isIsomorphic(T, S);
     }
+
     boolean isIsomorphic(char[] S, char[] T) {
         char[] MAP = new char[256];
         for (int i = 0; i < S.length; i++) {

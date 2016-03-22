@@ -16,7 +16,6 @@ public class TwoSumIIInputarrayissorted {
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
-
         System.out.println();
         for (int i = 0; i < res1.length; i++) {
             System.out.print(i == res1.length - 1 ? res1[i] : res1[i] + ", ");
@@ -26,7 +25,6 @@ public class TwoSumIIInputarrayissorted {
     public int[] twoSum(int[] numbers, int target) {
         int i = 0;
         int j = numbers.length - 1;
-
         while (i < j) {
             if (numbers[i] + numbers[j] > target) {
                 j--;
@@ -36,7 +34,6 @@ public class TwoSumIIInputarrayissorted {
                 return new int[] { i + 1, j + 1 };
             }
         }
-
         throw new RuntimeException();
     }
 
@@ -58,7 +55,6 @@ public class TwoSumIIInputarrayissorted {
                 return new int[] { i + 1, j + 1 };
             }
         }
-
         return null;
     }
 }

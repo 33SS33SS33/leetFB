@@ -39,7 +39,6 @@ public class ShortestPalindrome {
             return null;
         StringBuilder sb = new StringBuilder(s.substring(r + i));
         sb.reverse();
-
         return sb.append(s).toString();
     }
 }

@@ -33,21 +33,24 @@ public class IsPalindrome {
         }
         return true;
     }
+
     private boolean isValid(char c) {
         if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9')
             return true;
         return false;
     }
+
     private boolean isSame(char c1, char c2) {
         if (c1 >= 'A' && c1 <= 'Z')
             c1 = (char) (c1 - 'A' + 'a');
         if (c2 >= 'A' && c2 <= 'Z')
             c2 = (char) (c2 - 'A' + 'a');
         return c1 == c2;
-
     }
 
-    /**better*/
+    /**
+     * better
+     */
     public boolean isPalindromeB(String s) {
         int i = 0, j = s.length() - 1;
         while (i < j) {

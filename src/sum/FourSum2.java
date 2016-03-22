@@ -8,31 +8,31 @@ import java.util.List;
  * Given an array S of n integers, are there elements a, b, c, and d in S such
  * that a + b + c + d = target? Find all unique quadruplets in the array which
  * gives the sum of target.
- *
+ * <p/>
  * Note:
  * Elements in a quadruplet (a,b,c,d) must be in non-descending order. (ie, a ≤
  * b ≤ c ≤ d)
- *
+ * <p/>
  * The solution set must not contain duplicate quadruplets.
- *
+ * <p/>
  * For example, given array S = {1 0 -1 0 -2 2}, and target = 0.
  * A solution set is:
  * (-1,  0, 0, 1)
  * (-2, -1, 1, 2)
  * (-2,  0, 0, 2)
- *
+ * <p/>
  * Tags: Array, HashTable, Two pointers
  */
 class FourSum2 {
     public static void main(String[] args) {
-        int[] num={1, 0, -1, 0, -2, 2};
-        int target=0;
-        List<List<Integer>> res=fourSum(num,target);
-        for(List<Integer> l:res){
+        int[] num = { 1, 0, -1, 0, -2, 2 };
+        int target = 0;
+        List<List<Integer>> res = fourSum(num, target);
+        for (List<Integer> l : res) {
             System.out.print(l.toString());
         }
     }
-    
+
     /**
      * Four pointers, O(n^3) time
      * First pointer i starts from 1 to num.length - 4, 3 indices remain
@@ -42,19 +42,22 @@ class FourSum2 {
      */
     public static List<List<Integer>> fourSum(int[] num, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (num == null || num.length < 4) return res;
+        if (num == null || num.length < 4)
+            return res;
         Arrays.sort(num);
 
         for (int i = 0; i < num.length - 3; i++) { // 3 indices remain
-            if (i > 0 && num[i] == num[i - 1]) continue; // skip duplicate
+            if (i > 0 && num[i] == num[i - 1])
+                continue; // skip duplicate
             for (int j = i + 1; j < num.length - 2; j++) { // 2 indices remain
-                if (j > i + 1 && num[j] == num[j - 1]) continue; // skip
+                if (j > i + 1 && num[j] == num[j - 1])
+                    continue; // skip
                 int newTar = target - num[i] - num[j]; // 2 sum
                 int l = j + 1;
                 int r = num.length - 1;
                 while (l < r) {
                     if (l > j + 1 && num[l] == num[l - 1]) { // skip
-                        l++; 
+                        l++;
                         continue;
                     }
                     if (r < num.length - 1 && num[r] == num[r + 1]) { // skip
@@ -62,10 +65,13 @@ class FourSum2 {
                         continue;
                     }
                     int sum = num[l] + num[r];
-                    if (sum < newTar) l++;
-                    else if (sum > newTar) r--;
+                    if (sum < newTar)
+                        l++;
+                    else if (sum > newTar)
+                        r--;
                     else { // sum == newTar
-                        res.add(new ArrayList<Integer>(Arrays.asList(num[i], num[j], num[l], num[r])));
+                        res.add(new ArrayList<Integer>(
+                                Arrays.asList(num[i], num[j], num[l], num[r])));
                         l++;
                         r--;
                     }

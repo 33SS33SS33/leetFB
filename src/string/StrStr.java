@@ -75,22 +75,21 @@ public class StrStr {
         }
         return -1;
     }
-    /**----------KMP----------*/
-    public static int strStrC(String haystack, String needle) {
-        if(haystack==null || needle==null)
-            return 0;
 
+    /**
+     * ----------KMP----------
+     */
+    public static int strStrC(String haystack, String needle) {
+        if (haystack == null || needle == null)
+            return 0;
         int h = haystack.length();
         int n = needle.length();
-
         if (n > h)
             return -1;
         if (n == 0)
             return 0;
-
         int[] next = getNext(needle);
         int i = 0;
-
         while (i <= h - n) {
             int success = 1;
             for (int j = 0; j < n; j++) {
@@ -107,14 +106,13 @@ public class StrStr {
             if (success == 1)
                 return i;
         }
-
         return -1;
     }
+
     //calculate KMP array
     public static int[] getNext(String needle) {
         int[] next = new int[needle.length()];
         next[0] = 0;
-
         for (int i = 1; i < needle.length(); i++) {
             int index = next[i - 1];
             while (index > 0 && needle.charAt(index) != needle.charAt(i)) {
