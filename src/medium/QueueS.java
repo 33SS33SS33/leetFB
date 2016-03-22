@@ -7,10 +7,11 @@ package medium;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
-/**--creek*/
+/**
+ * --creek
+ */
 
 public class QueueS<E> {
-
     E[] arr;
     int head = -1;
     int tail = -1;
@@ -30,7 +31,7 @@ public class QueueS<E> {
         arr[head] = e;
         size++;
 
-        if(tail == -1){
+        if (tail == -1) {
             tail = head;
         }
 
@@ -45,7 +46,7 @@ public class QueueS<E> {
         E result = arr[tail];
         arr[tail] = null;
         size--;
-        tail = (tail+1)%arr.length;
+        tail = (tail + 1) % arr.length;
 
         if (size == 0) {
             head = -1;
@@ -55,8 +56,8 @@ public class QueueS<E> {
         return true;
     }
 
-    E peek(){
-        if(size==0)
+    E peek() {
+        if (size == 0)
             return null;
 
         return arr[tail];

@@ -3,17 +3,19 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
  */
+
 /**
  * Quick sort an integer arrays
- *
+ * <p/>
  * Tags: Sort
  */
 class QuickSort {
     public static void main(String[] args) {
         QuickSort q = new QuickSort();
-        int[] A = { 1, 4, 2, 8, 5};
+        int[] A = { 1, 4, 2, 8, 5 };
         q.sort(A, 0, A.length - 1);
-        for (int n : A) System.out.print(n + ",");
+        for (int n : A)
+            System.out.print(n + ",");
     }
 
     /**
@@ -23,8 +25,10 @@ class QuickSort {
      */
     public void sort(int[] A, int left, int right) {
         int index = partition(A, left, right);
-        if (left < index - 1) sort(A, left, index - 1);
-        if (index < right) sort(A, index, right);
+        if (left < index - 1)
+            sort(A, left, index - 1);
+        if (index < right)
+            sort(A, index, right);
     }
 
     /**
@@ -38,8 +42,10 @@ class QuickSort {
     private int partition(int[] A, int left, int right) {
         int pivot = A[left + (right - left) / 2];
         while (left <= right) {
-            while (A[left] < pivot) left++;
-            while (A[right] > pivot) right--;
+            while (A[left] < pivot)
+                left++;
+            while (A[right] > pivot)
+                right--;
             if (left <= right) {
                 int temp = A[left];
                 A[left] = A[right];
@@ -51,30 +57,26 @@ class QuickSort {
         return left;
     }
 
-
-    /**creek-------*/
+    /**
+     * creek-------
+     */
     public static void quickSort(int[] arr, int low, int high) {
         if (arr == null || arr.length == 0)
             return;
-
         if (low >= high)
             return;
-
         // pick the pivot
         int middle = low + (high - low) / 2;
         int pivot = arr[middle];
-
         // make left < pivot and right > pivot
         int i = low, j = high;
         while (i <= j) {
             while (arr[i] < pivot) {
                 i++;
             }
-
             while (arr[j] > pivot) {
                 j--;
             }
-
             if (i <= j) {
                 int temp = arr[i];
                 arr[i] = arr[j];
@@ -83,11 +85,9 @@ class QuickSort {
                 j--;
             }
         }
-
         // recursively sort two sub parts
         if (low < j)
             quickSort(arr, low, j);
-
         if (high > i)
             quickSort(arr, i, high);
     }

@@ -2,21 +2,20 @@ package other;
 
 /**
  * The API: int read4(char *buf) reads 4 characters at a time from a file.
- * The return value is the actual number of characters read. For example, it 
+ * The return value is the actual number of characters read. For example, it
  * returns 3 if there is only 3 characters left in the file.
- * By using the read4 API, implement the function int read(char *buf, int n) 
+ * By using the read4 API, implement the function int read(char *buf, int n)
  * that reads n characters from the file.
- * 
+ * <p/>
  * Note: The read function will only be called once for each test case.
- * 
- * Tags: 
+ * <p/>
+ * Tags:
  */
 class ReadNGivenRead4 {
-    
     public static void main(String[] args) {
-        
+
     }
-    
+
     /**
      * Call only 1 time
      * Can reach n or end of file
@@ -29,10 +28,11 @@ class ReadNGivenRead4 {
         char[] buffer = new char[4];
         int readBytes = 0;
         boolean eof = false; // flag
-        
+
         while (!eof && readBytes < n) {
             int size = read4(buffer); // read4 is given
-            if (size < 4) eof = true; // file end
+            if (size < 4)
+                eof = true; // file end
             int bytes = Math.min(n - readBytes, size); // reach n or end of file
             // src, src pos, dest, dest pos, length
             System.arraycopy(buffer, 0, buf, readBytes, bytes); // copy to 
@@ -41,7 +41,7 @@ class ReadNGivenRead4 {
         return readBytes; // can be n or smaller
     }
 
-    public int read4(char[] buffer){
+    public int read4(char[] buffer) {
         return 1;
     }
 }

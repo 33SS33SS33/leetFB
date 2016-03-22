@@ -3,19 +3,22 @@ package other;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * Merge sort an integer arrays
- *
+ * <p/>
  * Tags: Sort
  */
 class MergeSort {
     public static void main(String[] args) {
         MergeSort m = new MergeSort();
         int[] A = { 1, 4, 2, 8, 5 };
-        for (int n : A) System.out.print(n + ",");
+        for (int n : A)
+            System.out.print(n + ",");
         System.out.println();
         m.sort(A, 0, A.length - 1);
-        for (int n : A) System.out.print(n + ",");
+        for (int n : A)
+            System.out.print(n + ",");
     }
 
     /**

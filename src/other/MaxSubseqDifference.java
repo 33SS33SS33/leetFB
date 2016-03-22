@@ -3,10 +3,11 @@ package other;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * Find two contiguous subsequences in an array with maximum difference. The
  * subsequences may be overlapping.
- *
+ * <p/>
  * Tags: Array
  */
 class MaxSubseqDifference {
@@ -37,13 +38,12 @@ class MaxSubseqDifference {
         int end = 0;
         int maxSoFar = A[0];
         int maxEndingHere = A[0];
-
         for (int i = 1; i < A.length; i++) {
             if (maxEndingHere < 0) {
                 maxEndingHere = A[i];
                 beginTemp = i;
-            }
-            else maxEndingHere += A[i];
+            } else
+                maxEndingHere += A[i];
 
             if (maxEndingHere >= maxSoFar) {
                 maxSoFar = maxEndingHere;
@@ -52,7 +52,7 @@ class MaxSubseqDifference {
             }
         }
 
-        return new int[]{begin, end};
+        return new int[] { begin, end };
     }
 
     /**
@@ -64,13 +64,12 @@ class MaxSubseqDifference {
         int end = 0;
         int minSoFar = A[0];
         int minEndingHere = A[0];
-
         for (int i = 1; i < A.length; i++) {
             if (minEndingHere > 0) {
                 minEndingHere = A[i];
                 beginTemp = i;
-            }
-            else minEndingHere += A[i];
+            } else
+                minEndingHere += A[i];
 
             if (minEndingHere <= minSoFar) {
                 minSoFar = minEndingHere;
@@ -78,8 +77,7 @@ class MaxSubseqDifference {
                 end = i;
             }
         }
-
-        return new int[]{begin, end};
+        return new int[] { begin, end };
     }
 
     int printArr(int[] A, int start, int end) {

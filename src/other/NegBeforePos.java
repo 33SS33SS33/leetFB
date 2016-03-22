@@ -9,15 +9,15 @@ package other;
  * integers. Now you need to sort this array in such a way that, the negative
  * integers should be in the front, and the positive integers should at the
  * back. Also the relative position should not be changed.
- *
+ * <p/>
  * Example:
  * -1 1 3 -2 2
- *
+ * <p/>
  * Output:
  * -1 -2 1 3 2.
- *
+ * <p/>
  * Required running time complexity is O(N) and the space complexity is O(1)
- *
+ * <p/>
  * Tags: Array, Sort
  */
 class NegBeforePos {
@@ -36,13 +36,14 @@ class NegBeforePos {
     public void negBeforePos(int[] A) {
         int negCount = 0;
         for (int i = 0; i < A.length; i++) {
-            if (A[i] < 0) negCount++; // find out neg count first
+            if (A[i] < 0)
+                negCount++; // find out neg count first
         }
-
         int negIndex = 0;
         int posIndex = negCount; // positive value will be moved after neg count
-        while (posIndex <A.length && negIndex < negCount) {
-            if (A[negIndex] < 0) negIndex++;
+        while (posIndex < A.length && negIndex < negCount) {
+            if (A[negIndex] < 0)
+                negIndex++;
             else { // current value > 0, swap
                 int temp = A[negIndex];
                 A[negIndex] = A[posIndex];

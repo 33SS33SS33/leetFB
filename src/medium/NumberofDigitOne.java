@@ -7,30 +7,37 @@ import java.util.Map;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class NumberofDigitOne {
+    public static void main(String[] args) {
+            System.out.print(new NumberofDigitOne().countDigitOne(3));
+    }
     // return { highest digit, floor(n) }
     // 'floor' here has a naming problem...
     // named it exactly later
     // floor(101)   = 100
     // floor(92)    = 90
     // floor(10111) = 10000
-    int[] N = {100000000, 10000, 100, 10};
-    int[] extractHighest(int x){
+    int[] N = { 100000000, 10000, 100, 10 };
+
+    int[] extractHighest(int x) {
         int e = 1;
-        for(int n : N){
-            if(x >= n){
+        for (int n : N) {
+            if (x >= n) {
                 x /= n;
                 e *= n;
             }
         }
-        return new int[]{x, x * e};
+        return new int[] { x, x * e };
     }
+
     Map<Integer, Integer> cache = new HashMap<Integer, Integer>();
 
     public int countDigitOne(int n) {
-        if(n <= 0) return 0;
-        if(n < 10) return 1;
+        if (n <= 0)
+            return 0;
+        if (n < 10)
+            return 1;
         Integer cached = cache.get(n);
-        if(cached != null){
+        if (cached != null) {
             return cached;
         }
         int[] e = extractHighest(n);
@@ -38,7 +45,7 @@ public class NumberofDigitOne {
         int f = e[1];
         int rest = n - f;
         int plus = 0;
-        if(h == 1){
+        if (h == 1) {
             plus = rest + 1;
         }
         int c = plus + countDigitOne(f - 1) + countDigitOne(rest);

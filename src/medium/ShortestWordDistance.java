@@ -4,7 +4,6 @@ package medium;
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
 public class ShortestWordDistance {
-
     public static void main(String[] args) {
         String[] words = { "dog", "cat" };
         String word1 = "ll";

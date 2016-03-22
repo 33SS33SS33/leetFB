@@ -2,18 +2,17 @@ package other;
 
 /**
  * Run Length Encoding
- *      wwwwaaadexxxxxx     
+ * wwwwaaadexxxxxx
  * =>   w4a3d1e1x6
- *      
- * Tags: String 
+ * <p/>
+ * Tags: String
  */
 public class RunLengthEncoding {
-    
     public static void main(String[] args) {
         String src = "wwwwaaadexxxxxx";
         System.out.print(encode(src));
     }
-    
+
     /**
      * Traverse the source string
      * Append current char to result first

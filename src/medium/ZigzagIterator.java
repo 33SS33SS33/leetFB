@@ -12,21 +12,21 @@ public class ZigzagIterator {
     int p = 0;
 
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
-        ivs = new Iterator[]{v1.iterator(), v2.iterator()};
+        ivs = new Iterator[] { v1.iterator(), v2.iterator() };
     }
 
     public int next() {
-        for(;;){
+        for (; ; ) {
             Iterator<Integer> i = ivs[p++ % ivs.length];
-            if(i.hasNext()){
+            if (i.hasNext()) {
                 return i.next();
             }
         }
     }
 
     public boolean hasNext() {
-        for(Iterator i : ivs){
-            if(i.hasNext()){
+        for (Iterator i : ivs) {
+            if (i.hasNext()) {
                 return true;
             }
         }

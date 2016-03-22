@@ -3,33 +3,34 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/8.
  */
+
 import java.util.*;
 
 /**
  * All DNA is composed of a series of nucleotides abbreviated as A, C, G, and
  * T, for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to
  * identify repeated sequences within the DNA.
- *
+ * <p/>
  * Write a function to find all the 10-letter-long sequences (substrings) that
  * occur more than once in a DNA molecule.
- *
+ * <p/>
  * For example,
- *
+ * <p/>
  * Given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT",
- *
+ * <p/>
  * Return:
  * ["AAAAACCCCC", "CCCCCAAAAA"].
- *
+ * <p/>
  * Tags: Bit Manipulation
  */
 class RepeatedDNASeq {
     public static void main(String[] args) {
-        String s="AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
-        List<String> res=findRepeatedDnaSequences(s);
+        String s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
+        List<String> res = findRepeatedDnaSequences(s);
 
         /**错的？？？？？*/
-        List<String> res2=findRepeatedDnaSequencesB(s);
-        List<String> res3=findRepeatedDnaSequencesC(s);
+        List<String> res2 = findRepeatedDnaSequencesB(s);
+        List<String> res3 = findRepeatedDnaSequencesC(s);
         System.out.println(res);
         System.out.println(res2);
         System.out.println(res3);
@@ -40,14 +41,15 @@ class RepeatedDNASeq {
      * Design a hash function according to observation
      * A: 0x41, C: 0x43, G: 0x47, T: 0x54, last 3 bits are different
      * 10 chars, each 3 bits, 10 x 3 = 30 bits < 32
-     *
+     * <p/>
      * Key: an int to record the bit mask of current substring,
      * Value: a boolean, true means showed up before, false means already added
      * Update the map
      */
     public static List<String> findRepeatedDnaSequences(String s) {
         List<String> res = new ArrayList<String>();
-        if (s == null || s.length() < 10) return res;
+        if (s == null || s.length() < 10)
+            return res;
         Map<Integer, Boolean> map = new HashMap<Integer, Boolean>();
         for (int t = 0, i = 0; i < s.length(); i++) {
             t = (t << 3 & 0x3FFFFFFF) | (s.charAt(i) & 7);
@@ -69,7 +71,8 @@ class RepeatedDNASeq {
      */
     public static List<String> findRepeatedDnaSequencesB(String s) {
         List<String> res = new ArrayList<String>();
-        if (s == null || s.length() < 10) return res;
+        if (s == null || s.length() < 10)
+            return res;
         Set<String> set = new HashSet<String>();
         for (int i = 0; i < s.length() - 10; i++) {
             String sub = s.substring(i, i + 10);
@@ -81,13 +84,14 @@ class RepeatedDNASeq {
         return res;
     }
 
-
-    /**creek
+    /**
+     * creek
      * For example, given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT", return: ["AAAAACCCCC", "CCCCCAAAAA"].
      * The key to solve this problem is that each of the 4 nucleotides can be stored in 2 bits.
-     * So the 10-letter-long sequence can be converted to 20-bits-long integer. */
+     * So the 10-letter-long sequence can be converted to 20-bits-long integer.
+     */
 
-    public  static List<String> findRepeatedDnaSequencesC(String s) {
+    public static List<String> findRepeatedDnaSequencesC(String s) {
         List<String> result = new ArrayList<String>();
         int len = s.length();
         if (len < 10) {
@@ -110,7 +114,7 @@ class RepeatedDNASeq {
             } else {
                 hash = (hash << 2) + map.get(s.charAt(i));
                 //make length of hash to be 20
-                hash = hash &  (1 << 20) - 1;
+                hash = hash & (1 << 20) - 1;
                 if (temp.contains(hash) && !added.contains(hash)) {
                     result.add(s.substring(i - 9, i + 1));
                     added.add(hash); //track added

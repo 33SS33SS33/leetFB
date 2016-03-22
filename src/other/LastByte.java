@@ -1,11 +1,11 @@
 package other;
 
 /**
- * A type of encoding has only 1 byte encode or 2-byte encode. If the first bit 
- * is 0, this byte represents 1 character. If the first bit is 1, it represents 
- * 2 characters. Given a string of bits, find out whether the last char is 1 
- * byte encoded or 2-byte encoded. 
- * 
+ * A type of encoding has only 1 byte encode or 2-byte encode. If the first bit
+ * is 0, this byte represents 1 character. If the first bit is 1, it represents
+ * 2 characters. Given a string of bits, find out whether the last char is 1
+ * byte encoded or 2-byte encoded.
+ * <p/>
  * Tags: Recursive
  */
 class LastByte {
@@ -18,7 +18,7 @@ class LastByte {
         System.out.println(l.lastByte(s2));
         System.out.println(l.lastByte(s3));
     }
-    
+
     /**
      * Recursive
      * Check backwards
@@ -29,8 +29,10 @@ class LastByte {
      * If returns 2, it means 1xxxxxxx is part of a 2-byte, return 1
      */
     public int lastByte(String s) {
-        if (s == null || s.length() < 16) return 1;
-        if (s.charAt(s.length() - 16) == '0') return 1;
+        if (s == null || s.length() < 16)
+            return 1;
+        if (s.charAt(s.length() - 16) == '0')
+            return 1;
         return lastByte(s.substring(0, s.length() - 8)) == 1 ? 2 : 1;
     }
 }

@@ -2,7 +2,7 @@ package other;
 
 /**
  * Write a function to reverse a linked list
- * 
+ * <p/>
  * Tags: LinkedList
  */
 class ReverseLinkedList {
@@ -24,7 +24,7 @@ class ReverseLinkedList {
             cur = cur.next;
         }
     }
-    
+
     /**
      * Recursive
      * Divide the list in 2 parts - first node and rest of the linked list
@@ -33,29 +33,30 @@ class ReverseLinkedList {
      * Fix head pointer
      */
     Node reverse(Node head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null)
+            return head;
         Node temp = reverse(head.next);
         head.next.next = head;
         head.next = null;
         return temp;
     }
 
-    /**creek--Iterative-*/
+    /**
+     * creek--Iterative-
+     */
     public ListNode reverseListB(ListNode head) {
-        if(head==null || head.next == null)
+        if (head == null || head.next == null)
             return head;
-
         ListNode p1 = head;
         ListNode p2 = head.next;
-
         head.next = null;
-        while(p1!= null && p2!= null){
+        while (p1 != null && p2 != null) {
             ListNode t = p2.next;
             p2.next = p1;
             p1 = p2;
-            if (t!=null){
+            if (t != null) {
                 p2 = t;
-            }else{
+            } else {
                 break;
             }
         }
@@ -63,9 +64,9 @@ class ReverseLinkedList {
     }
 
     static class Node {
-        int val;
+        int  val;
         Node next;
-        
+
         Node(int val) {
             this.val = val;
             this.next = null;
@@ -73,7 +74,7 @@ class ReverseLinkedList {
     }
 
     static class ListNode {
-        int val;
+        int      val;
         ListNode next;
 
         ListNode(int val) {
