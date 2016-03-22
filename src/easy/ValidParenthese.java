@@ -6,14 +6,14 @@ import java.util.Stack;
 /**
  * Given a string containing just the characters '(', ')', '{', '}', '[' and
  * ']', determine if the input string is valid.
- * 
+ * <p/>
  * The brackets must close in the correct order, "()" and "()[]{}" are all
  * valid but "(]" and "([)]" are not.
- * 
+ * <p/>
  * Tags: Stack, String
  */
 class ValidParenthese {
-    
+
     public static void main(String[] args) {
         ValidParenthese v = new ValidParenthese();
         System.out.println(v.isValid("()"));
@@ -32,7 +32,7 @@ class ValidParenthese {
         System.out.println(v.isValidB("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
         System.out.println(v.isValidC("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
     }
-    
+
     /**
      * Use a stack to store the parens
      * If   left paren, push to stack
@@ -41,10 +41,12 @@ class ValidParenthese {
      * Else don't match, return false
      */
     public boolean isValid(String s) {
-        if (s == null || s.length() == 0) return false;
+        if (s == null || s.length() == 0)
+            return false;
         Stack<Character> stk = new Stack<Character>();
         for (Character c : s.toCharArray()) {
-            if (!isParenthese(c)) continue;
+            if (!isParenthese(c))
+                continue;
             if ("({[".indexOf(c) != -1) {
                 stk.push(c);
             } else {
@@ -57,7 +59,7 @@ class ValidParenthese {
         }
         return stk.isEmpty();
     }
-    
+
     boolean isParenthese(char c) {
         String parens = "(){}[]";
         return parens.indexOf(c) != -1;
@@ -67,18 +69,17 @@ class ValidParenthese {
         return (c1 == '(' && c2 == ')') || (c1 == '{' && c2 == '}') || (c1 == '[' && c2 == ']');
     }
 
-    /**creek!!*/
+    /**
+     * creek!!
+     */
     public static boolean isValidB(String s) {
         HashMap<Character, Character> map = new HashMap<Character, Character>();
         map.put('(', ')');
         map.put('[', ']');
         map.put('{', '}');
-
         Stack<Character> stack = new Stack<Character>();
-
         for (int i = 0; i < s.length(); i++) {
             char curr = s.charAt(i);
-
             if (map.keySet().contains(curr)) {
                 stack.push(curr);
             } else if (map.values().contains(curr)) {
@@ -89,14 +90,16 @@ class ValidParenthese {
                 }
             }
         }
-
         return stack.empty();
     }
-    /**------------错的-----------*/
-    public static boolean isValidC(String s) {
-        if (s == null || s.length() == 0) return false;
-        Stack<Character> stk = new Stack<Character>();
 
+    /**
+     * ------------错的-----------
+     */
+    public static boolean isValidC(String s) {
+        if (s == null || s.length() == 0)
+            return false;
+        Stack<Character> stk = new Stack<Character>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (stk.isEmpty()) {

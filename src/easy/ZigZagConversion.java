@@ -4,29 +4,28 @@ package easy;
  * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number
  * of rows like this: (you may want to display this pattern in a fixed font for
  * better legibility)
- * 
+ * <p/>
  * P   A   H   N
  * A P L S I I G
  * Y   I   R
- * 
+ * <p/>
  * And then read line by line: "PAHNAPLSIIGYIR"
  * Write the code that will take a string and make this conversion given a
  * number of rows:
- * 
+ * <p/>
  * string convert(string text, int nRows);
  * convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
- * 
+ * <p/>
  * Tags: String
  */
 class ZigZagConversion {
     public static void main(String[] args) {
-        String s="PAYPALISHIRING";
-        int nRows=3;
-        System.out.println(new ZigZagConversion().convert(s,nRows));
-        System.out.println(new ZigZagConversion().convertB(s,nRows));
-
+        String s = "PAYPALISHIRING";
+        int nRows = 3;
+        System.out.println(new ZigZagConversion().convert(s, nRows));
+        System.out.println(new ZigZagConversion().convertB(s, nRows));
     }
-    
+
     /**
      * Build an array of StringBuffers
      * Traverse the given string and append characters in correct StringBuffer
@@ -34,7 +33,8 @@ class ZigZagConversion {
      */
     public String convert(String s, int nRows) {
         StringBuffer[] sb = new StringBuffer[nRows];
-        for (int i = 0; i < sb.length; i++) sb[i] = new StringBuffer();
+        for (int i = 0; i < sb.length; i++)
+            sb[i] = new StringBuffer();
         int len = s.length();
         int i = 0;
         while (i < len) {
@@ -45,7 +45,8 @@ class ZigZagConversion {
                 sb[j].append(s.charAt(i++));
             }
         }
-        for (int k = 1; k < nRows; k++) sb[0].append(sb[k]);
+        for (int k = 1; k < nRows; k++)
+            sb[0].append(sb[k]);
         return sb[0].toString();
     }
 

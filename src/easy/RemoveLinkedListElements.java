@@ -6,30 +6,34 @@ package easy;
 public class RemoveLinkedListElements {
 
     public ListNode removeElements(ListNode head, int val) {
-        if(head == null) return null;
-        if(head.val == val) return removeElements(head.next, val);
+        if (head == null)
+            return null;
+        if (head.val == val)
+            return removeElements(head.next, val);
         head.next = removeElements(head.next, val);
         return head;
     }
-    /**creek---*/
+
+    /**
+     * creek---
+     */
     public ListNode removeElementsB(ListNode head, int val) {
         ListNode helper = new ListNode(0);
         helper.next = head;
         ListNode p = helper;
-
-        while(p.next != null){
-            if(p.next.val == val){
+        while (p.next != null) {
+            if (p.next.val == val) {
                 ListNode next = p.next;
                 p.next = next.next;
-            }else{
+            } else {
                 p = p.next;
             }
         }
-
         return helper.next;
     }
-    class ListNode{
-        int val;
+
+    class ListNode {
+        int      val;
         ListNode next;
 
         public ListNode(int val) {

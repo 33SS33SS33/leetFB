@@ -4,24 +4,23 @@ import java.util.*;
 
 /**
  * Reverse bits of a given 32 bits <strong>unsigned</strong> integer.
- * 
- * Example: 
+ * <p/>
+ * Example:
  * input 43261596, represented in binary as 00000010100101000001111010011100
  * return 964176192, represented in binary as 00111001011110000010100101000000
- * 
+ * <p/>
  * Follow up:
- * If this function is <strong>called many times</strong>, how would you 
+ * If this function is <strong>called many times</strong>, how would you
  * optimize it?
- * 
+ * <p/>
  * Answer:
  * Cache result for each bytes.
- * 
+ * <p/>
  * Related problem: Reverse Integer
- * 
+ * <p/>
  * Tags: Bit Manipulation
  */
 class ReverseBits {
-
     public static void main(String[] args) {
         ReverseBits r = new ReverseBits();
         int a = 43261596;
@@ -34,7 +33,7 @@ class ReverseBits {
         System.out.println(r.reverseBitsOpt(b));
         System.out.println(r.reverseBitsC(b));
     }
-    
+
     /**
      * O(1) Time, O(1) Space
      * Move res 1 bit left, a
@@ -46,12 +45,13 @@ class ReverseBits {
     public int reverseBits(int n) {
         int res = 0;
         // concat n's ith digit with res
-        for (int i = 0; i < 32; i++) res = (res << 1) ^ ((n >>> i) & 1);
+        for (int i = 0; i < 32; i++)
+            res = (res << 1) ^ ((n >>> i) & 1);
         return res;
     }
-    
+
     private Map<Byte, Integer> cache = new HashMap<Byte, Integer>();
-    
+
     /**
      * O(1) Time, O(1) Space
      * Divide 32 bits into 4 bytes
@@ -61,16 +61,16 @@ class ReverseBits {
     public int reverseBitsOpt(int n) {
         byte[] bytes = new byte[4];
         for (int i = 0; i < 4; i++)
-            bytes[i] = (byte)((n >>> 8 * i) & 0xFF);
-        
+            bytes[i] = (byte) ((n >>> 8 * i) & 0xFF);
         int res = 0;
         for (int i = 0; i < 4; i++)
             res = (res << 8) ^ reverseBytes(bytes[i]);
         return res;
     }
-    
+
     public int reverseBytes(byte b) {
-        if (cache.containsKey(b)) return cache.get(b);
+        if (cache.containsKey(b))
+            return cache.get(b);
         int res = 0;
         for (int i = 0; i < 8; i++) {
             res = (res << 1) ^ ((b >>> i) & 1);
@@ -79,23 +79,22 @@ class ReverseBits {
         return res;
     }
 
-    /**creek*/
+    /**
+     * creek
+     */
     public int reverseBitsC(int n) {
         for (int i = 0; i < 16; i++) {
             n = swapBits(n, i, 32 - i - 1);
         }
-
         return n;
     }
 
     public int swapBits(int n, int i, int j) {
         int a = (n >> i) & 1;
         int b = (n >> j) & 1;
-
         if ((a ^ b) != 0) {
             return n ^= (1 << i) | (1 << j);
         }
-
         return n;
     }
 }
