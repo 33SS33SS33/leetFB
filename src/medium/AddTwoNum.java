@@ -4,10 +4,10 @@ package medium;
  * You are given two linked lists representing two non-negative numbers. The
  * digits are stored in reverse order and each of their nodes contain a single
  * digit. Add the two numbers and return it as a linked list.
- * 
+ * <p/>
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
  * Output: 7 -> 0 -> 8
- * 
+ * <p/>
  * Tags: Linkedlist, Math
  */
 
@@ -15,31 +15,34 @@ package medium;
 class AddTwoNum {
 
     public static void main(String[] args) {
-        AddTwoNum s=new AddTwoNum();
-        ListNode r1=buildList1();
-        ListNode r2=buildList2();
-        ListNode head=s.addTwoNumbers(r1,r2);
-        while(head.next!=null) {
-            System.out.print(head.next==null? head.val : head.val+"->");
-            head=head.next;
+        AddTwoNum s = new AddTwoNum();
+        ListNode r1 = buildList1();
+        ListNode r2 = buildList2();
+        ListNode head = s.addTwoNumbers(r1, r2);
+        while (head.next != null) {
+            System.out.print(head.next == null ? head.val : head.val + "->");
+            head = head.next;
         }
     }
-    static ListNode buildList1(){
-        ListNode node0=new ListNode(1);
-        ListNode node1=new ListNode(1);
-        ListNode node2=new ListNode(2);
-        node0.next=node1;
-        node1.next=node2;
-        return  node0;
+
+    static ListNode buildList1() {
+        ListNode node0 = new ListNode(1);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
     }
-    static ListNode buildList2(){
-        ListNode node0=new ListNode(2);
-        ListNode node1=new ListNode(1);
-        ListNode node2=new ListNode(9);
-        node0.next=node1;
-        node1.next=node2;
-        return  node0;
+
+    static ListNode buildList2() {
+        ListNode node0 = new ListNode(2);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(9);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
     }
+
     /**
      * Create a pre head pointer
      * Build list node one by one
@@ -65,15 +68,17 @@ class AddTwoNum {
             // build next node
             d.next = new ListNode(sum % 10); // digit for current node
             sum /= 10; // carry
-            d = d.next; 
+            d = d.next;
         }
-        if (sum == 1) d.next = new ListNode(1); // note that can have carry at the last digit
+        if (sum == 1)
+            d.next = new ListNode(1); // note that can have carry at the last digit
         return pre.next;
     }
-    
+
     public static class ListNode {
-        int val;
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

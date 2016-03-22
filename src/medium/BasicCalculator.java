@@ -9,21 +9,25 @@ import java.util.Stack;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 
-/**Some examples: "1 + 1" = 2, "(1)" = 1, "(1-(4-5))" = 2*/
+/**
+ * Some examples: "1 + 1" = 2, "(1)" = 1, "(1-(4-5))" = 2
+ */
 public class BasicCalculator {
-    enum TokenType { DIGIT, OP }
+    enum TokenType {DIGIT, OP}
 
     static class Token {
         TokenType type;
-        int val;
+        int       val;
+
         public Token(int val, TokenType type) {
             this.val = val;
             this.type = type;
         }
     }
 
-    static final Token EOL = new Token(0, TokenType.OP);
+    static final Token   EOL    = new Token(0, TokenType.OP);
     static final Token[] TOKENS = new Token[256];
+
     static {
         TOKENS['+'] = new Token('+', TokenType.OP);
         TOKENS['-'] = new Token('-', TokenType.OP);
@@ -32,40 +36,45 @@ public class BasicCalculator {
         TOKENS['('] = new Token('(', TokenType.OP);
         TOKENS[')'] = new Token(')', TokenType.OP);
     }
+
     static class Tokenizer {
         Scanner scanner;
-        Tokenizer(String s){
+
+        Tokenizer(String s) {
             scanner = new Scanner(s);
             scanner.useDelimiter("");
         }
-        Token next(){
-            if(!scanner.hasNext()){
+
+        Token next() {
+            if (!scanner.hasNext()) {
                 return EOL;
             }
             boolean num = false;
             int buf = 0;
-            while (scanner.hasNextInt()){
+            while (scanner.hasNextInt()) {
                 num = true;
                 buf = buf * 10 + scanner.nextInt();
             }
-            if(num){
+            if (num) {
                 return new Token(buf, TokenType.DIGIT);
             }
             char c = scanner.next().charAt(0);
-            if(TOKENS[c] != null){
+            if (TOKENS[c] != null) {
                 return TOKENS[c];
             }
             return next();
         }
     }
+
     static class RPNCalculator {
         LinkedList<Integer> stack = new LinkedList<Integer>();
-        void addToken(Token t){
-            if(t.type == TokenType.OP){
+
+        void addToken(Token t) {
+            if (t.type == TokenType.OP) {
                 int v2 = stack.pop();
                 int v1 = stack.pop();
 
-                switch (t.val){
+                switch (t.val) {
                 case '+':
                     stack.push(v1 + v2);
                     break;
@@ -85,7 +94,8 @@ public class BasicCalculator {
                 stack.push(t.val);
             }
         }
-        int val(){
+
+        int val() {
             return stack.peek();
         }
     }
@@ -96,14 +106,14 @@ public class BasicCalculator {
         LinkedList<Token> op = new LinkedList<Token>();
         Token t;
         next:
-        while ((t = tokenizer.next()) != EOL){
+        while ((t = tokenizer.next()) != EOL) {
             // convert to RPN
-            if(t.type == TokenType.DIGIT){
+            if (t.type == TokenType.DIGIT) {
                 calculator.addToken(t);
             } else { // type == OP
                 retry:
-                while(true) {
-                    if(op.isEmpty()){
+                while (true) {
+                    if (op.isEmpty()) {
                         op.push(t);
                         continue next;
                     }
@@ -132,37 +142,32 @@ public class BasicCalculator {
                             calculator.addToken(op.pop());
                             continue retry;
                         }
-
                         op.push(t);
-
                         break;
-
                     case ')':
-
                         while (!op.isEmpty()) {
                             top = op.pop();
-
-                            if (top.val == '(') continue next;
-
+                            if (top.val == '(')
+                                continue next;
                             calculator.addToken(top);
                         }
-
                     default:
                         // cant happen
                     }
-
                     continue next;
                 }
             }
         }
 
-        while (!op.isEmpty()){
+        while (!op.isEmpty()) {
             calculator.addToken(op.pop());
         }
-
         return calculator.val();
     }
-    /**creek*/
+
+    /**
+     * creek
+     */
     public int calculateB(String s) {
         // delte white spaces
         s = s.replaceAll(" ", "");

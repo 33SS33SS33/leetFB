@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class MissingRanges {
 
-    public static void main(String[] args){
-        int[] vals= {1,2,3,5};
-        List<String> res=findMissingRanges(vals,0,4);
-        for(String s:res) {
+    public static void main(String[] args) {
+        int[] vals = { 1, 2, 3, 5 };
+        List<String> res = findMissingRanges(vals, 0, 4);
+        for (String s : res) {
             System.out.print(s);
         }
     }
@@ -28,6 +28,7 @@ public class MissingRanges {
         }
         return ranges;
     }
+
     private static String getRange(int from, int to) {
         return (from == to) ? String.valueOf(from) : from + "->" + to;
     }

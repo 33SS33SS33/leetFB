@@ -3,26 +3,27 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
  */
+
 /**
  * There are N gas stations along a circular route, where the amount of gas at
  * station i is gas[i].
- *
+ * <p/>
  * You have a car with an unlimited gas tank and it costs cost[i] of gas to
  * travel from station i to its next station (i+1). You begin the journey with
  * an empty tank at one of the gas stations.
- *
+ * <p/>
  * Return the starting gas station's index if you can travel around the circuit
  * once, otherwise return -1.
- *
+ * <p/>
  * Note:
  * The solution is guaranteed to be unique.
- *
+ * <p/>
  * Tags: Greedy
  */
 class GasStation {
     public static void main(String[] args) {
-        int[] gas={2,4,1,6};
-        int[] cost={1,4,1,5};
+        int[] gas = { 2, 4, 1, 6 };
+        int[] cost = { 1, 4, 1, 5 };
         System.out.println(canCompleteCircuit(gas, cost));
         System.out.println(canCompleteCircuitB(gas, cost));
         System.out.println(canCompleteCircuitC(gas, cost));
@@ -55,21 +56,24 @@ class GasStation {
         int start = 0;
         int from_start = 0;
         int total = 0;
-        for(int i = 0; i < gas.length; i++){
+        for (int i = 0; i < gas.length; i++) {
             int left = gas[i] - cost[i];
             total += left;
             from_start += left;
-            if(from_start < 0){
+            if (from_start < 0) {
                 from_start = 0;
                 start = i + 1; // restart from next station
             }
         }
-        if(total >= 0){
+        if (total >= 0) {
             return start;
         }
         return -1;
     }
-    /**creek*/
+
+    /**
+     * creek
+     */
     public static int canCompleteCircuitC(int[] gas, int[] cost) {
         int sumRemaining = 0; // track current remaining
         int total = 0; // track total remaining
@@ -86,9 +90,9 @@ class GasStation {
             }
             total += remaining;
         }
-        if (total >= 0){
+        if (total >= 0) {
             return start;
-        }else{
+        } else {
             return -1;
         }
     }

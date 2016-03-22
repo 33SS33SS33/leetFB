@@ -2,7 +2,7 @@ package medium;
 
 /**
  * Sort a linked list using insertion sort.
- * 
+ * <p/>
  * Tags: Linkedlist, Sort
  */
 class InsertionSortList {
@@ -25,8 +25,9 @@ class InsertionSortList {
 
         printList(n1);
     }
+
     public static void printList(ListNode x) {
-        if(x != null){
+        if (x != null) {
             System.out.print(x.val + " ");
             while (x.next != null) {
                 System.out.print(x.next.val + " ");
@@ -36,18 +37,19 @@ class InsertionSortList {
         }
 
     }
+
     /**
-     * Check the list one by one to find a node that has smaller value than 
+     * Check the list one by one to find a node that has smaller value than
      * nodes before it and swap
      */
     public static ListNode insertionSortList(ListNode head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null)
+            return head;
         ListNode pre = new ListNode(0);
         pre.next = head;
-        
         for (ListNode p = head.next, prev = head; p != null; prev = p, p = p.next) {
             for (ListNode c = pre; c.next != p; c = c.next) {
-                if (c.next.val > p.val) { 
+                if (c.next.val > p.val) {
                     prev.next = p.next; // skip p
                     p.next = c.next; // insert between cur and cur.next
                     c.next = p;
@@ -59,53 +61,47 @@ class InsertionSortList {
         return pre.next;
     }
 
-    /**creek-----*/
+    /**
+     * creek-----
+     */
     public static ListNode insertionSortListB(ListNode head) {
-
         if (head == null || head.next == null)
             return head;
-
         ListNode newHead = new ListNode(head.val);
         ListNode pointer = head.next;
-
         // loop through each element in the list
         while (pointer != null) {
             // insert this element to the new list
-
             ListNode innerPointer = newHead;
             ListNode next = pointer.next;
-
             if (pointer.val <= newHead.val) {
                 ListNode oldHead = newHead;
                 newHead = pointer;
                 newHead.next = oldHead;
             } else {
                 while (innerPointer.next != null) {
-
                     if (pointer.val > innerPointer.val && pointer.val <= innerPointer.next.val) {
                         ListNode oldNext = innerPointer.next;
                         innerPointer.next = pointer;
                         pointer.next = oldNext;
                     }
-
                     innerPointer = innerPointer.next;
                 }
-
                 if (innerPointer.next == null && pointer.val > innerPointer.val) {
                     innerPointer.next = pointer;
                     pointer.next = null;
                 }
             }
-
             // finally
             pointer = next;
         }
-
         return newHead;
     }
+
     public static class ListNode {
-        int val;
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

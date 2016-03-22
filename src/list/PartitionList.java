@@ -3,46 +3,46 @@ package list;
 /**
  * Given a linked list and a value x, partition it such that all nodes less
  * than x come before nodes greater than or equal to x.
- * 
+ * <p/>
  * You should preserve the original relative order of the nodes in each of the
  * two partitions.
- * 
+ * <p/>
  * For example,
  * Given 1->4->3->2->5->2 and x = 3,
  * return 1->2->2->4->3->5.
- * 
+ * <p/>
  * Tags: Linkedlist, Two Pointers
  */
 class PartitionList {
     public static void main(String[] args) {
-        ListNode head =buildTestList1();
-        ListNode head2 =buildTestList1();
-        ListNode head3 =buildTestList1();
+        ListNode head = buildTestList1();
+        ListNode head2 = buildTestList1();
+        ListNode head3 = buildTestList1();
 
-        partition(head,3);
-        partitionB(head2,3);
-        partitionC(head3,3);
-        while(head.next!=null){
+        partition(head, 3);
+        partitionB(head2, 3);
+        partitionC(head3, 3);
+        while (head.next != null) {
             System.out.print(head.val + "->");
-            head=head.next;
+            head = head.next;
         }
 
         System.out.println(head.val);
 
-        while(head2.next!=null){
+        while (head2.next != null) {
             System.out.print(head2.val + "->");
-            head2=head2.next;
+            head2 = head2.next;
         }
 
         System.out.println(head2.val);
 
-        while(head3.next!=null){
+        while (head3.next != null) {
             System.out.print(head3.val + "->");
-            head3=head3.next;
+            head3 = head3.next;
         }
-
         System.out.println(head3.val);
     }
+
     static ListNode buildTestList1() {
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(4);
@@ -57,19 +57,21 @@ class PartitionList {
         fifth.next = sixth;
         return head;
     }
+
     /**
      * Build left and right lists and concatenate
      */
     public static ListNode partition(ListNode head, int x) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null)
+            return head;
         ListNode cur = head;
         ListNode pre1 = new ListNode(0);
         ListNode p = pre1;
         ListNode pre2 = new ListNode(0);
         ListNode q = pre2;
         // Partition into two halves.        
-        while(cur != null){
-            if(cur.val < x){
+        while (cur != null) {
+            if (cur.val < x) {
                 p.next = cur;
                 p = p.next;
             } else {
@@ -83,20 +85,22 @@ class PartitionList {
         p.next = pre2.next;
         return pre1.next;
     }
-    
+
     /**
      * Move greater and equal value nodes to tail
      */
     public static ListNode partitionB(ListNode head, int x) {
-        if (head == null || head.next == null) return head; // too short
+        if (head == null || head.next == null)
+            return head; // too short
         ListNode dummy = new ListNode(0); // create a dummy node
         dummy.next = head;
         ListNode p = dummy;
         ListNode start = dummy;
-        while (p != null && p.next != null){
-            if (p.next.val >= x) p = p.next;
+        while (p != null && p.next != null) {
+            if (p.next.val >= x)
+                p = p.next;
             else { // move smaller nodes to start
-                if (p == start){  // don't forget the edge cases when p == start
+                if (p == start) {  // don't forget the edge cases when p == start
                     start = start.next;
                     p = p.next;
                 } else {
@@ -110,16 +114,17 @@ class PartitionList {
         }
         return dummy.next;
     }
+
     public static ListNode partitionC(ListNode head, int x) {
-        if(head == null)
+        if (head == null)
             return null;
         ListNode helper = new ListNode(0);
         helper.next = head;
         ListNode walker = helper;
         ListNode runner = helper;
-        while(runner.next!=null) {
-            if(runner.next.val<x) {
-                if(walker!=runner) {
+        while (runner.next != null) {
+            if (runner.next.val < x) {
+                if (walker != runner) {
                     ListNode next = runner.next.next;
                     runner.next.next = walker.next;
                     walker.next = runner.next;
@@ -127,7 +132,7 @@ class PartitionList {
                 } else
                     runner = runner.next;
                 walker = walker.next;
-            } else{
+            } else {
                 runner = runner.next;
             }
         }
@@ -135,7 +140,8 @@ class PartitionList {
     }
 
     public ListNode partitionD(ListNode head, int x) {
-        if(head == null) return null;
+        if (head == null)
+            return null;
         ListNode fakeHead1 = new ListNode(0);
         ListNode fakeHead2 = new ListNode(0);
         fakeHead1.next = head;
@@ -143,11 +149,11 @@ class PartitionList {
         ListNode p = head;
         ListNode prev = fakeHead1;
         ListNode p2 = fakeHead2;
-        while(p != null){
-            if(p.val < x){
+        while (p != null) {
+            if (p.val < x) {
                 p = p.next;
                 prev = prev.next;
-            }else{
+            } else {
 
                 p2.next = p;
                 prev.next = p.next;
@@ -163,8 +169,9 @@ class PartitionList {
     }
 
     public static class ListNode {
-        int val;
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

@@ -6,7 +6,8 @@ package medium;
 public class MaxSquare {
     public static void main(String[] args) {
         MaxSquare s = new MaxSquare();
-        char[][] matrix = { {'1','1', '0', '1'}, {'1', '1', '0', '1'}, {'1', '1', '1', '1'}};
+        char[][] matrix = { { '1', '1', '0', '1' }, { '1', '1', '0', '1' },
+                { '1', '1', '1', '1' } };
         System.out.println(s.maximalSquareA(matrix));
         System.out.println(s.maximalSquareB(matrix));
 
@@ -14,27 +15,28 @@ public class MaxSquare {
 
     public int maximalSquareA(char[][] matrix) {
         int max = 0;
-        for(int x = 0; x < matrix.length; x++){
-            for(int y = 0; y < matrix[0].length; y++){
-                if(matrix[x][y] == '1'){
+        for (int x = 0; x < matrix.length; x++) {
+            for (int y = 0; y < matrix[0].length; y++) {
+                if (matrix[x][y] == '1') {
                     max = Math.max(max, maximalSquare(matrix, x, y));
                 }
             }
         }
         return max;
     }
-    int maximalSquare(char[][] matrix, final int x, final int y){
+
+    int maximalSquare(char[][] matrix, final int x, final int y) {
         int l = 1;
         done:
-        while(true){
-            for(int i = 0; i <= l; i++){
-                if(x + l >= matrix.length || y + l >= matrix[0].length){
+        while (true) {
+            for (int i = 0; i <= l; i++) {
+                if (x + l >= matrix.length || y + l >= matrix[0].length) {
                     break done;
                 }
-                if(matrix[x + l][y + i] != '1'){
+                if (matrix[x + l][y + i] != '1') {
                     break done;
                 }
-                if(matrix[x + i][y + l] != '1'){
+                if (matrix[x + i][y + l] != '1') {
                     break done;
                 }
             }
@@ -64,7 +66,7 @@ public class MaxSquare {
             for (int j = 1; j < n; j++) {
                 if (matrix[i][j] == '1') {
                     int min = Math.min(t[i - 1][j], t[i - 1][j - 1]);
-                    min = Math.min(min,t[i][j - 1]);
+                    min = Math.min(min, t[i][j - 1]);
                     t[i][j] = min + 1;
                 } else {
                     t[i][j] = 0;

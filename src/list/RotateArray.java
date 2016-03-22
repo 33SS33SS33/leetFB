@@ -3,23 +3,24 @@ package list;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
  */
+
 import java.util.*;
 
 /**
  * Rotate an array of n elements to the right by k steps
  * For example, with n = 7 and k = 3,
  * the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
- *
+ * <p/>
  * Note:
  * Try to come up as many solutions as you can, there are at least 3 different
  * ways to solve this problem.
- *
+ * <p/>
  * Hint:
  * Could you do it in-place with O(1) extra space?
- *
+ * <p/>
  * Related problem:
  * Reverse Words in a String II
- *
+ * <p/>
  * Tags: Array
  */
 class RotateArray {
@@ -30,14 +31,14 @@ class RotateArray {
         r.rotate(nums, k);
         System.out.println(Arrays.toString(nums));
 
-        int[] nums2 = { 1, 2, 3, 4, 5, 6 };
-        int k2 = 2;
-        r.rotate(nums2, k2);
+        int[] nums2 = { 1, 2, 3, 4, 5, 6 ,7};
+        int k2 = 3;
+        r.rotate2(nums2, k2);
         System.out.println(Arrays.toString(nums2));
 
         int[] nums3 = { 1, 2 };
         int k3 = 2;
-        r.rotate(nums3, k3);
+        r.rotate3(nums3, k3);
         System.out.println(Arrays.toString(nums3));
     }
 
@@ -47,15 +48,17 @@ class RotateArray {
      * Start from current index and repeat exactly "length of array" times
      * 1. Calculate new index which is current index move k steps forward
      * If move out of range, just start from beginning again
-     *      newIdx = (curIdx + k ) % len
+     * newIdx = (curIdx + k ) % len
      * 2. Circle can be the same, for example, n = 6, k = 2
      * Index will be 0, 2, 4, 0, 2, 4
      * So save the start index of the circle
      * If start from there again, move one step forward
      */
     public void rotate(int[] nums, int k) {
-        if (nums == null || nums.length == 0) return;
-        if (nums.length == 1 || k == 0 || k == nums.length) return; // special cases
+        if (nums == null || nums.length == 0)
+            return;
+        if (nums.length == 1 || k == 0 || k == nums.length)
+            return; // special cases
 
         int len = nums.length;
         k %= len;
@@ -73,12 +76,14 @@ class RotateArray {
             }
         }
     }
-    /** Bubble Rotate  O(1) space, the time is O(n*k) */
+
+    /**
+     * Bubble Rotate  O(1) space, the time is O(n*k)
+     */
     public static void rotate2(int[] arr, int order) {
         if (arr == null || order < 0) {
             throw new IllegalArgumentException("Illegal argument!");
         }
-
         for (int i = 0; i < order; i++) {
             for (int j = arr.length - 1; j > 0; j--) {
                 int temp = arr[j];
@@ -87,21 +92,22 @@ class RotateArray {
             }
         }
     }
-    /** Intermediate Array, Space is O(n) and time is O(n) */
+
+    /**
+     * Intermediate Array, Space is O(n) and time is O(n)
+     */
     public void rotate3(int[] nums, int k) {
-        if(k > nums.length)
-            k=k%nums.length;
-
+        if (k > nums.length)
+            k = k % nums.length;
         int[] result = new int[nums.length];
-        for(int i=0; i < k; i++){
-            result[i] = nums[nums.length-k+i];
+        for (int i = 0; i < k; i++) {
+            result[i] = nums[nums.length - k + i];
         }
-
-        int j=0;
-        for(int i=k; i<nums.length; i++){
+        int j = 0;
+        for (int i = k; i < nums.length; i++) {
             result[i] = nums[j];
             j++;
         }
-        System.arraycopy( result, 0, nums, 0, nums.length );
+        System.arraycopy(result, 0, nums, 0, nums.length);
     }
 }
