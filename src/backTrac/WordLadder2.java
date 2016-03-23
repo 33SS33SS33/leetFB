@@ -5,31 +5,31 @@ import java.util.*;
 /**
  * Given two words (start and end), and a dictionary, find all shortest
  * transformation sequence(s) from start to end, such that:
- *
+ * <p/>
  * Only one letter can be changed at a time
  * Each intermediate word must exist in the dictionary
  * For example,
- *
+ * <p/>
  * Given:
  * start = "hit"
  * end = "cog"
  * dict = ["hot","dot","dog","lot","log"]
  * Return
- *   [
- *     ["hit","hot","dot","dog","cog"],
- *     ["hit","hot","lot","log","cog"]
- *   ]
+ * [
+ * ["hit","hot","dot","dog","cog"],
+ * ["hit","hot","lot","log","cog"]
+ * ]
  * Note:
  * All words have the same length.
  * All words contain only lowercase alphabetic characters.
- *
+ * <p/>
  * Tags: Array, Backtracking, BFS, String
  */
 class WordLadder2 {
     public static void main(String[] args) {
         String start = "hit";
         String end = "cog";
-        String[] arr = {"hot","dot","dog","lot","log"};
+        String[] arr = { "hot", "dot", "dog", "lot", "log" };
         Set<String> dict = new HashSet<String>(Arrays.asList(arr));
         System.out.println(new WordLadder2().findLadders(start, end, dict).toString());
         System.out.println("------------------");
@@ -48,19 +48,20 @@ class WordLadder2 {
         dfs(res, new LinkedList<String>(), end, start, dist, map);
         return res;
     }
-    
+
     /**
      * Create a queue, add start to it and put start in dist map
      * Initialize map with lists
      */
-    void bfs(Map<String, List<String>> map, Map<String, Integer> dist,
-                String start, String end, Set<String> dict) {
+    void bfs(Map<String, List<String>> map, Map<String, Integer> dist, String start, String end,
+            Set<String> dict) {
         Queue<String> q = new LinkedList<String>();
         q.offer(start);
         dict.add(start); // make sure start and end in dictionary
         dict.add(end);
         dist.put(start, 0);
-        for (String s : dict) map.put(s, new ArrayList<String>());
+        for (String s : dict)
+            map.put(s, new ArrayList<String>());
 
         while (!q.isEmpty()) {
             String word = q.poll();
@@ -74,7 +75,7 @@ class WordLadder2 {
             }
         }
     }
-    
+
     /**
      * Generate a list of words the word
      * Skip if it's the same character
@@ -88,18 +89,20 @@ class WordLadder2 {
                 if (ch != chs[i]) {
                     chs[i] = ch;
                     String next = new String(chs);
-                    if (dict.contains(next)) res.add(next);
+                    if (dict.contains(next))
+                        res.add(next);
                 }
             }
         }
         return res;
     }
-    
+
     /**
      * Add current word to first position
      * Add path to result if word is start
      */
-    void dfs(List<List<String>> res, List<String> path, String word, String start, Map<String, Integer> dist, Map<String, List<String>> map) {
+    void dfs(List<List<String>> res, List<String> path, String word, String start,
+            Map<String, Integer> dist, Map<String, List<String>> map) {
         if (word.equals(start)) {
             path.add(0, word);
             res.add(new ArrayList<String>(path));
@@ -112,7 +115,7 @@ class WordLadder2 {
                 dfs(res, path, next, start, dist, map); // dfs next word
                 path.remove(0);
             }
-        }           
+        }
     }
 
     /**
@@ -173,12 +176,12 @@ class WordLadder2 {
         return result;
     }
 
-    class WordNode{
-        String word;
-        int numSteps;
+    class WordNode {
+        String   word;
+        int      numSteps;
         WordNode pre;
 
-        public WordNode(String word, int numSteps, WordNode pre){
+        public WordNode(String word, int numSteps, WordNode pre) {
             this.word = word;
             this.numSteps = numSteps;
             this.pre = pre;

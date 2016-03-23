@@ -4,10 +4,10 @@ package medium;
  * Given a sorted linked list
  * delete all nodes that have duplicate numbers
  * leaving only distinct numbers from the original list.
- *
+ * <p/>
  * Given 1->2->3->3->4->4->5, return 1->2->5.
  * Given 1->1->1->2->3, return 2->3.
- * 
+ * <p/>
  * Tag: Linkedlist
  * /**这里要把出现重复的元素全部删除
  */
@@ -19,7 +19,7 @@ class RemoveDuplicatesFromSortedList2 {
         System.out.println("---");
         head = buildTestList2();
         printList(head);
-        printList(deleteDuplicates(head));
+        printList(deleteDuplicatesB(head));
         System.out.println("---");
     }
 
@@ -60,49 +60,54 @@ class RemoveDuplicatesFromSortedList2 {
         }
         System.out.println("NULL");
     }
-    
+
     /**
      * Set a pre pointer
      */
     public static ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null) return head;
+        if (head == null || head.next == null)
+            return head;
 
         ListNode dummyHead = new ListNode(0); // dummy head
         dummyHead.next = head;
         ListNode pre = dummyHead; // two pointers
         ListNode cur = head;
         while (cur != null) {
-            while (cur.next != null && cur.val == cur.next.val) cur = cur.next; // skip
-            if (pre.next == cur) pre = pre.next; // no dups
-            else pre.next = cur.next; // cur moved
+            while (cur.next != null && cur.val == cur.next.val)
+                cur = cur.next; // skip
+            if (pre.next == cur)
+                pre = pre.next; // no dups
+            else
+                pre.next = cur.next; // cur moved
             cur = cur.next; // update current 
         }
         return dummyHead.next;
     }
 
-    /**creeek-----*/
-    public ListNode deleteDuplicatesB(ListNode head) {
+    /**
+     * creeek-----
+     */
+    public static ListNode deleteDuplicatesB(ListNode head) {
         ListNode t = new ListNode(0);
         t.next = head;
-
         ListNode p = t;
-        while(p.next!=null&&p.next.next!=null){
-            if(p.next.val == p.next.next.val){
+        while (p.next != null && p.next.next != null) {
+            if (p.next.val == p.next.next.val) {
                 int dup = p.next.val;
-                while(p.next!=null&&p.next.val==dup){
+                while (p.next != null && p.next.val == dup) {
                     p.next = p.next.next;
                 }
-            }else{
-                p=p.next;
+            } else {
+                p = p.next;
             }
-
         }
-
         return t.next;
     }
+
     public static class ListNode {
-        int val;
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

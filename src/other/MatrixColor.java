@@ -3,12 +3,13 @@ package other;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 import java.util.*;
 
 /**
  * Given a matrix with each grid a color type. Start from a random point, find
  * the perimeter of the region of the same color.
- *
+ * <p/>
  * Tags: BFS
  */
 class MatrixColor {
@@ -36,13 +37,14 @@ class MatrixColor {
      * If not within board, add edge count
      */
     public int findPerimeter(int[][] mat, int x, int y) {
-        if (mat == null || mat.length == 0 || mat[0].length == 0) return 0;
+        if (mat == null || mat.length == 0 || mat[0].length == 0)
+            return 0;
 
         Queue<Integer> q = new LinkedList<Integer>();
         int m = mat.length;
         int n = mat[0].length;
         boolean[][] visited = new boolean[m][n];
-        int[][] dir = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+        int[][] dir = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 
         q.add(x * n + y);
         visited[x][y] = true;
@@ -65,9 +67,10 @@ class MatrixColor {
                                 q.add(nX * n + nY);
                                 visited[nX][nY] = true;
                             }
-                        } else count++;
-                    }
-                    else count++;
+                        } else
+                            count++;
+                    } else
+                        count++;
                 }
                 perimeter += count;
                 // System.out.println("count: " + count + " p: " + perimeter);

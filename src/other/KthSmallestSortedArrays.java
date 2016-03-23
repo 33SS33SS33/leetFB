@@ -3,11 +3,12 @@ package other;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * Given two sorted arrays A, B of size m and n respectively. Find the k-th
  * smallest element in the union of A and B. You can assume that there are no
  * duplicate elements.
- *
+ * <p/>
  * Tags: Array,
  */
 class KthSmallestSortedArrays {
@@ -48,12 +49,14 @@ class KthSmallestSortedArrays {
         }
 
         // after binary search, we almost get the median because it must be between these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1]
-        int a = Math.max(l > 0 ? A[l - 1] : Integer.MIN_VALUE, k - l >= 0 ? B[k - l] : Integer.MIN_VALUE);
+        int a = Math.max(l > 0 ? A[l - 1] : Integer.MIN_VALUE,
+                k - l >= 0 ? B[k - l] : Integer.MIN_VALUE);
         if (((n + m) & 1) == 1) // total number is odd
             return (double) a;
 
         /*total number is even*/
-        int b = Math.min(l < n ? A[l] : Integer.MAX_VALUE, k - l + 1 < m ? B[k - l + 1] : Integer.MAX_VALUE);
+        int b = Math.min(l < n ? A[l] : Integer.MAX_VALUE,
+                k - l + 1 < m ? B[k - l + 1] : Integer.MAX_VALUE);
         return (a + b) / 2.0; // median of 2
     }
 
@@ -65,16 +68,19 @@ class KthSmallestSortedArrays {
         k -= 1;
         int lenA = A.length;
         int lenB = B.length;
-        if (k < 0 || k > lenA + lenB - 1) return -1; // out of range, 1 <= k <= A.length + B.length
-        if (k == 0) return A[0] < B[0] ? A[0] : B[0];
-        if (k == lenA + lenB - 1) return A[lenA - 1] < B[lenB - 1] ? B[lenB - 1] : A[lenA - 1];
+        if (k < 0 || k > lenA + lenB - 1)
+            return -1; // out of range, 1 <= k <= A.length + B.length
+        if (k == 0)
+            return A[0] < B[0] ? A[0] : B[0];
+        if (k == lenA + lenB - 1)
+            return A[lenA - 1] < B[lenB - 1] ? B[lenB - 1] : A[lenA - 1];
 
         int i = 0;
         int j = 0;
         while (i + j < k) {
             if (A[i] < B[j] && i < A.length) {
                 i++;
-            } else if (A[i] >= B[j] && j < B.length){
+            } else if (A[i] >= B[j] && j < B.length) {
                 j++;
             }
             if (i + j == k && A[i] < B[j]) {

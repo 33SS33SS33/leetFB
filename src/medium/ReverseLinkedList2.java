@@ -3,27 +3,27 @@ package medium;
 /**
  * Reverse a linked list from position m to n
  * Do it in-place and in one-pass
- *
+ * <p/>
  * Eg:
  * Given 1->2->3->4->5->NULL, m = 2 and n = 4
  * Return 1->4->3->2->5->NULL
- *
+ * <p/>
  * Note:
  * 1 <= m <= n <= length of the list
- * 
+ * <p/>
  * Tags: Linkedlist
  */
 class ReverseLinkedList2 {
-    
     public static void main(String[] args) {
-        ListNode head =buildTestList1();
-        reverseBetween(head,2,6);
-        while(head.next!=null){
+        ListNode head = buildTestList1();
+        reverseBetween(head, 2, 6);
+        while (head.next != null) {
             System.out.print(head.val + "->");
-            head=head.next;
+            head = head.next;
         }
         System.out.print(head.val);
     }
+
     static ListNode buildTestList1() {
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);
@@ -38,22 +38,25 @@ class ReverseLinkedList2 {
         fifth.next = sixth;
         return head;
     }
+
     /**
-     * Move pointers to m 
+     * Move pointers to m
      * Then insert next code to sublist's head till we reach n
      * Reconnect sublist with original list after reversing
-     * We need 1 dummy head, head and tail for sublist, 
+     * We need 1 dummy head, head and tail for sublist,
      * And cur for current node, preCur for dummy head of sublist
      * 5 pointers in total
      */
     public static ListNode reverseBetween(ListNode head, int m, int n) {
-        if (m >= n || head == null) return head;
-        
+        if (m >= n || head == null)
+            return head;
+
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode pre = dummy;
-        for (int i = 1; i < m; i++) pre = pre.next;
-        
+        for (int i = 1; i < m; i++)
+            pre = pre.next;
+
         ListNode cur = pre.next;
         for (int i = m; i < n; i++) { // insert next to head to reverse
             ListNode temp = cur.next.next;
@@ -63,24 +66,23 @@ class ReverseLinkedList2 {
         }
         return dummy.next;
     }
+
     public static ListNode reverseBetweenB(ListNode head, int m, int n) {
-        if(head == null)
+        if (head == null)
             return null;
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode preNode = dummy;
-        int i=1;
-        while(preNode.next!=null && i<m)
-        {
+        int i = 1;
+        while (preNode.next != null && i < m) {
             preNode = preNode.next;
             i++;
         }
-        if(i<m)
+        if (i < m)
             return head;
         ListNode mNode = preNode.next;
         ListNode cur = mNode.next;
-        while(cur!=null && i<n)
-        {
+        while (cur != null && i < n) {
             ListNode next = cur.next;
             cur.next = preNode.next;
             preNode.next = cur;
@@ -91,59 +93,56 @@ class ReverseLinkedList2 {
         return dummy.next;
     }
 
-    /**creek--*/
+    /**
+     * creek--
+     */
     public ListNode reverseBetweenC(ListNode head, int m, int n) {
-        if(m==n) return head;
-
+        if (m == n)
+            return head;
         ListNode prev = null;//track (m-1)th node
         ListNode first = new ListNode(0);//first's next points to mth
         ListNode second = new ListNode(0);//second's next points to (n+1)th
-
-        int i=0;
+        int i = 0;
         ListNode p = head;
-        while(p!=null){
+        while (p != null) {
             i++;
-            if(i==m-1){
+            if (i == m - 1) {
                 prev = p;
             }
-
-            if(i==m){
+            if (i == m) {
                 first.next = p;
             }
-
-            if(i==n){
+            if (i == n) {
                 second.next = p.next;
                 p.next = null;
             }
-
-            p= p.next;
+            p = p.next;
         }
-        if(first.next == null)
+        if (first.next == null)
             return head;
-
         // reverse list [m, n]
         ListNode p1 = first.next;
         ListNode p2 = p1.next;
         p1.next = second.next;
-
-        while(p1!=null && p2!=null){
+        while (p1 != null && p2 != null) {
             ListNode t = p2.next;
             p2.next = p1;
             p1 = p2;
             p2 = t;
         }
-
         //connect to previous part
-        if(prev!=null)
+        if (prev != null)
             prev.next = p1;
         else
             return p1;
 
         return head;
     }
+
     public static class ListNode {
-        int val;
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

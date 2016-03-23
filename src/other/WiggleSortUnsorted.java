@@ -1,23 +1,23 @@
 package other;
 
 /**
- * Given a random array, re-arrange it to wiggle style. 
- * i.e. 
+ * Given a random array, re-arrange it to wiggle style.
+ * i.e.
  * [1] A0 >= A1 <= A2 >= A3 .... .... An.
  * [2] A0 <= A1 >= A2 <= A3 .... .... An.
- * 
+ * <p/>
  * Tags: Sort, Array
  */
 class WiggleSortUnsorted {
     public static void main(String[] args) {
-        int[] A = { 1, 2, 8, 9, 3, 5};
+        int[] A = { 1, 2, 8, 9, 3, 5 };
         new WiggleSortUnsorted().wiggleSort(A);
         for (int i = 0; i < A.length; i++) {
             System.out.print(i == A.length - 1 ? A[i] : A[i] + ", ");
         }
         System.out.println();
     }
-    
+
     /**
      * One-pass Solution.
      * First 2 elements already sorted, start from second element
@@ -29,7 +29,8 @@ class WiggleSortUnsorted {
      * So A[n-2] > A[n-1] < A[n] > A[n+1]
      */
     public void wiggleSort(int[] A) {
-        if (A == null || A.length == 0) return;
+        if (A == null || A.length == 0)
+            return;
         for (int i = 1; i < A.length - 1; i++) {
             int m1 = Math.min(A[i - 1], Math.min(A[i], A[i + 1])); // min 
             int m3 = Math.max(A[i - 1], Math.max(A[i], A[i + 1])); // max

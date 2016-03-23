@@ -15,6 +15,7 @@ public class IsValidSudoku {
         };
         System.out.println(IsValidSudoku(board));
     }
+
     public static boolean IsValidSudoku(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9)
             return false;
@@ -30,7 +31,6 @@ public class IsValidSudoku {
                 }
             }
         }
-
         //check each row
         for (int j = 0; j < 9; j++) {
             boolean[] m = new boolean[9];
@@ -43,7 +43,6 @@ public class IsValidSudoku {
                 }
             }
         }
-
         //check each 3*3 matrix
         for (int block = 0; block < 9; block++) {
             boolean[] m = new boolean[9];
@@ -58,7 +57,6 @@ public class IsValidSudoku {
                 }
             }
         }
-
         return true;
     }
 

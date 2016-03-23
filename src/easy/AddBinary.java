@@ -3,13 +3,14 @@ package easy;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * Given two binary strings, return their sum (also a binary string).
  * For example,
  * a = "11"
  * b = "1"
  * Return "100".
- *
+ * <p/>
  * Tags: Math, String
  */
 class AddBinary {
@@ -25,7 +26,7 @@ class AddBinary {
 
     /**
      * Traverse the longest binary backwards
-     *
+     * <p/>
      * Use + to insert to front, turn digit sum to int and restore to binary
      */
     public static String addBinary(String a, String b) {
@@ -47,8 +48,10 @@ class AddBinary {
 
     // add 0 and calculate one by one
     public static String addBinaryB(String a, String b) {
-        if (a == null) return b;
-        if (b == null) return a;
+        if (a == null)
+            return b;
+        if (b == null)
+            return a;
 
         StringBuilder result = new StringBuilder();
         int lenA = a.length();
@@ -63,7 +66,8 @@ class AddBinary {
             if (c1 == '1' && c2 == '1') {
                 if (carry)
                     result.append(1);
-                else result.append(0);
+                else
+                    result.append(0);
                 carry = true; // set carry for next digit
             } else if (c1 == '1' || c2 == '1') {
                 if (carry) {
@@ -74,52 +78,55 @@ class AddBinary {
                     carry = false;
                 }
             } else {
-                if (carry) result.append(1);
-                else result.append(0);
+                if (carry)
+                    result.append(1);
+                else
+                    result.append(0);
                 carry = false;
             }
             i--;
             j--;
         }
-        if (carry) result.append('1');
+        if (carry)
+            result.append('1');
         return result.reverse().toString();
     }
 
     public static String addBinaryC(String a, String b) {
-        if(a==null || a.length()==0)
+        if (a == null || a.length() == 0)
             return b;
-        if(b==null || b.length()==0)
+        if (b == null || b.length() == 0)
             return a;
 
-        int pa = a.length()-1;
-        int pb = b.length()-1;
+        int pa = a.length() - 1;
+        int pb = b.length() - 1;
 
         int flag = 0;
         StringBuilder sb = new StringBuilder();
-        while(pa >= 0 || pb >=0){
+        while (pa >= 0 || pb >= 0) {
             int va = 0;
             int vb = 0;
 
-            if(pa >= 0){
-                va = a.charAt(pa)=='0'? 0 : 1;
+            if (pa >= 0) {
+                va = a.charAt(pa) == '0' ? 0 : 1;
                 pa--;
             }
-            if(pb >= 0){
-                vb = b.charAt(pb)=='0'? 0: 1;
+            if (pb >= 0) {
+                vb = b.charAt(pb) == '0' ? 0 : 1;
                 pb--;
             }
 
             int sum = va + vb + flag;
-            if(sum >= 2){
-                sb.append(String.valueOf(sum-2));
+            if (sum >= 2) {
+                sb.append(String.valueOf(sum - 2));
                 flag = 1;
-            }else{
+            } else {
                 flag = 0;
                 sb.append(String.valueOf(sum));
             }
         }
 
-        if(flag == 1){
+        if (flag == 1) {
             sb.append("1");
         }
 

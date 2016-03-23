@@ -10,9 +10,11 @@ class FactorialTrailingZeroes {
         System.out.println(trailingZeroes(20));
         System.out.println(trailingZeroesB(20));
         System.out.println(trailingZeroesC(20));
+        System.out.println(trailingZeroesD(20));
     }
-    
-    /**O(log5-n)
+
+    /**
+     * O(log5-n)
      */
     public static int trailingZeroes(int n) {
         int r = 0;
@@ -22,8 +24,10 @@ class FactorialTrailingZeroes {
         }
         return r;
     }
-    
-    /**Recursive*/
+
+    /**
+     * Recursive
+     */
     public static int trailingZeroesB(int n) {
         return n <= 0 ? 0 : n / 5 + trailingZeroes(n / 5);
     }
@@ -32,13 +36,13 @@ class FactorialTrailingZeroes {
         int count = 0;
         int c2 = 0; // count of 2
         int c5 = 0; // count of 5
-        for (int i = 1; i <= n; i++){
+        for (int i = 1; i <= n; i++) {
             int m = i;
-            while(m % 5 == 0){
+            while (m % 5 == 0) {
                 m /= 5;
                 c5++;
             }
-            while(m % 2 == 0){
+            while (m % 2 == 0) {
                 m /= 2;
                 c2++;
             }
@@ -51,8 +55,10 @@ class FactorialTrailingZeroes {
         return count;
     }
 
-    /**creek--*/
-    public int trailingZeroesD(int n) {
+    /**
+     * creek--
+     */
+    public static int trailingZeroesD(int n) {
         if (n < 0)
             return -1;
 
@@ -60,7 +66,6 @@ class FactorialTrailingZeroes {
         for (long i = 5; n / i >= 1; i *= 5) {
             count += n / i;
         }
-
         return count;
     }
 }

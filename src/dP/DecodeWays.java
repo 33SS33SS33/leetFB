@@ -3,6 +3,7 @@ package dP;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * A message containing letters from A-Z is being encoded to numbers using the
  * following mapping:
@@ -12,11 +13,11 @@ package dP;
  * 'Z' -> 26
  * Given an encoded message containing digits, determine the total number of
  * ways to decode it.
- *
+ * <p/>
  * For example,
  * Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
  * The number of ways decoding "12" is 2.
- *
+ * <p/>
  * Tags: DP, String
  */
 class DecodeWays {
@@ -27,11 +28,13 @@ class DecodeWays {
         System.out.println(d.numDecodingsOptimal("12"));
     }
 
-    /**Optimal, DP
+    /**
+     * Optimal, DP
      * Reduce space to O(1)
      */
     public int numDecodingsOptimal(String s) {
-        if (s == null || s.length() == 0) return 0;
+        if (s == null || s.length() == 0)
+            return 0;
         int len = s.length();
         int prev1 = 1;
         int prev2 = s.charAt(0) == '0' ? 0 : 1;
@@ -45,11 +48,13 @@ class DecodeWays {
         return prev2;
     }
 
-    /**Time O(n), Space O(n)
+    /**
+     * Time O(n), Space O(n)
      * note that there can be zeros in s
      */
     public static int numDecodings(String s) {
-        if (s == null || s.length() == 0) return 0;
+        if (s == null || s.length() == 0)
+            return 0;
         int len = s.length();
         int[] ways = new int[len + 1];
         ways[0] = 1;
@@ -89,10 +94,10 @@ class DecodeWays {
         return t[s.length()];
     }
 
-    public boolean isValid(String s){
-        if(s.charAt(0)=='0')
+    public boolean isValid(String s) {
+        if (s.charAt(0) == '0')
             return false;
         int value = Integer.parseInt(s);
-        return value>=1&&value<=26;
+        return value >= 1 && value <= 26;
     }
 }

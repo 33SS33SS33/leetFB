@@ -3,22 +3,24 @@ package rectangle;
 /**
  * Given a m x n matrix, if an element is 0, set its entire row and column to
  * 0. Do it in place.
- *
+ * <p/>
  * Tags: Array
  */
 class SetMartixZeros {
     public static void main(String[] args) {
-        int[][] matrix=new int[][]{{1,2,0},{4,3,2},{1,0,5}};
-        SetMartixZeros a=new SetMartixZeros();
+        int[][] matrix = new int[][] { { 1, 2, 0 }, { 4, 3, 2 }, { 1, 0, 5 } };
+        SetMartixZeros a = new SetMartixZeros();
         a.setZeros(matrix);
-        for(int[] i:matrix){
-            for(int j:i){
+        for (int[] i : matrix) {
+            for (int j : i) {
                 System.out.print(j);
             }
             System.out.println();
         }
     }
-    /**Go through the matrix and use first row and first col to remember which
+
+    /**
+     * Go through the matrix and use first row and first col to remember which
      * cols and rows are to be sets
      * Use two flags for whether first row and first col should be set
      */
@@ -33,8 +35,10 @@ class SetMartixZeros {
                 if (matrix[i][j] == 0) {
                     matrix[i][0] = 0;
                     matrix[0][j] = 0;
-                    if (i == 0) firstRow = true;
-                    if (j == 0) firstCol = true;
+                    if (i == 0)
+                        firstRow = true;
+                    if (j == 0)
+                        firstCol = true;
                 }
             }
         }

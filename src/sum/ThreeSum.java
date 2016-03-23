@@ -12,19 +12,19 @@ import java.util.List;
  * Given an array S of n integers, are there elements a, b, c in S such that a
  * + b + c = 0? Find all unique triplets in the array which gives the sum
  * of zero.
- *
+ * <p/>
  * Note:
  * Elements in a triplet (a,b,c) must be in <strong>non-descending</strong>
  * order.
  * (ie, a ≤ b ≤ c)
  * The solution set must not contain <strong>duplicate</strong> triplets.
- *
+ * <p/>
  * For example, given array S = {-1 0 1 2 -1 -4},
- *
+ * <p/>
  * A solution set is:
  * (-1, 0, 1)
  * (-1, -1, 2)
- *
+ * <p/>
  * Tags: Array, Two Pointers
  */
 class ThreeSum {
@@ -52,8 +52,10 @@ class ThreeSum {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         Arrays.sort(num);
         for (int i = 0; i < num.length - 2; i++) {
-            if (i > 0 && num[i] == num[i - 1]) continue; // skip duplicate
-            if (num[i] > 0) break; // stop at positive integers
+            if (i > 0 && num[i] == num[i - 1])
+                continue; // skip duplicate
+            if (num[i] > 0)
+                break; // stop at positive integers
 
             int j = i + 1;
             int k = num.length - 1;
@@ -62,10 +64,13 @@ class ThreeSum {
                     j++;
                     continue;
                 }
-                if (num[i] + num[j] > 0) break;// already bigger than 0
+                if (num[i] + num[j] > 0)
+                    break;// already bigger than 0
 
-                if (num[i] + num[j] + num[k] < 0) j++;
-                else if (num[i] + num[j] + num[k] > 0) k--;
+                if (num[i] + num[j] + num[k] < 0)
+                    j++;
+                else if (num[i] + num[j] + num[k] > 0)
+                    k--;
                 else { // num[i] + num[j] + num[k] == 0
                     List<Integer> triplets = new ArrayList<Integer>();
                     triplets.add(num[i]);
@@ -89,9 +94,12 @@ class ThreeSum {
             System.out.println(" }");
         }
     }
-    /**better---creek!!!!!---
+
+    /**
+     * better---creek!!!!!---
      * A better solution is using two pointers instead of one. This makes time complexity of O(n^2).
-     To avoid duplicate, we can take advantage of sorted arrays, i.e., move pointers by >1 to use same element only once.*/
+     * To avoid duplicate, we can take advantage of sorted arrays, i.e., move pointers by >1 to use same element only once.
+     */
     public static ArrayList<ArrayList<Integer>> threeSumB(int[] num) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (num.length < 3)
@@ -132,18 +140,23 @@ class ThreeSum {
         }
         return result;
     }
-    /**not good*/
+
+    /**
+     * not good
+     */
     public static ArrayList<List<Integer>> threeSumC(int[] num) {
         //sort array
         Arrays.sort(num);
         ArrayList<List<Integer>> result = new ArrayList<List<Integer>>();
         ArrayList<Integer> each = new ArrayList<Integer>();
-        for(int i=0; i<num.length; i++){
-            if(num[i] > 0) break;
-            for(int j=i+1; j<num.length; j++){
-                if(num[i] + num[j] > 0 && num[j] > 0) break;
-                for(int k=j+1; k<num.length; k++){
-                    if(num[i] + num[j] + num[k] == 0) {
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] > 0)
+                break;
+            for (int j = i + 1; j < num.length; j++) {
+                if (num[i] + num[j] > 0 && num[j] > 0)
+                    break;
+                for (int k = j + 1; k < num.length; k++) {
+                    if (num[i] + num[j] + num[k] == 0) {
                         each.add(num[i]);
                         each.add(num[j]);
                         each.add(num[k]);

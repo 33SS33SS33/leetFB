@@ -12,13 +12,10 @@ public class ImplementStackusingQueues {
     // Push element x onto stack.
     public void push(int x) {
         Queue<Integer> swap = new LinkedList<Integer>();
-
         swap.add(x);
-
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             swap.add(queue.remove());
         }
-
         queue = swap;
     }
 

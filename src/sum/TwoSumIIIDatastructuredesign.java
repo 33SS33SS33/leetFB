@@ -7,7 +7,6 @@ import java.util.Map;
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
 public class TwoSumIIIDatastructuredesign {
-
     class TwoSum {
         Map<Integer, Integer> nums = new HashMap<Integer, Integer>();
 
@@ -23,7 +22,6 @@ public class TwoSumIIIDatastructuredesign {
         public boolean find(int value) {
             for (Integer n : nums.keySet()) {
                 Integer c = nums.get(value - n);
-
                 if (c == null)
                     continue;
                 if (value - n == n) {
@@ -37,10 +35,12 @@ public class TwoSumIIIDatastructuredesign {
             return false;
         }
     }
-    /**---creek----!*/
+
+    /**
+     * ---creek----!
+     */
     class TwoSumB {
         private HashMap<Integer, Integer> elements = new HashMap<Integer, Integer>();
-
         public void add(int number) {
             if (elements.containsKey(number)) {
                 elements.put(number, elements.get(number) + 1);
@@ -48,7 +48,6 @@ public class TwoSumIIIDatastructuredesign {
                 elements.put(number, 1);
             }
         }
-
         public boolean find(int value) {
             for (Integer i : elements.keySet()) {
                 int target = value - i;

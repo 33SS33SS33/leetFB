@@ -34,7 +34,8 @@ class MinKStrictAscending {
      * just do prev++ for next item in array
      */
     private int minKStrictAscending(int[] A) {
-        if (A == null || A.length == 0) return 0;
+        if (A == null || A.length == 0)
+            return 0;
         int k = 0;
         int prev = A[0]; // previous minimum possible value
         for (int i = 1; i < A.length; i++) {

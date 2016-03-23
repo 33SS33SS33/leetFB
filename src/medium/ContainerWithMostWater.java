@@ -6,19 +6,19 @@ package medium;
  * endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together
  * with x-axis forms a container, such that the container contains the most
  * water.
- * 
+ * <p/>
  * Note: You may not slant the container.
- * 
+ * <p/>
  * Tags: Array, Two pointers
  */
 class ContainerWithMostWater {
     public static void main(String[] args) {
-        int[] height={2,4,3,2};
+        int[] height = { 2, 4, 3, 2 };
         System.out.println(new ContainerWithMostWater().maxArea(height));
         System.out.println(new ContainerWithMostWater().maxAreaB(height));
         System.out.println(new ContainerWithMostWater().maxAreaC(height));
     }
-    
+
     /**
      * 2 pointers, low and high
      * curArea = (high - low) * min(height[high], height[low])
@@ -28,37 +28,44 @@ class ContainerWithMostWater {
      * Different from block
      */
     public int maxArea(int[] height) {
-        if (height == null || height.length == 0) return 0;
+        if (height == null || height.length == 0)
+            return 0;
         int ans = 0;
         int low = 0, high = height.length - 1;
         while (low < high) { // note low < high, not <=
             // update answer
             ans = Math.max(ans, (high - low) * Math.min(height[low], height[high]));
             // move lower pointer towards center
-            if (height[low] < height[high]) low++;
-            else high--;
+            if (height[low] < height[high])
+                low++;
+            else
+                high--;
         }
         return ans;
     }
 
     public int maxAreaB(int[] height) {
-        if(height.length <= 1) return 0;
+        if (height.length <= 1)
+            return 0;
         int st = 0;
         int ed = height.length - 1;
-
         int max = Integer.MIN_VALUE;
-        while(st < ed){
-            int current = Math.min(height[st] , height[ed]) * (ed - st);
-            if(current > max) max = current;
-            if(height[st] <= height[ed]){
+        while (st < ed) {
+            int current = Math.min(height[st], height[ed]) * (ed - st);
+            if (current > max)
+                max = current;
+            if (height[st] <= height[ed]) {
                 st++;
-            }else{
+            } else {
                 ed--;
             }
         }
         return max;
     }
-    /**creek*/
+
+    /**
+     * creek
+     */
     public int maxAreaC(int[] height) {
         if (height == null || height.length < 2) {
             return 0;

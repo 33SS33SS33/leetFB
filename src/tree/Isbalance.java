@@ -18,20 +18,28 @@ public class Isbalance {
         n2.right = n5;
         System.out.println(new Isbalance().isBalanced(root));
     }
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+
     public boolean isBalanced(TreeNode root) {
-        if (root == null) return true;
-        return Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1
-                && isBalanced(root.left)
+        if (root == null)
+            return true;
+        return Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1 && isBalanced(root.left)
                 && isBalanced(root.right);
     }
+
     public int maxDepth(TreeNode root) {
-        if (root == null) return 0;
+        if (root == null)
+            return 0;
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+
+    public static class TreeNode {
+        int      val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

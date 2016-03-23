@@ -3,19 +3,21 @@ package other;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * Given an an unsorted array, sort the given array.
  * You are allowed to do only following operation on array
  * flip(arr, i): Reverse array from 0 to i
- *
+ * <p/>
  * Tags: Sort
  */
 class PancakeSorting {
     public static void main(String[] args) {
         PancakeSorting p = new PancakeSorting();
-        int[] A = {23, 10, 20, 11, 12, 6, 7};
+        int[] A = { 23, 10, 20, 11, 12, 6, 7 };
         p.pancakeSort(A);
-        for (int n : A) System.out.print(n + ", ");
+        for (int n : A)
+            System.out.print(n + ", ");
     }
 
     /**
@@ -25,8 +27,8 @@ class PancakeSorting {
      * Stop till size reduced to 1
      */
     public void pancakeSort(int[] A) {
-        if (A == null || A.length <= 1) return;
-
+        if (A == null || A.length <= 1)
+            return;
         for (int i = A.length; i > 1; i--) { // i is current size
             int mi = findMax(A, i);
             if (mi != i) {
@@ -50,7 +52,8 @@ class PancakeSorting {
     private int findMax(int[] A, int size) {
         int mi = 0;
         for (int i = 0; i < size; i++) {
-            if (A[i] > A[mi]) mi = i;
+            if (A[i] > A[mi])
+                mi = i;
         }
         return mi;
     }

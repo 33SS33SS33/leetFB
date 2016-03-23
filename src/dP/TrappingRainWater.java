@@ -35,7 +35,6 @@ class TrappingRainWater {
         int level = 0;
         int all = 0;
         int block = 0;
-        
         while (l <= r) { // note l <= r to include the last block
             // update area
             int curLevel = Math.min(A[l], A[r]);

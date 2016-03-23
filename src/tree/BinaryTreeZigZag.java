@@ -9,37 +9,41 @@ import java.util.Queue;
  * Given a binary tree, return the zigzag level order traversal of its nodes'
  * values. (ie, from left to right, then right to left for the next level and
  * alternate between).
- * 
+ * <p/>
  * For example:
  * Given binary tree {3,9,20,#,#,15,7},
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
  * return its zigzag level order traversal as:
  * [
- *   [3],
- *   [20,9],
- *   [15,7]
+ * [3],
+ * [20,9],
+ * [15,7]
  * ]
- * 
+ * <p/>
  * Tags: Tree, BFS, Stack
  */
 class BinaryTreeZigZag {
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
+
     public static void main(String[] args) {
-        TreeNode head= buildTree();
+        TreeNode head = buildTree();
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrder(head).toString());
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrderB(head).toString());
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrderC(head).toString());
     }
-    
+
     /**
      * Use queue to do BFS.
      * Get queue's size to get nodes in each level.
@@ -48,7 +52,8 @@ class BinaryTreeZigZag {
      */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(root);
         boolean toggle = false;
@@ -57,17 +62,21 @@ class BinaryTreeZigZag {
             int size = q.size();
             for (int i = 0; i < size; i++) {
                 TreeNode n = q.poll();
-                if (!toggle) curLevel.add(n.val);
-                else curLevel.add(0, n.val);
-                if (n.left != null) q.add(n.left);
-                if (n.right != null) q.add(n.right);
+                if (!toggle)
+                    curLevel.add(n.val);
+                else
+                    curLevel.add(0, n.val);
+                if (n.left != null)
+                    q.add(n.left);
+                if (n.right != null)
+                    q.add(n.right);
             }
             toggle = !toggle;
             res.add(curLevel);
         }
         return res;
     }
-    
+
     /**
      * Use two lists, one for cur level, one for next level
      * Use a binary flag to determin whether we toggle the order of current level or not
@@ -75,7 +84,8 @@ class BinaryTreeZigZag {
      */
     public List<List<Integer>> zigzagLevelOrderB(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         List<TreeNode> level = new ArrayList<TreeNode>();
         level.add(root);
         boolean toggle = false;
@@ -84,10 +94,14 @@ class BinaryTreeZigZag {
             List<TreeNode> nextLevel = new ArrayList<TreeNode>();
             while (!level.isEmpty()) {
                 TreeNode temp = level.remove(0);
-                if (!toggle) curLevel.add(temp.val);
-                else curLevel.add(0, temp.val); // insert to front
-                if (temp.left != null) nextLevel.add(temp.left);
-                if (temp.right != null) nextLevel.add(temp.right);
+                if (!toggle)
+                    curLevel.add(temp.val);
+                else
+                    curLevel.add(0, temp.val); // insert to front
+                if (temp.left != null)
+                    nextLevel.add(temp.left);
+                if (temp.right != null)
+                    nextLevel.add(temp.right);
             }
             res.add(curLevel);
             level = nextLevel;
@@ -95,48 +109,50 @@ class BinaryTreeZigZag {
         }
         return res;
     }
+
     public ArrayList<ArrayList<Integer>> zigzagLevelOrderC(TreeNode root) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        if(root==null)
+        if (root == null)
             return res;
         LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
-        int level=1;
+        int level = 1;
         ArrayList<Integer> item = new ArrayList<Integer>();
         item.add(root.val);
         res.add(item);
         stack.push(root);
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             LinkedList<TreeNode> newStack = new LinkedList<TreeNode>();
             item = new ArrayList<Integer>();
-            while(!stack.isEmpty()) {
+            while (!stack.isEmpty()) {
                 TreeNode node = stack.pop();
-                if(level%2==0) {
-                    if(node.left!=null) {
+                if (level % 2 == 0) {
+                    if (node.left != null) {
                         newStack.push(node.left);
                         item.add(node.left.val);
                     }
-                    if(node.right!=null) {
+                    if (node.right != null) {
                         newStack.push(node.right);
                         item.add(node.right.val);
                     }
                 } else {
-                    if(node.right!=null) {
+                    if (node.right != null) {
                         newStack.push(node.right);
                         item.add(node.right.val);
                     }
-                    if(node.left!=null) {
+                    if (node.left != null) {
                         newStack.push(node.left);
                         item.add(node.left.val);
                     }
                 }
             }
             level++;
-            if(item.size()>0)
+            if (item.size() > 0)
                 res.add(item);
             stack = newStack;
         }
         return res;
     }
+
     private static TreeNode buildTree() {
         TreeNode t0 = new TreeNode(1);
         TreeNode t1 = new TreeNode(2);

@@ -3,11 +3,11 @@ package medium;
 /**
  * Follow up for "Search in Rotated Sorted Array":
  * What if duplicates are allowed?
- *
+ * <p/>
  * Would this affect the run-time complexity? How and why?
- *
+ * <p/>
  * Write a function to determine if a given target is in the array.
- *
+ * <p/>
  * Tags: Array, Binary Search
  */
 class SearchInRotatedSortedArray2 {

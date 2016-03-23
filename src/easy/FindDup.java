@@ -24,7 +24,8 @@ class FindDup {
      * else this element (ith element of list) is a duplication
      */
     public void printRepeating(int[] num) {
-        if (num == null || num.length == 0) return;
+        if (num == null || num.length == 0)
+            return;
         for (int i = 0; i < num.length; i++) {
             if (num[Math.abs(num[i])] < 0) { // duplicate
                 System.out.println(Math.abs(num[i])); // print dups

@@ -34,9 +34,12 @@ public class BSTIterator2S {
     }
 
     class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

@@ -3,17 +3,18 @@ package other;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 import java.util.*;
 
 /**
  * Implement a hash table
- *
+ * <p/>
  * Tags: DS
  */
 public class MyHashtable {
 
     LinkedList<Node>[] array;
-    int size;
+    int                size;
 
     class Node {
         String key;
@@ -40,7 +41,8 @@ public class MyHashtable {
      * If key not found, add a new node with value to the end of list
      */
     public void put(String key, Object value) {
-        if (key == null || value == null) throw new IllegalArgumentException();
+        if (key == null || value == null)
+            throw new IllegalArgumentException();
         int index = hashcode(key) % size;
         if (array[index] == null) {
             LinkedList<Node> list = new LinkedList<Node>();
@@ -56,7 +58,8 @@ public class MyHashtable {
                     break;
                 }
             }
-            if (!found) list.add(new Node(key, value));
+            if (!found)
+                list.add(new Node(key, value));
         }
     }
 
@@ -66,9 +69,11 @@ public class MyHashtable {
      * If no key, return null
      */
     public Object get(String key) {
-        if (key == null) return null; // validation
+        if (key == null)
+            return null; // validation
         int index = hashcode(key) % size;
-        if (array[index] == null) return null;
+        if (array[index] == null)
+            return null;
         LinkedList<Node> list = array[index];
         for (Node n : list) {
             if (key.equals(n.key)) {

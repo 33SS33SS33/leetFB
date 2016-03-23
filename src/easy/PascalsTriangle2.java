@@ -5,24 +5,23 @@ import java.util.List;
 
 /**
  * Given an index k, return the kth row of the Pascal's triangle.
- * 
+ * <p/>
  * For example, given k = 3,
  * Return [1,3,3,1].
- * 
+ * <p/>
  * Note:
  * Could you optimize your algorithm to use only O(k) extra space?
- * 
+ * <p/>
  * Tags: Array
  */
 class PascalsTriangle2 {
-
     public static void main(String[] args) {
         PascalsTriangle2 p = new PascalsTriangle2();
         int k = 3;
         System.out.println(p.getRow(k).toString());
         System.out.println(p.getRowB(k).toString());
     }
-    
+
     /**
      * Generate in-place within a list
      * 0, 0, 0, 0, initialized, 1, 0, 0, 0
@@ -41,13 +40,14 @@ class PascalsTriangle2 {
         }
         return row;
     }
-    /**creek*/
+
+    /**
+     * creek
+     */
     public List<Integer> getRowB(int rowIndex) {
         ArrayList<Integer> result = new ArrayList<Integer>();
-
         if (rowIndex < 0)
             return result;
-
         result.add(1);
         for (int i = 1; i <= rowIndex; i++) {
             for (int j = result.size() - 2; j >= 0; j--) {

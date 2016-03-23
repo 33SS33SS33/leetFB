@@ -5,11 +5,13 @@ import java.util.Arrays;
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28.
  */
+
 /**
- * Longest Substring Without Repeating Characters*/
+ * Longest Substring Without Repeating Characters
+ */
 public class LengthOfLongestSubstringWithoutRepeat {
-    public static void main(String[] args){
-        String s="mississippi";
+    public static void main(String[] args) {
+        String s = "mississippi";
 
         System.out.println(lengthOfLongestSubstring(s));
         System.out.print(lengthOfLongestSubstringB(s));

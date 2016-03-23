@@ -8,22 +8,22 @@ import java.util.Queue;
 /**
  * Given a binary tree, return the level order traversal of its nodes' values.
  * (ie, from left to right, level by level).
- * 
+ * <p/>
  * For example:
  * Given binary tree {3,9,20,#,#,15,7},
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
- * 
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
+ * <p/>
  * return its level order traversal as:
  * [
- *   [3],
- *   [9,20],
- *   [15,7]
+ * [3],
+ * [9,20],
+ * [15,7]
  * ]
- * 
+ * <p/>
  * Tags: Tree, BFS
  */
 class BTLevelOrder {
@@ -42,6 +42,7 @@ class BTLevelOrder {
         System.out.println(new BTLevelOrder().levelOrder(root));
         System.out.println(new BTLevelOrder().levelOrderB(root));
     }
+
     /**
      * Queue
      * Get size of the queue each time
@@ -49,7 +50,8 @@ class BTLevelOrder {
      */
     private List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
         while (!queue.isEmpty()) {
@@ -58,31 +60,35 @@ class BTLevelOrder {
             for (int i = 0; i < size; i++) {
                 TreeNode n = queue.poll();
                 curLevel.add(n.val);
-                if (n.left != null) queue.add(n.left);
-                if (n.right != null) queue.add(n.right);
+                if (n.left != null)
+                    queue.add(n.left);
+                if (n.right != null)
+                    queue.add(n.right);
             }
             res.add(curLevel);
         }
         return res;
     }
 
-    /**creek--*/
+    /**
+     * creek--
+     */
     public ArrayList<ArrayList<Integer>> levelOrderB(TreeNode root) {
         ArrayList<ArrayList<Integer>> al = new ArrayList<ArrayList<Integer>>();
         ArrayList<Integer> nodeValues = new ArrayList<Integer>();
-        if(root == null)
+        if (root == null)
             return al;
         LinkedList<TreeNode> current = new LinkedList<TreeNode>();
         LinkedList<TreeNode> next = new LinkedList<TreeNode>();
         current.add(root);
-        while(!current.isEmpty()){
+        while (!current.isEmpty()) {
             TreeNode node = current.remove();
-            if(node.left != null)
+            if (node.left != null)
                 next.add(node.left);
-            if(node.right != null)
+            if (node.right != null)
                 next.add(node.right);
             nodeValues.add(node.val);
-            if(current.isEmpty()){
+            if (current.isEmpty()) {
                 current = next;
                 next = new LinkedList<TreeNode>();
                 al.add(nodeValues);
@@ -93,9 +99,12 @@ class BTLevelOrder {
     }
 
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

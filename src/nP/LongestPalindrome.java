@@ -5,12 +5,14 @@ package nP;
  */
 public class LongestPalindrome {
 
-    public static void main(String[] args){
-        String s="abcacbd";
+    public static void main(String[] args) {
+        String s = "abcacbd";
         System.out.print(new LongestPalindrome().longestPalindrome(s));
     }
 
-    /**O(n2) runtime, O(1) space – Simpler solution:*/
+    /**
+     * O(n2) runtime, O(1) space – Simpler solution:
+     */
     public String longestPalindrome(String s) {
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {

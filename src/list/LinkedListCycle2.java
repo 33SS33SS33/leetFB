@@ -3,24 +3,42 @@ package list;
 /**
  * Given a linked list, return the node where the cycle begins. If there is no
  * cycle, return null.
- * 
+ * <p/>
  * Follow up:
  * Can you solve it without using extra space?
- * 
+ * <p/>
  * Tags: Linkedlist, Two pointers, Math
  */
 class LinkedListCycle2 {
     public static void main(String[] args) {
-        
+        LinkedListCycle2 r = new LinkedListCycle2();
+        ListNode head = buildList();
+        System.out.print(detectCycle(head).val);
     }
-    
+
+    static ListNode buildList() {
+        ListNode node0 = new ListNode(0);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(1);
+
+        node0.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        return node0;
+    }
+
     /**
      * Reset slow to head after cycle is detected
      * Then move until slow and fast meets
      * Each one step every time
      */
-    public ListNode detectCycle(ListNode head) {
-        if (head == null) return null;
+    public static ListNode detectCycle(ListNode head) {
+        if (head == null)
+            return null;
         ListNode slow = head;
         ListNode fast = head;
         boolean hasCycle = false;
@@ -28,11 +46,12 @@ class LinkedListCycle2 {
             fast = fast.next.next;
             slow = slow.next;
             if (fast == slow) {
-                hasCycle = true; 
+                hasCycle = true;
                 break;
             }
         }
-        if (!hasCycle) return null;
+        if (!hasCycle)
+            return null;
         slow = head;
         while (slow != fast) { // move x steps further
             fast = fast.next;
@@ -40,10 +59,11 @@ class LinkedListCycle2 {
         }
         return slow;
     }
-    
-    class ListNode {
-        int val;
+
+    static class ListNode {
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

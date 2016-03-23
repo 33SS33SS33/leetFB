@@ -5,11 +5,14 @@ package dP;
  */
 public class MaxSubArray {
     public static void main(String[] args) {
-        int[]  s1 = {1,2,5,1,-1};
+        int[] s1 = { 1, 2, 5, 1, -1 };
         System.out.println(new MaxSubArray().maxSubArray2(s1));
         System.out.println(new MaxSubArray().maxSubArray(s1));
     }
-    /**3.8遇到*/
+
+    /**
+     * 3.8遇到
+     */
     public int maxSubArray2(int[] A) {
         int maxEndingHere = A[0], maxSoFar = A[0];
         for (int i = 1; i < A.length; i++) {
@@ -19,12 +22,16 @@ public class MaxSubArray {
         return maxSoFar;
     }
 
-    /**S1*/
+    /**
+     * S1
+     */
     public int maxSubArray(int[] A) {
         return maxSubArrayHelper(A, 0, A.length - 1);
     }
+
     private int maxSubArrayHelper(int[] A, int L, int R) {
-        if (L > R) return Integer.MIN_VALUE;
+        if (L > R)
+            return Integer.MIN_VALUE;
         int M = (L + R) / 2;
         int leftAns = maxSubArrayHelper(A, L, M - 1);
         int rightAns = maxSubArrayHelper(A, M + 1, R);

@@ -10,7 +10,6 @@ import java.util.Map;
  * Tags: Math, String
  */
 class RomanToInt {
-    
     public static void main(String[] args) {
         String s="X";
         System.out.println(new RomanToInt().romanToInt2(s));
@@ -19,7 +18,29 @@ class RomanToInt {
     
     char[] roman = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
     int[] val = { 1, 5, 10, 50, 100, 500, 1000 };
-    
+
+    public int romanToInt2(String s) {
+        if (s == null || s.length()==0) return 0;
+        Map<Character, Integer> m = new HashMap<Character, Integer>();
+        m.put('I', 1);
+        m.put('V', 5);
+        m.put('X', 10);
+        m.put('L', 50);
+        m.put('C', 100);
+        m.put('D', 500);
+        m.put('M', 1000);
+
+        int length = s.length();
+        int result = m.get(s.charAt(length - 1));
+        for (int i = length - 2; i >= 0; i--) { // backwards
+            if (m.get(s.charAt(i + 1)) <= m.get(s.charAt(i)))
+                result += m.get(s.charAt(i));
+            else
+                result -= m.get(s.charAt(i));
+        }
+        return result;
+    }
+
     /**
      * negative? all uppercase?
      * Traverse backwords, switch case for all chars
@@ -63,26 +84,5 @@ class RomanToInt {
         }
         return res;
     }
-    
-    public int romanToInt2(String s) {
-        if (s == null || s.length()==0) return 0;
-        Map<Character, Integer> m = new HashMap<Character, Integer>();
-        m.put('I', 1);
-        m.put('V', 5);
-        m.put('X', 10);
-        m.put('L', 50);
-        m.put('C', 100);
-        m.put('D', 500);
-        m.put('M', 1000);
 
-        int length = s.length();
-        int result = m.get(s.charAt(length - 1));
-        for (int i = length - 2; i >= 0; i--) { // backwards
-            if (m.get(s.charAt(i + 1)) <= m.get(s.charAt(i))) 
-                result += m.get(s.charAt(i));
-            else 
-                result -= m.get(s.charAt(i));
-        }
-        return result;
-    }
 }

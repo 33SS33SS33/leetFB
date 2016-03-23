@@ -29,43 +29,39 @@ class RotateImg {
         }
     }
 
-    /**  navie */
+    /**
+     * navie
+     */
     public void rotateA(int[][] matrix) {
-        if(matrix == null || matrix.length==0)
-            return ;
-
+        if (matrix == null || matrix.length == 0)
+            return;
         int m = matrix.length;
-
         int[][] result = new int[m][m];
-
-        for(int i=0; i<m; i++){
-            for(int j=0; j<m; j++){
-                result[j][m-1-i] = matrix[i][j];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                result[j][m - 1 - i] = matrix[i][j];
             }
         }
-
         matrix = result;
     }
+
     public void rotateB(int[][] matrix) {
-        if(matrix == null || matrix.length==0)
-            return ;
-
+        if (matrix == null || matrix.length == 0)
+            return;
         int m = matrix.length;
-
         int[][] result = new int[m][m];
-
-        for(int i=0; i<m; i++){
-            for(int j=0; j<m; j++){
-                result[j][m-1-i] = matrix[i][j];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
+                result[j][m - 1 - i] = matrix[i][j];
             }
         }
-
-        for(int i=0; i<m; i++){
-            for(int j=0; j<m; j++){
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < m; j++) {
                 matrix[i][j] = result[i][j];
             }
         }
     }
+
     /**
      * Get the length of matrix
      * Do level by level, each level edge by edge
@@ -85,7 +81,10 @@ class RotateImg {
             }
         }
     }
-    /**In-place Solution~ using the relation "matrix[i][j] = matrix[n-1-j][i]", */
+
+    /**
+     * In-place Solution~ using the relation "matrix[i][j] = matrix[n-1-j][i]",
+     */
     public void rotate2(int[][] matrix) {
         int n = matrix.length;
         for (int i = 0; i < n / 2; i++) {

@@ -25,12 +25,12 @@ class MajorityEle {
      */
     public static int majorityElement(int[] num) {
         int maj = num[0];
-        for (int count = 0, i = 0; i < num.length && count <= num.length / 2; i++){
-            if (count == 0){
+        for (int count = 0, i = 0; i < num.length && count <= num.length / 2; i++) {
+            if (count == 0) {
                 maj = num[i];
                 count++;
-            }
-            else count = num[i] == maj ? count + 1 : count - 1;
+            } else
+                count = num[i] == maj ? count + 1 : count - 1;
         }
         return maj;
     }
@@ -50,7 +50,6 @@ class MajorityEle {
         if (num.length == 1) {
             return num[0];
         }
-
         Arrays.sort(num);
         return num[num.length / 2];
     }
@@ -59,19 +58,19 @@ class MajorityEle {
      * Then scan once to find the longest consecutive substrings.
      *  */
     public int majorityElementC(int[] num) {
-        if(num.length==1){
+        if (num.length == 1) {
             return num[0];
         }
-
         Arrays.sort(num);
-        int prev=num[0];
-        int count=1;
-        for(int i=1; i<num.length; i++){
-            if(num[i] == prev){
+        int prev = num[0];
+        int count = 1;
+        for (int i = 1; i < num.length; i++) {
+            if (num[i] == prev) {
                 count++;
-                if(count > num.length/2) return num[i];
-            }else{
-                count=1;
+                if (count > num.length / 2)
+                    return num[i];
+            } else {
+                count = 1;
                 prev = num[i];
             }
         }

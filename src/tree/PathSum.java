@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * Given a binary tree and a sum, determine if the tree has a root-to-leaf path
  * such that adding up all the values along the path equals the given sum.
- * 
+ * <p/>
  * For example:
  * Given the below binary tree and sum = 22,
  *               5
@@ -17,7 +17,7 @@ import java.util.LinkedList;
  *         7    2      1
  * 
  * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
- * 
+ * <p/>
  * Tags: Tree, DFS
  */
 class PathSum {
@@ -34,66 +34,76 @@ class PathSum {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new PathSum().hasPathSumA(root,7));
-        System.out.println(new PathSum().hasPathSumB(root,7));
-        System.out.println(new PathSum().hasPathSumC(root,7));
-        System.out.println(new PathSum().hasPathSumA(root,10));
-        System.out.println(new PathSum().hasPathSumB(root,10));
-        System.out.println(new PathSum().hasPathSumA(root,4));
-        System.out.println(new PathSum().hasPathSumB(root,4));
+        System.out.println(new PathSum().hasPathSumA(root, 7));
+        System.out.println(new PathSum().hasPathSumB(root, 7));
+        System.out.println(new PathSum().hasPathSumC(root, 7));
+        System.out.println(new PathSum().hasPathSumA(root, 10));
+        System.out.println(new PathSum().hasPathSumB(root, 10));
+        System.out.println(new PathSum().hasPathSumA(root, 4));
+        System.out.println(new PathSum().hasPathSumB(root, 4));
     }
+
     /**
      * Substract root value from sum every time
-     * Return leaf node with sum == 0 
+     * Return leaf node with sum == 0
      * Or result in left subtree or right subtree
      */
     public boolean hasPathSumA(TreeNode root, int sum) {
-        if (root == null) return false; // root == null
+        if (root == null)
+            return false; // root == null
         sum -= root.val; // update sum
         // leaf? sum == 0? left subtree? right subtree?
-        return root.left == null && root.right == null && sum == 0 || hasPathSumA(root.left, sum) || hasPathSumA(root.right, sum);
+        return root.left == null && root.right == null && sum == 0 || hasPathSumA(root.left, sum)
+                || hasPathSumA(root.right, sum);
     }
 
-    /**Recursion creek*/
+    /**
+     * Recursion creek
+     */
     public boolean hasPathSumC(TreeNode root, int sum) {
         if (root == null)
             return false;
         if (root.val == sum && (root.left == null && root.right == null))
             return true;
-        return hasPathSumC(root.left, sum - root.val)
-                || hasPathSumC(root.right, sum - root.val);
+        return hasPathSumC(root.left, sum - root.val) || hasPathSumC(root.right, sum - root.val);
     }
 
-    /**creek---*/
+    /**
+     * creek---
+     */
     public boolean hasPathSumB(TreeNode root, int sum) {
-        if(root == null) return false;
+        if (root == null)
+            return false;
         LinkedList<TreeNode> nodes = new LinkedList<TreeNode>();
         LinkedList<Integer> values = new LinkedList<Integer>();
         nodes.add(root);
         values.add(root.val);
-        while(!nodes.isEmpty()){
+        while (!nodes.isEmpty()) {
             TreeNode curr = nodes.poll();
             int sumValue = values.poll();
-            if(curr.left == null && curr.right == null && sumValue==sum){
+            if (curr.left == null && curr.right == null && sumValue == sum) {
                 return true;
             }
-            if(curr.left != null){
+            if (curr.left != null) {
                 nodes.add(curr.left);
-                values.add(sumValue+curr.left.val);
+                values.add(sumValue + curr.left.val);
             }
-            if(curr.right != null){
+            if (curr.right != null) {
                 nodes.add(curr.right);
-                values.add(sumValue+curr.right.val);
+                values.add(sumValue + curr.right.val);
             }
         }
         return false;
     }
 
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
-    
+
 }

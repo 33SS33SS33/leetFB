@@ -3,19 +3,19 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/8.
  */
+
 /**
  * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
  * reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
- *
+ * <p/>
  * You must do this in-place without altering the nodes' values.
- *
+ * <p/>
  * For example,
  * Given {1,2,3,4}, reorder it to {1,4,2,3}.
- *
+ * <p/>
  * Tags: Linkedlist
  */
 class ReorderList {
-
     public static void main(String[] args) {
         // {1,2,3,4,5,6}
         ListNode head = buildTestList1();
@@ -29,6 +29,7 @@ class ReorderList {
         r.reorderList2(head2);
         r.printList(head2);
     }
+
     static ListNode buildTestList1() {
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);
@@ -43,6 +44,7 @@ class ReorderList {
         fifth.next = sixth;
         return head;
     }
+
     private void printList(ListNode head) {
         ListNode cur = head;
         while (cur != null) {
@@ -52,14 +54,13 @@ class ReorderList {
         System.out.println("NULL");
     }
 
-
-
     /**
      * Find mid point, then split list into 2 halves
      * Reverse latter half, then merge two lists
      */
     private void reorderList(ListNode head) {
-        if (head == null || head.next == null) return;
+        if (head == null || head.next == null)
+            return;
         // find mid point use runner's technique
         ListNode mid = head;
         ListNode tail = head;
@@ -92,15 +93,16 @@ class ReorderList {
     /**
      * TLE, O(n^2)
      */
-    private void reorderList2(ListNode head) {;
-        if (head == null || head.next == null) return;
+    private void reorderList2(ListNode head) {
+        ;
+        if (head == null || head.next == null)
+            return;
 
         ListNode cur = head;
         while (cur != null && cur.next != null && cur.next.next != null) {
             ListNode beforeTail = cur.next;
             ListNode curNext = cur.next;
-            while (beforeTail != null && beforeTail.next != null
-                    && beforeTail.next.next != null) {
+            while (beforeTail != null && beforeTail.next != null && beforeTail.next.next != null) {
                 beforeTail = beforeTail.next;
             }
             cur.next = beforeTail.next;
@@ -112,8 +114,9 @@ class ReorderList {
     }
 
     static class ListNode {
-        int val;
+        int      val;
         ListNode next;
+
         ListNode(int x) {
             val = x;
             next = null;

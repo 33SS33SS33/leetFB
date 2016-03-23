@@ -23,54 +23,59 @@ public class InvertBinaryTree {
         n1.right = n4;
         n2.left = n5;
         n2.right = n6;
-        TreeNode res= new InvertBinaryTree().invertTree(root);
+        TreeNode res = new InvertBinaryTree().invertTree(root);
         System.out.println(new InvertBinaryTree().levelOrder(res));
 
-        TreeNode res2= new InvertBinaryTree().invertTreeA(root);
+        TreeNode res2 = new InvertBinaryTree().invertTreeA(root);
         System.out.println(new InvertBinaryTree().levelOrder(res2));
 
-        TreeNode res3= new InvertBinaryTree().invertTreeB(root);
+        TreeNode res3 = new InvertBinaryTree().invertTreeB(root);
         System.out.println(new InvertBinaryTree().levelOrder(res3));
     }
 
     public TreeNode invertTree(TreeNode root) {
-        if(root == null) return null;
-        TreeNode newLeft  = invertTree(root.right);
+        if (root == null)
+            return null;
+        TreeNode newLeft = invertTree(root.right);
         TreeNode newRight = invertTree(root.left);
-        root.left  = newLeft;
+        root.left = newLeft;
         root.right = newRight;
         return root;
     }
 
-    /**creek Recursive*/
+    /**
+     * creek Recursive
+     */
     public TreeNode invertTreeA(TreeNode root) {
-        if(root!=null){
+        if (root != null) {
             helper(root);
         }
         return root;
     }
 
-    public void helper(TreeNode p){
+    public void helper(TreeNode p) {
         TreeNode temp = p.left;
         p.left = p.right;
         p.right = temp;
-        if(p.left!=null)
+        if (p.left != null)
             helper(p.left);
-        if(p.right!=null)
+        if (p.right != null)
             helper(p.right);
     }
 
-    /**creek   Iterative*/
+    /**
+     * creek   Iterative
+     */
     public TreeNode invertTreeB(TreeNode root) {
         LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-        if(root!=null){
+        if (root != null) {
             queue.add(root);
         }
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode p = queue.poll();
-            if(p.left!=null)
+            if (p.left != null)
                 queue.add(p.left);
-            if(p.right!=null)
+            if (p.right != null)
                 queue.add(p.right);
             TreeNode temp = p.left;
             p.left = p.right;
@@ -79,10 +84,10 @@ public class InvertBinaryTree {
         return root;
     }
 
-
     private List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
 
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
@@ -93,8 +98,10 @@ public class InvertBinaryTree {
             for (int i = 0; i < size; i++) {
                 TreeNode n = queue.poll();
                 curLevel.add(n.val);
-                if (n.left != null) queue.add(n.left);
-                if (n.right != null) queue.add(n.right);
+                if (n.left != null)
+                    queue.add(n.left);
+                if (n.right != null)
+                    queue.add(n.right);
             }
             res.add(curLevel);
         }
@@ -102,9 +109,12 @@ public class InvertBinaryTree {
     }
 
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }
