@@ -22,8 +22,10 @@ class BestTimeStock4 {
         int[] B = new int[]{3,2,6,5,0,3};
         System.out.println(b.maxProfitOpt(2, A));
         System.out.println(b.maxProfit(2, A));
+        System.out.println(b.maxProfitA(2, A));
         System.out.println(b.maxProfitOpt(2, B));
         System.out.println(b.maxProfit(2, B));
+        System.out.println(b.maxProfitA(2, B));
     }
     
     /**
@@ -54,11 +56,8 @@ class BestTimeStock4 {
             for (int j = 0; j < n; j++) {
                 int temp = cur[j+1];
                 cur[j+1] = Math.max(Math.max(cur[j+1], cur[j]), prices[j] + curMax);
-                System.out.print(curMax + "|");
                 curMax = Math.max(curMax, temp - prices[j]);
-                System.out.print(curMax + "\n");
             }
-            System.out.println(Arrays.toString(cur));
         }
         return cur[n];
     }
@@ -74,7 +73,6 @@ class BestTimeStock4 {
 
         int[] local = new int[k + 1];
         int[] global = new int[k + 1];
-
         for (int i = 0; i < prices.length - 1; i++) {
             int diff = prices[i + 1] - prices[i];
             for (int j = k; j >= 1; j--) {
@@ -82,9 +80,9 @@ class BestTimeStock4 {
                 global[j] = Math.max(local[j], global[j]);
             }
         }
-
         return global[k];
     }
+
     /**
      * DP, bottom-up, O(kn) Time, O(kn) Space
      */

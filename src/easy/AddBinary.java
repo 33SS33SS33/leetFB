@@ -13,10 +13,9 @@ package easy;
  * Tags: Math, String
  */
 class AddBinary {
-
     public static void main(String[] args) {
-        String a = "11110011001011110111110001010000111110011110101100011111010010001000001101111001000111";
-        String b = "111001011011111010001001111001100000101010000101100010101100010010010011011000";
+        String a = "1111001100101111011111000";
+        String b = "111001011011111010001";
         // String a = "1010";
         // String b = "1011";
         System.out.println(addBinary(a, b));
