@@ -5,10 +5,11 @@ import java.util.ArrayList;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/4.
  */
+
+/**
+ * 错的
+ */
 public class GenerateTrees {
-    /**
-     * 错的
-     */
     public static void main(String[] args) {
         ArrayList<TreeNode> res = new GenerateTrees().generateTrees(4);
         for (TreeNode r : res) {
@@ -16,20 +17,9 @@ public class GenerateTrees {
         }
     }
 
-    class TreeNode {
-        int      value;
-        TreeNode left;
-        TreeNode right;
-
-        public TreeNode(int value) {
-            this.value = value;
-        }
-    }
-
     public ArrayList<TreeNode> generateTrees(int n) {
         return helper(1, n);
     }
-
     private ArrayList<TreeNode> helper(int left, int right) {
         ArrayList<TreeNode> res = new ArrayList<TreeNode>();
         if (left > right) {
@@ -49,5 +39,15 @@ public class GenerateTrees {
             }
         }
         return res;
+    }
+
+    class TreeNode {
+        int      value;
+        TreeNode left;
+        TreeNode right;
+
+        public TreeNode(int value) {
+            this.value = value;
+        }
     }
 }

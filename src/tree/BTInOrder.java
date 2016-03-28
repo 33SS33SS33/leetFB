@@ -99,19 +99,16 @@ class BTInOrder {
         }
         return res;
     }
-
     /**
      * The recursive solution is trivial.
      */
     List<Integer> result = new ArrayList<Integer>();
-
     public List<Integer> inorderTraversalC(TreeNode root) {
         if (root != null) {
             helper(root);
         }
         return result;
     }
-
     public void helper(TreeNode p) {
         if (p.left != null)
             helper(p.left);

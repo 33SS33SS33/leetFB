@@ -17,8 +17,7 @@ public class LowestCommonAncestorofaBST {
         n1.right = n4;
         n2.right = n5;
         System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestor(root, n3, n4).val);
-        System.out
-                .println(new LowestCommonAncestorofaBST().lowestCommonAncestorB(root, n3, n4).val);
+        System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorB(root, n3, n4).val);
     }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {

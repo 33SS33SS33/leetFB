@@ -58,6 +58,24 @@ class BTPreOrder {
         }
         return res;
     }
+    /**
+     * Recursive
+     */
+    List<Integer> result = new ArrayList<Integer>();
+    public List<Integer> preorderTraversalB(TreeNode root) {
+        if (root != null) {
+            helper(root);
+        }
+        return result;
+    }
+    public void helper(TreeNode p) {
+        result.add(p.val);
+        if (p.left != null)
+            helper(p.left);
+        if (p.right != null)
+            helper(p.right);
+    }
+
 
     static class TreeNode {
         int      val;
@@ -67,27 +85,6 @@ class BTPreOrder {
         TreeNode(int x) {
             val = x;
         }
-    }
-
-    /**
-     * Recursive
-     */
-
-    List<Integer> result = new ArrayList<Integer>();
-
-    public List<Integer> preorderTraversalB(TreeNode root) {
-        if (root != null) {
-            helper(root);
-        }
-        return result;
-    }
-
-    public void helper(TreeNode p) {
-        result.add(p.val);
-        if (p.left != null)
-            helper(p.left);
-        if (p.right != null)
-            helper(p.right);
     }
 
 }

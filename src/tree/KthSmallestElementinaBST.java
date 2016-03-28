@@ -5,38 +5,35 @@ import java.util.Stack;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**
+ * 错的
+ */
 public class KthSmallestElementinaBST {
-    /**
-     * 错的
-     */
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
+        TreeNode root = new TreeNode(4);
         TreeNode n1 = new TreeNode(2);
-        TreeNode n2 = new TreeNode(3);
-        TreeNode n3 = new TreeNode(4);
-        TreeNode n4 = new TreeNode(5);
+        TreeNode n2 = new TreeNode(5);
+        TreeNode n3 = new TreeNode(1);
+        TreeNode n4 = new TreeNode(3);
         TreeNode n5 = new TreeNode(6);
         root.left = n1;
         root.right = n2;
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new KthSmallestElementinaBST().kthSmallest(root, 3));
         System.out.println(new KthSmallestElementinaBST().kthSmallestA(root, 3));
+        System.out.println(new KthSmallestElementinaBST().kthSmallestB(root, 3));
     }
 
     boolean reachLeftMost = false;
     boolean stop          = false;
     int     kth           = 0;
     int     k             = 0;
-
-    public int kthSmallest(TreeNode root, int k) {
+    public int kthSmallestA(TreeNode root, int k) {
         this.k = k;
         search(root);
-
         return kth;
     }
-
     void search(TreeNode root) {
         if (stop) {
             return;
@@ -61,9 +58,8 @@ public class KthSmallestElementinaBST {
     /**
      * creek  -----We can inorder traverse the tree and get the kth smallest element. Time is O(n).
      */
-    public int kthSmallestA(TreeNode root, int k) {
+    public int kthSmallestB(TreeNode root, int k) {
         Stack<TreeNode> stack = new Stack<TreeNode>();
-
         TreeNode p = root;
         int result = 0;
         while (!stack.isEmpty() || p != null) {

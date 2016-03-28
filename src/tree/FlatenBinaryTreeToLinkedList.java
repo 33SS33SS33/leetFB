@@ -45,7 +45,7 @@ class FlatenBinaryTreeToLinkedList {
         n1.left = n3;
         n1.right = n4;
         n2.left = n5;
-        new FlatenBinaryTreeToLinkedList().flattenC(root);
+        new FlatenBinaryTreeToLinkedList().flattenB(root);
         System.out.println(levelOrder(root));
     }
 
@@ -99,7 +99,6 @@ class FlatenBinaryTreeToLinkedList {
         ArrayList<TreeNode> res = helper(root, pre);
         return res;
     }
-
     private ArrayList<TreeNode> helper(TreeNode root, ArrayList<TreeNode> pre) {
         if (root == null)
             return null;

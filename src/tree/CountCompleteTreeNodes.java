@@ -4,6 +4,23 @@ package tree;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class CountCompleteTreeNodes {
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        TreeNode n1 = new TreeNode(2);
+        TreeNode n2 = new TreeNode(3);
+        TreeNode n3 = new TreeNode(4);
+        TreeNode n4 = new TreeNode(5);
+        TreeNode n5 = new TreeNode(6);
+        TreeNode n6 = new TreeNode(7);
+        root.left = n1;
+        root.right = n2;
+        n1.left = n3;
+        n1.right = n4;
+        n2.left = n5;
+        n2.right = n6;
+        System.out.println(new CountCompleteTreeNodes().countNodes(root));
+        System.out.println(new CountCompleteTreeNodes().countNodesB(root));
+    }
 
     public int countNodes(TreeNode root) {
         int h = height(root);
@@ -17,7 +34,6 @@ public class CountCompleteTreeNodes {
 
     int     leaves = 0;
     boolean stop   = false;
-
     void countLeaves(TreeNode root, int heightToLeaf) {
         if (root == null)
             return;
@@ -73,7 +89,6 @@ public class CountCompleteTreeNodes {
             return countNodesB(root.left) + countNodesB(root.right) + 1;
         }
     }
-
     public int getLeftHeight(TreeNode n) {
         if (n == null)
             return 0;
@@ -84,7 +99,6 @@ public class CountCompleteTreeNodes {
         }
         return height;
     }
-
     public int getRightHeight(TreeNode n) {
         if (n == null)
             return 0;
@@ -94,16 +108,6 @@ public class CountCompleteTreeNodes {
             n = n.right;
         }
         return height;
-    }
-
-    private static TreeNode buildTree() {
-        TreeNode t0 = new TreeNode(1);
-        TreeNode t1 = new TreeNode(2);
-        TreeNode t2 = new TreeNode(3);
-        t0.left = t1;
-        t0.right = t2;
-
-        return t0;
     }
 
     public static class TreeNode {

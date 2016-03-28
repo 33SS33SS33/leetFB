@@ -54,7 +54,6 @@ class LowestCommonAncestor {
     public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {
         return lcaHelper(root, p, q).node;
     }
-
     public Entity lcaHelper(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null)
             return new Entity(0, null);

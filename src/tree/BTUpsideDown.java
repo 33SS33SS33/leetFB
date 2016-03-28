@@ -21,12 +21,21 @@ public class BTUpsideDown {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(
-                new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
+        System.out.println(new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
     }
 
     LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-
+    public TreeNode upsideDownBinaryTree(TreeNode root) {
+        inOrder(root);
+        TreeNode newRoot = queue.poll();
+        root = newRoot;
+        while (!queue.isEmpty()) {
+            root.right = queue.poll();
+            root.left = queue.poll();
+            root = root.right;
+        }
+        return newRoot;
+    }
     void inOrder(TreeNode root) {
         if (root == null)
             return;
@@ -40,17 +49,6 @@ public class BTUpsideDown {
         root.right = null;
     }
 
-    public TreeNode upsideDownBinaryTree(TreeNode root) {
-        inOrder(root);
-        TreeNode newRoot = queue.poll();
-        root = newRoot;
-        while (!queue.isEmpty()) {
-            root.right = queue.poll();
-            root.left = queue.poll();
-            root = root.right;
-        }
-        return newRoot;
-    }
 
     private List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();

@@ -20,23 +20,42 @@ public class BTRightSideView {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new BTRightSideView().rightSideView(root));
+        System.out.println(new BTRightSideView().rightSideViewA(root));
+        System.out.println(new BTRightSideView().rightSideViewC(root));
         System.out.println(new BTRightSideView().rightSideViewB(root));
     }
 
-    public List<Integer> rightSideView(TreeNode root) {
+    public List<Integer> rightSideViewA(TreeNode root) {
         if (root == null)
             return new ArrayList<Integer>();
         List<Integer> rt = new ArrayList<Integer>();
         rt.add(root.val);
-        List<Integer> left = rightSideView(root.left);
-        List<Integer> right = rightSideView(root.right);
+        List<Integer> left = rightSideViewA(root.left);
+        List<Integer> right = rightSideViewA(root.right);
         rt.addAll(right);
         if (left.size() > right.size()) {
             rt.addAll(left.subList(right.size(), left.size()));
         }
         return rt;
     }
+
+    /**elegant--*/
+    public List<Integer> rightSideViewC(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        rightView(root, result, 0);
+        return result;
+    }
+    public void rightView(TreeNode curr, List<Integer> result, int currDepth){
+        if(curr == null){
+            return;
+        }
+        if(currDepth == result.size()){
+            result.add(curr.val);
+        }
+        rightView(curr.right, result, currDepth + 1);
+        rightView(curr.left, result, currDepth + 1);
+    }
+
 
     public List<Integer> rightSideViewB(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<Integer>();

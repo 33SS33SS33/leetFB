@@ -110,6 +110,7 @@ class BinaryTreeZigZag {
         return res;
     }
 
+    /**use stack*/
     public ArrayList<ArrayList<Integer>> zigzagLevelOrderC(TreeNode root) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (root == null)
