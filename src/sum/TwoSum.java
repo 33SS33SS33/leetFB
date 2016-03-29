@@ -1,5 +1,6 @@
 package sum;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ class TwoSum {
         int target = 6;
         int[] res = t.twoSum(numbers, target);
         int[] res1 = t.twoSumB(numbers, target);
+        int[] res2 = t.twoSumC(numbers, target);
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
@@ -33,8 +35,14 @@ class TwoSum {
         for (int i = 0; i < res1.length; i++) {
             System.out.print(i == res1.length - 1 ? res1[i] : res1[i] + ", ");
         }
+        System.out.println();
+        for (int i = 0; i < res2.length; i++) {
+            System.out.print(i == res1.length - 1 ? res2[i] : res2[i] + ", ");
+        }
     }
 
+    /*在LeetCode原题中是假设结果有且仅有一个的，一般来说面试时会要求出所有的结果，
+    这个时候会涉及到重复pair的处理，相关的内容会在3Sum那道题目中*/
     /**
      * HashMap, O(n) time, O(n) space
      * key -> number, value -> index
@@ -75,6 +83,21 @@ class TwoSum {
         return result;
     }
 
+    public int[] twoSumB2(int[] numbers, int target) {
+        int[] res = new int[2];
+        if (numbers == null || numbers.length < 2)
+            return null;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < numbers.length; i++) {
+            if (map.containsKey(target - numbers[i])) {
+                res[0] = map.get(target - numbers[i]) + 1;
+                res[1] = i + 1;
+                return res;
+            }
+            map.put(numbers[i], i);
+        }
+        return null;
+    }
     /**
      * Time complexity in worst case: O(n^2).
      */
@@ -89,5 +112,27 @@ class TwoSum {
             }
         }
         return ret;
+    }
+
+    /**在这里，输出结果改成了满足相加等于target的两个数，而不是他们的index。*/
+    public int[] twoSumD(int[] numbers, int target) {
+        int[] res = new int[2];
+        if (numbers == null || numbers.length < 2)
+            return null;
+        Arrays.sort(numbers);
+        int l = 0;
+        int r = numbers.length - 1;
+        while (l < r) {
+            if (numbers[l] + numbers[r] == target) {
+                res[0] = numbers[l];
+                res[1] = numbers[r];
+                return res;
+            } else if (numbers[l] + numbers[r] > target) {
+                r--;
+            } else {
+                l++;
+            }
+        }
+        return null;
     }
 }
