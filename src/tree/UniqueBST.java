@@ -20,7 +20,6 @@ class UniqueBST {
         System.out.println(numTrees(5));
         System.out.println(numTreesB(5));
         System.out.print(numTreesC(5));
-
     }
 
     /**
@@ -48,6 +47,23 @@ class UniqueBST {
     }
 
     /**
+     * creek----better
+     */
+    public static int numTreesC(int n) {
+        if (n < 0)
+            return 0;
+        int[] count = new int[n + 1];
+        count[0] = 1;
+        count[1] = 1;
+        for (int i = 2; i <= n; i++) {// from 2 ~ n
+            for (int j = 0; j <= i - 1; j++) { //from 0 ~ i - 1
+                count[i] += count[j] * count[i - j - 1];
+            }
+        }
+        return count[n];
+    }
+
+    /**
      * Catalan Number
      */
     public static int numTreesB(int n) {
@@ -57,20 +73,5 @@ class UniqueBST {
         for (int i = 3; i <= n; i++)
             res = res * 2 * (2 * i - 1) / (i + 1); // Catalan Number
         return res;
-    }
-
-    /**
-     * creek----
-     */
-    public static int numTreesC(int n) {
-        int[] count = new int[n + 1];
-        count[0] = 1;
-        count[1] = 1;
-        for (int i = 2; i <= n; i++) {
-            for (int j = 0; j <= i - 1; j++) {
-                count[i] = count[i] + count[j] * count[i - j - 1];
-            }
-        }
-        return count[n];
     }
 }

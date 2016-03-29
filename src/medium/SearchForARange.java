@@ -3,15 +3,15 @@ package medium;
 /**
  * Given a sorted array of integers, find the starting and ending position of a
  * given target value.
- * <p/>
+
  * Your algorithm's runtime complexity must be in the order of O(log n).
- * <p/>
+
  * If the target is not found in the array, return [-1, -1].
- * <p/>
+
  * For example,
  * Given [5, 7, 7, 8, 8, 10] and target value 8,
  * return [3, 4].
- * <p/>
+
  * Tags: Array, Binary Search
  */
 class SearchForARange {
@@ -20,8 +20,10 @@ class SearchForARange {
         int[] A = { 1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
         int[] range = s.searchRange(A, 3);
         int[] range2 = s.searchRangeB(A, 3);
+        int[] range3 = s.searchRangeC(A, 3);
         System.out.println(range[0] + " ~ " + range[1]);
-        System.out.println(range2[0] + " ~ " + range[1]);
+        System.out.println(range2[0] + " ~ " + range2[1]);
+        System.out.println(range3[0] + " ~ " + range3[1]);
     }
 
     /**
@@ -49,7 +51,6 @@ class SearchForARange {
         }
         return range;
     }
-
     private int binarySearch(int[] A, int left, int right, int target) {
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -61,6 +62,40 @@ class SearchForARange {
                 left = mid + 1;
         }
         return -1;
+    }
+    /** 如果我们不寻找那个元素先，而是直接相等的时候也向一个方向继续夹逼，
+     * 如果向右夹逼，最后就会停在右边界，而向左夹逼则会停在左边界，
+     * 如此用停下来的两个边界就可以知道结果了，只需要两次二分查找。*/
+    public int[] searchRangeC(int[] A, int target) {
+        int[] res = { -1, -1 };
+        if (A == null || A.length == 0) {
+            return res;
+        }
+        int ll = 0;
+        int lr = A.length - 1;
+        while (ll <= lr) {
+            int m = (ll + lr) / 2;
+            if (A[m] < target) {
+                ll = m + 1;
+            } else {
+                lr = m - 1;
+            }
+        }
+        int rl = 0;
+        int rr = A.length - 1;
+        while (rl <= rr) {
+            int m = (rl + rr) / 2;
+            if (A[m] <= target) {
+                rl = m + 1;
+            } else {
+                rr = m - 1;
+            }
+        }
+        if (ll <= rr) {
+            res[0] = ll;
+            res[1] = rr;
+        }
+        return res;
     }
 
     public int[] searchRangeB(int[] nums, int target) {

@@ -6,7 +6,6 @@ import java.util.Stack;
 
 /**
  * Given a binary tree, return the preorder traversal of its nodes' values.
- * <p/>
  * For example:
  * Given binary tree {1,#,2,3},
  * 1
@@ -15,9 +14,7 @@ import java.util.Stack;
  * /
  * 3
  * return [1,2,3].
- * <p/>
  * Note: Recursive solution is trivial, could you do it iteratively?
- * <p/>
  * Tags: Tree, Stack
  */
 class BTPreOrder {
@@ -37,8 +34,28 @@ class BTPreOrder {
         System.out.println(new BTPreOrder().preorderTraversalB(root));
     }
 
-    /**
-     * Iterative
+    /**递归
+     * 递归是最简单的方法，算法的时间复杂度是O(n), 而空间复杂度则是递归栈的大小，即O(logn)。
+     */
+    List<Integer> result = new ArrayList<Integer>();
+    public List<Integer> preorderTraversalB(TreeNode root) {
+        if (root != null) {
+            helper(root);
+        }
+        return result;
+    }
+    public void helper(TreeNode p) {
+        result.add(p.val);
+        if (p.left != null)
+            helper(p.left);
+        if (p.right != null)
+            helper(p.right);
+    }
+
+
+
+    /**迭代
+     * 迭代的做法，其实就是用一个栈来模拟递归的过程。所以算法时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)。
      * Use a stack
      * Pop current top, and push right first then push left
      */
@@ -58,24 +75,34 @@ class BTPreOrder {
         }
         return res;
     }
-    /**
-     * Recursive
-     */
-    List<Integer> result = new ArrayList<Integer>();
-    public List<Integer> preorderTraversalB(TreeNode root) {
-        if (root != null) {
-            helper(root);
-        }
-        return result;
-    }
-    public void helper(TreeNode p) {
-        result.add(p.val);
-        if (p.left != null)
-            helper(p.left);
-        if (p.right != null)
-            helper(p.right);
-    }
 
+    /**
+     * 用线索二叉树  这种方法的缺陷在于会暂时性的改变结点的内容
+     * 分别是O(n)和O(1)*/
+    public ArrayList<Integer> preorderTraversalC(TreeNode root) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        TreeNode cur = root;
+        TreeNode pre = null;
+        while (cur != null) {
+            if (cur.left == null) {
+                res.add(cur.val);
+                cur = cur.right;
+            } else {
+                pre = cur.left;
+                while (pre.right != null && pre.right != cur)
+                    pre = pre.right;
+                if (pre.right == null) {
+                    res.add(cur.val);
+                    pre.right = cur;
+                    cur = cur.left;
+                } else {
+                    pre.right = null;
+                    cur = cur.right;
+                }
+            }
+        }
+        return res;
+    }
 
     static class TreeNode {
         int      val;

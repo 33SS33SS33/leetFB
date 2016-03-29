@@ -22,12 +22,16 @@ class JumpGame {
         int[] D = { 2, 5, 0, 0 };
         System.out.println(j.canJump(A));
         System.out.println(j.canJumpB(A));
+        System.out.println(j.canJumpC(A));
+        System.out.println(j.canJumpD(A));
         System.out.println(j.canJump(B));
         System.out.println(j.canJumpB(B));
         System.out.println(j.canJump(C));
         System.out.println(j.canJumpB(C));
         System.out.println(j.canJump(D));
         System.out.println(j.canJumpB(D));
+        System.out.println(j.canJumpC(D));
+        System.out.println(j.canJumpD(D));
     }
 
     /**
@@ -55,6 +59,38 @@ class JumpGame {
         return true;
     }
 
+    /**时间复杂度是O(n)，而空间上是O(1)*/
+    public boolean canJumpC(int[] A) {
+        if (A == null || A.length == 0)
+            return false;
+        int reach = 0;
+        for (int i = 0; i <= reach && i < A.length; i++) {
+            reach = Math.max(A[i] + i, reach);
+        }
+        if (reach < A.length - 1)
+            return false;
+        return true;
+    }
+
+    public boolean canJumpD(int[] A) {
+        int max = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (i > max) {
+                return false;
+            }
+            max = Math.max(A[i] + i, max);
+        }
+        return true;
+    }
+
+    public boolean canJumpE(int A[], int n) {
+        int last = n - 1, i;
+        for (i = n - 2; i >= 0; i--) {
+            if (i + A[i] >= last)
+                last = i;
+        }
+        return last <= 0;
+    }
     /**
      * creek
      * The key to solve this problem is to find:
@@ -70,12 +106,10 @@ class JumpGame {
             //if not enough to go to next
             if (max <= i && A[i] == 0)
                 return false;
-            //update max
-            if (i + A[i] > max) {
+            if (i + A[i] > max) {  //update max
                 max = i + A[i];
             }
-            //max is enough to reach the end
-            if (max >= A.length - 1)
+            if (max >= A.length - 1)  //max is enough to reach the end
                 return true;
         }
         return false;

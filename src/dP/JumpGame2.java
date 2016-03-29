@@ -35,7 +35,6 @@ class JumpGame2 {
         int step = 0;
         int last = 0; // how far we already can reach
         int cur = 0; // how far can we reach for next step
-
         for (int i = 0; i < A.length; i++) {
             if (i > last) { // run out of we can reach, need one more step
                 last = cur;
@@ -48,6 +47,10 @@ class JumpGame2 {
         return step;
     }
 
+    /*ganker--
+     * 其实思路和Jump Game还是类似的，只是原来的全局最优现在要分成step步最优和step-1步最优
+     * （假设当前步数是step）。当走到超过step-1步最远的位置时，说明step-1不能到达当前一步，
+     * 我们就可以更新步数，将step+1。时间复杂度仍然是O(n)，空间复杂度也是O(1)*/
     public int jumpB(int[] A) {
         if (A == null || A.length == 0)
             return 0;

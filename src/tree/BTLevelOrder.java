@@ -41,6 +41,7 @@ class BTLevelOrder {
         n2.right = n5;
         System.out.println(new BTLevelOrder().levelOrder(root));
         System.out.println(new BTLevelOrder().levelOrderB(root));
+        System.out.println(new BTLevelOrder().levelOrderC(root));
     }
 
     /**
@@ -96,6 +97,39 @@ class BTLevelOrder {
             }
         }
         return al;
+    }
+
+    /**ganker
+     * 法的复杂度是就结点的数量，O(n)，空间复杂度是一层的结点数，也是O(n)。---*/
+    public ArrayList<ArrayList<Integer>> levelOrderC(TreeNode root) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if (root == null)
+            return res;
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(root);
+        int curNum = 0;
+        int lastNum = 1;
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            lastNum--;
+            list.add(cur.val);
+            if (cur.left != null) {
+                queue.add(cur.left);
+                curNum++;
+            }
+            if (cur.right != null) {
+                queue.add(cur.right);
+                curNum++;
+            }
+            if (lastNum == 0) {
+                lastNum = curNum;
+                curNum = 0;
+                res.add(list);
+                list = new ArrayList<Integer>();
+            }
+        }
+        return res;
     }
 
     public static class TreeNode {

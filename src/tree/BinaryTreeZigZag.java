@@ -27,23 +27,12 @@ import java.util.Queue;
  * Tags: Tree, BFS, Stack
  */
 class BinaryTreeZigZag {
-    public static class TreeNode {
-        int      val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public static void main(String[] args) {
         TreeNode head = buildTree();
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrder(head).toString());
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrderB(head).toString());
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrderC(head).toString());
     }
-
     /**
      * Use queue to do BFS.
      * Get queue's size to get nodes in each level.
@@ -79,7 +68,7 @@ class BinaryTreeZigZag {
 
     /**
      * Use two lists, one for cur level, one for next level
-     * Use a binary flag to determin whether we toggle the order of current level or not
+     * Use a binary flag to determine whether we toggle the order of current level or not
      * Update flag after each level
      */
     public List<List<Integer>> zigzagLevelOrderB(TreeNode root) {
@@ -110,7 +99,9 @@ class BinaryTreeZigZag {
         return res;
     }
 
-    /**use stack*/
+    /**
+     * use stack
+     */
     public ArrayList<ArrayList<Integer>> zigzagLevelOrderC(TreeNode root) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (root == null)
@@ -168,5 +159,14 @@ class BinaryTreeZigZag {
         t1.right = t4;
         t2.right = t5;
         return t0;
+    }
+    public static class TreeNode {
+        int      val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

@@ -1,4 +1,4 @@
-package medium;
+package dP;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
@@ -68,6 +68,7 @@ class BestTimeStock {
         return max;
     }
 
+    /**ganker*/
     public static int maxProfit3(int[] prices) {
         if (prices == null || prices.length == 0)
             return 0;

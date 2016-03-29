@@ -3,22 +3,18 @@ package rectangle;
 /**
  * Write an efficient algorithm that searches for a value in an m x n matrix.
  * This matrix has the following properties:
- * <p/>
  * Integers in each row are sorted from left to right.
  * The first integer of each row is greater than the last integer of the
  * previous row.
- * <p/>
  * For example,
- * <p/>
  * Consider the following matrix:
- * <p/>
  * [
  * [1,   3,  5,  7],
  * [10, 11, 16, 20],
  * [23, 30, 34, 50]
  * ]
  * Given target = 3, return true.
- * <p/>
+ *
  * Tags: Array, Binary Search
  */
 class Searcha2DMatrix {
@@ -32,8 +28,9 @@ class Searcha2DMatrix {
         System.out.println(s.searchMatrixBest(matrix, 1));
         System.out.println(s.searchMatrixC(matrix, 1));
         System.out.println(s.searchMatrix(matrix, 100));
-        System.out.println(s.searchMatrixBest(matrix, 100));
         System.out.println(s.searchMatrixC(matrix, 100));
+        System.out.println(s.searchMatrixA2(matrix, 100));
+        System.out.println(s.searchMatrixBest(matrix, 100));
     }
 
     /**
@@ -73,6 +70,38 @@ class Searcha2DMatrix {
         return false;
     }
 
+    public boolean searchMatrixA2(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        int l = 0;
+        int r = matrix.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (matrix[mid][0] == target)
+                return true;
+            if (matrix[mid][0] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        int row = r;
+        if (row < 0)
+            return false;
+        l = 0;
+        r = matrix[0].length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (matrix[row][mid] == target)
+                return true;
+            if (matrix[row][mid] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return false;
+    }
     /**
      * n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
      * an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
@@ -80,9 +109,6 @@ class Searcha2DMatrix {
      * disadvantage: 1. m * n may overflow 2. / and % are expensive
      */
 
-    /**
-     * 会溢出-------？？？？？？
-     */
     public boolean searchMatrixBest(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return false;
@@ -93,9 +119,10 @@ class Searcha2DMatrix {
         int mid;
         while (left <= right) {
             mid = left + (right - left) / 2;
-            if (matrix[mid / m][mid % m] == target)
+            //对n除 对n取余  why？？
+            if (matrix[mid / n][mid % n] == target)
                 return true;
-            else if (matrix[mid / m][mid % m] > target)
+            else if (matrix[mid / n][mid % n] > target)
                 right = mid - 1;
             else
                 left = mid + 1;

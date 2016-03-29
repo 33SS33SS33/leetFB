@@ -28,6 +28,7 @@ class SearchInsertPos {
     /**
      * Binary search
      * r = m - 1, l = m + 1
+     * 复杂度是O(logn)，空间复杂度O(1)
      */
     public int searchInsert(int[] A, int target) {
         if (A == null || A.length == 0)

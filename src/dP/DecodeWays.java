@@ -26,6 +26,8 @@ class DecodeWays {
 
         System.out.println(d.numDecodings("12"));
         System.out.println(d.numDecodingsOptimal("12"));
+        System.out.println(d.numDecodingsC("12"));
+        System.out.println(d.numDecodingsD("12"));
     }
 
     /**
@@ -76,13 +78,11 @@ class DecodeWays {
             return 0;
         int[] t = new int[s.length() + 1];
         t[0] = 1;
-
         //if(s.charAt(0)!='0')
         if (isValid(s.substring(0, 1)))
             t[1] = 1;
         else
             t[1] = 0;
-
         for (int i = 2; i <= s.length(); i++) {
             if (isValid(s.substring(i - 1, i))) {
                 t[i] += t[i - 1];
@@ -92,6 +92,35 @@ class DecodeWays {
             }
         }
         return t[s.length()];
+    }
+
+    public int numDecodingsD(String s) {
+        if (s == null || s.length() == 0 || s.charAt(0) == '0') {
+            return 0;
+        }
+        int num1 = 1;
+        int num2 = 1;
+        int num3;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == '0') {
+                if (s.charAt(i - 1) == '1' || s.charAt(i - 1) == '2')
+                    num3 = num1;
+                else
+                    return 0;
+            } else {
+                if (s.charAt(i - 1) == '0' || s.charAt(i - 1) >= '3')
+                    num3 = num2;
+                else {
+                    if (s.charAt(i - 1) == '2' && s.charAt(i) >= '7' && s.charAt(i) <= '9')
+                        num3 = num2;
+                    else
+                        num3 = num1 + num2;
+                }
+            }
+            num1 = num2;
+            num2 = num3;
+        }
+        return num2;
     }
 
     public boolean isValid(String s) {

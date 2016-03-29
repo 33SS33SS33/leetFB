@@ -17,7 +17,6 @@ class Sqrt {
     /**
      * Validate input first
      * Binary Search from 1 ~ x
-     * <p/>
      * Negative?
      * Perfect square?
      * Note possible overflows when mid * mid or (left + right) / 2.
@@ -30,7 +29,6 @@ class Sqrt {
         int left = 1; // search range
         int right = x;
         int mid;
-
         while (left <= right) { // can equal
             mid = left + (right - left) / 2; // left + right can overflow
             if (mid == x / mid)
@@ -40,7 +38,6 @@ class Sqrt {
             else
                 left = mid + 1; // break equal
         }
-
         return right;
     }
 }

@@ -11,9 +11,11 @@ public class MaxSubArray {
     }
 
     /**
-     * 3.8遇到
+     * 3.8遇到 经典动归
      */
     public int maxSubArray2(int[] A) {
+        if(A==null || A.length==0)
+            return 0;
         int maxEndingHere = A[0], maxSoFar = A[0];
         for (int i = 1; i < A.length; i++) {
             maxEndingHere = Math.max(maxEndingHere + A[i], A[i]);

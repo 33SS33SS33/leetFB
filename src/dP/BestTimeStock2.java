@@ -1,4 +1,4 @@
-package medium;
+package dP;
 
 /**
  * Say you have an array for which the ith element is the price of a given

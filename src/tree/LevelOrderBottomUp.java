@@ -1,9 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Given a binary tree, return the bottom-up level order traversal of its
@@ -43,7 +40,7 @@ class LevelOrderBottomUp {
         System.out.println(new LevelOrderBottomUp().levelOrderBottomB(root).toString());
     }
 
-    /**
+    /** 每次插入链表的头结点
      * Use a level list to store the nodes of this level
      * Add root to it to begin
      * Build next level with current level, add current level value to result
@@ -74,7 +71,7 @@ class LevelOrderBottomUp {
     }
 
     /**
-     * creek
+     * creek  --level order然后对结果进行一次reverse。时间上和空间上仍是O(n)。
      */
     public List<ArrayList<Integer>> levelOrderBottomB(TreeNode root) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -102,7 +99,8 @@ class LevelOrderBottomUp {
                 numberList = new ArrayList<Integer>();
             }
         }
-        //return Collections.reverse(result);
+//        Collections.reverse(result);
+//        return result;
         ArrayList<ArrayList<Integer>> reversedResult = new ArrayList<ArrayList<Integer>>();
         for (int i = result.size() - 1; i >= 0; i--) {
             reversedResult.add(result.get(i));
