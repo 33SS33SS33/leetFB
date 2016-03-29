@@ -31,15 +31,15 @@ class ThreeSum {
     public static void main(String[] args) {
         ThreeSum t = new ThreeSum();
         int[] s = { -1, 0, 1, 2, -1, -4 };
-        t.printResult(t.threeSum(s));
-        ArrayList<ArrayList<Integer>> res = threeSumB(s);
-        for (List<Integer> l : res) {
-            System.out.print(l.toString());
-        }
+//        t.printResult(t.threeSum(s));
+//        ArrayList<ArrayList<Integer>> res = threeSumB(s);
+//        for (List<Integer> l : res) {
+//            System.out.print(l.toString());
+//        }
         ArrayList<List<Integer>> res2 = threeSumC(s);
-        for (List<Integer> l2 : res2) {
-            System.out.print(l2.toString());
-        }
+            System.out.print(res2.toString());
+//        ArrayList<ArrayList<Integer>> res3 = threeSumD(s);
+//        System.out.print(res3.toString());
     }
 
     /**
@@ -56,7 +56,6 @@ class ThreeSum {
                 continue; // skip duplicate
             if (num[i] > 0)
                 break; // stop at positive integers
-
             int j = i + 1;
             int k = num.length - 1;
             while (j < k) {
@@ -66,7 +65,6 @@ class ThreeSum {
                 }
                 if (num[i] + num[j] > 0)
                     break;// already bigger than 0
-
                 if (num[i] + num[j] + num[k] < 0)
                     j++;
                 else if (num[i] + num[j] + num[k] > 0)
@@ -83,16 +81,6 @@ class ThreeSum {
             }
         }
         return res;
-    }
-
-    private void printResult(List<List<Integer>> result) {
-        for (List<Integer> l : result) {
-            System.out.print("{");
-            for (Integer i : l) {
-                System.out.print(" " + i);
-            }
-            System.out.println(" }");
-        }
     }
 
     /**
@@ -167,5 +155,59 @@ class ThreeSum {
             }
         }
         return result;
+    }
+
+    /**ganker----*/
+    public static ArrayList<ArrayList<Integer>> threeSumD(int[] num) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if (num == null || num.length <= 2)
+            return res;
+        Arrays.sort(num);
+        for (int i = num.length - 1; i >= 2; i--) {
+            if (i < num.length - 1 && num[i] == num[i + 1])
+                continue;
+            ArrayList<ArrayList<Integer>> curRes = twoSum(num, i - 1, -num[i]);
+            for (int j = 0; j < curRes.size(); j++) {
+                curRes.get(j).add(num[i]);
+            }
+            res.addAll(curRes);
+        }
+        return res;
+    }
+    private static ArrayList<ArrayList<Integer>> twoSum(int[] num, int end, int target) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        if (num == null || num.length <= 1)
+            return res;
+        int l = 0;
+        int r = end;
+        while (l < r) {
+            if (num[l] + num[r] == target) {
+                ArrayList<Integer> item = new ArrayList<Integer>();
+                item.add(num[l]);
+                item.add(num[r]);
+                res.add(item);
+                l++;
+                r--;
+                while (l < r && num[l] == num[l - 1])
+                    l++;
+                while (l < r && num[r] == num[r + 1])
+                    r--;
+            } else if (num[l] + num[r] > target) {
+                r--;
+            } else {
+                l++;
+            }
+        }
+        return res;
+    }
+
+    private void printResult(List<List<Integer>> result) {
+        for (List<Integer> l : result) {
+            System.out.print("{");
+            for (Integer i : l) {
+                System.out.print(" " + i);
+            }
+            System.out.println(" }");
+        }
     }
 }
