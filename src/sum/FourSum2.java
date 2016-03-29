@@ -45,7 +45,6 @@ class FourSum2 {
         if (num == null || num.length < 4)
             return res;
         Arrays.sort(num);
-
         for (int i = 0; i < num.length - 3; i++) { // 3 indices remain
             if (i > 0 && num[i] == num[i - 1])
                 continue; // skip duplicate
@@ -78,7 +77,7 @@ class FourSum2 {
                 }
             }
         }
-
         return res;
     }
+
 }

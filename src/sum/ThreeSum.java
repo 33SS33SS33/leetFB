@@ -157,7 +157,8 @@ class ThreeSum {
         return result;
     }
 
-    /**ganker----*/
+    /**ganker----在这里为了避免重复结果，对于已经判断过的数会skip掉，这也是排序带来的方便
+     * 时间复杂度为O(n^2+nlogn)=(n^2),空间复杂度是O(n)*/
     public static ArrayList<ArrayList<Integer>> threeSumD(int[] num) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (num == null || num.length <= 2)

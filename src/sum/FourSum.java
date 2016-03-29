@@ -9,11 +9,12 @@ import java.util.Arrays;
 public class FourSum {
     public static void main(String[] args) {
         int[] num = { 2, 5, 3, 1, 6 };
-        System.out.println(new FourSum().fourSum(num, 8).toString());
+        System.out.println(new FourSum().fourSumA(num, 8).toString());
 
     }
-
-    public ArrayList<ArrayList<Integer>> fourSum(int[] num, int target) {
+    /**错的*/
+    /*总时间复杂度是O(n^3*/
+    public ArrayList<ArrayList<Integer>> fourSumA(int[] num, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (num == null || num.length == 0)
             return res;
@@ -29,7 +30,6 @@ public class FourSum {
         }
         return res;
     }
-
     private ArrayList<ArrayList<Integer>> threeSum(int[] num, int end, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         for (int i = end; i > 1; i--) {
@@ -43,7 +43,6 @@ public class FourSum {
         }
         return res;
     }
-
     private ArrayList<ArrayList<Integer>> twoSum(int[] num, int end, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         int l = 0;
@@ -68,30 +67,25 @@ public class FourSum {
         }
         return res;
     }
-   /* private ArrayList<ArrayList<Integer>> twoSum(ArrayList<Pair> pairs, int target){
+
+ /*   private ArrayList<ArrayList<Integer>> twoSumB(ArrayList<Pair> pairs, int target) {
         HashSet<Tuple> hashSet = new HashSet<Tuple>();
         int l = 0;
-        int r = pairs.size()-1;
+        int r = pairs.size() - 1;
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        while(l<r){
-            if(pairs.get(l).getSum()+pairs.get(r).getSum()==target)
-            {
+        while (l < r) {
+            if (pairs.get(l).getSum() + pairs.get(r).getSum() == target) {
                 int lEnd = l;
                 int rEnd = r;
-                while(lEnd<rEnd && pairs.get(lEnd).getSum()==pairs.get(lEnd+1).getSum())
-                {
+                while (lEnd < rEnd && pairs.get(lEnd).getSum() == pairs.get(lEnd + 1).getSum()) {
                     lEnd++;
                 }
-                while(lEnd<rEnd && pairs.get(rEnd).getSum()==pairs.get(rEnd-1).getSum())
-                {
+                while (lEnd < rEnd && pairs.get(rEnd).getSum() == pairs.get(rEnd - 1).getSum()) {
                     rEnd--;
                 }
-                for(int i=l;i<=lEnd;i++)
-                {
-                    for(int j=r;j>=rEnd;j--)
-                    {
-                        if(check(pairs.get(i),pairs.get(j)))
-                        {
+                for (int i = l; i <= lEnd; i++) {
+                    for (int j = r; j >= rEnd; j--) {
+                        if (check(pairs.get(i), pairs.get(j))) {
                             ArrayList<Integer> item = new ArrayList<Integer>();
                             item.add(pairs.get(i).nodes[0].value);
                             item.add(pairs.get(i).nodes[1].value);
@@ -99,32 +93,28 @@ public class FourSum {
                             item.add(pairs.get(j).nodes[1].value);
                             //Collections.sort(item);
                             Tuple tuple = new Tuple(item);
-                            if(!hashSet.contains(tuple))
-                            {
+                            if (!hashSet.contains(tuple)) {
                                 hashSet.add(tuple);
                                 res.add(tuple.num);
                             }
                         }
                     }
                 }
-                l = lEnd+1;
-                r = rEnd-1;
-            }
-            else if(pairs.get(l).getSum()+pairs.get(r).getSum()>target)
-            {
+                l = lEnd + 1;
+                r = rEnd - 1;
+            } else if (pairs.get(l).getSum() + pairs.get(r).getSum() > target) {
                 r--;
-            }
-            else{
+            } else {
                 l++;
             }
         }
         return res;
     }
-    private boolean check(Pair p1, Pair p2)
-    {
-        if(p1.nodes[0].index == p2.nodes[0].index || p1.nodes[0].index == p2.nodes[1].index)
+
+    private boolean check(Pair p1, Pair p2) {
+        if (p1.nodes[0].index == p2.nodes[0].index || p1.nodes[0].index == p2.nodes[1].index)
             return false;
-        if(p1.nodes[1].index == p2.nodes[0].index || p1.nodes[1].index == p2.nodes[1].index)
+        if (p1.nodes[1].index == p2.nodes[0].index || p1.nodes[1].index == p2.nodes[1].index)
             return false;
         return true;
     }*/
