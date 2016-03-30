@@ -3,7 +3,6 @@ package medium;
 /**
  * Implement int sqrt(int x).
  * Compute and return the square root of x.
- * <p/>
  * Tags: Math, Binary Search
  */
 class Sqrt {

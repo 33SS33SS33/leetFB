@@ -14,6 +14,48 @@ class MaxPoints {
 
     }
 
+    /*， 每次迭代以某一个点为基准， 看后面每一个点跟它构成的直线， 维护一个HashMap， key是跟这个点构成直线的斜率的值，
+     而value就是该斜率对应的点的数量， 计算它的斜率， 如果已经存在， 那么就多添加一个点， 否则创建新的key。
+      时间复杂度是O（n^2), 空间复杂度是哈希表的大小， 也就是O（n),*/
+    public int maxPointsA1(Point[] points) {
+        if (points == null || points.length == 0)
+            return 0;
+        int max = 1;
+        double ratio = 0.0;
+        for (int i = 0; i < points.length - 1; i++) {
+            HashMap<Double, Integer> map = new HashMap<Double, Integer>();
+            int numofSame = 0;
+            int localMax = 1;
+            for (int j = i + 1; j < points.length; j++) {
+                if (points[j].x == points[i].x && points[j].y == points[i].y) {
+                    numofSame++;
+                    continue;
+                } else if (points[j].x == points[i].x) {
+                    ratio = (double) Integer.MAX_VALUE;
+                } else if (points[j].y == points[i].y) {
+                    ratio = 0.0;
+                } else {
+                    ratio = (double) (points[j].y - points[i].y) / (double) (points[j].x
+                            - points[i].x);
+                }
+                int num;
+                if (map.containsKey(ratio)) {
+                    num = map.get(ratio) + 1;
+
+                } else {
+                    num = 2;
+                }
+                map.put(ratio, num);
+            }
+            for (Integer value : map.values()) {
+                localMax = Math.max(localMax, value);
+            }
+            localMax += numofSame;
+            max = Math.max(max, localMax);
+        }
+        return max;
+    }
+
     /**
      * Set a point and go through the rest
      * Use max to record the max points of current loop
@@ -21,11 +63,10 @@ class MaxPoints {
      * Use result to track the max points
      * Use a map to store lines, key is the feature of the line, value is the
      * number of points
-     *
      * @param points points generated, can be same
      * @return number of max points share a same line
      */
-    private static int maxPoints(Point[] points) {
+    private static int maxPointsA(Point[] points) {
         if (points.length < 3) return points.length; // 0/1/2 points
         int res = 1; // at least 1 point
         Map<String, Integer> map = new HashMap<String, Integer>(); // line,count
@@ -51,11 +92,9 @@ class MaxPoints {
         }
         return res;
     }
-
     /**
      * use ax + by = c to represent a line and a|b|c as a key for that line
      * a, b, c should be normalized, how?
-     *
      * special case, vertical, horizontal
      */
     private static String normalize(Point p1, Point p2) {
@@ -87,20 +126,11 @@ class MaxPoints {
         }
         return a + "|" + b + "|" + c; // key format
     }
-
-    /**
-     * recursively calculate the greateset common divisor of two numbers
+    /**recursively calculate the greateset common divisor of two numbers
      */
     private static int gcd(int a, int b) {
         if (b == 0) return a; // stop when b == 0, a is the gcd
         return gcd(b, a % b); // a <- b, b <- a % b
-    }
-
-    class Point {
-        int x;
-        int y;
-        Point() { x = 0; y = 0;}
-        Point(int a, int b) { x = a; y = b; }
     }
 
     /**creek
@@ -108,10 +138,8 @@ class MaxPoints {
      * When counting, we need to be careful about the duplicate points and points on the vertical lines.*/
     public int maxPointsB(Point[] points) {
         if(points == null || points.length == 0) return 0;
-
         HashMap<Double, Integer> result = new HashMap<Double, Integer>();
         int max=0;
-
         for(int i=0; i<points.length; i++){
             int duplicate = 1;//
             int vertical = 0;
@@ -135,17 +163,23 @@ class MaxPoints {
                     }
                 }
             }
-
             for(Integer count: result.values()){
                 if(count+duplicate > max){
                     max = count+duplicate;
                 }
             }
-
             max = Math.max(vertical + duplicate, max);
             result.clear();
         }
         return max;
     }
+    class Point {
+        int x;
+        int y;
+        Point() { x = 0; y = 0;}
+        Point(int a, int b) { x = a; y = b; }
+    }
+
+
 
 }

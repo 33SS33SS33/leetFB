@@ -68,7 +68,7 @@ public class FourSum {
         return res;
     }
 
- /*   private ArrayList<ArrayList<Integer>> twoSumB(ArrayList<Pair> pairs, int target) {
+/*    private ArrayList<ArrayList<Integer>> twoSumB(ArrayList<Pair> pairs, int target) {
         HashSet<Tuple> hashSet = new HashSet<Tuple>();
         int l = 0;
         int r = pairs.size() - 1;

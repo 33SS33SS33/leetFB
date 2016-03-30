@@ -17,7 +17,6 @@ class PowX {
      * Questions:
      * 1. can x be zero?
      * 2. can n be negative?
-     * <p/>
      * When n is odd, multiply result by f
      * f multiply by itself each time
      * Repeat until n == 0
@@ -53,7 +52,6 @@ class PowX {
             return power(x, n);
         }
     }
-
     public double power(double x, int n) {
         if (n == 0)
             return 1;
@@ -64,4 +62,5 @@ class PowX {
             return v * v * x;
         }
     }
+    
 }
