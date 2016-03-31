@@ -7,16 +7,17 @@ package easy;
  * Tags: Linkedlist
  */
 public class MergeTwoLists {
-    class ListNode {
-        int      val;
-        ListNode next;
+    public static void main(String[] args) {
+        ListNode head1=buildList();
+        ListNode head2=buildList2();
+        ListNode res=new MergeTwoLists().mergeTwoListsB(head1,head2);
 
-        public ListNode(int value) {
-            this.val = value;
-        }
+       while(res.next!=null){
+           System.out.print(res.val+",");
+           res=res.next;
+       }
     }
-
-    /**
+    /**递归
      * Recursive
      * the order of l1, l2 doesn't matter
      */
@@ -35,10 +36,10 @@ public class MergeTwoLists {
         }
     }
 
-    /**
+    /**迭代
      * iterasive
      */
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoListsB(ListNode l1, ListNode l2) {
         if (l1 == null)
             return l2;
         if (l2 == null)
@@ -57,7 +58,6 @@ public class MergeTwoLists {
             }
             temp = temp.next;
         }
-        // merge remain
         while (l1 != null) {
             temp.next = l1;
             temp = temp.next;
@@ -70,4 +70,72 @@ public class MergeTwoLists {
         }
         return beforeHead.next.next;
     }
+
+    public ListNode mergeTwoListsB2(ListNode l1, ListNode l2) {
+        ListNode helper = new ListNode(0);
+        ListNode pre = helper;
+        helper.next = l1;
+        while (l1 != null && l2 != null) {
+            if (l1.val > l2.val) {
+                ListNode next = l2.next;
+                l2.next = pre.next;
+                pre.next = l2;
+                l2 = next;
+            } else {
+                l1 = l1.next;
+            }
+            pre = pre.next;
+
+        }
+        if (l2 != null) {
+            pre.next = l2;
+        }
+        return helper.next;
+    }
+    public ListNode mergeTwoListsB3(ListNode l1, ListNode l2) {
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        ListNode fakeHead = new ListNode(0);
+        ListNode p = fakeHead;
+        while (p1 != null && p2 != null) {
+            if (p1.val <= p2.val) {
+                p.next = p1;
+                p1 = p1.next;
+            } else {
+                p.next = p2;
+                p2 = p2.next;
+            }
+            p = p.next;
+        }
+        if (p1 != null)
+            p.next = p1;
+        if (p2 != null)
+            p.next = p2;
+        return fakeHead.next;
+    }
+    static ListNode buildList() {
+        ListNode node0 = new ListNode(1);
+        ListNode node1 = new ListNode(2);
+        ListNode node2 = new ListNode(6);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
+    }
+    static ListNode buildList2() {
+        ListNode node0 = new ListNode(3);
+        ListNode node1 = new ListNode(7);
+        ListNode node2 = new ListNode(9);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
+    }
+    static class ListNode {
+        int      val;
+        ListNode next;
+
+        public ListNode(int value) {
+            this.val = value;
+        }
+    }
+
 }

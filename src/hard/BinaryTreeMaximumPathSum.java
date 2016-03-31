@@ -22,7 +22,6 @@ class BinaryTreeMaximumPathSum {
     }
 
     int max;
-
     /**
      * Post order traversal
      * Get path sum of left and right sub trees
@@ -35,7 +34,6 @@ class BinaryTreeMaximumPathSum {
         helper(root);
         return max;
     }
-
     /**
      * Post order traversal
      */
@@ -54,11 +52,9 @@ class BinaryTreeMaximumPathSum {
         TreeNode t0 = new TreeNode(20);
         TreeNode t1 = new TreeNode(9);
         TreeNode t2 = new TreeNode(49);
-
         TreeNode t3 = new TreeNode(5);
         TreeNode t4 = new TreeNode(12);
         TreeNode t5 = new TreeNode(15);
-
         TreeNode t6 = new TreeNode(23);
         TreeNode t7 = new TreeNode(52);
         TreeNode t8 = new TreeNode(50);
