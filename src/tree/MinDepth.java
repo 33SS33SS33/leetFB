@@ -36,6 +36,24 @@ public class MinDepth {
     }
 
     /**
+     * Recursive 递归*/
+     /* Get minDepth of left and right subtree
+     * If one side is 0, return the other side plus 1
+     * Return the smaller one + 1
+     */
+    public int minDepth2(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = minDepth2(root.left);
+        int right = minDepth2(root.right);
+        if (left == 0)
+            return right + 1;
+        if (right == 0)
+            return left + 1;
+        return Math.min(left, right) + 1; // plus root
+    }
+
+    /**
      * creek----
      */
     public int minDepthA(TreeNode root) {
@@ -85,24 +103,6 @@ public class MinDepth {
             }
         }
         return depth;
-    }
-
-    /**
-     * Recursive
-     * Get minDepth of left and right subtree
-     * If one side is 0, return the other side plus 1
-     * Return the smaller one + 1
-     */
-    public int minDepth2(TreeNode root) {
-        if (root == null)
-            return 0;
-        int left = minDepth2(root.left);
-        int right = minDepth2(root.right);
-        if (left == 0)
-            return right + 1;
-        if (right == 0)
-            return left + 1;
-        return Math.min(left, right) + 1; // plus root
     }
 
     static class TreeNode {
