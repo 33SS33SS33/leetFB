@@ -5,10 +5,8 @@ import java.util.*;
 /**
  * Given a matrix of m x n elements (m rows, n columns), return all elements of
  * the matrix in spiral order.
- * <p/>
  * For example,
  * Given the following matrix:
- * <p/>
  * [
  * [ 1, 2, 3 ],
  * [ 4, 5, 6 ],

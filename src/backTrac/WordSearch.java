@@ -2,23 +2,21 @@ package backTrac;
 
 /**
  * Given a 2D board and a word, find if the word exists in the grid.
- * <p/>
  * The word can be constructed from letters of sequentially adjacent cell,
  * where "adjacent" cells are those horizontally or vertically neighboring. The
  * same letter cell may not be used more than once.
- * <p/>
  * For example,
+ *
  * Given board =
  * [
  * ["ABCE"],
  * ["SFCS"],
  * ["ADEE"]
  * ]
- * <p/>
  * word = "ABCCED", -> returns true,
  * word = "SEE", -> returns true,
  * word = "ABCB", -> returns false.
- * <p/>
+ *
  * Tags: Array, Backtracking
  */
 class WordSearch {
@@ -40,7 +38,6 @@ class WordSearch {
             return false;
         if (word.length() == 0)
             return true;
-
         for (int i = 0; i < board.length; i++)
             for (int j = 0; j < board[0].length; j++)
                 if (board[i][j] == word.charAt(0)) { // match the first char
@@ -49,7 +46,6 @@ class WordSearch {
                 }
         return false;
     }
-
     /**
      * Remember position in board
      * Remember position in matched word
@@ -58,14 +54,12 @@ class WordSearch {
         if (word.length() == n)
             return true;
         // outside board or doesn't match
-        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word
-                .charAt(n))
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(n))
             return false;
         board[i][j] = '#'; // mark 
         // search 4 connectivity
-        boolean res =
-                dfs(board, i - 1, j, word, n + 1) || dfs(board, i + 1, j, word, n + 1) || dfs(board,
-                        i, j - 1, word, n + 1) || dfs(board, i, j + 1, word, n + 1);
+        boolean res = dfs(board, i - 1, j, word, n + 1) || dfs(board, i + 1, j, word, n + 1)
+                || dfs(board,i, j - 1, word, n + 1) || dfs(board, i, j + 1, word, n + 1);
         board[i][j] = word.charAt(n);// reset mark
         return res;
     }
@@ -73,6 +67,12 @@ class WordSearch {
     /**
      * solution2
      */
+    /*这道题很容易感觉出来是图的题目，其实本质上还是做深度优先搜索。基本思路就是从某一个元素出发，
+    往上下左右深度搜索是否有相等于word的字符串。这里注意每次从一个元素出发时要重置访问标记
+    （也就是说虽然单次搜索字符不能重复使用，但是每次从一个新的元素出发，字符还是重新可以用的）。
+    深度优先搜索的算法就不再重复解释了，不了解的朋友可以看看wiki - 深度优先搜索。我们知道一次搜索的复杂度是O(E+V)，
+    E是边的数量，V是顶点数量，在这个问题中他们都是O(m*n)量级的（因为一个顶点有固定上下左右四条边）。
+    加上我们对每个顶点都要做一次搜索， 所以总的时间复杂度最坏是O(m^2*n^2)，空间上就是要用一个数组来记录访问情况，所以是O(m*n)*/
     public static boolean existB(char[][] board, String word) {
         if (word == null || word.length() == 0)
             return true;
@@ -87,7 +87,6 @@ class WordSearch {
         }
         return false;
     }
-
     private static boolean search(char[][] board, String word, int index, int i, int j,
             boolean[][] used) {
         if (index == word.length())

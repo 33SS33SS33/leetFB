@@ -5,22 +5,20 @@ import java.util.*;
 /**
  * Given a 2D board containing 'X' and 'O', capture all regions surrounded by
  * 'X'.
- * <p/>
  * A region is captured by flipping all 'O's into 'X's in that surrounded
  * region.
- * <p/>
  * For example,
  * X X X X
  * X O O X
  * X X O X
  * X O X X
- * <p/>
+ *
  * After running your function, the board should be:
  * X X X X
  * X X X X
  * X X X X
  * X O X X
- * <p/>
+ *
  * Tags: BFS
  */
 class SurroundedRegions {
@@ -40,7 +38,10 @@ class SurroundedRegions {
             System.out.println();
         }
     }
-
+/*所以总的时间复杂度是O(m*n)。空间上就是递归栈（深度优先搜索）或者是队列（广度优先搜索）的空间，
+同时存在的空间占用不会超过O(m+n)（以广度优先搜索为例，每次队列中的结点虽然会往四个方向拓展，
+但是事实上这些结点会有很多重复，假设从中点出发，
+可以想象最大的扩展不会超过一个菱形，也就是n/2*2+m/2*2=m+n，所以算法的空间复杂度是O(m+n)）*/
     /**
      * Use a queue to store index to do BFS
      * A 2d boolean array to remember whether a point is visited
@@ -57,13 +58,11 @@ class SurroundedRegions {
     public static void solve(char[][] board) {
         if (board == null || board.length == 0 || board[0].length == 0)
             return;
-
         Queue<Integer> q = new LinkedList<Integer>();
         int m = board.length;
         int n = board[0].length;
         boolean[][] visited = new boolean[m][n];
         int[][] dir = { { 1, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } };
-
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] == 'O' && !visited[i][j]) {
@@ -104,7 +103,6 @@ class SurroundedRegions {
     public void solveB(char[][] board) {
         if (board == null || board.length == 0)
             return;
-
         int m = board.length;
         int n = board[0].length;
         //merge O's on left & right boarder
@@ -143,7 +141,6 @@ class SurroundedRegions {
         if (board[i][j] != 'O')
             return;
         board[i][j] = '#';
-
         merge(board, i - 1, j);
         merge(board, i + 1, j);
         merge(board, i, j - 1);

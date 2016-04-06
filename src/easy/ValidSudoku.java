@@ -4,14 +4,12 @@ import java.util.*;
 
 /**
  * Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
- * <p/>
  * The Sudoku board could be partially filled, where empty cells are filled
  * with the character '.'.
- * <p/>
  * Note:
  * A valid Sudoku board (partially filled) is not necessarily solvable. Only
  * the filled cells need to be validated.
- * <p/>
+ *
  * Tags: Hashtable
  */
 class ValidSudoku {
@@ -67,7 +65,6 @@ class ValidSudoku {
             }
         }
         return true;
-
     }
 
     /**
@@ -108,6 +105,8 @@ class ValidSudoku {
 
     /**
      * creek--------
+     * 对于每一行，每一列，每个九宫格进行验证，总共需要27次验证，每次看九个元素。
+     * 所以时间复杂度就是O(3*n^2), n=9
      */
     public boolean isValidSudokuC(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9)

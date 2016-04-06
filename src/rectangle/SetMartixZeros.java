@@ -3,7 +3,7 @@ package rectangle;
 /**
  * Given a m x n matrix, if an element is 0, set its entire row and column to
  * 0. Do it in place.
- * <p/>
+ *
  * Tags: Array
  */
 class SetMartixZeros {
@@ -24,6 +24,9 @@ class SetMartixZeros {
      * cols and rows are to be sets
      * Use two flags for whether first row and first col should be set
      */
+    /*这样的做法只需要两个额外变量，所以空间复杂度是O(1)。
+时间上来说上面三种方法都是一样的，需要进行两次扫描，一次确定行列置0情况，
+一次对矩阵进行实际的置0操作，所以总的时间复杂度是O(m*n)。*/
     public static void setZeros(int[][] matrix) {
         int row = matrix.length;
         int col = matrix[0].length;

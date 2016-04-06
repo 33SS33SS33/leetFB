@@ -2,12 +2,10 @@ package rectangle;
 
 /**
  * You are given an n x n 2D matrix representing an image.
- * <p/>
  * Rotate the image by 90 degrees (clockwise).
- * <p/>
  * Follow up:
  * Could you do this in-place?
- * <p/>
+ *
  * Tags: Array
  */
 class RotateImg {

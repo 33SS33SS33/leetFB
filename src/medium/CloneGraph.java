@@ -9,17 +9,15 @@ import java.util.*;
 /**
  * Clone an undirected graph. Each node in the graph contains a label and a
  * list of its neighbors.
- * <p/>
  * OJ's undirected graph serialization:
  * Nodes are labeled uniquely.
- * <p/>
+ *
  * We use # as a separator for each node, and , as a separator for node label
  * and each neighbor of the node.
  * As an example, consider the serialized graph {0,1,2#1,2#2,2}.
- * <p/>
+ *
  * The graph has a total of three nodes, and therefore contains three parts as
  * separated by #.
- * <p/>
  * First node is labeled as 0. Connect node 0 to both nodes 1 and 2.
  * Second node is labeled as 1. Connect node 1 to node 2.
  * Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming
@@ -40,6 +38,8 @@ class CloneGraph {
 
     }
 
+    /*这几种方法的时间复杂度都是O(n)（每个结点访问一次），
+    而空间复杂度则是栈或者队列的大小加上HashMap的大小，也不会超过O(n)。*/
     /**
      * ------creek-------
      */
@@ -69,7 +69,7 @@ class CloneGraph {
     }
 
     /**
-     * BFS, O(n) Time, O(n) Space
+     * BFS, O(n) Time, O(n) Space 广度优先
      * Use map<Integer, UndirectedGraphNode> to represent graph
      * Get node from queue
      * Check whether in graph already
@@ -130,6 +130,52 @@ class CloneGraph {
             }
         }
         return clone.get(node);
+    }
+
+    /*深度优先*/
+    public UndirectedGraphNode cloneGraphD(UndirectedGraphNode node) {
+        if (node == null)
+            return null;
+        LinkedList<UndirectedGraphNode> stack = new LinkedList<UndirectedGraphNode>();
+        HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
+        stack.push(node);
+        UndirectedGraphNode copy = new UndirectedGraphNode(node.label);
+        map.put(node, copy);
+        while (!stack.isEmpty()) {
+            UndirectedGraphNode cur = stack.pop();
+            for (int i = 0; i < cur.neighbors.size(); i++) {
+                if (!map.containsKey(cur.neighbors.get(i))) {
+                    copy = new UndirectedGraphNode(cur.neighbors.get(i).label);
+                    map.put(cur.neighbors.get(i), copy);
+                    stack.push(cur.neighbors.get(i));
+                }
+                map.get(cur).neighbors.add(map.get(cur.neighbors.get(i)));
+            }
+        }
+        return map.get(node);
+    }
+
+    /*深度优先 递归实现*/
+    public UndirectedGraphNode cloneGraphD2(UndirectedGraphNode node) {
+        if (node == null)
+            return null;
+        HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
+        UndirectedGraphNode copy = new UndirectedGraphNode(node.label);
+        map.put(node, copy);
+        helper(node, map);
+        return copy;
+    }
+    private void helper(UndirectedGraphNode node,
+            HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
+        for (int i = 0; i < node.neighbors.size(); i++) {
+            UndirectedGraphNode cur = node.neighbors.get(i);
+            if (!map.containsKey(cur)) {
+                UndirectedGraphNode copy = new UndirectedGraphNode(cur.label);
+                map.put(cur, copy);
+                helper(cur, map);
+            }
+            map.get(node).neighbors.add(map.get(cur));
+        }
     }
 
     class UndirectedGraphNode {
