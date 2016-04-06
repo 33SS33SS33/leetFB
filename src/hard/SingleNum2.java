@@ -15,6 +15,7 @@ class SingleNum2 {
         int[] A = {1, 1, 1, 2, 2, 2, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7};
         System.out.println(singleNum(A));
         System.out.println( singleNumberB(A));
+        System.out.println( singleNumberC(A));
     }
     
     /**Use ones to store those nums only appeared once
@@ -39,5 +40,20 @@ class SingleNum2 {
             twos &= ~threes;
         }
         return ones;
+    }
+
+    /*时间复杂度是O(n)。而空间复杂度需要一个32个元素的数组，也是固定的，因而空间复杂度是O(1)*/
+    public static int singleNumberC(int[] A) {
+        int[] digits = new int[32];
+        for (int i = 0; i < 32; i++) {
+            for (int j = 0; j < A.length; j++) {
+                digits[i] += (A[j] >> i) & 1;
+            }
+        }
+        int res = 0;
+        for (int i = 0; i < 32; i++) {
+            res += (digits[i] % 3) << i;
+        }
+        return res;
     }
 }

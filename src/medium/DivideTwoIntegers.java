@@ -11,6 +11,7 @@ class DivideTwoIntegers {
         DivideTwoIntegers d = new DivideTwoIntegers();
         System.out.println(d.divide(100, 3));
         System.out.println(d.divideB(100, 3));
+        System.out.println(d.divideC(100, 3));
     }
 
     /**
@@ -75,6 +76,7 @@ class DivideTwoIntegers {
         }
     }
 
+    /*因为这个方法的迭代次数是按2的幂直到超过结果，所以时间复杂度为O(logn)*/
     public int divideC(int dividend, int divisor) {
         if (divisor == 0) {
             return Integer.MAX_VALUE;
