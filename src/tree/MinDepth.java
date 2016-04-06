@@ -30,9 +30,9 @@ public class MinDepth {
         n1.right = n4;
         n2.right = n5;
 
-        System.out.println(new MinDepth().minDepth(root));
-        System.out.println(new MinDepth().minDepth2(root));
         System.out.println(new MinDepth().minDepthA(root));
+        System.out.println(new MinDepth().minDepthB(root));
+        System.out.println(new MinDepth().minDepth(root));
     }
 
     /**
@@ -41,11 +41,11 @@ public class MinDepth {
      * If one side is 0, return the other side plus 1
      * Return the smaller one + 1
      */
-    public int minDepth2(TreeNode root) {
+    public int minDepthA(TreeNode root) {
         if (root == null)
             return 0;
-        int left = minDepth2(root.left);
-        int right = minDepth2(root.right);
+        int left = minDepthA(root.left);
+        int right = minDepthA(root.right);
         if (left == 0)
             return right + 1;
         if (right == 0)
@@ -56,7 +56,7 @@ public class MinDepth {
     /**
      * creek----
      */
-    public int minDepthA(TreeNode root) {
+    public int minDepthB(TreeNode root) {
         if (root == null) {
             return 0;
         }

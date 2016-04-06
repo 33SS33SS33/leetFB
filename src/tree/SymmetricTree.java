@@ -1,29 +1,26 @@
 package tree;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
  * Given a binary tree, check whether it is a mirror of itself (ie, symmetric
  * around its center).
- * <p/>
  * For example, this binary tree is symmetric:
- * <p/>
  * 1
  * / \
  * 2   2
  * / \ / \
  * 3  4 4  3
- * <p/>
+ *
  * But the following is not:
  * 1
  * / \
  * 2   2
  * \   \
  * 3    3
- * <p/>
  * Note:
  * Bonus points if you could solve it both recursively and iteratively.
- * <p/>
  * Tags: Tree, DFS, Stack
  */
 class SymmetricTree {
@@ -54,13 +51,28 @@ class SymmetricTree {
         n22.right = n24;
         System.out.println(new SymmetricTree().isSymmetric(root1));
         System.out.println(new SymmetricTree().isSymmetricRec(root1));
-        System.out.println(new SymmetricTree().isSymmetricC(root1));
         System.out.println(new SymmetricTree().isSymmetric(root2));
         System.out.println(new SymmetricTree().isSymmetricRec(root2));
-        System.out.println(new SymmetricTree().isSymmetricC(root2));
     }
 
-    /**
+    /**递归  算法的时间复杂度是树的遍历O(n)，空间复杂度同样与树遍历相同是O(logn)
+     * Recursive, pre-order traversal
+     * Check two symmetric nodes a time
+     */
+    private boolean isSymmetricRec(TreeNode root) {
+        if (root == null)
+            return true;
+        return helper(root.left, root.right);
+    }
+
+    private boolean helper(TreeNode n1, TreeNode n2) {
+        if (n1 == null || n2 == null)
+            return n1 == n2;
+        return n1.val == n2.val && helper(n1.left, n2.right) && helper(n1.right, n2.left);
+    }
+
+
+    /** 非递归方法是使用层序遍历来判断对称性质
      * Use a stack to store nodes in order
      * Then pop and compare
      */
@@ -85,44 +97,36 @@ class SymmetricTree {
         return true;
     }
 
-    /**
-     * Recursive, pre-order traversal
-     * Check two symmetric nodes a time
-     */
-    private boolean isSymmetricRec(TreeNode root) {
-        if (root == null)
-            return true;
-        return helper(root.left, root.right);
-    }
-
-    private boolean helper(TreeNode n1, TreeNode n2) {
-        if (n1 == null || n2 == null)
-            return n1 == n2;
-        return n1.val == n2.val && helper(n1.left, n2.right) && helper(n1.right, n2.left);
-    }
-
-    /**
-     * --------creek--------
-     */
     public boolean isSymmetricC(TreeNode root) {
         if (root == null)
             return true;
-        return isSymmetric(root.left, root.right);
-    }
-
-    public boolean isSymmetric(TreeNode l, TreeNode r) {
-        if (l == null && r == null) {
+        if (root.left == null && root.right == null)
             return true;
-        } else if (r == null || l == null) {
+        if (root.left == null || root.right == null)
             return false;
-        }
-        if (l.val != r.val)
-            return false;
-        if (!isSymmetric(l.left, r.right))
-            return false;
-        if (!isSymmetric(l.right, r.left))
-            return false;
+        LinkedList<TreeNode> q1 = new LinkedList<TreeNode>();
+        LinkedList<TreeNode> q2 = new LinkedList<TreeNode>();
+        q1.add(root.left);
+        q2.add(root.right);
+        while (!q1.isEmpty() && !q2.isEmpty()) {
+            TreeNode n1 = q1.poll();
+            TreeNode n2 = q2.poll();
 
+            if (n1.val != n2.val)
+                return false;
+            if (n1.left == null && n2.right != null || n1.left != null && n2.right == null)
+                return false;
+            if (n1.right == null && n2.left != null || n1.right != null && n2.left == null)
+                return false;
+            if (n1.left != null && n2.right != null) {
+                q1.add(n1.left);
+                q2.add(n2.right);
+            }
+            if (n1.right != null && n2.left != null) {
+                q1.add(n1.right);
+                q2.add(n2.left);
+            }
+        }
         return true;
     }
 

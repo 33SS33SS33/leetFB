@@ -3,19 +3,22 @@ package medium;
 /**
  * Given two numbers represented as strings, return multiplication of the
  * numbers as a string.
- * <p/>
  * Note: The numbers can be arbitrarily large and are non-negative.
- * <p/>
+ *
  * Tags: Math, String
  */
 class MultiplyStrings {
     public static void main(String[] args) {
         String num1 = "322";
         String num2 = "3";
-        System.out.print(multiply(num1, num2));
+        System.out.print(multiplyA(num1, num2));
         System.out.print(multiplyB(num1, num2));
     }
-
+/*假设第一个数长度是n，第二个数长度是m，我们知道结果长度为m+n或者m+n-1（没有进位的情况）。
+对于某一位i，要计算这个位上的数字，我们需要对所有能组合出这一位结果的位进行乘法，
+即第1位和第i位，第2位和第i-1位，... ，然后累加起来，最后我们取个位上的数值，然后剩下的作为进位放到下一轮循环中。
+这个算法两层循环，每层循环次数是O(m+n)，所以时间复杂度是O((m+n)^2)。
+算法中不需要额外空间，只需要维护一个进位变量即可，所以空间复杂度是O(1)。*/
     /**
      * Use an integer array to store the result of each digit and build
      * Convert digit to integer to calculate res of each digit
@@ -23,7 +26,7 @@ class MultiplyStrings {
      * Note that the result digit is reversed in the array
      * Skip trailing zeros and build from behind
      */
-    public static String multiply(String num1, String num2) {
+    public static String multiplyA(String num1, String num2) {
         if (num1 == null || num2 == null)
             return "";
         if (num1.equals("0") || num2.equals("0"))
@@ -36,8 +39,7 @@ class MultiplyStrings {
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
                 // note += below
-                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j]
-                        - '0'); // reverse to keep zeros of result but skip unnecessary zeros
+                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j] - '0'); // reverse to keep zeros of result but skip unnecessary zeros
                 res[m + n - i - j - 1] += res[m + n - i - j - 2] / 10;
                 res[m + n - i - j - 2] %= 10;
             }
@@ -84,5 +86,27 @@ class MultiplyStrings {
             sb.deleteCharAt(0);
         }
         return sb.toString();
+    }
+
+    public String multiplyC(String num1, String num2) {
+        if (num1 == null || num2 == null || num1.length() == 0 || num2.length() == 0)
+            return "";
+        if (num1.charAt(0) == '0')
+            return "0";
+        if (num2.charAt(0) == '0')
+            return "0";
+        StringBuilder res = new StringBuilder();
+        int num = 0;
+        for (int i = num1.length() + num2.length(); i > 0; i--) {
+            for (int j = Math.min(i - 1, num1.length()); j > 0; j--) {
+                if (i - j <= num2.length()) {
+                    num += (int) (num1.charAt(j - 1) - '0') * (int) (num2.charAt(i - 1 - j) - '0');
+                }
+            }
+            if (i != 1 || num > 0)
+                res.append(num % 10);
+            num = num / 10;
+        }
+        return res.reverse().toString();
     }
 }

@@ -4,16 +4,15 @@ package medium;
  * You are given two linked lists representing two non-negative numbers. The
  * digits are stored in reverse order and each of their nodes contain a single
  * digit. Add the two numbers and return it as a linked list.
- * <p/>
+ *
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
  * Output: 7 -> 0 -> 8
- * <p/>
  * Tags: Linkedlist, Math
  */
 
-/**-----------错的-----------*/
+/**-----------错的----------
+ * 实现中注意维护进位，陷阱的话记住最后还要判一下有没有进位，如果有再生成一位-*/
 class AddTwoNum {
-
     public static void main(String[] args) {
         AddTwoNum s = new AddTwoNum();
         ListNode r1 = buildList1();
@@ -75,6 +74,51 @@ class AddTwoNum {
         return pre.next;
     }
 
+    public ListNode addTwoNumbersB(ListNode l1, ListNode l2) {
+        int carry = 0;
+        int digit = 0;
+        ListNode head = null;
+        ListNode pre = null;
+        while (l1 != null && l2 != null) {
+            digit = (l1.val + l2.val + carry) % 10;
+            carry = (l1.val + l2.val + carry) / 10;
+            ListNode newNode = new ListNode(digit);
+            if (head == null)
+                head = newNode;
+            else
+                pre.next = newNode;
+            pre = newNode;
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        while (l1 != null) {
+            digit = (l1.val + carry) % 10;
+            carry = (l1.val + carry) / 10;
+            ListNode newNode = new ListNode(digit);
+            if (head == null)
+                head = newNode;
+            else
+                pre.next = newNode;
+            pre = newNode;
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            digit = (l2.val + carry) % 10;
+            carry = (l2.val + carry) / 10;
+            ListNode newNode = new ListNode(digit);
+            if (head == null)
+                head = newNode;
+            else
+                pre.next = newNode;
+            pre = newNode;
+            l2 = l2.next;
+        }
+        if (carry > 0) {
+            ListNode newNode = new ListNode(carry);
+            pre.next = newNode;
+        }
+        return head;
+    }
     public static class ListNode {
         int      val;
         ListNode next;

@@ -10,7 +10,6 @@ package easy;
  * a = "11"
  * b = "1"
  * Return "100".
- * <p/>
  * Tags: Math, String
  */
 class AddBinary {
@@ -22,11 +21,11 @@ class AddBinary {
         System.out.println(addBinary(a, b));
         System.out.println(addBinaryB(a, b));
         System.out.println(addBinaryC(a, b));
+        System.out.println(addBinaryD(a, b));
     }
 
     /**
      * Traverse the longest binary backwards
-     * <p/>
      * Use + to insert to front, turn digit sum to int and restore to binary
      */
     public static String addBinary(String a, String b) {
@@ -132,6 +131,44 @@ class AddBinary {
 
         String reversed = sb.reverse().toString();
         return reversed;
+    }
+
+    /*时间复杂度是O(max(m,n))，m和n分别是两个字符串的长度，空间复杂度是结果的长度O(max(m,n))*/
+    public static String addBinaryD(String a, String b) {
+        if (a == null || a.length() == 0)
+            return b;
+        if (b == null || b.length() == 0)
+            return a;
+        int i = a.length() - 1;
+        int j = b.length() - 1;
+        int carry = 0;
+        StringBuilder res = new StringBuilder();
+        while (i >= 0 && j >= 0) {
+            int digit = (int) (a.charAt(i) - '0' + b.charAt(j) - '0') + carry;
+            carry = digit / 2;
+            digit %= 2;
+            res.append(digit);
+            i--;
+            j--;
+        }
+        while (i >= 0) {
+            int digit = (int) (a.charAt(i) - '0') + carry;
+            carry = digit / 2;
+            digit %= 2;
+            res.append(digit);
+            i--;
+        }
+        while (j >= 0) {
+            int digit = (int) (b.charAt(j) - '0') + carry;
+            carry = digit / 2;
+            digit %= 2;
+            res.append(digit);
+            j--;
+        }
+        if (carry > 0) {
+            res.append(carry);
+        }
+        return res.reverse().toString();
     }
 }
 
