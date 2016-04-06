@@ -5,13 +5,12 @@ import java.util.*;
 /**
  * Given a binary tree, determine if it is a valid binary search tree (BST).
  * Assume a BST is defined as follows:
- * <p/>
  * The left subtree of a node contains only nodes with keys less than the
  * node's key.
  * The right subtree of a node contains only nodes with keys greater than the
  * node's key.
  * Both the left and right subtrees must also be binary search trees.
- * <p/>
+ *
  * Tags: Tree, DFS
  */
 class ValidateBST {
@@ -19,10 +18,14 @@ class ValidateBST {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);
         ValidateBST v = new ValidateBST();
         System.out.println(v.isValidBST(r));
+        System.out.println(v.isValidBSTA(r));
+        System.out.println(v.isValidBSTB(r));
+        System.out.println(v.isValidBSTC(r));
+        System.out.println(v.isValidBSTD(r));
     }
 
-    Integer pred = null;
 
+/*时间复杂度是O(n)，空间复杂度是O(logn)*/
     /**
      * Recursive
      * Check current node
@@ -30,6 +33,7 @@ class ValidateBST {
      * Compare with current node and set predecessor
      * Check right subtree
      */
+    Integer pred = null;
     public boolean isValidBST(TreeNode root) {
         if (root == null)
             return true;
@@ -51,11 +55,9 @@ class ValidateBST {
     public boolean isValidBSTB(TreeNode root) {
         return isValidBSTB(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-
     // add range of current value and do recursive check
     public boolean isValidBSTB(TreeNode root, int min, int max) {
-        return root == null || root.val > min && root.val < max && isValidBSTB(root.left, min,
-                root.val) && isValidBSTB(root.right, root.val, max);
+        return root == null || root.val > min && root.val < max && isValidBSTB(root.left, min, root.val) && isValidBSTB(root.right, root.val, max);
     }
 
     /**
@@ -73,7 +75,6 @@ class ValidateBST {
         }
         return true;
     }
-
     public void inOrderList(TreeNode root, List<Integer> res) {
         if (root == null)
             return;
@@ -116,7 +117,6 @@ class ValidateBST {
     public boolean isValidBSTA(TreeNode root) {
         if (root == null)
             return true;
-
         LinkedList<BNode> queue = new LinkedList<BNode>();
         queue.add(new BNode(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY));
         while (!queue.isEmpty()) {

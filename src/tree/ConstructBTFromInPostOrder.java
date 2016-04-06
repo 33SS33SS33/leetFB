@@ -1,9 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Given inorder and postorder traversal of a tree, construct the binary tree.
@@ -18,7 +15,9 @@ class ConstructBTFromInPostOrder {
         int[] inorder = { 4, 2, 5, 1, 3, 6 };
         int[] postorder = { 4, 5, 2, 6, 3, 1 };
         TreeNode root = new ConstructBTFromInPostOrder().buildTree(inorder, postorder);
+        TreeNode root2 = new ConstructBTFromInPostOrder().buildTreeB(inorder, postorder);
         System.out.println(new ConstructBTFromInPostOrder().levelOrder(root));
+        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root2));
     }
 
     /**
@@ -32,7 +31,6 @@ class ConstructBTFromInPostOrder {
             return null;
         return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
     }
-
     public TreeNode buildTree(int[] inorder, int[] postorder, int is, int ie, int ps, int pe) {
         if (ps > pe)
             return null;
@@ -45,6 +43,29 @@ class ConstructBTFromInPostOrder {
         // Note how to calcuclate the start and end indices for post array
         root.left = buildTree(inorder, postorder, is, pos - 1, ps, ps - is - 1 + pos);
         root.right = buildTree(inorder, postorder, pos + 1, ie, pe - ie + pos, pe - 1);
+        return root;
+    }
+
+    /*复杂度和空间复杂度也还是O(n)*/
+    public TreeNode buildTreeB(int[] inorder, int[] postorder) {
+        if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0) {
+            return null;
+        }
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < inorder.length; i++) {
+            map.put(inorder[i], i);
+        }
+        return helper(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1, map);
+    }
+    private TreeNode helper(int[] inorder, int[] postorder, int inL, int inR, int postL, int postR,
+            HashMap<Integer, Integer> map) {
+        if (inL > inR || postL > postR)
+            return null;
+        TreeNode root = new TreeNode(postorder[postR]);
+        int index = map.get(root.val);
+        root.left = helper(inorder, postorder, inL, index - 1, postL, postL + index - inL - 1, map);
+        root.right = helper(inorder, postorder, index + 1, inR, postR - (inR - index), postR - 1,
+                map);
         return root;
     }
 

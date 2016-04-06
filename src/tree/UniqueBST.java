@@ -3,7 +3,6 @@ package tree;
 /**
  * Given n, how many structurally unique BST's (binary search trees) that store
  * values 1...n?
- * <p/>
  * For example,
  * Given n = 3, there are a total of 5 unique BST's.
  * 
@@ -17,7 +16,7 @@ package tree;
  */
 class UniqueBST {
     public static void main(String[] args) {
-        System.out.println(numTrees(5));
+        System.out.println(numTreesA(5));
         System.out.println(numTreesB(5));
         System.out.print(numTreesC(5));
     }
@@ -34,7 +33,7 @@ class UniqueBST {
      * + ...
      * + a[n-1] * a[0]     // put n at root, 1...n-1 left
      */
-    public static int numTrees(int n) {
+    public static int numTreesA(int n) {
         if (n < 0)
             return 0;
         int[] trees = new int[n + 1];
@@ -42,13 +41,15 @@ class UniqueBST {
         for (int i = 1; i <= n; i++) // from 1 ~ n
             for (int j = 0; j < i; j++) // from 0 ~ i - 1
                 trees[i] += trees[j] * trees[i - j - 1]; // note i-j-1 + j = i - 1
-
         return trees[n];
     }
 
     /**
      * creek----better
      */
+    /*时间上每次求解i个结点的二叉查找树数量的需要一个i步的循环，总体要求n次，
+    所以总时间复杂度是O(1+2+...+n)=O(n^2)。
+    空间上需要一个数组来维护，并且需要前i个的所有信息，所以是O(n)*/
     public static int numTreesC(int n) {
         if (n < 0)
             return 0;

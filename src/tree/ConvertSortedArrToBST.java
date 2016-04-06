@@ -13,12 +13,14 @@ class ConvertSortedArrToBST {
         System.out.println(root.val);
     }
 
+    /*如果要构造这棵树，那就是把中间元素转化为根，然后递归构造左右子树。所以我们还是用二叉树递归的方法来实现，以根作为返回值，
+    每层递归函数取中间元素，作为当前根和赋上结点值，然后左右结点接上左右区间的递归函数返回值。
+    时间复杂度还是一次树遍历O(n)，总的空间复杂度是栈空间O(logn)加上结果的空间O(n)，额外空间是O(logn)，总体是O(n)*/
     public static TreeNode sortedArrayToBST(int[] num) {
         if (num == null || num.length == 0)
             return null;
         return helper(num, 0, num.length - 1);
     }
-
     /**
      * Recursive, DFS
      * Divide into left subtree and right subtree with indices range
