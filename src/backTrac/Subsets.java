@@ -58,7 +58,6 @@ class Subsets {
         subsetsB(s, 0, new ArrayList<Integer>(), res);
         return res;
     }
-
     public static void subsetsB(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
         result.add(new ArrayList<Integer>(set));
         for (int i = start; i < s.length; i++) {
@@ -67,7 +66,10 @@ class Subsets {
             set.remove(set.size() - 1); // remove last element
         }
     }
-    
+
+    /**
+     * Recursive down to two branches.
+     */
     public static List<List<Integer>> subsetsA(int[] s) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         Arrays.sort(s); // unneccessary
@@ -75,10 +77,6 @@ class Subsets {
         res.add(new ArrayList<Integer>()); // add blank set
         return res;
     }
-    
-    /**
-     * Recursive down to two branches.
-     */
     public static void subsetsA(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
         if (start == s.length) {
             result.add(set);
@@ -97,19 +95,16 @@ class Subsets {
         Arrays.sort(num);
         return helper(num, num.length-1);
     }
-    private static ArrayList<ArrayList<Integer>> helper(int[] num, int index)
-    {
-        if(index == -1)
-        {
+    private static ArrayList<ArrayList<Integer>> helper(int[] num, int index) {
+        if (index == -1) {
             ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
             ArrayList<Integer> elem = new ArrayList<Integer>();
             res.add(elem);
             return res;
         }
-        ArrayList<ArrayList<Integer>> res = helper(num,index-1);
+        ArrayList<ArrayList<Integer>> res = helper(num, index - 1);
         int size = res.size();
-        for(int i=0;i<size;i++)
-        {
+        for (int i = 0; i < size; i++) {
             ArrayList<Integer> elem = new ArrayList<Integer>(res.get(i));
             elem.add(num[index]);
             res.add(elem);
