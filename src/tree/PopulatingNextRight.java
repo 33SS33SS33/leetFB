@@ -2,20 +2,17 @@ package tree;
 
 /**
  * Given a binary tree
- * <p/>
  * struct TreeLinkNode {
- * TreeLinkNode *left;
- * TreeLinkNode *right;
- * TreeLinkNode *next;
+     * TreeLinkNode *left;
+     * TreeLinkNode *right;
+     * TreeLinkNode *next;
  * }
- * <p/>
+ *
  * Populate each next pointer to point to its next right node. If there is no
  * next right node, the next pointer should be set to NULL.
- * <p/>
  * Initially, all next pointers are set to NULL.
- * <p/>
+ *
  * Note:
- * <p/>
  * You may only use constant extra space.
  * You may assume that it is a perfect binary tree (ie, all leaves are at the
  * same level, and every parent has two children).
@@ -26,14 +23,13 @@ package tree;
  * 2    3
  * / \  / \
  * 4  5  6  7
- * <p/>
  * After calling your function, the tree should look like:
  * 1 -> NULL
  * /  \
  * 2 -> 3 -> NULL
  * / \  / \
  * 4->5->6->7 -> NULL
- * <p/>
+ *
  * Tags: Tree, DFS
  */
 class PopulatingNextRight {
@@ -99,6 +95,26 @@ class PopulatingNextRight {
         }
     }
 
+    private static TreeLinkNode buildTree() {
+        TreeLinkNode t0 = new TreeLinkNode(20);
+        TreeLinkNode t1 = new TreeLinkNode(9);
+        TreeLinkNode t2 = new TreeLinkNode(49);
+        TreeLinkNode t3 = new TreeLinkNode(5);
+        TreeLinkNode t4 = new TreeLinkNode(12);
+        TreeLinkNode t5 = new TreeLinkNode(15);
+        TreeLinkNode t6 = new TreeLinkNode(23);
+        TreeLinkNode t7 = new TreeLinkNode(52);
+        TreeLinkNode t8 = new TreeLinkNode(50);
+        t0.left = t1;
+        t0.right = t2;
+        t1.left = t3;
+        t1.right = t4;
+        t4.right = t5;
+        t2.left = t6;
+        t2.right = t7;
+        t7.left = t8;
+        return t0;
+    }
     static class TreeLinkNode {
         int          val;
         TreeLinkNode left;
@@ -110,28 +126,4 @@ class PopulatingNextRight {
         }
     }
 
-    private static TreeLinkNode buildTree() {
-        TreeLinkNode t0 = new TreeLinkNode(20);
-        TreeLinkNode t1 = new TreeLinkNode(9);
-        TreeLinkNode t2 = new TreeLinkNode(49);
-
-        TreeLinkNode t3 = new TreeLinkNode(5);
-        TreeLinkNode t4 = new TreeLinkNode(12);
-        TreeLinkNode t5 = new TreeLinkNode(15);
-
-        TreeLinkNode t6 = new TreeLinkNode(23);
-        TreeLinkNode t7 = new TreeLinkNode(52);
-        TreeLinkNode t8 = new TreeLinkNode(50);
-
-        t0.left = t1;
-        t0.right = t2;
-        t1.left = t3;
-        t1.right = t4;
-        t4.right = t5;
-        t2.left = t6;
-        t2.right = t7;
-        t7.left = t8;
-
-        return t0;
-    }
 }

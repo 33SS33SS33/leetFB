@@ -3,10 +3,9 @@ package list;
 /**
  * Given a linked list, return the node where the cycle begins. If there is no
  * cycle, return null.
- * <p/>
  * Follow up:
  * Can you solve it without using extra space?
- * <p/>
+ *
  * Tags: Linkedlist, Two pointers, Math
  */
 class LinkedListCycle2 {
@@ -14,21 +13,6 @@ class LinkedListCycle2 {
         LinkedListCycle2 r = new LinkedListCycle2();
         ListNode head = buildList();
         System.out.print(detectCycle(head).val);
-    }
-
-    static ListNode buildList() {
-        ListNode node0 = new ListNode(0);
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(1);
-
-        node0.next = node1;
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-
-        return node0;
     }
 
     /**
@@ -60,6 +44,20 @@ class LinkedListCycle2 {
         return slow;
     }
 
+    static ListNode buildList() {
+        ListNode node0 = new ListNode(0);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(1);
+
+        node0.next = node1;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+
+        return node0;
+    }
     static class ListNode {
         int      val;
         ListNode next;

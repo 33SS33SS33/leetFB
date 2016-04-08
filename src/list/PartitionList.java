@@ -3,10 +3,8 @@ package list;
 /**
  * Given a linked list and a value x, partition it such that all nodes less
  * than x come before nodes greater than or equal to x.
- * <p/>
  * You should preserve the original relative order of the nodes in each of the
  * two partitions.
- * <p/>
  * For example,
  * Given 1->4->3->2->5->2 and x = 3,
  * return 1->2->2->4->3->5.
@@ -18,7 +16,6 @@ class PartitionList {
         ListNode head = buildTestList1();
         ListNode head2 = buildTestList1();
         ListNode head3 = buildTestList1();
-
         partition(head, 3);
         partitionB(head2, 3);
         partitionC(head3, 3);
@@ -26,36 +23,18 @@ class PartitionList {
             System.out.print(head.val + "->");
             head = head.next;
         }
-
         System.out.println(head.val);
 
         while (head2.next != null) {
             System.out.print(head2.val + "->");
             head2 = head2.next;
         }
-
         System.out.println(head2.val);
-
         while (head3.next != null) {
             System.out.print(head3.val + "->");
             head3 = head3.next;
         }
         System.out.println(head3.val);
-    }
-
-    static ListNode buildTestList1() {
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(4);
-        ListNode third = new ListNode(3);
-        ListNode forth = new ListNode(2);
-        ListNode fifth = new ListNode(5);
-        ListNode sixth = new ListNode(2);
-        head.next = second;
-        second.next = third;
-        third.next = forth;
-        forth.next = fifth;
-        fifth.next = sixth;
-        return head;
     }
 
     /**
@@ -145,7 +124,6 @@ class PartitionList {
         ListNode fakeHead1 = new ListNode(0);
         ListNode fakeHead2 = new ListNode(0);
         fakeHead1.next = head;
-
         ListNode p = head;
         ListNode prev = fakeHead1;
         ListNode p2 = fakeHead2;
@@ -154,10 +132,8 @@ class PartitionList {
                 p = p.next;
                 prev = prev.next;
             } else {
-
                 p2.next = p;
                 prev.next = p.next;
-
                 p = prev.next;
                 p2 = p2.next;
             }
@@ -166,6 +142,21 @@ class PartitionList {
         p2.next = null;
         prev.next = fakeHead2.next;
         return fakeHead1.next;
+    }
+
+    static ListNode buildTestList1() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(4);
+        ListNode third = new ListNode(3);
+        ListNode forth = new ListNode(2);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(2);
+        head.next = second;
+        second.next = third;
+        third.next = forth;
+        forth.next = fifth;
+        fifth.next = sixth;
+        return head;
     }
 
     public static class ListNode {

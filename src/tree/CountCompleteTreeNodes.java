@@ -3,6 +3,15 @@ package tree;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**
+ * Given a complete binary tree, count the number of nodes.
+ * Definition of a complete binary tree from Wikipedia:
+ * In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last
+ * level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
+ *
+ * Tags: Tree, Binary Search
+ * Similar Problems: (E) Closest Binary Search Tree Value
+ */
 public class CountCompleteTreeNodes {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -18,11 +27,38 @@ public class CountCompleteTreeNodes {
         n1.right = n4;
         n2.left = n5;
         n2.right = n6;
-        System.out.println(new CountCompleteTreeNodes().countNodes(root));
+        System.out.println(new CountCompleteTreeNodes().countNodesA(root));
         System.out.println(new CountCompleteTreeNodes().countNodesB(root));
+        System.out.println(new CountCompleteTreeNodes().countNodesC(root));
     }
 
-    public int countNodes(TreeNode root) {
+    public int countNodesC(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = fullTreeHeight(root.left);
+        int rightHeight = fullTreeHeight(root.right);
+
+        if (leftHeight == rightHeight) {
+            return (1 << leftHeight) + countNodesC(root.right);
+        } else {
+            return (1 << rightHeight) + countNodesC(root.left);
+        }
+    }
+    private int fullTreeHeight(TreeNode root) {
+        if (root == null)
+            return 0;
+        int res = 0;
+        while (root != null) {
+            root = root.left;
+            res++;
+        }
+        return res;
+    }
+
+    int     leaves = 0;
+    boolean stop   = false;
+    public int countNodesA(TreeNode root) {
         int h = height(root);
         countLeaves(root, h);
         if (!stop) {
@@ -31,9 +67,6 @@ public class CountCompleteTreeNodes {
         }
         return perfectTreeNodeCount(h - 1) + leaves;
     }
-
-    int     leaves = 0;
-    boolean stop   = false;
     void countLeaves(TreeNode root, int heightToLeaf) {
         if (root == null)
             return;
@@ -54,7 +87,6 @@ public class CountCompleteTreeNodes {
         countLeaves(root.left, heightToLeaf - 1);
         countLeaves(root.right, heightToLeaf - 1);
     }
-
     int perfectTreeNodeCount(int height) {
         if (height == 0)
             return 0;
@@ -62,7 +94,6 @@ public class CountCompleteTreeNodes {
             return 1;
         return (int) Math.pow(2, height) - 1;
     }
-
     int height(TreeNode root) {
         if (root == null)
             return 0;

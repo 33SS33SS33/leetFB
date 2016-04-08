@@ -2,10 +2,8 @@ package hard;
 
 /**
  * Follow up for problem "Populating Next Right Pointers in Each Node".
- * 
  * What if the given tree could be any binary tree? Would your previous
  * solution still work?
- * 
  * Note:
  * 
  * You may only use constant extra space.
@@ -30,7 +28,6 @@ class PopulatingNextRight2 {
         TreeLinkNode root= buildTree();
         PopulatingNextRight2 r=new PopulatingNextRight2();
         r.connect(root);
-
     }
     
     /**
@@ -40,11 +37,9 @@ class PopulatingNextRight2 {
      */
     public void connect(TreeLinkNode root) {
         if(root == null) return;
-        
         TreeLinkNode cur = root;  // current node of current level
         TreeLinkNode prev; // previous node
         TreeLinkNode nextHead; // nextHead of the next level
-
         while (cur != null) {
             nextHead = null;
             prev = null;
@@ -66,26 +61,16 @@ class PopulatingNextRight2 {
         }
     }
 
-
-    public static class TreeLinkNode {
-        int val;
-        TreeLinkNode left, right, next;
-        TreeLinkNode(int x) { val = x; }
-    }
-
     private static TreeLinkNode buildTree() {
         TreeLinkNode t0 = new TreeLinkNode(20);
         TreeLinkNode t1 = new TreeLinkNode(9);
         TreeLinkNode t2 = new TreeLinkNode(49);
-
         TreeLinkNode t3 = new TreeLinkNode(5);
         TreeLinkNode t4 = new TreeLinkNode(12);
         TreeLinkNode t5 = new TreeLinkNode(15);
-
         TreeLinkNode t6 = new TreeLinkNode(23);
         TreeLinkNode t7 = new TreeLinkNode(52);
         TreeLinkNode t8 = new TreeLinkNode(50);
-
         t0.left = t1;
         t0.right = t2;
         t1.left = t3;
@@ -94,7 +79,12 @@ class PopulatingNextRight2 {
         t2.left = t6;
         t2.right = t7;
         t7.left = t8;
-
         return t0;
     }
+    public static class TreeLinkNode {
+        int val;
+        TreeLinkNode left, right, next;
+        TreeLinkNode(int x) { val = x; }
+    }
+
 }

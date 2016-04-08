@@ -16,9 +16,7 @@ import java.util.*;
  * Tags: Data Structures
  */
 class PeekIterator<T> implements Iterator<T> {
-
     private final Iterator<T> iterator;
-
     /**
      * Store next item
      */
