@@ -24,7 +24,6 @@ public class MaxSquare {
         }
         return max;
     }
-
     int maximalSquare(char[][] matrix, final int x, final int y) {
         int l = 1;
         done:
@@ -48,10 +47,8 @@ public class MaxSquare {
     public int maximalSquareB(char[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return 0;
-
         int m = matrix.length;
         int n = matrix[0].length;
-
         int[][] t = new int[m][n];
         //top row
         for (int i = 0; i < m; i++) {

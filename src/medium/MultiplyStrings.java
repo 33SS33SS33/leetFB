@@ -11,8 +11,9 @@ class MultiplyStrings {
     public static void main(String[] args) {
         String num1 = "322";
         String num2 = "3";
-        System.out.print(multiplyA(num1, num2));
-        System.out.print(multiplyB(num1, num2));
+        System.out.println(multiplyA(num1, num2));
+        System.out.println(multiplyB(num1, num2));
+        System.out.print(multiplyC(num1, num2));
     }
 /*假设第一个数长度是n，第二个数长度是m，我们知道结果长度为m+n或者m+n-1（没有进位的情况）。
 对于某一位i，要计算这个位上的数字，我们需要对所有能组合出这一位结果的位进行乘法，
@@ -88,7 +89,7 @@ class MultiplyStrings {
         return sb.toString();
     }
 
-    public String multiplyC(String num1, String num2) {
+    public static String multiplyC(String num1, String num2) {
         if (num1 == null || num2 == null || num1.length() == 0 || num2.length() == 0)
             return "";
         if (num1.charAt(0) == '0')

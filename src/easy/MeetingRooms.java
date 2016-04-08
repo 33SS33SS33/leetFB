@@ -4,6 +4,7 @@ package easy;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class MeetingRooms {
+
     public boolean canAttendMeetings(Interval[] intervals) {
         //        Arrays.sort(intervals, (a, b) -> a.start - b.start);
         int maxend = 0;

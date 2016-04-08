@@ -1,4 +1,4 @@
-package medium;
+package hard;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,20 +17,7 @@ public class NumberofDigitOne {
     // floor(92)    = 90
     // floor(10111) = 10000
     int[] N = { 100000000, 10000, 100, 10 };
-
-    int[] extractHighest(int x) {
-        int e = 1;
-        for (int n : N) {
-            if (x >= n) {
-                x /= n;
-                e *= n;
-            }
-        }
-        return new int[] { x, x * e };
-    }
-
     Map<Integer, Integer> cache = new HashMap<Integer, Integer>();
-
     public int countDigitOne(int n) {
         if (n <= 0)
             return 0;
@@ -51,5 +38,15 @@ public class NumberofDigitOne {
         int c = plus + countDigitOne(f - 1) + countDigitOne(rest);
         cache.put(n, c);
         return c;
+    }
+    int[] extractHighest(int x) {
+        int e = 1;
+        for (int n : N) {
+            if (x >= n) {
+                x /= n;
+                e *= n;
+            }
+        }
+        return new int[] { x, x * e };
     }
 }
