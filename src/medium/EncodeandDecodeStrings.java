@@ -7,19 +7,18 @@ import java.util.List;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class EncodeandDecodeStrings {
-    static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
+    public static void main(String[] args) {
+        EncodeandDecodeStrings d=new EncodeandDecodeStrings();
+        List<String> sList=new ArrayList<String>();
+        sList.add("iiy");
+        System.out.println(d.encode(sList));
+//        System.out.println(d.decode("iiy").toString());
+    }
 
+
+    static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
     // lazy ... should be byte[]
     static final String NUM_PATTERN = "%0" + MAX_LEN + "x";
-
-    String serializeNumber(int n) {
-        return String.format(NUM_PATTERN, n);
-    }
-
-    int deserializeNumber(char[] s, int offset) {
-        return Integer.parseInt(new String(s, offset, MAX_LEN), 16);
-    }
-
     /*  [count] [str len] [str  ...]             ... [str len][str  ...  ]
      *  0       L         2L        2L + strlen      nL       (n + 1)L   (n + 1)L + strlen
      */
@@ -54,4 +53,13 @@ public class EncodeandDecodeStrings {
         }
         return strs;
     }
+
+    String serializeNumber(int n) {
+        return String.format(NUM_PATTERN, n);
+    }
+
+    int deserializeNumber(char[] s, int offset) {
+        return Integer.parseInt(new String(s, offset, MAX_LEN), 16);
+    }
+
 }

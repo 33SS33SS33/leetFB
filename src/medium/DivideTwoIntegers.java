@@ -45,7 +45,6 @@ class DivideTwoIntegers {
     /**
      * creek---- is O(logn).
      * This problem can be solved based on the fact that any number can be converted to the format of the following:
-     * <p/>
      * num=a_0*2^0+a_1*2^1+a_2*2^2+...+a_n*2^n
      */
     public int divideB(int dividend, int divisor) {

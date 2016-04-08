@@ -4,18 +4,15 @@ import java.util.*;
 
 /**
  * Evaluate the value of an arithmetic expression in Reverse Polish Notation.
- * <p/>
  * Valid operators are +, -, *, /. Each operand may be an integer or another
  * expression.
- * <p/>
+ *
  * Some examples:
  * ["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
  * ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
- * <p/>
  * Tags: Stack
  */
 class EvaluateReversePolish {
-
     public static void main(String[] args) {
         // String[] tokens = {"2", "1", "+", "3", "*"};
         // String[] tokens = {"4", "13", "5", "/", "+"};
@@ -27,7 +24,6 @@ class EvaluateReversePolish {
      * assign a priority for each operators
      * use a stack to store them
      * note the numbers can be negative
-     * <p/>
      * We evaluate the expression left-to-right and push operands onto the
      * stack until we encounter an operator, which we pop the top two values
      * from the stack. We then evaluate the operator, with the values as
@@ -50,10 +46,7 @@ class EvaluateReversePolish {
         }
         return Integer.valueOf(s.peek());
     }
-
-    /**
-     * Helper function to check whether a token is operator or not
-     */
+    /**Helper function to check whether a token is operator or not*/
     private static boolean isOperator(String c) {
         if (c.equalsIgnoreCase("+"))
             return true;
@@ -65,10 +58,6 @@ class EvaluateReversePolish {
             return true;
         return false;
     }
-
-    /**
-     * Helper function to do calculation
-     */
     private static int calculate(int t1, int t2, String operator) {
         int res = 0;
         if (operator.equalsIgnoreCase("+"))
@@ -81,4 +70,5 @@ class EvaluateReversePolish {
             res = t1 / t2;
         return res;
     }
+
 }
