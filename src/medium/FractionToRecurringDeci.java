@@ -5,16 +5,13 @@ import java.util.*;
 /**
  * Given two integers representing the numerator and denominator of a fraction,
  * return the fraction in string format.
- * <p/>
  * If the fractional part is repeating, enclose the repeating part in
  * parentheses.
- * <p/>
+ *
  * For example,
- * <p/>
  * Given numerator = 1, denominator = 2, return "0.5".
  * Given numerator = 2, denominator = 1, return "2".
  * Given numerator = 2, denominator = 3, return "0.(6)".
- * <p/>
  * Tags: Hashtable, Math
  */
 class FractionToRecurringDeci {
@@ -25,6 +22,7 @@ class FractionToRecurringDeci {
         // System.out.println(f.fractionToDecimal(2, 3));
         System.out.println(f.fractionToDecimal(Integer.MAX_VALUE, Integer.MIN_VALUE));
         System.out.println(f.fractionToDecimal2(Integer.MAX_VALUE, Integer.MIN_VALUE));
+        System.out.println(f.fractionToDecimalC(Integer.MAX_VALUE, Integer.MIN_VALUE));
     }
 
     /**
@@ -78,7 +76,6 @@ class FractionToRecurringDeci {
         // cheat ...
         long _numerator = numerator;
         long quotient = _numerator / denominator;
-
         _numerator %= denominator;
         _numerator *= 10;
         final String intPart = "" + Math.abs(quotient);
@@ -114,28 +111,22 @@ class FractionToRecurringDeci {
             return "0";
         if (denominator == 0)
             return "";
-
         String result = "";
-
         // is result is negative
         if ((numerator < 0) ^ (denominator < 0)) {
             result += "-";
         }
-
         // convert int to long
         long num = numerator, den = denominator;
         num = Math.abs(num);
         den = Math.abs(den);
-
         // quotient
         long res = num / den;
         result += String.valueOf(res);
-
         // if remainder is 0, return result
         long remainder = (num % den) * 10;
         if (remainder == 0)
             return result;
-
         // right-hand side of decimal point
         HashMap<Long, Integer> map = new HashMap<Long, Integer>();
         result += ".";
@@ -148,14 +139,13 @@ class FractionToRecurringDeci {
                 result = part1 + "(" + part2 + ")";
                 return result;
             }
-
             // continue
             map.put(remainder, result.length());
             res = remainder / den;
             result += String.valueOf(res);
             remainder = (remainder % den) * 10;
         }
-
         return result;
     }
+
 }

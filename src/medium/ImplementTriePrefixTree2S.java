@@ -12,11 +12,9 @@ public class ImplementTriePrefixTree2S {
     public ImplementTriePrefixTree2S() {
         root = new TrieNode();
     }
-
     // Inserts a word into the trie.
     public void insert(String word) {
         HashMap<Character, TrieNode> children = root.children;
-
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             TrieNode t;
@@ -26,7 +24,6 @@ public class ImplementTriePrefixTree2S {
                 t = new TrieNode(c);
                 children.put(c, t);
             }
-
             children = t.children;
             //set leaf node
             if (i == word.length() - 1)

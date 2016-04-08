@@ -7,7 +7,7 @@ package medium;
  * You may imagine that num[-1] = num[n] = -∞.
  * For example, in array [1, 2, 3, 1], 3 is a peak element and your function
  * should return the index number 2.
- * 
+ *
  * Note:
  * Your solution should be in logarithmic complexity.
  * Tags: Array, Binary Search
@@ -15,6 +15,7 @@ package medium;
 class FindPeak {
     public static void main(String[] args) {
         int[] num = { 1, 2, 1, 3, 1, 4, 1 };
+        /**错的*/
         System.out.println(new FindPeak().findPeakElement(num));
         System.out.println(new FindPeak().findPeakElementB(num));
         System.out.println(new FindPeak().findPeakElementC(num));
@@ -57,7 +58,6 @@ class FindPeak {
             int prev = num[i - 1];
             int curr = num[i];
             int next = num[i + 1];
-
             if (curr > prev && curr > next && curr > max) {
                 index = i;
                 max = curr;
@@ -70,12 +70,10 @@ class FindPeak {
     }
 
     /**
-     * ??????????
      */
     public int findPeakElementC(int[] num) {
         return findPeakElement(num, 0, num.length);
     }
-
     int findPeakElement(int[] num, int from, int to) {
         if (to - from == 1)
             return from;

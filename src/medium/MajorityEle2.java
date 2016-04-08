@@ -20,7 +20,7 @@ public class MajorityEle2 {
         int[] s = { 1, 3, 1, 5, 2, 1 };
         System.out.println(l.majorityElementA(s));
         System.out.println(l.majorityElementB(s));
-        System.out.println(l.majorityElement(s));
+        System.out.println(l.majorityElementC(s));
     }
 
     /**
@@ -83,7 +83,7 @@ public class MajorityEle2 {
         return result;
     }
 
-    public List<Integer> majorityElement(int[] nums) {
+    public List<Integer> majorityElementC(int[] nums) {
         List<Integer> rst = new ArrayList<Integer>();
         if (nums == null) {
             return rst;

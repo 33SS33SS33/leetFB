@@ -133,22 +133,18 @@ class LongestPalindromicSubstring {
     只需要比较一下头尾字符即可。这种方法使用两层循环，时间复杂度是O(n^2)。
     而空间上因为需要记录任意子串是否为回文，需要O(n^2)的空间*/
     public String longestPalindromeD(String s) {
-        if(s == null || s.length()==0)
+        if (s == null || s.length() == 0)
             return "";
         boolean[][] palin = new boolean[s.length()][s.length()];
         String res = "";
         int maxLen = 0;
-        for(int i=s.length()-1;i>=0;i--)
-        {
-            for(int j=i;j<s.length();j++)
-            {
-                if(s.charAt(i)==s.charAt(j) && (j-i<=2 || palin[i+1][j-1]))
-                {
+        for (int i = s.length() - 1; i >= 0; i--) {
+            for (int j = i; j < s.length(); j++) {
+                if (s.charAt(i) == s.charAt(j) && (j - i <= 2 || palin[i + 1][j - 1])) {
                     palin[i][j] = true;
-                    if(maxLen<j-i+1)
-                    {
-                        maxLen=j-i+1;
-                        res = s.substring(i,j+1);
+                    if (maxLen < j - i + 1) {
+                        maxLen = j - i + 1;
+                        res = s.substring(i, j + 1);
                     }
                 }
             }
@@ -207,6 +203,5 @@ class LongestPalindromicSubstring {
         }
         System.out.println("------");
     }
-
 
 }

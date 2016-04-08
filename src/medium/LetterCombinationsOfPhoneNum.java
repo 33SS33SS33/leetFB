@@ -5,17 +5,13 @@ import java.util.*;
 /**
  * Given a digit string, return all possible letter combinations that the
  * number could represent.
- * <p/>
  * A mapping of digit to letters (just like on the telephone buttons) is given
  * below.
- * <p/>
  * Input:Digit string "23"
  * Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
- * <p/>
  * Note:
  * Although the above answer is in lexicographical order, your answer could be
  * in any order you want.
- * <p/>
  * Tags: Backtracking, String
  */
 class LetterCombinationsOfPhoneNum {
@@ -46,7 +42,6 @@ class LetterCombinationsOfPhoneNum {
         helper(digits, 0, "", res);
         return res;
     }
-
     private void helper(String digits, int s, String comb, List<String> res) {
         if (s == digits.length()) { // all digits done, stop
             res.add(comb);
@@ -76,7 +71,6 @@ class LetterCombinationsOfPhoneNum {
         getString(digits, temp, result, map);
         return result;
     }
-
     public void getString(String digits, ArrayList<Character> temp, ArrayList<String> result,
             HashMap<Integer, String> map) {
         if (digits.length() == 0) {
@@ -95,4 +89,5 @@ class LetterCombinationsOfPhoneNum {
             temp.remove(temp.size() - 1);
         }
     }
+
 }

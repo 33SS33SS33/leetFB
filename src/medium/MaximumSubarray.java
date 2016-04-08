@@ -3,24 +3,23 @@ package medium;
 /**
  * Find the contiguous subarray within an array (containing at least one
  * number) which has the largest sum.
- * <p/>
+ *
  * For example, given the array [−2,1,−3,4,−1,2,1,−5,4],
  * the contiguous subarray [4,−1,2,1] has the largest sum = 6.
- * <p/>
  * More practice:
  * If you have figured out the O(n) solution, try coding another solution using
  * the divide and conquer approach, which is more subtle.
- * <p/>
  * Tags: Divide and Conquer, Array, DP
  */
 class MaximumSubarray {
     public static void main(String[] args) {
         int[] A = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
-        for (int i : maxSubArray(A)) {
+        for (int i : maxSubArrayC(A)) {
             System.out.print(i + ",");
         }
         System.out.println();
-        System.out.println(maxSubArraySum(A));
+        System.out.println(maxSubArraySumA(A));
+        System.out.println(maxSubArraySumB(A));
         System.out.println(maxSubArraySumB(A));
     }
 
@@ -31,7 +30,7 @@ class MaximumSubarray {
      * currentMax = max(currentMax + A[i], A[i])
      * maxSubArr = max(currentMax, maxSubArr)
      */
-    public static int maxSubArraySum(int[] A) {
+    public static int maxSubArraySumA(int[] A) {
         if (A == null || A.length == 0)
             return 0;
         int curMax = A[0];
@@ -65,7 +64,7 @@ class MaximumSubarray {
      * the positive sum would still contribute to positiveness of the subarray.
      * If A[i] < 0, current sum + A[i] < 0, the current subarray has to end.
      */
-    static int[] maxSubArray(int[] A) {
+    static int[] maxSubArrayC(int[] A) {
         int beginTemp = 0; // save the temporary begining index
         int begin = 0; // begining index
         int end = 0; // ending index

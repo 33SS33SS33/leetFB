@@ -2,7 +2,6 @@ package medium;
 
 /**
  * Sort a linked list using insertion sort.
- * <p/>
  * Tags: Linkedlist, Sort
  */
 class InsertionSortList {
@@ -10,7 +9,6 @@ class InsertionSortList {
         ListNode n1 = new ListNode(2);
         ListNode n2 = new ListNode(3);
         ListNode n3 = new ListNode(4);
-
         ListNode n4 = new ListNode(3);
         ListNode n5 = new ListNode(4);
         ListNode n6 = new ListNode(5);
@@ -20,9 +18,7 @@ class InsertionSortList {
         n3.next = n4;
         n4.next = n5;
         n5.next = n6;
-
         n1 = insertionSortList(n1);
-
         printList(n1);
     }
 

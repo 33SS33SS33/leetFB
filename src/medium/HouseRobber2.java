@@ -25,7 +25,6 @@ public class HouseRobber2 {
             return nums[0];
         return Math.max(rob(nums, 0, nums.length - 1), rob(nums, 1, nums.length - 1));
     }
-    // rob1
     static int rob(int[] num, int st, int len) {
         if (len == 0)
             return 0;
