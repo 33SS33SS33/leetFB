@@ -6,11 +6,19 @@ import java.util.*;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class CourseSchedule {
+    public static void main(String[] args) {
+        int[][] prerequisites = {{1,0}};
+        int[][] prerequisites2 = {{1,0},{0,1}};
 
+        System.out.println(new CourseSchedule().canFinishA(2,prerequisites));
+        System.out.println(new CourseSchedule().canFinishB(2,prerequisites));
+        System.out.println(new CourseSchedule().canFinishA(2,prerequisites2));
+        System.out.println(new CourseSchedule().canFinishB(2,prerequisites2));
+    }
     /**
      * creek BFS------
      */
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    public boolean canFinishA(int numCourses, int[][] prerequisites) {
         if (prerequisites == null) {
             throw new IllegalArgumentException("illegal prerequisites array");
         }
@@ -79,7 +87,6 @@ public class CourseSchedule {
         }
         return true;
     }
-
     private boolean canFinishDFS(HashMap<Integer, ArrayList<Integer>> map, int[] visit, int i) {
         if (visit[i] == -1)
             return false;

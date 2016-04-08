@@ -14,11 +14,9 @@ import java.util.Stack;
  */
 public class BasicCalculator {
     enum TokenType {DIGIT, OP}
-
     static class Token {
         TokenType type;
         int       val;
-
         public Token(int val, TokenType type) {
             this.val = val;
             this.type = type;
@@ -27,7 +25,6 @@ public class BasicCalculator {
 
     static final Token   EOL    = new Token(0, TokenType.OP);
     static final Token[] TOKENS = new Token[256];
-
     static {
         TOKENS['+'] = new Token('+', TokenType.OP);
         TOKENS['-'] = new Token('-', TokenType.OP);
@@ -171,18 +168,14 @@ public class BasicCalculator {
     public int calculateB(String s) {
         // delte white spaces
         s = s.replaceAll(" ", "");
-
         Stack<String> stack = new Stack<String>();
         char[] arr = s.toCharArray();
-
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == ' ')
                 continue;
-
             if (arr[i] >= '0' && arr[i] <= '9') {
                 sb.append(arr[i]);
-
                 if (i == arr.length - 1) {
                     stack.push(sb.toString());
                 }
@@ -191,7 +184,6 @@ public class BasicCalculator {
                     stack.push(sb.toString());
                     sb = new StringBuilder();
                 }
-
                 if (arr[i] != ')') {
                     stack.push(new String(new char[] { arr[i] }));
                 } else {
@@ -205,7 +197,6 @@ public class BasicCalculator {
                             t.add(0, top);
                         }
                     }
-
                     int temp = 0;
                     if (t.size() == 1) {
                         temp = Integer.valueOf(t.get(0));
@@ -223,13 +214,11 @@ public class BasicCalculator {
                 }
             }
         }
-
         ArrayList<String> t = new ArrayList<String>();
         while (!stack.isEmpty()) {
             String elem = stack.pop();
             t.add(0, elem);
         }
-
         int temp = 0;
         for (int i = t.size() - 1; i > 0; i = i - 2) {
             if (t.get(i - 1).equals("-")) {
@@ -239,7 +228,6 @@ public class BasicCalculator {
             }
         }
         temp += Integer.valueOf(t.get(0));
-
         return temp;
     }
 }

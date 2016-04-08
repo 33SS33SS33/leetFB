@@ -6,17 +6,15 @@ package medium;
  * endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together
  * with x-axis forms a container, such that the container contains the most
  * water.
- * <p/>
+ *
  * Note: You may not slant the container.
- * <p/>
  * Tags: Array, Two pointers
  */
 class ContainerWithMostWater {
     public static void main(String[] args) {
-        int[] height = { 2, 4, 3, 2 };
-        System.out.println(new ContainerWithMostWater().maxArea(height));
-        System.out.println(new ContainerWithMostWater().maxAreaB(height));
-        System.out.println(new ContainerWithMostWater().maxAreaC(height));
+        int[] height = { 2, 4, 3, 2,7 };
+        System.out.println(new ContainerWithMostWater().maxAreaA(height));
+        System.out.println(new ContainerWithMostWater().maxAreaA2(height));
     }
 
     /**
@@ -27,24 +25,25 @@ class ContainerWithMostWater {
      * Stop when two pointers meet, cause one line can form a container
      * Different from block
      */
-    public int maxArea(int[] height) {
-        if (height == null || height.length == 0)
+    /**creek*/
+    public int maxAreaA(int[] height) {
+        if (height == null || height.length < 2) {
             return 0;
-        int ans = 0;
-        int low = 0, high = height.length - 1;
-        while (low < high) { // note low < high, not <=
-            // update answer
-            ans = Math.max(ans, (high - low) * Math.min(height[low], height[high]));
-            // move lower pointer towards center
-            if (height[low] < height[high])
-                low++;
-            else
-                high--;
         }
-        return ans;
+        int max = 0;
+        int left = 0;
+        int right = height.length - 1;
+        while (left < right) {
+            max = Math.max(max, (right - left) * Math.min(height[left], height[right]));
+            if (height[left] < height[right])
+                left++;
+            else
+                right--;
+        }
+        return max;
     }
 
-    public int maxAreaB(int[] height) {
+    public int maxAreaA2(int[] height) {
         if (height.length <= 1)
             return 0;
         int st = 0;
@@ -63,24 +62,6 @@ class ContainerWithMostWater {
         return max;
     }
 
-    /**
-     * creek
-     */
-    public int maxAreaC(int[] height) {
-        if (height == null || height.length < 2) {
-            return 0;
-        }
-        int max = 0;
-        int left = 0;
-        int right = height.length - 1;
-        while (left < right) {
-            max = Math.max(max, (right - left) * Math.min(height[left], height[right]));
-            if (height[left] < height[right])
-                left++;
-            else
-                right--;
-        }
-        return max;
-    }
+
 
 }

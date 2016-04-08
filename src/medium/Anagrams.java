@@ -8,9 +8,8 @@ import java.util.Map;
 
 /**
  * Given an array of strings, return all groups of strings that are anagrams.
- * <p/>
  * Note: All inputs will be in lower-case.
- * <p/>
+ *
  * Tags: Hashtable, String
  */
 class Anagrams {

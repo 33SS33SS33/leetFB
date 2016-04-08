@@ -24,24 +24,6 @@ class AddTwoNum {
         }
     }
 
-    static ListNode buildList1() {
-        ListNode node0 = new ListNode(1);
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        node0.next = node1;
-        node1.next = node2;
-        return node0;
-    }
-
-    static ListNode buildList2() {
-        ListNode node0 = new ListNode(2);
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(9);
-        node0.next = node1;
-        node1.next = node2;
-        return node0;
-    }
-
     /**
      * Create a pre head pointer
      * Build list node one by one
@@ -128,4 +110,22 @@ class AddTwoNum {
             next = null;
         }
     }
+    static ListNode buildList1() {
+        ListNode node0 = new ListNode(1);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
+    }
+
+    static ListNode buildList2() {
+        ListNode node0 = new ListNode(2);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(9);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
+    }
+
 }

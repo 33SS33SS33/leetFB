@@ -40,9 +40,7 @@ class CloneGraph {
 
     /*这几种方法的时间复杂度都是O(n)（每个结点访问一次），
     而空间复杂度则是栈或者队列的大小加上HashMap的大小，也不会超过O(n)。*/
-    /**
-     * ------creek-------
-     */
+    /**------creek-------*/
     public UndirectedGraphNode cloneGraphB(UndirectedGraphNode node) {
         if (node == null)
             return null;
@@ -75,7 +73,7 @@ class CloneGraph {
      * Check whether in graph already
      * Add neighbors to queue
      */
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+    public UndirectedGraphNode cloneGraphA(UndirectedGraphNode node) {
         if (node == null)
             return null;
         Queue<UndirectedGraphNode> q = new LinkedList<UndirectedGraphNode>();
@@ -99,7 +97,7 @@ class CloneGraph {
         return map.get(node.label);
     }
 
-    public UndirectedGraphNode cloneGraph2(UndirectedGraphNode node) {
+    public UndirectedGraphNode cloneGraphC(UndirectedGraphNode node) {
         if (node == null)
             return null;
         // visit
@@ -110,7 +108,6 @@ class CloneGraph {
             UndirectedGraphNode n = queue.poll();
             if (!clone.containsKey(n)) {
                 clone.put(n, new UndirectedGraphNode(n.label));
-
                 for (UndirectedGraphNode neighbor : n.neighbors) {
                     queue.add(neighbor);
                 }
@@ -132,7 +129,7 @@ class CloneGraph {
         return clone.get(node);
     }
 
-    /*深度优先*/
+    /*深度优先 非递归*/
     public UndirectedGraphNode cloneGraphD(UndirectedGraphNode node) {
         if (node == null)
             return null;
@@ -165,8 +162,7 @@ class CloneGraph {
         helper(node, map);
         return copy;
     }
-    private void helper(UndirectedGraphNode node,
-            HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
+    private void helper(UndirectedGraphNode node, HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
         for (int i = 0; i < node.neighbors.size(); i++) {
             UndirectedGraphNode cur = node.neighbors.get(i);
             if (!map.containsKey(cur)) {
@@ -181,7 +177,6 @@ class CloneGraph {
     class UndirectedGraphNode {
         int                       label;
         List<UndirectedGraphNode> neighbors;
-
         UndirectedGraphNode(int x) {
             label = x;
             neighbors = new ArrayList<UndirectedGraphNode>();

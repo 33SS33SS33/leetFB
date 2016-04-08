@@ -9,13 +9,11 @@ package medium;
  */
 public class BitwiseANDofNumbersRange {
     public static void main(String[] args) {
-        int m = 7;
-        int n = 5;
-        int s = 7;
-        int t = 5;
-        System.out.println(rangeBitwiseAnd(m, n));
-        /**错的？？？？*/
-        System.out.print(rangeBitwiseAndB(s, t));
+
+        System.out.println(rangeBitwiseAnd(5, 7));
+        System.out.println(rangeBitwiseAndB(5, 7));
+        System.out.println(rangeBitwiseAnd(2, 3));
+        System.out.print(rangeBitwiseAndB(2, 3));
     }
 
     static final int    SIZE = Integer.SIZE;
