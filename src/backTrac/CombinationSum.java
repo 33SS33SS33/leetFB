@@ -40,7 +40,6 @@ class CombinationSum {
         helper(candidates, target, 0, new ArrayList<Integer>(), res);
         return res;
     }
-
     /**
      * Bakctracking
      */

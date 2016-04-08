@@ -7,19 +7,15 @@ import java.util.Map;
  * Created by GAOSHANSHAN835 on 2016/3/4.
  */
 public class AddAndSearchWord2S {
-
     private TrieNode root;
-
     public AddAndSearchWord2S(){
         root = new TrieNode();
     }
-
     // Adds a word into the data structure.
     public void addWord(String word) {
         HashMap<Character, TrieNode> children = root.children;
         for(int i=0; i<word.length(); i++){
             char c = word.charAt(i);
-
             TrieNode t = null;
             if(children.containsKey(c)){
                 t = children.get(c);
@@ -33,13 +29,11 @@ public class AddAndSearchWord2S {
             }
         }
     }
-
     // Returns if the word is in the data structure. A word could
     // contain the dot character '.' to represent any one letter.
     public boolean search(String word) {
         return dfsSearch(root.children, word, 0);
     }
-
     public boolean dfsSearch(HashMap<Character, TrieNode> children, String word, int start) {
         if(start == word.length()){
             if(children.size()==0)
@@ -47,9 +41,7 @@ public class AddAndSearchWord2S {
             else
                 return false;
         }
-
         char c = word.charAt(start);
-
         if(children.containsKey(c)){
             if(start == word.length()-1 && children.get(c).isLeaf){
                 return true;
@@ -61,13 +53,11 @@ public class AddAndSearchWord2S {
                 if(start == word.length()-1 && child.getValue().isLeaf){
                     return true;
                 }
-
                 //if any path is true, set result to be true;
                 if(dfsSearch(child.getValue().children, word, start+1)){
                     result = true;
                 }
             }
-
             return result;
         }else{
             return false;
@@ -78,11 +68,10 @@ public class AddAndSearchWord2S {
         char c;
         HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
         boolean isLeaf;
-
         public TrieNode() {}
-
         public TrieNode(char c){
             this.c = c;
         }
     }
+
 }

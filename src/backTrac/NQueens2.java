@@ -47,12 +47,8 @@ class NQueens2 {
         dfs(0, 0, 0);
         return ans;
     }
-    
     static int ans, limit;
-    
-    /**
-     * Backtracking
-     */
+    /**Backtracking*/
     public static void dfs(int h, int r, int l) {
         if (h == limit) { 
             ans++;

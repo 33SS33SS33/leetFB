@@ -32,6 +32,9 @@ class CombinationSum2 {
         int tar = 8;
         List<List<Integer>> solution = new CombinationSum2().combinationSum2(candidates, tar);
         for (List<Integer> l : solution) System.out.println(l.toString());
+
+        List<ArrayList<Integer>> solution2 = new CombinationSum2().combinationSum2B(candidates, tar);
+        for (List<Integer> l : solution2) System.out.println(l.toString());
     }
     
     public List<List<Integer>> combinationSum2(int[] num, int target) {
@@ -41,7 +44,6 @@ class CombinationSum2 {
         combinationSum2(num, target, 0, new ArrayList<Integer>(), res);
         return res;
     }
-    
     /**
      * Skip duplicates after new target is generated
      */
@@ -50,7 +52,6 @@ class CombinationSum2 {
             result.add(new ArrayList<Integer>(comb));
             return;
         }
-        
         for (int i = index; i < num.length; i++) {
             int newTarget = target - num[i];
             if (newTarget >= 0) {
@@ -68,16 +69,13 @@ class CombinationSum2 {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if(num == null || num.length == 0)
             return result;
-
         Arrays.sort(num);
         ArrayList<Integer> temp = new ArrayList<Integer>();
         getCombination(num, 0, target, temp, result);
-
         HashSet<ArrayList<Integer>> set = new HashSet<ArrayList<Integer>>(result);
         //remove duplicate lists
         result.clear();
         result.addAll(set);
-
         return result;
     }
 

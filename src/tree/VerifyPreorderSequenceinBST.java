@@ -19,12 +19,10 @@ public class VerifyPreorderSequenceinBST {
             int st = stack.pop();
             if (st >= ed)
                 continue;
-
             int root = preorder[p++];
             int i = Arrays.binarySearch(inorder, st, ed, root);
             if (i < 0)
                 return false;
-
             stack.push(i + 1);
             stack.push(ed);
             stack.push(st);

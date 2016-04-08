@@ -44,7 +44,6 @@ class Combinations {
         combine(n, k, 1, new ArrayList<Integer>(), res); // note that start is 1
         return res;
     }
-    
     public static void combine(int n, int k, int start, List<Integer> comb, List<List<Integer>> result) {
         if (k == 0) { // is a solution
             result.add(comb); 
@@ -65,7 +64,6 @@ class Combinations {
         combine(n, k, new ArrayList<String>(), res);
         return res;
     }
-    
     public static void combine(int n, int k, List<String> comb, List<List<String>> result) {
         if (k == 0) {
             result.add(comb); 
@@ -95,7 +93,6 @@ class Combinations {
         dfs(n, k, 1, item, result); // because it need to begin from 1
         return result;
     }
-
     private static void dfs(int n, int k, int start, ArrayList<Integer> item,
             ArrayList<ArrayList<Integer>> res) {
         if (item.size() == k) {

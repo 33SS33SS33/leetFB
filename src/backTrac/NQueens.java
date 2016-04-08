@@ -5,28 +5,25 @@ import java.util.*;
 /**
  * The n-queens puzzle is the problem of placing n queens on an n×n chessboard
  * such that no two queens attack each other.
- * <p/>
  * Given an integer n, return all distinct solutions to the n-queens puzzle.
- * <p/>
  * Each solution contains a distinct board configuration of the n-queens'
  * placement, where 'Q' and '.' both indicate a queen and an empty space
  * respectively.
- * <p/>
+ *
  * For example,
  * There exist two distinct solutions to the 4-queens puzzle:
- * <p/>
+ *
  * [
  * [".Q..",  // Solution 1
  * "...Q",
  * "Q...",
  * "..Q."],
- * <p/>
+ *
  * ["..Q.",  // Solution 2
  * "Q...",
  * "...Q",
  * ".Q.."]
  * ]
- * <p/>
  * Tags: Backtracking, Bit Manipulation
  */
 class NQueens {
@@ -46,7 +43,6 @@ class NQueens {
     List<String[]> res; // solutions
     StringBuilder  sb; // for a row
     List<Integer>  indices; // store solution
-
     public List<String[]> solveNQueens(int n) {
         res = new ArrayList<String[]>();
         if (n <= 0)
@@ -61,7 +57,6 @@ class NQueens {
         dfs(0, 0, 0);
         return res;
     }
-
     /**
      * Save indices of each line in a list
      * Retrieve the indices of each line when there is a solution
@@ -99,7 +94,6 @@ class NQueens {
         helper(n, 0, new int[n], res);
         return res;
     }
-
     private void helper(int n, int row, int[] columnForRow, ArrayList<String[]> res) {
         if (row == n) {
             String[] item = new String[n];
@@ -123,7 +117,6 @@ class NQueens {
             }
         }
     }
-
     private boolean check(int row, int[] columnForRow) {
         for (int i = 0; i < row; i++) {
             if (columnForRow[row] == columnForRow[i]

@@ -25,7 +25,6 @@ class Permutations {
         permute(num, 0, res);
         return res;
     }
-    
     public static void permute(int[] num, int level, List<List<Integer>> res) {
         if (level == num.length) {
             List<Integer> row = new ArrayList<Integer>();
@@ -39,7 +38,6 @@ class Permutations {
             swap(num, level, i); // reset
         }
     }
-    
     public static void swap(int[] num, int i, int j) {
         if (i == j) return;
         num[i] = num[j] - num[i];

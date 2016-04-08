@@ -7,7 +7,6 @@ import java.util.*;
  * 
  * Given a directed graph, a source vertex ‘s’ and a destination vertex ‘d’,
  * print all paths from given ‘s’ to ‘d’.
- * 
  * 0 1 1 1
  * 0 0 0 1
  * 1 1 0 0
@@ -46,7 +45,6 @@ class Graph {
             for (int i : path) System.out.print(i + "->");
             System.out.println();
         }
-        
         for (int next : adjacent.get(s)) {
             if (!visited[next]) {
                 dfs(next, d, visited, path, pos+1);
@@ -58,13 +56,11 @@ class Graph {
     
     int V;
     List<List<Integer>> adjacent;
-        
     public Graph(int V) {
         this.V = V;
         adjacent = new ArrayList<List<Integer>>(V);
         for (int i = 0; i < V; i++) adjacent.add(new ArrayList<Integer>());
     }
-        
     public void addEdge(int u, int v) {
         adjacent.get(u).add(new Integer(v));
     }

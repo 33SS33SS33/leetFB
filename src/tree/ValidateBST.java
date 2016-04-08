@@ -25,7 +25,7 @@ class ValidateBST {
     }
 
 
-/*时间复杂度是O(n)，空间复杂度是O(logn)*/
+    /*时间复杂度是O(n)，空间复杂度是O(logn)*/
     /**
      * Recursive
      * Check current node

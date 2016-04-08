@@ -26,7 +26,6 @@ class GenerateParen {
         dfs(n, 0, "", ans);
         return ans;
     }
-
     /**
      * @param left available left parentheses
      * @param right available right parentheses
@@ -46,7 +45,6 @@ class GenerateParen {
         if (n == 0) return new ArrayList<String>();
         if (n == 1) return Arrays.asList(new String[]{"()"});
         HashSet<String> temp = new HashSet<String>();
-
         for(String s : generateParenthesisB(n - 1)){
             temp.add("(" + s + ")");
             temp.add("()" + s);
@@ -67,7 +65,6 @@ class GenerateParen {
     public static List<String> generateParenthesisC(int n) {
         ArrayList<String> result = new ArrayList<String>();
         ArrayList<Integer> diff = new ArrayList<Integer>();
-
         result.add("");
         diff.add(0);
         for (int i = 0; i < 2 * n; i++) {
@@ -90,4 +87,5 @@ class GenerateParen {
         }
         return result;
     }
+
 }

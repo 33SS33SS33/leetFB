@@ -9,16 +9,13 @@ import java.util.*;
  * 
  * For example, given s = "aab",
  * Return
- * 
  *   [
  *     ["aa","b"],
  *     ["a","a","b"]
  *   ]
- * 
  * Tags: Backtracking
  */
 class PalindromePartition {
-    
     public static void main(String[] args) {
         System.out.println(partition("aab"));
         System.out.println(new PalindromePartition().partitionB("aab"));
@@ -42,7 +39,6 @@ class PalindromePartition {
         partition(s, 0, res, new ArrayList<String>());
         return res;
     }
-    
     public static void partition(String s, int pos, List<List<String>> res, List<String> cut) {
         if (pos == s.length()) { // note the stop condition
             res.add(new ArrayList<String>(cut)); // dereference
@@ -101,18 +97,8 @@ class PalindromePartition {
         return dict;
     }
 
-    boolean isPal(String s){
-        char[] S = s.toCharArray();
-        for(int i = 0; i < S.length / 2; i++){
-            if(S[i] != S[S.length - i - 1])
-                return false;
-        }
-        return true;
-    }
-
     public List<List<String>> partitionC(String s) {
         List<List<String>> rt = new ArrayList<List<String>>();
-
         if("".equals(s)) return rt;
         if(s.length() == 1) return Arrays.asList(Arrays.asList(s));
         for(int i = 0; i < s.length(); i++){
@@ -133,7 +119,14 @@ class PalindromePartition {
         }
         return rt;
     }
-
+    boolean isPal(String s){
+        char[] S = s.toCharArray();
+        for(int i = 0; i < S.length / 2; i++){
+            if(S[i] != S[S.length - i - 1])
+                return false;
+        }
+        return true;
+    }
     /**
      * creek DP
      */
@@ -172,17 +165,13 @@ class PalindromePartition {
     /**creek----Depth-first Search*/
     public ArrayList<ArrayList<String>> partitionD(String s) {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-
         if (s == null || s.length() == 0) {
             return result;
         }
-
         ArrayList<String> partition = new ArrayList<String>();//track each possible partition
         addPalindrome(s, 0, partition, result);
-
         return result;
     }
-
     private void addPalindrome(String s, int start, ArrayList<String> partition,
             ArrayList<ArrayList<String>> result) {
         //stop condition
@@ -191,7 +180,6 @@ class PalindromePartition {
             result.add(temp);
             return;
         }
-
         for (int i = start + 1; i <= s.length(); i++) {
             String str = s.substring(start, i);
             if (isPalindrome(str)) {
@@ -201,6 +189,5 @@ class PalindromePartition {
             }
         }
     }
-
 
 }

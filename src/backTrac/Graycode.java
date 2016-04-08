@@ -6,17 +6,14 @@ import java.util.List;
 /**
  * The gray code is a binary numeral system where two successive values differ
  * in only one bit.
- *
  * Given a non-negative integer n representing the total number of bits in the
- * code, print the sequence of gray code. A gray code sequence must begin with
- * 0.
+ * code, print the sequence of gray code. A gray code sequence must begin with 0.
  *
  * For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:
  * 00 - 0
  * 01 - 1
  * 11 - 3
  * 10 - 2
- *
  * Note:
  * For a given n, a gray code sequence is not uniquely defined.
  *
@@ -29,15 +26,15 @@ import java.util.List;
  */
 class Graycode {
     public static void main(String[] args) {
-        System.out.println(new Graycode().grayCode(3));
-        System.out.println(new Graycode().grayCode2(3));
+        System.out.println(new Graycode().grayCodeA(3));
+        System.out.println(new Graycode().grayCodeB(3));
     }
 
     /**
      * generate 0, 1 then add 10 from back to get 11, 10
      * same goes for 00, 01, 11, 10, add 100 to get 110, 111, 101, 100
      */
-    public List<Integer> grayCode(int n) {
+    public List<Integer> grayCodeA(int n) {
         List<Integer> results = new ArrayList<Integer>();
         results.add(0); // starts from 0
         for (int i = 0; i < n; i++) {
@@ -48,7 +45,7 @@ class Graycode {
         }
         return results;
     }
-    public ArrayList<Integer> grayCode2(int n) {
+    public ArrayList<Integer> grayCodeB(int n) {
         ArrayList<Integer> res = new ArrayList<Integer>();
         if(n<0)
             return res;
