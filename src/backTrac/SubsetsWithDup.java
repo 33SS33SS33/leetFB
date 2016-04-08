@@ -5,7 +5,6 @@ import java.util.*;
 /**
  * Given a collection of integers that might contain duplicates, S, return all
  * possible subsets.
- * 
  * Note:
  * Elements in a subset must be in non-descending order.
  * The solution set must not contain duplicate subsets.
@@ -52,7 +51,6 @@ class SubsetsWithDup {
         subsetsHelper(res, new ArrayList<Integer>(), num, 0);
         return res;
     }
-
     /**
      * Add list to result
      * Backtrack from current position to the end of array
@@ -90,7 +88,6 @@ class SubsetsWithDup {
         if (null == num || num.length == 0)
             return res;
         Arrays.sort(num); // sort first
-
         int j, prevSize = 0;
         for (int i = 0; i < num.length; i++) {
             if (i != 0 && num[i] == num[i - 1]) // dup number
@@ -115,7 +112,6 @@ class SubsetsWithDup {
         if (num == null)
             return null;
         Arrays.sort(num);
-
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         ArrayList<ArrayList<Integer>> prev = new ArrayList<ArrayList<Integer>>();
         for (int i = num.length - 1; i >= 0; i--) {

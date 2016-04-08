@@ -4,7 +4,6 @@ import java.util.*;
 
 /**
  * Given a set of distinct integers, S, return all possible subsets.
- * 
  * Note:
  * Elements in a subset must be in non-descending order.
  * The solution set must not contain duplicate subsets.
@@ -21,7 +20,6 @@ import java.util.*;
  *   [1,2],
  *   []
  * ]
- * 
  * Tags: Array, Backtracking, Bit Manipulation
  */
 class Subsets {

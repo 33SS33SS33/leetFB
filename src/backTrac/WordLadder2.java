@@ -60,7 +60,6 @@ class WordLadder2 {
         dist.put(start, 0);
         for (String s : dict)
             map.put(s, new ArrayList<String>());
-
         while (!q.isEmpty()) {
             String word = q.poll();
             List<String> expansion = expand(word, dict); // generate all words
@@ -73,7 +72,6 @@ class WordLadder2 {
             }
         }
     }
-
     /**
      * Generate a list of words the word
      * Skip if it's the same character
@@ -123,10 +121,8 @@ class WordLadder2 {
         List<List<String>> result = new ArrayList<List<String>>();
         LinkedList<WordNode> queue = new LinkedList<WordNode>();
         queue.add(new WordNode(start, 1, null));
-
         dict.add(end);
         int minStep = 0;
-
         HashSet<String> visited = new HashSet<String>();
         HashSet<String> unvisited = new HashSet<String>();
         unvisited.addAll(dict);

@@ -28,16 +28,15 @@ class RestoreIPAddr {
     /**
      * Figure out what is a valid IP address
      * Use backtracking to insert dots into string
-     */
+    */
     public static List<String> restoreIPAddressesA(String s) {
         List<String> res = new ArrayList<String>();
         if (s.length() < 4 && s.length() > 12) return res;
         backtrack(s, 3, res, "");
         return res;
     }
-    
-    /**
-     * @param s current string for this backtrack
+
+     /** @param s current string for this backtrack
      * @param dot how many dots left, when equals 0, add last value to result
      * @param res result list of strings
      * @param ip current ip for this backtrack
@@ -56,7 +55,6 @@ class RestoreIPAddr {
                 backtrack(s.substring(i), dot - 1, res, ip + pre + ".");
         }
     }
-    
     /**
      * A valid IP address, each block should be from 0 to 255
      * Should not be 0X or 0XX
@@ -71,9 +69,7 @@ class RestoreIPAddr {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         ArrayList<String> t = new ArrayList<String>();
         dfs(result, s, 0, t);
-
         ArrayList<String> finalResult = new ArrayList<String>();
-
         for(ArrayList<String> l: result){
             StringBuilder sb = new StringBuilder();
             for(String str: l){
@@ -82,10 +78,8 @@ class RestoreIPAddr {
             sb.setLength(sb.length() - 1);
             finalResult.add(sb.toString());
         }
-
         return finalResult;
     }
-
     public static void dfs(ArrayList<ArrayList<String>> result, String s, int start,
             ArrayList<String> t){
         //if already get 4 numbers, but s is not consumed, return

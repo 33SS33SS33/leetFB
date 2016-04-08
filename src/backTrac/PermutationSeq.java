@@ -49,7 +49,6 @@ class PermutationSeq {
         List<Integer> digits = new ArrayList<Integer>();
         for (int i = 0; i < n; i++) digits.add(i + 1);
         StringBuilder sb = new StringBuilder();
-
         for (int i = 0; i < n; i++) {
             int index = k / factor;
             sb.append(digits.get(index));
@@ -57,25 +56,22 @@ class PermutationSeq {
             k = k % factor;
             if (i < n - 1) factor = factor / (n - 1 - i);
         }
-
         return sb.toString();
     }
     
     /**
      * Divide into subgroups and locate it
+
+     * Get relative digit from list
+     * First digit's index in list is k / factorial(n-1)
+     * Get the digit, remove that digit from list and update k
+     * Concatenate digit with following digits
      */
     public static String getPermutationB(int n, int k) {
         ArrayList<Integer> nums = new ArrayList<Integer>();
         for (int i = 0; i < n; i++) nums.add(i + 1);
         return helper(nums, n, k - 1); // note it's k - 1 here, start from 0
     }
-    
-    /**
-     * Get relative digit from list
-     * First digit's index in list is k / factorial(n-1)
-     * Get the digit, remove that digit from list and update k
-     * Concatenate digit with following digits
-     */
     public static String helper(ArrayList<Integer> nums, int n, int k) {
         if (n == 1) return nums.get(0).toString();
         int index = k / factorial(n - 1);
@@ -84,7 +80,6 @@ class PermutationSeq {
         k = k % factorial(n - 1);
         return digit + helper(nums, n - 1, k);
     }
-    
     private static int factorial(int n) {
         if (n == 0 || n == 1) return 1;
         return n * factorial(n - 1); // can be dp

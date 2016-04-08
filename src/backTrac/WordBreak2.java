@@ -52,7 +52,6 @@ public class WordBreak2 {
      */
     public List<String> wordBreak(String s, Set<String> dict) {
         List<String> words = new ArrayList<String>();
-
         int len = s.length();
         for (int i = 1; i <= len; i++) {
             String pref = s.substring(0, i);
