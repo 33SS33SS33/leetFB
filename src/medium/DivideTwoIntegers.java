@@ -3,7 +3,6 @@ package medium;
 /**
  * Divide two integers without using multiplication, division and mod operator.
  * If it is overflow, return MAX_INT.
- * <p/>
  * Tags: Math, Binary Search
  */
 class DivideTwoIntegers {
