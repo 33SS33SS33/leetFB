@@ -32,6 +32,7 @@ package tree;
  *
  * Tags: Tree, DFS
  */
+/**完美二叉树*/
 class PopulatingNextRight {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();

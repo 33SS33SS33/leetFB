@@ -23,6 +23,10 @@ package hard;
  * 
  * Tags: Tree ,DFS
  */
+/**普通二叉树*/
+/*Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
+The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
+Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.*/
 class PopulatingNextRight2 {
     public static void main(String[] args) {
         TreeLinkNode root= buildTree();
