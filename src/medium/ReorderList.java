@@ -7,12 +7,10 @@ package medium;
 /**
  * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
  * reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
- * <p/>
  * You must do this in-place without altering the nodes' values.
- * <p/>
  * For example,
  * Given {1,2,3,4}, reorder it to {1,4,2,3}.
- * <p/>
+ *
  * Tags: Linkedlist
  */
 class ReorderList {
@@ -30,29 +28,6 @@ class ReorderList {
         r.printList(head2);
     }
 
-    static ListNode buildTestList1() {
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode forth = new ListNode(4);
-        ListNode fifth = new ListNode(5);
-        ListNode sixth = new ListNode(6);
-        head.next = second;
-        second.next = third;
-        third.next = forth;
-        forth.next = fifth;
-        fifth.next = sixth;
-        return head;
-    }
-
-    private void printList(ListNode head) {
-        ListNode cur = head;
-        while (cur != null) {
-            System.out.print(cur.val + "->");
-            cur = cur.next;
-        }
-        System.out.println("NULL");
-    }
 
     /**
      * Find mid point, then split list into 2 halves
@@ -94,10 +69,8 @@ class ReorderList {
      * TLE, O(n^2)
      */
     private void reorderList2(ListNode head) {
-        ;
         if (head == null || head.next == null)
             return;
-
         ListNode cur = head;
         while (cur != null && cur.next != null && cur.next.next != null) {
             ListNode beforeTail = cur.next;
@@ -111,6 +84,29 @@ class ReorderList {
             cur = curNext;
         }
         return;
+    }
+    static ListNode buildTestList1() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode forth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+        head.next = second;
+        second.next = third;
+        third.next = forth;
+        forth.next = fifth;
+        fifth.next = sixth;
+        return head;
+    }
+
+    private void printList(ListNode head) {
+        ListNode cur = head;
+        while (cur != null) {
+            System.out.print(cur.val + "->");
+            cur = cur.next;
+        }
+        System.out.println("NULL");
     }
 
     static class ListNode {

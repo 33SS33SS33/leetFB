@@ -44,6 +44,7 @@ public class MaxSquare {
         return l * l;
     }
 
+
     public int maximalSquareB(char[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return 0;

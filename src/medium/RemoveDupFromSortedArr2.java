@@ -3,12 +3,9 @@ package medium;
 /**
  * Follow up for "Remove Duplicates":
  * What if duplicates are allowed at most twice?
- * <p/>
  * For example,
  * Given sorted array A = [1,1,1,2,2,3],
- * <p/>
  * Your function should return length = 5, and A is now [1,1,2,2,3].
- * <p/>
  * Tags: Array, Two pointers
  */
 class RemoveDupFromSortedArr2 {
@@ -21,9 +18,7 @@ class RemoveDupFromSortedArr2 {
         System.out.println(removeDuplicatesC(num3));
     }
 
-    /**
-     * --better-----
-     */
+    /**--better--*/
     public static int removeDuplicatesC(int[] A) {
         if (A.length <= 2)
             return A.length;

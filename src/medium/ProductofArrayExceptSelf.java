@@ -7,14 +7,25 @@ public class ProductofArrayExceptSelf {
 
     public static void main(String[] args) {
         int[] A = { 1, 2, 8, 9, 3, 5 };
-        int[] res = new ProductofArrayExceptSelf().productExceptSelfC(A);
+        ProductofArrayExceptSelf s=new ProductofArrayExceptSelf();
+        int[] res = s.productExceptSelfA(A);
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
         System.out.println();
+        int[] res2 = s.productExceptSelfB(A);
+        for (int i = 0; i < res2.length; i++) {
+            System.out.print(i == res2.length - 1 ? res2[i] : res2[i] + ", ");
+        }
+        System.out.println();
+        int[] res3 = s.productExceptSelfC(A);
+        for (int i = 0; i < res3.length; i++) {
+            System.out.print(i == res3.length - 1 ? res3[i] : res3[i] + ", ");
+        }
+        System.out.println();
     }
 
-    public int[] productExceptSelf(int[] nums) {
+    public int[] productExceptSelfA(int[] nums) {
         int[] output = new int[nums.length];
         if (nums.length == 0)
             return output;

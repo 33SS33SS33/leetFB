@@ -11,7 +11,7 @@ package medium;
  * Tag: Linkedlist
  * /**这里要把出现重复的元素全部删除
  */
-class RemoveDuplicatesFromSortedList2 {
+class RemoveDupFromSortedList2 {
     public static void main(String[] args) {
         ListNode head = buildTestList1();
         printList(head);

@@ -6,15 +6,19 @@ package medium;
 
 /**
  * Quick sort an integer arrays
- * <p/>
  * Tags: Sort
  */
 class QuickSort {
     public static void main(String[] args) {
         QuickSort q = new QuickSort();
         int[] A = { 1, 4, 2, 8, 5 };
+        int[] B = { 1, 4, 2, 8, 11};
         q.sort(A, 0, A.length - 1);
+        q.quickSort(B, 0, B.length - 1);
         for (int n : A)
+            System.out.print(n + ",");
+        System.out.println();
+        for (int n : B)
             System.out.print(n + ",");
     }
 
@@ -30,7 +34,6 @@ class QuickSort {
         if (index < right)
             sort(A, index, right);
     }
-
     /**
      * Choose pivot
      * Init 2 pointers from both ends to do partition
