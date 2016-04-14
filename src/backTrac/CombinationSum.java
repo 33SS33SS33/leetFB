@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Given a set of candidate numbers (C) and a target number (T), find all
  * unique combinations in C where the candidate numbers sums to T.
- * 
+ *
  * The same repeated number may be chosen from C <strong>unlimited</strong>
  * number of times.
  * 
@@ -58,8 +58,7 @@ class CombinationSum {
         }
     }
 
-    private void helper2(int[] candidates, int start, int target, ArrayList<Integer> item,
-           List<List<Integer>> res) {
+    private void helper2(int[] candidates, int target, int start,ArrayList<Integer> item, List<List<Integer>> res) {
         if(target<0)
             return;
         if(target==0) {

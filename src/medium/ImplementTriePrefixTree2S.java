@@ -30,7 +30,6 @@ public class ImplementTriePrefixTree2S {
                 t.isLeaf = true;
         }
     }
-
     // Returns if the word is in the trie.
     public boolean search(String word) {
         TrieNode t = searchNode(word);
@@ -40,15 +39,14 @@ public class ImplementTriePrefixTree2S {
             return false;
     }
 
-    // Returns if there is any word in the trie
-    // that starts with the given prefix.
+   /* Returns if there is any word in the trie
+    that starts with the given prefix.*/
     public boolean startsWith(String prefix) {
         if (searchNode(prefix) == null)
             return false;
         else
             return true;
     }
-
     public TrieNode searchNode(String str) {
         Map<Character, TrieNode> children = root.children;
         TrieNode t = null;
@@ -68,10 +66,8 @@ public class ImplementTriePrefixTree2S {
         char c;
         HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
         boolean isLeaf;
-
         public TrieNode() {
         }
-
         public TrieNode(char c) {
             this.c = c;
         }

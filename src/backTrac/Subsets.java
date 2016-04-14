@@ -29,10 +29,10 @@ class Subsets {
         for (List<Integer> l : res) {
             System.out.println(l.toString());
         }
-        List<List<Integer>> resB = subsetsB(nums);
+/*        List<List<Integer>> resB = subsetsB(nums);
         for (List<Integer> l : resB) {
             System.out.println(l.toString());
-        }
+        }*/
 /*        ArrayList<ArrayList<Integer>> res1 = subsets1(nums);
         for (List<Integer> l : res1) {
             System.out.println(l.toString());

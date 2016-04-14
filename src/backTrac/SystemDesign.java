@@ -37,4 +37,38 @@ public class SystemDesign {
      16. 结合所学的基础知识，考虑你所设计的系统的Availability，Scalability和Performance.
 
      基本想到的就这些。有需要的话我再补充。*/
+
+
+    /*
+F家第一轮电面可以去公司当面谈，lz有点好奇F家的办公地点，听说很高大上，就选择面谈
+
+第一题. 1point3acres.com/bbs
+设计一个SparseVector （就是一个超长的vector，大部分elements都是0）的class，实现dot product的操作。follow-up1:如果一个vector很长（millionsof non-zeros）， 另一个vector很短（hundredsof  non-zeros），如何优化。follow-up2:如何利用index之间的关系（比如设计class的时候规定按照递增的原则存non-zeroelements的index）进一步优化。
+lz这里犯了错误，上来直接直奔followup2最优解，傻x老印好像有点不忿，擦，这题目lz之前见过，貌似应该先扯扯暴力解法，哎。
+第二题
+trie数build和查找，结果被老印指出来一个bug，郁闷。
+
+总结一下：
+其实大家如果自己总结面经的话就发现了。。他们出题都是这个套路。。我在面经里面看到几乎都是random 那道题和window这道题搭配。  reverse linkedlist 和mutex搭配。每次必问复杂度。对bug free要求很高。
+中东小哥的口头禅就是I think there might be a bug here
+Mutex可以用atomic test and set/compare and set实现
+
+先出了一个题是convert binary tree to doubly linked list.我说第一轮做过了非常类似的题。
+然后就直接写了他的Backup problem.leetcode 211 原题， add and search word.
+
+对于有工作经验的candidate, FB只一轮专门聊project deep dive和culture fit，这个现在几乎所有的公司都会问吧。你需要把你最喜欢的项目了解的非常清楚，architecture, end-to-end working scenario,
+自己负责的部分，以及做的contribution，技术细节都要非常非常清楚。
+
+System Design：设计一个K recent contact 的service，就是当用户把鼠标点到chat对话框的时候，自动弹出K个最近的联系人。
+follow-up是如果要弹出K个最熟悉的人怎么设计，以及资源估计（需要多少台机器来做数据存储，多少个处理request等等）。
+
+设计一个news feed的排名算法，用用户的implicit反馈做label：share，clickthrough，like等。
+*/
+
+
+    /*3.Uber
+    设计Facebook photo的功能，问得很细，从前端的不同设备的处理，到后端架构(打算用什么语言，platform)，到数据库设计和选择(就差把数据库的表写出来了)，
+    cache策略，CDN，socket，disaster control，备份策略都问倒了。
+
+    题目很常见，就是有 Key ,Val, TimeStamp 的hashmap的add ,get ,remove 的实现。*/
 }

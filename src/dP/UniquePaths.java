@@ -3,22 +3,19 @@ package dP;
 /**
  * A robot is located at the top-left corner of a m x n grid (marked 'Start' in
  * the diagram below).
- * 
  * The robot can only move either down or right at any point in time. The robot
  * is trying to reach the bottom-right corner of the grid (marked 'Finish' in
  * the diagram below).
- * 
  * How many possible unique paths are there?
  * 
  * Note: m and n will be at most 100.
- * 
  * Tags: Array, DP
  */
 class UniquePaths {
     public static void main(String[] args) {
         System.out.println(uniquePathsMath(10, 20));
         System.out.println(uniquePathsDP(10, 20));
-        System.out.println(uniquePaths(10, 20));
+        System.out.println(uniquePathsA(10, 20));
         System.out.println(uniquePathsB(10, 20));
         System.out.println(uniquePathsC(10, 20));
     }
@@ -46,7 +43,6 @@ class UniquePaths {
      * when m == 1 or n == 1, only 1 way (straight down or straight right)
      */
     static int[][] paths = new int[101][101];
-
     public static int uniquePathsDP(int m, int n) {
         if (m <= 0 || n <= 0)
             return 0;
@@ -60,7 +56,7 @@ class UniquePaths {
     /**
      * DP, bottom-up approach
      */
-    public static int uniquePaths(int m, int n) {
+    public static int uniquePathsA(int m, int n) {
         int[][] paths = new int[m + 1][n + 1];
         paths[m - 1][n] = 1;
         for (int r = m - 1; r >= 0; r--)
@@ -99,7 +95,6 @@ class UniquePaths {
     public  static int uniquePathsC(int m, int n) {
         return dfs(0,0,m,n);
     }
-
     public static int dfs(int i, int j, int m, int n) {
         if (i == m - 1 && j == n - 1) {
             return 1;

@@ -4,10 +4,8 @@ import java.util.*;
 
 /**
  * Given a binary tree, flatten it to a linked list in-place.
- * <p/>
  * For example,
  * Given
- * <p/>
  * 1
  * / \
  * 2   5
@@ -25,13 +23,13 @@ import java.util.*;
  * 5
  * \
  * 6
- * <p/>
  * Hints:
  * If you notice carefully in the flattened tree, each node's right child
  * points to the next node of a pre-order traversal.
- * <p/>
  * Tags: Tree, DFS
  */
+
+/*递归 迭代*/
 class FlatenBinaryTreeToLinkedList {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);

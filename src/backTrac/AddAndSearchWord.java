@@ -19,6 +19,7 @@ public class AddAndSearchWord {
         int index(char c){
             return (int)(c - 'a');
         }
+
         void insert(char[] word, int st, int len){
             if(len == 0){
                 this.count++;

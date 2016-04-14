@@ -51,8 +51,10 @@ class SymmetricTree {
         n22.right = n24;
         System.out.println(new SymmetricTree().isSymmetric(root1));
         System.out.println(new SymmetricTree().isSymmetricRec(root1));
+        System.out.println(new SymmetricTree().isSymmetricC(root1));
         System.out.println(new SymmetricTree().isSymmetric(root2));
         System.out.println(new SymmetricTree().isSymmetricRec(root2));
+        System.out.println(new SymmetricTree().isSymmetricC(root2));
     }
 
     /**递归  算法的时间复杂度是树的遍历O(n)，空间复杂度同样与树遍历相同是O(logn)

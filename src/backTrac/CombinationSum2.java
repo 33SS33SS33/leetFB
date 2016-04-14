@@ -78,7 +78,6 @@ class CombinationSum2 {
         result.addAll(set);
         return result;
     }
-
     public void getCombination(int[] num, int start, int target, ArrayList<Integer> temp, ArrayList<ArrayList<Integer>> result){
         if(target == 0){
             ArrayList<Integer> t = new ArrayList<Integer>(temp);

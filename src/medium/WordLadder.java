@@ -36,8 +36,7 @@ public class WordLadder {
 所以时间复杂度是O(min(26^L, size(dict))，
 空间上需要存储访问情况，也是O(min(26^L, size(dict))*/
     public int ladderLength(String start, String end, HashSet<String> dict) {
-        if (start == null || end == null || start.length() == 0 || end.length() == 0
-                || start.length() != end.length())
+        if (start == null || end == null || start.length() == 0 || end.length() == 0 || start.length() != end.length())
             return 0;
         LinkedList<String> queue = new LinkedList<String>();
         HashSet<String> visited = new HashSet<String>();

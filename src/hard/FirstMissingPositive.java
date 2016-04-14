@@ -126,28 +126,38 @@ class FirstMissingPositive {
     /**creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.*/
     public int firstMissingPositiveD(int[] A) {
         int n = A.length;
-
         for (int i = 0; i < n; i++) {
             while (A[i] != i + 1) {
                 if (A[i] <= 0 || A[i] >= n)
                     break;
-
                 if(A[i]==A[A[i]-1])
                     break;
-
                 int temp = A[i];
                 A[i] = A[temp - 1];
                 A[temp - 1] = temp;
             }
         }
-
         for (int i = 0; i < n; i++){
             if (A[i] != i + 1){
                 return i + 1;
             }
         }
-
         return n + 1;
     }
 
+/*
+    #Pass 1, move every value to the position of its value
+    for cursor in range(N):
+        target = array[cursor]
+        while target < N and target != array[target]:
+            new_target = array[target]
+            array[target] = target
+            target = new_target
+
+    #Pass 2, find first location where the index doesn't match the value
+    for cursor in range(N):
+        if array[cursor] != cursor:
+            return cursor
+    return N
+*/
 }

@@ -32,8 +32,7 @@ class DivideTwoIntegers {
         long ldividend = Math.abs((long) dividend); // convert to abstract long
         final long ldivisor = Math.abs((long) divisor);
         int res = 0;
-        for (int bit = Integer.SIZE - 1;
-             bit >= 0 && ldividend >= ldivisor; bit--) { // bit from 31 to 0, dividend >= divisor
+        for (int bit = Integer.SIZE - 1; bit >= 0 && ldividend >= ldivisor; bit--) { // bit from 31 to 0, dividend >= divisor
             if (ldividend >= (ldivisor << bit)) {
                 res |= 1 << bit; // set 1 in relative bit in result
                 ldividend -= ldivisor << bit;

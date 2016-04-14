@@ -16,8 +16,10 @@ public class ReverseInteger {
         System.out.println(r.reverse(a));
         System.out.println(r.reverseB(a));
         System.out.println(r.reverseC(a));
-        int b = 1;
+        int b = 100;
         System.out.println(r.reverse(b));
+        System.out.println(r.reverseB(b));
+        System.out.println(r.reverseC(b));
     }
 
     public int reverse(int x) {
