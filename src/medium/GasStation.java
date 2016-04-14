@@ -32,7 +32,7 @@ class GasStation {
      * Go through the list and calculate restGas
      * If restGas < 0, update previous, reset restGas, set start index from next
      * If previous + restGas >= 0, which means there is a solution, return start
-     * Otherwie can't make the trip, return -1
+     * Otherwise can't make the trip, return -1
      */
     public static int canCompleteCircuit(int[] gas, int[] cost) {
         int restGas = 0; // gas remain for current trip

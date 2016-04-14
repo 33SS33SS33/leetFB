@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * Created by GAOSHANSHAN835 on 2016/1/5.
  */
 public class Permute {
-
     public static void main(String[] args) {
         int[] num = { 1, 3, 5, 6 };
         Permute a = new Permute();

@@ -12,7 +12,6 @@ public class SolveNQueens {
         helper(n, 0, new int[n], res);
         return res;
     }
-
     private void helper(int n, int row, int[] columnForRow, ArrayList<String[]> res) {
         if (row == n) {
             String[] item = new String[n];

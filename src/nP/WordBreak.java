@@ -1,14 +1,20 @@
 package nP;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/5.
  */
 public class WordBreak {
+    public static void main(String[] args) {
+        String s = "leetcode";
+        Set<String> dict =new HashSet<String>();
+        dict.add("leet");
+        dict.add("code");
+        WordBreak a=new WordBreak();
+        System.out.println(a.wordBreak(s,dict).toString());
+        System.out.println(a.wordBreakB(s,dict).toString());
+    }
 
     public ArrayList<String> wordBreak(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
@@ -48,7 +54,7 @@ public class WordBreak {
         return res;
     }
 
-    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+    public ArrayList<String> wordBreakB(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)
             return res;
