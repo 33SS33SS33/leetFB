@@ -1,23 +1,20 @@
 package medium;
 
-/**
- * Given an input string, reverse the string word by word.
- * <p/>
+/**Given an input string, reverse the string word by word.
  * For example,
  * Given s = "the sky is blue",
  * return "blue is sky the".
- * <p/>
+ *
  * Clarification:
  * What constitutes a word?
  * A sequence of non-space characters constitutes a word.
- * <p/>
  * Could the input string contain leading or trailing spaces?
  * Yes. However, your reversed string should not contain leading or trailing
  * spaces.
- * <p/>
+ *
  * How about multiple spaces between two words?
  * Reduce them to a single space in the reversed string.
- * <p/>
+ *
  * Tags: String
  */
 class ReverseWordsinaString {
@@ -54,9 +51,7 @@ class ReverseWordsinaString {
                     word.append(c);
                     i++;
                 }
-                res = res.length() == 0 ?
-                        word.toString() :
-                        word.toString() + " " + res; // insert to front of res
+                res = res.length() == 0 ? word.toString() : word.toString() + " " + res; // insert to front of res
                 i--; // reset i
             }
         }

@@ -3,11 +3,9 @@ package medium;
 /**
  * Given a list, rotate the list to the right by k places, where k is
  * non-negative.
- * <p/>
  * For example:
  * Given 1->2->3->4->5->NULL and k = 2,
  * return 4->5->1->2->3->NULL.
- * <p/>
  * Tags: Linked List, Two Pointers
  */
 class RotateList {
@@ -15,21 +13,6 @@ class RotateList {
         ListNode head = buildTestList1();
         rotateRightB(head, 2);
         printList(head);
-    }
-
-    static ListNode buildTestList1() {
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode forth = new ListNode(4);
-        ListNode fifth = new ListNode(5);
-        ListNode sixth = new ListNode(6);
-        head.next = second;
-        second.next = third;
-        third.next = forth;
-        forth.next = fifth;
-        fifth.next = sixth;
-        return head;
     }
 
     private static void printList(ListNode head) {
@@ -67,15 +50,7 @@ class RotateList {
         return dummy.next;
     }
 
-    static class ListNode {
-        int      val;
-        ListNode next;
 
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
-    }
 
     /**
      * My own implementation
@@ -115,5 +90,29 @@ class RotateList {
             res++;
         }
         return res;
+    }
+
+    static ListNode buildTestList1() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode forth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+        head.next = second;
+        second.next = third;
+        third.next = forth;
+        forth.next = fifth;
+        fifth.next = sixth;
+        return head;
+    }
+    static class ListNode {
+        int      val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
     }
 }

@@ -6,15 +6,14 @@ package medium;
 public class ShortestWordDistance {
     public static void main(String[] args) {
         String[] words = { "dog", "cat" };
-        String word1 = "ll";
-        String word2 = "ss";
+        String word1 = "cog";
+        String word2 = "car";
         int res = new ShortestWordDistance().shortestDistance(words, word1, word2);
         System.out.println(res);
     }
 
     public int shortestDistance(String[] words, String word1, String word2) {
         int len = words.length;
-
         int i1 = -1;
         int i2 = -1;
         for (int i = 0; i < words.length; i++) {

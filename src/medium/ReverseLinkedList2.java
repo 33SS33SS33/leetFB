@@ -3,14 +3,11 @@ package medium;
 /**
  * Reverse a linked list from position m to n
  * Do it in-place and in one-pass
- * <p/>
  * Eg:
  * Given 1->2->3->4->5->NULL, m = 2 and n = 4
  * Return 1->4->3->2->5->NULL
- * <p/>
  * Note:
  * 1 <= m <= n <= length of the list
- * <p/>
  * Tags: Linkedlist
  */
 class ReverseLinkedList2 {
@@ -24,21 +21,6 @@ class ReverseLinkedList2 {
         System.out.print(head.val);
     }
 
-    static ListNode buildTestList1() {
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode forth = new ListNode(4);
-        ListNode fifth = new ListNode(5);
-        ListNode sixth = new ListNode(6);
-        head.next = second;
-        second.next = third;
-        third.next = forth;
-        forth.next = fifth;
-        fifth.next = sixth;
-        return head;
-    }
-
     /**
      * Move pointers to m
      * Then insert next code to sublist's head till we reach n
@@ -50,13 +32,11 @@ class ReverseLinkedList2 {
     public static ListNode reverseBetween(ListNode head, int m, int n) {
         if (m >= n || head == null)
             return head;
-
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode pre = dummy;
         for (int i = 1; i < m; i++)
             pre = pre.next;
-
         ListNode cur = pre.next;
         for (int i = m; i < n; i++) { // insert next to head to reverse
             ListNode temp = cur.next.next;
@@ -136,6 +116,20 @@ class ReverseLinkedList2 {
         else
             return p1;
 
+        return head;
+    }
+    static ListNode buildTestList1() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode forth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+        head.next = second;
+        second.next = third;
+        third.next = forth;
+        forth.next = fifth;
+        fifth.next = sixth;
         return head;
     }
 
