@@ -7,10 +7,8 @@ package medium;
 import java.util.*;
 
 /**
- * Clone an undirected graph. Each node in the graph contains a label and a
- * list of its neighbors.
- * OJ's undirected graph serialization:
- * Nodes are labeled uniquely.
+ * Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
+ * OJ's undirected graph serialization:Nodes are labeled uniquely.
  *
  * We use # as a separator for each node, and , as a separator for node label
  * and each neighbor of the node.
@@ -23,14 +21,14 @@ import java.util.*;
  * Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming
  * a self-cycle.
  * Visually, the graph looks like the following:
- * <p/>
+
  * 1
  * / \
  * /   \
  * 0 --- 2
  * / \
  * \_/
- * <p/>
+
  * Tags: DFS, BFS, Graph
  */
 class CloneGraph {
@@ -129,7 +127,7 @@ class CloneGraph {
         return clone.get(node);
     }
 
-    /*深度优先 非递归*/
+    /**DFS 深度优先 非递归*/
     public UndirectedGraphNode cloneGraphD(UndirectedGraphNode node) {
         if (node == null)
             return null;

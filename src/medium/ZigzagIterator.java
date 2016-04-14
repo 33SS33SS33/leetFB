@@ -7,6 +7,7 @@ import java.util.List;
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
 public class ZigzagIterator {
+
     Iterator<Integer>[] ivs;
     int p = 0;
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
