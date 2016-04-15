@@ -9,7 +9,7 @@ import java.util.List;
  * totally K elements) in S such that their sum equal to a given target? Find
  * all such unique K elements tuple(a, b, c, d, e, …) in the array which gives
  * the given target.
- * <p/>
+
  * Tags: Array, Two Pointers, Backtracking
  */
 class KSum {
@@ -33,7 +33,6 @@ class KSum {
         Arrays.sort(num); // sort first
         return kSum(num, k, target, 0);
     }
-
     /**
      * Backtracking
      * Base case when k == 2, use 2 pointers and add it to result

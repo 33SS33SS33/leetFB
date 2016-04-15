@@ -12,34 +12,29 @@ import java.util.List;
  * Given an array S of n integers, are there elements a, b, c in S such that a
  * + b + c = 0? Find all unique triplets in the array which gives the sum
  * of zero.
- * <p/>
  * Note:
  * Elements in a triplet (a,b,c) must be in <strong>non-descending</strong>
  * order.
  * (ie, a ≤ b ≤ c)
  * The solution set must not contain <strong>duplicate</strong> triplets.
- * <p/>
  * For example, given array S = {-1 0 1 2 -1 -4},
- * <p/>
+ *
  * A solution set is:
  * (-1, 0, 1)
  * (-1, -1, 2)
- * <p/>
+ *
  * Tags: Array, Two Pointers
  */
 class ThreeSum {
     public static void main(String[] args) {
-        ThreeSum t = new ThreeSum();
         int[] s = { -1, 0, 1, 2, -1, -4 };
 //        t.printResult(t.threeSum(s));
-//        ArrayList<ArrayList<Integer>> res = threeSumB(s);
-//        for (List<Integer> l : res) {
-//            System.out.print(l.toString());
-//        }
-        ArrayList<List<Integer>> res2 = threeSumC(s);
-            System.out.print(res2.toString());
-//        ArrayList<ArrayList<Integer>> res3 = threeSumD(s);
-//        System.out.print(res3.toString());
+        List<List<Integer>> res = threeSum(s);
+        System.out.println(res.toString());
+        ArrayList<ArrayList<Integer>> res2 = threeSumB(s);
+        System.out.println(res2.toString());
+        ArrayList<ArrayList<Integer>> res3 = threeSumD(s);
+        System.out.println(res3.toString());
     }
 
     /**
@@ -48,14 +43,14 @@ class ThreeSum {
      * Traverse the array with 1 pointer
      * Use 2 more pointers from both start(i + 1) and end to find target
      */
-    public List<List<Integer>> threeSum(int[] num) {
+    public static List<List<Integer>> threeSum(int[] num) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         Arrays.sort(num);
         for (int i = 0; i < num.length - 2; i++) {
             if (i > 0 && num[i] == num[i - 1])
                 continue; // skip duplicate
             if (num[i] > 0)
-                break; // stop at positive integers
+                break; // stop at positive integers   ？？？？
             int j = i + 1;
             int k = num.length - 1;
             while (j < k) {
@@ -122,34 +117,6 @@ class ThreeSum {
                         //case 3
                     } else {
                         end--;
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
-    /**
-     * not good
-     */
-    public static ArrayList<List<Integer>> threeSumC(int[] num) {
-        //sort array
-        Arrays.sort(num);
-        ArrayList<List<Integer>> result = new ArrayList<List<Integer>>();
-        ArrayList<Integer> each = new ArrayList<Integer>();
-        for (int i = 0; i < num.length; i++) {
-            if (num[i] > 0)
-                break;
-            for (int j = i + 1; j < num.length; j++) {
-                if (num[i] + num[j] > 0 && num[j] > 0)
-                    break;
-                for (int k = j + 1; k < num.length; k++) {
-                    if (num[i] + num[j] + num[k] == 0) {
-                        each.add(num[i]);
-                        each.add(num[j]);
-                        each.add(num[k]);
-                        result.add(each);
-                        each.clear();
                     }
                 }
             }

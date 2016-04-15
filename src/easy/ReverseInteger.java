@@ -39,7 +39,7 @@ public class ReverseInteger {
         return y;
     }
 
-    /**
+    /** 更好的
      * creek This solution is from Sherry, it is succinct and it is pretty.
      */
     public int reverseB(int x) {

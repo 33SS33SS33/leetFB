@@ -9,13 +9,11 @@ import java.util.Map;
 public class TwoSumIIIDatastructuredesign {
     class TwoSum {
         Map<Integer, Integer> nums = new HashMap<Integer, Integer>();
-
         public void add(int number) {
             Integer c = nums.get(number);
             if (c == null)
                 c = 0;
             c++;
-
             nums.put(number, c);
         }
 
