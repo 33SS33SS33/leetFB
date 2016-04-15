@@ -4,7 +4,6 @@ package nP;
  * Created by GAOSHANSHAN835 on 2015/12/28.
  */
 public class LongestPalindrome {
-
     public static void main(String[] args) {
         String s = "abcacbd";
         System.out.print(new LongestPalindrome().longestPalindrome(s));

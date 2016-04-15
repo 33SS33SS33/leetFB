@@ -6,7 +6,16 @@ import java.util.*;
  * Created by GAOSHANSHAN835 on 2016/1/5.
  */
 public class WordBreak2 {
-
+    public static void main(String[] args) {
+        String s = "leetcode";
+        Set<String> dict =new HashSet<String>();
+        dict.add("leet");
+        dict.add("code");
+        WordBreak2 a=new WordBreak2();
+        System.out.println(a.wordBreak(s,dict).toString());
+        System.out.println(a.wordBreak2B(s,dict).toString());
+        System.out.println(a.wordBreak2C(s,dict).toString());
+    }
     public ArrayList<String> wordBreak(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)
@@ -46,7 +55,7 @@ public class WordBreak2 {
     }
 
     /*DP 用动态规划的代码复杂度要远远高于brute force的解法，而且本质来说并没有很大的提高*/
-    public ArrayList<String> wordBreak2(String s, Set<String> dict) {
+    public ArrayList<String> wordBreak2B(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)
             return res;
@@ -96,7 +105,7 @@ public class WordBreak2 {
     /**
      * creek-----
      */
-    public static List<String> wordBreak3(String s, Set<String> dict) {
+    public static List<String> wordBreak2C(String s, Set<String> dict) {
         //create an array of ArrayList<String>
         List<String> dp[] = new ArrayList[s.length() + 1];
         dp[0] = new ArrayList<String>();
