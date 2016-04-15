@@ -37,11 +37,9 @@ class SpiralMatrix {
         List<Integer> res = new ArrayList<Integer>();
         if (matrix == null || matrix.length == 0)
             return res;
-
         int m = matrix.length;
         int n = matrix[0].length;
         int lv = 0;
-
         while (2 * lv < m && 2 * lv < n) { // note 2 * level
             for (int i = lv; i < n - lv; i++)
                 res.add(matrix[lv][i]); // right
@@ -138,7 +136,6 @@ class SpiralMatrix {
             return result;
         int m = matrix.length;
         int n = matrix[0].length;
-
         int x = 0;
         int y = 0;
         while (m > 0 && n > 0) {
