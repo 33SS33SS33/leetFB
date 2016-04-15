@@ -8,22 +8,17 @@ package medium;
  * return 4->5->1->2->3->NULL.
  * Tags: Linked List, Two Pointers
  */
+/*就是把右边的元素挪到左边 挪动k个 k有可能比链表长度长  如果等于链表长度其实就是原来的链表
+首先找到链表的末尾并且计算链表的长度
+然后把链表的末尾和链表头连接起来 再往前跑length - k%length 然后在这个位置把链表断开即可
+即pointer此时的next就是链表头 然后把pointer的next指向none*/
 class RotateList {
     public static void main(String[] args) {
         ListNode head = buildTestList1();
-        rotateRightB(head, 2);
+        rotateRight(head, 2);
         printList(head);
     }
-
-    private static void printList(ListNode head) {
-        ListNode cur = head;
-        while (cur != null) {
-            System.out.print(cur.val + "->");
-            cur = cur.next;
-        }
-        System.out.println("NULL");
-    }
-
+/*错的！！*/
     /**
      * Two pointers
      * Move fast pointer to the end of the list to get length
@@ -49,8 +44,6 @@ class RotateList {
         slow.next = null; // break linkedlist
         return dummy.next;
     }
-
-
 
     /**
      * My own implementation
@@ -81,7 +74,6 @@ class RotateList {
         cur.next = head;
         return newHead;
     }
-
     static int listLength(ListNode head) {
         ListNode cur = head;
         int res = 0;
@@ -90,6 +82,15 @@ class RotateList {
             res++;
         }
         return res;
+    }
+
+    private static void printList(ListNode head) {
+        ListNode cur = head;
+        while (cur != null) {
+            System.out.print(cur.val + "->");
+            cur = cur.next;
+        }
+        System.out.println("NULL");
     }
 
     static ListNode buildTestList1() {

@@ -20,6 +20,13 @@ import java.util.*;
  * 
  * Tags: Backtracking, Math
  */
+/*使用dfs会超时
+需要用到康托展开 可以看下面的帖子
+http://www.androiddev.net/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80%E5%8F%8A%E5%85%B6%E9%80%86%E8%BF%90%E7%AE%97/
+关键的地方就是
+K=an*(n-1)!+an-1*(n-2)!+…+ai*(i-1)!+…+a2*1!+a1*0!
+所以an = K//(n-1)! 而这个除法的余数就是an-1*(n-2)!+…+ai*(i-1)!+…+a2*1!+a1*0!之和 
+然后在用这个余数除以(n-2)! 以此类推*/
 class PermutationSeq {
     public static void main(String[] args) {
         System.out.println(getPermutation(3, 1)); // 123
