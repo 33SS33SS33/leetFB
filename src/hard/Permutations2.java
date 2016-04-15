@@ -14,10 +14,14 @@ import java.util.*;
  */
 class Permutations2 {
     public static void main(String[] args) {
-        List<List<Integer>> res = permuteUniqueB(new int[]{1, 2, 3});
+        List<List<Integer>> res = permuteUniqueB(new int[]{1, 1, 3});
+        ArrayList<ArrayList<Integer>>  res3 = permuteUniqueC(new int[]{1, 2, 3});
         List<List<Integer>> res2 =new Permutations2().permuteUnique(new int[]{1, 2, 3});
         for (List<Integer> l : res) System.out.println(l);
+        System.out.println("----------");
         for (List<Integer> l : res2) System.out.println(l);
+        System.out.println("----------");
+        for (List<Integer> l : res3) System.out.println(l);
     }
     
     /**
@@ -31,7 +35,6 @@ class Permutations2 {
         permute(num, 0, res);
         return res;
     }
-    
     public static void permute(int[] num, int pos, List<List<Integer>> res) {
         if (pos == num.length) {
             List<Integer> row = new ArrayList<Integer>();
@@ -54,7 +57,6 @@ class Permutations2 {
             swap(num, pos, i); // reset
         }
     }
-
     public static void swap(int[] num, int i, int j) {
         if (i == j) return;
         num[i] = num[j] - num[i];
@@ -67,7 +69,6 @@ class Permutations2 {
     public static ArrayList<ArrayList<Integer>> permuteUniqueC(int[] num) {
         ArrayList<ArrayList<Integer>> returnList = new ArrayList<ArrayList<Integer>>();
         returnList.add(new ArrayList<Integer>());
-
         for (int i = 0; i < num.length; i++) {
             Set<ArrayList<Integer>> currentSet = new HashSet<ArrayList<Integer>>();
             for (List<Integer> l : returnList) {
@@ -101,7 +102,6 @@ class Permutations2 {
         }
         return res;
     } 
-    
     /**
      * e.g.: 1234 -> 1243, 1243 -> 1324
      * Traverse backward to get 3
@@ -123,13 +123,11 @@ class Permutations2 {
         }
         return false;
     }
-    
     public static void swap(List<Integer> row, int a, int b) {
         int t = row.get(a);
         row.set(a, row.get(b));
         row.set(b, t);
     }
-    
     public static void reverse(List<Integer> row, int s, int e) {
         while (s < e) {
             swap(row, s, e);

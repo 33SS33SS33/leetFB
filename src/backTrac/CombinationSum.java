@@ -30,8 +30,10 @@ class CombinationSum {
         for (List<Integer> l : list) System.out.println(l.toString());
     }
     
-    /**
+    /**Bakctracking 回溯
      * Sort the array
+     * [2, 2, 3]
+     [7]
      */
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
@@ -40,9 +42,6 @@ class CombinationSum {
         helper(candidates, target, 0, new ArrayList<Integer>(), res);
         return res;
     }
-    /**
-     * Bakctracking
-     */
     private void helper(int[] candidates, int target, int pos, List<Integer> comb, List<List<Integer>> res) {
         if (target == 0) {
             res.add(new ArrayList<Integer>(comb)); // dereference

@@ -6,11 +6,11 @@ package string;
 
 /**
  * Implement strStr().
- *
  * Returns a pointer to the first occurrence of needle in haystack,
  * or null if needle is not part of haystack.
  * Tags: Two Pointers, String
  */
+
 public class StrStr {
     public static void main(String[] args) {
         String haystack = "mississippi";
@@ -40,6 +40,8 @@ public class StrStr {
         System.out.println(strStrC(str5, str2));
     }
 
+    /*两个循环 大循环就是遍历长字符串
+    然后在长字符串的每个起始位都开始小循环比对字符*/
     public static int strStr(String haystack, String needle) {
         for (int i = 0; ; i++) {
             for (int j = 0; ; j++) {
@@ -107,7 +109,6 @@ public class StrStr {
         }
         return -1;
     }
-
     //calculate KMP array
     public static int[] getNext(String needle) {
         int[] next = new int[needle.length()];

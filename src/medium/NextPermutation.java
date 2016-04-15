@@ -14,9 +14,15 @@ package medium;
  * 1,1,5 → 1,5,1
  * Tags: Array
  */
+/*规则是这样：
+如果一个数列是降序排列的（从后往前看就是升序） 那它就是不能再置换了 只能将他从新按升序排列
+所以每一遍都从后往前 一共扫描三遍
+第一遍先找到那个打破升序排列的数字(从后往前)
+第二遍从后往前找到第一个比打破升序的数字大的数字 然后置换二者
+第三遍就是把从打破升序的位置之后剩下的数列按升序排列（从前往后看） 这样的数字才最接近之前的数字*/
 class NextPermutation {
     public static void main(String[] args) {
-        int[] num={1,2,3};
+        int[] num={1,3,2};
         nextPermutation(num);
         for(int i:num) {
             System.out.print(i+",");

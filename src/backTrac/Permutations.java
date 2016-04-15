@@ -61,7 +61,6 @@ class Permutations {
         int numLength;
         ArrayList<ArrayList<Integer>> output;
         ArrayList<Integer> al;
-
         public  ArrayList<ArrayList<Integer>> permuteB(int[] num) {
             numLength = num.length;
             al = new ArrayList <Integer>();
@@ -86,7 +85,6 @@ class Permutations {
                 }
             }
         }
-
 
     /**creek--*/
     public ArrayList<ArrayList<Integer>> permuteC(int[] num) {

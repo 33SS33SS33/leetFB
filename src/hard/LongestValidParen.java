@@ -6,15 +6,12 @@ import java.util.Stack;
 /**
  * Given a string containing just the characters '(' and ')'
  * find the length of the longest valid (well-formed) parentheses substring.
- * 
  * For "(()", the longest valid parentheses substring is "()", which has length  * = 2.
  * Another example is ")()())", where the longest valid parentheses substring
  * is "()()", which has length = 4.
- * 
  * Follow up:
  * 
  * What if there are curly bracs and brakets as well? {} []?
- * 
  * Tags: DP, String
  */
 class LongestValidParen {
@@ -52,7 +49,6 @@ class LongestValidParen {
         Stack<Integer> s = new Stack<Integer>();
         int maxLen = 0;
         int len = 0;
-
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) == '(') s.push(i);
             else if (s.isEmpty()) len = 0;
@@ -72,10 +68,8 @@ class LongestValidParen {
     /**DP*/
     public static int longestValidParenthesesB(String s) {
         if (s == null || s.length() == 0) return 0;
-
         Stack<Integer> stack = new Stack<Integer>(); // Save indices of '('
         int[] dp = new int[s.length()]; // Store the length of the current longest valid sequence.
-
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') stack.push(i);  
@@ -101,13 +95,11 @@ class LongestValidParen {
         Stack<Integer> st = new Stack<Integer>(); // store the index of unmatched parens
         int len = s.length();
         int longest = 0;
-
         for (int i = 0; i < len; i++) {
             if (s.charAt(i) == '(') st.push(i);
             else if (s.charAt(i) == ')' && !st.isEmpty() && s.charAt(st.peek()) == '(') st.pop(); // pop if there is a pair
             else st.push(i); // right paren, empty or top is also right
         }
-
         if (st.isEmpty()) return len; // all valid
         /*calculate longest length between each unpaired*/
         int a = len, b = 0;

@@ -4,7 +4,6 @@ package list;
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
 public class SearchinRotatedSortedArray {
-
     public static void main(String[] args) {
         SearchinRotatedSortedArray r = new SearchinRotatedSortedArray();
         int[] nums = { 4, 5, 6, 7, 1, 2, 3 };
@@ -16,12 +15,11 @@ public class SearchinRotatedSortedArray {
     }
 
     /**
-     * Recusive creek--
+     * Recusive creek-- 递归
      */
     public int searchA(int[] nums, int target) {
         return binarySearch(nums, 0, nums.length - 1, target);
     }
-
     public int binarySearch(int[] nums, int left, int right, int target) {
         if (left > right)
             return -1;
@@ -43,7 +41,7 @@ public class SearchinRotatedSortedArray {
         }
     }
 
-    /**
+    /**  迭代
      * Iterative ----creek---
      * 在每次迭代中，分三种情况：
      （1）如果target==A[m]，那么m就是我们要的结果，直接返回；

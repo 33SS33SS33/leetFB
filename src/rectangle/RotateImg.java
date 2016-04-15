@@ -5,7 +5,6 @@ package rectangle;
  * Rotate the image by 90 degrees (clockwise).
  * Follow up:
  * Could you do this in-place?
- *
  * Tags: Array
  */
 class RotateImg {

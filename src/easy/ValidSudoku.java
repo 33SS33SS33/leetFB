@@ -15,7 +15,6 @@ import java.util.*;
 class ValidSudoku {
     public static void main(String[] args) {
         ValidSudoku v = new ValidSudoku();
-
         char[][] board = new char[9][9];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -60,7 +59,6 @@ class ValidSudoku {
                         return false; // already
                     else
                         sqr[sqrIdx] |= 1 << num;
-
                 }
             }
         }

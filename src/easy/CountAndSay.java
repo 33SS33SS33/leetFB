@@ -6,15 +6,14 @@ package easy;
 
 /**
  * The count-and-say sequence is the sequence of integers beginning as follows:
- * <p/>
  * 1, 11, 21, 1211, 111221, ...
  * 1 is read off as "one 1" or 11.
  * 11 is read off as "two 1s" or 21.
  * 21 is read off as "one 2, then one 1" or 1211.
  * Given an integer n, generate the nth sequence.
- * <p/>
+ *
  * Note: The sequence of integers will be represented as a string.
- * <p/>
+ *
  * Tags: String
  */
 class CountAndSay {
@@ -25,7 +24,7 @@ class CountAndSay {
         System.out.println(countAndSay(3));
         System.out.println(countAndSay(4));
         System.out.println(countAndSay(5));
-        System.out.println(countAndSay(6));
+        System.out.println(countAndSayC(6));
     }
 
     /**
@@ -83,16 +82,12 @@ class CountAndSay {
         return res;
     }
 
-    /**
-     * ------creek-----
-     */
+    /**------creek-----*/
     public static String countAndSayC(int n) {
         if (n <= 0)
             return null;
-
         String result = "1";
         int i = 1;
-
         while (i < n) {
             StringBuilder sb = new StringBuilder();
             int count = 1;

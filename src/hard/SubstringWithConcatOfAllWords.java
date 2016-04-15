@@ -19,21 +19,19 @@ class SubstringWithConcatOfAllWords {
     public static void main(String[] args) {
         String S = "barfoothefoobarman";
         String[] L = new String[]{"foo", "bar"};
-        System.out.print(findSubstring(S,L).toString());
+        System.out.print(findSubstringA(S,L).toString());
         System.out.print(findSubstringB(S,L).toString());
     }
     
     /**
      * Build a map for words in L and its relative counts
      */
-    public static List<Integer> findSubstring(String S, String[] L) {
+    public static List<Integer> findSubstringA(String S, String[] L) {
         List<Integer> res = new ArrayList<Integer>();
         if (S == null || L == null || L.length == 0) return res;
         int len = L[0].length(); // length of each word
-        
         Map<String, Integer> map = new HashMap<String, Integer>(); // map for L
         for (String w : L) map.put(w, map.containsKey(w) ? map.get(w) + 1 : 1);
-        
         for (int i = 0; i <= S.length() - len * L.length; i++) {
             Map<String, Integer> copy = new HashMap<String, Integer>(map);
             for (int j = 0; j < L.length; j++) { // check if match
@@ -72,7 +70,6 @@ class SubstringWithConcatOfAllWords {
             HashMap<String, Integer> currentMap = new HashMap<String, Integer>();
             int start = j;//start index of start
             int count = 0;//count totoal qualified words so far
-
             for (int i = j; i <= s.length() - len; i = i + len) {
                 String sub = s.substring(i, i + len);
                 if (map.containsKey(sub)) {
@@ -82,19 +79,15 @@ class SubstringWithConcatOfAllWords {
                     } else {
                         currentMap.put(sub, 1);
                     }
-
                     count++;
-
                     while (currentMap.get(sub) > map.get(sub)) {
                         String left = s.substring(start, start + len);
                         currentMap.put(left, currentMap.get(left) - 1);
-
                         count--;
                         start = start + len;
                     }
                     if (count == words.length) {
                         result.add(start); //add to result
-
                         //shift right and reset currentMap, count & start point
                         String left = s.substring(start, start + len);
                         currentMap.put(left, currentMap.get(left) - 1);
