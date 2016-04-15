@@ -5,16 +5,16 @@ import java.util.Arrays;
 /**
  * Given a <strong>sorted</strong> array, remove the duplicates in place such
  * that each element appear only once and return the new length.
- * <p/>
  * Do not allocate extra space for another array, you must do this in place
  * with constant memory.
- * <p/>
  * For example,
  * Given input array A = [1,1,2],
  * Your function should return length = 2, and A is now [1,2].
- * <p/>
+
  * Tags: Array, Two pointers
  */
+
+/*两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找*/
 class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray r = new RemoveDuplicatesFromSortedArray();
@@ -64,6 +64,7 @@ class RemoveDuplicatesFromSortedArray {
         return pos;
     }
 
+    /**创建信的数组*/
     // Create an array with all unique elements
     public static int[] removeDuplicatesC(int[] A) {
         if (A.length < 2)

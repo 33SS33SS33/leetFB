@@ -8,6 +8,7 @@ package medium;
  * Your function should return length = 5, and A is now [1,1,2,2,3].
  * Tags: Array, Two pointers
  */
+
 class RemoveDupFromSortedArr2 {
     public static void main(String[] args) {
         int[] num = { 1, 1, 1, 2, 2, 3 };

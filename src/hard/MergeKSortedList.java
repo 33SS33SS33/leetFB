@@ -7,6 +7,10 @@ import java.util.*;
  * describe its complexity.
  * Tags: Divide and Conquer, Linkedlist, Heap
  */
+/*使用priority queue 来做
+放进去tuple的原因是因为要不然heap无法排序
+整体思路就是用所有链表的头一个节点建立heap
+然后从heap里弹出最小的元素 同时压进去啊这个最小元素的下一个元素  一直到最后*/
 class MergeKSortedList {
     public static void main(String[] args) {
         ListNode head1=buildList();
@@ -22,10 +26,11 @@ class MergeKSortedList {
         }
     }
 
-    /*维护一个大小为k的堆，每次取堆顶的最小元素放到结果中，然后读取该元素的下一个元素放入堆中，重新维护好。
-    因为每个链表是有序的，每次又是去当前k个元素中最小的，所以当所有链表都读完时结束，这个时候所有元素按从小到大放在结果链表中。
-    这个算法每个元素要读取一次，即是k*n次，然后每次读取元素要把新元素插入堆中要logk的复杂度，所以总时间复杂度是O(nklogk)。
-    空间复杂度是堆的大小，即为O(k)。*/
+/**最好的*/
+/*维护一个大小为k的堆，每次取堆顶的最小元素放到结果中，然后读取该元素的下一个元素放入堆中，重新维护好。
+因为每个链表是有序的，每次又是去当前k个元素中最小的，所以当所有链表都读完时结束，这个时候所有元素按从小到大放在结果链表中。
+这个算法每个元素要读取一次，即是k*n次，然后每次读取元素要把新元素插入堆中要logk的复杂度，所以总时间复杂度是O(nklogk)。
+空间复杂度是堆的大小，即为O(k)。*/
     public ListNode mergeKListsB(List<ListNode> lists) {
         PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, new Comparator<ListNode>() {
             @Override public int compare(ListNode n1, ListNode n2) {
@@ -54,6 +59,7 @@ class MergeKSortedList {
         }
         return head;
     }
+
 
     public ListNode mergeKListsA(List<ListNode> lists) {
         /*base cases*/

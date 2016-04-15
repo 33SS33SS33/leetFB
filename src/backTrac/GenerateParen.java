@@ -16,7 +16,7 @@ class GenerateParen {
         System.out.println(generateParenthesisC(3));
     }
 
-    /**Backtracking
+    /** Backtracking 回溯法
      * Helper function use left and right to represent available parentheses
      * Initialize left as n, right as 0
      */
@@ -41,6 +41,7 @@ class GenerateParen {
         if (right > 0) dfs(left, right - 1, res + ")", ans); // add ), right - 1
     }
 
+    /**递归*/
     public static List<String> generateParenthesisB(int n) {
         if (n == 0) return new ArrayList<String>();
         if (n == 1) return Arrays.asList(new String[]{"()"});

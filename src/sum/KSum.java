@@ -23,8 +23,14 @@ class KSum {
             System.out.println(l);
     }
 
+
     /**
+     * Backtracking 回溯
      * Sort num array first
+     * Base case when k == 2, use 2 pointers and add it to result
+     * If k > 2, from position to the end of array
+     * Get k - 1 sum from recursive call first
+     * Then combine current number with results of k-1 sum and add to result
      */
     public List<List<Integer>> kSum(int[] num, int k, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
@@ -33,13 +39,6 @@ class KSum {
         Arrays.sort(num); // sort first
         return kSum(num, k, target, 0);
     }
-    /**
-     * Backtracking
-     * Base case when k == 2, use 2 pointers and add it to result
-     * If k > 2, from position to the end of array
-     * Get k - 1 sum from recursive call first
-     * Then combine current number with results of k-1 sum and add to result
-     */
     public List<List<Integer>> kSum(int[] num, int k, int target, int pos) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (k == 2) { // base case, k == 2
@@ -69,8 +68,7 @@ class KSum {
         for (int i = pos; i < num.length; i++) {
             if (i > pos && num[i] == num[i - 1])
                 continue; // skip duplicates
-            List<List<Integer>> k1Sum = kSum(num, k - 1, target - num[i],
-                    i + 1); // get k-1 sum from recursive calls
+            List<List<Integer>> k1Sum = kSum(num, k - 1, target - num[i], i + 1); // get k-1 sum from recursive calls
             for (List<Integer> s : k1Sum) {
                 List<Integer> tuple = new ArrayList<Integer>();
                 tuple.add(num[i]); // add current element

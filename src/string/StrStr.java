@@ -6,10 +6,9 @@ package string;
 
 /**
  * Implement strStr().
- * <p/>
+ *
  * Returns a pointer to the first occurrence of needle in haystack,
  * or null if needle is not part of haystack.
- * <p/>
  * Tags: Two Pointers, String
  */
 public class StrStr {
