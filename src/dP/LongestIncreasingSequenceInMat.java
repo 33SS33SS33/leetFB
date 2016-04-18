@@ -9,14 +9,12 @@ import java.util.*;
 /**
  * Find the longest increasing(increasing means one step) sequence in an
  * integer matrix in 4 directions (up down left right), return the sequence
- * <p/>
  * For Example:
  * |1 2 3 4|
  * |8 7 6 5|
- * <p/>
  * Output:
  * [1, 2, 3, 4, 5, 6, 7, 8]
- * <p/>
+
  * Tags: DP, DFS
  */
 class LongestIncreasingSequenceInMat {

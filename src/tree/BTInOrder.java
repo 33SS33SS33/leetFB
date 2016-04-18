@@ -6,7 +6,6 @@ import java.util.Stack;
 
 /**
  * Given a binary tree, return the inorder traversal of its nodes' values.
- * <p/>
  * For example:
  * Given binary tree {1,#,2,3},
  * 1
