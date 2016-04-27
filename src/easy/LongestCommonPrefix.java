@@ -3,7 +3,7 @@ package easy;
 /**
  * Write a function to find the longest common prefix string amongst an array
  * of strings.
- * <p/>
+
  * Tags: String
  */
 class LongestCommonPrefix {
@@ -63,7 +63,6 @@ class LongestCommonPrefix {
             return "";
         if (strs.length == 1)
             return strs[0];
-
         String word = strs[0];
         int prefixLength = word.length();
         for (int i = 1; i < strs.length; ++i) {

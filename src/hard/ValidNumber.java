@@ -76,14 +76,11 @@ class ValidNumber {
         if (c[0] == '+' || c[0] == '-') i++; // skip sign
         for (; i < c.length && (c[i] >= '0' && c[i] <= '9'); i++) num++;
         if (i < c.length && c[i] == '.') i++; // skip point
-        
         for (; i < c.length && (c[i] >= '0' && c[i] <= '9'); i++) num++; // !
         if (num == 0) return false; // no digit before or after point
-        
         if (i == c.length) return true; // no point or e
         else if (i < c.length && c[i] != 'e') return false; // last letter not e
         else i++; // skip e
-        
         num = 0; // reset num and check numbers after e
         if (i < c.length && (c[i] == '+' || c[i] == '-')) i++;
         for (; i < c.length && (c[i] >= '0' && c[i] <= '9'); i++) num++;
