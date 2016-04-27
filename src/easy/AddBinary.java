@@ -12,6 +12,8 @@ package easy;
  * Return "100".
  * Tags: Math, String
  */
+
+/*就是二进制加法 从后往前加也可以 记得str int转换*/
 class AddBinary {
     public static void main(String[] args) {
         String a = "1111001100101111011111000";
@@ -51,13 +53,11 @@ class AddBinary {
             return b;
         if (b == null)
             return a;
-
         StringBuilder result = new StringBuilder();
         int lenA = a.length();
         int lenB = b.length();
         int i = lenA - 1;
         int j = lenB - 1;
-
         boolean carry = false;
         while (i > -1 || j > -1) {
             char c1 = i > -1 ? a.charAt(i) : '0';
@@ -96,16 +96,13 @@ class AddBinary {
             return b;
         if (b == null || b.length() == 0)
             return a;
-
         int pa = a.length() - 1;
         int pb = b.length() - 1;
-
         int flag = 0;
         StringBuilder sb = new StringBuilder();
         while (pa >= 0 || pb >= 0) {
             int va = 0;
             int vb = 0;
-
             if (pa >= 0) {
                 va = a.charAt(pa) == '0' ? 0 : 1;
                 pa--;
@@ -114,7 +111,6 @@ class AddBinary {
                 vb = b.charAt(pb) == '0' ? 0 : 1;
                 pb--;
             }
-
             int sum = va + vb + flag;
             if (sum >= 2) {
                 sb.append(String.valueOf(sum - 2));
@@ -124,11 +120,9 @@ class AddBinary {
                 sb.append(String.valueOf(sum));
             }
         }
-
         if (flag == 1) {
             sb.append("1");
         }
-
         String reversed = sb.reverse().toString();
         return reversed;
     }
