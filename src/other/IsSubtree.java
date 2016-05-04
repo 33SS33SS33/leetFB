@@ -2,19 +2,10 @@ package other;
 
 /**
  * Check if one tree is another tree's subtree
- * <p/>
  * Tags: Tree, Recursive
  */
 class IsSubtree {
-    class Node {
-        int  value;
-        Node left;
-        Node right;
 
-        public Node(int val) {
-            this.value = val;
-        }
-    }
 
     /**
      * t1 root of tree, t2 root of subtree
@@ -52,5 +43,14 @@ class IsSubtree {
             return false; // different root value
         return (matchTree(r1.left, r2.left) && matchTree(r1.right,
                 r2.right)); // recursively check children
+    }
+    class Node {
+        int  value;
+        Node left;
+        Node right;
+
+        public Node(int val) {
+            this.value = val;
+        }
     }
 }

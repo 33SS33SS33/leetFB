@@ -8,7 +8,6 @@ package other;
  * Given two sorted arrays A, B of size m and n respectively. Find the k-th
  * smallest element in the union of A and B. You can assume that there are no
  * duplicate elements.
- * <p/>
  * Tags: Array,
  */
 class KthSmallestSortedArrays {
@@ -74,7 +73,6 @@ class KthSmallestSortedArrays {
             return A[0] < B[0] ? A[0] : B[0];
         if (k == lenA + lenB - 1)
             return A[lenA - 1] < B[lenB - 1] ? B[lenB - 1] : A[lenA - 1];
-
         int i = 0;
         int j = 0;
         while (i + j < k) {

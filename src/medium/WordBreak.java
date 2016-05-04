@@ -5,13 +5,10 @@ import java.util.*;
 /**
  * Given a string s and a dictionary of words dict, determine if s can be
  * segmented into a space-separated sequence of one or more dictionary words.
- * <p/>
  * For example, given
  * s = "leetcode",
  * dict = ["leet", "code"].
- * <p/>
  * Return true because "leetcode" can be segmented as "leet code".
- * <p/>
  * Tags: DP
  */
 class WordBreak {
@@ -49,7 +46,6 @@ class WordBreak {
             return false;
         if (s.equals("") || dict.contains(s))
             return true;
-
         for (int i = 1; i <= s.length(); i++) {
             String pre = s.substring(0, i);
             System.out.println("pre: " + pre);

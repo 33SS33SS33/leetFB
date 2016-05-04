@@ -5,7 +5,6 @@ package other;
  * instances of every number from 1 to n, and the number of elements between
  * two instances of a number i is equal to i. If such a configuration is not
  * possible, then print the same.
- * <p/>
  * Tags: Array, BackTracking
  */
 class Fill2Instances {
@@ -14,9 +13,6 @@ class Fill2Instances {
         f.fill(7);
     }
 
-    /**
-     *
-     */
     public void fill(int n) {
         int[] res = new int[2 * n];
         if (fill(n, n, res)) {
@@ -26,7 +22,6 @@ class Fill2Instances {
             System.out.println("Not possible");
         }
     }
-
     /**
      * Backtrack from position n to 0
      */

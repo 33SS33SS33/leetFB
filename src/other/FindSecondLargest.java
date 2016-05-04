@@ -2,11 +2,9 @@ package other;
 
 /**
  * Find second largest element from a given array
- * <p/>
  * Example:
  * Input: {5, 2, 3, 4}
  * Output: 4
- * <p/>
  * Tags: Array
  */
 class FindSecondLargest {

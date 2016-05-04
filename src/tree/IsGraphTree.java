@@ -1,10 +1,9 @@
-package other;
+package tree;
 
 import java.util.*;
 
 /**
  * Check whether a given graph is a tree
- * <p/>
  * Tags: Graph, Tree, DFS
  */
 class IsGraphTree<T> {
