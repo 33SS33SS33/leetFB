@@ -4,17 +4,14 @@ import java.util.ArrayList;
 
 /**
  * Given a binary tree, find the maximum path sum.
- * <p/>
  * The path may start and end at any node in the tree.
- * <p/>
  * For example:
  * Given the below binary tree,
- * <p/>
  * 1
  * / \
  * 2   3
  * Return 6.
- * <p/>
+ *
  * Tags: Tree, DFS
  */
 class BinaryTreeMaximumPathSum {
@@ -31,7 +28,6 @@ class BinaryTreeMaximumPathSum {
      * max sum can be biggest of prevMax, curMax, and left + right + root.val
      */
     int max;
-
     public int maxPathSum(TreeNode root) {
         if (root == null)
             return 0;

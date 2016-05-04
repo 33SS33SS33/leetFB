@@ -15,6 +15,7 @@ class MaximumGap {
         MaximumGap mg = new MaximumGap();
         System.out.println(mg.maximumGap(new int[]{3, 6, 9, 1}));
         System.out.println(mg.maximumGapB(new int[]{3, 6, 9, 1}));
+        System.out.println(mg.maximumGapC(new int[]{3, 6, 9, 1}));
     }
     /**
      * O(n) Time, O(n) Space
@@ -54,15 +55,7 @@ class MaximumGap {
         return maxGap;
     }
 
-    static class Bucket {
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
 
-        void add(int n){
-            min = Math.min(n, min);
-            max = Math.max(n, max);
-        }
-    }
 
     public int maximumGapB(int[] num) {
         if (num.length < 2) return 0;
@@ -89,7 +82,15 @@ class MaximumGap {
         }
         return maxGap;
     }
+    static class Bucket {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
 
+        void add(int n){
+            min = Math.min(n, min);
+            max = Math.max(n, max);
+        }
+    }
     /**creek---
      * The key part is to get the interval:
      From: interval * (num[i] - min) = 0 and interval * (max -num[i]) = n

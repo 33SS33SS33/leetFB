@@ -21,14 +21,14 @@ import java.util.*;
  * Tags: Hashtable, Two Pointers, String
  */
 
-
-
 class MinWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
         String T = "ABC";
         String res=new MinWindowSubstring().minWindowB(S,T);
+//        String res2=new MinWindowSubstring().minWindow(S,T);
         System.out.print(res);
+//        System.out.print(res2);
     }
     /**creek----*/
     public String minWindowB(String s, String t) {
@@ -49,9 +49,7 @@ class MinWindowSubstring {
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         int left = 0;
         int minLen = s.length()+1;
-
         int count = 0; // the total of mapped characters
-
         for(int i=0; i<s.length(); i++){
             char c = s.charAt(i);
             if(target.containsKey(c)){
@@ -102,12 +100,10 @@ class MinWindowSubstring {
         String res = "";
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         Map<Character, Integer> window = new HashMap<Character, Integer>();
-        
         for (int i = 0; i < T.length(); i++) { // build map for T
             char c = T.charAt(i);
             map.put(c, map.containsKey(c) ? map.get(c) + 1 : 1);
         }
-        
         int minLen = Integer.MAX_VALUE; // record minimum length
         int letterCnt = 0; // record letter count
         for (int slow = 0, fast = 0; fast < S.length(); fast++) {

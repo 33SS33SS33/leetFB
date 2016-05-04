@@ -64,7 +64,6 @@ class Permutations2 {
         num[i] = num[j] + num[i];
     }
 
-
     /**creek  Use set to maintain uniqueness:*/
     public static ArrayList<ArrayList<Integer>> permuteUniqueC(int[] num) {
         ArrayList<ArrayList<Integer>> returnList = new ArrayList<ArrayList<Integer>>();
@@ -83,7 +82,6 @@ class Permutations2 {
         }
         return returnList;
     }
-
 
     /**
      * Lexicography Order next permutation

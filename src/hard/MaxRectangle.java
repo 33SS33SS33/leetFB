@@ -35,7 +35,6 @@ class MaxRectangle {
         int[] height = new int[n + 1];
         height[n] = 0;
         int max = 0;
-        
         for (int i = 0; i < m; i++) {
             Stack<Integer> s = new Stack<Integer>();
             for (int j = 0; j < n + 1; j++) {

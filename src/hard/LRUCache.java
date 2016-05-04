@@ -23,7 +23,6 @@ import java.util.*;
  * 3. A dummy head for Doubly LinkedList
  */
 class LRUCache {
-    
     public static void main(String[] args) {
         
     }
