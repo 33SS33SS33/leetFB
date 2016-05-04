@@ -2,7 +2,6 @@ package other;
 
 /**
  * Fibonnaci Number
- * <p/>
  * Tags: Math, Recursion, DP
  */
 class Fib {

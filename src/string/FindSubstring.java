@@ -1,6 +1,8 @@
 package string;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -12,7 +14,7 @@ import java.util.HashMap;
  */
 public class FindSubstring {
     public static void main(String[] args) {
-        String S = "123";
+        String S = "12344434300";
         String[] L = { "123", "444343" };
 
         System.out.println(new FindSubstring().findSubstring(S, L).toString());
@@ -37,7 +39,6 @@ public class FindSubstring {
             int left = i;
             for (int j = i; j <= S.length() - L[0].length(); j += L[0].length()) {
                 String str = S.substring(j, j + L[0].length());
-
                 if (map.containsKey(str)) {
                     if (curMap.containsKey(str))
                         curMap.put(str, curMap.get(str) + 1);

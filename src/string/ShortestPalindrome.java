@@ -26,7 +26,6 @@ public class ShortestPalindrome {
         }
         return result;
     }
-
     private static String scanFromCenter(String s, int l, int r) {
         int i = 1;
         //scan from center to both sides

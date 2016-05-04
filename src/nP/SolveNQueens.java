@@ -6,12 +6,17 @@ import java.util.ArrayList;
  * Created by GAOSHANSHAN835 on 2016/1/5.
  */
 public class SolveNQueens {
+    public static void main(String[] args) {
+        SolveNQueens a = new SolveNQueens();
+        System.out.println(a.solveNQueens(3).toString());
+    }
 
     public ArrayList<String[]> solveNQueens(int n) {
         ArrayList<String[]> res = new ArrayList<String[]>();
         helper(n, 0, new int[n], res);
         return res;
     }
+
     private void helper(int n, int row, int[] columnForRow, ArrayList<String[]> res) {
         if (row == n) {
             String[] item = new String[n];

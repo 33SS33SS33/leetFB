@@ -2,7 +2,6 @@ package other;
 
 /**
  * Write a C function to detect loop in a linked list
- * <p/>
  * Tags: LinkedList
  */
 class DetectLoop {
@@ -14,10 +13,9 @@ class DetectLoop {
      * Floyd's Cycle-Finding Algorithm
      * Traverse linked list using two pointers.
      * Move one pointer by one and other pointer by two.
-     * If these pointers meet at some node then there is
-     * a loop.
+     * If these pointers meet at some node then there is a loop.
      * If pointers do not meet then linked list doesn’t have loop.
-     * <p/>
+
      * Other methods:
      * Put Node reference in a HashTable
      * Marked Visited Node,

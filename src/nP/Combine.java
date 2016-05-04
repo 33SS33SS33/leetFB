@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 public class Combine {
     public static void main(String[] args) {
-        int m = 6;
-        int n = 5;
+        int n = 6;
+        int k = 5;
         Combine a = new Combine();
-        System.out.println(a.combine(m, n).toString());
+        System.out.println(a.combine(n, k).toString());
     }
 
     public ArrayList<ArrayList<Integer>> combine(int n, int k) {
@@ -20,7 +20,6 @@ public class Combine {
         helper(n, k, 1, new ArrayList<Integer>(), res);
         return res;
     }
-
     private void helper(int n, int k, int start, ArrayList<Integer> item,
             ArrayList<ArrayList<Integer>> res) {
         if (item.size() == k) {

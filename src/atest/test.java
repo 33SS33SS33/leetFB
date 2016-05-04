@@ -75,7 +75,6 @@ public class test {
             }
         }
 
-
         List<Map.Entry<String, Integer>> result = new ArrayList<Map.Entry<String, Integer>>(courseInfo.entrySet());
         Collections.sort(result,
                 new Comparator<Map.Entry<String, Integer>>() {

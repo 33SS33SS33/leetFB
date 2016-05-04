@@ -5,11 +5,9 @@ import java.util.*;
 /**
  * 01*0*, * can be 0 or 1
  * Generate all possible outputs
- * <p/>
  * Tags: Backtracking
  */
 class Astroid01 {
-
     public static void main(String[] args) {
         Astroid01 a = new Astroid01();
         System.out.println(a.astroid("01*0*"));
@@ -22,7 +20,6 @@ class Astroid01 {
         astroid(s, 0, new StringBuilder(s), res);
         return res;
     }
-
     /**
      * Backtracking, generate all possible result
      * Replace if current char is *
