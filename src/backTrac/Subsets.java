@@ -72,7 +72,6 @@ class Subsets {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         Arrays.sort(s); // unneccessary
         subsetsA(s, 0, new ArrayList<Integer>(), res);
-        res.add(new ArrayList<Integer>()); // add blank set
         return res;
     }
     public static void subsetsA(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
