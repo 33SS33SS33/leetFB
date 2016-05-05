@@ -5,12 +5,9 @@ import java.util.*;
 /**
  * Given a binary tree, determine if it is a valid binary search tree (BST).
  * Assume a BST is defined as follows:
- * The left subtree of a node contains only nodes with keys less than the
- * node's key.
- * The right subtree of a node contains only nodes with keys greater than the
- * node's key.
+ * The left subtree of a node contains only nodes with keys less than the node's key.
+ * The right subtree of a node contains only nodes with keys greater than the node's key.
  * Both the left and right subtrees must also be binary search trees.
- *
  * Tags: Tree, DFS
  */
 class ValidateBST {
@@ -23,7 +20,6 @@ class ValidateBST {
         System.out.println(v.isValidBSTC(r));
         System.out.println(v.isValidBSTD(r));
     }
-
 
     /*时间复杂度是O(n)，空间复杂度是O(logn)*/
     /**

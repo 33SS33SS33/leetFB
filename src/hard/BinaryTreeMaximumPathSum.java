@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * / \
  * 2   3
  * Return 6.
+ *
  * Tags: Tree, DFS
  */
 class BinaryTreeMaximumPathSum {
@@ -27,7 +28,6 @@ class BinaryTreeMaximumPathSum {
      * max sum can be biggest of prevMax, curMax, and left + right + root.val
      */
     int max;
-
     public int maxPathSum(TreeNode root) {
         if (root == null)
             return 0;
