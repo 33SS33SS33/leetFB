@@ -24,7 +24,7 @@ class ReverseLinkedList {
         }
     }
 
-    /**
+    /**递归
      * Recursive
      * Divide the list in 2 parts - first node and rest of the linked list
      * Call reverse for the rest of the linked list
@@ -40,8 +40,7 @@ class ReverseLinkedList {
         return temp;
     }
 
-    /**
-     * creek--Iterative-
+    /**creek--Iterative 迭代
      */
     public Node reverseListB(Node head) {
         if (head == null || head.next == null)

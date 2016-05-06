@@ -4,7 +4,6 @@ package medium;
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
 public class ProductofArrayExceptSelf {
-
     public static void main(String[] args) {
         int[] A = { 1, 2, 8, 9, 3, 5 };
         ProductofArrayExceptSelf s=new ProductofArrayExceptSelf();
@@ -25,28 +24,10 @@ public class ProductofArrayExceptSelf {
         System.out.println();
     }
 
-    public int[] productExceptSelfA(int[] nums) {
-        int[] output = new int[nums.length];
-        if (nums.length == 0)
-            return output;
-        output[0] = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            output[i] = output[i - 1] * nums[i];
-        }
-        output[nums.length - 1] = output[nums.length - 2] * 1;
-        int t = nums[nums.length - 1];
-        for (int i = output.length - 2; i > 0; i--) {
-            output[i] = t * output[i - 1];
-            t *= nums[i];
-        }
-        output[0] = t;
-        return output;
-    }
-
-    /**
+    /** 最好的
      * creek  Space is O(1).
      */
-    public int[] productExceptSelfB(int[] nums) {
+    public int[] productExceptSelfA(int[] nums) {
         int[] result = new int[nums.length];
         result[result.length - 1] = 1;
         for (int i = nums.length - 2; i >= 0; i--) {
@@ -63,7 +44,7 @@ public class ProductofArrayExceptSelf {
     /**
      * creek-----
      */
-    public int[] productExceptSelfC(int[] nums) {
+    public int[] productExceptSelfB(int[] nums) {
         int[] result = new int[nums.length];
         int[] t1 = new int[nums.length];
         int[] t2 = new int[nums.length];
@@ -83,5 +64,26 @@ public class ProductofArrayExceptSelf {
         }
         return result;
     }
+
+    public int[] productExceptSelfC(int[] nums) {
+        int[] output = new int[nums.length];
+        if (nums.length == 0)
+            return output;
+        output[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            output[i] = output[i - 1] * nums[i];
+        }
+        output[nums.length - 1] = output[nums.length - 2] * 1;
+        int t = nums[nums.length - 1];
+        for (int i = output.length - 2; i > 0; i--) {
+            output[i] = t * output[i - 1];
+            t *= nums[i];
+        }
+        output[0] = t;
+        return output;
+    }
+
+
+
 
 }

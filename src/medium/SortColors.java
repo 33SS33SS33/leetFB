@@ -37,20 +37,51 @@ class SortColors {
             System.out.print(i);
         }
         System.out.println();
-        /**错的--------*/
-        s.sortColorsA(A2);
+
+       s.sortColorsA(A2);
         for (int i : A2) {
             System.out.print(i);
         }
         System.out.println();
-        s.sortColorsB(A3);
-        for (int i : A4) {
+
+         s.sortColorsB(A3);
+        for (int i : A3) {
             System.out.print(i);
         }
         System.out.println();
-        s.sortColors(A4);
+
+      s.sortColors(A4);
         for (int i : A4) {
             System.out.print(i);
+        }
+    }
+
+
+    /** 最简单的
+     * two-pass count sorting
+     */
+    public void sortColors(int[] A) {
+        int red = 0;
+        int white = 0;
+        int blue = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] == 0) {
+                red++;
+            } else if (A[i] == 1) {
+                white++;
+            } else {
+                blue++;
+            }
+        }
+        int i = 0;
+        while (i < red) {
+            A[i++] = 0;
+        }
+        while (i < white + red) {
+            A[i++] = 1;
+        }
+        while (i < white + red + blue) {
+            A[i++] = 2;
         }
     }
 
@@ -74,9 +105,7 @@ class SortColors {
         }
     }
 
-    /**
-     * creek  improved 计数排序
-     */
+    /**creek  improved 计数排序*/
     public void sortColorsA(int[] nums) {
         if (nums == null || nums.length < 2) {
             return;
@@ -97,9 +126,7 @@ class SortColors {
         }
     }
 
-    /**
-     * creek 计数排序----
-     */
+    /**creek 计数排序----*/
     public void sortColorsB(int[] nums) {
         if (nums == null || nums.length < 2) {
             return;
@@ -120,35 +147,4 @@ class SortColors {
         System.arraycopy(sorted, 0, nums, 0, nums.length);
     }
 
-    /**
-     * two-pass count sorting
-     */
-    public void sortColors(int[] A) {
-        int red = 0;
-        int white = 0;
-        int blue = 0;
-
-        for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                red++;
-            } else if (A[i] == 1) {
-                white++;
-            } else {
-                blue++;
-            }
-        }
-        int i = 0;
-        while (i < red) {
-            A[i++] = 0;
-        }
-        while (i < white + red) {
-            A[i++] = 1;
-        }
-        while (i < white + red + blue) {
-            A[i++] = 2;
-        }
-        for (int k = 0; k < A.length; k++) {
-            System.out.println(A[k]);
-        }
-    }
 }

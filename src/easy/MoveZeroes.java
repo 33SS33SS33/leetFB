@@ -19,7 +19,7 @@ public class MoveZeroes {
     }
 
     /**
-     * best
+     * best 最好的
      */
     public void moveZeroes1(int[] nums) {
         if (nums == null || nums.length == 0)
