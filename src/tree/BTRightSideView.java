@@ -9,22 +9,13 @@ import java.util.List;
  */
 public class BTRightSideView {
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        TreeNode n1 = new TreeNode(2);
-        TreeNode n2 = new TreeNode(3);
-        TreeNode n3 = new TreeNode(4);
-        TreeNode n4 = new TreeNode(5);
-        TreeNode n5 = new TreeNode(6);
-        root.left = n1;
-        root.right = n2;
-        n1.left = n3;
-        n1.right = n4;
-        n2.right = n5;
+        TreeNode root =buildTree();
         System.out.println(new BTRightSideView().rightSideViewA(root));
         System.out.println(new BTRightSideView().rightSideViewC(root));
         System.out.println(new BTRightSideView().rightSideViewB(root));
     }
 
+    /**看懂了*/
     public List<Integer> rightSideViewA(TreeNode root) {
         if (root == null)
             return new ArrayList<Integer>();
@@ -85,6 +76,20 @@ public class BTRightSideView {
         return result;
     }
 
+    static TreeNode buildTree(){
+        TreeNode root = new TreeNode(1);
+        TreeNode n1 = new TreeNode(2);
+        TreeNode n2 = new TreeNode(3);
+        TreeNode n3 = new TreeNode(4);
+        TreeNode n4 = new TreeNode(5);
+        TreeNode n5 = new TreeNode(6);
+        root.left = n1;
+        root.right = n2;
+        n1.left = n3;
+        n1.right = n4;
+        n2.right = n5;
+        return root;
+    }
     static class TreeNode {
         int      val;
         TreeNode left;

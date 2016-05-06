@@ -20,7 +20,7 @@ class MergeKSortedList {
         lists.add(head2);
         ListNode res=new MergeKSortedList().mergeKListsB(lists);
 
-        while(res.next!=null){
+        while(res!=null){
             System.out.print(res.val+",");
             res=res.next;
         }

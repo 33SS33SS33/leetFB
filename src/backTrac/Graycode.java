@@ -45,6 +45,8 @@ class Graycode {
         }
         return results;
     }
+
+    /**同上*/
     public ArrayList<Integer> grayCodeB(int n) {
         ArrayList<Integer> res = new ArrayList<Integer>();
         if(n<0)

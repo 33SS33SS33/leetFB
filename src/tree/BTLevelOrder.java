@@ -25,24 +25,14 @@ import java.util.Queue;
  */
 class BTLevelOrder {
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        TreeNode n1 = new TreeNode(2);
-        TreeNode n2 = new TreeNode(3);
-        TreeNode n3 = new TreeNode(4);
-        TreeNode n4 = new TreeNode(5);
-        TreeNode n5 = new TreeNode(6);
-        root.left = n1;
-        root.right = n2;
-        n1.left = n3;
-        n1.right = n4;
-        n2.right = n5;
+        TreeNode root =buildTree();
         System.out.println(new BTLevelOrder().levelOrder(root));
         System.out.println(new BTLevelOrder().levelOrderB(root));
         System.out.println(new BTLevelOrder().levelOrderC(root));
     }
 
     /**
-     * Queue
+     * Queue  最好的~~~~
      * Get size of the queue each time
      * Iterate that many times to build current level
      */
@@ -128,7 +118,20 @@ class BTLevelOrder {
         }
         return res;
     }
-
+    static TreeNode buildTree(){
+        TreeNode root = new TreeNode(1);
+        TreeNode n1 = new TreeNode(2);
+        TreeNode n2 = new TreeNode(3);
+        TreeNode n3 = new TreeNode(4);
+        TreeNode n4 = new TreeNode(5);
+        TreeNode n5 = new TreeNode(6);
+        root.left = n1;
+        root.right = n2;
+        n1.left = n3;
+        n1.right = n4;
+        n2.right = n5;
+        return root;
+    }
     public static class TreeNode {
         int      val;
         TreeNode left;

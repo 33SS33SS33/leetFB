@@ -41,6 +41,8 @@ public class LowestCommonAncestorofaBST {
      * i.e., left < parent < right for each node. There are 3 cases to handle.
      */
     public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {
+        if (p.val > q.val)
+            return lowestCommonAncestor(root, q, p);
         TreeNode m = root;
         if (m.val > p.val && m.val < q.val) {
             return m;
