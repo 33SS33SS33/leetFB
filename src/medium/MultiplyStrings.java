@@ -10,7 +10,7 @@ package medium;
 class MultiplyStrings {
     public static void main(String[] args) {
         String num1 = "322";
-        String num2 = "3";
+        String num2 = "4";
         System.out.println(multiplyA(num1, num2));
         System.out.println(multiplyB(num1, num2));
         System.out.print(multiplyC(num1, num2));

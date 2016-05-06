@@ -12,7 +12,9 @@ public class records {
      Pow(x, n)
      PopulatingNextRight
      Paint House II
-
+     OneEditDistance
+     MultiplyStrings
+     MinWindowSubstring
 
 
      */

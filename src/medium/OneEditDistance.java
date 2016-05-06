@@ -19,7 +19,7 @@ public class OneEditDistance {
         int diff = 0;
         int i = 0;
         int j = 0;
-        for (/* void */; i < S.length; i++, j++) {
+        for (  ; i < S.length; i++, j++) {
             if (S[i] != T[j]) {
                 diff++;
                 if (diff > 1)
