@@ -9,7 +9,6 @@ import java.util.*;
  * The solution set must not contain duplicate subsets.
  * For example,
  * If S = [1,2,3], a solution is:
- * 
  * [
  *   [3],
  *   [1],

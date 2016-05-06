@@ -29,7 +29,7 @@ class WordSearch {
         System.out.println(existB(board, word));
     }
 
-    /**
+    /** 最好的
      * Use boolean array to remember whether a word is used
      * Traverse each position and do DFS
      */
