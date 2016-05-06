@@ -38,7 +38,6 @@ public class NumIslands {
         }
         return count;
     }
-
     public void merge(char[][] grid, int i, int j) {
         //validity checking
         if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1)
@@ -75,12 +74,10 @@ public class NumIslands {
         }
         return count;
     }
-
     boolean allowed(int x, int y, final int mx, final int my, char[][] grid, boolean[][] visited) {
         return (x < mx) && (x >= 0) && (y < my) && (y >= 0) && (grid[x][y] == '1')
                 && (!visited[x][y]);
     }
-
     void travel(int x, int y, final int mx, final int my, char[][] grid, boolean[][] visited) {
         // x - 1, y
         // x + 1, y
@@ -90,7 +87,6 @@ public class NumIslands {
         for (int[] xy : new int[][] { { x - 1, y }, { x + 1, y }, { x, y - 1 }, { x, y + 1 } }) {
             int _x = xy[0];
             int _y = xy[1];
-
             if (allowed(_x, _y, mx, my, grid, visited)) {
                 travel(_x, _y, mx, my, grid, visited);
             }

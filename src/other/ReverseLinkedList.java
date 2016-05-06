@@ -2,7 +2,6 @@ package other;
 
 /**
  * Write a function to reverse a linked list
- * <p/>
  * Tags: LinkedList
  */
 class ReverseLinkedList {
@@ -17,7 +16,7 @@ class ReverseLinkedList {
         n3.next = n4;
         n4.next = n5;
         ReverseLinkedList r = new ReverseLinkedList();
-        Node reversed = r.reverse(n1);
+        Node reversed = r.reverseListB(n1);
         Node cur = reversed;
         while (cur != null) {
             System.out.print(cur.next != null ? cur.val + "->" : cur.val);
@@ -32,10 +31,10 @@ class ReverseLinkedList {
      * Link rest to first
      * Fix head pointer
      */
-    Node reverse(Node head) {
+    Node reverseListA(Node head) {
         if (head == null || head.next == null)
             return head;
-        Node temp = reverse(head.next);
+        Node temp = reverseListA(head.next);
         head.next.next = head;
         head.next = null;
         return temp;
@@ -44,14 +43,14 @@ class ReverseLinkedList {
     /**
      * creek--Iterative-
      */
-    public ListNode reverseListB(ListNode head) {
+    public Node reverseListB(Node head) {
         if (head == null || head.next == null)
             return head;
-        ListNode p1 = head;
-        ListNode p2 = head.next;
+        Node p1 = head;
+        Node p2 = head.next;
         head.next = null;
         while (p1 != null && p2 != null) {
-            ListNode t = p2.next;
+            Node t = p2.next;
             p2.next = p1;
             p1 = p2;
             if (t != null) {
@@ -73,13 +72,4 @@ class ReverseLinkedList {
         }
     }
 
-    static class ListNode {
-        int      val;
-        ListNode next;
-
-        ListNode(int val) {
-            this.val = val;
-            this.next = null;
-        }
-    }
 }
