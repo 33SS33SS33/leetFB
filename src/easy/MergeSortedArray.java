@@ -19,10 +19,12 @@ class MergeSortedArray {
         }
     }
 
-    /**
+    /** 最好的
      * Merge from behind
      */
     private void merge(int A[], int m, int B[], int n) {
+        if (A == null || B == null)
+            return;
         if (n == 0)
             return;
         while (m > 0 && n > 0) {

@@ -15,7 +15,15 @@ public class records {
      OneEditDistance
      MultiplyStrings
      MinWindowSubstring
+     MergeKSortedList
 
 
+     20160507
+     MeetingRooms2
+     MaxSquare
+     IntegertoEnglishWords
+     ImplementTriePrefixTree
+     HIndex
+     GraphValidTree
      */
 }

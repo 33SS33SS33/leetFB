@@ -4,12 +4,9 @@ import java.util.HashMap;
 
 /**
  * Related to question Excel Sheet Column Title
- * <p/>
  * Given a column title as appear in an Excel sheet, return its corresponding
  * column number.
- * <p/>
  * For example:
- * <p/>
  * A -> 1
  * B -> 2
  * C -> 3
@@ -17,7 +14,7 @@ import java.util.HashMap;
  * Z -> 26
  * AA -> 27
  * AB -> 28
- * <p/>
+
  * Tags: Math
  */
 class ExcelSheetColNum {
@@ -42,9 +39,7 @@ class ExcelSheetColNum {
         return res;
     }
 
-    /**
-     * creek---
-     */
+    /**creek*/
     public static int titleToNumberB(String s) {
         if (s == null || s.length() == 0) {
             throw new IllegalArgumentException("Input is not valid!");

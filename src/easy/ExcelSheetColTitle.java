@@ -19,30 +19,12 @@ package easy;
  */
 class ExcelSheetColTitle {
     public static void main(String[] args) {
-        System.out.println(convertToTitleRec(26));
-        System.out.println(convertToTitle(26));
-        System.out.println(convertToTitleB(26));
+        System.out.println(convertToTitleRec(28));
+        System.out.println(convertToTitle(28));
+        System.out.println(convertToTitleB(28));
     }
 
-    /**
-     * Get the remainder in each loop
-     * It should be the last digit
-     * Note that the map shall have 1 offset
-     */
-    public static String convertToTitle(int n) {
-        if (n <= 0)
-            return "";
-        StringBuilder title = new StringBuilder();
-        while (n > 0) {
-            n--; // note the 1 offset
-            int r = n % 26;
-            title.insert(0, (char) ('A' + r));
-            n = n / 26;
-        }
-        return title.toString();
-    }
-
-    /**
+    /** 最好的
      * creek
      * The key is n--. The minimum in 26-bit number is mapped to 1, not 0.
      */
@@ -59,6 +41,23 @@ class ExcelSheetColTitle {
         }
         sb.reverse();
         return sb.toString();
+    }
+
+    /**Get the remainder in each loop
+     * It should be the last digit
+     * Note that the map shall have 1 offset
+     */
+    public static String convertToTitle(int n) {
+        if (n <= 0)
+            return "";
+        StringBuilder title = new StringBuilder();
+        while (n > 0) {
+            n--; // note the 1 offset
+            int r = n % 26;
+            title.insert(0, (char) ('A' + r));
+            n = n / 26;
+        }
+        return title.toString();
     }
 
     /**

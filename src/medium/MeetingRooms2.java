@@ -6,10 +6,14 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/*最大需要多少房子*/
+/**最多需要多少房子
+ * */
 public class MeetingRooms2 {
     public static void main(String[] args) {
-        Interval[] intervals = {};
+        Interval inter1=new Interval(1,4);
+        Interval inter2=new Interval(2,6);
+        Interval inter3=new Interval(4,6);
+        Interval[] intervals = {inter1,inter2,inter3};
         System.out.println(new MeetingRooms2().minMeetingRooms(intervals));
     }
 
@@ -41,7 +45,7 @@ public class MeetingRooms2 {
         }
     }
 
-    public class Interval {
+    public static class Interval {
         int start;
         int end;
         Interval() {

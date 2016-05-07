@@ -8,7 +8,7 @@ package tree;
  * Given a binary tree (not a binary search tree) and two values say n1 and n2,
  * write a program to find the least common ancestor.
  * Allow a node to be a descendant of itself
- * <p/>
+ *
  * Tags: Tree
  */
 class LowestCommonAncestor {
@@ -28,7 +28,7 @@ class LowestCommonAncestor {
         System.out.println(new LowestCommonAncestor().lowestCommonAncestorB(root, n3, n4).val);
     }
 
-    /**
+    /** 递归法
      * If root is null, just return null
      * If root's value matches with n1 or n2, return root
      * If not, find lca recursively in both left and right subtrees
@@ -60,11 +60,9 @@ class LowestCommonAncestor {
         Entity left = lcaHelper(root.left, p, q);
         if (left.count == 2)
             return left;
-
         Entity right = lcaHelper(root.right, p, q);
         if (right.count == 2)
             return right;
-
         int numTotal = left.count + right.count;
         if (root == p || root == q) {
             numTotal++;
