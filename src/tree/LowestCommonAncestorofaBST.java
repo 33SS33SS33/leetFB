@@ -36,7 +36,7 @@ public class LowestCommonAncestorofaBST {
     }
 
     /**
-     * creek----
+     * creek--
      * This problem can be solved by using BST property,
      * i.e., left < parent < right for each node. There are 3 cases to handle.
      */

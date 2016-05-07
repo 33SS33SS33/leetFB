@@ -16,6 +16,7 @@ import java.util.*;
  */
 class LetterCombinationsOfPhoneNum {
     public static void main(String[] args) {
+        System.out.println(new LetterCombinationsOfPhoneNum().letterCombinations("23"));
         System.out.println(new LetterCombinationsOfPhoneNum().letterCombinationsA("23"));
         System.out.println(new LetterCombinationsOfPhoneNum().letterCombinationsB("23"));
     }
@@ -32,6 +33,21 @@ class LetterCombinationsOfPhoneNum {
             "wxyz"  // 9
     };
 
+    /**最好的*/
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> ans = new LinkedList<String>();
+        String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        ans.add("");
+        for(int i =0; i<digits.length();i++){
+            int x = Character.getNumericValue(digits.charAt(i));
+            while(ans.peek().length()==i){
+                String t = ans.remove();
+                for(char s : mapping[x].toCharArray())
+                    ans.add(t+s);
+            }
+        }
+        return ans;
+    }
     /**
      * Backtracking to generate all combinations
      */

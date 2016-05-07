@@ -16,6 +16,15 @@ public class records {
      MultiplyStrings
      MinWindowSubstring
      Paint House II
+     MergeKSortedList
 
+
+     20160507
+     MeetingRooms2
+     MaxSquare
+     IntegertoEnglishWords
+     ImplementTriePrefixTree
+     HIndex
+     GraphValidTree
      */
 }
