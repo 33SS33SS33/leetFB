@@ -9,6 +9,9 @@ package medium;
  * Tags: Array, Two pointers
  */
 
+/**设置一个变量 是记录新的数组的末端的指针
+ 注意counter-2的运用 这样就可以确认当前的nums[counter]有没有超过两个*/
+
 class RemoveDupFromSortedArr2 {
     public static void main(String[] args) {
         int[] num = { 1, 1, 1, 2, 2, 3 };

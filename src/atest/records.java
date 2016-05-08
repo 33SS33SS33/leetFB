@@ -26,5 +26,12 @@ public class records {
      ImplementTriePrefixTree
      HIndex
      GraphValidTree
+     LargestRectangleInHist
+     ScrambleStr
+
+     5-8
+
+     InterleavingStr
+     ValidateBST
      */
 }

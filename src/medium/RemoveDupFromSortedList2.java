@@ -4,13 +4,15 @@ package medium;
  * Given a sorted linked list
  * delete all nodes that have duplicate numbers
  * leaving only distinct numbers from the original list.
- * <p/>
  * Given 1->2->3->3->4->4->5, return 1->2->5.
  * Given 1->1->1->2->3, return 2->3.
- * <p/>
+ *
  * Tag: Linkedlist
  * /**这里要把出现重复的元素全部删除
  */
+
+/**三个指针 一个存前一个节点 一个是当前的 一个是向后游动的
+ 游动的在循环内定义比较好  可以看代码*/
 class RemoveDupFromSortedList2 {
     public static void main(String[] args) {
         ListNode head = buildTestList1();
@@ -23,43 +25,6 @@ class RemoveDupFromSortedList2 {
         System.out.println("---");
     }
 
-    static ListNode buildTestList1() {
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode forth = new ListNode(3);
-        ListNode fifth = new ListNode(4);
-        ListNode sixth = new ListNode(4);
-        ListNode seventh = new ListNode(5);
-        head.next = second;
-        second.next = third;
-        third.next = forth;
-        forth.next = fifth;
-        fifth.next = sixth;
-        sixth.next = seventh;
-        return head;
-    }
-
-    static ListNode buildTestList2() {
-        ListNode head = new ListNode(1);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(1);
-        ListNode forth = new ListNode(2);
-        ListNode fifth = new ListNode(3);
-        head.next = second;
-        second.next = third;
-        third.next = forth;
-        forth.next = fifth;
-        return head;
-    }
-
-    static void printList(ListNode head) {
-        while (head != null) {
-            System.out.print(head.val + "->");
-            head = head.next;
-        }
-        System.out.println("NULL");
-    }
 
     /**
      * Set a pre pointer
@@ -104,6 +69,7 @@ class RemoveDupFromSortedList2 {
         return t.next;
     }
 
+
     public static class ListNode {
         int      val;
         ListNode next;
@@ -112,5 +78,42 @@ class RemoveDupFromSortedList2 {
             val = x;
             next = null;
         }
+    }
+    static ListNode buildTestList1() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode forth = new ListNode(3);
+        ListNode fifth = new ListNode(4);
+        ListNode sixth = new ListNode(4);
+        ListNode seventh = new ListNode(5);
+        head.next = second;
+        second.next = third;
+        third.next = forth;
+        forth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = seventh;
+        return head;
+    }
+
+    static ListNode buildTestList2() {
+        ListNode head = new ListNode(1);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(1);
+        ListNode forth = new ListNode(2);
+        ListNode fifth = new ListNode(3);
+        head.next = second;
+        second.next = third;
+        third.next = forth;
+        forth.next = fifth;
+        return head;
+    }
+
+    static void printList(ListNode head) {
+        while (head != null) {
+            System.out.print(head.val + "->");
+            head = head.next;
+        }
+        System.out.println("NULL");
     }
 }

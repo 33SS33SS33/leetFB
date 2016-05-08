@@ -4,25 +4,26 @@ import java.util.*;
 /**
  * Given a string containing only digits, restore it by returning all possible
  * valid IP address combinations.
- * 
  * For example:
- * 
  * Given "25525511135",
  * return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
  * 
  * Tags: Backtracking, String
  */
+
+/**用DFS
+ 递归的将数字串分成四个部分，每个部分满足0<=p<=255。要注意一些边界case，比如010是没有意思的，“0.10.010.1”。*/
 class RestoreIPAddr {
     public static void main(String[] args) {
         List<String> r1=restoreIPAddressesA("25525511135");
-        for(String s:r1){
-            System.out.println(s);
-        }
         List<String> r2= restoreIPAddressesA("010010");
-        for(String s2:r2){
-            System.out.println(s2);
-        }
+        System.out.println(r1.toString());
+        System.out.println(r2.toString());
 
+        List<String> r3=restoreIPAddressesB("25525511135");
+        List<String> r4=restoreIPAddressesB("010010");
+        System.out.println(r3.toString());
+        System.out.println(r4.toString());
     }
     
     /**

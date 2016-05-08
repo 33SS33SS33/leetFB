@@ -7,6 +7,7 @@ package tree;
  *
  * Tags: Tree, DFS
  */
+/**先序遍历*/
 class SameTree {
     public static void main(String[] args) {
         TreeNode root1 = new TreeNode(1);
@@ -40,8 +41,7 @@ class SameTree {
     public static boolean isSameTreeA(TreeNode p, TreeNode q) {
         if (p == null || q == null)
             return p == q; // if one of them is null, it will return false. both null, true.
-        return p.val == q.val && isSameTreeA(p.left, q.left) && isSameTreeA(p.right,
-                q.right); // equal val, equal subtrees
+        return p.val == q.val && isSameTreeA(p.left, q.left) && isSameTreeA(p.right, q.right); // equal val, equal subtrees
     }
 
     /*时间复杂度是O(n)，空间复杂度是O(logn)*/

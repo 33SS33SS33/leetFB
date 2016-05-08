@@ -10,6 +10,11 @@ import java.util.*;
  * Both the left and right subtrees must also be binary search trees.
  * Tags: Tree, DFS
  */
+
+/**使用先序遍历
+ 如果访问了左节点  则当前点得值是左节点的最大值
+ 如果访问了右节点  则当前点得值是右节点的最小值
+ 然后递归更新最大最小值即可*/
 class ValidateBST {
     public static void main(String[] args) {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);

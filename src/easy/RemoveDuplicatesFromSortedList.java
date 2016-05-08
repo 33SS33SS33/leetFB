@@ -1,15 +1,14 @@
 package easy;
 
 /**
- * Given a sorted linked list, delete all duplicates such that each element
- * appear only once.
- * <p/>
+ * Given a sorted linked list, delete all duplicates such that each element appear only once.
  * For example,
  * Given 1->1->2, return 1->2.
  * Given 1->1->2->3->3, return 1->2->3.
- * <p/>
+
  * Tags: Linkedlist
  */
+/**要么删掉重复的  要么往前移动*/
 class RemoveDuplicatesFromSortedList {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedList r = new RemoveDuplicatesFromSortedList();
@@ -17,18 +16,7 @@ class RemoveDuplicatesFromSortedList {
         System.out.print(r.deleteDuplicatesB(head));
     }
 
-    static ListNode buildList() {
-        ListNode node0 = new ListNode(1);
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        node0.next = node1;
-        node1.next = node2;
-        return node0;
-    }
-
-    /**
-     * creek---good---
-     */
+    /**creek---good---*/
     public ListNode deleteDuplicatesB(ListNode head) {
         if (head == null || head.next == null)
             return head;
@@ -106,5 +94,13 @@ class RemoveDuplicatesFromSortedList {
             val = x;
             next = null;
         }
+    }
+    static ListNode buildList() {
+        ListNode node0 = new ListNode(1);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        node0.next = node1;
+        node1.next = node2;
+        return node0;
     }
 }

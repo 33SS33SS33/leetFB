@@ -10,32 +10,29 @@ package hard;
  * When s3 = "aadbbbaccc", return false.
  * Tags: DP, String
  */
+
+/**使用dp 动态规划  还可以用DFS BFS 未实现
+ 通项公式为
+ dp[i][j] = (dp[i-1][j] and s1[i-1] == s3[i+j-1]) or \
+ (dp[i][j-1] and s2[j-1] == s3[i+j-1])
+ dp[i][j] 表示的是当前长度为i的s1和长度为j的s2能否是长度为i+j的s3的穿插*/
 class InterleavingStr {
     public static void main(String[] args) {
-        // String s1 = "aabcc";
-        // String s2 = "dbbca";
-        // String s3 = "aadbbcbcac";
-        // String s4 = "aadbbbaccc";
-        // System.out.println(isInterleave(s1, s2, s3));
-        // System.out.println(isInterleave(s1, s2, s4));
-        String s1 = "ab";
-        String s2 = "bc";
-        String s3 = "babc";
+        String s1 = "aabcc";
+        String s2 = "dbbca";
+        String s3 = "aadbbbaccc";
         System.out.println(isInterleave(s1, s2, s3));
         System.out.println(isInterleaveOptimal(s1, s2, s3));
         System.out.println(isInterleaveC(s1, s2, s3));
     }
     
-    /**DP,
+    /** DP,
      *  bottom-up, Time: O(nm), and Space: O(nm)
      * quick check, length of s3 should be the sum of s1 and s2
      * 1. i == 0 && j == 0, dp[i][j] is true initially
-     * 2. first row, i == 0, dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1)
-     * == s3.charAt(j - 1)
-     * 3. first col, j == 0, dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1)
-     * == s3.charAt(i - 1)
-     * 4. dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j
-     * - 1))|| (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1))
+     * 2. first row, i == 0, dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1)== s3.charAt(j - 1)
+     * 3. first col, j == 0, dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1)== s3.charAt(i - 1)
+     * 4. dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j- 1))|| (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1))
      * final result should dp[a][b]
      */
     public static boolean isInterleave(String s1, String s2, String s3) {
@@ -44,7 +41,6 @@ class InterleavingStr {
         int b = s2.length();
         if (s3.length() != a + b) return false;
         boolean[][] dp = new boolean[a + 1][b + 1];
-
         for (int i = 0; i <= a; i++) {
             for (int j = 0; j <= b; j++) {
                 if (i == 0 && j == 0) dp[i][j] = true;
@@ -66,13 +62,11 @@ class InterleavingStr {
         int b = s2.length();
         if (s3.length() != a + b) return false;
         boolean[] dp = new boolean[b + 1];
-        
         /*i == 0 && j == 0*/
         dp[0] = true;
         for (int j = 0; j < b; j++) // s1 empty, s2 matches s3
             if (dp[j] && s2.charAt(j) == s3.charAt(j)) dp[j + 1] = true;
-
-        for (int i = 0; i < a; i++) { // from 
+        for (int i = 0; i < a; i++) { // from
             /*nothing from s2*/
             if (dp[0] && s1.charAt(i) == s3.charAt(i)) dp[0] = true;
             else dp[0] = false;
@@ -86,6 +80,7 @@ class InterleavingStr {
         }
         return dp[b];
     }
+
     /**better*/
     public static boolean isInterleaveC(String s1, String s2, String s3) {
         if(s1.length()+s2.length()!=s3.length())

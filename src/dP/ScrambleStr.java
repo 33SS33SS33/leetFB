@@ -5,19 +5,16 @@ import java.util.Arrays;
 /**
  * Given a string s1, we may represent it as a binary tree by partitioning it
  * to two non-empty substrings recursively.
- * <p/>
  * Below is one possible representation of s1 = "great":
- * <p/>
  * great
  * /    \
  * gr    eat
  * / \    /  \
  * g   r  e   at
- * / \
- * a   t
+ *            / \
+ *           a   t
  * To scramble the string, we may choose any non-leaf node and swap its two
  * children.
- * <p/>
  * For example, if we choose the node "gr" and swap its two children, it
  * produces a scrambled string "rgeat".
  * rgeat
@@ -25,10 +22,9 @@ import java.util.Arrays;
  * rg    eat
  * / \    /  \
  * r   g  e   at
- * / \
- * a   t
+ *           / \
+ *          a   t
  * We say that "rgeat" is a scrambled string of "great".
- * <p/>
  * Similarly, if we continue to swap the children of nodes "eat" and "at", it
  * produces a scrambled string "rgtae".
  * rgtae
@@ -36,15 +32,22 @@ import java.util.Arrays;
  * rg    tae
  * / \    /  \
  * r   g  ta  e
- * / \
- * t   a
+ *        / \
+ *       t   a
  * We say that "rgtae" is a scrambled string of "great".
- * <p/>
- * Given two strings s1 and s2 of the same length, determine if s2 is a
- * scrambled string of s1.
- * <p/>
+ * Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
+ *
  * Tags: DP, String
  */
+
+/**递归加dp
+ 然后最重要的是  如果他们是scramble  他们一定存在一个点 切分他们之后
+ 左部分等于左部分 右部分等于右部分
+ 或者
+ 左部分等于右部分 右部分等于左部分
+ 剪纸:
+ 这两个字符串是不是长度相等 排序之后是不是相等*/
+
 class ScrambleStr {
     public static void main(String[] args) {
         String s1 = "great";

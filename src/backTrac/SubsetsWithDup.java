@@ -22,6 +22,12 @@ import java.util.*;
  * 
  * Tags: Array, Backtracking
  */
+
+/**使用DFS来做
+ 每次都以不同的元素开始dfs 如果元素相同 则跳过
+ 因为元素相同的只需要在path上加上就行了
+
+ 应该也能用之前的办法做 待确认*/
 class SubsetsWithDup {
     public static void main(String[] args) {
         int[] num = {1, 2, 2};
