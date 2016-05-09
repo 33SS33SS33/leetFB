@@ -3,6 +3,8 @@ package tree;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**迭代递归都可以写
+ 都实现*/
 public class LowestCommonAncestorofaBST {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(4);

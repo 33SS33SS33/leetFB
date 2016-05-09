@@ -3,8 +3,19 @@ package tree;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-
-/**????*/
+/**Given a binary tree, count the number of uni-value subtrees.
+ A Uni-value subtree means all nodes of the subtree have the same value.
+ For example:
+ Given binary tree,
+ 5
+ / \
+ 1   5
+ / \   \
+ 5   5   5
+ return 4.
+ */
+/**只要叶子节点 就一定是一个univalue tree 所以使用后序遍历即可 如果自己的左右子树都是 那么自己的值又和左右子树都一样 那么就把自己也算上(记得考虑子树是none的情况)
+ 然后返回即可*/
 public class CountUnivalueSubtrees {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);

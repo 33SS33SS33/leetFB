@@ -3,6 +3,8 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
+
+/**两个变量 一个存word1得位置  一个存word2得位置 每次碰见就计算一次距离*/
 public class ShortestWordDistance {
     public static void main(String[] args) {
         String[] words = { "dog", "cat" };

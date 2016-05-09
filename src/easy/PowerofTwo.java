@@ -3,6 +3,8 @@ package easy;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**要么就是用1右移32位 看有没有
+ 更好的办法是 n&(n-1) == 0 因为如果是2的n次方 那么这个数一定是1开头 后面全是0*/
 public class PowerofTwo {
     public static void main(String[] args) {
         boolean result = isPowerOfTwo(5);

@@ -7,6 +7,20 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**Given a binary tree, return all root-to-leaf paths.
+ For example, given the following binary tree:
+    1
+  /   \
+ 2     3
+ \
+  5
+ All root-to-leaf paths are:
+ ["1->2->5", "1->3"]*/
+
+/**用DFS就行
+ 但是Path的操作一定要注意!!! 重要
+ 如果在函数体内操作path  那么会修改path的值 比如Path+= [1] 会影响后面的path的值
+ 在函数参数的地方操作 其实是生成了一个新的变量path传给了下一次递归的函数就不会有问题*/
 public class BinaryTreePaths {
     public static void main(String[] args) {
         TreeNode head = buildTree();

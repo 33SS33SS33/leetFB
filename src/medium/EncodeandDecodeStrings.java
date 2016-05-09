@@ -6,6 +6,28 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**"	"Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original
+ * list of strings.
+
+ Machine 1 (sender) has the function:
+ string encode(vector<string> strs) {
+ // ... your code
+ return encoded_string;
+ }
+ Machine 2 (receiver) has the function:
+ vector<string> decode(string s) {
+ //... your code
+ return strs;
+ }
+ So Machine 1 does:
+ string encoded_string = encode(strs);
+ and Machine 2 does:
+ vector<string> strs2 = decode(encoded_string);
+ strs2 in Machine 2 should be the same as strs in Machine 1.
+ Implement the encode and decode methods."
+ */
+/**把字符串合并成  字符串长度+冒号+字符串这种形式
+ 然后在还原的时候 只需要先find冒号 然后通过字符串长度把字符串切分出来即可 因为是用的前缀的表达 所以不用担心字符串里出现冒号的情况"*/
 public class EncodeandDecodeStrings {
     public static void main(String[] args) {
         EncodeandDecodeStrings d=new EncodeandDecodeStrings();

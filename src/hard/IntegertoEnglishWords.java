@@ -10,6 +10,10 @@ package hard;
  12345 -> "Twelve Thousand Three Hundred Forty Five"
  1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"*/
 
+/**先做个字典
+ 然后有个函数用来构造三位数字的读法
+ 然后把输入的数字每三个分成一部分 调用之前的函数 然后加上千 百万 或者亿万
+ 右边的代码十分简洁 未实现*/
 public class IntegertoEnglishWords {
     public static void main(String[] args) {
 //        System.out.println(new IntegertoEnglishWords().numberToWords(123));

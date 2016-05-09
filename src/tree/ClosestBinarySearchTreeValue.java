@@ -3,6 +3,14 @@ package tree;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**""Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
+ Note:
+ Given target value is a floating point.
+ You are guaranteed to have only one unique value in the BST that is closest to the target."
+ */
+/**就是小了就往右走 大了就往左走
+ 每次都计算一下最小值即可
+ "	*/
 public class ClosestBinarySearchTreeValue {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);

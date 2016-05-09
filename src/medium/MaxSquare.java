@@ -3,6 +3,12 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**DP 动态规划
+ 状态转移方程：
+ dp[x][y] = min(dp[x - 1][y - 1], dp[x][y - 1], dp[x - 1][y]) + 1
+ 上式中，dp[x][y]表示以坐标(x, y)为右下角元素的全1正方形矩阵的最大长度（宽度）
+ 如果当前点为0  则dp[x][y]就是0  肯定没有以0 为右下角元素的全1正方形
+ 右边是另一种解法 未实现*/
 public class MaxSquare {
     public static void main(String[] args) {
         MaxSquare s = new MaxSquare();

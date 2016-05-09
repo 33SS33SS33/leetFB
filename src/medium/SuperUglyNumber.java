@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Created by GAOSHANSHAN835 on 2016/4/8.
  */
-/*Write a program to find the nth super ugly number.
+/**Write a program to find the nth super ugly number.
     Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k. For example, [1, 2, 4, 7, 8, 13, 14, 16, 19, 26, 28, 32] is the sequence of the first 12 super ugly numbers given primes = [2, 7, 13, 19] of size 4.
     Note:
     (1) 1 is a super ugly number for any given primes.
@@ -20,6 +20,8 @@ import java.util.Arrays;
     ....
     Time O(n*(primes.length))
 */
+
+/**直接不停的除以2 3 5 就行 要排除0 所以才设定了<num的条件*/
 public class SuperUglyNumber {
     public int nthSuperUglyNumber(int n, int[] primes) {
         int[] d = new int[n];

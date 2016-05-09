@@ -3,6 +3,8 @@ package rectangle;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
+/**首先row设置从第一行开始 列从最后一行开始  先移动列
+ * 直到当前比target小  那么就往下移动行 如果碰见了元素超过了 target 就继续向左移动列*/
 public class Searcha2DMatrixII {
     public static void main(String[] args) {
         int[][] matrix= {{1,   4,  7, 11, 15},

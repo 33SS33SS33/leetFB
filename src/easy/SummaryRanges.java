@@ -9,9 +9,11 @@ import java.util.List;
 
 /**
  * Given a sorted integer array without duplicates, return the summary of its ranges.
- * <p/>
  * For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].
  */
+/**按照规则来就行
+ 记得for的时候最后要多出来一次循环 这样才能把最后一个range给加进去
+ 现有办法是先把range都记录在一个数组里*/
 public class SummaryRanges {
     public static void main(String[] args) {
         SummaryRanges r = new SummaryRanges();

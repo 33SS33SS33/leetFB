@@ -6,8 +6,16 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/**最多需要多少房子
+/**Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
+ For example,
+ Given [[0, 30],[5, 10],[15, 20]],
+ return 2.
+ 最多需要多少房子
  * */
+/**一个数组是start排序 一个数组是end 排序  然后就按照最基本的逻辑开房间的逻辑即可
+ 就是在开房间之前检查有几个房间已经end了 end了 就是avail +1 然后用一间房 就avail-1
+ 如果没有房间avail 那就说明要开信访件 那就res +1
+ 还可以用堆来做 未实现*/
 public class MeetingRooms2 {
     public static void main(String[] args) {
         Interval inter1=new Interval(1,4);

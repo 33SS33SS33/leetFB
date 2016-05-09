@@ -6,6 +6,10 @@ import java.util.Scanner;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**这道题 是先把符号存下来 然后检测符号的时候 指针已经指向了符号后面的那个数字(所以最开始默认是加号 为了把第一个数字入栈)
+ 然后如果碰见加号 就把之前拼出来的数字入栈 减号的话就把那个数字取反入栈
+ 如果是乘号就要把栈里之前的数字弹出来做乘法之后再入栈 除法也一样
+ 然后返回结果把栈里的数字累加起来即可*/
 public class BasicCalculator2 {
     enum TokenType { DIGIT, OP }
 

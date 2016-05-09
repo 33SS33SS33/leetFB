@@ -8,6 +8,7 @@ import java.util.Queue;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**用BFS来翻转*/
 public class InvertBinaryTree {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);

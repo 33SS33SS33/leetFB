@@ -11,6 +11,8 @@ import java.util.Arrays;
  *
  * Tags: Arrays, Two pointers
  */
+
+/**使用一个循环 然后加上双指针即可 记得start也要移动 要不结果不全*/
 class ThreeSumClosest {
     public static void main(String[] args) {
         ThreeSumClosest t = new ThreeSumClosest();

@@ -8,6 +8,11 @@ import java.util.Stack;
 /**
  * 错的
  */
+/**中序遍历二叉树即可
+ 题目说要修改BST结构 可以在每个节点加上一个属性指示这个节点下面的左子树有多少个节点
+ 这样就可以用二分查找了
+ 未实现
+ 要熟练掌握二叉树的 递归和迭代遍历*/
 public class KthSmallestElementinaBST {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(4);
