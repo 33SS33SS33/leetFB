@@ -25,7 +25,7 @@ class SimplifyPath {
         System.out.println(simplifyPathB("/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
     }
 
-    /**
+    /** 最好的
      * Split words with /, use a stack to save directories
      * If ".", skip
      * If "..", check stack. If stack empty, skip; If not, pop
@@ -75,7 +75,6 @@ class SimplifyPath {
         int back = 0;
         while (!stack.isEmpty()) {
             String top = stack.pop();
-
             if (top.equals("/.") || top.equals("/")) {
                 //nothing
             } else if (top.equals("/..")) {
