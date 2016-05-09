@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
  * Tags: Tree, DFS
  */
+
+/**用先序遍历 判断到了叶子节点就把当前path的值加起来放进res即可*/
 class SumRootToLeafNo {
     public static void main(String[] args) {
         TreeNode head = buildTree();

@@ -27,6 +27,13 @@ package hard;
 /*Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
 The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
 Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.*/
+
+    /**其实每层都可以看成链表 最重要的是要保存一个dummy头部
+     整体思路是  通过走一遍上层的节点 然后把下层的节点的next连起来
+     用了dummy头十分巧妙
+     程序的大循环 就是遍历每一层  小循环就是遍历当前层 链接next
+     root表示上层的节点  cur表示下次被连接的节点
+     所以每次root往下层移动的时候 cur.next就是下次的起点*/
 class PopulatingNextRight2 {
     public static void main(String[] args) {
         TreeLinkNode root= buildTree();

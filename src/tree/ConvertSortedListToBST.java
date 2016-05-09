@@ -5,9 +5,11 @@ import java.util.ArrayList;
 /**
  * Given a singly linked list where elements are sorted in ascending order,
  * convert it to a height balanced BST.
- * <p/>
  * Tags: DFS, Linked list
  */
+
+/**使用快慢指针来找中点
+ 另外一种o(N)的算法 在右边的链接里 http://bangbingsyb.blogspot.com/2014/11/leetcode-convert-sorted-list-to-binary.html*/
 class ConvertSortedListToBST {
     public static void main(String[] args) {
 

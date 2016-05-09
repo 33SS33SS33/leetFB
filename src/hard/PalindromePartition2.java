@@ -14,6 +14,10 @@ import java.util.*;
  * 
  * Tags: DP
  */
+/**先要用一个二维的dp表来记录下当前字符串 从i到j是不是一个回文
+ 然后再在建立表的同时  进行一维dp的判断 一维dp表示的是当前长度i的最小cut的数量
+ 本题十分重要
+ 还有o1解法 未实现*/
 class PalindromePartition2 {
     
     public static void main(String[] args) {

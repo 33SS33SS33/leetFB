@@ -2,13 +2,11 @@ package tree;
 
 /**
  * Given a binary tree, determine if it is height-balanced.
- * <p/>
  * For this problem, a height-balanced binary tree is defined as a binary tree
- * in which the depth of the two subtrees of every node never differ by more
- * than 1.
- * <p/>
+ * in which the depth of the two subtrees of every node never differ by more than 1.
  * Tags: Tree, DFS
  */
+/**还是自底向上的得到深度值 然后计算*/
 class BalancedBT {
     public static void main(String[] args) {
         TreeNode head = buildTree();

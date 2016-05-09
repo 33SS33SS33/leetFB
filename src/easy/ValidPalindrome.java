@@ -15,6 +15,10 @@ import java.util.Stack;
 
  * Tags: Two pointers, String
  */
+
+/**
+ * 用l<r判断比较好 否则会越界 记得每个循环都加上l<r的判断
+ */
 class ValidPalindrome {
     public static void main(String[] args) {
         System.out.println(isPalindromeA(""));

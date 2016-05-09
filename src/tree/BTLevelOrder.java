@@ -23,6 +23,8 @@ import java.util.Queue;
  * ]
  * Tags: Tree, BFS
  */
+
+/**使用BFS 注意BFS判断一下level是不是为空*/
 class BTLevelOrder {
     public static void main(String[] args) {
         TreeNode root =buildTree();
@@ -118,6 +120,7 @@ class BTLevelOrder {
         }
         return res;
     }
+
     static TreeNode buildTree(){
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);

@@ -17,6 +17,16 @@ import java.util.Set;
  * As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
  * return its length 5.
  */
+
+/**
+ * 这道题很重要
+ * 使用了双向BFS 即先从起点向下搜索一层  然后再从终点向上搜索一层 然后直到两个相遇 这里的一层就是指所有那些和上一层的单词只差一个字母的单词
+ * 答案的代码写的非常好
+ * 使用了set得性质 还有列表生成式的使用
+ * 记得把遍历过的单词剔除 要不会打环
+ * <p/>
+ * 第二遍看了思路 重要
+ */
 public class WordLadder {
     public static void main(String[] args) {
         String start = "hit";

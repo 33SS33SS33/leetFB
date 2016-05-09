@@ -23,6 +23,14 @@ import java.util.*;
  * All words contain only lowercase alphabetic characters.
  * Tags: Array, Backtracking, BFS, String
  */
+
+/**
+ * 十分重要的一道题
+ * 思路和word ladderI类似  不过这次只用了单方向的bfs
+ * 关键的地方在于用defaultdict来存储当前这个单词的上几个单词(只存储距离为1的)  然后一层一层遍历
+ * 最后从endword 倒着把答案组合起来
+ * 代码十分简洁
+ */
 class WordLadder2 {
     public static void main(String[] args) {
         String start = "hit";
@@ -41,7 +49,6 @@ class WordLadder2 {
         List<List<String>> res = new ArrayList<List<String>>();
         Map<String, List<String>> map = new HashMap<String, List<String>>();
         Map<String, Integer> dist = new HashMap<String, Integer>();
-
         bfs(map, dist, start, end, dict);
         dfs(res, new LinkedList<String>(), end, start, dist, map);
         return res;
@@ -51,8 +58,7 @@ class WordLadder2 {
      * Create a queue, add start to it and put start in dist map
      * Initialize map with lists
      */
-    void bfs(Map<String, List<String>> map, Map<String, Integer> dist, String start, String end,
-            Set<String> dict) {
+    void bfs(Map<String, List<String>> map, Map<String, Integer> dist, String start, String end, Set<String> dict) {
         Queue<String> q = new LinkedList<String>();
         q.offer(start);
         dict.add(start); // make sure start and end in dictionary

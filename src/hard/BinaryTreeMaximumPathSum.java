@@ -14,6 +14,15 @@ import java.util.ArrayList;
  *
  * Tags: Tree, DFS
  */
+
+/**For each node like following, there should be four ways existing for max path:
+ 1. Node only
+ 2. L-sub + Node
+ 3. R-sub + Node
+ 4. L-sub + Node + R-sub
+ 后序遍历 然后返回最大值
+ 注意一下返回值  如果是本身节点然后加上左右节点 这个值不应该返回  因为父节点无法使用这个path   所以使用self.res直接对res进行更新
+ 所以返回值只是返回当前节点  带上左或者右某一条路径 或者都不带 值返回本身  所以在处理left和right的时候 要把负数变为0*/
 class BinaryTreeMaximumPathSum {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -35,7 +44,6 @@ class BinaryTreeMaximumPathSum {
         helper(root);
         return max;
     }
-
     int helper(TreeNode root) {
         if (root == null)
             return 0;

@@ -1,4 +1,4 @@
-package hard;
+    package hard;
 
 /**
  * Given an array of integers, every element appears three times except for
@@ -10,6 +10,11 @@ package hard;
  * 
  * Tags: Bit Manipulation
  */
+/**右边的两个连接是这类题的通用解法 https://leetcode.com/discuss/56524/a-general-c-solution-for-these-type-problems
+ https://leetcode.com/discuss/54970/an-general-way-to-handle-all-this-sort-of-questions
+ 如果所有元素都是连续出现了三次 那么把所有这些数字按位加起来 那么每一位都应该是三的倍数 那么除以3余数是0 如果这时候有个数只有一次 那么除以3会有余数 所以把这些所有的数按位加起来 然后按位模3 之后的数就是多出来的数
+ 注意还要考虑负数的情况 如果是负数 必须这样相减(res是31位 1<<31是32位) 才能出来负数 貌似是把符号位给减出来才行 因为符号位第32位不够减 所以才出来了负号
+ python语言自己的问题*/
 class SingleNum2 {
     public static void main(String[] args) {
         int[] A = {1, 1, 1, 2, 2, 2, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7};

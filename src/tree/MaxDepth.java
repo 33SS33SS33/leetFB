@@ -4,12 +4,11 @@ import java.util.LinkedList;
 
 /**
  * Given a binary tree, find its maximum depth.
- * <p/>
  * The maximum depth is the number of nodes along the longest path from the
  * root node down to the farthest leaf node.
- * <p/>
  * Tags: Tree, DFS
  */
+/**使用自底向上bottom-up的递归*/
 class MaxDepth {
     public static void main(String[] args) {
         TreeNode head = buildTree();

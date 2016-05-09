@@ -4,10 +4,8 @@ import java.util.*;
 
 /**
  * Given numRows, generate the first numRows of Pascal's triangle.
- * <p/>
  * For example, given numRows = 5,
  * Return
- * <p/>
  * [
  *      [1],
  *     [1,1],
@@ -15,9 +13,10 @@ import java.util.*;
  *   [1,3,3,1],
  *  [1,4,6,4,1]
  * ]
- * <p/>
  * Tags: Array
  */
+
+/**两边一定是1 中间的就是i+i-1*/
 class PascalsTriangle {
     public static void main(String[] args) {
         PascalsTriangle p = new PascalsTriangle();
@@ -39,7 +38,6 @@ class PascalsTriangle {
         for (int i = 1; i < numRows; i++) {
             List<Integer> lastRow = triangle.get(i - 1);
             List<Integer> row = new ArrayList<Integer>(i + 1);
-
             for (int j = 0; j < i + 1; j++) {
                 if (j == 0 || j == i) {
                     row.add(1);

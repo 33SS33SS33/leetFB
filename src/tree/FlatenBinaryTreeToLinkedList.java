@@ -6,28 +6,42 @@ import java.util.*;
  * Given a binary tree, flatten it to a linked list in-place.
  * For example,
  * Given
- * 1
- * / \
- * 2   5
+ *    1
+ *   / \
+ *  2   5
  * / \   \
- * 3   4   6
+  3   4   6
  * The flattened tree should look like:
  * 1
- * \
- * 2
- * \
- * 3
- * \
- * 4
- * \
- * 5
- * \
- * 6
+ *  \
+ *   2
+ *    \
+ *     3
+ *      \
+ *       4
+ *        \
+ *          5
+ *          \
+ *           6
  * Hints:
  * If you notice carefully in the flattened tree, each node's right child
  * points to the next node of a pre-order traversal.
  * Tags: Tree, DFS
  */
+
+/**首先 发现flatten之后的树就是按着先序遍历之前的树
+ 设置一个head指针 他表示的是你当前右子树的末尾
+ 然后按着先序依次把节点挪过去
+ 此题关键在于
+ 首先 你把左边的节点挪过去了  但是你要清空此节点本身的左节点
+ 比如(2节点过去了  要把2的left清空掉 要不2的左右节点都有3)
+ 然后因为你是把左边的节点往右边挪 右边的树就被破坏了
+ 所以要在递归最开始  先用 left还有right变量保存原先左右节点的地址
+
+ 第二次看了思路 重要
+ 第二次用了中序的思路 首先要缓存住右边的节点
+ 然后flaten左边的节点 通过循环找到尾部  每次都假设调用了一次flatten之后 左边的树都已经是flaten好的 所以只需要连接起来就行了
+ 但是别忘了 连接起来之后要去flaten右边的树*/
 
 /*递归 迭代*/
 class FlatenBinaryTreeToLinkedList {

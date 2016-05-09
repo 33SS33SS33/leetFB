@@ -33,6 +33,12 @@ package tree;
  * Tags: Tree, DFS
  */
 /**完美二叉树*/
+
+/**首先 设置一个pre来保存每一层最左边的节点
+ 然后再设置一个cur用来从左到右遍历这一层
+ 其实主要是用cur来从左到右把下一层的next连起来
+ 所以cur这一层应该是已经连好的
+ 然后连完一层 然后pre就到下一层 再用cur来遍历*/
 class PopulatingNextRight {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();

@@ -9,7 +9,6 @@ import java.util.Queue;
  * Given a binary tree, return the zigzag level order traversal of its nodes'
  * values. (ie, from left to right, then right to left for the next level and
  * alternate between).
- * <p/>
  * For example:
  * Given binary tree {3,9,20,#,#,15,7},
  * 3
@@ -23,8 +22,15 @@ import java.util.Queue;
  * [20,9],
  * [15,7]
  * ]
- * <p/>
+
  * Tags: Tree, BFS, Stack
+ */
+
+/**这个题可以用BFS还有DFS BFS比较好
+ 自己的解法类似BFS
+ 把节点一排一排的入栈 然后有一个direction变量  可以用来规定入栈的顺序 从左到右 还是从右到左
+ 然后下次就反过来
+ 然后每次先遍历栈里的元素 这样就得到当前层的答案  然后再把下一层的入栈
  */
 class BinaryTreeZigZag {
     public static void main(String[] args) {

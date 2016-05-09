@@ -5,15 +5,14 @@ import java.util.List;
 
 /**
  * Given an index k, return the kth row of the Pascal's triangle.
- * <p/>
  * For example, given k = 3,
  * Return [1,3,3,1].
- * <p/>
  * Note:
  * Could you optimize your algorithm to use only O(k) extra space?
- * <p/>
  * Tags: Array
  */
+
+/**只用一个数组记录上一次的即可*/
 class PascalsTriangle2 {
     public static void main(String[] args) {
         PascalsTriangle2 p = new PascalsTriangle2();
