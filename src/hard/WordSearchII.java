@@ -8,6 +8,8 @@ import java.util.Set;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
+/**使用了字典树 trie tree 然后和第一题的答案结合起来即可
+ 因为是一个字母一个字母的搜索 所以哈希表不行 必须用字典树才能比较有效率*/
 public class WordSearchII {
     public static void main(String[] args) {
         WordSearchII s=new WordSearchII();
