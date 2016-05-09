@@ -14,6 +14,12 @@ import java.util.*;
  * Given numerator = 2, denominator = 3, return "0.(6)".
  * Tags: Hashtable, Math
  */
+
+/**最关键的还是要知道 循环小数的时候 余数也在循环
+ 模拟除法 需要用字典记录余数的位置
+ 整数部分比较好做 直接divmod然后记录下来商和余数
+ 然后每次把余数乘以10 再除以被除数 并且记录下来
+ 当出现循环的时候 余数也在循环 所以就用字典找出来第一个出现这个余数的位置 然后用括号把中间的括起来就可以*/
 class FractionToRecurringDeci {
     public static void main(String[] args) {
         FractionToRecurringDeci f = new FractionToRecurringDeci();

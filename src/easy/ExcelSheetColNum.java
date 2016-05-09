@@ -17,6 +17,7 @@ import java.util.HashMap;
 
  * Tags: Math
  */
+/**还是一样 从后倒着往前走 但是有一个count要记录现在是几次方了*/
 class ExcelSheetColNum {
     public static void main(String[] args) {
         System.out.println(titleToNumber("AAA"));

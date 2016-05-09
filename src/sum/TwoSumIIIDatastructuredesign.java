@@ -6,6 +6,7 @@ import java.util.Map;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
+/**还是哈希表就行*/
 public class TwoSumIIIDatastructuredesign {
     class TwoSum {
         Map<Integer, Integer> nums = new HashMap<Integer, Integer>();

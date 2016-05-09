@@ -17,9 +17,15 @@ import java.util.*;
  *
  * Return:
  * ["AAAAACCCCC", "CCCCCAAAAA"].
- * <p/>
  * Tags: Bit Manipulation
  */
+
+/**这个题首先想到的是用字典解决 从头到尾扫描每个子串 如果字典没有就添加子串进字典 如果有了就说明出现了重复 但是这样会memory超限
+ 为了结局memory超限的问题
+ 可以用位运算 A:00 C:01 G:10 T:11
+ 把字典的key转化位数字 就可以节省空间
+ 就是每次左移两位 然后取出当前位置的数字 然后再去和字典比较即可
+ 记住要用mask来只取20位的数字*/
 class RepeatedDNASeq {
     public static void main(String[] args) {
         String s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";

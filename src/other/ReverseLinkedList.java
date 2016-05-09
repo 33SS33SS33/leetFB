@@ -4,6 +4,9 @@ package other;
  * Write a function to reverse a linked list
  * Tags: LinkedList
  */
+/**递归的方法应该看一看
+ 都写了*/
+
 class ReverseLinkedList {
     public static void main(String[] args) {
         Node n1 = new Node(1);

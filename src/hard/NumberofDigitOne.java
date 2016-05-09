@@ -6,6 +6,8 @@ import java.util.Map;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+
+/**每次右移一位和1与*/
 public class NumberofDigitOne {
     public static void main(String[] args) {
             System.out.print(new NumberofDigitOne().countDigitOne(3));

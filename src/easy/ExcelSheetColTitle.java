@@ -17,6 +17,11 @@ package easy;
  * 28 -> AB
  * Tags: Math
  */
+
+/**涉及了进制转换 挺重要的题
+ 进制转换的时候 取余就是当前位值
+ 然后剩下的位数要除以26
+ 注意一下减一*/
 class ExcelSheetColTitle {
     public static void main(String[] args) {
         System.out.println(convertToTitleRec(28));

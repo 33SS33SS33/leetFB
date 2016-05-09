@@ -6,7 +6,6 @@ import java.util.Arrays;
  * Follow up for "Find Minimum in Rotated Sorted Array":
  * What if duplicates are allowed?
  * Would this affect the run-time complexity? How and why?
- * 
  * Suppose a sorted array is rotated at some pivot unknown to you beforehand.
  * (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
  * 
@@ -15,6 +14,8 @@ import java.util.Arrays;
  * 
  * Tags: Array, Binary Search
  */
+/**和Search in Rotated Sorted Array II 基本一样 貌似可以把min的判断去掉 未实现
+ 需要仔细研究一下二分查找的start和end的设置情况 重要*/
 class FindRotatedArrMin2 {
     public static void main(String[] args) {
         // int[] num = { 2, 3, 3, 4, 5, 6, 7, 0, 0, 0, 1, 1, 2, 2, 2 };

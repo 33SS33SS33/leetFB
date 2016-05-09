@@ -6,6 +6,9 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28.
  */
+
+/**就是需要在数组里相减就行
+ 注意数组的预处理 比如在算两个边界的时候 要+1和-1 以及把边界插入进数组*/
 public class MissingRanges {
     public static void main(String[] args) {
         int[] vals = { 1, 2, 3, 5 };

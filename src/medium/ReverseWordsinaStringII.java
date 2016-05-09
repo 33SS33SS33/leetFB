@@ -5,7 +5,10 @@ package medium;
  */
 
 /**输入的字符串不包含前缀或者后缀空格，然后字符串只有以单个空格分隔。
- 要求不开辟任何其他存储空间，在原先字符串上进行替换。*/
+ 要求不开辟任何其他存储空间，在原先字符串上进行替换。
+
+ 字符串是按照单个字符存进数组的
+ 所以就先把数组全反转过来 然后在从头到尾遍历 每次碰到了空格 就把这个单词给反转回来*/
 public class ReverseWordsinaStringII {
     public static void main(String[] args) {
         String s1 = "asannbc 21212";

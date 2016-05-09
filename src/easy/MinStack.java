@@ -1,7 +1,7 @@
 package easy;
 
 import java.util.Stack;
-
+/**用一个tuple来记录当前的最小值*/
 /**
  * Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
  * push(x) -- Push element x onto stack.

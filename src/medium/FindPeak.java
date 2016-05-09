@@ -12,6 +12,13 @@ package medium;
  * Your solution should be in logarithmic complexity.
  * Tags: Array, Binary Search
  */
+
+/**题目要求lgn的解法 所以就用二分查找
+ 注意越界的问题 所以设置了先检查首尾元素是否符合条件 符合就返回
+ 如果不符合就二分查找 二分查找的界限是从1开始到倒数第二个元素结束
+
+ 这道题第一次写的解法是错的  这道题如果mid不是peak的话 只需要看右边的那个元素是不是大于mid  如果大于mid 那么右边一定会有一个peak
+ 因为如果右边是个递增到结束的数列 那么结尾的那个就是peak 否则就往前找*/
 class FindPeak {
     public static void main(String[] args) {
         int[] num = { 1, 2, 1, 3, 1, 4, 1 };

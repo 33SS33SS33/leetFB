@@ -13,6 +13,13 @@ package medium;
  *
  * Tags: Linkedlist
  */
+
+/**
+ * 一共分三分步
+ * 第一步是用快慢指针找到链表的中点 然后把链表从中点分成两部分 （记得处理前一部分的最后一个元素 让他的next = None）
+ * 第二步 把第二部分的链表倒序反转（记得处理第二部分的第一个元素 让他的next=None ）
+ * 第三部 将第二部分的元素每隔一个插入第一部分的链表里（记得要处理当第一部分的指针下一个已经是None但是第二部分还有不止一个元素的情况）
+ */
 class ReorderList {
     public static void main(String[] args) {
         // {1,2,3,4,5,6}
@@ -27,7 +34,6 @@ class ReorderList {
         r.reorderList2(head2);
         r.printList(head2);
     }
-
 
     /**
      * Find mid point, then split list into 2 halves

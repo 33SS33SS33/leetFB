@@ -15,10 +15,13 @@ import java.util.*;
 
 public class WordBreak2 {
     public static void main(String[] args) {
-        String s = "leetcode";
+        String s = "catsanddog";
         Set<String> dict =new HashSet<String>();
-        dict.add("leet");
-        dict.add("code");
+        dict.add("cat");
+        dict.add("cats");
+        dict.add("and");
+        dict.add("sand");
+        dict.add("dog");
         WordBreak2 a=new WordBreak2();
         System.out.println(a.wordBreak(s,dict).toString());
         System.out.println(a.wordBreak2B(s,dict).toString());

@@ -9,12 +9,12 @@ import java.util.Set;
 
 /**
  * Example: 19 is a happy number
- * <p/>
  * 12 + 92 = 82
  * 82 + 22 = 68
  * 62 + 82 = 100
  * 12 + 02 + 02 = 1
  */
+/**按照规则构造即可 记录一下出现过的数*/
 public class HappyNumber {
     public static void main(String[] args) {
         System.out.println(new HappyNumber().isHappyA(32));

@@ -5,6 +5,10 @@ import java.util.*;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+/**和上道题基本类似
+ 只是这道题是要输出访问顺序 所以在访问的时候用list把节点记下来就行了
+ 注意一下当prerequisties为空的时候的情况  这个时候 就应该返回所有的course number 因为没有前置 所以也没有顺序
+ stack = [x for x in xrange(numCourses) if not preNeighbor[x]] 注意一下xrange的范围要用课程数量 因为用的是defaultdict 这样才会为每一个课程数量创建一个对应的key*/
 /*There are a total of n courses you have to take, labeled from 0 to n - 1.
 Some courses may have prerequisites, for example to take course 0 you have to first take course 1,
  which is expressed as a pair: [0,1]

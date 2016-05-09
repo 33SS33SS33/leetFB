@@ -11,6 +11,11 @@ package rectangle;
  * 00011
  * answer：3
  */
+
+/**使用DFS即可 设置一个矩阵记录有没有访问过
+ 然后遍历grid 如果这个点为1且没访问过 就调用dfs开始查找他附近都是1的点 然后visit都置为True 这样就说明找到了一个岛
+ dfs的时候 少一层递归会快很多  所以才直接限定了dfs的调用
+ 也可以用 union find来做 下次可以试试*/
 public class NumIslands {
     public static void main(String[] args) {
         char[][] grid = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' },

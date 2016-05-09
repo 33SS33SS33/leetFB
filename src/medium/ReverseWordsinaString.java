@@ -17,6 +17,12 @@ package medium;
  *
  * Tags: String
  */
+/**split用来分割 返回的是分割之后的list 默认是用空格
+ join用来连接 join最前的字符表示用什么字符连接 
+ [::-1]用来颠倒
+ 下次写一个不用这些函数的
+ 进步步骤就是 先去空格 头空格 中间多的空格 尾部空格
+ 然后颠倒整个list*/
 class ReverseWordsinaString {
     public static void main(String[] args) {
         String given = "the sky is blue";

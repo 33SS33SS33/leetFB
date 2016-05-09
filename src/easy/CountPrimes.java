@@ -9,6 +9,7 @@ import java.util.BitSet;
 /**
  * Count the number of prime numbers less than a non-negative number, n.
  */
+/**埃拉托斯特尼筛法*/
 public class CountPrimes {
     public static void main(String[] args) {
         int num = -19;

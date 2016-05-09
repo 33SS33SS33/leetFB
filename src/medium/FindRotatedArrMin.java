@@ -8,6 +8,10 @@ package medium;
  *
  * Tags: Array, Binary Search
  */
+/**使用二分查找即可  二分查找要变形一下 把中点和最后的元素比较
+ 如果中点元素比最后的元素大 则说明后面的是乱序的 最小值在里面
+ 如果中点元素比最后的小 则说明后面是正确的 那最小值就在前面
+ 这里注意 最小值在前面的时候 end要设置为midpoint 因为midpoint本身就可能是最小值*/
 class FindRotatedArrMin {
     public static void main(String[] args) {
         int[] num = { 3, 4, 5, 6, 1, 2 };

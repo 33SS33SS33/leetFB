@@ -6,6 +6,8 @@ import java.util.Map;
 /**given "abcbbbbcccbdddadacb",
  * the longest substring that contains 2 unique character is "bcbbbbcccb".*/
 
+/**答题思路就是用滑动窗口 然后用哈希表来记录经过的元素的坐标  当窗口碰到了第三个不同的元素  就先计算一下当前的长度
+ 然后就开始移动start 每次移动start就把这个start对应的位置从哈希表里删除*/
 class LongestSubstringWithTwo {
     public static void main(String[] args) {
         System.out.println(LongestSubstringWithatMostTwoDistinctCharacters("abcbbbbcccbdddadacb"));

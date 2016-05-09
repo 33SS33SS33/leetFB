@@ -10,6 +10,9 @@ package other;
  * Note: The read function will only be called once for each test case.
  * Tags:
  */
+/**这道题的题意有歧义
+ read4的函数不仅会返回读了几个字符  还会把字符读进你传得那个参数里
+ 然后要把这些读出来的字符 存进buf里 并且返回一共读了多少字符*/
 class ReadNGivenRead4 {
     public static void main(String[] args) {
 

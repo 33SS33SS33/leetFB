@@ -11,6 +11,7 @@ import java.util.Arrays;
  * 
  * Tags: Divide and Conquer, Array, Bit Manipulation
  */
+/**还是用那个投票算法 好像用bit也能做 未实现 重要*/
 class MajorityEle {
     public static void main(String[] args) {
         int[] num={1,2,1,3,6,1,4,1,1};
