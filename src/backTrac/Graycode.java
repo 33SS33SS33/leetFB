@@ -24,6 +24,11 @@ import java.util.List;
  * 
  * Tags: Backtracking
  */
+
+/**先写出来格雷码 找规律
+ 格雷码就是下一个数字和这一个数字只能有一位是不一样的
+ 规律就是如果要求n位的格雷码 其实就是逆序遍历n-1位的格雷码 然后每个格雷码加上1<<n-1
+ 再加上n-1位的格雷码的序列*/
 class Graycode {
     public static void main(String[] args) {
         System.out.println(new Graycode().grayCodeA(3));

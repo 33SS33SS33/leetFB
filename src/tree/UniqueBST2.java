@@ -16,6 +16,13 @@ import java.util.List;
  *    2     1         2                 3
  * Tags: Tree, DP, Backtracking
  */
+
+
+/**递归
+ 首先构造根节点  然后构造左子树 然后构造右子树 然后递归
+ 第二次看了思路 重要
+ https://leetcode.com/discuss/29532/dp-solution-in-python
+ 还有dp解法 未实现*/
 class UniqueBST2 {
     public static void main(String[] args) {
 
