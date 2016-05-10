@@ -6,11 +6,11 @@ package easy;
  *
  * Tags: Linkedlist
  */
-public class MergeTwoLists {
+public class MergeTwoSortedLists {
     public static void main(String[] args) {
         ListNode head1=buildList();
         ListNode head2=buildList2();
-        ListNode res=new MergeTwoLists().mergeTwoListsB(head1,head2);
+        ListNode res=new MergeTwoSortedLists().mergeTwoListsRec(head1,head2);
 
        while(res.next!=null){
            System.out.print(res.val+",");
@@ -44,55 +44,6 @@ public class MergeTwoLists {
             return l2;
         if (l2 == null)
             return l1;
-        // merge
-        ListNode beforeHead = new ListNode(0);
-        ListNode temp = new ListNode(0);
-        beforeHead.next = temp;
-        while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {
-                temp.next = l1;
-                l1 = l1.next;
-            } else {
-                temp.next = l2;
-                l2 = l2.next;
-            }
-            temp = temp.next;
-        }
-        while (l1 != null) {
-            temp.next = l1;
-            temp = temp.next;
-            l1 = l1.next;
-        }
-        while (l2 != null) {
-            temp.next = l2;
-            temp = temp.next;
-            l2 = l2.next;
-        }
-        return beforeHead.next.next;
-    }
-
-    public ListNode mergeTwoListsB2(ListNode l1, ListNode l2) {
-        ListNode helper = new ListNode(0);
-        ListNode pre = helper;
-        helper.next = l1;
-        while (l1 != null && l2 != null) {
-            if (l1.val > l2.val) {
-                ListNode next = l2.next;
-                l2.next = pre.next;
-                pre.next = l2;
-                l2 = next;
-            } else {
-                l1 = l1.next;
-            }
-            pre = pre.next;
-
-        }
-        if (l2 != null) {
-            pre.next = l2;
-        }
-        return helper.next;
-    }
-    public ListNode mergeTwoListsB3(ListNode l1, ListNode l2) {
         ListNode p1 = l1;
         ListNode p2 = l2;
         ListNode fakeHead = new ListNode(0);
@@ -113,6 +64,7 @@ public class MergeTwoLists {
             p.next = p2;
         return fakeHead.next;
     }
+
     static ListNode buildList() {
         ListNode node0 = new ListNode(1);
         ListNode node1 = new ListNode(2);
