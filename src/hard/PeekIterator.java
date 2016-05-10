@@ -15,6 +15,8 @@ import java.util.*;
  *
  * Tags: Data Structures
  */
+
+//初始化的时候 直接取到下一个元素值就行  然后完全基于下一个元素来返回
 class PeekIterator<T> implements Iterator<T> {
     private final Iterator<T> iterator;
     /**

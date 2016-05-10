@@ -3,6 +3,11 @@ package tree;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
+
+/**只有往左走的时候 也就是p的值比root得小的时候 就尝试去找个更小的 需要记录succ就可以
+ *
+ * "Given a binary search tree and a node in it, find the in-order successor of that node in the BST.
+ Note: If the given node has no in-order successor in the tree, return null."*/
 public class InorderSuccessorinBST {
     /**
      * 错的
