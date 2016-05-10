@@ -35,6 +35,16 @@ public class SlidingWindowMaximum {
         }
     }
 
+    public static int[] maxSlidingWindow(int[] nums, int k) {
+        int[] T = new int[Math.min(nums.length - k + 1, nums.length)];
+        SlidingMaxQueue Q = new SlidingMaxQueue(nums, k);
+        Q.add(0);
+        for(int i = 1; i <= nums.length; i++){
+            T[Math.max(i - k, 0)] = Q.max();
+            Q.add(i);
+        }
+        return T;
+    }
     static class SlidingMaxQueue {
         int[] nums;
         int k;
@@ -43,7 +53,6 @@ public class SlidingWindowMaximum {
             this.nums = nums;
             this.k = k;
         }
-
         int max(){
             return nums[queue.peekFirst()];
         }
@@ -59,16 +68,5 @@ public class SlidingWindowMaximum {
             }
             queue.add(i);
         }
-    }
-
-    public static int[] maxSlidingWindow(int[] nums, int k) {
-        int[] T = new int[Math.min(nums.length - k + 1, nums.length)];
-        SlidingMaxQueue Q = new SlidingMaxQueue(nums, k);
-        Q.add(0);
-        for(int i = 1; i <= nums.length; i++){
-            T[Math.max(i - k, 0)] = Q.max();
-            Q.add(i);
-        }
-        return T;
     }
 }

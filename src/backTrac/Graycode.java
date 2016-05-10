@@ -35,7 +35,7 @@ class Graycode {
         System.out.println(new Graycode().grayCodeB(3));
     }
 
-    /**
+    /**最好的~~~
      * generate 0, 1 then add 10 from back to get 11, 10
      * same goes for 00, 01, 11, 10, add 100 to get 110, 111, 101, 100
      */

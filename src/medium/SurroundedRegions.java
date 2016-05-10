@@ -137,7 +137,6 @@ class SurroundedRegions {
             }
         }
     }
-
     public void merge(char[][] board, int i, int j) {
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length)
             return;

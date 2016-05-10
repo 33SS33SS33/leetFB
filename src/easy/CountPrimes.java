@@ -12,7 +12,7 @@ import java.util.BitSet;
 /**埃拉托斯特尼筛法*/
 public class CountPrimes {
     public static void main(String[] args) {
-        int num = -19;
+        int num = 19;
         System.out.println(countPrimes(num));
         System.out.println(countPrimesB(num));
     }
