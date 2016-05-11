@@ -27,5 +27,13 @@ public class ama {
     # 204        Count Primes         21.8%        Easy
      199        Binary Tree Right Side View         30.6%        Medium
      102        Binary Tree Level Order Traversal         30.3%        Easy
-     49        Group Anagrams         25.2%        Medium*/
+     49        Group Anagrams         25.2%        Medium
+
+     IntegertoEnglishWords
+     merge Intervels
+     SerializeandDeserializeBT
+
+     */
+
+
 }

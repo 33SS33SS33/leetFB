@@ -10,7 +10,7 @@ package medium;
  * Tags: Linkedlist, Math
  */
 
-/**-----------错的----------
+/**
  * 实现中注意维护进位，陷阱的话记住最后还要判一下有没有进位，如果有再生成一位-*/
 class AddTwoNum {
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ class AddTwoNum {
         ListNode r1 = buildList1();
         ListNode r2 = buildList2();
         ListNode head = s.addTwoNumbers(r1, r2);
-        while (head.next != null) {
+        while (head!= null) {
             System.out.print(head.next == null ? head.val : head.val + "->");
             head = head.next;
         }
@@ -56,51 +56,6 @@ class AddTwoNum {
         return pre.next;
     }
 
-    public ListNode addTwoNumbersB(ListNode l1, ListNode l2) {
-        int carry = 0;
-        int digit = 0;
-        ListNode head = null;
-        ListNode pre = null;
-        while (l1 != null && l2 != null) {
-            digit = (l1.val + l2.val + carry) % 10;
-            carry = (l1.val + l2.val + carry) / 10;
-            ListNode newNode = new ListNode(digit);
-            if (head == null)
-                head = newNode;
-            else
-                pre.next = newNode;
-            pre = newNode;
-            l1 = l1.next;
-            l2 = l2.next;
-        }
-        while (l1 != null) {
-            digit = (l1.val + carry) % 10;
-            carry = (l1.val + carry) / 10;
-            ListNode newNode = new ListNode(digit);
-            if (head == null)
-                head = newNode;
-            else
-                pre.next = newNode;
-            pre = newNode;
-            l1 = l1.next;
-        }
-        while (l2 != null) {
-            digit = (l2.val + carry) % 10;
-            carry = (l2.val + carry) / 10;
-            ListNode newNode = new ListNode(digit);
-            if (head == null)
-                head = newNode;
-            else
-                pre.next = newNode;
-            pre = newNode;
-            l2 = l2.next;
-        }
-        if (carry > 0) {
-            ListNode newNode = new ListNode(carry);
-            pre.next = newNode;
-        }
-        return head;
-    }
     public static class ListNode {
         int      val;
         ListNode next;
@@ -111,18 +66,18 @@ class AddTwoNum {
         }
     }
     static ListNode buildList1() {
-        ListNode node0 = new ListNode(1);
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
+        ListNode node0 = new ListNode(2);
+        ListNode node1 = new ListNode(4);
+        ListNode node2 = new ListNode(3);
         node0.next = node1;
         node1.next = node2;
         return node0;
     }
 
     static ListNode buildList2() {
-        ListNode node0 = new ListNode(2);
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(9);
+        ListNode node0 = new ListNode(5);
+        ListNode node1 = new ListNode(6);
+        ListNode node2 = new ListNode(4);
         node0.next = node1;
         node1.next = node2;
         return node0;
