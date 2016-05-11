@@ -22,6 +22,9 @@ import java.util.Arrays;
 */
 
 /**直接不停的除以2 3 5 就行 要排除0 所以才设定了<num的条件*/
+/**还是之前那个题的思路
+ 这次用一个数组存储对应的prime的系数的指针
+ 有点慢  可以用heap来优化 未实现*/
 public class SuperUglyNumber {
     public int nthSuperUglyNumber(int n, int[] primes) {
         int[] d = new int[n];
