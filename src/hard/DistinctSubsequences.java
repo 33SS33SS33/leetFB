@@ -52,18 +52,18 @@ class DistinctSubsequences {
      *               or 0)          (S[j] != T[i] so we could not use S[j])
      */
     public int numDistinct(String s, String t) {
-        if (s == null || t == null) return 0;
+        if (s == null || t == null)
+            return 0;
         int m = t.length();
         int n = s.length();
-        if (m > n) return 0;
-        
+        if (m > n)
+            return 0;
         int[][] dp = new int[m + 1][n + 1];
-        for (int i = 0; i <= n; i++) dp[0][i] = 1;
-        
+        for (int i = 0; i <= n; i++)
+            dp[0][i] = 1;
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
                 dp[i][j] = dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
-        
         return dp[m][n];
     }
     

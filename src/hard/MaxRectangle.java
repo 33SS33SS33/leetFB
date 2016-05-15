@@ -54,16 +54,16 @@ class MaxRectangle {
     }
 
     public int maximalRectangleB(char[][] matrix) {
-        if(matrix==null || matrix.length==0 || matrix[0].length==0) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
             return 0;
         }
         int maxArea = 0;
         int[] height = new int[matrix[0].length];
-        for(int i=0;i<matrix.length;i++) {
-            for(int j=0;j<matrix[0].length;j++) {
-                height[j] = matrix[i][j]=='0'?0:height[j]+1;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                height[j] = matrix[i][j] == '0' ? 0 : height[j] + 1;
             }
-            maxArea = Math.max(largestRectangleArea(height),maxArea);
+            maxArea = Math.max(largestRectangleArea(height), maxArea);
         }
         return maxArea;
     }

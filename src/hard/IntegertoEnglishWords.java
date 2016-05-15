@@ -39,7 +39,6 @@ public class IntegertoEnglishWords {
         }
         return words.trim();
     }
-
     private String helper(int num) {
         if (num == 0)
             return "";

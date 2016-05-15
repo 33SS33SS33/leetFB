@@ -40,7 +40,6 @@ package hard;
  题目要求骑士在每一刻都至少有1滴血 哪怕第一个空格是5 但是骑士的起始血量也要有1
  思路可以看书影博客的*/
 class DungeonGame {
-    
     public static void main(String[] args) {
         int[][] dungeon={{-2,-3,3},{-5,-10,1},{10,30,-5}};
         int[][] dungeon2={{-2,-3,3},{-5,-10,1},{10,30,-5}};
@@ -51,7 +50,7 @@ class DungeonGame {
     /**
      * Build a table for the minimum hp needed to get to the bottom right
      * Build from bottom right to get minimum from i, j to the end
-     * Instead of build from to-left, because it's hard to get correct relation
+     * Instead of build from top-left, because it's hard to get correct relation
      */
     public int calculateMinimumHP(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) return 0;
@@ -72,22 +71,17 @@ class DungeonGame {
     public int calculateMinimumHPB(int[][] dungeon) {
         int m = dungeon.length;
         int n = dungeon[0].length;
-
         //init dp table
         int[][] h = new int[m][n];
-
         h[m - 1][n - 1] = Math.max(1 - dungeon[m - 1][n - 1], 1);
-
         //init last row
         for (int i = m - 2; i >= 0; i--) {
             h[i][n - 1] = Math.max(h[i + 1][n - 1] - dungeon[i][n - 1], 1);
         }
-
         //init last column
         for (int j = n - 2; j >= 0; j--) {
             h[m - 1][j] = Math.max(h[m - 1][j + 1] - dungeon[m - 1][j], 1);
         }
-
         //calculate dp table
         for (int i = m - 2; i >= 0; i--) {
             for (int j = n - 2; j >= 0; j--) {
@@ -96,7 +90,6 @@ class DungeonGame {
                 h[i][j] = Math.min(right, down);
             }
         }
-
         return h[0][0];
     }
 

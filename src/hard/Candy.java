@@ -1,8 +1,7 @@
 package hard;
 
 import java.util.Arrays;
-/**There are N children standing in a line. Each child is assigned a rating
- * value.
+/**There are N children standing in a line. Each child is assigned a rating value.
  * You are giving candies to these children subjected to the following
  * requirements:
  * Each child must have at least one candy.
@@ -20,7 +19,6 @@ class Candy {
         System.out.println(new Candy().candyA(ratings));
         System.out.println(new Candy().candyB(ratings));
         System.out.println(new Candy().candyC(ratings));
-        System.out.println(new Candy().candyD(ratings));
     }
 
     /**
@@ -104,21 +102,5 @@ class Candy {
         return result;
     }
 
-    public int candyD(int[] ratings) {
-        int[] candies = new int[ratings.length];
-        Arrays.fill(candies, 1);
-        for(int i = 1; i < candies.length; i++){
-            if(ratings[i] > ratings[i - 1] && candies[i] <= candies[i - 1])
-                candies[i] = candies[i - 1] + 1;
-        }
-        for(int i = candies.length - 2; i >= 0; i--){
-            if(ratings[i] > ratings[i + 1] && candies[i] <= candies[i + 1])
-                candies[i] = candies[i + 1] + 1;
-        }
-        int s = 0;
-        for(int c : candies)
-            s += c;
-        return s;
-    }
 
 }

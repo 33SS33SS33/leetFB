@@ -37,7 +37,6 @@ import java.util.*;
  * Tags: String
  */
 class TextJustification {
-
     public static void main(String[] args) {
         System.out.println(fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16).toString());
     }

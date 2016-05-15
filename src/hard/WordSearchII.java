@@ -17,7 +17,7 @@ public class WordSearchII {
                 {'o','a','a','n'},
                 {'e','t','a','e'},
                 {'i','h','k','r'},
-        {'i','f','l','v'}
+                {'i','f','l','v'}
         };
 
         String[] words={"oath","pea","eat","rain"};

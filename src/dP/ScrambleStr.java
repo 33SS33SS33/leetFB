@@ -68,13 +68,11 @@ class ScrambleStr {
             return false;
         if (s1.length() == 0 || s1.equals(s2))
             return true;
-
         int n = s1.length();
         boolean[][][] res = new boolean[n][n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 res[0][i][j] = s1.charAt(i) == s2.charAt(j);
-
         for (int len = 2; len <= n; len++) {
             for (int i = n - len; i >= 0; i--) {
                 for (int j = n - len; j >= 0; j--) {

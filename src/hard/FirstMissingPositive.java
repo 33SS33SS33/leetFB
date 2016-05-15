@@ -15,11 +15,9 @@ package hard;
 桶排序的思路是这样的 如果有十个数字0-9 那么我就给十个桶的话 只需要把每个数字放入对应编号的桶里就好了  比如9就进9号桶 然后从0号桶开始就是排序好的数字  桶排序不需要用到比大小 */
 class FirstMissingPositive {
     public static void main(String[] args) {
-        int[] A = {1,2,0};
+        int[] A = {3,4,-1,1};
         System.out.println(new FirstMissingPositive().firstMissingPositive(A));
         System.out.println(new FirstMissingPositive().firstMissingPositiveB(A));
-        System.out.println(new FirstMissingPositive().firstMissingPositiveC(A));
-        System.out.println(new FirstMissingPositive().firstMissingPositiveAnd0D(A));
         System.out.println(new FirstMissingPositive().firstMissingPositiveD(A));
     }
     
@@ -28,7 +26,6 @@ class FirstMissingPositive {
      * Correct form [1, 2, 3, 4, ..., #, n]
      * If not in position swap it with A[A[p]-1]
      */
-
     public static int firstMissingPositive(int[] A) {
         if (A == null || A.length == 0) return 1;
         int n = A.length;
@@ -44,6 +41,7 @@ class FirstMissingPositive {
             if (A[i] != i + 1) return i + 1;
         return n + 1; // nothing in middle losing, return largest
     }
+
 
     public int firstMissingPositiveB(int[] A) {
         final int N = A.length;
@@ -73,59 +71,6 @@ class FirstMissingPositive {
 
     }
 
-    public int firstMissingPositiveC(int[] nums) {
-        sort(nums);
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] != i){
-                return i;
-            }
-        }
-        return nums.length;
-    }
-    void sort(int[] nums){
-        for(int i = 0; i < nums.length; i++){
-            while(nums[i] != i){
-                if(nums[i] < 0) break;
-
-                if(nums[i] >= nums.length) {
-                    nums[i] = -1;
-                    break; // drop
-                }
-                swap(nums, nums[i], i);
-            }
-        }
-    }
-    void swap(int[] nums, int i, int j){
-        int t   = nums[i];
-        nums[i] = nums[j];
-        nums[j] = t;
-    }
-
-    /**creek*/
-    int firstMissingPositiveAnd0D(int A[]) {
-        int n = A.length;
-        for (int i = 0; i < n; i++) {
-            // when the ith element is not i
-            while (A[i] != i) {
-                // no need to swap when ith element is out of range [0,n]
-                if (A[i] < 0 || A[i] >= n)
-                    break;
-                //handle duplicate elements
-                if(A[i]==A[A[i]])
-                    break;
-                // swap elements
-                int temp = A[i];
-                A[i] = A[temp];
-                A[temp] = temp;
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            if (A[i] != i)
-                return i;
-        }
-        return n;
-    }
-
     /**creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.*/
     public int firstMissingPositiveD(int[] A) {
         int n = A.length;
@@ -148,19 +93,4 @@ class FirstMissingPositive {
         return n + 1;
     }
 
-/*
-    #Pass 1, move every value to the position of its value
-    for cursor in range(N):
-        target = array[cursor]
-        while target < N and target != array[target]:
-            new_target = array[target]
-            array[target] = target
-            target = new_target
-
-    #Pass 2, find first location where the index doesn't match the value
-    for cursor in range(N):
-        if array[cursor] != cursor:
-            return cursor
-    return N
-*/
 }

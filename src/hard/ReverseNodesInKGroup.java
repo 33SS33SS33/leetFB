@@ -20,7 +20,7 @@ class ReverseNodesInKGroup {
         ReverseNodesInKGroup r = new ReverseNodesInKGroup();
         ListNode head = buildList();
         ListNode r2 = r.reverseKGroup(head,3);
-        while (r2.next != null) {
+        while (r2 != null) {
             System.out.print(r2.next == null ? r2.val : r2.val + "->");
             r2 = r2.next;
         }
@@ -57,6 +57,7 @@ class ReverseNodesInKGroup {
         }
         return dummy.next;
     }
+
     static ListNode buildList() {
         ListNode node0 = new ListNode(0);
         ListNode node1 = new ListNode(1);

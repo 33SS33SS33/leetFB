@@ -43,7 +43,6 @@ class WildcardMatching {
 
          System.out.println(w.isMatch("a", null)); // false
          System.out.println(w.isMatchB("a", null)); // false
-
          System.out.println(w.isMatch(null, "null")); // false
          System.out.println(w.isMatchB(null, "null")); // false
         /**letters*/
@@ -51,21 +50,9 @@ class WildcardMatching {
          System.out.println(w.isMatch("aa", "a")); // false
          System.out.println(w.isMatch("aa", "aa")); // true
          System.out.println(w.isMatch("aa", "ab")); // false
-        /**s*/                
-        // System.out.println(w.isMatch("aa", "*")); // true
-        /*?s*/                
-        // System.out.println(w.isMatch("aa", "?")); // false
-        // System.out.println(w.isMatch("a", "?")); // true
-        /*letters and *s*/    
-        // System.out.println(w.isMatch("abc", "a*")); // true
-        // System.out.println(w.isMatch("ab", "a*")); // true
-        // System.out.println(w.isMatch("ab", "*a")); // false
-        // System.out.println(w.isMatch("a", "a*")); // true
-        // System.out.println(w.isMatch("bcsa", "*a")); // true
-        // System.out.println(w.isMatch("bcs", "*a")); // false
+        /**s*/
          System.out.println(w.isMatch("bbbbbbbbbb", "*bbbbb")); // true
          System.out.println(w.isMatchB("bbbbbbbbbb", "*bbbbb")); // true
-
         /** and ? */
          System.out.println(w.isMatch("b", "*?*?")); // false
          System.out.println(w.isMatchB("b", "*?*?")); // false

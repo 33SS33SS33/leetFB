@@ -17,7 +17,6 @@ package hard;
  这样的话 我们可以把数组分成两部分 这一位i是1的 和这一位i是0的  然后这两个数字肯定分别落在这两个分组中
  所以就可以通过异或第一个分组 找出来一个  异或第二个分组 找出来第二个*/
 public class SingleNumber3 {
-
     public static void main(String[] args) {
         int[] A = {1, 1, 2, 2, 3, 4};
         int[] res=singleNumber(A);
@@ -27,7 +26,6 @@ public class SingleNumber3 {
     }
     public static int[] singleNumber(int[] nums) {
         int aXORb = nums[0];
-
         for(int i = 1; i < nums.length; i++){
             aXORb ^= nums[i];
         }

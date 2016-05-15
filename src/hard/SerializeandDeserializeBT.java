@@ -26,7 +26,7 @@ public class SerializeandDeserializeBT {
     public static void main(String[] args) {
         TreeNode head = buildTree();
         System.out.println(new SerializeandDeserializeBT().serialize(head));
-        System.out.println(new SerializeandDeserializeBT().deserialize("1,2,3,null,null,4"));
+        System.out.println(new SerializeandDeserializeBT().deserialize("1,2,null,null,3,4,null,null,5,null,null"));
     }
 /*错的*/
     public String serialize(TreeNode root) {
