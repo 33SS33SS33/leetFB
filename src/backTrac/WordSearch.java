@@ -91,13 +91,11 @@ class WordSearch {
             boolean[][] used) {
         if (index == word.length())
             return true;
-        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j]
-                || board[i][j] != word.charAt(index))
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j] || board[i][j] != word.charAt(index))
             return false;
         used[i][j] = true;
-        boolean res = search(board, word, index + 1, i - 1, j, used) || search(board, word, index + 1,
-                        i + 1, j, used) || search(board, word, index + 1, i, j - 1, used) || search(
-                        board, word, index + 1, i, j + 1, used);
+        boolean res = search(board, word, index + 1, i - 1, j, used) || search(board, word, index + 1, i + 1, j, used)
+                    || search(board, word, index + 1, i, j - 1, used) || search(board, word, index + 1, i, j + 1, used);
         used[i][j] = false;
         return res;
     }
