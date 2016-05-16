@@ -17,12 +17,15 @@ import java.util.*;
  * This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
  * Tags: Array, Sort
  */
-/*和mergeIntervals差不多 但是要考虑更多的情况
-因为插入的话  可能会new的那个区间会整个插入到当前区间的前面 而没有 merge
-然后也会有merge的情况 而且merge的时候 还要考虑start的大小 不光考虑end
-当merge完成 res的就不是空的了  之后只需要考虑intervals剩下的元素要不要和末尾的merge或者直接插入 这部分就和上题一样了
-还有更简单的解法 未实现
-可以先找出来不用merge的那些  然后分成左右两部分  剩下的merge了就可以*/
+
+/**
+ * 和mergeIntervals差不多 但是要考虑更多的情况
+ * 因为插入的话  可能会new的那个区间会整个插入到当前区间的前面 而没有 merge
+ * 然后也会有merge的情况 而且merge的时候 还要考虑start的大小 不光考虑end
+ * 当merge完成 res的就不是空的了  之后只需要考虑intervals剩下的元素要不要和末尾的merge或者直接插入 这部分就和上题一样了
+ * 还有更简单的解法 未实现
+ * 可以先找出来不用merge的那些  然后分成左右两部分  剩下的merge了就可以
+ */
 class InsertInterval {
     public static void main(String[] args) {
         Interval interval1=new Interval(1,3);

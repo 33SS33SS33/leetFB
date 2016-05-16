@@ -11,11 +11,13 @@ package hard;
  * Tags: DP, String
  */
 
-/**使用dp 动态规划  还可以用DFS BFS 未实现
- 通项公式为
- dp[i][j] = (dp[i-1][j] and s1[i-1] == s3[i+j-1]) or \
- (dp[i][j-1] and s2[j-1] == s3[i+j-1])
- dp[i][j] 表示的是当前长度为i的s1和长度为j的s2能否是长度为i+j的s3的穿插*/
+/**
+ * 使用dp 动态规划  还可以用DFS BFS 未实现
+ * 通项公式为
+ * dp[i][j] = (dp[i-1][j] and s1[i-1] == s3[i+j-1]) or \
+ * (dp[i][j-1] and s2[j-1] == s3[i+j-1])
+ * dp[i][j] 表示的是当前长度为i的s1和长度为j的s2能否是长度为i+j的s3的穿插
+ */
 class InterleavingStr {
     public static void main(String[] args) {
         String s1 = "aabcc";

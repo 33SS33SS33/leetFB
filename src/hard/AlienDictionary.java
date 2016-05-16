@@ -25,9 +25,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**这道题分两步  第一步是通过字典里的单词建成有向图, 这道题的真正意思是 每一个word都是一个单词 单词是按照字母顺序表示的 所以找到顺序就是找到上下单词里的第一个不同的字母
- 然后用拓扑排序即可
- 这道题的代码十分精简 特别是zip 还有set的使用
+/**
+ * 这道题分两步  第一步是通过字典里的单词建成有向图, 这道题的真正意思是 每一个word都是一个单词 单词是按照字母顺序表示的 所以找到顺序就是找到上下单词里的第一个不同的字母
+ * 然后用拓扑排序即可
+ * 这道题的代码十分精简 特别是zip 还有set的使用
  */
 public class AlienDictionary {
     public static void main(String[] args) {
