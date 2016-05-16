@@ -5,19 +5,22 @@ import java.util.*;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/**和上道题基本类似
- 只是这道题是要输出访问顺序 所以在访问的时候用list把节点记下来就行了
- 注意一下当prerequisties为空的时候的情况  这个时候 就应该返回所有的course number 因为没有前置 所以也没有顺序
- stack = [x for x in xrange(numCourses) if not preNeighbor[x]] 注意一下xrange的范围要用课程数量 因为用的是defaultdict 这样才会为每一个课程数量创建一个对应的key*/
-/*There are a total of n courses you have to take, labeled from 0 to n - 1.
-Some courses may have prerequisites, for example to take course 0 you have to first take course 1,
+/**
+ * 和上道题基本类似
+ * 只是这道题是要输出访问顺序 所以在访问的时候用list把节点记下来就行了
+ * 注意一下当prerequisties为空的时候的情况  这个时候 就应该返回所有的course number 因为没有前置 所以也没有顺序
+ * stack = [x for x in xrange(numCourses) if not preNeighbor[x]] 注意一下xrange的范围要用课程数量 因为用的是defaultdict 这样才会为每一个课程数量创建一个对应的key
+ */
+
+/**There are a total of n courses you have to take, labeled from 0 to n - 1.
+ Some courses may have prerequisites, for example to take course 0 you have to first take course 1,
  which is expressed as a pair: [0,1]
-Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.
-There may be multiple correct orders, you just need to return one of them.
-If it is impossible to finish all courses, return an empty array.
-For example:
-2, [[1,0]]
-There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]*/
+ Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.
+ There may be multiple correct orders, you just need to return one of them.
+ If it is impossible to finish all courses, return an empty array.
+ For example:
+ 2, [[1,0]]
+ There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]*/
 public class CourseSchedule2 {
     public static void main(String[] args) {
         int[][] prerequisites = {{1,0}};
@@ -61,7 +64,6 @@ public class CourseSchedule2 {
         while (!queue.isEmpty()) {
             int c = queue.remove();
             result[j++] = c;
-
             for (int i = 0; i < len; i++) {
                 if (prerequisites[i][1] == c) {
                     pCounter[prerequisites[i][0]]--;
@@ -70,7 +72,6 @@ public class CourseSchedule2 {
                         numNoPre++;
                     }
                 }
-
             }
         }
         //return result
@@ -80,6 +81,7 @@ public class CourseSchedule2 {
             return new int[0];
         }
     }
+
    /* static class Vertex {
 
         int id;

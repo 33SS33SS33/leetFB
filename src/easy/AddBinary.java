@@ -16,17 +16,15 @@ package easy;
 /*就是二进制加法 从后往前加也可以 记得str int转换*/
 class AddBinary {
     public static void main(String[] args) {
-        String a = "1111001100101111011111000";
-        String b = "111001011011111010001";
-        // String a = "1010";
-        // String b = "1011";
+        String a = "11";
+        String b = "1";
         System.out.println(addBinary(a, b));
         System.out.println(addBinaryB(a, b));
         System.out.println(addBinaryC(a, b));
         System.out.println(addBinaryD(a, b));
     }
 
-    /**
+    /** 最好的
      * Traverse the longest binary backwards
      * Use + to insert to front, turn digit sum to int and restore to binary
      */

@@ -17,41 +17,49 @@ import java.util.List;
  All root-to-leaf paths are:
  ["1->2->5", "1->3"]*/
 
-/**用DFS就行
- 但是Path的操作一定要注意!!! 重要
- 如果在函数体内操作path  那么会修改path的值 比如Path+= [1] 会影响后面的path的值
- 在函数参数的地方操作 其实是生成了一个新的变量path传给了下一次递归的函数就不会有问题*/
+/**
+ * 用DFS就行
+ * 但是Path的操作一定要注意!!! 重要
+ * 如果在函数体内操作path  那么会修改path的值 比如Path+= [1] 会影响后面的path的值
+ * 在函数参数的地方操作 其实是生成了一个新的变量path传给了下一次递归的函数就不会有问题
+ */
 public class BinaryTreePaths {
     public static void main(String[] args) {
         TreeNode head = buildTree();
-        System.out.println(new BinaryTreePaths().binaryTreePaths(head).toString());
+        System.out.println(new BinaryTreePaths().binaryTreePathsB(head).toString());
     }
-    //
-    //    List<String> merge(int v, List<String> subPath){
-    //        return subPath.stream()
-    //                .map(p -> v + "->" + p)
-    //                .collect(Collectors.toList());
-    //    }
 
-    public List<String> binaryTreePaths(TreeNode root) {
-        List<String> path = new ArrayList<String>();
-        if (root == null)
-            return path;
+    public List<String> binaryTreePathsA(TreeNode root) {
+        List<String> answer = new ArrayList<String>();
+        if (root != null) searchBT(root, "", answer);
+        return answer;
+    }
+    private void searchBT(TreeNode root, String path, List<String> answer) {
+        if (root.left == null && root.right == null) answer.add(path + root.val);
+        if (root.left != null) searchBT(root.left, path + root.val + "->", answer);
+        if (root.right != null) searchBT(root.right, path + root.val + "->", answer);
+    }
 
-        if (root.left == null && root.right == null) {
-            // leaf
-            return Arrays.asList("" + root.val);
+    public List<String> binaryTreePathsB(TreeNode root) {
+        List<String> res = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        helper(res, root, sb);
+        return res;
+    }
+    private void helper(List<String> res, TreeNode root, StringBuilder sb) {
+        if (root == null) {
+            return;
         }
-
-        //        if(root.left != null){
-        //            path.addAll(merge(root.val, binaryTreePaths(root.left)));
-        //        }
-        //
-        //        if(root.right != null) {
-        //            path.addAll(merge(root.val, binaryTreePaths(root.right)));
-        //        }
-
-        return path;
+        int len = sb.length();
+        sb.append(root.val);
+        if (root.left == null && root.right == null) {
+            res.add(sb.toString());
+        } else {
+            sb.append("->");
+            helper(res, root.left, sb);
+            helper(res, root.right, sb);
+        }
+        sb.setLength(len);
     }
 
     private static TreeNode buildTree() {

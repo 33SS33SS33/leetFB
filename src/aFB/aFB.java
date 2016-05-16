@@ -47,10 +47,10 @@ public class aFB {
      261        Graph Valid Tree         27.5%        Medium
      278        First Bad Version         20.6%        Easy
      168        Excel Sheet Column Title         19.6%        Easy
-     91        Decode Ways         16.7%        Medium
-     210        Course Schedule II         20.4%        Medium
+  #   91        Decode Ways         16.7%        Medium
+  #   210        Course Schedule II         20.4%        Medium
      38        Count and Say         26.6%        Easy
-     133        Clone Graph         24.5%        Medium
+   #  133        Clone Graph         24.5%        Medium
      257        Binary Tree Paths         24.2%        Easy
      102        Binary Tree Level Order Traversal         30.3%        Easy
      173        Binary Search Tree Iterator         31.4%        Medium
