@@ -5,32 +5,26 @@ import java.util.*;
 /**
  * Given an unsorted array of integers, find the length of the longest
  * consecutive elements sequence.
- * 
  * For example,
  * Given [100, 4, 200, 1, 3, 2],
  * The longest consecutive elements sequence is [1, 2, 3, 4]. Return its
  * length: 4.
  * Your algorithm should run in O(n) complexity.
- * 
  * Tags: Array, HashTable
  */
 
 /**
- * We can solve this problem in O(n) time using an Efficient Solution. The idea is to use Hashing. We first insert all elements in a Hash. Then check all the possible starts of consecutive subsequences. Below is complete algorithm.
+ * We can solve this problem in O(n) time using an Efficient Solution. The idea is to use Hashing.
+ * We first insert all elements in a Hash. Then check all the possible starts of consecutive subsequences. Below is complete algorithm.
  * 1) Create an empty hash.
  * 2) Insert all array elements to hash.
  * 3) Do following for every element arr[i]
- * ....a) Check if this element is the starting point of a
- * subsequence.  To check this, we simply look for
- * arr[i] - 1 in hash, if not found, then this is
+ * ....a) Check if this element is the starting point of a subsequence.
+ * To check this, we simply look for arr[i] - 1 in hash, if not found, then this is
  * the first element a subsequence.
- * <p/>
  * If this element is a first element, then count
- * number of elements in the consecutive starting
- * with this element.
- * <p/>
- * If count is more than current res, then update
- * res.
+ * number of elements in the consecutive starting with this element.
+ * If count is more than current res, then updateres.
  */
 class LongestConsecutiveSeq {
     public static void main(String[] args) {

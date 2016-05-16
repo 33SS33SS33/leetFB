@@ -10,7 +10,6 @@ import java.util.Stack;
  * Another example is ")()())", where the longest valid parentheses substring
  * is "()()", which has length = 4.
  * Follow up:
- * 
  * What if there are curly bracs and brakets as well? {} []?
  * Tags: DP, String
  */
@@ -37,45 +36,55 @@ class LongestValidParen {
     /** Optimized DP
      * Build a stack for indices of open parentheses
      * Traverse the string, if current is open paren, push to stack
-     * Otherwise, its close paren. 
+     * Otherwise, its close paren.
      * If stack is empty, no open paren left, reset len to 0.
-     * If not, pop the index from stack, matchedLen = current index - index of 
+     * If not, pop the index from stack, matchedLen = current index - index of
      * pop open paren + 1
      * If stack is empty, means this matchedLen can be added to the whole len
-     * If not, 
+     * If not,
      */
     public static int longestValidParentheses(String str) {
-        if (str == null) return 0;
+        if (str == null)
+            return 0;
         Stack<Integer> s = new Stack<Integer>();
         int maxLen = 0;
         int len = 0;
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '(') s.push(i);
-            else if (s.isEmpty()) len = 0;
+            if (str.charAt(i) == '(')
+                s.push(i);
+            else if (s.isEmpty())
+                len = 0;
             else {
                 int matchedPos = s.pop();
                 int matchedLen = i - matchedPos + 1;
                 if (s.isEmpty()) { // ()()
                     len += matchedLen;
                     matchedLen = len;
-                } else matchedLen = i - s.peek(); // ()(()()
+                } else
+                    matchedLen = i - s.peek(); // ()(()()
                 maxLen = Math.max(maxLen, matchedLen);
             }
         }
         return maxLen;
     }
 
-    /**DP*/
+    /**
+     * DP
+     */
     public static int longestValidParenthesesB(String s) {
-        if (s == null || s.length() == 0) return 0;
+        if (s == null || s.length() == 0)
+            return 0;
         Stack<Integer> stack = new Stack<Integer>(); // Save indices of '('
         int[] dp = new int[s.length()]; // Store the length of the current longest valid sequence.
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') stack.push(i);  
-            else if (stack.isEmpty()) continue;
-            else if (stack.peek() > 0) 
-                dp[i] = 2 + dp[stack.pop() - 1] + dp[i - 1]; // connect two valid sequences, or increase the length of current valid sequence. 
+            if (s.charAt(i) == '(')
+                stack.push(i);
+            else if (stack.isEmpty())
+                continue;
+            else if (stack.peek() > 0)
+                dp[i] = 2 + dp[stack.pop() - 1] + dp[i
+                        - 1]; // connect two valid sequences, or increase the length of current valid sequence.
             else {
                 dp[i] = 2 + dp[i - 1]; // leftmost char is a '('
                 stack.pop();
@@ -84,7 +93,7 @@ class LongestValidParen {
         }
         return max;
     }
-    
+
     /**
      * Two pass
      * Use a stack to store index of unmatched parentheses
@@ -96,14 +105,18 @@ class LongestValidParen {
         int len = s.length();
         int longest = 0;
         for (int i = 0; i < len; i++) {
-            if (s.charAt(i) == '(') st.push(i);
-            else if (s.charAt(i) == ')' && !st.isEmpty() && s.charAt(st.peek()) == '(') st.pop(); // pop if there is a pair
-            else st.push(i); // right paren, empty or top is also right
+            if (s.charAt(i) == '(')
+                st.push(i);
+            else if (s.charAt(i) == ')' && !st.isEmpty() && s.charAt(st.peek()) == '(')
+                st.pop(); // pop if there is a pair
+            else
+                st.push(i); // right paren, empty or top is also right
         }
-        if (st.isEmpty()) return len; // all valid
+        if (st.isEmpty())
+            return len; // all valid
         /*calculate longest length between each unpaired*/
         int a = len, b = 0;
-        while (!st.isEmpty()){
+        while (!st.isEmpty()) {
             b = st.pop();
             longest = Math.max(longest, a - b - 1); // update longest
             a = b;
@@ -113,20 +126,22 @@ class LongestValidParen {
     }
 
     public static int longestValidParenthesesD(String s) {
-        if(s==null || s.length()==0)
+        if (s == null || s.length() == 0)
             return 0;
         LinkedList<Integer> stack = new LinkedList<Integer>();
         int start = 0;
         int max = 0;
-        for(int i=0;i<s.length();i++) {
-            if(s.charAt(i)=='(') {
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
                 stack.push(i);
             } else {
-                if(stack.isEmpty()) {
-                    start = i+1;
-                }else {
+                if (stack.isEmpty()) {
+                    start = i + 1;
+                } else {
                     stack.pop();
-                    max = stack.isEmpty()?Math.max(max,i-start+1):Math.max(max,i-stack.peek());
+                    max = stack.isEmpty() ?
+                            Math.max(max, i - start + 1) :
+                            Math.max(max, i - stack.peek());
                 }
             }
         }
