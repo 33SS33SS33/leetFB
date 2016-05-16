@@ -3,9 +3,13 @@ package hard;
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
  */
+
 /**
- "There are a row of n houses, each house can be painted with one of the k colors. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
- The cost of painting each house with a certain color is represented by a n x k cost matrix. For example, costs[0][0] is the cost of painting house 0 with color 0; costs[1][2] is the cost of painting house 1 with color 2, and so on... Find the minimum cost to paint all houses.
+ "There are a row of n houses, each house can be painted with one of the k colors.
+ The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
+ The cost of painting each house with a certain color is represented by a n x k cost matrix.
+ For example, costs[0][0] is the cost of painting house 0 with color 0; costs[1][2] is the cost of painting house 1 with color 2, and so on...
+ Find the minimum cost to paint all houses.
  Note:
  All costs are positive integers.
  Follow up:
@@ -17,4 +21,12 @@ package hard;
  剩下的位置就都是最小的cost 这样在和当前的房子进行合并计算的时候就不会出错 直接计算最小值即可"
  */
 public class PaintHouse2 {
+    public static void main(String[] args) {
+        int[][] costs={{},{},{}};
+        System.out.print(new PaintHouse2().minCost(costs));
+    }
+
+    public int minCost(int[][] costs) {
+        return 0;
+    }
 }

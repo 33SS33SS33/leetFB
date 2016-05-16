@@ -8,7 +8,7 @@ package medium;
  如果长度差1的话 就找到第一个不同的字符  然后把长的串的这个字符插入进短的 看相同不相同*/
 public class OneEditDistance {
     public static void main(String[] args) {
-        System.out.print(new OneEditDistance().isOneEditDistance("wwq","ww"));
+        System.out.print(new OneEditDistance().isOneEditDistance("wwq3","ww"));
     }
 
     public boolean isOneEditDistance(String s, String t) {
@@ -22,7 +22,7 @@ public class OneEditDistance {
         int diff = 0;
         int i = 0;
         int j = 0;
-        for (  ; i < S.length; i++, j++) {
+        for (; i < S.length; i++, j++) {
             if (S[i] != T[j]) {
                 diff++;
                 if (diff > 1)

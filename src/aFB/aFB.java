@@ -23,9 +23,9 @@ public class aFB {
     # 238        Product of Array Except Self         38.7%        Medium
      50        Pow(x, n)         27.2%        Medium
     # 117        Populating Next Right Pointers in Each Node II         32.3%        Hard
-     265        Paint House II         31.8%        Hard
-     161        One Edit Distance         26.0%        Medium
-     200        Number of Islands         24.8%        Medium
+    # 265        Paint House II         31.8%        Hard
+    # 161        One Edit Distance         26.0%        Medium
+    # 200        Number of Islands         24.8%        Medium
      43        Multiply Strings         21.8%        Medium
      283        Move Zeroes         42.0%        Easy
      76        Minimum Window Substring         19.7%        Hard
