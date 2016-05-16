@@ -11,14 +11,16 @@ import java.util.*;
  * Tags: Divide and Conquer, Heap
  * Similar Problems: (M) Wiggle Sort II
  */
-/**使用快速选择算法 quick select
- 算法有些类似快排 先选娶一个pivot 这里我选了数组第一个元素  然后把比pivot小的数放进一个数组  把比pivot大的数放进另外一个数组
- 结束后开始和k比较  首先如果k比那个存big的数组的长度要小  就说明k落在这个数组里
- 然后 如果k比数组总长减去存small数组长度要大  则说明k落在small的数组里  最后 如果都没有 则说明k是pivot 返回
- 也可以用快排的partition来做 类似算法课上的办法 partition过后就知道pivot是在第几个位置 然后拿k和他的索引比  比他小就在它左边 比他大就在他右边 要么就是这个位置
- 需要练习手写快排 未实现
 
- 第二遍small的if写错了  重要*/
+/**
+ * 使用快速选择算法 quick select
+ * 算法有些类似快排 先选娶一个pivot 这里我选了数组第一个元素  然后把比pivot小的数放进一个数组  把比pivot大的数放进另外一个数组
+ * 结束后开始和k比较  首先如果k比那个存big的数组的长度要小  就说明k落在这个数组里
+ * 然后 如果k比数组总长减去存small数组长度要大  则说明k落在small的数组里  最后 如果都没有 则说明k是pivot 返回
+ * 也可以用快排的partition来做 类似算法课上的办法 partition过后就知道pivot是在第几个位置 然后拿k和他的索引比  比他小就在它左边 比他大就在他右边 要么就是这个位置
+ * 需要练习手写快排 未实现
+ * 第二遍small的if写错了  重要
+ */
 class KthLargest {
     public static void main(String[] args) {
         KthLargest K = new KthLargest();
