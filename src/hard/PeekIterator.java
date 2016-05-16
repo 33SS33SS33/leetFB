@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * Google:
  * Implement peek() for java iterator()
- *
  * Example [1,2,3,4,5]
  * peek() = 1, peek() = 1, next() = 1, peek() = 2, next() = 2, peek() = 3
  * hasNext() = true,

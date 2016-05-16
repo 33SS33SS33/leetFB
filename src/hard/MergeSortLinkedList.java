@@ -107,6 +107,7 @@ public class MergeSortLinkedList {
         head2 = mergeSortB(head2);
         return merge2(head1, head2);
     }
+
     private static ListNode merge2(ListNode head1, ListNode head2) {
         ListNode helper = new ListNode(0);
         helper.next = head1;

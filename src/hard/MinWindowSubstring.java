@@ -12,7 +12,6 @@ import java.util.*;
  * Note:
  * If there is no such window in S that covers all characters in T, return the empty string "".
  * If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
-
  * Tags: Hashtable, Two Pointers, String
  */
 
@@ -25,46 +24,46 @@ class MinWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
         String T = "ABC";
-        String res=new MinWindowSubstring().minWindowB(S,T);
-        String res2=new MinWindowSubstring().minWindow(S,T);
+        String res = new MinWindowSubstring().minWindowB(S, T);
+        String res2 = new MinWindowSubstring().minWindow(S, T);
         System.out.println(res);
         System.out.print(res2);
     }
 
     /**creek----*/
     public String minWindowB(String s, String t) {
-        if(t.length()>s.length())
+        if (t.length() > s.length())
             return "";
         String result = "";
         //character counter for t
         HashMap<Character, Integer> target = new HashMap<Character, Integer>();
-        for(int i=0; i<t.length(); i++){
+        for (int i = 0; i < t.length(); i++) {
             char c = t.charAt(i);
-            if(target.containsKey(c)){
-                target.put(c,target.get(c)+1);
-            }else{
-                target.put(c,1);
+            if (target.containsKey(c)) {
+                target.put(c, target.get(c) + 1);
+            } else {
+                target.put(c, 1);
             }
         }
         // character counter for s
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         int left = 0;
-        int minLen = s.length()+1;
+        int minLen = s.length() + 1;
         int count = 0; // the total of mapped characters
-        for(int i=0; i<s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(target.containsKey(c)){
-                if(map.containsKey(c)){
-                    if(map.get(c)<target.get(c)){
+            if (target.containsKey(c)) {
+                if (map.containsKey(c)) {
+                    if (map.get(c) < target.get(c)) {
                         count++;
                     }
-                    map.put(c,map.get(c)+1);
-                }else{
-                    map.put(c,1);
+                    map.put(c, map.get(c) + 1);
+                } else {
+                    map.put(c, 1);
                     count++;
                 }
             }
-            if(count == t.length()){
+            if (count == t.length()) {
                 char sc = s.charAt(left);
                 while (!map.containsKey(sc) || map.get(sc) > target.get(sc)) {
                     if (map.containsKey(sc) && map.get(sc) > target.get(sc))
@@ -81,6 +80,7 @@ class MinWindowSubstring {
         }
         return result;
     }
+
     /**
      * Use two maps to store count of characters
      * One for T and one for S
@@ -96,8 +96,10 @@ class MinWindowSubstring {
      * Compare with minLength and update result as well
      */
     public String minWindow(String S, String T) {
-        if (S == null || T == null) return "";
-        if (S.length() == 0 || T.length() == 0 || T.length() > S.length()) return "";
+        if (S == null || T == null)
+            return "";
+        if (S.length() == 0 || T.length() == 0 || T.length() > S.length())
+            return "";
         HashMap<Character, Integer> dict = new HashMap<Character, Integer>();
         for (int i = 0; i < T.length(); i++) {
             char c = T.charAt(i);

@@ -6,7 +6,6 @@ import java.util.Iterator;
  * Created by GAOSHANSHAN835 on 2016/4/8.
  */
 public  class PeekIterator2 implements Iterator<Integer> {
-
         private Integer next;
         private Iterator<Integer> iter;
 
