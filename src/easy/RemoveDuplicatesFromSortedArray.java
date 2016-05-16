@@ -29,7 +29,7 @@ class RemoveDuplicatesFromSortedArray {
         }
     }
 
-    /**
+    /** 最好的~~~~
      * Use count to remember current position
      */
     public int removeDupStandard(int[] A) {

@@ -4,9 +4,12 @@ package medium;
  * Implement pow(x, n).
  * Tags: Math, Binary Search
  */
-/*使用二分法处理, 注意n<0的情况
-n每次都除以2 直到等于0 然后返回1
-然后依次返回乘积 每个状态下都注意n的奇偶问题即可*/
+
+/**
+ * 使用二分法处理, 注意n<0的情况
+ * n每次都除以2 直到等于0 然后返回1
+ * 然后依次返回乘积 每个状态下都注意n的奇偶问题即可
+ */
 class PowX {
     public static void main(String[] args) {
         PowX p = new PowX();

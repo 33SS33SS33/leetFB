@@ -15,7 +15,9 @@ package other;
  然后要把这些读出来的字符 存进buf里 并且返回一共读了多少字符*/
 class ReadNGivenRead4 {
     public static void main(String[] args) {
-
+        char[] buf={'s','e','t','s','e','t'};
+        int n=2;
+        System.out.println(read(buf,n));
     }
 
     /**
@@ -26,7 +28,7 @@ class ReadNGivenRead4 {
      * Copy things in read4 buffer to output buffer
      * Update readBytes
      */
-    public int read(char[] buf, int n) {
+    public static int read(char[] buf, int n) {
         char[] buffer = new char[4];
         int readBytes = 0;
         boolean eof = false; // flag
@@ -43,7 +45,7 @@ class ReadNGivenRead4 {
         return readBytes; // can be n or smaller
     }
 
-    public int read4(char[] buffer) {
+    public static int read4(char[] buffer) {
         return 1;
     }
 }

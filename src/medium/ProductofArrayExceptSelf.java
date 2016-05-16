@@ -3,11 +3,14 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
-/**解法比较巧妙
- 由于output[i] = (x0 * x1 * ... * xi-1) * (xi+1 * .... * xn-1)
- 因此执行两趟循环：
- 第一趟正向遍历数组，计算x0 ~ xi-1的乘积
- 第二趟反向遍历数组，计算xi+1 ~ xn-1的乘积*/
+
+/**
+ * 解法比较巧妙
+ * 由于output[i] = (x0 * x1 * ... * xi-1) * (xi+1 * .... * xn-1)
+ * 因此执行两趟循环：
+ * 第一趟正向遍历数组，计算x0 ~ xi-1的乘积
+ * 第二趟反向遍历数组，计算xi+1 ~ xn-1的乘积
+ */
 public class ProductofArrayExceptSelf {
     public static void main(String[] args) {
         int[] A = { 1, 2, 8, 9, 3, 5 };

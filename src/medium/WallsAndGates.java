@@ -6,9 +6,7 @@ package medium;
 
 import java.util.List;
 
-/**"首先找到gate的位置 然后从gate的位置开始进行BFS
- 这道题最关键的地方在于 对于下一个点进行判断是否是INF的值 这样就不用记录访问了哪些点 因为如果已经算过的店 肯定小于 INF的值 而且这样也可以防止覆盖掉之前已经计算过的点"
-
+/**
  "You are given a m x n 2D grid initialized with these three possible values.
  -1 - A wall or an obstacle.
  0 - A gate.
@@ -25,6 +23,10 @@ import java.util.List;
  1  -1   2  -1
  0  -1   3   4"
  */
+
+/**"首先找到gate的位置 然后从gate的位置开始进行BFS
+ 这道题最关键的地方在于 对于下一个点进行判断是否是INF的值 这样就不用记录访问了哪些点 因为如果已经算过的店 肯定小于 INF的值 而且这样也可以防止覆盖掉之前已经计算过的点"
+ */
 public class WallsAndGates {
     public static void main(String[] args) {
         int[][] rooms = { { 0, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
@@ -34,8 +36,8 @@ public class WallsAndGates {
                 System.out.print(rooms[i][j]);
             }
         }
-
     }
+
     public static void wallsAndGates(int[][] rooms) {
         if (rooms == null || rooms.length == 0 || rooms[0] == null || rooms[0].length == 0)
             return;

@@ -22,6 +22,26 @@ class RemoveDupFromSortedArr2 {
         System.out.println(removeDuplicatesC(num3));
     }
 
+    /** 最好的
+     * skip if length <=2
+     * compare current element with second last element
+     */
+    public static int removeDuplicatesA(int[] A) {
+        if (A == null)
+            return 0;
+        int n = A.length;
+        if (n <= 2)
+            return n; // no need to deal with n<=2 case.
+        int len = 2, i = 2;
+        while (i < n) {
+            // compare current with second last element
+            if (A[i] != A[len - 2])
+                A[len++] = A[i];
+            i++;
+        }
+        return len;
+    }
+
     /**--better--*/
     public static int removeDuplicatesC(int[] A) {
         if (A.length <= 2)
@@ -40,25 +60,6 @@ class RemoveDupFromSortedArr2 {
         return prev + 1;
     }
 
-    /**
-     * skip if length <=2
-     * compare current element with second last element
-     */
-    public static int removeDuplicatesA(int[] A) {
-        if (A == null)
-            return 0;
-        int n = A.length;
-        if (n <= 2)
-            return n; // no need to deal with n<=2 case.
-        int len = 2, i = 2;
-        while (i < n) {
-            // compare cuurent with second last element
-            if (A[i] != A[len - 2])
-                A[len++] = A[i];
-            i++;
-        }
-        return len;
-    }
 
     public static int removeDuplicatesB(int[] A) {
         if (A == null || A.length == 0)

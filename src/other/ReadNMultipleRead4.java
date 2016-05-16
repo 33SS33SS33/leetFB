@@ -5,12 +5,13 @@ package other;
  * function may be called multiple times
  * Tags:
  */
-/**和上道题基本一样 这里要处理的问题是 如果一个字符串长度是5 然后他第一次read(3) 然后又read(2) 这样的话 其实第一次是读了4个  所以要把第一次剩下的那个留第二次的用
- 所以用了个全局的queue来处理 其他基本一样*/
+/**和上道题基本一样 这里要处理的问题是 如果一个字符串长度是5 然后他第一次read(3) 然后又read(2) 这样的话 其实第一次是读了4个
+ * 所以要把第一次剩下的那个留第二次的用 所以用了个全局的queue来处理 其他基本一样*/
 class ReadNMultipleRead4 {
-
     public static void main(String[] args) {
-
+        char[] buf={'s','e','t','s','e','t'};
+        int n=2;
+        System.out.println(new ReadNMultipleRead4().read(buf,n));
     }
 
     /**
@@ -27,7 +28,6 @@ class ReadNMultipleRead4 {
      * We need to get them for the next call
      * For example, supppose n is 5, read4 will be call twice, 3 chars remain
      * Next read5 call needs to get those 3 characters
-     * <p/>
      * So we make buffer as a field variable, along with offset and bufsize
      * If bufsize > 0, means something in buffer
      *

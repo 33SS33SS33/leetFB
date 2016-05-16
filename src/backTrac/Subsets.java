@@ -10,14 +10,14 @@ import java.util.*;
  * For example,
  * If S = [1,2,3], a solution is:
  * [
- *   [3],
- *   [1],
- *   [2],
- *   [1,2,3],
- *   [1,3],
- *   [2,3],
- *   [1,2],
- *   []
+ * [3],
+ * [1],
+ * [2],
+ * [1,2,3],
+ * [1,3],
+ * [2,3],
+ * [1,2],
+ * []
  * ]
  * Tags: Array, Backtracking, Bit Manipulation
  */
@@ -28,29 +28,46 @@ import java.util.*;
  */
 class Subsets {
     public static void main(String[] args) {
-        int[] nums = { 2, 1,5,7};
-        List<List<Integer>> res = subsetsA(nums);
+        int[] nums = { 2, 1, 5 };
+/*        List<List<Integer>> res = subsetsA(nums);
         for (List<Integer> l : res) {
             System.out.println(l.toString());
         }
-/*        List<List<Integer>> resB = subsetsB(nums);
+        List<List<Integer>> resB = subsetsB(nums);
         for (List<Integer> l : resB) {
             System.out.println(l.toString());
-        }*/
-/*        ArrayList<ArrayList<Integer>> res1 = subsets1(nums);
+        }
+        ArrayList<ArrayList<Integer>> res1 = subsets1(nums);
         for (List<Integer> l : res1) {
             System.out.println(l.toString());
-        }
+        }*/
         ArrayList<ArrayList<Integer>> res2 = subsets2(nums);
         for (List<Integer> l : res2) {
             System.out.println(l.toString());
         }
-        ArrayList<ArrayList<Integer>> res3 = subsets3(nums);
+/*        ArrayList<ArrayList<Integer>> res3 = subsets3(nums);
         for (List<Integer> l : res3) {
             System.out.println(l.toString());
         }*/
     }
-    
+
+    /**非递归  更好理解*/
+    public static ArrayList<ArrayList<Integer>> subsets2(int[] S) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        res.add(new ArrayList<Integer>());
+        if (S == null || S.length == 0)
+            return res;
+        Arrays.sort(S);
+        for (int i = 0; i < S.length; i++) {
+            int size = res.size();
+            for (int j = 0; j < size; j++) {
+                ArrayList<Integer> item = new ArrayList<Integer>(res.get(j));
+                item.add(S[i]);
+                res.add(item);
+            }
+        }
+        return res;
+    }
     /**
      * Remember the start position and do backtracking
      */
@@ -60,6 +77,7 @@ class Subsets {
         subsetsB(s, 0, new ArrayList<Integer>(), res);
         return res;
     }
+
     public static void subsetsB(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
         result.add(new ArrayList<Integer>(set));
         for (int i = start; i < s.length; i++) {
@@ -78,6 +96,7 @@ class Subsets {
         subsetsA(s, 0, new ArrayList<Integer>(), res);
         return res;
     }
+
     public static void subsetsA(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
         if (start == s.length) {
             result.add(set);
@@ -91,11 +110,12 @@ class Subsets {
 
     /**递归 时间和空间都是取决于结果的数量，也就是O(2^n)*/
     public static ArrayList<ArrayList<Integer>> subsets1(int[] num) {
-        if(num == null)
+        if (num == null)
             return null;
         Arrays.sort(num);
-        return helper(num, num.length-1);
+        return helper(num, num.length - 1);
     }
+
     private static ArrayList<ArrayList<Integer>> helper(int[] num, int index) {
         if (index == -1) {
             ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
@@ -113,23 +133,7 @@ class Subsets {
         return res;
     }
 
-    /**非递归*/
-    public static ArrayList<ArrayList<Integer>> subsets2(int[] S) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        res.add(new ArrayList<Integer>());
-        if (S == null || S.length == 0)
-            return res;
-        Arrays.sort(S);
-        for (int i = 0; i < S.length; i++) {
-            int size = res.size();
-            for (int j = 0; j < size; j++) {
-                ArrayList<Integer> item = new ArrayList<Integer>(res.get(j));
-                item.add(S[i]);
-                res.add(item);
-            }
-        }
-        return res;
-    }
+
 
     /**creek
      * Given a set S of n distinct integers, there is a relation between Sn and Sn-1.
