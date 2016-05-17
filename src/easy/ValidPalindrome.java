@@ -29,7 +29,6 @@ class ValidPalindrome {
         System.out.println(isPalindromeB("A man, a plan, a canal: Panama"));
     }
 
-
     /**
      * Two pointers  最好的
      */

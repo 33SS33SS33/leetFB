@@ -11,8 +11,10 @@ import java.util.Arrays;
  * For example, the numbers "69", "88", and "818" are all strobogrammatic.
  */
 
-/**一共就只有0 1 6 8 9这几个数组  然后这个还一定要是对称的
- * 所以一个指针从头 另一个指针是从尾部 然后每次比对这个单词 一直比对到中间就行了*/
+/**
+ * 一共就只有0 1 6 8 9这几个数组  然后这个还一定要是对称的
+ * 所以一个指针从头 另一个指针是从尾部 然后每次比对这个单词 一直比对到中间就行了
+ */
 public class StrobogrammaticNumber {
     public static void main(String[] args) {
         StrobogrammaticNumber r = new StrobogrammaticNumber();
@@ -23,16 +25,6 @@ public class StrobogrammaticNumber {
     static final char[][] GOOD_PATTERNS = { { '9', '6' }, { '6', '9' }, { '1', '1' }, { '8', '8' },
             { '0', '0' }, };
 
-    boolean isStrobogrammatic(char l, char r) {
-        char[] s = new char[] { l, r };
-        for (char[] g : GOOD_PATTERNS) {
-            if (Arrays.equals(g, s)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean isStrobogrammatic(String num) {
         char[] S = num.toCharArray();
         for (int i = 0; i <= S.length / 2; i++) {
@@ -41,5 +33,14 @@ public class StrobogrammaticNumber {
             }
         }
         return true;
+    }
+    boolean isStrobogrammatic(char l, char r) {
+        char[] s = new char[] { l, r };
+        for (char[] g : GOOD_PATTERNS) {
+            if (Arrays.equals(g, s)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
