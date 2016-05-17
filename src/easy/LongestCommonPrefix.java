@@ -26,7 +26,6 @@ class LongestCommonPrefix {
         }
         return strs[0];
     }
-
     /**
      * Get length of two strings
      * Loop over each char till one length runs out
