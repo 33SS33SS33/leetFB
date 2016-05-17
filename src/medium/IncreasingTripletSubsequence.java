@@ -15,7 +15,7 @@ package medium;
 public class IncreasingTripletSubsequence {
     public static void main(String[] args) {
         IncreasingTripletSubsequence s = new IncreasingTripletSubsequence();
-        int[] nums = { 1, 2, 3, 4, 5 };
+        int[] nums = { 1, 2, 3, 0, 1 };
         int[] nums2 = { 5, 4, 3, 2, 1 };
 
         System.out.println(s.increasingTriplet(nums));

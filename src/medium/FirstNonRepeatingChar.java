@@ -30,7 +30,10 @@ class FirstNonRepeatingChar {
         }
         return res;
     }
-    /**Build an array of character count and the index of its first appearance*/
+
+    /**
+     * Build an array of character count and the index of its first appearance
+     */
     CountIndex[] getCharCountArray(String s) {
         CountIndex[] count = new CountIndex[256]; // # of chars
         for (int i = 0; i < count.length; i++)

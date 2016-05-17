@@ -5,13 +5,15 @@ package medium;
  * (i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
  * Find the minimum element.
  * You may assume no duplicate exists in the array.
- *
  * Tags: Array, Binary Search
  */
-/**使用二分查找即可  二分查找要变形一下 把中点和最后的元素比较
- 如果中点元素比最后的元素大 则说明后面的是乱序的 最小值在里面
- 如果中点元素比最后的小 则说明后面是正确的 那最小值就在前面
- 这里注意 最小值在前面的时候 end要设置为midpoint 因为midpoint本身就可能是最小值*/
+
+/**
+ * 使用二分查找即可  二分查找要变形一下 把中点和最后的元素比较
+ * 如果中点元素比最后的元素大 则说明后面的是乱序的 最小值在里面
+ * 如果中点元素比最后的小 则说明后面是正确的 那最小值就在前面
+ * 这里注意 最小值在前面的时候 end要设置为midpoint 因为midpoint本身就可能是最小值
+ */
 class FindRotatedArrMin {
     public static void main(String[] args) {
         int[] num = { 3, 4, 5, 6, 1, 2 };
@@ -43,6 +45,7 @@ class FindRotatedArrMin {
     public static int findMinB(int[] num) {
         return findMin(num, 0, num.length - 1);
     }
+
     public static int findMin(int[] num, int left, int right) {
         if (left == right)
             return num[left];
@@ -67,6 +70,7 @@ class FindRotatedArrMin {
         }
         return binarySearch(0, nums.length - 1, nums);
     }
+
     public static int binarySearch(int left, int right, int[] nums) {
         if (left >= right) {
             return nums[left];

@@ -38,7 +38,7 @@ public class GroupAnagrams {
         for (String s : strs) {
             char[] ca = s.toCharArray();
             Arrays.sort(ca);
-            String keyStr = String.valueOf(ca);
+            String keyStr = String.valueOf(ca);  //这句不懂
             if (!map.containsKey(keyStr))
                 map.put(keyStr, new ArrayList<String>());
             map.get(keyStr).add(s);
