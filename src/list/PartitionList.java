@@ -12,10 +12,12 @@ package list;
  * Tags: Linkedlist, Two Pointers
  */
 
-/**创建两个队列 一个是小于x的 一个是大于等于x的
- 然后遍历链表  然后将当前元素分配到两个队列 再将两个队列连起来即可
- 注意要仔细处理结尾 否则会有环
- hi_curr.next = None*/
+/**
+ * 创建两个队列 一个是小于x的 一个是大于等于x的
+ * 然后遍历链表  然后将当前元素分配到两个队列 再将两个队列连起来即可
+ * 注意要仔细处理结尾 否则会有环
+ * hi_curr.next = None
+ */
 class PartitionList {
     public static void main(String[] args) {
         ListNode head = buildTestList1();

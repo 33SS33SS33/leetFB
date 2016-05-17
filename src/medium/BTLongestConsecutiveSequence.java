@@ -3,11 +3,10 @@ package medium;
 /**
  * Created by shanshan on 16/5/9.
  */
-/**"这道题的题意是  要找出来从父亲到孩子方向的最长的递增序列长度(每次递增1)
- 这道题用dfs来遍历 主要就是dfs的时候 需要一个有一个counter来记录当前的长度 如果断掉了 就把counter置为1重新开始"
-
+/**
  "Given a binary tree, find the length of the longest consecutive sequence path.
- The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The longest consecutive path need to be from parent to child (cannot be the reverse).
+ The path refers to any sequence of nodes from some starting node to any node in the tree along the parent-child connections.
+ The longest consecutive path need to be from parent to child (cannot be the reverse).
  For example,
   1
    \
@@ -25,5 +24,10 @@ package medium;
  /
  1
  Longest consecutive sequence path is 2-3,not3-2-1, so return 2."*/
+
+/**
+ * "这道题的题意是  要找出来从父亲到孩子方向的最长的递增序列长度(每次递增1)
+ * 这道题用dfs来遍历 主要就是dfs的时候 需要一个有一个counter来记录当前的长度 如果断掉了 就把counter置为1重新开始"
+ */
 public class BTLongestConsecutiveSequence {
 }

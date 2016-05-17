@@ -6,11 +6,11 @@ package medium;
 
 /**
  * 给定一个字符串，找出最多有多少个chunked palindrome,
- * 正常的palindrome是abccba, chunked palindrome的定义是：比如volvo, 可以把vo划分在一起，(vo) (l) (vo)，那么它是个palindrome。求实现返回最大的chunk 数量。
+ * 正常的palindrome是abccba, chunked palindrome的定义是：比如volvo, 可以把vo划分在一起，(vo) (l) (vo)，
+ * 那么它是个palindrome。求实现返回最大的chunk 数量。
  * 比如aaaaaa可以是(aaa)(aaa), 但是最大chunk数量应该是(a)(a)(a)(a)(a)(a)为6
  */
 public class ChunkedPalindrome {
-
     public static void main(String[] args) {
         ChunkedPalindrome sol = new ChunkedPalindrome();
         int res = sol.countChunk("aaaaaa");

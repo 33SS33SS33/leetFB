@@ -30,6 +30,7 @@ class LinkedListCycle {
         }
         return false;
     }
+
     static ListNode buildList() {
         ListNode node0 = new ListNode(0);
         ListNode node1 = new ListNode(1);
@@ -44,6 +45,7 @@ class LinkedListCycle {
 
         return node0;
     }
+
     static class ListNode {
         int      val;
         ListNode next;

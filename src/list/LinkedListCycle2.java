@@ -5,7 +5,6 @@ package list;
  * cycle, return null.
  * Follow up:
  * Can you solve it without using extra space?
- *
  * Tags: Linkedlist, Two pointers, Math
  */
 class LinkedListCycle2 {
@@ -58,6 +57,7 @@ class LinkedListCycle2 {
 
         return node0;
     }
+
     static class ListNode {
         int      val;
         ListNode next;
