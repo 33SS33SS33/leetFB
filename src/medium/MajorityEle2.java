@@ -13,17 +13,20 @@ import java.util.Map;
  * Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
  * The algorithm should run in linear time and in O(1) space.
  */
-/**boyer-moore-majority-vote-algorithm 使用了这个算法
- 首先要观察一下 符合要求的最多有几个众数  这道题是2个
- 然后设置4个变量 两个变量存候选的众数 两个变量存对应候选数的出现次数
- 然后遍历数组 碰见候选数就+1 没有就两个都-1 如果计数器变成0了 就把当前的数字当成候选数*/
+
+/**
+ * boyer-moore-majority-vote-algorithm 使用了这个算法
+ * 首先要观察一下 符合要求的最多有几个众数  这道题是2个
+ * 然后设置4个变量 两个变量存候选的众数 两个变量存对应候选数的出现次数
+ * 然后遍历数组 碰见候选数就+1 没有就两个都-1 如果计数器变成0了 就把当前的数字当成候选数
+ */
 public class MajorityEle2 {
     public static void main(String[] args) {
         MajorityEle2 l = new MajorityEle2();
         int[] s = { 1, 3, 1, 5, 2, 1 };
-        System.out.println(l.majorityElementA(s));
-        System.out.println(l.majorityElementB(s));
-        System.out.println(l.majorityElementC(s));
+        System.out.println(l.majorityElementA(s).toString());
+        System.out.println(l.majorityElementB(s).toString());
+        System.out.println(l.majorityElementC(s).toString());
     }
 
     /**
@@ -65,7 +68,7 @@ public class MajorityEle2 {
         return result;
     }
 
-    /**
+    /** 使用map
      * creek not good ,Time = O(n) and Space = O(n)
      */
     public List<Integer> majorityElementB(int[] nums) {
@@ -141,6 +144,7 @@ public class MajorityEle2 {
         }
         return rst;
     }
+
     /*public List<Integer> majorityElement(int[] nums) {
         if(nums.length == 0) return Collections.emptyList();
 
