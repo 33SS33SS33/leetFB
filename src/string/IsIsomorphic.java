@@ -10,8 +10,10 @@ import java.util.Map;
 /**
  * For example,"egg" and "add" are isomorphic, "foo" and "bar" are not.
  */
-/**有很多解法
- 很重要的题目*/
+
+/**
+ * 有很多解法 很重要的题目
+ */
 public class IsIsomorphic {
     public static void main(String[] args) {
         String s = "foo";
