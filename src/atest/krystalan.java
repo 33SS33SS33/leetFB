@@ -51,18 +51,19 @@ public class krystalan {
      decide to do binary search in left part or right part,  in the worst case with O (log n)
 
      The most challenging work you've done.
-     Just entered the new company, because more and more product line, the function is becoming more and more bloated, difficult to maintain . It needs to reconstruct. but there is no corresponding document to record these functions. I have to read through the code to confirm the function of each product.
+     Just entered the new company, because more and more product line, the function is becoming more and more bloated, difficult to maintain .
+     It needs to reconstruct. but there is no corresponding document to record these functions. I have to read through the code to confirm the function of each product.
      So I complete the task by broken it down into many small cycle, each iteration I can consign a version, and test it then do the next cycle.
+     The result is I improved the scalability of the program.
 
-     the result is I improved the scalability of the program.
      How you are going to improve the code.
-     Reading open source, and we do code review every week, improve the quality of code, it helps identify potential bugs, reduce accident cost. improve the overall level of the team.
+     Reading open source, and we do code review every week, improve the quality of code, it helps identify potential bugs,
+     reduce accident cost. improve the overall level of the team.
 
      The feedback given by your manager or colleague. Tell me about a time where you had to deal with conflict on the job.
      The feedback given by my manager and colleague is positive. I can't think of an example  they give me negative feedback.
      if I have to I would say when we discuss a specific implementation scheme sometimes we had different opinions, but it's common in the workplace, it's not personal.
-     When we have debates, I have to deal with conflict, not passive-aggressive I would:
-
+     When we have debates, I have to deal with conflict,
      I will get both sides of the argument, discuss pros and cons, show empathy, let them know I understand what they mean., eventually we have a agreement.
 
      if I have to deal with conflict, not passive-aggressive I would:
