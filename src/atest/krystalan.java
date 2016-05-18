@@ -40,7 +40,7 @@ public class krystalan {
      DFS的思想：
      顾名思义，深度优先搜索所遵循的策略就是尽可能“深”的在图中进行搜索，对于图中某一个顶点V，如果它还有相邻的顶点（在有向图中就是还有以V为起点的边）且未被访问，则访问此顶点。如果找不到，则返回到上一个顶点。这一过程一直进行直到所有的顶点都被访问为止。 DFS可以搜索出从某一个顶点到另外的一个顶点的所有路径。 由于要进行返回的操作，我们采用的是递归的方法。
      depth first search : you start from a node of a graph  N0, if it still has adjacent node have not been visited, access the node, same goes to this node, visit its adjacent and have not been visited node. If you cannot find one, it returns to a node.  go on until you visited the whole graph. usually use a stack to do DFS.
-      mainly is the recursive implementation; preorder traversal of tree is using DFS
+     mainly is the recursive implementation; preorder traversal of tree is using DFS
 
      do recursion if there is no base case -> would result in an infinite recursion,stack overflow;
 
@@ -58,11 +58,14 @@ public class krystalan {
      How you are going to improve the code.
      Reading open source, and we do code review every week, improve the quality of code, it helps identify potential bugs, reduce accident cost. improve the overall level of the team.
 
-     The feedback given by your manager or colleague.
-     The feedback given by my manager and colleague is positive. I can't think of an example when we had a disagreement. We  will have a different opinion on implementation scheme of the function, but this is normal.  Getting both sides of the argument, discuss pros and cons, show empathy to his side , eventually we have a agreement.
+     The feedback given by your manager or colleague. Tell me about a time where you had to deal with conflict on the job.
+     The feedback given by my manager and colleague is positive. I can't think of an example  they give me negative feedback.
+     if I have to I would say when we discuss a specific implementation scheme sometimes we had different opinions, but it's common in the workplace, it's not personal.
+     When we have debates, I have to deal with conflict, not passive-aggressive I would:
 
-     Tell me about a time where you had to deal with conflict on the job.
-     I can't think of an example. If that's the case, if I have to deal with conflict,  I would:
+     I will get both sides of the argument, discuss pros and cons, show empathy, let them know I understand what they mean., eventually we have a agreement.
+
+     if I have to deal with conflict, not passive-aggressive I would:
      o Getting both sides of the argument
      o Suggesting and agreeing compromise
      o Showing tactfulness
