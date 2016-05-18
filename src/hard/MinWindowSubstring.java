@@ -15,11 +15,13 @@ import java.util.*;
  * Tags: Hashtable, Two Pointers, String
  */
 
-/**整体思路就是用两个指针 然后首先往前找到第一个window 然后就缩小start指针 然后再往前继续找
- count是用来计算现在的窗口缺了几种T的字母 所以当一种都不缺的时候 就是找到了一个window 这时候就要开始进入while 移动start
- 注意这里移动的时候 dic[s[start]]有可能是负数 就是这个字母出现的次数 多余T的次数  比如 AABC ABC 所以这种情况  start应该是移动到B才算停 因为这时候count才为1 表示缺少了一种字母
- 但是移动的过程中每次都要计算一遍 end-start 这样才能的出来ABC
- 还有别的解法 未实现*/
+/**
+ * 整体思路就是用两个指针 然后首先往前找到第一个window 然后就缩小start指针 然后再往前继续找
+ * count是用来计算现在的窗口缺了几种T的字母 所以当一种都不缺的时候 就是找到了一个window 这时候就要开始进入while 移动start
+ * 注意这里移动的时候 dic[s[start]]有可能是负数 就是这个字母出现的次数 多余T的次数  比如 AABC ABC 所以这种情况  start应该是移动到B才算停 因为这时候count才为1 表示缺少了一种字母
+ * 但是移动的过程中每次都要计算一遍 end-start 这样才能的出来ABC
+ * 还有别的解法 未实现
+ */
 class MinWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
@@ -30,23 +32,19 @@ class MinWindowSubstring {
         System.out.print(res2);
     }
 
-    /**creek----*/
+    /**
+     * creek----
+     */
     public String minWindowB(String s, String t) {
         if (t.length() > s.length())
             return "";
         String result = "";
-        //character counter for t
-        HashMap<Character, Integer> target = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> target = new HashMap<Character, Integer>();//character counter for t
         for (int i = 0; i < t.length(); i++) {
             char c = t.charAt(i);
-            if (target.containsKey(c)) {
-                target.put(c, target.get(c) + 1);
-            } else {
-                target.put(c, 1);
-            }
+            target.put(c, target.containsKey(c) ? target.get(c) + 1 : 1);
         }
-        // character counter for s
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+        HashMap<Character, Integer> map = new HashMap<Character, Integer>();// character counter for s
         int left = 0;
         int minLen = s.length() + 1;
         int count = 0; // the total of mapped characters
@@ -71,7 +69,6 @@ class MinWindowSubstring {
                     left++;
                     sc = s.charAt(left);
                 }
-
                 if (i - left + 1 < minLen) {
                     result = s.substring(left, i + 1);
                     minLen = i - left + 1;
@@ -86,7 +83,7 @@ class MinWindowSubstring {
      * One for T and one for S
      * Use minLength to remember the minimum length of window
      * Use letterCnt to store whether S include all characters in T
-
+     * <p/>
      * Use two pointers, one slow, one fast
      * Traverse through S with fast pointer
      * If the character is in T, update it in window, update letterCnt

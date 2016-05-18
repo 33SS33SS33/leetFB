@@ -7,10 +7,13 @@ import java.util.*;
  * describe its complexity.
  * Tags: Divide and Conquer, Linkedlist, Heap
  */
-/*使用priority queue 来做
-放进去tuple的原因是因为要不然heap无法排序
-整体思路就是用所有链表的头一个节点建立heap
-然后从heap里弹出最小的元素 同时压进去啊这个最小元素的下一个元素  一直到最后*/
+
+/**
+ * 使用priority queue 来做
+ * 放进去tuple的原因是因为要不然heap无法排序
+ * 整体思路就是用所有链表的头一个节点建立heap
+ * 然后从heap里弹出最小的元素 同时压进去啊这个最小元素的下一个元素  一直到最后
+ */
 class MergeKSortedList {
     public static void main(String[] args) {
         ListNode head1 = buildList();
