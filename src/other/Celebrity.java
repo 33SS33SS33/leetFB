@@ -9,6 +9,8 @@ package other;
 /**可以通过一遍就过滤出来一个候选的
  The key part is the first loop. To understand this you can think the knows(a,b) as a a < b comparison, if a knows b then a < b, if a does not know b, a > b. Then if there is a celebrity, he/she must be the "maximum" of the n people.
  然后只需要检查这个候选的是不是就行了*/
+
+
 class Celebrity {
     class Person {
 

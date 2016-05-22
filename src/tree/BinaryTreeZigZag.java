@@ -32,6 +32,8 @@ import java.util.Queue;
  然后下次就反过来
  然后每次先遍历栈里的元素 这样就得到当前层的答案  然后再把下一层的入栈
  */
+
+
 class BinaryTreeZigZag {
     public static void main(String[] args) {
         TreeNode head = buildTree();
