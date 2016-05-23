@@ -46,12 +46,10 @@ public class BasicCalculator {
 
     static class Tokenizer {
         Scanner scanner;
-
         Tokenizer(String s) {
             scanner = new Scanner(s);
             scanner.useDelimiter("");
         }
-
         Token next() {
             if (!scanner.hasNext()) {
                 return EOL;
@@ -75,12 +73,10 @@ public class BasicCalculator {
 
     static class RPNCalculator {
         LinkedList<Integer> stack = new LinkedList<Integer>();
-
         void addToken(Token t) {
             if (t.type == TokenType.OP) {
                 int v2 = stack.pop();
                 int v1 = stack.pop();
-
                 switch (t.val) {
                 case '+':
                     stack.push(v1 + v2);
@@ -129,20 +125,14 @@ public class BasicCalculator {
                     case '(':
                         op.push(t);
                         break;
-
                     case '+':
                     case '-':
-                        if (top.val == '+' || top.val == '-' ||
-                                top.val == '*' || top.val == '/') {
-
+                        if (top.val == '+' || top.val == '-' || top.val == '*' || top.val == '/') {
                             calculator.addToken(op.pop());
                             continue retry;
                         }
-
                         op.push(t);
-
                         break;
-
                     case '*':
                     case '/':
                         if (top.val == '*' || top.val == '/') {
@@ -165,7 +155,6 @@ public class BasicCalculator {
                 }
             }
         }
-
         while (!op.isEmpty()) {
             calculator.addToken(op.pop());
         }

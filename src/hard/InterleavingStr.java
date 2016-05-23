@@ -5,7 +5,6 @@ package hard;
  * Given:
  * s1 = "aabcc",
  * s2 = "dbbca",
- * 
  * When s3 = "aadbbcbcac", return true.
  * When s3 = "aadbbbaccc", return false.
  * Tags: DP, String

@@ -25,6 +25,7 @@ class SubstringWithConcatOfAllWords {
     
     /**
      * Build a map for words in L and its relative counts
+     * At first I was gonna to use a set for words. Owing to the fact that duplicate is allowed in L, we need to use map instead.
      */
     public static List<Integer> findSubstringA(String S, String[] L) {
         List<Integer> res = new ArrayList<Integer>();

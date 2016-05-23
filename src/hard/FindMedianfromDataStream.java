@@ -12,12 +12,15 @@ package hard;
  void addNum(int num) - Add a integer number from the data stream to the data structure.
  double findMedian() - Return the median of all elements so far."*/
 
-/**"设计题 重要  一个heap不行可以用两个heap
- 一个heap存当前数组比较小那一半的数 另一个heap存当前数组比较大那一半的数
- 最关键的是addnumber时候的操作 每次都要均衡两个数组 让两个数组的数量和顺序都均衡 用到了pushpop 主要看代码理解
- if len(self.small) == len(self.large):
- heappush(self.large, -heappushpop(self.small, -num))
- else:
- heappush(self.small, -heappushpop(self.large, num))"*/
+/**
+ * "设计题 重要  一个heap不行可以用两个heap
+ * 一个heap存当前数组比较小那一半的数 另一个heap存当前数组比较大那一半的数
+ * 最关键的是addnumber时候的操作 每次都要均衡两个数组 让两个数组的数量和顺序都均衡 用到了pushpop
+ * 主要看代码理解
+ * if len(self.small) == len(self.large):
+ * heappush(self.large, -heappushpop(self.small, -num))
+ * else:
+ * heappush(self.small, -heappushpop(self.large, num))"
+ */
 public class FindMedianfromDataStream {
 }

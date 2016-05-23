@@ -85,7 +85,6 @@ public class BasicCalculator2 {
                 default:
                     // cant happen
                 }
-
             } else { // DIGIT
                 stack.push(t.val);
             }
@@ -120,9 +119,7 @@ public class BasicCalculator2 {
                         break;
                     case '+':
                     case '-':
-                        if (top.val == '+' || top.val == '-' ||
-                                top.val == '*' || top.val == '/') {
-
+                        if (top.val == '+' || top.val == '-' || top.val == '*' || top.val == '/') {
                             calculator.addToken(op.pop());
                             continue retry;
                         }

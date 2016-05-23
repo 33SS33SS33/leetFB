@@ -83,8 +83,7 @@ class LongestValidParen {
             else if (stack.isEmpty())
                 continue;
             else if (stack.peek() > 0)
-                dp[i] = 2 + dp[stack.pop() - 1] + dp[i
-                        - 1]; // connect two valid sequences, or increase the length of current valid sequence.
+                dp[i] = 2 + dp[stack.pop() - 1] + dp[i - 1]; // connect two valid sequences, or increase the length of current valid sequence.
             else {
                 dp[i] = 2 + dp[i - 1]; // leftmost char is a '('
                 stack.pop();
