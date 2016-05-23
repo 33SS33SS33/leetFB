@@ -14,6 +14,10 @@ package hard;
  * 
  * Tags: Math, String
  */
+/* LinkedIn
+ Math String
+ (E) String to Integer (atoi)
+*/
 class ValidNumber {
     public static void main(String[] args) {
         String s="1.33";

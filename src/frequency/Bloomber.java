@@ -4,7 +4,7 @@ package frequency;
  * Created by shanshan on 16/5/22.
  */
 public class Bloomber {
-/**
+/** 57
  #
  Title  Acceptance  Difficulty  Frequency
 

@@ -8,8 +8,25 @@ import java.util.Set;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
-/**使用了字典树 trie tree 然后和第一题的答案结合起来即可
- 因为是一个字母一个字母的搜索 所以哈希表不行 必须用字典树才能比较有效率*/
+/**Given a 2D board and a list of words from the dictionary, find all words in the board.
+
+ Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are
+ those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+
+ For example,
+ Given words = ["oath","pea","eat","rain"] and board =
+ [
+ ['o','a','a','n'],
+ ['e','t','a','e'],
+ ['i','h','k','r'],
+ ['i','f','l','v']
+ ]
+ Return ["eat","oath"].*/
+
+/**
+ * 使用了字典树 trie tree 然后和第一题的答案结合起来即可
+ * 因为是一个字母一个字母的搜索 所以哈希表不行 必须用字典树才能比较有效率
+ */
 public class WordSearchII {
     public static void main(String[] args) {
         WordSearchII s=new WordSearchII();

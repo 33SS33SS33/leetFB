@@ -4,7 +4,7 @@ package frequency;
  * Created by shanshan on 16/5/22.
  */
 public class Ama {
-/**
+/** 41道
  #
  Title  Acceptance  Difficulty  Frequency
 
