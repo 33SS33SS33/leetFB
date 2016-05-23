@@ -8,11 +8,10 @@ import java.util.Arrays;
  */
 public class FourSum {
     public static void main(String[] args) {
-        int[] num = { 2, 5, 3, 1, 6 };
-        System.out.println(new FourSum().fourSumA(num, 8).toString());
+        int[] num = { 1, 0, -1, 0, -2, 2 };
+        System.out.println(new FourSum().fourSumA(num, 0).toString());
 
     }
-    /**错的*/
     /*总时间复杂度是O(n^3*/
     public ArrayList<ArrayList<Integer>> fourSumA(int[] num, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();

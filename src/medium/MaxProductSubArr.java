@@ -6,6 +6,9 @@ package medium;
  * For example, given the array [2,3,-2,4],
  * the contiguous subarray [2,3] has the largest product = 6.
  * Tags: Array, DP
+ *
+ *  (E) House Robber (M) Product of Array Except Self
+
  */
 /**这道题是maximum subarray sum 的变体
  已然用动归 DP来解决 每个dp数组保存的都是以当前元素结尾的乘积最大值

@@ -47,6 +47,25 @@ class CloneGraph {
 
     }
 
+    private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        return clone(node);
+    }
+
+    private UndirectedGraphNode clone(UndirectedGraphNode node) {
+        if (node == null) return null;
+
+        if (map.containsKey(node.label)) {
+            return map.get(node.label);
+        }
+        UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
+        map.put(clone.label, clone);
+        for (UndirectedGraphNode neighbor : node.neighbors) {
+            clone.neighbors.add(clone(neighbor));
+        }
+        return clone;
+    }
+
     /*这几种方法的时间复杂度都是O(n)（每个结点访问一次），
     而空间复杂度则是栈或者队列的大小加上HashMap的大小，也不会超过O(n)。*/
     /**------creek-------*/

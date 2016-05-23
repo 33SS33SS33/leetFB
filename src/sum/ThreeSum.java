@@ -102,7 +102,6 @@ class ThreeSum {
                         temp.add(num[i]);
                         temp.add(num[start]);
                         temp.add(num[end]);
-
                         result.add(temp);
                         start++;
                         end--;
