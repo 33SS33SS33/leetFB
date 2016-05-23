@@ -8,13 +8,14 @@ import java.util.ArrayList;
  * Note:
  * A solution using O(n) space is pretty straight forward. Could you devise a
  * constant space solution?
- *
  * Tags: Tree, DFS
  */
 
-/**中序遍历二叉树 然后发现不按顺序的存起来 这里要注意 会有两种错误情况
- 1,5,3,4,2 或者 2,1,3,4,5
- 这道题还有o(1)的解法 需要用的moris 遍历  未实现*/
+/**
+ * 中序遍历二叉树 然后发现不按顺序的存起来 这里要注意 会有两种错误情况
+ * 1,5,3,4,2 或者 2,1,3,4,5
+ * 这道题还有o(1)的解法 需要用的moris 遍历  未实现
+ */
 class RecoverBST {
     public static void main(String[] args) {
 

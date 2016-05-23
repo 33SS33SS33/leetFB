@@ -8,7 +8,7 @@ package dP;
  *
  * Tags: Array, Stack, Two pointers
  */
-/*对任意位置i，在i上的积水，不包括i本身, 由左右两边最高的bar：A[left] = max{A[j], j<i}, A[right] = max{A[j], j>i}决定。定义Hmin = min(A[left], A[right])，则积水量Si为：
+/**对任意位置i，在i上的积水，不包括i本身, 由左右两边最高的bar：A[left] = max{A[j], j<i}, A[right] = max{A[j], j>i}决定。定义Hmin = min(A[left], A[right])，则积水量Si为：
 Hmin <= A[i]时，Si = 0
 Hmin > A[i]时，Si = Hmin - A[i]
 所以第一遍扫描  记录的是当前索引i最左边的最高的bar 然后第二遍从后往前  首先先得到当前i最右边最高的bar 然后这两个最高的最小值减去当前的高度就是水量*/

@@ -12,6 +12,7 @@ import java.util.*;
  "()())()" -> ["()()()", "(())()"]
  "(a)())()" -> ["(a)()()", "(a())()"]
  ")(" -> [""]
+ DFS BFS
 */
 public class RemoveInvalidParentheses {
     public static void main(String[] args) {

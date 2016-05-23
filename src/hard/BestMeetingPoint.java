@@ -4,6 +4,10 @@ package hard;
  * Created by shanshan on 16/5/9.
  */
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * "这道题首先要想出来一维的解法 其实最关键的地方还是在于 在一维的时候 最合适的点就是所有这些人的坐标的中位数  因为在中位数的时候 才能让距离最小
  * As long as you have different numbers of people on your left and on your right, moving a little to the side with more people decreases the sum of distances. So to minimize it, you must have equally many people on your left and on your right. Same with above/below.
@@ -24,4 +28,31 @@ package hard;
  * Try to solve it in one dimension first. How can this solution apply to the two dimension case?"
  */
 public class BestMeetingPoint {
+
+    public int minTotalDistance(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        List<Integer> I = new ArrayList<Integer>(m);
+        List<Integer> J = new ArrayList<Integer>(n);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == 1) {
+                    I.add(i);
+                    J.add(j);
+                }
+            }
+        }
+        return getMin(I) + getMin(J);
+    }
+
+    private int getMin(List<Integer> list) {
+        int ret = 0;
+        Collections.sort(list);
+        int i = 0;
+        int j = list.size() - 1;
+        while (i < j) {
+            ret += list.get(j--) - list.get(i++);
+        }
+        return ret;
+    }
 }

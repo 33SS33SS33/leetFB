@@ -3,6 +3,7 @@ package hard;
 /**
  * Created by GAOSHANSHAN835 on 2016/5/11.
  */
+
 /**
  * "You are given an integer array nums and you have to return a new counts array. The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
  * Example:
@@ -13,6 +14,10 @@ package hard;
  * To the right of 1 there is 0 smaller element.
  * Return the array [2, 1, 1, 0]."
  */
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * "这道题有好多解法 树状数组 线段树 归并排序 待学习 未实现
@@ -30,4 +35,42 @@ package hard;
  * http://www.cnblogs.com/zichi/p/4806998.html"
  */
 public class CountofSmallerNumbersAfterSelf {
+    public static void main(String[] args) {
+        CountofSmallerNumbersAfterSelf r = new CountofSmallerNumbersAfterSelf();
+        int[] nums = { 5, 2, 6, 1 };
+        System.out.println(r.countSmaller(nums).toString());
+    }
+
+    public List<Integer> countSmaller(int[] nums) {
+        Integer[] ans = new Integer[nums.length];
+        List<Integer> sorted = new ArrayList<Integer>();
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int index = findIndex(sorted, nums[i]);
+            ans[i] = index;
+            sorted.add(index, nums[i]);
+        }
+        return Arrays.asList(ans);
+    }
+
+    private int findIndex(List<Integer> sorted, int target) {
+        if (sorted.size() == 0)
+            return 0;
+        int start = 0;
+        int end = sorted.size() - 1;
+        if (sorted.get(end) < target)
+            return end + 1;
+        if (sorted.get(start) >= target)
+            return 0;
+        while (start + 1 < end) {
+            int mid = start + (end - start) / 2;
+            if (sorted.get(mid) < target) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+        if (sorted.get(start) >= target)
+            return start;
+        return end;
+    }
 }
