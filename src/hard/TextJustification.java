@@ -5,18 +5,18 @@ import java.util.*;
 /**
  * Given an array of words and a length L, format the text such that each line
  * has exactly L characters and is fully (left and right) justified.
- * 
+
  * You should pack your words in a greedy approach; that is, pack as many words
  * as you can in each line. Pad extra spaces ' ' when necessary so that each
  * line has exactly L characters.
- * 
+
  * Extra spaces between words should be distributed as evenly as possible. If
  * the number of spaces on a line do not divide evenly between words, the empty
  * slots on the left will be assigned more spaces than the slots on the right.
- * 
+
  * For the last line of text, it should be left justified and no extra space is
  * inserted between words.
- * 
+
  * For example,
  * words: ["This", "is", "an", "example", "of", "text", "justification."]
  * L: 16.
@@ -38,10 +38,13 @@ import java.util.*;
  */
 class TextJustification {
     public static void main(String[] args) {
-        System.out.println(fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16).toString());
+        System.out.println(fullJustify(
+                new String[] { "This", "is", "an", "example", "of", "text", "justification." }, 16)
+                .toString());
     }
-    
-    /** Track length of words and space in current line
+
+    /**
+     * Track length of words and space in current line
      * Go through the words
      * Add with next word's length, if within range, append word and update len
      * If not, check how many words in this line. If only 1, append spaces
@@ -53,7 +56,8 @@ class TextJustification {
      */
     public static List<String> fullJustify(String[] words, int L) {
         List<String> res = new ArrayList<String>();
-        if (words == null || words.length == 0 || L < 0) return res;
+        if (words == null || words.length == 0 || L < 0)
+            return res;
         List<String> line = new ArrayList<String>();
         String str = "";
         int len = 0, div, mod;
@@ -64,14 +68,17 @@ class TextJustification {
             } else {
                 if (line.size() == 1) { // only 1 word in this line
                     str = line.get(0);
-                    for (int j = L - str.length(); j > 0; j--) str += " ";
+                    for (int j = L - str.length(); j > 0; j--)
+                        str += " ";
                 } else if (line.size() > 1) {
                     div = (L - len) / (line.size() - 1); // divisor
                     mod = (L - len) % (line.size() - 1); // remainder
                     str = line.get(0); // append first word
                     for (int j = 1; j < line.size(); j++) { // append rest of the words
-                        for (int k = 0; k < div; k++) str += " ";
-                        if (j <= mod) str += " "; // append 1 more space
+                        for (int k = 0; k < div; k++)
+                            str += " ";
+                        if (j <= mod)
+                            str += " "; // append 1 more space
                         str += line.get(j);
                     }
                 }
@@ -83,8 +90,10 @@ class TextJustification {
         }
         // last line
         str = line.get(0);
-        for (int i = 1; i < line.size(); i++) str += " " + line.get(i); // words
-        for (int i = L - str.length(); i > 0; i--) str += " "; // append spaces
+        for (int i = 1; i < line.size(); i++)
+            str += " " + line.get(i); // words
+        for (int i = L - str.length(); i > 0; i--)
+            str += " "; // append spaces
         res.add(str);
         return res;
     }

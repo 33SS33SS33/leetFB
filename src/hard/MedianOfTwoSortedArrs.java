@@ -2,16 +2,15 @@ package hard;
 
 /**
  * There are two sorted arrays A and B of size m and n respectively. Find the
- * median of the two sorted arrays. The overall run time complexity should be
- * O(log (m+n)).
+ * median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
  * 
  * Tags: Divide and Conquer, Array, Binary Search
  */
 class MedianOfTwoSortedArrs {
     public static void main(String[] args) {
         MedianOfTwoSortedArrs m = new MedianOfTwoSortedArrs();
-        int[] A = {1, 2, 3, 4, 5};
-        int[] B = {2, 4, 5, 6, 7};
+        int[] A = { 1, 2, 3, 4, 5 };
+        int[] B = { 2, 4, 5, 6, 7 };
         System.out.println(m.findMedianSortedArrays(A, B));
         System.out.println(m.findMedianSortedArraysB(A, B));
     }
@@ -29,7 +28,6 @@ class MedianOfTwoSortedArrs {
      Median = (max(ar1[0], ar2[0]) + min(ar1[1], ar2[1]))/2
      --------------------------------------------------------------------------------------*/
 
-
     /**
      * Search in shorter array
      * Find 4 possible candidates A[l-1], A[l], B[k-1], B[k-l+1]
@@ -40,7 +38,8 @@ class MedianOfTwoSortedArrs {
     public double findMedianSortedArrays(int[] A, int[] B) {
         int n = A.length;
         int m = B.length;
-        if (n > m) return findMedianSortedArrays(B, A); // shorter array first
+        if (n > m)
+            return findMedianSortedArrays(B, A); // shorter array first
         int k = (n + m - 1) / 2; // mid position
         int l = 0, r = Math.min(k, n); // r is n, NOT n-1, this is important!!
         // find A[l] > B[k - l]
@@ -54,28 +53,27 @@ class MedianOfTwoSortedArrs {
         }
         // A[l-1], A[l], B[k-l], and B[k-l+1] 
         int a = Math.max(l > 0 ? A[l - 1] : Integer.MIN_VALUE, k - l >= 0 ? B[k - l] : Integer.MIN_VALUE);
-        if ((n + m) % 2 == 1) return (double) a; // odd
-
+        if ((n + m) % 2 == 1)
+            return (double) a; // odd
         int b = Math.min(l < n ? A[l] : Integer.MAX_VALUE, k - l + 1 < m ? B[k - l + 1] : Integer.MAX_VALUE);
         return (a + b) / 2.0; // even
     }
 
-    /**-----creek-----*/
+    /**
+     * -----creek-----
+     */
     public static double findMedianSortedArraysB(int A[], int B[]) {
         int m = A.length;
         int n = B.length;
-
         if ((m + n) % 2 != 0) // odd
             return (double) findKth(A, B, (m + n) / 2, 0, m - 1, 0, n - 1);
         else { // even
-            return (findKth(A, B, (m + n) / 2, 0, m - 1, 0, n - 1)
-                    + findKth(A, B, (m + n) / 2 - 1, 0, m - 1, 0, n - 1)) * 0.5;
+            return (findKth(A, B, (m + n) / 2, 0, m - 1, 0, n - 1) + findKth(A, B, (m + n) / 2 - 1,
+                    0, m - 1, 0, n - 1)) * 0.5;
         }
     }
 
-    public static int findKth(int A[], int B[], int k,
-            int aStart, int aEnd, int bStart, int bEnd) {
-
+    public static int findKth(int A[], int B[], int k, int aStart, int aEnd, int bStart, int bEnd) {
         int aLen = aEnd - aStart + 1;
         int bLen = bEnd - bStart + 1;
         // Handle special cases
@@ -85,14 +83,11 @@ class MedianOfTwoSortedArrs {
             return A[aStart + k];
         if (k == 0)
             return A[aStart] < B[bStart] ? A[aStart] : B[bStart];
-
         int aMid = aLen * k / (aLen + bLen); // a's middle count
         int bMid = k - aMid - 1; // b's middle count
-
         // make aMid and bMid to be array index
         aMid = aMid + aStart;
         bMid = bMid + bStart;
-
         if (A[aMid] > B[bMid]) {
             k = k - (bMid - bStart + 1);
             aEnd = aMid;

@@ -1,12 +1,9 @@
 package string;
 
 /**
- * Implement wildcard pattern matching with support for '?' and '*'.
- * '?' Matches any single character.
+ * Implement wildcard pattern matching with support for '?' and '*' '?' Matches any single character.
  * '*' Matches any sequence of characters (including the empty sequence).
- *
  * The matching should cover the entire input string (not partial).
- *
  * The function prototype should be:
  * bool isMatch(const char *s, const char *p)
  *
@@ -29,33 +26,33 @@ class WildcardMatching {
     public static void main(String[] args) {
         WildcardMatching w = new WildcardMatching();
         /**input validation*/
-         System.out.println(w.isMatch("", "a")); // false
-         System.out.println(w.isMatchB("", "a")); // false
+        System.out.println(w.isMatch("", "a")); // false
+        System.out.println(w.isMatchB("", "a")); // false
 
-         System.out.println(w.isMatch("a", "")); // false
-         System.out.println(w.isMatchB("a", "")); // false
+        System.out.println(w.isMatch("a", "")); // false
+        System.out.println(w.isMatchB("a", "")); // false
 
-         System.out.println(w.isMatch("", "")); // true
-         System.out.println(w.isMatchB("", "")); // true
+        System.out.println(w.isMatch("", "")); // true
+        System.out.println(w.isMatchB("", "")); // true
 
-         System.out.println(w.isMatch(null, null)); // true
-         System.out.println(w.isMatchB(null, null)); // true
+        System.out.println(w.isMatch(null, null)); // true
+        System.out.println(w.isMatchB(null, null)); // true
 
-         System.out.println(w.isMatch("a", null)); // false
-         System.out.println(w.isMatchB("a", null)); // false
-         System.out.println(w.isMatch(null, "null")); // false
-         System.out.println(w.isMatchB(null, "null")); // false
+        System.out.println(w.isMatch("a", null)); // false
+        System.out.println(w.isMatchB("a", null)); // false
+        System.out.println(w.isMatch(null, "null")); // false
+        System.out.println(w.isMatchB(null, "null")); // false
         /**letters*/
-         System.out.println(w.isMatch("a", "aa")); // false
-         System.out.println(w.isMatch("aa", "a")); // false
-         System.out.println(w.isMatch("aa", "aa")); // true
-         System.out.println(w.isMatch("aa", "ab")); // false
+        System.out.println(w.isMatch("a", "aa")); // false
+        System.out.println(w.isMatch("aa", "a")); // false
+        System.out.println(w.isMatch("aa", "aa")); // true
+        System.out.println(w.isMatch("aa", "ab")); // false
         /**s*/
-         System.out.println(w.isMatch("bbbbbbbbbb", "*bbbbb")); // true
-         System.out.println(w.isMatchB("bbbbbbbbbb", "*bbbbb")); // true
+        System.out.println(w.isMatch("bbbbbbbbbb", "*bbbbb")); // true
+        System.out.println(w.isMatchB("bbbbbbbbbb", "*bbbbb")); // true
         /** and ? */
-         System.out.println(w.isMatch("b", "*?*?")); // false
-         System.out.println(w.isMatchB("b", "*?*?")); // false
+        System.out.println(w.isMatch("b", "*?*?")); // false
+        System.out.println(w.isMatchB("b", "*?*?")); // false
     }
 
     /**
@@ -65,32 +62,41 @@ class WildcardMatching {
      * match the sequence after * in pattern with the rest of the string
      */
     public boolean isMatch(String str, String pattern) {
-        if (str == null && pattern == null) return true;
-        if (str == null || pattern == null) return false;
+        if (str == null && pattern == null)
+            return true;
+        if (str == null || pattern == null)
+            return false;
         int s = 0, p = 0, match = 0, astroIdx = -1; // must be -1
         while (s < str.length()) {
-            if (p < pattern.length()  && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))){ // found ? or same chars
+            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern
+                    .charAt(p))) { // found ? or same chars
                 s++; // move both pointers
                 p++;
             } else if (p < pattern.length() && pattern.charAt(p) == '*') { // found *
                 astroIdx = p; // save astroid index in pattern
                 match = s; // save current index of string
                 p++; // only move pattern pointer forward
-            } else if (astroIdx != -1){ // try to find last astroid
+            } else if (astroIdx != -1) { // try to find last astroid
                 p = astroIdx + 1; // move to * one char behind astroid
                 match++; // move current index of string
                 s = match;
-            } else return false; // not ?, not same char, not *, don't match
+            } else
+                return false; // not ?, not same char, not *, don't match
         }
         // check remaining characters in pattern, can only be astroid
-        while (p < pattern.length() && pattern.charAt(p) == '*') p++;
+        while (p < pattern.length() && pattern.charAt(p) == '*')
+            p++;
         return p == pattern.length(); // no remaining
     }
 
-    /**---creek-----*/
+    /**
+     * ---creek-----
+     */
     public boolean isMatchB(String s, String p) {
-        if (s == null && p == null) return true;
-        if (s == null || p == null) return false;
+        if (s == null && p == null)
+            return true;
+        if (s == null || p == null)
+            return false;
         int i = 0;
         int j = 0;
         int starIndex = -1;
@@ -105,7 +111,7 @@ class WildcardMatching {
                 j++;
             } else if (starIndex != -1) {
                 j = starIndex + 1;
-                i = iIndex+1;
+                i = iIndex + 1;
                 iIndex++;
             } else {
                 return false;

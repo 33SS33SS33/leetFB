@@ -6,7 +6,9 @@ import java.util.HashMap;
 /**
  * Given n points on a 2D plane, find the maximum number of points that lie on
  * the same straight line.
- * Tags: Hashtable, math
+ * LinkedIn Apple Twitter
+ Tags:Hash Table Math
+
  */
 
 /**
