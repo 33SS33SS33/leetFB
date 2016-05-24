@@ -88,7 +88,6 @@ class RemoveNthNodeFromEnd {
         return head;
     }
 
-
     class ListNode {
         int      value;
         ListNode next;

@@ -6,21 +6,21 @@ import java.util.Map;
 /**
  * Given a roman numeral, convert it to an integer.
  * Input is guaranteed to be within the range from 1 to 3999.
- * 
  * Tags: Math, String
  */
 class RomanToInt {
     public static void main(String[] args) {
-        String s="X";
+        String s = "X";
         System.out.println(new RomanToInt().romanToInt2(s));
         System.out.println(new RomanToInt().romanToInt(s));
     }
-    
+
     char[] roman = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
-    int[] val = { 1, 5, 10, 50, 100, 500, 1000 };
+    int[]  val   = { 1, 5, 10, 50, 100, 500, 1000 };
 
     public int romanToInt2(String s) {
-        if (s == null || s.length()==0) return 0;
+        if (s == null || s.length() == 0)
+            return 0;
         Map<Character, Integer> m = new HashMap<Character, Integer>();
         m.put('I', 1);
         m.put('V', 5);
@@ -51,34 +51,35 @@ class RomanToInt {
     public static int romanToInt(String s) {
         int res = 0;
         /*validate input*/
-        if (s == null || s.length() == 0) return res;
+        if (s == null || s.length() == 0)
+            return res;
         int len = s.length() - 1;
         /*traverse backwards*/
-        for (int i = len; i >= 0 ; i--) {
+        for (int i = len; i >= 0; i--) {
             char c = s.charAt(i);
             switch (c) {
-                case 'M':
+            case 'M':
                 res += 1000;
                 break;
-                case 'D':
+            case 'D':
                 res += 500;
                 break;
-                case 'C':
+            case 'C':
                 res += 100 * (res >= 500 ? -1 : 1); // >= not just >
                 break;
-                case 'L':
+            case 'L':
                 res += 50;
                 break;
-                case 'X':
+            case 'X':
                 res += 10 * (res >= 50 ? -1 : 1); // >= not just >
                 break;
-                case 'V':
+            case 'V':
                 res += 5;
                 break;
-                case 'I':
+            case 'I':
                 res += (res >= 5 ? -1 : 1); // >= not just >
                 break;
-                default:
+            default:
                 break;
             }
         }

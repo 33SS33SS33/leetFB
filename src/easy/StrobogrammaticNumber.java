@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
+
 /**
  * A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
  * Write a function to determine if a number is strobogrammatic. The number is represented as a string.
@@ -34,6 +35,7 @@ public class StrobogrammaticNumber {
         }
         return true;
     }
+
     boolean isStrobogrammatic(char l, char r) {
         char[] s = new char[] { l, r };
         for (char[] g : GOOD_PATTERNS) {

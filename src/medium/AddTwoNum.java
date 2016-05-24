@@ -4,7 +4,6 @@ package medium;
  * You are given two linked lists representing two non-negative numbers. The
  * digits are stored in reverse order and each of their nodes contain a single
  * digit. Add the two numbers and return it as a linked list.
- *
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
  * Output: 7 -> 0 -> 8
  * Tags: Linkedlist, Math
@@ -18,7 +17,7 @@ class AddTwoNum {
         ListNode r1 = buildList1();
         ListNode r2 = buildList2();
         ListNode head = s.addTwoNumbers(r1, r2);
-        while (head!= null) {
+        while (head != null) {
             System.out.print(head.next == null ? head.val : head.val + "->");
             head = head.next;
         }
@@ -65,6 +64,7 @@ class AddTwoNum {
             next = null;
         }
     }
+
     static ListNode buildList1() {
         ListNode node0 = new ListNode(2);
         ListNode node1 = new ListNode(4);

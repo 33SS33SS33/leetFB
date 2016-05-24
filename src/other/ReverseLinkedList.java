@@ -4,8 +4,11 @@ package other;
  * Write a function to reverse a linked list
  * Tags: LinkedList
  */
-/**递归的方法应该看一看
- 都写了*/
+
+/**
+ * 递归的方法应该看一看
+ * 都写了
+ */
 
 class ReverseLinkedList {
     public static void main(String[] args) {
@@ -27,7 +30,8 @@ class ReverseLinkedList {
         }
     }
 
-    /**递归
+    /**
+     * 递归
      * Recursive
      * Divide the list in 2 parts - first node and rest of the linked list
      * Call reverse for the rest of the linked list
@@ -43,7 +47,8 @@ class ReverseLinkedList {
         return temp;
     }
 
-    /**creek--Iterative 迭代
+    /**
+     * creek--Iterative 迭代
      */
     public Node reverseListB(Node head) {
         if (head == null || head.next == null)

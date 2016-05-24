@@ -12,7 +12,6 @@ import java.util.Stack;
  * Have you consider that the string might be empty? This is a good question to
  * ask during an interview.
  * For the purpose of this problem, we define empty string as valid palindrome.
-
  * Tags: Two pointers, String
  */
 
@@ -55,6 +54,7 @@ class ValidPalindrome {
         }
         return end <= start;
     }
+
     private static boolean isValid(char c) {
         return Character.isLetterOrDigit(c);
     }

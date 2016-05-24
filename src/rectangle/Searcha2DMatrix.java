@@ -14,7 +14,7 @@ package rectangle;
  * [23, 30, 34, 50]
  * ]
  * Given target = 3, return true.
- *
+ * <p/>
  * Tags: Array, Binary Search
  */
 class Searcha2DMatrix {
@@ -22,16 +22,15 @@ class Searcha2DMatrix {
         Searcha2DMatrix s = new Searcha2DMatrix();
         int[][] matrix = { { 1, 3, 5, 7 }, { 10, 11, 16, 20 }, { 23, 30, 34, 50 } };
         System.out.println(s.searchMatrix(matrix, 0));
-
         System.out.println(s.searchMatrix(matrix, 1));
-
         System.out.println(s.searchMatrix(matrix, 100));
         System.out.println(s.searchMatrixA(matrix, 100));
     }
+
     /**
      * n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
      * an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
-     *
+     * <p/>
      * disadvantage: 1. m * n may overflow 2. / and % are expensive
      */
     public boolean searchMatrix(int[][] matrix, int target) {
@@ -56,7 +55,8 @@ class Searcha2DMatrix {
         return false;
     }
 
-    /** 先用行进行二分搜索 确定行之后对列进行二分搜索
+    /**
+     * 先用行进行二分搜索 确定行之后对列进行二分搜索
      * Binary search to locate row, then binary search in a row
      * O(logm + logn)
      */

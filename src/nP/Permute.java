@@ -20,6 +20,7 @@ public class Permute {
         helper(num, new boolean[num.length], new ArrayList<Integer>(), res);
         return res;
     }
+
     private void helper(int[] num, boolean[] used, ArrayList<Integer> item,
             ArrayList<ArrayList<Integer>> res) {
         if (item.size() == num.length) {

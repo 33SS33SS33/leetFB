@@ -9,7 +9,6 @@ package string;
  * Longest Substring with At Most Two Distinct Characters
  */
 public class LengthOfLongestSubstringTwoDistinct {
-
     public static void main(String[] args) {
         String s = "mississippi";
         System.out.println(lengthOfLongestSubstringTwoDistinct(s));

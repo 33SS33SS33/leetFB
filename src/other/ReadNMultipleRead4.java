@@ -18,9 +18,9 @@ package other;
  */
 class ReadNMultipleRead4 {
     public static void main(String[] args) {
-        char[] buf={'s','e','t','s','e','t'};
-        int n=2;
-        System.out.println(new ReadNMultipleRead4().read(buf,n));
+        char[] buf = { 's', 'e', 't', 's', 'e', 't' };
+        int n = 2;
+        System.out.println(new ReadNMultipleRead4().read(buf, n));
     }
 
     /**

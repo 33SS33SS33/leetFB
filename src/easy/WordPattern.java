@@ -16,6 +16,8 @@ package easy;
  * You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space."
  */
 
-/**和那道ismorphic是类似的  用了set的解法*/
+/**
+ * 和那道ismorphic是类似的  用了set的解法
+ */
 public class WordPattern {
 }

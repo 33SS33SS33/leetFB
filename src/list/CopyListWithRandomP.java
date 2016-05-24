@@ -20,7 +20,9 @@ class CopyListWithRandomP {
 
     }
 
-    /**creek ------*/
+    /**
+     * creek ------
+     */
     public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null)
             return null;
@@ -108,7 +110,9 @@ class CopyListWithRandomP {
         return dummy;
     }
 
-    /**O(n) runtime, O(n) space – Hash table*/
+    /**
+     * O(n) runtime, O(n) space – Hash table
+     */
     public RandomListNode copyRandomListC(RandomListNode head) {
         Map<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
         RandomListNode p = head;
@@ -129,7 +133,9 @@ class CopyListWithRandomP {
         return dummy.next;
     }
 
-    /**O(n) runtime, O(1) space – Modify original structure*/
+    /**
+     * O(n) runtime, O(1) space – Modify original structure
+     */
     public RandomListNode copyRandomListD(RandomListNode head) {
         RandomListNode p = head;
         while (p != null) {

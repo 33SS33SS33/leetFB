@@ -25,6 +25,7 @@ public class LongestPalindrome {
         }
         return s.substring(start, end + 1);
     }
+
     private int expandAroundCenter(String s, int left, int right) {
         int L = left, R = right;
         while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {

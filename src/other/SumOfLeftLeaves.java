@@ -2,11 +2,9 @@ package other;
 
 /**
  * Find sum of all left leaves in a given Binary Tree
- * <p/>
  * Tags: Tree, DFS
  */
 class SumOfLeftLeaves {
-
     public static void main(String[] args) {
         SumOfLeftLeaves s = new SumOfLeftLeaves();
         int sum = s.sumOfLeftLeaves(s.buildTree());
@@ -46,11 +44,9 @@ class SumOfLeftLeaves {
         TreeNode t0 = new TreeNode(20);
         TreeNode t1 = new TreeNode(9);
         TreeNode t2 = new TreeNode(49);
-
         TreeNode t3 = new TreeNode(5);
         TreeNode t4 = new TreeNode(12);
         TreeNode t5 = new TreeNode(15);
-
         TreeNode t6 = new TreeNode(23);
         TreeNode t7 = new TreeNode(52);
         TreeNode t8 = new TreeNode(50);

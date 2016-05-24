@@ -6,7 +6,6 @@ import java.util.Stack;
 /**
  * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
  * The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
-
  * Tags: Stack, String
  */
 class ValidParenthese {
@@ -78,10 +77,12 @@ class ValidParenthese {
         }
         return stk.isEmpty();
     }
+
     boolean isParenthese(char c) {
         String parens = "(){}[]";
         return parens.indexOf(c) != -1;
     }
+
     boolean isMatch(char c1, char c2) {
         return (c1 == '(' && c2 == ')') || (c1 == '{' && c2 == '}') || (c1 == '[' && c2 == ']');
     }

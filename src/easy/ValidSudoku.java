@@ -9,7 +9,6 @@ import java.util.*;
  * Note:
  * A valid Sudoku board (partially filled) is not necessarily solvable. Only
  * the filled cells need to be validated.
- *
  * Tags: Hashtable
  */
 class ValidSudoku {
@@ -48,12 +47,10 @@ class ValidSudoku {
                         return false; // already in row
                     else
                         row[i] |= 1 << num;
-
                     if ((col[j] & 1 << num) > 0)
                         return false;// already in col
                     else
                         col[j] |= 1 << num;
-
                     int sqrIdx = (i - i % 3) + j / 3; // note the square idx
                     if ((sqr[sqrIdx] & 1 << num) > 0)
                         return false; // already

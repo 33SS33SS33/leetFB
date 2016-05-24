@@ -17,7 +17,6 @@ import java.util.*;
  * Could you do it in-place with O(1) extra space?
  * Related problem:
  * Reverse Words in a String II
- *
  * Tags: Array
  */
 
@@ -39,7 +38,7 @@ class RotateArray {
         r.rotate(nums, k);
         System.out.println(Arrays.toString(nums));
 
-        int[] nums2 = { 1, 2, 3, 4, 5, 6 ,7};
+        int[] nums2 = { 1, 2, 3, 4, 5, 6, 7 };
         int k2 = 3;
         r.rotate2(nums2, k2);
         System.out.println(Arrays.toString(nums2));
@@ -67,7 +66,6 @@ class RotateArray {
             return;
         if (nums.length == 1 || k == 0 || k == nums.length)
             return; // special cases
-
         int len = nums.length;
         k %= len;
         int idx = 0;

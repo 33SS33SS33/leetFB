@@ -10,11 +10,10 @@ import java.util.Arrays;
  * For example,
  * Given input array A = [1,1,2],
  * Your function should return length = 2, and A is now [1,2].
-
  * Tags: Array, Two pointers
  */
 
-/*两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找*/
+/**两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找*/
 class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray r = new RemoveDuplicatesFromSortedArray();
@@ -29,7 +28,8 @@ class RemoveDuplicatesFromSortedArray {
         }
     }
 
-    /** 最好的~~~~
+    /**
+     * 最好的~~~~
      * Use count to remember current position
      */
     public int removeDupStandard(int[] A) {
@@ -64,7 +64,9 @@ class RemoveDuplicatesFromSortedArray {
         return pos;
     }
 
-    /**创建信的数组*/
+    /**
+     * 创建信的数组
+     */
     // Create an array with all unique elements
     public static int[] removeDuplicatesC(int[] A) {
         if (A.length < 2)

@@ -5,7 +5,6 @@ package other;
  * i.e.
  * [1] A0 >= A1 <= A2 >= A3 .... .... An.
  * [2] A0 <= A1 >= A2 <= A3 .... .... An.
- * <p/>
  * Tags: Sort, Array
  */
 class WiggleSortUnsorted {
