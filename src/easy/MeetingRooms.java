@@ -12,12 +12,13 @@ package easy;
  */
 
 /**按照start来排序 如果后一个的end 小于 前一个的start 就return False*/
+
 /**会议中间时间没有重叠的话就可以参加*/
 public class MeetingRooms {
     public static void main(String[] args) {
-        Interval inter1=new Interval(1,4);
-        Interval inter2=new Interval(5,6);
-        Interval[] intervals = {inter1,inter2};
+        Interval inter1 = new Interval(1, 4);
+        Interval inter2 = new Interval(5, 6);
+        Interval[] intervals = { inter1, inter2 };
         System.out.println(new MeetingRooms().canAttendMeetings(intervals));
     }
 
@@ -36,10 +37,12 @@ public class MeetingRooms {
     public static class Interval {
         int start;
         int end;
+
         Interval() {
             start = 0;
             end = 0;
         }
+
         Interval(int s, int e) {
             start = s;
             end = e;

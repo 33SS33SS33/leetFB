@@ -13,7 +13,8 @@ package easy;
  Follow Up:
  Can you do it in O(n) time?"
 
- "需要用到哈希表 遍历一遍数组 首先存入到当前index为止 所有的和 然后查一下有没有当前这个和-k存储在于哈希表内 若有就计算一下
+ "需要用到哈希表 遍历一遍数组 首先存入到当前index为止 所有的和
+ 然后查一下有没有当前这个和-k存储在于哈希表内 若有就计算一下
  注意一下哈希表最开始存的0 是考虑了如果当前的和直接等于k的情况"
  */
 public class MaxSizeSubarraySumEqualsk {

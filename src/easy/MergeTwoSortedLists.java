@@ -3,21 +3,22 @@ package easy;
 /**
  * Merge two sorted linked lists and return it as a new list. The new list
  * should be made by splicing together the nodes of the first two lists.
- *
  * Tags: Linkedlist
  */
 public class MergeTwoSortedLists {
     public static void main(String[] args) {
-        ListNode head1=buildList();
-        ListNode head2=buildList2();
-        ListNode res=new MergeTwoSortedLists().mergeTwoListsRec(head1,head2);
+        ListNode head1 = buildList();
+        ListNode head2 = buildList2();
+        ListNode res = new MergeTwoSortedLists().mergeTwoListsRec(head1, head2);
 
-       while(res.next!=null){
-           System.out.print(res.val+",");
-           res=res.next;
-       }
+        while (res.next != null) {
+            System.out.print(res.val + ",");
+            res = res.next;
+        }
     }
-    /**递归
+
+    /**
+     * 递归
      * Recursive
      * the order of l1, l2 doesn't matter
      */
@@ -36,7 +37,8 @@ public class MergeTwoSortedLists {
         }
     }
 
-    /**迭代
+    /**
+     * 迭代
      * iterasive
      */
     public ListNode mergeTwoListsB(ListNode l1, ListNode l2) {
@@ -73,6 +75,7 @@ public class MergeTwoSortedLists {
         node1.next = node2;
         return node0;
     }
+
     static ListNode buildList2() {
         ListNode node0 = new ListNode(3);
         ListNode node1 = new ListNode(7);
@@ -81,6 +84,7 @@ public class MergeTwoSortedLists {
         node1.next = node2;
         return node0;
     }
+
     static class ListNode {
         int      val;
         ListNode next;

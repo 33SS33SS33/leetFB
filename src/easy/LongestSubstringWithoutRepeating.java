@@ -12,6 +12,7 @@ import java.util.*;
  */
 class LongestSubstringWithoutRepeating {
     public static void main(String[] args) {
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
         System.out.println(lengthOfLongestSubstringA("abcabcbb"));
         System.out.println(lengthOfLongestSubstringB("abcabcbb"));
         System.out.println(lengthOfLongestSubstringC("abcabcbb"));
@@ -36,7 +37,7 @@ class LongestSubstringWithoutRepeating {
      * If the character is already in the hashmap,
      * then move the left pointer to the right of the same character last found. Note that the two pointers can only move forward.
      */
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
         if (s.length()==0) return 0;
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
         int max=0;
