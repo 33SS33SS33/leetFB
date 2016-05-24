@@ -6,7 +6,6 @@ import java.util.*;
  * Dijkstra's Algorithm
  * Find the shortest weighted path from some starting vertex to all vertices.
  * Edges have non-negative weight
-
  * Tags: Graph
  */
 class Dijkstra {

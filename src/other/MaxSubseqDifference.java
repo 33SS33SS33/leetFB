@@ -7,7 +7,6 @@ package other;
 /**
  * Find two contiguous subsequences in an array with maximum difference. The
  * subsequences may be overlapping.
- * <p/>
  * Tags: Array
  */
 class MaxSubseqDifference {
@@ -44,7 +43,6 @@ class MaxSubseqDifference {
                 beginTemp = i;
             } else
                 maxEndingHere += A[i];
-
             if (maxEndingHere >= maxSoFar) {
                 maxSoFar = maxEndingHere;
                 begin = beginTemp;

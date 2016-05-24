@@ -8,11 +8,9 @@ import java.util.*;
 
 /**
  * Implement a hash table
- * <p/>
  * Tags: DS
  */
 public class MyHashtable {
-
     LinkedList<Node>[] array;
     int                size;
 
@@ -29,10 +27,6 @@ public class MyHashtable {
     public MyHashtable(int size) {
         array = new LinkedList[size];
         this.size = size;
-    }
-
-    public static void main(String[] args) {
-
     }
 
     /**

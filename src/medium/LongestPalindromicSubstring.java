@@ -54,7 +54,7 @@ class LongestPalindromicSubstring {
      * Expand from center character and center of two chars
      * Update result according to the returned length
      */
-       /*基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
+       /**基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
     比如串abc,中心可以是a,b,c,或者是ab的间隙，bc的间隙）往两边同时进行扫描，直到不是回文串为止。
     假设字符串的长度为n,那么中心的个数为2*n-1(字符作为中心有n个，间隙有n-1个）。
     对于每个中心往两边扫描的复杂度为O(n),所以时间复杂度为O((2*n-1)*n)=O(n^2),空间复杂度为O(1)*/
@@ -83,6 +83,33 @@ class LongestPalindromicSubstring {
         }
         return s.substring(l + 1, r); // note the range is from l + 1 to r - 1
     }
+
+    /**
+     * O(n2) runtime, O(1) space – Simpler solution:
+     */
+    public String longestPalindromeC2(String s) {
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter2(s, i, i);
+            int len2 = expandAroundCenter2(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private int expandAroundCenter2(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+            L--;
+            R++;
+        }
+        return R - L - 1;
+    }
+
     /**
      * Manacher's Algorithm, O(n) Time.
      * S = “abba” => T = “^#a#b#b#a#$”.

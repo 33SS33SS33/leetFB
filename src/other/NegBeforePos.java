@@ -4,25 +4,27 @@ package other;
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
 
+import backTrac.SystemDesign;
+
 /**
  * Given an array which has n integers. It has both positive and negative
  * integers. Now you need to sort this array in such a way that, the negative
  * integers should be in the front, and the positive integers should at the
  * back. Also the relative position should not be changed.
- * <p/>
  * Example:
  * -1 1 3 -2 2
- * <p/>
  * Output:
  * -1 -2 1 3 2.
- * <p/>
  * Required running time complexity is O(N) and the space complexity is O(1)
- * <p/>
  * Tags: Array, Sort
  */
 class NegBeforePos {
     public static void main(String[] args) {
-
+        int[] A={-1, 1, 3 , -2, 2};
+        negBeforePos(A);
+        for(int i:A){
+            System.out.print(i+",");
+        }
     }
 
     /**
@@ -33,7 +35,7 @@ class NegBeforePos {
      * If A[negIndex] > 0, swap it with posIndex, move posIndex forward
      * Stop when posIndex reach array length or negIndex reach negCount
      */
-    public void negBeforePos(int[] A) {
+    public static void negBeforePos(int[] A) {
         int negCount = 0;
         for (int i = 0; i < A.length; i++) {
             if (A[i] < 0)

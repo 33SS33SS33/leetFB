@@ -5,9 +5,8 @@ package other;
  */
 
 /**
- * Given two sorted arrays A, B of size m and n respectively. Find the k-th
- * smallest element in the union of A and B. You can assume that there are no
- * duplicate elements.
+ * Given two sorted arrays A, B of size m and n respectively.
+ * Find the k-th smallest element in the union of A and B. You can assume that there are no duplicate elements.
  * Tags: Array,
  */
 class KthSmallestSortedArrays {
@@ -35,7 +34,6 @@ class KthSmallestSortedArrays {
         int m = B.length;
         if (n > m)
             return kthSmallestRec(k, B, A);
-
         int mid = (n + m - 1) / 2;
         int l = 0, r = Math.min(mid, n); // r is n, NOT n-1, this is important!!
         while (l < r) {
@@ -46,13 +44,11 @@ class KthSmallestSortedArrays {
             else
                 r = midA;
         }
-
         // after binary search, we almost get the median because it must be between these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1]
         int a = Math.max(l > 0 ? A[l - 1] : Integer.MIN_VALUE,
                 k - l >= 0 ? B[k - l] : Integer.MIN_VALUE);
         if (((n + m) & 1) == 1) // total number is odd
             return (double) a;
-
         /*total number is even*/
         int b = Math.min(l < n ? A[l] : Integer.MAX_VALUE,
                 k - l + 1 < m ? B[k - l + 1] : Integer.MAX_VALUE);

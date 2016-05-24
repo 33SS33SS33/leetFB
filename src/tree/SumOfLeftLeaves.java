@@ -1,4 +1,4 @@
-package other;
+package tree;
 
 /**
  * Find sum of all left leaves in a given Binary Tree

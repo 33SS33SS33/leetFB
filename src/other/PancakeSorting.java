@@ -6,9 +6,7 @@ package other;
 
 /**
  * Given an an unsorted array, sort the given array.
- * You are allowed to do only following operation on array
- * flip(arr, i): Reverse array from 0 to i
- * <p/>
+ * You are allowed to do only following operation on array flip(arr, i): Reverse array from 0 to i
  * Tags: Sort
  */
 class PancakeSorting {

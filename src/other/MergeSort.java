@@ -67,36 +67,5 @@ class MergeSort {
         }
     }
 
-
-
-/*    public class ForkAndJoinTest extends RecursiveTask{
-        public static final int INSERT_SORT_LENGTH = 23;
-        private static final long serialVersionUID = 1L;
-        private int[] array = null;
-        private int start;
-        private int end;
-        ForkAndJoinTest(int[] a, int s, int e) {
-            array = a;
-            start = s;
-            end = e;
-        }
-        protected Object compute() {
-            boolean canCompute = (end - start) <= INSERT_SORT_LENGTH;
-            if(canCompute){
-                insertSort(array, start, end);
-            }else{
-                int mid = (end + start)/2;
-                ForkAndJoinTest left = new ForkAndJoinTest(array,start,mid);
-                ForkAndJoinTest right = new ForkAndJoinTest(array,mid,end);
-                left.fork();
-                right.fork();
-
-                left.join();
-                right.join();
-                merge(array,start,mid,end);
-            }
-            return null;
-        }
-    }*/
 }
 

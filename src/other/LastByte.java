@@ -5,7 +5,6 @@ package other;
  * is 0, this byte represents 1 character. If the first bit is 1, it represents
  * 2 characters. Given a string of bits, find out whether the last char is 1
  * byte encoded or 2-byte encoded.
- * <p/>
  * Tags: Recursive
  */
 class LastByte {

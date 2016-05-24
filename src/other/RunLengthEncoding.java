@@ -2,9 +2,7 @@ package other;
 
 /**
  * Run Length Encoding
- * wwwwaaadexxxxxx
- * =>   w4a3d1e1x6
- * <p/>
+ * wwwwaaadexxxxxx =>  w4a3d1e1x6
  * Tags: String
  */
 public class RunLengthEncoding {

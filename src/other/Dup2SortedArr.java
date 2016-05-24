@@ -4,7 +4,6 @@ import java.util.*;
 
 /**
  * Find duplications from two sorted array
-
  * Tags: Array, Two Pointers
  */
 class Dup2SortedArr {

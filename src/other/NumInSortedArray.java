@@ -6,7 +6,6 @@ package other;
 
 /**
  * Find how many times a number shows in an sorted array
- * <p/>
  * Tags: Array
  */
 class NumInSortedArray {
@@ -37,7 +36,6 @@ class NumInSortedArray {
         }
         if (l > r)
             return 0;
-
         int start = m;
         int end = m;
         while (end + 1 < A.length && A[end] == A[end + 1])
