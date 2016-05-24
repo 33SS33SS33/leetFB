@@ -1,4 +1,4 @@
-package note;
+package afrequency;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/16.

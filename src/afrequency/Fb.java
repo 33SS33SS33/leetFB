@@ -1,4 +1,4 @@
-package frequency;
+package afrequency;
 
 /**
  * Created by shanshan on 16/5/22.
