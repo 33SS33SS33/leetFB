@@ -6,7 +6,6 @@ package string;
  * The matching should cover the entire input string (not partial).
  * The function prototype should be:
  * bool isMatch(const char *s, const char *p)
- *
  * Some examples:
  * isMatch("aa","a") → false
  * isMatch("aa","aa") → true
@@ -15,11 +14,9 @@ package string;
  * isMatch("aa", "a*") → true
  * isMatch("ab", "?*") → true
  * isMatch("aab", "c*a*b") → false
- *
  * My own examples:
  * isMatch("aab", "a*a*b") → true
  * isMatch("a", "a*") → true
- *
  * Tags: DP, Backtracking, Greedy, String
  */
 class WildcardMatching {

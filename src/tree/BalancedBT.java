@@ -6,7 +6,10 @@ package tree;
  * in which the depth of the two subtrees of every node never differ by more than 1.
  * Tags: Tree, DFS
  */
-/**还是自底向上的得到深度值 然后计算*/
+
+/**
+ * 还是自底向上的得到深度值 然后计算
+ */
 class BalancedBT {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -22,6 +25,7 @@ class BalancedBT {
                 isBalancedA(root.left) && isBalancedA(root.right);
         //        return isBalanced2();
     }
+
     int height(TreeNode root) {
         if (root == null)
             return 0;
@@ -29,22 +33,22 @@ class BalancedBT {
             return Math.max(height(root.left), height(root.right)) + 1;
     }
 
-    /**
-     * --------creek------
-     *
+    /**creek
+     * 这里我们用一个整数来做返回值，而0或者正数用来表示树的深度，而-1则用来比较此树已经不平衡了，
+     * 如果已经不平衡，则递归一直返回-1即可，也没有继续比较的必要了，
+     * 否则就利用返回的深度信息看看左右子树是不是违反平衡条件，
+     * 如果违反返回-1，否则返回左右子树深度大的加一作为自己的深度即可。
+     * 算法的时间是一次树的遍历O(n)，空间是栈高度O(logn)。
      */
-    /*这里我们用一个整数来做返回值，而0或者正数用来表示树的深度，而-1则用来比较此树已经不平衡了，
-    如果已经不平衡，则递归一直返回-1即可，也没有继续比较的必要了，否则就利用返回的深度信息看看左右子树是不是违反平衡条件，
-    如果违反返回-1，否则返回左右子树深度大的加一作为自己的深度即可。
-    算法的时间是一次树的遍历O(n)，空间是栈高度O(logn)。*/
     public boolean isBalancedB(TreeNode root) {
         if (root == null)
             return true;
         if (getHeight(root) == -1)
             return false;
         return true;
-//     即   return maxDepth(root) != -1;
+        //     即   return maxDepth(root) != -1;
     }
+
     /**
      * Modification of max depth
      * If current node is null, return 0
@@ -63,16 +67,6 @@ class BalancedBT {
             return -1;
         }
         return Math.max(left, right) + 1;
-    }
-
-    public static class TreeNode {
-        int      val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 
     private static TreeNode buildTree() {
@@ -96,5 +90,15 @@ class BalancedBT {
         t7.left = t8;
 
         return t0;
+    }
+
+    public static class TreeNode {
+        int      val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }
