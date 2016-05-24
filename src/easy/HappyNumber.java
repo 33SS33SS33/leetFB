@@ -14,6 +14,7 @@ import java.util.Set;
  * 62 + 82 = 100
  * 12 + 02 + 02 = 1
  */
+
 /**按照规则构造即可 记录一下出现过的数*/
 public class HappyNumber {
     public static void main(String[] args) {

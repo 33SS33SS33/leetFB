@@ -6,11 +6,16 @@ package easy;
 
 /**
  * You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed,
- * the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
- * Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.
+ * the only constraint stopping you from robbing each of them is that adjacent houses have
+ * security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+ * Given a list of non-negative integers representing the amount of money of each house,
+ * determine the maximum amount of money you can rob tonight without alerting the police.
  */
-/**dp[i] = max(dp[i-2]+nums[i], dp[i-1])
- 注意一下初始化条件 dp[0], dp[1] = nums[0], max(nums[0], nums[1])*/
+
+/**
+ * dp[i] = max(dp[i-2]+nums[i], dp[i-1])
+ * 注意一下初始化条件 dp[0], dp[1] = nums[0], max(nums[0], nums[1])
+ */
 public class HouseRobber {
     public static void main(String[] args) {
         int[] num = { 5, 4, 6, 7 };
@@ -54,7 +59,6 @@ public class HouseRobber {
     public int robB(int[] num) {
         if (num == null || num.length == 0)
             return 0;
-
         int even = 0;
         int odd = 0;
         for (int i = 0; i < num.length; i++) {

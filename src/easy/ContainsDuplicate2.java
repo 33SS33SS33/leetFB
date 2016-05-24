@@ -8,9 +8,13 @@ import java.util.*;
 
 /**
  * Given an array of integers and an integer k,
- * find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
+ * find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j]
+ * and the difference between i and j is at most k.
  */
-/**需要记录一下上一个重复元素最近的坐标*/
+
+/**
+ * 需要记录一下上一个重复元素最近的坐标
+ */
 public class ContainsDuplicate2 {
     public static void main(String[] args) {
         int[] num = { 1, 3, 7, 5, 8 };
@@ -28,7 +32,6 @@ public class ContainsDuplicate2 {
      */
     public static boolean containsNearbyDuplicateC(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
                 int pre = map.get(nums[i]);
@@ -44,7 +47,6 @@ public class ContainsDuplicate2 {
         if (k <= 0)
             return false;
         Map<Integer, List<Integer>> pairs = new HashMap<Integer, List<Integer>>();
-
         for (int i = 0; i < nums.length; i++) {
             List<Integer> l = pairs.get(nums[i]);
             if (l == null) {
@@ -65,7 +67,6 @@ public class ContainsDuplicate2 {
     public static boolean containsNearbyDuplicateB(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         int min = Integer.MAX_VALUE;
-
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i])) {
                 int preIndex = map.get(nums[i]);

@@ -48,7 +48,6 @@ class IntersectionOfLinkedList {
         else
             while (diff-- > 0)
                 headB = headB.next;
-
         for (; headA != null && headB != null; headA = headA.next, headB = headB.next)
             if (headA.equals(headB))
                 return headA;

@@ -3,12 +3,11 @@ package easy;
 /**
  * Write a function to find the longest common prefix string amongst an array
  * of strings.
-
  * Tags: String
  */
 class LongestCommonPrefix {
     public static void main(String[] args) {
-        String[] strs = { "absss", "abddrre" };
+        String[] strs = { "absss", "abddrre","abs" };
         System.out.println(new LongestCommonPrefix().longestCommonPrefixA(strs));
         System.out.println(new LongestCommonPrefix().longestCommonPrefixB(strs));
         System.out.println(new LongestCommonPrefix().longestCommonPrefixC(strs));

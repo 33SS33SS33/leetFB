@@ -2,8 +2,7 @@ package easy;
 
 /**
  * Compare two version numbers version1 and version1.
- * If version1 > version2 return 1, if version1 < version2 return -1, otherwise
- * return 0.
+ * If version1 > version2 return 1, if version1 < version2 return -1, otherwise return 0.
  * You may assume that the version strings are non-empty and contain only
  * digits and the . character.
  * The . character does not represent a decimal point and is used to separate
@@ -12,10 +11,12 @@ package easy;
  * is the fifth second-level revision of the second first-level revision.
  * Here is an example of version numbers ordering:
  * 0.1 < 1.1 < 1.2 < 13.37
- *
  * Tags: String
  */
-/**就是用.来切分 切了之后挨个比较 可能有一个字符串会溢出 就自动给个0*/
+
+/**
+ * 就是用.来切分 切了之后挨个比较 可能有一个字符串会溢出 就自动给个0
+ */
 class CompareVersionNums {
     public static void main(String[] args) {
         String v1 = "001.3.3.7.000";
@@ -54,7 +55,6 @@ class CompareVersionNums {
     public static int compareVersionB(String version1, String version2) {
         String[] arr1 = version1.split("\\.");
         String[] arr2 = version2.split("\\.");
-
         int i = 0;
         while (i < arr1.length || i < arr2.length) {
             if (i < arr1.length && i < arr2.length) {

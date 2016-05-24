@@ -6,13 +6,9 @@ import java.util.Stack;
  * Created by GAOSHANSHAN835 on 2016/3/3.
  */
 public class ImplementQueueusingStacks2f {
-    /**
-     * creek------
-     */
-
+    /**creek*/
     Stack<Integer> temp  = new Stack<Integer>();
     Stack<Integer> value = new Stack<Integer>();
-
     // Push element x to the back of queue.
     public void push(int x) {
         if (value.isEmpty()) {

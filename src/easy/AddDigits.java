@@ -11,10 +11,9 @@ package easy;
 
 /**可以通过找规律直接算出来*/
 public class AddDigits {
-
     public static void main(String[] args) {
-        int num = 222;
-        System.out.println(addDigits(num));
+        System.out.println(addDigits(222));
+        System.out.println(addDigits(38));
     }
 
     public static int addDigits(int num) {
