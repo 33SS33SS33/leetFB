@@ -3,7 +3,7 @@ package afrequency;
 /**
  * Created by shanshan on 16/5/22.
  */
-public class micro {
+public class Micro {
 /** 78
  #
  Title  Acceptance  Difficulty  Frequency
