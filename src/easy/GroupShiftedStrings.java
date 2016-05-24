@@ -15,10 +15,43 @@ package easy;
  ["a","z"]
  ]*/
 
+import java.util.*;
+
 /**
  * 观察一下 就能发现 成组的字符串的特点就是 他们的后一个字符减去前一个字符的差值是相等的  所以用哈希表记录即可
  * 这里注意负数的取余运算 25 % 26 和 -1 % 26是相等的 都是25
  * 重要
  */
 public class GroupShiftedStrings {
+    public static void main(String[] args) {
+        String[] words = { "abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"};
+        System.out.println(new GroupShiftedStrings().groupStrings(words));
+    }
+
+    public List<List<String>> groupStrings(String[] strings) {
+        List<List<String>> result = new ArrayList<List<String>>();
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
+        for (String str : strings) {
+            int offset = str.charAt(0) - 'a';
+            String key = "";
+            for (int i = 0; i < str.length(); i++) {
+                char c = (char) (str.charAt(i) - offset);
+                if (c < 'a') {
+                    c += 26;
+                }
+                key += c;
+            }
+            if (!map.containsKey(key)) {
+                List<String> list = new ArrayList<String>();
+                map.put(key, list);
+            }
+            map.get(key).add(str);
+        }
+        for (String key : map.keySet()) {
+            List<String> list = map.get(key);
+            Collections.sort(list);
+            result.add(list);
+        }
+        return result;
+    }
 }
