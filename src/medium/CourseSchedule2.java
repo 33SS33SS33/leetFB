@@ -26,10 +26,10 @@ import java.util.*;
  Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3]. Another correct ordering is[0,2,1,3].*/
 public class CourseSchedule2 {
     public static void main(String[] args) {
-        int[][] prerequisites = {{1,0}};
-        int[][] prerequisites2 = {{1,0},{0,1}};
-        int[] res=new CourseSchedule2().findOrder(2,prerequisites);
-        for(int i:res) {
+        int[][] prerequisites = { { 1, 0 } };
+        int[][] prerequisites2 = { { 1, 0 }, { 0, 1 } };
+        int[] res = new CourseSchedule2().findOrder(2, prerequisites);
+        for (int i : res) {
             System.out.println(i);
         }
     }
@@ -85,27 +85,32 @@ public class CourseSchedule2 {
         }
     }
 
-//https://leetcode.com/discuss/35605/two-ac-solution-in-java-using-bfs-and-dfs-with-explanation
+    //https://leetcode.com/discuss/35605/two-ac-solution-in-java-using-bfs-and-dfs-with-explanation
     public int[] findOrderB(int numCourses, int[][] prerequisites) {
         int[] incLinkCounts = new int[numCourses];
-        List<List<Integer>> adjs = new ArrayList<>(numCourses);
+        List<List<Integer>> adjs = new ArrayList<List<Integer>>(numCourses);
         initialiseGraph(incLinkCounts, adjs, prerequisites);
         //return solveByBFS(incLinkCounts, adjs);
         return solveByDFS(adjs);
     }
-    private void initialiseGraph(int[] incLinkCounts, List<List<Integer>> adjs, int[][] prerequisites){
+
+    private void initialiseGraph(int[] incLinkCounts, List<List<Integer>> adjs,
+            int[][] prerequisites) {
         int n = incLinkCounts.length;
-        while (n-- > 0) adjs.add(new ArrayList<>());
+        while (n-- > 0)
+            adjs.add(new ArrayList<Integer>());
         for (int[] edge : prerequisites) {
             incLinkCounts[edge[0]]++;
             adjs.get(edge[1]).add(edge[0]);
         }
     }
-    private int[] solveByBFS(int[] incLinkCounts, List<List<Integer>> adjs){
+
+    private int[] solveByBFS(int[] incLinkCounts, List<List<Integer>> adjs) {
         int[] order = new int[incLinkCounts.length];
-        Queue<Integer> toVisit = new ArrayDeque<>();
+        Queue<Integer> toVisit = new ArrayDeque<Integer>();
         for (int i = 0; i < incLinkCounts.length; i++) {
-            if (incLinkCounts[i] == 0) toVisit.offer(i);
+            if (incLinkCounts[i] == 0)
+                toVisit.offer(i);
         }
         int visited = 0;
         while (!toVisit.isEmpty()) {
@@ -113,7 +118,8 @@ public class CourseSchedule2 {
             order[visited++] = from;
             for (int to : adjs.get(from)) {
                 incLinkCounts[to]--;
-                if (incLinkCounts[to] == 0) toVisit.offer(to);
+                if (incLinkCounts[to] == 0)
+                    toVisit.offer(to);
             }
         }
         return visited == incLinkCounts.length ? order : new int[0];
@@ -123,21 +129,25 @@ public class CourseSchedule2 {
         BitSet hasCycle = new BitSet(1);
         BitSet visited = new BitSet(adjs.size());
         BitSet onStack = new BitSet(adjs.size());
-        Deque<Integer> order = new ArrayDeque<>();
+        Deque<Integer> order = new ArrayDeque<Integer>();
         for (int i = adjs.size() - 1; i >= 0; i--) {
-            if (visited.get(i) == false && hasOrder(i, adjs, visited, onStack, order) == false) return new int[0];
+            if (visited.get(i) == false && hasOrder(i, adjs, visited, onStack, order) == false)
+                return new int[0];
         }
         int[] orderArray = new int[adjs.size()];
-        for (int i = 0; !order.isEmpty(); i++) orderArray[i] = order.pop();
+        for (int i = 0; !order.isEmpty(); i++)
+            orderArray[i] = order.pop();
         return orderArray;
     }
 
-    private boolean hasOrder(int from, List<List<Integer>> adjs, BitSet visited, BitSet onStack, Deque<Integer> order) {
+    private boolean hasOrder(int from, List<List<Integer>> adjs, BitSet visited, BitSet onStack,
+            Deque<Integer> order) {
         visited.set(from);
         onStack.set(from);
         for (int to : adjs.get(from)) {
             if (visited.get(to) == false) {
-                if (hasOrder(to, adjs, visited, onStack, order) == false) return false;
+                if (hasOrder(to, adjs, visited, onStack, order) == false)
+                    return false;
             } else if (onStack.get(to) == true) {
                 return false;
             }

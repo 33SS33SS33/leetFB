@@ -7,11 +7,9 @@ package dP;
  * Find the minimum positive number K for an array such that for each item in
  * the array, adding or substracting a number from [0, K], to make the array in
  * strictly ascending order.
- *
  * Example:
  * [10, 2, 20]
  * the min K is 5, a possible result is [10-5, 2+4, 20]
- *
  * Tags: DP
  */
 class MinKStrictAscending {
@@ -25,8 +23,7 @@ class MinKStrictAscending {
 
     /**
      * DP
-     * Keep track of previous minimum possible value and k while iterating over
-     * the array
+     * Keep track of previous minimum possible value and k while iterating over the array
      * If A[i] <= prev - k, which means k is not big enough, calculate
      * correction value and update k and prev.
      * If A[i] > prev - k, even > prev + k, update prev to A[i] - k

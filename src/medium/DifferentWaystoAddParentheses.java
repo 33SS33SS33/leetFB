@@ -6,6 +6,13 @@ import java.util.Scanner;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
+ * Example 1
+ * Input: "2-1-1".
+ * <p/>
+ * ((2-1)-1) = 0
+ * (2-(1-1)) = 2
+ * Output: [0, 2]
  */
 /**Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
  Example 1
@@ -14,6 +21,7 @@ import java.util.Scanner;
  ((2-1)-1) = 0
  (2-(1-1)) = 2
  Output: [0, 2]*/
+
 /**很重要的题目 可以用动归 DP 备忘录 未实现
  主要思路就是首先将输入的input分割 变成数字或者加减乘除的形式
  Basic idea is using each operator to divide the whole string into three part:
@@ -33,7 +41,7 @@ import java.util.Scanner;
  这种for的形式十分重要也十分方便*/
 public class DifferentWaystoAddParentheses {
     public static void main(String[] args) {
-        String s="2-1-1";
+        String s = "2-1-1";
         System.out.println(new DifferentWaystoAddParentheses().diffWaysToCompute(s).toString());
     }
 

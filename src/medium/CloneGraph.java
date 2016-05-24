@@ -47,7 +47,7 @@ class CloneGraph {
 
     }
 
-    private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+    private HashMap<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         return clone(node);
     }

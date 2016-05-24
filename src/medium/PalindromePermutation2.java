@@ -23,9 +23,9 @@ public class PalindromePermutation2 {
     public List<String> generatePalindromes(String s) {
         int odd = 0;
         String mid = "";
-        List<String> res = new ArrayList<>();
-        List<Character> list = new ArrayList<>();
-        Map<Character, Integer> map = new HashMap<>();
+        List<String> res = new ArrayList<String>();
+        List<Character> list = new ArrayList<Character>();
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
 
         // step 1. build character count map and count odds
         for (int i = 0; i < s.length(); i++) {

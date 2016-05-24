@@ -3,14 +3,11 @@ package dP;
 /**
  * Given a m x n grid filled with non-negative numbers, find a path from top
  * left to bottom right which minimizes the sum of all numbers along its path.
- * <p/>
  * Note: You can only move either down or right at any point in time.
- * <p/>
  * Tags: Array, DP
  */
 class MinPathSum {
     public static void main(String[] args) {
-        // int[][] grid = new int[][]{{0}};
         int[][] grid = new int[][] { { 1, 3, 1 }, { 1, 5, 1 }, { 4, 2, 1 } };
         printMatrix(grid);
         System.out.println(minPathSum(grid));
@@ -28,7 +25,6 @@ class MinPathSum {
         int m = grid.length;
         int n = grid[0].length;
         int[] rowSum = new int[n];
-
         rowSum[0] = grid[0][0];
         for (int col = 1; col < n; col++)
             rowSum[col] = rowSum[col - 1] + grid[0][col];
@@ -57,10 +53,8 @@ class MinPathSum {
     public static int minPathSumB(int[][] grid) {
         if (grid == null || grid.length == 0)
             return 0;
-
         int m = grid.length;
         int n = grid[0].length;
-
         int[][] dp = new int[m][n];
         dp[0][0] = grid[0][0];
         // initialize top row

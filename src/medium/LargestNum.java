@@ -10,12 +10,15 @@ import java.util.*;
  * of an integer.
  * Tags: Sort
  */
-/**要使用cmp函数来排序 比较规则是x+y 和y+x的大小 而且要倒序
- 同时要注意[0,0]这种特殊情况*/
+
+/**
+ * 要使用cmp函数来排序 比较规则是x+y 和y+x的大小 而且要倒序
+ * 同时要注意[0,0]这种特殊情况
+ */
 class LargestNum {
     public static void main(String[] args) {
         LargestNum ln = new LargestNum();
-        int[] num = { 3, 30, 34, 5, 9 };
+        int[] num = { 3, 30, 34, 5, 9 ,0};
         System.out.println(ln.largestNumber(num));
         System.out.println(ln.largestNumberB(num));
     }

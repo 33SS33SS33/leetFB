@@ -11,8 +11,11 @@ package dP;
  * Note: m and n will be at most 100.
  * Tags: Array, DP
  */
-/*用DP 动态规划
-状态转移方程式 F(m,n) = F(m-1,n) + F(m, n-1) 这样一直到起点 用迭代的办法即可*/
+
+/**
+ * 用DP 动态规划
+ * 状态转移方程式 F(m,n) = F(m-1,n) + F(m, n-1) 这样一直到起点 用迭代的办法即可
+ */
 class UniquePaths {
     public static void main(String[] args) {
         System.out.println(uniquePathsMath(10, 20));

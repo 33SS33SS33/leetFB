@@ -2,12 +2,9 @@ package medium;
 
 /**
  * A peak element is an element that is greater than its neighbors.
- * Given an input array where num[i] ≠ num[i+1], find a peak element and return
- * its index.
+ * Given an input array where num[i] ≠ num[i+1], find a peak element and return its index.
  * You may imagine that num[-1] = num[n] = -∞.
- * For example, in array [1, 2, 3, 1], 3 is a peak element and your function
- * should return the index number 2.
- * <p/>
+ * For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.
  * Note:
  * Your solution should be in logarithmic complexity.
  * Tags: Array, Binary Search
@@ -17,7 +14,6 @@ package medium;
  * 题目要求lgn的解法 所以就用二分查找
  * 注意越界的问题 所以设置了先检查首尾元素是否符合条件 符合就返回
  * 如果不符合就二分查找 二分查找的界限是从1开始到倒数第二个元素结束
- * <p/>
  * 这道题第一次写的解法是错的  这道题如果mid不是peak的话 只需要看右边的那个元素是不是大于mid  如果大于mid 那么右边一定会有一个peak
  * 因为如果右边是个递增到结束的数列 那么结尾的那个就是peak 否则就往前找
  */

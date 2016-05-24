@@ -30,7 +30,6 @@ class FirstNonRepeatingChar {
         }
         return res;
     }
-
     /**
      * Build an array of character count and the index of its first appearance
      */

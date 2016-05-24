@@ -3,8 +3,7 @@ package dP;
 /**
  * Given an array of non-negative integers, you are initially positioned at the
  * first index of the array.
- * Each element in the array represents your maximum jump length at that
- * position.
+ * Each element in the array represents your maximum jump length at that position.
  * Your goal is to reach the last index in the minimum number of jumps.
  * For example:
  * Given array A = [2,3,1,1,4]
@@ -20,8 +19,7 @@ class JumpGame2 {
     }
 
     /**
-     * Use last to store how far we already can reach
-     * Compare i with last
+     * Use last to store how far we already can reach Compare i with last
      * If we run out of it, update and add 1 more step to result
      * Return if last is already bigger than or equal to the length
      * Use cur to store how far we can reach for the next step
@@ -42,7 +40,7 @@ class JumpGame2 {
         return step;
     }
 
-    /*ganker--
+    /**ganker--
      * 其实思路和Jump Game还是类似的，只是原来的全局最优现在要分成step步最优和step-1步最优
      * （假设当前步数是step）。当走到超过step-1步最远的位置时，说明step-1不能到达当前一步，
      * 我们就可以更新步数，将step+1。时间复杂度仍然是O(n)，空间复杂度也是O(1)*/
