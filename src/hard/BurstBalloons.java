@@ -42,7 +42,7 @@ public class BurstBalloons {
         memo[left][right] = ans;
         return ans;
     }
-    
+
     public int maxCoinsB(int[] iNums) {
         int[] nums = new int[iNums.length + 2];
         int n = 1;
