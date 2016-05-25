@@ -27,9 +27,11 @@ import java.util.List;
  * Tags: Tree, DFS
  */
 
-/**先序遍历二叉树即可
- 每次从一个节点到下一个节点的时候 就从sum把当前节点的val减掉
- 然后判断一下到了叶子节点 如果sum等于当前节点的值 就把路径加进去*/
+/**
+ * 先序遍历二叉树即可
+ * 每次从一个节点到下一个节点的时候 就从sum把当前节点的val减掉
+ * 然后判断一下到了叶子节点 如果sum等于当前节点的值 就把路径加进去
+ */
 class PathSum2 {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -94,7 +96,8 @@ class PathSum2 {
         return result;
     }
 
-    public void dfs(TreeNode t, int sum, ArrayList<ArrayList<Integer>> result,ArrayList<Integer> l) {
+    public void dfs(TreeNode t, int sum, ArrayList<ArrayList<Integer>> result,
+            ArrayList<Integer> l) {
         if (t.left == null && t.right == null && sum == 0) {
             ArrayList<Integer> temp = new ArrayList<Integer>();
             temp.addAll(l);

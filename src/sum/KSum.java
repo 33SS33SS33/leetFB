@@ -67,7 +67,8 @@ class KSum {
         for (int i = pos; i < num.length; i++) {
             if (i > pos && num[i] == num[i - 1])
                 continue; // skip duplicates
-            List<List<Integer>> k1Sum = kSum(num, k - 1, target - num[i], i + 1); // get k-1 sum from recursive calls
+            List<List<Integer>> k1Sum = kSum(num, k - 1, target - num[i],
+                    i + 1); // get k-1 sum from recursive calls
             for (List<Integer> s : k1Sum) {
                 List<Integer> tuple = new ArrayList<Integer>();
                 tuple.add(num[i]); // add current element

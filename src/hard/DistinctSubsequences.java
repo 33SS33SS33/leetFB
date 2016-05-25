@@ -46,8 +46,8 @@ class DistinctSubsequences {
      * dp[0][j] = 1, means T is empty, and there is always 1 substring
      * and dp[i][0] = 0, means S is empty
      * dp[i][j] = dp[i][j-1]        (from S[1...j - 1] no S[j])
-     *           + (dp[i-1][j-1]    (S[j] == T[i] and we are going to use S[j])
-     *               or 0)          (S[j] != T[i] so we could not use S[j])
+     * + (dp[i-1][j-1]    (S[j] == T[i] and we are going to use S[j])
+     * or 0)          (S[j] != T[i] so we could not use S[j])
      */
     public int numDistinct(String s, String t) {
         if (s == null || t == null)
@@ -61,7 +61,8 @@ class DistinctSubsequences {
             dp[0][i] = 1;
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
-                dp[i][j] = dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
+                dp[i][j] =
+                        dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
         return dp[m][n];
     }
 
@@ -113,7 +114,9 @@ class DistinctSubsequences {
         return P[s.length - 1][t.length - 1];
     }
 
-    /**错的 不要这样*/
+    /**
+     * 错的 不要这样
+     */
     public int numDistinct4(String S, String T) {
         HashMap<Character, ArrayList<Integer>> map = new HashMap<Character, ArrayList<Integer>>();
         for (int i = 0; i < T.length(); i++) {

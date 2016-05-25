@@ -10,6 +10,8 @@ package easy;
  * sumRange(0, 5) -> -3"
  */
 
-/**用一个数组存到当前这个数之前的所有的sum就可以*/
+/**
+ * 用一个数组存到当前这个数之前的所有的sum就可以
+ */
 public class RangeSumQueryImmutable {
 }

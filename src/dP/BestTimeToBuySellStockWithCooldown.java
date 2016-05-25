@@ -11,11 +11,13 @@ package dP;
  * Similar Problems: (M) Best Time to Buy and Sell Stock, (M) Best Time to Buy and Sell Stock II
  */
 
-/** "这题的思路看右边的链接就行 十分清楚
+/**
+ * "这题的思路看右边的链接就行 十分清楚
  * 十分重要!! 以后dp的题都试着画出来状态的图
- *  * s0[i] = max(s0[i - 1], s2[i - 1]); // Stay at s0, or rest from s2
+ * * s0[i] = max(s0[i - 1], s2[i - 1]); // Stay at s0, or rest from s2
  * s1[i] = max(s1[i - 1], s0[i - 1] - prices[i]); // Stay at s1, or buy from s0
- * s2[i] = s1[i - 1] + prices[i]; // Only one way from s1"*/
+ * s2[i] = s1[i - 1] + prices[i]; // Only one way from s1"
+ */
 public class BestTimeToBuySellStockWithCooldown {
 
     /**

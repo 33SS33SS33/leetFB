@@ -19,9 +19,11 @@ import java.util.*;
  * 3. A dummy head for Doubly LinkedList
  */
 
-/**这道题使用ordereddict来做 比较省事 重要
- 也可以使用dict加deque来做
- 这里用的少的定义就是插入的比较靠前 所以如果用了一个本身在队列里的 就可以把他踢出来 然后再插入禁区*/
+/**
+ * 这道题使用ordereddict来做 比较省事 重要
+ * 也可以使用dict加deque来做
+ * 这里用的少的定义就是插入的比较靠前 所以如果用了一个本身在队列里的 就可以把他踢出来 然后再插入禁区
+ */
 class LRUCache {
     public static void main(String[] args) {
 

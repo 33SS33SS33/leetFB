@@ -1,11 +1,13 @@
 package tree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * Given a binary tree, return the bottom-up level order traversal of its
  * nodes' values. (ie, from left to right, level by level from leaf to root).
- * <p/>
  * For example:
  * Given binary tree {3,9,20,#,#,15,7},
  * 3
@@ -13,14 +15,12 @@ import java.util.*;
  * 9  20
  * /  \
  * 15   7
- * <p/>
  * return its bottom-up level order traversal as:
  * [
  * [15,7],
  * [9,20],
  * [3]
  * ]
- * <p/>
  * Tags: Tree, BFS
  */
 class LevelOrderBottomUp {
@@ -40,7 +40,8 @@ class LevelOrderBottomUp {
         System.out.println(new LevelOrderBottomUp().levelOrderBottomB(root).toString());
     }
 
-    /** 每次插入链表的头结点
+    /**
+     * 每次插入链表的头结点
      * Use a level list to store the nodes of this level
      * Add root to it to begin
      * Build next level with current level, add current level value to result
@@ -99,8 +100,8 @@ class LevelOrderBottomUp {
                 numberList = new ArrayList<Integer>();
             }
         }
-//        Collections.reverse(result);
-//        return result;
+        //        Collections.reverse(result);
+        //        return result;
         ArrayList<ArrayList<Integer>> reversedResult = new ArrayList<ArrayList<Integer>>();
         for (int i = result.size() - 1; i >= 0; i--) {
             reversedResult.add(result.get(i));

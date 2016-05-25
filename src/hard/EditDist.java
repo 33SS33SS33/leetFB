@@ -46,7 +46,10 @@ class EditDist {
             d[0][j] = j;
         for (int i = 1; i < m + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
-                d[i][j] = Math.min(Math.min(d[i][j - 1] + 1, d[i - 1][j] + 1), word1.charAt(i - 1) == word2.charAt(j - 1) ? d[i - 1][j - 1] : d[i - 1][j - 1] + 1);
+                d[i][j] = Math.min(Math.min(d[i][j - 1] + 1, d[i - 1][j] + 1),
+                        word1.charAt(i - 1) == word2.charAt(j - 1) ?
+                                d[i - 1][j - 1] :
+                                d[i - 1][j - 1] + 1);
             }
         }
         return d[m][n];
@@ -69,7 +72,8 @@ class EditDist {
             d[0] += 1;
             for (int j = 1; j < n + 1; j++) {
                 int temp = d[j];
-                d[j] = Math.min(Math.min(d[j - 1] + 1, d[j] + 1), word1.charAt(i - 1) == word2.charAt(j - 1) ? prev : prev + 1);
+                d[j] = Math.min(Math.min(d[j - 1] + 1, d[j] + 1),
+                        word1.charAt(i - 1) == word2.charAt(j - 1) ? prev : prev + 1);
                 prev = temp;
             }
         }

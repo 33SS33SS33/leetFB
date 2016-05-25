@@ -33,8 +33,10 @@ public class PalindromePairs {
             while (l <= r) {
                 String s = words[i].substring(l, r);
                 Integer j = map.get(new StringBuilder(s).reverse().toString());
-                if (j != null && i != j && isPalindrome(words[i].substring(l == 0 ? r : 0, l == 0 ? words[i].length() : l)))
-                    pairs.add(Arrays.asList(l == 0 ? new Integer[] { i, j } : new Integer[] { j, i }));
+                if (j != null && i != j && isPalindrome(
+                        words[i].substring(l == 0 ? r : 0, l == 0 ? words[i].length() : l)))
+                    pairs.add(Arrays.asList(
+                            l == 0 ? new Integer[] { i, j } : new Integer[] { j, i }));
                 if (r < words[i].length())
                     ++r;
                 else

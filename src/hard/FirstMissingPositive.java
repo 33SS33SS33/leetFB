@@ -74,7 +74,9 @@ class FirstMissingPositive {
         return N + 1;
     }
 
-    /**creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.*/
+    /**
+     * creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.
+     */
     public int firstMissingPositiveD(int[] A) {
         int n = A.length;
         for (int i = 0; i < n; i++) {

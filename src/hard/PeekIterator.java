@@ -21,7 +21,7 @@ class PeekIterator<T> implements Iterator<T> {
     /**
      * Store next item
      */
-    private T nextItem;
+    private       T           nextItem;
 
     public PeekIterator(Iterator<T> iterator) {
         this.iterator = iterator;

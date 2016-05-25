@@ -21,9 +21,11 @@ import java.util.Stack;
  */
 public class BasicCalculator {
     enum TokenType {DIGIT, OP}
+
     static class Token {
         TokenType type;
         int       val;
+
         public Token(int val, TokenType type) {
             this.val = val;
             this.type = type;
@@ -32,6 +34,7 @@ public class BasicCalculator {
 
     static final Token   EOL    = new Token(0, TokenType.OP);
     static final Token[] TOKENS = new Token[256];
+
     static {
         TOKENS['+'] = new Token('+', TokenType.OP);
         TOKENS['-'] = new Token('-', TokenType.OP);
@@ -43,10 +46,12 @@ public class BasicCalculator {
 
     static class Tokenizer {
         Scanner scanner;
+
         Tokenizer(String s) {
             scanner = new Scanner(s);
             scanner.useDelimiter("");
         }
+
         Token next() {
             if (!scanner.hasNext()) {
                 return EOL;
@@ -70,6 +75,7 @@ public class BasicCalculator {
 
     static class RPNCalculator {
         LinkedList<Integer> stack = new LinkedList<Integer>();
+
         void addToken(Token t) {
             if (t.type == TokenType.OP) {
                 int v2 = stack.pop();

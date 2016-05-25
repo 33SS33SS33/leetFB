@@ -11,8 +11,8 @@ import java.util.Arrays;
  * gr    eat
  * / \    /  \
  * g   r  e   at
- *            / \
- *           a   t
+ * / \
+ * a   t
  * To scramble the string, we may choose any non-leaf node and swap its two
  * children.
  * For example, if we choose the node "gr" and swap its two children, it
@@ -22,8 +22,8 @@ import java.util.Arrays;
  * rg    eat
  * / \    /  \
  * r   g  e   at
- *           / \
- *          a   t
+ * / \
+ * a   t
  * We say that "rgeat" is a scrambled string of "great".
  * Similarly, if we continue to swap the children of nodes "eat" and "at", it
  * produces a scrambled string "rgtae".
@@ -32,11 +32,10 @@ import java.util.Arrays;
  * rg    tae
  * / \    /  \
  * r   g  ta  e
- *        / \
- *       t   a
+ * / \
+ * t   a
  * We say that "rgtae" is a scrambled string of "great".
  * Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
- *
  * Tags: DP, String
  */
 

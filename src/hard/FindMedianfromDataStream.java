@@ -11,7 +11,6 @@ package hard;
  * double findMedian() - Return the median of all elements so far."
  */
 
-
 /**
  * "设计题 重要  一个heap不行可以用两个heap
  * 一个heap存当前数组比较小那一半的数 另一个heap存当前数组比较大那一半的数

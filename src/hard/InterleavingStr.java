@@ -28,8 +28,9 @@ class InterleavingStr {
         System.out.println(isInterleaveC(s1, s2, s3));
     }
 
-    /** DP,
-     *  bottom-up, Time: O(nm), and Space: O(nm)
+    /**
+     * DP,
+     * bottom-up, Time: O(nm), and Space: O(nm)
      * quick check, length of s3 should be the sum of s1 and s2
      * 1. i == 0 && j == 0, dp[i][j] is true initially
      * 2. first row, i == 0, dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1)== s3.charAt(j - 1)
@@ -86,7 +87,9 @@ class InterleavingStr {
                 dp[0] = false;
             for (int j = 0; j < b; j++) { // select jth char
                 /*from s1 or from s2*/
-                if (dp[j + 1] && (s1.charAt(i) == s3.charAt(i + j + 1)) || (dp[j] && s2.charAt(j) == s3.charAt(i + j + 1))) { // dp[j+1] means dp[i][j+1], result of last row, dp[j] means dp[i+1][j], result of this row last col
+                if (dp[j + 1] && (s1.charAt(i) == s3.charAt(i + j + 1)) || (dp[j]
+                        && s2.charAt(j) == s3.charAt(i + j
+                        + 1))) { // dp[j+1] means dp[i][j+1], result of last row, dp[j] means dp[i+1][j], result of this row last col
                     dp[j + 1] = true;
                 } else
                     dp[j + 1] = false;
@@ -95,7 +98,9 @@ class InterleavingStr {
         return dp[b];
     }
 
-    /**better*/
+    /**
+     * better
+     */
     public static boolean isInterleaveC(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length())
             return false;
@@ -109,7 +114,8 @@ class InterleavingStr {
         for (int i = 0; i < maxWord.length(); i++) {
             res[0] = res[0] && maxWord.charAt(i) == s3.charAt(i);
             for (int j = 0; j < minWord.length(); j++) {
-                res[j + 1] = res[j + 1] && maxWord.charAt(i) == s3.charAt(i + j + 1) || res[j] && minWord.charAt(j) == s3.charAt(i + j + 1);
+                res[j + 1] = res[j + 1] && maxWord.charAt(i) == s3.charAt(i + j + 1)
+                        || res[j] && minWord.charAt(j) == s3.charAt(i + j + 1);
             }
         }
         return res[minWord.length()];

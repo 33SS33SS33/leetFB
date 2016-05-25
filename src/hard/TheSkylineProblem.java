@@ -28,7 +28,7 @@ public class TheSkylineProblem {
 
     static class SortedBuilds {
         int[][] buildings;
-        int  p = 0;
+        int                  p        = 0;
         /**
          * 需要写PriorityQueue
          */

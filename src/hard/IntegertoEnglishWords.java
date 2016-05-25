@@ -8,7 +8,6 @@ package hard;
  * 1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"
  */
 
-
 /**
  * 先做个字典
  * 然后有个函数用来构造三位数字的读法

@@ -32,7 +32,8 @@ public class BTUpsideDown {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
+        System.out.println(
+                new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
     }
 
     LinkedList<TreeNode> queue = new LinkedList<TreeNode>();

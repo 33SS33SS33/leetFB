@@ -9,15 +9,16 @@ import java.util.Collections;
  * Given a binary tree, return the postorder traversal of its nodes' values.
  * For example:
  * Given binary tree {1,#,2,3},
- *    1
- *     \
- *      2
- *     /
- *    3
+ * 1
+ * \
+ * 2
+ * /
+ * 3
  * return [3,2,1].
  * Note: Recursive solution is trivial, could you do it iteratively?
  * Tags: Tree, Stack
  */
+
 /**最简单的办法
  pre-order traversal is root-left-right, and post order is left-right-root. modify the code for pre-order to make it root-right-left,
  and then reverse the output so that we can get left-right-root . 就是把先序遍历变成 根-右子树-左子树 然后再把结果倒序
@@ -50,6 +51,7 @@ class BTPostOrder {
         helper(root, res);
         return res;
     }
+
     private void helper(TreeNode root, ArrayList<Integer> res) {
         if (root == null)
             return;
@@ -65,19 +67,21 @@ class BTPostOrder {
      */
     public List<Integer> postorderTraversalA2(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         Stack<TreeNode> s = new Stack<TreeNode>();
         s.push(root);
         while (!s.isEmpty()) {
             TreeNode curNode = s.pop();
             res.add(curNode.val); // visit
-            if (curNode.left != null) s.push(curNode.left);
-            if (curNode.right != null) s.push(curNode.right);
+            if (curNode.left != null)
+                s.push(curNode.left);
+            if (curNode.right != null)
+                s.push(curNode.right);
         }
         Collections.reverse(res);
         return res;
     }
-
 
     /**迭代法 比先序、中序复杂
      * Use two pointers. 1 for current node, 1 for previous traversed node
@@ -91,7 +95,8 @@ class BTPostOrder {
      */
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
-        if (root == null) return res;
+        if (root == null)
+            return res;
         TreeNode prev = null; // previously traversed node
         TreeNode cur = root;
         Stack<TreeNode> s = new Stack<TreeNode>();
@@ -103,14 +108,17 @@ class BTPostOrder {
             //otherwise, keep going down
             if (prev == null || prev.left == cur || prev.right == cur) { // traverse down
                 //prev == null is the situation for the root node
-                if (cur.left != null) s.push(cur.left); // put left first
-                else if (cur.right != null) s.push(cur.right);
+                if (cur.left != null)
+                    s.push(cur.left); // put left first
+                else if (cur.right != null)
+                    s.push(cur.right);
                 //go up the tree from left node
                 //need to check if there is a right child
                 //if yes, push it to stack
                 //otherwise, process parent and pop stack
             } else if (cur.left == prev) { // traverse up from the left
-                if (cur.right != null) s.push(cur.right);
+                if (cur.right != null)
+                    s.push(cur.right);
             } else { // traverse up from the right
                 res.add(cur.val); // visit
                 s.pop();
@@ -121,9 +129,12 @@ class BTPostOrder {
     }
 
     static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
-        TreeNode(int x) { val = x; }
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 }

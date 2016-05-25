@@ -1,6 +1,7 @@
 package tree;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * Check whether a given graph is a tree

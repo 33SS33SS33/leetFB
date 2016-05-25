@@ -7,7 +7,9 @@ package medium;
  * 一个节点只代表一个字母 一个根可以有26个孩子
  */
 
-/**标准答案*/
+/**
+ * 标准答案
+ */
 public class ImplementTriePrefixTree {
     private TrieNode root;
 

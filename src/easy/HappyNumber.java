@@ -12,7 +12,9 @@ import java.util.Set;
  * 12 + 02 + 02 = 1
  */
 
-/**按照规则构造即可 记录一下出现过的数*/
+/**
+ * 按照规则构造即可 记录一下出现过的数
+ */
 public class HappyNumber {
     public static void main(String[] args) {
         System.out.println(new HappyNumber().isHappyA(32));

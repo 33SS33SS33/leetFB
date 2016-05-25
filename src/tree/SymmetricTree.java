@@ -23,7 +23,9 @@ import java.util.Stack;
  * Tags: Tree, DFS, Stack
  */
 
-/**要么都没有 要么都有 有的话值相等 切左边的左子树和右边的右子树相等 左边的右子树和右边的左子树相等*/
+/**
+ * 要么都没有 要么都有 有的话值相等 切左边的左子树和右边的右子树相等 左边的右子树和右边的左子树相等
+ */
 class SymmetricTree {
     public static void main(String[] args) {
         TreeNode root1 = new TreeNode(1);
@@ -58,7 +60,8 @@ class SymmetricTree {
         System.out.println(new SymmetricTree().isSymmetricC(root2));
     }
 
-    /**递归
+    /**
+     * 递归
      * 算法的时间复杂度是树的遍历O(n)，空间复杂度同样与树遍历相同是O(logn)
      * Recursive, pre-order traversal
      * Check two symmetric nodes a time
@@ -75,7 +78,8 @@ class SymmetricTree {
         return n1.val == n2.val && helper(n1.left, n2.right) && helper(n1.right, n2.left);
     }
 
-    /** 非递归方法
+    /**
+     * 非递归方法
      * 是使用层序遍历来判断对称性质
      * Use a stack to store nodes in order
      * Then pop and compare

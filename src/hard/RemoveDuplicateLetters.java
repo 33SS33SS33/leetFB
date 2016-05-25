@@ -40,6 +40,7 @@ public class RemoveDuplicateLetters {
         }
         return s.length() == 0 ?
                 "" :
-                s.charAt(pos) + removeDuplicateLetters(s.substring(pos + 1).replaceAll("" + s.charAt(pos), ""));
+                s.charAt(pos) + removeDuplicateLetters(
+                        s.substring(pos + 1).replaceAll("" + s.charAt(pos), ""));
     }
 }

@@ -11,15 +11,15 @@ package hard;
  * k = 5
  * return [9, 8, 6, 5, 3]"
  * Example 2:
- nums1 = [6, 7]
- nums2 = [6, 0, 4]
- k = 5
- return [6, 7, 6, 0, 4]
- Example 3:
- nums1 = [3, 9]
- nums2 = [8, 9]
- k = 3
- return [9, 8, 9]
+ * nums1 = [6, 7]
+ * nums2 = [6, 0, 4]
+ * k = 5
+ * return [6, 7, 6, 0, 4]
+ * Example 3:
+ * nums1 = [3, 9]
+ * nums2 = [8, 9]
+ * k = 3
+ * return [9, 8, 9]
  */
 
 /**

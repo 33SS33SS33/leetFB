@@ -7,7 +7,9 @@ package tree;
  * Tags: Tree, DFS
  */
 
-/**先序遍历*/
+/**
+ * 先序遍历
+ */
 class SameTree {
     public static void main(String[] args) {
         TreeNode root1 = new TreeNode(1);

@@ -18,7 +18,9 @@ import java.util.LinkedList;
  * Tags: Tree, DFS
  */
 
-/**先序遍历 碰到叶子了计算一下*/
+/**
+ * 先序遍历 碰到叶子了计算一下
+ */
 class PathSum {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -55,7 +57,8 @@ class PathSum {
                 || hasPathSumA(root.right, sum);
     }
 
-    /**递归  算法的复杂度是输的遍历，时间复杂度是O(n)，空间复杂度是O(logn)
+    /**
+     * 递归  算法的复杂度是输的遍历，时间复杂度是O(n)，空间复杂度是O(logn)
      * Recursion creek
      */
     /*递归条件是看左子树或者右子树有没有满足条件的路径，也就是子树路径和等于当前sum减去当前节点的值。

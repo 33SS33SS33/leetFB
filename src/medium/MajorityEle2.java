@@ -65,7 +65,8 @@ public class MajorityEle2 {
         return result;
     }
 
-    /** 使用map
+    /**
+     * 使用map
      * creek not good ,Time = O(n) and Space = O(n)
      */
     public List<Integer> majorityElementB(int[] nums) {

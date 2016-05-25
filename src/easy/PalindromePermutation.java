@@ -10,7 +10,9 @@ package easy;
 import java.util.HashMap;
 import java.util.Map;
 
-/**能不能回文就是最多只能有一个字母出现了奇数次	*/
+/**
+ * 能不能回文就是最多只能有一个字母出现了奇数次
+ */
 public class PalindromePermutation {
     public static void main(String[] args) {
         PalindromePermutation p = new PalindromePermutation();

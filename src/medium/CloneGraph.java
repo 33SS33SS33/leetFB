@@ -31,11 +31,9 @@ import java.util.*;
 /**
  * 遍历方法可以BFS可以DFS 右边的链接都有
  * 需要用一个dic来保存 图中的节点（key）和复制的节点（value）
- * <p/>
  * 然后就遍历图中的节点  首先就是检查当前节点的邻居在不在字典里 要是不在 就建立键值对
  * 然后把当前这个邻居添加进当前结点键值对的邻居里 然后邻居入队列
  * 要是本来邻居就在字典里  访问过了 只需把这个邻居加入到当前结点的键值对的邻居里即可
- * <p/>
  * 第二遍看了思路 重要
  */
 class CloneGraph {
@@ -64,8 +62,10 @@ class CloneGraph {
         return clone;
     }
 
-    /**这几种方法的时间复杂度都是O(n)（每个结点访问一次）， creek
-     而空间复杂度则是栈或者队列的大小加上HashMap的大小，也不会超过O(n)。*/
+    /**
+     * 这几种方法的时间复杂度都是O(n)（每个结点访问一次）， creek
+     * 而空间复杂度则是栈或者队列的大小加上HashMap的大小，也不会超过O(n)。
+     */
     public UndirectedGraphNode cloneGraphB(UndirectedGraphNode node) {
         if (node == null)
             return null;

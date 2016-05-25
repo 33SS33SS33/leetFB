@@ -10,7 +10,9 @@ package easy;
  * Implement a function to find the first bad version. You should minimize the number of calls to the API.
  */
 
-/**就是使用二分法*/
+/**
+ * 就是使用二分法
+ */
 public class FirstBadVersion {
     public static void main(String[] args) {
         System.out.println(new FirstBadVersion().firstBadVersion(3));

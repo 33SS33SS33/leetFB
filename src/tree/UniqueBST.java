@@ -33,7 +33,6 @@ class UniqueBST {
      * a BST can be destruct to root, left subtree and right subtree.
      * if the root is fixed, every combination of unique left/right subtrees
      * forms a unique BST.
-     *
      * Let a[n] = number of unique BST's given values 1..n, then
      * a[n] = a[0] * a[n-1]     // put 1 at root, 2...n right
      * + a[1] * a[n-2]     // put 2 at root, 1 left, 3...n right

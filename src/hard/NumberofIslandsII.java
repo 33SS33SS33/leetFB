@@ -30,8 +30,10 @@ package hard;
  * Can you do it in time complexity O(k log mn), where k is the length of the positions?"
  */
 
-/**"这道题用了并查集 并且写了一个并查集(带weighted 还有 path compression)的类 重要
- weighted 就是在合并的时候 size小的树是size大的树的子树
- path compression就是在找root的时候 把路径上的节点都直接挂在root下面"*/
+/**
+ * "这道题用了并查集 并且写了一个并查集(带weighted 还有 path compression)的类 重要
+ * weighted 就是在合并的时候 size小的树是size大的树的子树
+ * path compression就是在找root的时候 把路径上的节点都直接挂在root下面"
+ */
 public class NumberofIslandsII {
 }

@@ -9,6 +9,8 @@ package easy;
  * n and k are non-negative integers.
  */
 
-/**DP的题 注意这里是两个临近的篱笆有可能是同色的 但是同色的不超过两个*/
+/**
+ * DP的题 注意这里是两个临近的篱笆有可能是同色的 但是同色的不超过两个
+ */
 public class PaintFence {
 }

@@ -29,7 +29,9 @@ public class HIndex {
         System.out.println(new HIndex().hIndex(nums));
     }
 
-    /**O(n) time */
+    /**
+     * O(n) time
+     */
     public int hIndex(int[] citations) {
         int length = citations.length;
         if (length == 0) {

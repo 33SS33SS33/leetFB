@@ -11,35 +11,13 @@ import java.util.ArrayList;
  * / \
  * 2   3
  * Return 6.
- * <p/>
  * Tags: Tree, DFS
- * <p/>
- * For each node like following, there should be four ways existing for max path:
- * 1. Node only
- * 2. L-sub + Node
- * 3. R-sub + Node
- * 4. L-sub + Node + R-sub
- * <p/>
- * For each node like following, there should be four ways existing for max path:
- * 1. Node only
- * 2. L-sub + Node
- * 3. R-sub + Node
- * 4. L-sub + Node + R-sub
- * <p/>
  * For each node like following, there should be four ways existing for max path:
  * 1. Node only
  * 2. L-sub + Node
  * 3. R-sub + Node
  * 4. L-sub + Node + R-sub
  */
-
-/**
- * For each node like following, there should be four ways existing for max path:
- * 1. Node only
- * 2. L-sub + Node
- * 3. R-sub + Node
- * 4. L-sub + Node + R-sub
- *  */
 
 /** 后序遍历 然后返回最大值
  * 注意一下返回值  如果是本身节点然后加上左右节点 这个值不应该返回  因为父节点无法使用这个path   所以使用self.res直接对res进行更新
