@@ -5,37 +5,39 @@ import java.util.*;
 public class test {
 
     public static void main(String[] args) {
-        int cityLength =5;
+        int cityLength = 5;
         int cityWidth = 7;
-        int[] lockerXCoordinates = new int[]{2,4};
-        int[] lockerYCoordinates = new int[]{3,7};
-        int[][] result = getLockerDistanceGrid(cityLength, cityWidth, lockerXCoordinates, lockerYCoordinates);
-        for ( int i = 0 ; i< cityWidth; i ++){
-            for ( int j = 0; j < cityLength; j++) {
+        int[] lockerXCoordinates = new int[] { 2, 4 };
+        int[] lockerYCoordinates = new int[] { 3, 7 };
+        int[][] result = getLockerDistanceGrid(cityLength, cityWidth, lockerXCoordinates,
+                lockerYCoordinates);
+        for (int i = 0; i < cityWidth; i++) {
+            for (int j = 0; j < cityLength; j++) {
                 System.out.print(result[i][j] + "\t");
             }
             System.out.print("\n");
         }
     }
 
-    static int[][] getLockerDistanceGrid(int cityWidth, int cityLength, int[] lockerXCoordinates, int[] lockerYCoordinates) {
+    static int[][] getLockerDistanceGrid(int cityWidth, int cityLength, int[] lockerXCoordinates,
+            int[] lockerYCoordinates) {
         int[][] result = new int[cityLength][];
-        for( int i =0 ;i < cityLength ; i ++) {
-            result[i]  = new int[cityWidth];
+        for (int i = 0; i < cityLength; i++) {
+            result[i] = new int[cityWidth];
         }
-        for ( int i = 0 ; i< cityLength; i ++)
-            for ( int j = 0; j < cityWidth; j++) {
+        for (int i = 0; i < cityLength; i++)
+            for (int j = 0; j < cityWidth; j++) {
                 int minSteps = Integer.MAX_VALUE;
-                for (int k =0 ; k < lockerXCoordinates.length; k ++) {
-                    int stepx = lockerYCoordinates[k]-1 - i;
+                for (int k = 0; k < lockerXCoordinates.length; k++) {
+                    int stepx = lockerYCoordinates[k] - 1 - i;
                     if (stepx < 0) {
                         stepx = -stepx;
                     }
-                    int stepy = lockerXCoordinates[k]-1 - j;
+                    int stepy = lockerXCoordinates[k] - 1 - j;
                     if (stepy < 0) {
                         stepy = -stepy;
                     }
-                    if ( stepx + stepy < minSteps) {
+                    if (stepx + stepy < minSteps) {
                         minSteps = stepx + stepy;
                     }
                 }
@@ -52,7 +54,7 @@ public class test {
     public List<String> getRankedCourses(String user) {
         List<String> friends = getDirectFriendsForUser(user);
         List<String> userCourses = getAttendedCoursesForUser(user);
-        Set<String> network =  new HashSet<String>();
+        Set<String> network = new HashSet<String>();
         Map<String, Integer> courseInfo = new HashMap<String, Integer>();
         for (String friend : friends) {
             network.add(friend);
@@ -61,13 +63,13 @@ public class test {
         }
         network.remove(user);
 
-        for(String friend : network) {
+        for (String friend : network) {
             List<String> courses = getAttendedCoursesForUser(friend);
-            for(String course : courses) {
+            for (String course : courses) {
                 if (userCourses.contains(course)) {
                     continue;
                 }
-                if(courseInfo.get(course) != null) {
+                if (courseInfo.get(course) != null) {
                     courseInfo.put(course, courseInfo.get(course) + 1);
                 } else {
                     courseInfo.put(course, 1);
@@ -75,28 +77,27 @@ public class test {
             }
         }
 
-        List<Map.Entry<String, Integer>> result = new ArrayList<Map.Entry<String, Integer>>(courseInfo.entrySet());
-        Collections.sort(result,
-                new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry o1, Map.Entry o2) {
-                return (Integer)o2.getValue() - (Integer)o1.getValue();
+        List<Map.Entry<String, Integer>> result = new ArrayList<Map.Entry<String, Integer>>(
+                courseInfo.entrySet());
+        Collections.sort(result, new Comparator<Map.Entry<String, Integer>>() {
+            @Override public int compare(Map.Entry o1, Map.Entry o2) {
+                return (Integer) o2.getValue() - (Integer) o1.getValue();
             }
         });
         List<String> courses = new ArrayList<String>();
-        for(Map.Entry<String, Integer> entry : result) {
+        for (Map.Entry<String, Integer> entry : result) {
             courses.add(entry.getKey());
         }
         return courses;
     }
 
-    public List<String> getDirectFriendsForUser(String user){
+    public List<String> getDirectFriendsForUser(String user) {
         return null;
 
     }
+
     public List<String> getAttendedCoursesForUser(String user) {
         return null;
     }
-
 
 }

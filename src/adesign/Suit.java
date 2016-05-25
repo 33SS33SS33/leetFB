@@ -3,6 +3,7 @@ package adesign;
 /**
  * Created by GAOSHANSHAN835 on 2016/5/12.
  */
+
 /**
  * Design the data structures for a generic deck of cards. Explain how you would
  * subclass the data structures to implement blackjack.

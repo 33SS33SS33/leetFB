@@ -58,7 +58,8 @@ class WordLadder2 {
      * Create a queue, add start to it and put start in dist map
      * Initialize map with lists
      */
-    void bfs(Map<String, List<String>> map, Map<String, Integer> dist, String start, String end, Set<String> dict) {
+    void bfs(Map<String, List<String>> map, Map<String, Integer> dist, String start, String end,
+            Set<String> dict) {
         Queue<String> q = new LinkedList<String>();
         q.offer(start);
         dict.add(start); // make sure start and end in dictionary

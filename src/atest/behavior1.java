@@ -8,7 +8,7 @@ public class behavior1 {
 
      Relevant facts about education, your career and your current life situation are fine.
 
-      I'm looking for a new job  because you want to
+     I'm looking for a new job  because you want to
      advance your career and get a position that allows you to grow as a person and an employee.
 
      The largest network of e-commerce company in America.
@@ -27,7 +27,7 @@ public class behavior1 {
      You want recognition for a job well done. You want to become better at your job.
      优点
      You could be someone who thrives under pressure, a great motivator, an amazing problem solver or someone with extraordinary attention to detail. If your
-    缺点
+     缺点
      I’ve been told I occasionally focus on details and miss the bigger picture,
      so I’ve been spending time laying out the complete project every day to see my overall progress.”
 
