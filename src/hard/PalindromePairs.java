@@ -10,7 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given a list of unique words. Find all pairs of distinct indices (i, j) in the given list, so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
+ * Given a list of unique words. Find all pairs of distinct indices (i, j) in the given list,
+ * so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
  * Example 1:
  * Given words = ["bat", "tab", "cat"]
  * Return [[0, 1], [1, 0]]
@@ -21,6 +22,13 @@ import java.util.List;
  * The palindromes are ["dcbaabcd", "abcddcba", "slls", "llssssll"]
  */
 public class PalindromePairs {
+    public static void main(String[] args) {
+        String[] words= { "bat", "tab", "cat" };
+        String[] words2= { "abcd", "dcba", "lls", "s", "sssll" };
+        System.out.println(new PalindromePairs().palindromePairs(words));
+        System.out.print(new PalindromePairs().palindromePairs(words2));
+    }
+
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> pairs = new LinkedList<List<Integer>>();
         if (words == null)
@@ -33,10 +41,8 @@ public class PalindromePairs {
             while (l <= r) {
                 String s = words[i].substring(l, r);
                 Integer j = map.get(new StringBuilder(s).reverse().toString());
-                if (j != null && i != j && isPalindrome(
-                        words[i].substring(l == 0 ? r : 0, l == 0 ? words[i].length() : l)))
-                    pairs.add(Arrays.asList(
-                            l == 0 ? new Integer[] { i, j } : new Integer[] { j, i }));
+                if (j != null && i != j && isPalindrome( words[i].substring(l == 0 ? r : 0, l == 0 ? words[i].length() : l)))
+                    pairs.add(Arrays.asList(l == 0 ? new Integer[] { i, j } : new Integer[] { j, i }));
                 if (r < words[i].length())
                     ++r;
                 else

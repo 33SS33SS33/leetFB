@@ -11,6 +11,9 @@ package hard;
  * double findMedian() - Return the median of all elements so far."
  */
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 /**
  * "设计题 重要  一个heap不行可以用两个heap
  * 一个heap存当前数组比较小那一半的数 另一个heap存当前数组比较大那一半的数
@@ -22,4 +25,20 @@ package hard;
  * heappush(self.small, -heappushpop(self.large, num))"
  */
 public class FindMedianfromDataStream {
+
+    private Queue<Long> small = new PriorityQueue(),
+            large = new PriorityQueue();
+
+    public void addNum(int num) {
+        large.add((long) num);
+        small.add(-large.poll());
+        if (large.size() < small.size())
+            large.add(-small.poll());
+    }
+
+    public double findMedian() {
+        return large.size() > small.size()
+                ? large.peek()
+                : (large.peek() - small.peek()) / 2.0;
+    }
 }
