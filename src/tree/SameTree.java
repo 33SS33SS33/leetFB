@@ -4,9 +4,9 @@ package tree;
  * Given two binary trees, write a function to check if they are equal or not.
  * Two binary trees are considered equal if they are structurally identical
  * and the nodes have the same value.
- *
  * Tags: Tree, DFS
  */
+
 /**先序遍历*/
 class SameTree {
     public static void main(String[] args) {
@@ -41,18 +41,19 @@ class SameTree {
     public static boolean isSameTreeA(TreeNode p, TreeNode q) {
         if (p == null || q == null)
             return p == q; // if one of them is null, it will return false. both null, true.
-        return p.val == q.val && isSameTreeA(p.left, q.left) && isSameTreeA(p.right, q.right); // equal val, equal subtrees
+        return p.val == q.val && isSameTreeA(p.left, q.left) && isSameTreeA(p.right,
+                q.right); // equal val, equal subtrees
     }
 
     /*时间复杂度是O(n)，空间复杂度是O(logn)*/
     public boolean isSameTreeB(TreeNode p, TreeNode q) {
-        if(p==null && q==null)
+        if (p == null && q == null)
             return true;
-        if(p==null || q==null)
+        if (p == null || q == null)
             return false;
-        if(p.val!=q.val)
+        if (p.val != q.val)
             return false;
-        return isSameTreeB(p.left,q.left) && isSameTreeB(p.right,q.right);
+        return isSameTreeB(p.left, q.left) && isSameTreeB(p.right, q.right);
     }
 
     public static class TreeNode {

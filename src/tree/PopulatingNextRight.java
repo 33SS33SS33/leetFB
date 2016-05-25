@@ -3,15 +3,13 @@ package tree;
 /**
  * Given a binary tree
  * struct TreeLinkNode {
-     * TreeLinkNode *left;
-     * TreeLinkNode *right;
-     * TreeLinkNode *next;
+ * TreeLinkNode *left;
+ * TreeLinkNode *right;
+ * TreeLinkNode *next;
  * }
- *
  * Populate each next pointer to point to its next right node. If there is no
  * next right node, the next pointer should be set to NULL.
  * Initially, all next pointers are set to NULL.
- *
  * Note:
  * You may only use constant extra space.
  * You may assume that it is a perfect binary tree (ie, all leaves are at the
@@ -29,16 +27,17 @@ package tree;
  * 2 -> 3 -> NULL
  * / \  / \
  * 4->5->6->7 -> NULL
- *
  * Tags: Tree, DFS
+ * 完美二叉树
  */
-/**完美二叉树*/
 
-/**首先 设置一个pre来保存每一层最左边的节点
- 然后再设置一个cur用来从左到右遍历这一层
- 其实主要是用cur来从左到右把下一层的next连起来
- 所以cur这一层应该是已经连好的
- 然后连完一层 然后pre就到下一层 再用cur来遍历*/
+/**
+ * 首先 设置一个pre来保存每一层最左边的节点
+ * 然后再设置一个cur用来从左到右遍历这一层
+ * 其实主要是用cur来从左到右把下一层的next连起来
+ * 所以cur这一层应该是已经连好的
+ * 然后连完一层 然后pre就到下一层 再用cur来遍历
+ */
 class PopulatingNextRight {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();
@@ -122,6 +121,7 @@ class PopulatingNextRight {
         t7.left = t8;
         return t0;
     }
+
     static class TreeLinkNode {
         int          val;
         TreeLinkNode left;

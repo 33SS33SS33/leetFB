@@ -5,6 +5,26 @@ import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28.
+ * <p/>
+ * Given a binary tree, find its minimum depth.
+ * The minimum depth is the number of nodes along the shortest path from the
+ * root node down to the nearest leaf node.
+ * Tags: Tree, DFS
+ * <p/>
+ * Given a binary tree, find its minimum depth.
+ * The minimum depth is the number of nodes along the shortest path from the
+ * root node down to the nearest leaf node.
+ * Tags: Tree, DFS
+ * <p/>
+ * Given a binary tree, find its minimum depth.
+ * The minimum depth is the number of nodes along the shortest path from the
+ * root node down to the nearest leaf node.
+ * Tags: Tree, DFS
+ * <p/>
+ * Given a binary tree, find its minimum depth.
+ * The minimum depth is the number of nodes along the shortest path from the
+ * root node down to the nearest leaf node.
+ * Tags: Tree, DFS
  */
 
 /**

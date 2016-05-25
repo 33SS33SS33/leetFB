@@ -8,7 +8,10 @@ import java.util.LinkedList;
  * root node down to the farthest leaf node.
  * Tags: Tree, DFS
  */
-/**使用自底向上bottom-up的递归*/
+
+/**
+ * 使用自底向上bottom-up的递归
+ */
 class MaxDepth {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -17,7 +20,8 @@ class MaxDepth {
     }
 
     /**
-     * Recursive, O(n) 递归*/
+     * Recursive, O(n) 递归
+     */
     /* If tree is empty, return 0
      * Else
      * Get the max depth of left subtree recursively
@@ -32,8 +36,10 @@ class MaxDepth {
         return Math.max(left, right) + 1;
     }
 
-    /*非递归解法一般采用层序遍历(相当于图的BFS），因为如果使用其他遍历方式也需要同样的复杂度O(n).
-     层序遍历理解上直观一些，维护到最后的level便是树的深度*/
+    /**
+     * 非递归解法一般采用层序遍历(相当于图的BFS），因为如果使用其他遍历方式也需要同样的复杂度O(n).
+     * 层序遍历理解上直观一些，维护到最后的level便是树的深度
+     */
     public int maxDepthB(TreeNode root) {
         if (root == null)
             return 0;
@@ -62,7 +68,6 @@ class MaxDepth {
         return level;
     }
 
-
     private static TreeNode buildTree() {
         TreeNode t0 = new TreeNode(20);
         TreeNode t1 = new TreeNode(9);
@@ -85,6 +90,7 @@ class MaxDepth {
 
         return t0;
     }
+
     static class TreeNode {
         int      val;
         TreeNode left;

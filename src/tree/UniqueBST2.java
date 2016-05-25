@@ -8,21 +8,21 @@ import java.util.List;
  * search trees) that store values 1...n.
  * For example,
  * Given n = 3, your program should return all 5 unique BST's shown below
- * 
- *    1         3     3      2      1
- *     \       /     /      / \      \
- *      3     2     1      1   3      2
- *     /     /       \                 \
- *    2     1         2                 3
+ * 1         3     3      2      1
+ * \       /     /      / \      \
+ * 3     2     1      1   3      2
+ * /     /       \                 \
+ * 2     1         2                 3
  * Tags: Tree, DP, Backtracking
  */
 
-
-/**递归
- 首先构造根节点  然后构造左子树 然后构造右子树 然后递归
- 第二次看了思路 重要
- https://leetcode.com/discuss/29532/dp-solution-in-python
- 还有dp解法 未实现*/
+/**
+ * 递归
+ * 首先构造根节点  然后构造左子树 然后构造右子树 然后递归
+ * 第二次看了思路 重要
+ * https://leetcode.com/discuss/29532/dp-solution-in-python
+ * 还有dp解法 未实现
+ */
 class UniqueBST2 {
     public static void main(String[] args) {
 

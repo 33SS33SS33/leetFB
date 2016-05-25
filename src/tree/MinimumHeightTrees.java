@@ -12,14 +12,14 @@ import java.util.*;
  * Given such a graph, write a function to find all the MHTs and return a list of their root labels.
  * Format The graph contains n nodes which are labeled from 0 to n - 1. You will be given the number n and a list of
  * undirected edges (each edge is a pair of labels).
- *
  * You can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0, 1] is the same as
  * [1, 0] and thus will not appear together in edges.
  **/
 public class MinimumHeightTrees {
     public static void main(String[] args) {
         MinimumHeightTrees mht = new MinimumHeightTrees();
-        List<Integer> res = mht.findMinHeightTrees(6, new int[][] { { 0, 3 }, { 1, 3 }, { 2, 3 }, { 4, 3 }, { 5, 4 } });
+        List<Integer> res = mht.findMinHeightTrees(6,
+                new int[][] { { 0, 3 }, { 1, 3 }, { 2, 3 }, { 4, 3 }, { 5, 4 } });
         System.out.println(res.toString());
     }
 

@@ -11,10 +11,12 @@ import java.util.*;
  * Tags: Tree, DFS
  */
 
-/**使用先序遍历
- 如果访问了左节点  则当前点得值是左节点的最大值
- 如果访问了右节点  则当前点得值是右节点的最小值
- 然后递归更新最大最小值即可*/
+/**
+ * 使用先序遍历
+ * 如果访问了左节点  则当前点得值是左节点的最大值
+ * 如果访问了右节点  则当前点得值是右节点的最小值
+ * 然后递归更新最大最小值即可
+ */
 class ValidateBST {
     public static void main(String[] args) {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);
@@ -35,6 +37,7 @@ class ValidateBST {
      * Check right subtree
      */
     Integer pred = null;
+
     public boolean isValidBST(TreeNode root) {
         if (root == null)
             return true;
@@ -56,9 +59,11 @@ class ValidateBST {
     public boolean isValidBSTB(TreeNode root) {
         return isValidBSTB(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
+
     // add range of current value and do recursive check
     public boolean isValidBSTB(TreeNode root, int min, int max) {
-        return root == null || root.val > min && root.val < max && isValidBSTB(root.left, min, root.val) && isValidBSTB(root.right, root.val, max);
+        return root == null || root.val > min && root.val < max && isValidBSTB(root.left, min,
+                root.val) && isValidBSTB(root.right, root.val, max);
     }
 
     /**
@@ -76,6 +81,7 @@ class ValidateBST {
         }
         return true;
     }
+
     public void inOrderList(TreeNode root, List<Integer> res) {
         if (root == null)
             return;
@@ -147,6 +153,7 @@ class ValidateBST {
             this.right = right;
         }
     }
+
     public static class TreeNode {
         int      val;
         TreeNode left;

@@ -19,7 +19,6 @@ import java.util.List;
  * 11  13  4
  * /  \    / \
  * 7    2  5   1
- *
  * return
  * [
  * [5,4,11,2],
@@ -59,6 +58,7 @@ class PathSum2 {
         pathSum(root, sum, new ArrayList<Integer>(), res);
         return res;
     }
+
     /**
      * DFS or backtracking
      * Note that we can't pass path directly
@@ -93,6 +93,7 @@ class PathSum2 {
         dfs(root, sum - root.val, result, l);
         return result;
     }
+
     public void dfs(TreeNode t, int sum, ArrayList<ArrayList<Integer>> result,ArrayList<Integer> l) {
         if (t.left == null && t.right == null && sum == 0) {
             ArrayList<Integer> temp = new ArrayList<Integer>();

@@ -12,7 +12,6 @@ import java.util.Stack;
  * 2   2
  * / \ / \
  * 3  4 4  3
- *
  * But the following is not:
  * 1
  * / \
@@ -69,12 +68,12 @@ class SymmetricTree {
             return true;
         return helper(root.left, root.right);
     }
+
     private boolean helper(TreeNode n1, TreeNode n2) {
         if (n1 == null || n2 == null)
             return n1 == n2;
         return n1.val == n2.val && helper(n1.left, n2.right) && helper(n1.right, n2.left);
     }
-
 
     /** 非递归方法
      * 是使用层序遍历来判断对称性质
@@ -101,7 +100,6 @@ class SymmetricTree {
         }
         return true;
     }
-
 
     public boolean isSymmetricC(TreeNode root) {
         if (root == null)

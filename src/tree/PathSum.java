@@ -7,14 +7,13 @@ import java.util.LinkedList;
  * such that adding up all the values along the path equals the given sum.
  * For example:
  * Given the below binary tree and sum = 22,
- *               5
- *              / \
- *             4   8
- *            /   / \
- *           11  13  4
- *          /  \      \
- *         7    2      1
- * 
+ * 5
+ * / \
+ * 4   8
+ * /   / \
+ * 11  13  4
+ * /  \      \
+ * 7    2      1
  * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
  * Tags: Tree, DFS
  */
@@ -63,12 +62,13 @@ class PathSum {
     结束条件是如果当前节点是空的，则返回false，如果是叶子，那么如果剩余的sum等于当前叶子的值，则找到满足条件的路径，
     返回true*/
     public boolean hasPathSumC(TreeNode root, int sum) {
-        if(root == null)
+        if (root == null)
             return false;
-        if(root.left == null && root.right==null && root.val==sum)
+        if (root.left == null && root.right == null && root.val == sum)
             return true;
-        return hasPathSumC(root.left, sum-root.val) || hasPathSumC(root.right, sum-root.val);
+        return hasPathSumC(root.left, sum - root.val) || hasPathSumC(root.right, sum - root.val);
     }
+
     /**
      * creek---
      */

@@ -32,7 +32,6 @@ public class Isbalance {
         return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
-
     public static class TreeNode {
         int      val;
         TreeNode left;
