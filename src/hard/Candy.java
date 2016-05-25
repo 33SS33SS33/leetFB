@@ -1,4 +1,4 @@
-package dP;
+package hard;
 
 /**
  * There are N children standing in a line. Each child is assigned a rating value.

@@ -1,4 +1,4 @@
-package string;
+package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/29.
@@ -22,7 +22,7 @@ package string;
  */
 public class ShortestPalindrome {
     public static void main(String[] args) {
-        String s = "mississippi";
+        String s = "abcd";
         System.out.println(shortestPalindrome(s));
     }
 

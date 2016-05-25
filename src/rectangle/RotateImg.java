@@ -25,7 +25,9 @@ class RotateImg {
             System.out.println();
         }
     }
-    /** better
+
+    /** 最好的
+     * better
      * Get the length of matrix
      * Do level by level, each level edge by edge
      * In-place solutions overwrites original matrix  matrix[i][j] = matrix[n-1-j][i]"
@@ -65,21 +67,4 @@ class RotateImg {
         }
     }
 
-
-
-    /**
-     * In-place Solution~ using the relation "matrix[i][j] = matrix[n-1-j][i]",
-     */
-/*    public void rotate2(int[][] matrix) {
-        int n = matrix.length;
-        for (int i = 0; i < n / 2; i++) {
-            for (int j = 0; j < Math.ceil(((double) n) / 2.); j++) {
-                int temp = matrix[i][j];
-                matrix[i][j] = matrix[n - 1 - j][i];
-                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
-                matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
-                matrix[j][n - 1 - i] = temp;
-            }
-        }
-    }*/
 }

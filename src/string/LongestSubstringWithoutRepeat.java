@@ -9,7 +9,7 @@ import java.util.Arrays;
 /**
  * Longest Substring Without Repeating Characters
  */
-public class LengthOfLongestSubstringWithoutRepeat {
+public class LongestSubstringWithoutRepeat {
     public static void main(String[] args) {
         String s = "mississippi";
 

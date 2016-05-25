@@ -1,4 +1,4 @@
-package dP;
+package hard;
 
 import java.util.Arrays;
 

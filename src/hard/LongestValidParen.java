@@ -32,8 +32,9 @@ class LongestValidParen {
         System.out.println(longestValidParenthesesC(")()()")); // 4
         System.out.println(longestValidParenthesesD(")()()")); // 4
     }
-    
-    /** Optimized DP
+
+    /**
+     * Optimized DP
      * Build a stack for indices of open parentheses
      * Traverse the string, if current is open paren, push to stack
      * Otherwise, its close paren.

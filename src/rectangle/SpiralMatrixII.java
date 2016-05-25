@@ -13,23 +13,23 @@ package rectangle;
  * ]
  * Tags: Array
  */
-class SpiralMatrix2 {
+class SpiralMatrixII {
     public static void main(String[] args) {
-        int[][] mat = generateMatrix(5);
+        int[][] mat = generateMatrix(3);
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 System.out.print(mat[i][j] + " ");
             }
             System.out.println();
         }
-        int[][] mat2 = generateMatrixB(4);
+        int[][] mat2 = generateMatrixB(3);
         for (int i = 0; i < mat2.length; i++) {
             for (int j = 0; j < mat2[i].length; j++) {
                 System.out.print(mat2[i][j] + " ");
             }
             System.out.println();
         }
-        int[][] mat3 = generateMatrixC(4);
+        int[][] mat3 = generateMatrixC(3);
         for (int i = 0; i < mat3.length; i++) {
             for (int j = 0; j < mat3[i].length; j++) {
                 System.out.print(mat3[i][j] + " ");
@@ -110,7 +110,6 @@ class SpiralMatrix2 {
             }
             y--;
             x++;
-
             while (x + step < n) {
                 i++;
                 result[x][y] = i;
@@ -118,7 +117,6 @@ class SpiralMatrix2 {
             }
             x--;
             y--;
-
             while (y >= 0 + step) {
                 i++;
                 result[x][y] = i;
@@ -127,7 +125,6 @@ class SpiralMatrix2 {
             y++;
             x--;
             step++;
-
             while (x >= 0 + step) {
                 i++;
                 result[x][y] = i;

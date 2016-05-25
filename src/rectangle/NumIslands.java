@@ -12,17 +12,16 @@ package rectangle;
  * answer：3
  */
 
-/**使用DFS即可 设置一个矩阵记录有没有访问过
- 然后遍历grid 如果这个点为1且没访问过 就调用dfs开始查找他附近都是1的点 然后visit都置为True 这样就说明找到了一个岛
- dfs的时候 少一层递归会快很多  所以才直接限定了dfs的调用
- 也可以用 union find来做 下次可以试试*/
+/**
+ * 使用DFS即可 设置一个矩阵记录有没有访问过
+ * 然后遍历grid 如果这个点为1且没访问过 就调用dfs开始查找他附近都是1的点 然后visit都置为True 这样就说明找到了一个岛
+ * dfs的时候 少一层递归会快很多  所以才直接限定了dfs的调用
+ * 也可以用 union find来做 下次可以试试
+ */
 public class NumIslands {
     public static void main(String[] args) {
-        char[][] grid = {   { '1', '1', '0', '0', '0' },
-                            { '1', '1', '0', '0', '0' },
-                            { '0', '0', '1', '0', '0' },
-                            { '0', '0', '0', '1', '1' }
-                        };
+        char[][] grid = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' },
+                { '0', '0', '1', '0', '0' }, { '0', '0', '0', '1', '1' } };
         char[][] grid2 = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' },
                 { '0', '0', '1', '0', '0' }, { '0', '0', '0', '1', '1' } };
         System.out.println(new NumIslands().numIslands(grid));
@@ -46,6 +45,7 @@ public class NumIslands {
         }
         return count;
     }
+
     public void merge(char[][] grid, int i, int j) {
         //validity checking
         if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1)
@@ -82,10 +82,12 @@ public class NumIslands {
         }
         return count;
     }
+
     boolean allowed(int x, int y, final int mx, final int my, char[][] grid, boolean[][] visited) {
         return (x < mx) && (x >= 0) && (y < my) && (y >= 0) && (grid[x][y] == '1')
                 && (!visited[x][y]);
     }
+
     void travel(int x, int y, final int mx, final int my, char[][] grid, boolean[][] visited) {
         // x - 1, y
         // x + 1, y

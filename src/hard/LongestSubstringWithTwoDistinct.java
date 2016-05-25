@@ -1,4 +1,4 @@
-package string;
+package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28.
@@ -8,7 +8,7 @@ package string;
  * --------Hard------
  * Longest Substring with At Most Two Distinct Characters
  */
-public class LengthOfLongestSubstringTwoDistinct {
+public class LongestSubstringWithTwoDistinct {
     public static void main(String[] args) {
         String s = "mississippi";
         System.out.println(lengthOfLongestSubstringTwoDistinct(s));

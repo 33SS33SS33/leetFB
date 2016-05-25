@@ -10,7 +10,6 @@ import java.util.*;
  * For example, given:
  * S: "barfoothefoobarman"
  * L: ["foo", "bar"]
- * 
  * You should return the indices: [0,9].
  * (order does not matter).
  * Tags: Hash Table, Two Pointers, String
@@ -18,11 +17,11 @@ import java.util.*;
 class SubstringWithConcatOfAllWords {
     public static void main(String[] args) {
         String S = "barfoothefoobarman";
-        String[] L = new String[]{"foo", "bar"};
-        System.out.print(findSubstringA(S,L).toString());
-        System.out.print(findSubstringB(S,L).toString());
+        String[] L = new String[] { "foo", "bar" };
+        System.out.print(findSubstringA(S, L).toString());
+        System.out.print(findSubstringB(S, L).toString());
     }
-    
+
     /**
      * Build a map for words in L and its relative counts
      * At first I was gonna to use a set for words. Owing to the fact that duplicate is allowed in L, we need to use map instead.
@@ -56,7 +55,9 @@ class SubstringWithConcatOfAllWords {
         return res;
     }
 
-    /**------creek-----  Since each word in the dictionary has the same length, each of them can be treated as a single character.*/
+    /**
+     * creek Since each word in the dictionary has the same length, each of them can be treated as a single character.
+     */
     public static List<Integer> findSubstringB(String s, String[] words) {
         ArrayList<Integer> result = new ArrayList<Integer>();
         if (s == null || s.length() == 0 || words == null || words.length == 0) {

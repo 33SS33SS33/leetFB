@@ -14,7 +14,6 @@ package rectangle;
  * [23, 30, 34, 50]
  * ]
  * Given target = 3, return true.
- * <p/>
  * Tags: Array, Binary Search
  */
 class Searcha2DMatrix {
@@ -30,7 +29,6 @@ class Searcha2DMatrix {
     /**
      * n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
      * an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
-     * <p/>
      * disadvantage: 1. m * n may overflow 2. / and % are expensive
      */
     public boolean searchMatrix(int[][] matrix, int target) {

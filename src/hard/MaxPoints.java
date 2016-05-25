@@ -4,11 +4,9 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Given n points on a 2D plane, find the maximum number of points that lie on
- * the same straight line.
+ * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
  * LinkedIn Apple Twitter
- Tags:Hash Table Math
-
+ * Tags:Hash Table Math
  */
 
 /**
@@ -28,9 +26,9 @@ class MaxPoints {
 
     }
 
-    /*， 每次迭代以某一个点为基准， 看后面每一个点跟它构成的直线， 维护一个HashMap， key是跟这个点构成直线的斜率的值，
+    /** 每次迭代以某一个点为基准， 看后面每一个点跟它构成的直线， 维护一个HashMap， key是跟这个点构成直线的斜率的值，
      而value就是该斜率对应的点的数量， 计算它的斜率， 如果已经存在， 那么就多添加一个点， 否则创建新的key。
-      时间复杂度是O（n^2), 空间复杂度是哈希表的大小， 也就是O（n),*/
+     时间复杂度是O（n^2), 空间复杂度是哈希表的大小， 也就是O（n),*/
     public int maxPointsA1(Point[] points) {
         if (points == null || points.length == 0)
             return 0;

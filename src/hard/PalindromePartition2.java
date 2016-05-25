@@ -5,7 +5,6 @@ import java.util.*;
 /**
  * Given a string s, partition s such that every substring of the partition is a palindrome.
  * Return the minimum cuts needed for a palindrome partitioning of s.
- * <p/>
  * For example, given s = "aab",
  * Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
  * Tags: DP
@@ -20,28 +19,29 @@ import java.util.*;
 class PalindromePartition2 {
     public static void main(String[] args) {
         /*test palindrome*/
-        // System.out.println(isPalindrome("a"));
-        // System.out.println(isPalindrome("aa"));
-        // System.out.println(isPalindrome("aaa"));
-        // System.out.println(isPalindrome("aab"));
-        // System.out.println(isPalindrome("aabb"));
-        // System.out.println(isPalindrome("abba"));
+        System.out.println(isPalindrome("a"));
+        System.out.println(isPalindrome("aa"));
+        System.out.println(isPalindrome("aaa"));
+        System.out.println(isPalindrome("aab"));
+        System.out.println(isPalindrome("aabb"));
+        System.out.println(isPalindrome("abba"));
         /*test minCut*/
-        System.out.println(minCut("a"));
-        System.out.println(minCut("aa"));
-        System.out.println(minCut("aab"));
-        System.out.println(minCut("aabbcc"));
-        System.out.println(minCut("aabbccdd"));
-        System.out.println(minCut("abcdcba"));
-        System.out.println(minCut("abcd"));
+        System.out.println(minCutC("a"));
+        System.out.println(minCutC("aa"));
+        System.out.println(minCutC("aab"));
+        System.out.println(minCutC("aabbcc"));
+        System.out.println(minCutC("aabbccdd"));
+        System.out.println(minCutC("abcdcba"));
+        System.out.println(minCutC("abcd"));
+        System.out.println(minCutA("abcd"));
         System.out.println(minCutB("abcd"));
     }
 
     /**
      * Each cut at i+j is calculated by scanning (i-j)'s minimum cut + 1 if
-     * s[i-j, i+j] is a palindrome. 
+     * s[i-j, i+j] is a palindrome.
      */
-    public int minCut01(String s) {
+    public static int minCutA(String s) {
         if (s == null || s.length() == 0)
             return 0;
         int len = s.length();
@@ -62,13 +62,9 @@ class PalindromePartition2 {
 
     /**
      * Calculate and maintain 2 DP states:
-     *
      * pal[i][j] , which is whether s[i..j] forms a pal
-     *
      * d[i], which is the minCut for s[i..n-1]
-     *
      * Once we comes to a pal[i][j]==true:
-     *
      * if j==n-1, the string s[i..n-1] is a Pal, minCut is 0, d[i]=0;
      * else: the current cut num (first cut s[i..j] and then cut the rest
      * s[j+1...n-1]) is 1+d[j+1], compare it to the exisiting minCut num d[i],
@@ -82,7 +78,6 @@ class PalindromePartition2 {
         for (int i = 0; i < len; i++)
             Arrays.fill(p[i], false);
         int[] results = new int[len];
-
         for (int start = len - 1; start >= 0; start--) {
             results[start] = len - start - 1;
             for (int end = start; end < len; end++) {
@@ -103,8 +98,10 @@ class PalindromePartition2 {
         return results[0];
     }
 
-    /**Backtracking, generate all cuts*/
-    public static int minCut(String s) {
+    /**
+     * Backtracking, generate all cuts
+     */
+    public static int minCutC(String s) {
         Set<String> palin = new HashSet<String>();
         return minCut(s, 0, palin);
     }
@@ -120,16 +117,16 @@ class PalindromePartition2 {
             if (isPalindrome(s.substring(0, i))) {
                 palin.add(s.substring(0, i));
                 // add DP here
-                int result = palin.contains(s.substring(i)) ? count : minCut(s.substring(i), count + 1, palin);;
+                int result = palin.contains(s.substring(i)) ?
+                        count :
+                        minCut(s.substring(i), count + 1, palin);
+                ;
                 min = Math.min(min, result);
             }
         }
         return min;
     }
 
-    /**
-     * judge whether a string is a Palindrome
-     */
     private static boolean isPalindrome(String s) {
         if (s == null || s.length() == 0)
             return false;

@@ -1,4 +1,4 @@
-package string;
+package hard;
 
 /**
  * Implement wildcard pattern matching with support for '?' and '*' '?' Matches any single character.

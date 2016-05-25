@@ -1,4 +1,4 @@
-package backTrac;
+package hard;
 
 import java.util.*;
 
@@ -21,14 +21,9 @@ public class WordBreak2 {
         String s = "catsanddog";
         Set<String> dict = new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
         List<String> res = new WordBreak2().wordBreak(s, dict);
-        for (String l : res) {
-            System.out.println(l.toString());
-        }
-        System.out.println("------------------");
+        System.out.println(res.toString());
         List<String> res2 = new WordBreak2().wordBreakB(s, dict);
-        for (String l : res2) {
-            System.out.println(l.toString());
-        }
+        System.out.println(res2.toString());
     }
 
     /**
@@ -60,7 +55,10 @@ public class WordBreak2 {
                     words.add(pref); // reach the end
                 else {
                     String remain = s.substring(i, len); // remaining string
-                    List<String> remainDecomp = res.containsKey(remain) ? res.get(remain) : wordBreak(remain, dict); // avoid backtracking if a decomposition is already there
+                    List<String> remainDecomp = res.containsKey(remain) ?
+                            res.get(remain) :
+                            wordBreak(remain,
+                                    dict); // avoid backtracking if a decomposition is already there
                     if (remainDecomp != null) {
                         for (String w : remainDecomp)
                             words.add(pref + " " + w);

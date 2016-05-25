@@ -1,4 +1,4 @@
-package dP;
+package hard;
 
 /**
  * Given n non-negative integers representing an elevation map where the width
