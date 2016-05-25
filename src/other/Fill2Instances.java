@@ -22,6 +22,7 @@ class Fill2Instances {
             System.out.println("Not possible");
         }
     }
+
     /**
      * Backtrack from position n to 0
      */

@@ -2,9 +2,6 @@ package rectangle;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/29.
- */
-
-/**
  * 11000
  * 11000
  * 00100

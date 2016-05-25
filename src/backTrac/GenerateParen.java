@@ -16,44 +16,53 @@ class GenerateParen {
         System.out.println(generateParenthesisC(3));
     }
 
-    /** Backtracking 回溯法
+    /**
+     * Backtracking 回溯法
      * Helper function use left and right to represent available parentheses
      * Initialize left as n, right as 0
      */
     public static List<String> generateParenthesisA(int n) {
         List<String> ans = new ArrayList<String>();
-        if (n <= 0) return ans;
+        if (n <= 0)
+            return ans;
         dfs(n, 0, "", ans);
         return ans;
     }
+
     /**
-     * @param left available left parentheses
+     * @param left  available left parentheses
      * @param right available right parentheses
-     * @param res current result
-     * @param ans the answer list of the problem
+     * @param res   current result
+     * @param ans   the answer list of the problem
      */
     public static void dfs(int left, int right, String res, List<String> ans) {
         if (left == 0 && right == 0) {
             ans.add(res);
             return;
         }
-        if (left > 0) dfs(left - 1, right + 1, res + "(", ans); // add (, right + 1
-        if (right > 0) dfs(left, right - 1, res + ")", ans); // add ), right - 1
+        if (left > 0)
+            dfs(left - 1, right + 1, res + "(", ans); // add (, right + 1
+        if (right > 0)
+            dfs(left, right - 1, res + ")", ans); // add ), right - 1
     }
 
-    /**递归*/
+    /**
+     * 递归
+     */
     public static List<String> generateParenthesisB(int n) {
-        if (n == 0) return new ArrayList<String>();
-        if (n == 1) return Arrays.asList(new String[]{"()"});
+        if (n == 0)
+            return new ArrayList<String>();
+        if (n == 1)
+            return Arrays.asList(new String[] { "()" });
         HashSet<String> temp = new HashSet<String>();
-        for(String s : generateParenthesisB(n - 1)){
+        for (String s : generateParenthesisB(n - 1)) {
             temp.add("(" + s + ")");
             temp.add("()" + s);
             temp.add(s + "()");
         }
-        for(int i = 2; i < n - 1 ; i++){
-            for(String s : generateParenthesisB(n - i)){
-                for(String ss : generateParenthesisB(i)){
+        for (int i = 2; i < n - 1; i++) {
+            for (String s : generateParenthesisB(n - i)) {
+                for (String ss : generateParenthesisB(i)) {
                     temp.add(ss + s);
                     temp.add(s + ss);
                 }
@@ -62,7 +71,9 @@ class GenerateParen {
         return new ArrayList<String>(temp);
     }
 
-    /**creek  This solution looks more complicated. ,You can use n=2 to walk though the code.*/
+    /**
+     * creek  This solution looks more complicated. ,You can use n=2 to walk though the code.
+     */
     public static List<String> generateParenthesisC(int n) {
         ArrayList<String> result = new ArrayList<String>();
         ArrayList<Integer> diff = new ArrayList<Integer>();

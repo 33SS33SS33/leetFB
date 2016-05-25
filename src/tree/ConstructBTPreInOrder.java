@@ -28,6 +28,7 @@ class ConstructBTPreInOrder {
             return null;
         return buildTree(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
     }
+
     public TreeNode buildTree(int[] preorder, int[] inorder, int ps, int pe, int is, int ie) {
         if (ps > pe)
             return null;
@@ -37,13 +38,17 @@ class ConstructBTPreInOrder {
             if (inorder[pos] == preorder[ps])
                 break;
         }
-        root.left = buildTree(preorder, inorder, ps + 1, ps - is + pos, is, pos - 1); // left subtree
-        root.right = buildTree(preorder, inorder, ps - is + pos + 1, pe, pos + 1, ie); // right subtree
+        root.left = buildTree(preorder, inorder, ps + 1, ps - is + pos, is,
+                pos - 1); // left subtree
+        root.right = buildTree(preorder, inorder, ps - is + pos + 1, pe, pos + 1,
+                ie); // right subtree
         return root;
     }
 
-    /*算法最终相当于一次树的遍历，每个结点只会被访问一次，所以时间复杂度是O(n)。
-    而空间我们需要建立一个map来存储元素到下标的映射，所以是O(n)。*/
+    /**
+     * 算法最终相当于一次树的遍历，每个结点只会被访问一次，所以时间复杂度是O(n)。
+     * 而空间我们需要建立一个map来存储元素到下标的映射，所以是O(n)。
+     */
     public TreeNode buildTreeB(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null)
             return null;
@@ -53,6 +58,7 @@ class ConstructBTPreInOrder {
         }
         return helper(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, map);
     }
+
     private TreeNode helper(int[] preorder, int preL, int preR, int[] inorder, int inL, int inR,
             HashMap<Integer, Integer> map) {
         if (preL > preR || inL > inR)
@@ -63,7 +69,6 @@ class ConstructBTPreInOrder {
         root.right = helper(preorder, preL + index - inL + 1, preR, inorder, index + 1, inR, map);
         return root;
     }
-
 
     public TreeNode construct(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart,
             int inEnd) {

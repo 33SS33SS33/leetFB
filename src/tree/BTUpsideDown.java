@@ -8,13 +8,17 @@ import java.util.Queue;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/**核心思路就是把左边的换成右边的样子 所以用后序的遍历方式 然后新建一棵树就行了
- 就是注意建立新树的时候的顺序即可 注意递归的返回值 特别是not root or not root.left
- Root                  L
- /  \                  /  \
- L    R              R   Root
- 1. 对于一个parent来说，假如有right node，必须得有left node。而有left node，right node可以为空。而right node必须为叶子节点。所以该树每层至多有2个节点，并且2节点有共同的parent。
- 2. 所以对于最底层来说，必有一个left node，而这个left node则为整个新树的根 —— 例子中的4为最底层的左节点，最后成为新树的root。*/
+
+/**
+ * 核心思路就是把左边的换成右边的样子 所以用后序的遍历方式 然后新建一棵树就行了
+ * 就是注意建立新树的时候的顺序即可 注意递归的返回值 特别是not root or not root.left
+ * Root                  L
+ * /  \                  /  \
+ * L    R              R   Root
+ * 1. 对于一个parent来说，假如有right node，必须得有left node。而有left node，right node可以为空。
+ * 而right node必须为叶子节点。所以该树每层至多有2个节点，并且2节点有共同的parent。
+ * 2. 所以对于最底层来说，必有一个left node，而这个left node则为整个新树的根 —— 例子中的4为最底层的左节点，最后成为新树的root。
+ */
 public class BTUpsideDown {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -32,6 +36,7 @@ public class BTUpsideDown {
     }
 
     LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+
     public TreeNode upsideDownBinaryTree(TreeNode root) {
         inOrder(root);
         TreeNode newRoot = queue.poll();
@@ -43,6 +48,7 @@ public class BTUpsideDown {
         }
         return newRoot;
     }
+
     void inOrder(TreeNode root) {
         if (root == null)
             return;
@@ -55,7 +61,6 @@ public class BTUpsideDown {
         root.left = null;
         root.right = null;
     }
-
 
     private List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();

@@ -15,7 +15,6 @@ class DetectLoop {
      * Move one pointer by one and other pointer by two.
      * If these pointers meet at some node then there is a loop.
      * If pointers do not meet then linked list doesn’t have loop.
-
      * Other methods:
      * Put Node reference in a HashTable
      * Marked Visited Node,

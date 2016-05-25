@@ -12,7 +12,10 @@ public class FourSum {
         System.out.println(new FourSum().fourSumA(num, 0).toString());
 
     }
-    /*总时间复杂度是O(n^3*/
+
+    /**
+     * 总时间复杂度是O(n^3)
+     */
     public ArrayList<ArrayList<Integer>> fourSumA(int[] num, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (num == null || num.length == 0)
@@ -29,6 +32,7 @@ public class FourSum {
         }
         return res;
     }
+
     private ArrayList<ArrayList<Integer>> threeSum(int[] num, int end, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         for (int i = end; i > 1; i--) {
@@ -42,6 +46,7 @@ public class FourSum {
         }
         return res;
     }
+
     private ArrayList<ArrayList<Integer>> twoSum(int[] num, int end, int target) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         int l = 0;

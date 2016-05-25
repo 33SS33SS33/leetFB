@@ -35,6 +35,7 @@ class MergeSort {
             merge(A, low, middle, high);
         }
     }
+
     /**
      * Copy items from low to high to a helper array
      * Init 2 pointers

@@ -14,8 +14,9 @@ class Permutations {
         System.out.println(permuteB(new int[] { 1, 3, 2 }));
         System.out.println(new Permutations().permuteA(new int[] { 1, 3, 2 }));
     }
-    /** 最好的
-     * creek--
+
+    /**
+     * 最好的 creek
      */
     public ArrayList<ArrayList<Integer>> permuteA(int[] num) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -39,6 +40,7 @@ class Permutations {
         }
         return result;
     }
+
     /**
      * creek--recursively solve this problem. Swap each element with each element after it.
      */
@@ -81,7 +83,7 @@ class Permutations {
     }
 
     private void helper(int[] num, boolean[] used, ArrayList<Integer> item,
-                        ArrayList<ArrayList<Integer>> res) {
+            ArrayList<ArrayList<Integer>> res) {
         if (item.size() == num.length) {
             res.add(new ArrayList<Integer>(item));
             return;

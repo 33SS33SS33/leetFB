@@ -66,7 +66,9 @@ class BestTimeStock {
         return max;
     }
 
-    /**ganker*/
+    /**
+     * ganker
+     */
     public static int maxProfit3(int[] prices) {
         if (prices == null || prices.length == 0)
             return 0;

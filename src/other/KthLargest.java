@@ -6,7 +6,6 @@ import java.util.*;
  * Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not
  * the kth distinct element.
  * For example, Given [3,2,1,5,6,4] and k = 2, return 5.
- *
  * Note: You may assume k is always valid, 1 ≤ k ≤ array's length.
  * Tags: Divide and Conquer, Heap
  * Similar Problems: (M) Wiggle Sort II
@@ -62,9 +61,9 @@ class KthLargest {
         int index;
         while (l < r) {
             index = partition(A, l, r);
-            if (index > k ) {
+            if (index > k) {
                 r = index - 1;
-            } else if (index < k ) {
+            } else if (index < k) {
                 l = index + 1;
             } else {
                 return A[index];
@@ -72,6 +71,7 @@ class KthLargest {
         }
         return A[l];
     }
+
     /**
      * Choose mid value as pivot
      * Move two pointers
@@ -102,6 +102,7 @@ class KthLargest {
         }
         return getKth(nums.length - k + 1, nums, 0, nums.length - 1);
     }
+
     public int getKth(int k, int[] nums, int start, int end) {
         int pivot = nums[end];
         int left = start;

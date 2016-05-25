@@ -46,6 +46,7 @@ class BTInOrder {
         }
         return result;
     }
+
     public void helper(TreeNode p, List<Integer> result) {
         if (p.left != null)
             helper(p.left, result);
@@ -54,7 +55,8 @@ class BTInOrder {
             helper(p.right, result);
     }
 
-    /** -----迭代法  时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)
+    /**
+     * -----迭代法  时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)
      * Stack solution, O(n) Space
      * Use a stack to store TreeNodes
      * Go to left most and add each node
@@ -78,7 +80,8 @@ class BTInOrder {
         return result;
     }
 
-    /**O(n)，仍然是一个线性算法。空间复杂度的话我们分析过了，只是两个辅助指针，所以是O(1)。
+    /**
+     * O(n)，仍然是一个线性算法。空间复杂度的话我们分析过了，只是两个辅助指针，所以是O(1)。
      * <strong>Morris Traversal</strong>
      * O(1) space
      * Use cur for current node, pre for predecessor of cur node
@@ -121,7 +124,6 @@ class BTInOrder {
         }
         return res;
     }
-
 
     public static class TreeNode {
         int      val;

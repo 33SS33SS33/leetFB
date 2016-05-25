@@ -33,7 +33,8 @@ class BalancedBT {
             return Math.max(height(root.left), height(root.right)) + 1;
     }
 
-    /**creek
+    /**
+     * creek
      * 这里我们用一个整数来做返回值，而0或者正数用来表示树的深度，而-1则用来比较此树已经不平衡了，
      * 如果已经不平衡，则递归一直返回-1即可，也没有继续比较的必要了，
      * 否则就利用返回的深度信息看看左右子树是不是违反平衡条件，

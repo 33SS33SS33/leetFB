@@ -6,10 +6,14 @@ import java.util.Map;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  */
-/**还是哈希表就行*/
+
+/**
+ * 还是哈希表就行
+ */
 public class TwoSumIIIDatastructuredesign {
     class TwoSum {
         Map<Integer, Integer> nums = new HashMap<Integer, Integer>();
+
         public void add(int number) {
             Integer c = nums.get(number);
             if (c == null)
@@ -40,6 +44,7 @@ public class TwoSumIIIDatastructuredesign {
      */
     class TwoSumB {
         private HashMap<Integer, Integer> elements = new HashMap<Integer, Integer>();
+
         public void add(int number) {
             if (elements.containsKey(number)) {
                 elements.put(number, elements.get(number) + 1);
@@ -47,6 +52,7 @@ public class TwoSumIIIDatastructuredesign {
                 elements.put(number, 1);
             }
         }
+
         public boolean find(int value) {
             for (Integer i : elements.keySet()) {
                 int target = value - i;

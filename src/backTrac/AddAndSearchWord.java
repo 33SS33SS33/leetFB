@@ -12,7 +12,8 @@ public class AddAndSearchWord {
     static class TrieNode {
         // Initialize your data structure here.
         TrieNode[] children = new TrieNode[26];
-        int count = 0;
+        int        count    = 0;
+
         public TrieNode() {
         }
 

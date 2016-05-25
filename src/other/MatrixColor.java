@@ -14,12 +14,7 @@ import java.util.*;
 class MatrixColor {
     public static void main(String[] args) {
         MatrixColor m = new MatrixColor();
-        int[][] mat = {
-                {2, 2, 1, 2},
-                {2, 2, 1, 2},
-                {2, 1, 1, 2},
-                {2, 2, 1, 2},
-        };
+        int[][] mat = { { 2, 2, 1, 2 }, { 2, 2, 1, 2 }, { 2, 1, 1, 2 }, { 2, 2, 1, 2 }, };
         System.out.println(m.findPerimeter(mat, 0, 2));
         System.out.println(m.findPerimeter(mat, 0, 1));
         System.out.println(m.findPerimeter(mat, 0, 3));

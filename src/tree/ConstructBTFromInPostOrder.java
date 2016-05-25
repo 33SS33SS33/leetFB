@@ -4,15 +4,16 @@ import java.util.*;
 
 /**
  * Given inorder and postorder traversal of a tree, construct the binary tree.
- *
  * Note:
  * You may assume that duplicates do not exist in the tree.
  * Tags: Tree, Array, DFS
  */
 
-/**跟上面题思路差不多
- 只是后序的话  确定根是从后往前走  最后的元素是根 倒数第二个就是右子树的根
- 每次pop最后一个  然后用它来分割中序的字符串*/
+/**
+ * 跟上面题思路差不多
+ * 只是后序的话  确定根是从后往前走  最后的元素是根 倒数第二个就是右子树的根
+ * 每次pop最后一个  然后用它来分割中序的字符串
+ */
 class ConstructBTFromInPostOrder {
     public static void main(String[] args) {
         int[] inorder = { 4, 2, 5, 1, 3, 6 };
@@ -34,6 +35,7 @@ class ConstructBTFromInPostOrder {
             return null;
         return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
     }
+
     public TreeNode buildTree(int[] inorder, int[] postorder, int is, int ie, int ps, int pe) {
         if (ps > pe)
             return null;
@@ -60,6 +62,7 @@ class ConstructBTFromInPostOrder {
         }
         return helper(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1, map);
     }
+
     private TreeNode helper(int[] inorder, int[] postorder, int inL, int inR, int postL, int postR,
             HashMap<Integer, Integer> map) {
         if (inL > inR || postL > postR)
@@ -98,6 +101,7 @@ class ConstructBTFromInPostOrder {
         int      val;
         TreeNode left;
         TreeNode right;
+
         TreeNode(int x) {
             val = x;
         }

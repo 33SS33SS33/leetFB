@@ -6,16 +6,16 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Given a binary tree, return all root-to-leaf paths.
+ * For example, given the following binary tree:
+ * 1
+ * /   \
+ * 2     3
+ * \
+ * 5
+ * All root-to-leaf paths are:
+ * ["1->2->5", "1->3"]
  */
-/**Given a binary tree, return all root-to-leaf paths.
- For example, given the following binary tree:
-    1
-  /   \
- 2     3
- \
-  5
- All root-to-leaf paths are:
- ["1->2->5", "1->3"]*/
 
 /**
  * 用DFS就行
@@ -31,13 +31,18 @@ public class BinaryTreePaths {
 
     public List<String> binaryTreePathsA(TreeNode root) {
         List<String> answer = new ArrayList<String>();
-        if (root != null) searchBT(root, "", answer);
+        if (root != null)
+            searchBT(root, "", answer);
         return answer;
     }
+
     private void searchBT(TreeNode root, String path, List<String> answer) {
-        if (root.left == null && root.right == null) answer.add(path + root.val);
-        if (root.left != null) searchBT(root.left, path + root.val + "->", answer);
-        if (root.right != null) searchBT(root.right, path + root.val + "->", answer);
+        if (root.left == null && root.right == null)
+            answer.add(path + root.val);
+        if (root.left != null)
+            searchBT(root.left, path + root.val + "->", answer);
+        if (root.right != null)
+            searchBT(root.right, path + root.val + "->", answer);
     }
 
     public List<String> binaryTreePathsB(TreeNode root) {
@@ -46,6 +51,7 @@ public class BinaryTreePaths {
         helper(res, root, sb);
         return res;
     }
+
     private void helper(List<String> res, TreeNode root, StringBuilder sb) {
         if (root == null) {
             return;

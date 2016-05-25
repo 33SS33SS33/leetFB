@@ -22,9 +22,10 @@ import java.util.*;
  * Tags: Array, Backtracking, Bit Manipulation
  */
 
-/**用DP 动态规划
- [1,2] 和[1,2,3]的子集的差异在于 [1,2,3]是包含了[1,2]的所有子集再加上 把[1,2]所有的子集插入3元素  这两个加起来就是[1,2,3]的子集
- 题目要求必须是非降序的 所以先将nums排序即可
+/**
+ * 用DP 动态规划
+ * [1,2] 和[1,2,3]的子集的差异在于 [1,2,3]是包含了[1,2]的所有子集再加上 把[1,2]所有的子集插入3元素  这两个加起来就是[1,2,3]的子集
+ * 题目要求必须是非降序的 所以先将nums排序即可
  */
 class Subsets {
     public static void main(String[] args) {
@@ -51,7 +52,9 @@ class Subsets {
         }*/
     }
 
-    /**非递归  更好理解*/
+    /**
+     * 非递归  更好理解
+     */
     public static ArrayList<ArrayList<Integer>> subsets2(int[] S) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         res.add(new ArrayList<Integer>());
@@ -68,6 +71,7 @@ class Subsets {
         }
         return res;
     }
+
     /**
      * Remember the start position and do backtracking
      */
@@ -108,7 +112,9 @@ class Subsets {
         subsetsA(s, start + 1, copy, result); // with
     }
 
-    /**递归 时间和空间都是取决于结果的数量，也就是O(2^n)*/
+    /**
+     * 递归 时间和空间都是取决于结果的数量，也就是O(2^n)
+     */
     public static ArrayList<ArrayList<Integer>> subsets1(int[] num) {
         if (num == null)
             return null;
@@ -133,12 +139,12 @@ class Subsets {
         return res;
     }
 
-
-
-    /**creek
+    /**
+     * creek
      * Given a set S of n distinct integers, there is a relation between Sn and Sn-1.
      * The subset of Sn-1 is the union of {subset of Sn-1} and {each element in Sn-1 + one more element}.
-     * Therefore, a Java solution can be quickly formalized.*/
+     * Therefore, a Java solution can be quickly formalized.
+     */
     public static ArrayList<ArrayList<Integer>> subsets3(int[] S) {
         if (S == null)
             return null;

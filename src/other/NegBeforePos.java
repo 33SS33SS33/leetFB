@@ -18,10 +18,10 @@ package other;
  */
 class NegBeforePos {
     public static void main(String[] args) {
-        int[] A={-1, 1, 3 , -2, 2};
+        int[] A = { -1, 1, 3, -2, 2 };
         negBeforePos(A);
-        for(int i:A){
-            System.out.print(i+",");
+        for (int i : A) {
+            System.out.print(i + ",");
         }
     }
 

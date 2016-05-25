@@ -3,7 +3,6 @@ package other;
 /**
  * Find two disjoint (non-overlapping) subsequences in an array with maximum
  * difference.
- * <p/>
  * Tags: Array
  */
 class MaxSubseqDifferenceNoOverlap {
@@ -49,7 +48,6 @@ class MaxSubseqDifferenceNoOverlap {
         }
         return maxDiff;
     }
-
 
     private int[] maxKadane(int[] A, int s, int e) {
         int beginTemp = s;

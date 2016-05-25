@@ -6,18 +6,16 @@ import java.util.ArrayList;
 /**
  * Given two integers n and k, return all possible combinations of k numbers
  * out of 1 ... n.
- * 
  * For example,
  * If n = 4 and k = 2, a solution is:
  * [
- *   [2,4],
- *   [3,4],
- *   [2,3],
- *   [1,2],
- *   [1,3],
- *   [1,4],
+ * [2,4],
+ * [3,4],
+ * [2,3],
+ * [1,2],
+ * [1,3],
+ * [1,4],
  * ]
- * 
  * Tags: Backtracking
  */
 class Combinations {
@@ -27,10 +25,10 @@ class Combinations {
             System.out.print(l.toString());
         }
         System.out.println();
-//        List<List<String>> lists2 = combineB(4, 2);
-//        for (List<String> l : lists2) {
-//            System.out.print(l.toString());
-//        }
+        //        List<List<String>> lists2 = combineB(4, 2);
+        //        for (List<String> l : lists2) {
+        //            System.out.print(l.toString());
+        //        }
         System.out.println();
         ArrayList<ArrayList<Integer>> lists3 = combineC(4, 2);
         for (ArrayList<Integer> l : lists3) {
@@ -38,7 +36,8 @@ class Combinations {
         }
     }
 
-    /** 最好的
+    /**
+     * 最好的
      * Ascending order, track start  DFS
      */
     public static List<List<Integer>> combineA(int n, int k) {
@@ -46,7 +45,9 @@ class Combinations {
         combine(n, k, 1, new ArrayList<Integer>(), res); // note that start is 1
         return res;
     }
-    public static void combine(int n, int k, int start, List<Integer> comb, List<List<Integer>> result) {
+
+    public static void combine(int n, int k, int start, List<Integer> comb,
+            List<List<Integer>> result) {
         if (k == 0) { // is a solution
             result.add(comb);
             return;
@@ -58,7 +59,9 @@ class Combinations {
         }
     }
 
-    /**creek DFS*/
+    /**
+     * creek DFS
+     */
     public static ArrayList<ArrayList<Integer>> combineC(int n, int k) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (n <= 0 || n < k)
@@ -67,7 +70,9 @@ class Combinations {
         dfs(n, k, 1, item, result); // because it need to begin from 1
         return result;
     }
-    private static void dfs(int n, int k, int start, ArrayList<Integer> item, ArrayList<ArrayList<Integer>> res) {
+
+    private static void dfs(int n, int k, int start, ArrayList<Integer> item,
+            ArrayList<ArrayList<Integer>> res) {
         if (item.size() == k) {
             res.add(new ArrayList<Integer>(item));
             return;

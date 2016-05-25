@@ -55,7 +55,9 @@ class JumpGame {
         return true;
     }
 
-    /**时间复杂度是O(n)，而空间上是O(1)*/
+    /**
+     * 时间复杂度是O(n)，而空间上是O(1)
+     */
     public boolean canJumpC(int[] A) {
         if (A == null || A.length == 0)
             return false;
@@ -87,6 +89,7 @@ class JumpGame {
         }
         return last <= 0;
     }
+
     /**
      * creek
      * The key to solve this problem is to find:

@@ -68,7 +68,9 @@ public class WordBreak2 {
         return res;
     }
 
-    /*DP 用动态规划的代码复杂度要远远高于brute force的解法，而且本质来说并没有很大的提高*/
+    /**
+     * DP 用动态规划的代码复杂度要远远高于brute force的解法，而且本质来说并没有很大的提高
+     */
     public ArrayList<String> wordBreak2B(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)

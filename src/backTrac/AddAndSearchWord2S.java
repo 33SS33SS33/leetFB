@@ -8,68 +8,75 @@ import java.util.Map;
  */
 public class AddAndSearchWord2S {
     private TrieNode root;
-    public AddAndSearchWord2S(){
+
+    public AddAndSearchWord2S() {
         root = new TrieNode();
     }
+
     // Adds a word into the data structure.
     public void addWord(String word) {
         HashMap<Character, TrieNode> children = root.children;
-        for(int i=0; i<word.length(); i++){
+        for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             TrieNode t = null;
-            if(children.containsKey(c)){
+            if (children.containsKey(c)) {
                 t = children.get(c);
-            }else{
+            } else {
                 t = new TrieNode(c);
-                children.put(c,t);
+                children.put(c, t);
             }
             children = t.children;
-            if(i == word.length()-1){
+            if (i == word.length() - 1) {
                 t.isLeaf = true;
             }
         }
     }
+
     // Returns if the word is in the data structure. A word could
     // contain the dot character '.' to represent any one letter.
     public boolean search(String word) {
         return dfsSearch(root.children, word, 0);
     }
+
     public boolean dfsSearch(HashMap<Character, TrieNode> children, String word, int start) {
-        if(start == word.length()){
-            if(children.size()==0)
+        if (start == word.length()) {
+            if (children.size() == 0)
                 return true;
             else
                 return false;
         }
         char c = word.charAt(start);
-        if(children.containsKey(c)){
-            if(start == word.length()-1 && children.get(c).isLeaf){
+        if (children.containsKey(c)) {
+            if (start == word.length() - 1 && children.get(c).isLeaf) {
                 return true;
             }
-            return dfsSearch(children.get(c).children, word, start+1);
-        }else if(c == '.'){
+            return dfsSearch(children.get(c).children, word, start + 1);
+        } else if (c == '.') {
             boolean result = false;
-            for(Map.Entry<Character, TrieNode> child: children.entrySet()){
-                if(start == word.length()-1 && child.getValue().isLeaf){
+            for (Map.Entry<Character, TrieNode> child : children.entrySet()) {
+                if (start == word.length() - 1 && child.getValue().isLeaf) {
                     return true;
                 }
                 //if any path is true, set result to be true;
-                if(dfsSearch(child.getValue().children, word, start+1)){
+                if (dfsSearch(child.getValue().children, word, start + 1)) {
                     result = true;
                 }
             }
             return result;
-        }else{
+        } else {
             return false;
         }
     }
 
-    class TrieNode{
+    class TrieNode {
         char c;
         HashMap<Character, TrieNode> children = new HashMap<Character, TrieNode>();
         boolean isLeaf;
-        public TrieNode() {}
-        public TrieNode(char c){
+
+        public TrieNode() {
+        }
+
+        public TrieNode(char c) {
             this.c = c;
         }
     }

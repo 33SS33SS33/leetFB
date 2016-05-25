@@ -24,10 +24,12 @@ import java.util.Queue;
  * Tags: Tree, BFS
  */
 
-/**使用BFS 注意BFS判断一下level是不是为空*/
+/**
+ * 使用BFS 注意BFS判断一下level是不是为空
+ */
 class BTLevelOrder {
     public static void main(String[] args) {
-        TreeNode root =buildTree();
+        TreeNode root = buildTree();
         System.out.println(new BTLevelOrder().levelOrder(root));
         System.out.println(new BTLevelOrder().levelOrderB(root));
         System.out.println(new BTLevelOrder().levelOrderC(root));
@@ -88,8 +90,10 @@ class BTLevelOrder {
         return al;
     }
 
-    /**ganker
-     * 法的复杂度是就结点的数量，O(n)，空间复杂度是一层的结点数，也是O(n)。---*/
+    /**
+     * ganker
+     * 法的复杂度是就结点的数量，O(n)，空间复杂度是一层的结点数，也是O(n)。---
+     */
     public ArrayList<ArrayList<Integer>> levelOrderC(TreeNode root) {
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
         if (root == null)
@@ -121,7 +125,7 @@ class BTLevelOrder {
         return res;
     }
 
-    static TreeNode buildTree(){
+    static TreeNode buildTree() {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
         TreeNode n2 = new TreeNode(3);
@@ -135,6 +139,7 @@ class BTLevelOrder {
         n2.right = n5;
         return root;
     }
+
     public static class TreeNode {
         int      val;
         TreeNode left;

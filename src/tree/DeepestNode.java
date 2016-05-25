@@ -3,13 +3,11 @@ package tree;
 /**
  * Returns the deepest node in a binary tree. If the tree is complete, having
  * two same depth of node, return the rightmost node.
- *
  * Tags: Tree, DFS, Backtracking
  */
 class DeepestNode {
     public static void main(String[] args) {
-        Node root= buildTree();
-
+        Node root = buildTree();
         /**错的？？*/
         System.out.println(new DeepestNode().deepestNode(root));
     }
@@ -36,6 +34,7 @@ class DeepestNode {
         findDeepest(root.left, res, level + 1, max);
         findDeepest(root.right, res, level + 1, max);
     }
+
     private static Node buildTree() {
         Node t0 = new Node(20);
         Node t1 = new Node(9);
@@ -58,6 +57,7 @@ class DeepestNode {
 
         return t0;
     }
+
     static class Node {
         int  val;
         Node left;

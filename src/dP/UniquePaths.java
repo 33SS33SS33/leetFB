@@ -7,7 +7,6 @@ package dP;
  * is trying to reach the bottom-right corner of the grid (marked 'Finish' in
  * the diagram below).
  * How many possible unique paths are there?
- * 
  * Note: m and n will be at most 100.
  * Tags: Array, DP
  */
@@ -24,7 +23,7 @@ class UniquePaths {
         System.out.println(uniquePathsB(10, 20));
         System.out.println(uniquePathsC(10, 20));
     }
-    
+
     /**
      * Math, Combination
      * Equivalent to choose n-1 to go down from m - 1 + n - 1
@@ -40,7 +39,7 @@ class UniquePaths {
         }
         return (int) res; // convert to int
     }
-    
+
     /**
      * DP, top-down approach
      * use a matrix to store # of paths
@@ -48,6 +47,7 @@ class UniquePaths {
      * when m == 1 or n == 1, only 1 way (straight down or straight right)
      */
     static int[][] paths = new int[101][101];
+
     public static int uniquePathsDP(int m, int n) {
         if (m <= 0 || n <= 0)
             return 0;
@@ -57,7 +57,7 @@ class UniquePaths {
             paths[m][n] = uniquePathsDP(m - 1, n) + uniquePathsDP(m, n - 1);
         return paths[m][n];
     }
-    
+
     /**
      * DP, bottom-up approach
      */
@@ -97,9 +97,10 @@ class UniquePaths {
     }
 
     /** DFS  creek*/
-    public  static int uniquePathsC(int m, int n) {
-        return dfs(0,0,m,n);
+    public static int uniquePathsC(int m, int n) {
+        return dfs(0, 0, m, n);
     }
+
     public static int dfs(int i, int j, int m, int n) {
         if (i == m - 1 && j == n - 1) {
             return 1;

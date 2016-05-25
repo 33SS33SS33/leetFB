@@ -6,7 +6,7 @@ package string;
 
 /**
  * Implement strStr().
-  Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+ * Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
  * Tags: Two Pointers, String
  */
 
@@ -108,6 +108,7 @@ public class ImplementStrStr {
         }
         return -1;
     }
+
     //calculate KMP array
     public static int[] getNext(String needle) {
         int[] next = new int[needle.length()];

@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Given an array of integers, find two numbers such that they add up to a
  * specific target number.
- *
+ * <p/>
  * The function twoSum should return indices of the two numbers such that they
  * add up to the target, where index1 must be less than index2. Please note
  * that your returned answers (both index1 and index2) are not zero-based.
@@ -15,7 +15,6 @@ import java.util.Map;
  * solution.
  * Input: numbers={2, 7, 11, 15}, target=9
  * Output: index1=1, index2=2
- *
  * Tags: Array, HashTable
  */
 class TwoSum {
@@ -41,6 +40,7 @@ class TwoSum {
 
     /*在LeetCode原题中是假设结果有且仅有一个的，一般来说面试时会要求出所有的结果，
     这个时候会涉及到重复pair的处理，相关的内容会在3Sum那道题目中*/
+
     /**
      * HashMap, O(n) time, O(n) space
      * key -> number, value -> index
@@ -96,6 +96,7 @@ class TwoSum {
         }
         return null;
     }
+
     /**
      * Time complexity in worst case: O(n^2).
      */
@@ -112,7 +113,9 @@ class TwoSum {
         return ret;
     }
 
-    /**在这里，输出结果改成了满足相加等于target的两个数，而不是他们的index。*/
+    /**
+     * 在这里，输出结果改成了满足相加等于target的两个数，而不是他们的index。
+     */
     public int[] twoSumD(int[] numbers, int target) {
         int[] res = new int[2];
         if (numbers == null || numbers.length < 2)

@@ -3,6 +3,7 @@ package dP;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
  */
+
 /**
  * Find the minimum positive number K for an array such that for each item in
  * the array, adding or substracting a number from [0, K], to make the array in

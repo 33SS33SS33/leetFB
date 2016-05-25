@@ -8,22 +8,26 @@ import java.util.ArrayList;
  * Tags: DFS, Linked list
  */
 
-/**使用快慢指针来找中点
- 另外一种o(N)的算法 在右边的链接里 http://bangbingsyb.blogspot.com/2014/11/leetcode-convert-sorted-list-to-binary.html*/
+/**
+ * 使用快慢指针来找中点
+ * 另外一种o(N)的算法 在右边的链接里 http://bangbingsyb.blogspot.com/2014/11/leetcode-convert-sorted-list-to-binary.html
+ */
 class ConvertSortedListToBST {
     public static void main(String[] args) {
 
     }
 
     private static ListNode cur;
+
     public TreeNode sortedListToBST(ListNode head) {
         if (head == null)
             return null;
         cur = head;
         return buildTree(lengthOfList(head));
         /**Solution 2*/
-//        return sortedListToBSTB(0, lengthOfList(head) - 1);
+        //        return sortedListToBSTB(0, lengthOfList(head) - 1);
     }
+
     public static int lengthOfList(ListNode node) {
         int length = 0;
         while (node != null) {
@@ -32,6 +36,7 @@ class ConvertSortedListToBST {
         }
         return length;
     }
+
     /**
      * Bottom up approach, O(n) (Instead of top-down, O(nlogn))
      * STEP 1: Take left n/2 nodes and recursively construct the left sub tree.
@@ -51,7 +56,6 @@ class ConvertSortedListToBST {
                 - 1); // why n - n/2 - 1? The # of nodes in right subtreeis total nodes - nodes in left subtree - root
         return node;
     }
-
 
     // build tree bottom-up
     public TreeNode sortedListToBSTB(int start, int end) {
@@ -85,6 +89,7 @@ class ConvertSortedListToBST {
         list.add(head);
         return helper(list, 0, count - 1);
     }
+
     private TreeNode helper(ArrayList<ListNode> list, int l, int r) {
         if (l > r)
             return null;

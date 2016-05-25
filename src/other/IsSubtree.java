@@ -6,7 +6,6 @@ package other;
  */
 class IsSubtree {
 
-
     /**
      * t1 root of tree, t2 root of subtree
      */
@@ -44,6 +43,7 @@ class IsSubtree {
         return (matchTree(r1.left, r2.left) && matchTree(r1.right,
                 r2.right)); // recursively check children
     }
+
     class Node {
         int  value;
         Node left;

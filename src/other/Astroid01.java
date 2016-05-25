@@ -20,6 +20,7 @@ class Astroid01 {
         astroid(s, 0, new StringBuilder(s), res);
         return res;
     }
+
     /**
      * Backtracking, generate all possible result
      * Replace if current char is *

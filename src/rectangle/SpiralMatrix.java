@@ -25,7 +25,10 @@ class SpiralMatrix {
         System.out.print(res3.toString());
         System.out.print(res4.toString());
     }
-    /**最好理解的*/
+
+    /**
+     * 最好理解的
+     */
     public static List<Integer> spiralOrderA(int[][] matrix) {
         List<Integer> elements = new ArrayList<Integer>();
         if (matrix.length == 0)
@@ -56,6 +59,7 @@ class SpiralMatrix {
         }
         return elements;
     }
+
     /**
      * Remember which level it is right now
      * Do level by level till reach center
@@ -82,8 +86,6 @@ class SpiralMatrix {
         }
         return res;
     }
-
-
 
     /**
      * creek----------

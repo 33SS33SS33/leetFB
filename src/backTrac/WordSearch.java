@@ -6,7 +6,6 @@ package backTrac;
  * where "adjacent" cells are those horizontally or vertically neighboring. The
  * same letter cell may not be used more than once.
  * For example,
- *
  * Given board =
  * [
  * ["ABCE"],
@@ -16,7 +15,6 @@ package backTrac;
  * word = "ABCCED", -> returns true,
  * word = "SEE", -> returns true,
  * word = "ABCB", -> returns false.
- *
  * Tags: Array, Backtracking
  */
 class WordSearch {
@@ -29,7 +27,8 @@ class WordSearch {
         System.out.println(existB(board, word));
     }
 
-    /** 最好的
+    /**
+     * 最好的
      * Use boolean array to remember whether a word is used
      * Traverse each position and do DFS
      */
@@ -46,6 +45,7 @@ class WordSearch {
                 }
         return false;
     }
+
     /**
      * Remember position in board
      * Remember position in matched word
@@ -58,8 +58,8 @@ class WordSearch {
             return false;
         board[i][j] = '#'; // mark 
         // search 4 connectivity
-        boolean res = dfs(board, i - 1, j, word, n + 1) || dfs(board, i + 1, j, word, n + 1)
-                || dfs(board,i, j - 1, word, n + 1) || dfs(board, i, j + 1, word, n + 1);
+        boolean res =
+                dfs(board, i - 1, j, word, n + 1) || dfs(board, i + 1, j, word, n + 1) || dfs(board, i, j - 1, word, n + 1) || dfs(board, i, j + 1, word, n + 1);
         board[i][j] = word.charAt(n);// reset mark
         return res;
     }
@@ -87,11 +87,13 @@ class WordSearch {
         }
         return false;
     }
+
     private static boolean search(char[][] board, String word, int index, int i, int j,
             boolean[][] used) {
         if (index == word.length())
             return true;
-        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j] || board[i][j] != word.charAt(index))
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j]
+                || board[i][j] != word.charAt(index))
             return false;
         used[i][j] = true;
         boolean res = search(board, word, index + 1, i - 1, j, used) || search(board, word, index + 1, i + 1, j, used)

@@ -78,6 +78,7 @@ class WordLadder2 {
             }
         }
     }
+
     /**
      * Generate a list of words the word
      * Skip if it's the same character
@@ -112,7 +113,8 @@ class WordLadder2 {
             return; // note to return
         }
         for (String next : map.get(word)) {
-            if (dist.containsKey(next) && dist.get(word) == dist.get(next) + 1) { // backward, so word = next + 1
+            if (dist.containsKey(next)
+                    && dist.get(word) == dist.get(next) + 1) { // backward, so word = next + 1
                 path.add(0, word); // add current word
                 dfs(res, path, next, start, dist, map); // dfs next word
                 path.remove(0);
@@ -187,10 +189,12 @@ class WordLadder2 {
      2）如果按照正常的方法从start找end，然后根据这个来构造路径，代价会比较高，因为保存前驱结点容易，而保存后驱结点则比较困难。
      所以我们在广度优先搜索时反过来先从end找start，最后再根据生成的前驱结点映射从start往end构造路径，这样算法效率会有明显提高。*/
 
-    /**这道题目实现中有很多细节和技巧，个人觉得如果在面试中遇到很难做到完整，而且考核的算法思想也不是很精妙，更多的是繁琐的操作。
+    /**
+     * 这道题目实现中有很多细节和技巧，个人觉得如果在面试中遇到很难做到完整，而且考核的算法思想也不是很精妙，更多的是繁琐的操作。
      * 在面试中时间上花费太大，也不是很合适，大家主要还是了解一下思路哈。
-*/
-    public ArrayList<ArrayList<String>> findLaddersC(String start, String end, HashSet<String> dict) {
+     */
+    public ArrayList<ArrayList<String>> findLaddersC(String start, String end,
+            HashSet<String> dict) {
         ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
         HashSet<String> unvisitedSet = new HashSet<String>();
         unvisitedSet.addAll(dict);
@@ -251,6 +255,7 @@ class WordLadder2 {
         }
         return res;
     }
+
     private void getPaths(String cur, String end, ArrayList<String> list, int level,
             Map<String, List<String>> nextMap, ArrayList<ArrayList<String>> res) {
         if (cur.equals(end)) {
@@ -264,6 +269,7 @@ class WordLadder2 {
             }
         }
     }
+
     class StringWithLevel {
         String str;
         int    level;

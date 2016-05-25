@@ -25,7 +25,6 @@ class PalindromePartition {
     public static void main(String[] args) {
         System.out.println(partition("aab"));
         System.out.println(new PalindromePartition().partitionD("aab"));
-
         System.out.println(partition("aa"));
         System.out.println(new PalindromePartition().partitionD("aa"));
     }
@@ -68,7 +67,9 @@ class PalindromePartition {
         return true;
     }
 
-    /**creek----Depth-first Search*/
+    /**
+     * creek----Depth-first Search
+     */
     public ArrayList<ArrayList<String>> partitionD(String s) {
         ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
         if (s == null || s.length() == 0) {

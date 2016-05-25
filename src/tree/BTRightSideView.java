@@ -7,18 +7,23 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/**用BFS即可
- BFS一般要用到双端队列 而且要用两个循环 大循环是遍历整个树或图(如果下一层所有节点是空 循环结束) 小循环是访问当前这一层的所有节点 然后压人下一层所有的节点
- BFS可以一个用while 一个用for 重要*/
+
+/**
+ * 用BFS即可
+ * BFS一般要用到双端队列 而且要用两个循环 大循环是遍历整个树或图(如果下一层所有节点是空 循环结束) 小循环是访问当前这一层的所有节点 然后压人下一层所有的节点
+ * BFS可以一个用while 一个用for 重要
+ */
 public class BTRightSideView {
     public static void main(String[] args) {
-        TreeNode root =buildTree();
+        TreeNode root = buildTree();
         System.out.println(new BTRightSideView().rightSideViewA(root));
         System.out.println(new BTRightSideView().rightSideViewC(root));
         System.out.println(new BTRightSideView().rightSideViewB(root));
     }
 
-    /**看懂了*/
+    /**
+     * 看懂了
+     */
     public List<Integer> rightSideViewA(TreeNode root) {
         if (root == null)
             return new ArrayList<Integer>();
@@ -33,23 +38,25 @@ public class BTRightSideView {
         return rt;
     }
 
-    /**elegant--*/
+    /**
+     * elegant--
+     */
     public List<Integer> rightSideViewC(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         rightView(root, result, 0);
         return result;
     }
-    public void rightView(TreeNode curr, List<Integer> result, int currDepth){
-        if(curr == null){
+
+    public void rightView(TreeNode curr, List<Integer> result, int currDepth) {
+        if (curr == null) {
             return;
         }
-        if(currDepth == result.size()){
+        if (currDepth == result.size()) {
             result.add(curr.val);
         }
         rightView(curr.right, result, currDepth + 1);
         rightView(curr.left, result, currDepth + 1);
     }
-
 
     public List<Integer> rightSideViewB(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -79,7 +86,7 @@ public class BTRightSideView {
         return result;
     }
 
-    static TreeNode buildTree(){
+    static TreeNode buildTree() {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
         TreeNode n2 = new TreeNode(3);
@@ -93,6 +100,7 @@ public class BTRightSideView {
         n2.right = n5;
         return root;
     }
+
     static class TreeNode {
         int      val;
         TreeNode left;

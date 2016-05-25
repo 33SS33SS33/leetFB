@@ -20,6 +20,7 @@ public class GenerateTrees {
     public ArrayList<TreeNode> generateTrees(int n) {
         return helper(1, n);
     }
+
     private ArrayList<TreeNode> helper(int left, int right) {
         ArrayList<TreeNode> res = new ArrayList<TreeNode>();
         if (left > right) {

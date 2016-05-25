@@ -81,11 +81,11 @@ class SubsetsWithDup {
 
     /**
      * if a number from S is the first one of the numbers with the same value,
-     * it can be used to extend all previous subsets and create new 
+     * it can be used to extend all previous subsets and create new
      * non-duplicate subsets.
      * if a number from S is a duplicated number of some value, it cannot be
      * used to extend all previous subsets. Only part of them. The idea is that
-     * this number should help make some different subsets than its 
+     * this number should help make some different subsets than its
      * predecessor. So it only needs to extend subsets which contains its
      * predecessor.
      * [1 2 2]

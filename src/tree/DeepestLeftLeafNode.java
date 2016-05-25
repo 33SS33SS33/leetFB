@@ -10,7 +10,7 @@ package tree;
  */
 class DeepestLeftLeafNode {
     public static void main(String[] args) {
-        Node root= buildTree();
+        Node root = buildTree();
 
         /**错的？？*/
         System.out.println(new DeepestLeftLeafNode().deepestLeftLeaf(root));
@@ -38,6 +38,7 @@ class DeepestLeftLeafNode {
         deepestLeftLeaf(root.left, level + 1, maxLevel, true, res);
         deepestLeftLeaf(root.right, level + 1, maxLevel, false, res);
     }
+
     private static Node buildTree() {
         Node t0 = new Node(20);
         Node t1 = new Node(9);
@@ -60,6 +61,7 @@ class DeepestLeftLeafNode {
 
         return t0;
     }
+
     static class Node {
         int  val;
         Node left;

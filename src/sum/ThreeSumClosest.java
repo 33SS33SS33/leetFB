@@ -8,11 +8,12 @@ import java.util.Arrays;
  * integers. You may assume that each input would have exactly one solution.
  * For example, given array S = {-1 2 1 -4}, and target = 1.
  * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
- *
  * Tags: Arrays, Two pointers
  */
 
-/**使用一个循环 然后加上双指针即可 记得start也要移动 要不结果不全*/
+/**
+ * 使用一个循环 然后加上双指针即可 记得start也要移动 要不结果不全
+ */
 class ThreeSumClosest {
     public static void main(String[] args) {
         ThreeSumClosest t = new ThreeSumClosest();
@@ -56,9 +57,11 @@ class ThreeSumClosest {
         return closest;
     }
 
-    /*这道题跟3Sum很类似，区别就是要维护一个最小的diff，求出和目标最近的三个和。
+    /**
+     * 这道题跟3Sum很类似，区别就是要维护一个最小的diff，求出和目标最近的三个和。
      * brute force时间复杂度为O(n^3)，
-     * 优化的解法是使用排序之后夹逼的方法，总的时间复杂度为O(n^2+nlogn)=(n^2),空间复杂度是O(n)*/
+     * 优化的解法是使用排序之后夹逼的方法，总的时间复杂度为O(n^2+nlogn)=(n^2),空间复杂度是O(n)
+     */
     public static int threeSumClosestB(int[] num, int target) {
         if (num == null || num.length <= 2)
             return Integer.MIN_VALUE;
@@ -71,6 +74,7 @@ class ThreeSumClosest {
         }
         return target + closest;
     }
+
     private static int twoSum(int[] num, int target, int start) {
         int closest = num[start] + num[start + 1] - target;
         int l = start;

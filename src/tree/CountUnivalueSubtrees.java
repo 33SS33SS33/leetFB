@@ -2,20 +2,22 @@ package tree;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Given a binary tree, count the number of uni-value subtrees.
+ * A Uni-value subtree means all nodes of the subtree have the same value.
+ * For example:
+ * Given binary tree,
+ * 5
+ * / \
+ * 1   5
+ * / \   \
+ * 5   5   5
+ * return 4.
  */
-/**Given a binary tree, count the number of uni-value subtrees.
- A Uni-value subtree means all nodes of the subtree have the same value.
- For example:
- Given binary tree,
- 5
- / \
- 1   5
- / \   \
- 5   5   5
- return 4.
+
+/**
+ * 只要叶子节点 就一定是一个univalue tree 所以使用后序遍历即可 如果自己的左右子树都是 那么自己的值又和左右子树都一样 那么就把自己也算上(记得考虑子树是none的情况)
+ * 然后返回即可
  */
-/**只要叶子节点 就一定是一个univalue tree 所以使用后序遍历即可 如果自己的左右子树都是 那么自己的值又和左右子树都一样 那么就把自己也算上(记得考虑子树是none的情况)
- 然后返回即可*/
 public class CountUnivalueSubtrees {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -37,6 +39,7 @@ public class CountUnivalueSubtrees {
     public int countUnivalSubtrees(TreeNode root) {
         return _countUnivalSubtrees(root)[0];
     }
+
     // [count, uniq val]
     Integer[] _countUnivalSubtrees(TreeNode root) {
         if (root == null)
@@ -53,6 +56,7 @@ public class CountUnivalueSubtrees {
         }
         return new Integer[] { left[0] + right[0], null };
     }
+
     void patch(Integer[] v, TreeNode parent, TreeNode me) {
         if (me == null) {
             v[1] = parent.val;
@@ -60,7 +64,7 @@ public class CountUnivalueSubtrees {
     }
 
     public static class TreeNode {
-        Integer      val;
+        Integer  val;
         TreeNode left;
         TreeNode right;
 

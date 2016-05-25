@@ -22,7 +22,6 @@ import java.util.Queue;
  * [20,9],
  * [15,7]
  * ]
-
  * Tags: Tree, BFS, Stack
  */
 
@@ -33,7 +32,6 @@ import java.util.Queue;
  然后每次先遍历栈里的元素 这样就得到当前层的答案  然后再把下一层的入栈
  */
 
-
 class BinaryTreeZigZag {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -41,6 +39,7 @@ class BinaryTreeZigZag {
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrderB(head).toString());
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrderC(head).toString());
     }
+
     /**
      * Use queue to do BFS.
      * Get queue's size to get nodes in each level.
@@ -168,6 +167,7 @@ class BinaryTreeZigZag {
         t2.right = t5;
         return t0;
     }
+
     public static class TreeNode {
         int      val;
         TreeNode left;
