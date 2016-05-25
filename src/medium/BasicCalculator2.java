@@ -6,16 +6,19 @@ import java.util.Scanner;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/**这道题 是先把符号存下来 然后检测符号的时候 指针已经指向了符号后面的那个数字(所以最开始默认是加号 为了把第一个数字入栈)
- 然后如果碰见加号 就把之前拼出来的数字入栈 减号的话就把那个数字取反入栈
- 如果是乘号就要把栈里之前的数字弹出来做乘法之后再入栈 除法也一样
- 然后返回结果把栈里的数字累加起来即可*/
+
+/**
+ * 这道题 是先把符号存下来 然后检测符号的时候 指针已经指向了符号后面的那个数字(所以最开始默认是加号 为了把第一个数字入栈)
+ * 然后如果碰见加号 就把之前拼出来的数字入栈 减号的话就把那个数字取反入栈
+ * 如果是乘号就要把栈里之前的数字弹出来做乘法之后再入栈 除法也一样
+ * 然后返回结果把栈里的数字累加起来即可
+ */
 public class BasicCalculator2 {
-    enum TokenType { DIGIT, OP }
+    enum TokenType {DIGIT, OP}
 
     static class Token {
         TokenType type;
-        int val;
+        int       val;
 
         public Token(int val, TokenType type) {
             this.val = val;
@@ -38,25 +41,27 @@ public class BasicCalculator2 {
 
     static class Tokenizer {
         Scanner scanner;
-        Tokenizer(String s){
+
+        Tokenizer(String s) {
             scanner = new Scanner(s);
             scanner.useDelimiter("");
         }
-        Token next(){
-            if(!scanner.hasNext()){
+
+        Token next() {
+            if (!scanner.hasNext()) {
                 return EOL;
             }
             boolean num = false;
             int buf = 0;
-            while (scanner.hasNextInt()){
+            while (scanner.hasNextInt()) {
                 num = true;
                 buf = buf * 10 + scanner.nextInt();
             }
-            if(num){
+            if (num) {
                 return new Token(buf, TokenType.DIGIT);
             }
             char c = scanner.next().charAt(0);
-            if(TOKENS[c] != null){
+            if (TOKENS[c] != null) {
                 return TOKENS[c];
             }
             return next();
@@ -65,11 +70,12 @@ public class BasicCalculator2 {
 
     static class RPNCalculator {
         LinkedList<Integer> stack = new LinkedList<Integer>();
-        void addToken(Token t){
-            if(t.type == TokenType.OP){
+
+        void addToken(Token t) {
+            if (t.type == TokenType.OP) {
                 int v2 = stack.pop();
                 int v1 = stack.pop();
-                switch (t.val){
+                switch (t.val) {
                 case '+':
                     stack.push(v1 + v2);
                     break;
@@ -90,7 +96,7 @@ public class BasicCalculator2 {
             }
         }
 
-        int val(){
+        int val() {
             return stack.peek();
         }
     }
@@ -101,14 +107,14 @@ public class BasicCalculator2 {
         LinkedList<Token> op = new LinkedList<Token>();
         Token t;
         next:
-        while ((t = tokenizer.next()) != EOL){
+        while ((t = tokenizer.next()) != EOL) {
             // convert to RPN
-            if(t.type == TokenType.DIGIT){
+            if (t.type == TokenType.DIGIT) {
                 calculator.addToken(t);
             } else { // type == OP
                 retry:
-                while(true) {
-                    if(op.isEmpty()){
+                while (true) {
+                    if (op.isEmpty()) {
                         op.push(t);
                         continue next;
                     }
@@ -136,7 +142,8 @@ public class BasicCalculator2 {
                     case ')':
                         while (!op.isEmpty()) {
                             top = op.pop();
-                            if (top.val == '(') continue next;
+                            if (top.val == '(')
+                                continue next;
                             calculator.addToken(top);
                         }
                     default:
@@ -146,7 +153,7 @@ public class BasicCalculator2 {
                 }
             }
         }
-        while (!op.isEmpty()){
+        while (!op.isEmpty()) {
             calculator.addToken(op.pop());
         }
         return calculator.val();

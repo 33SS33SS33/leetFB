@@ -2,12 +2,10 @@ package list;
 
 /**
  * Given a linked list, swap every two adjacent nodes and return its head.
- *
  * For example,
  * Given 1->2->3->4, you should return the list as 2->1->4->3.
  * Your algorithm should use only constant space. You may not modify the values
  * in the list, only nodes itself can be changed.
-
  * Tags: Linkedlist
  */
 class SwapNodeinPairs {
@@ -49,6 +47,7 @@ class SwapNodeinPairs {
         }
         return dummy.next;
     }
+
     private static ListNode swap(ListNode next1, ListNode next2) {
         next1.next = next2.next;
         next2.next = next1;
@@ -71,7 +70,9 @@ class SwapNodeinPairs {
         return dummy.next;
     }
 
-    /**-----creek---*/
+    /**
+     * -----creek---
+     */
     public ListNode swapPairsC(ListNode head) {
         if (head == null || head.next == null)
             return head;
@@ -108,6 +109,7 @@ class SwapNodeinPairs {
         node5.next = node6;
         return node0;
     }
+
     static class ListNode {
         int      val;
         ListNode next;

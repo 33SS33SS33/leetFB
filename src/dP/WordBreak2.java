@@ -1,32 +1,35 @@
-package nP;
+package dP;
 
 import java.util.*;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/5.
  */
-/**Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
- Return all such possible sentences.
- For example, given
- s = "catsanddog",
- dict = ["cat", "cats", "and", "sand", "dog"].
- A solution is ["cats and dog", "cat sand dog"].
+
+/**
+ * Given a string s and a dictionary of words dict, add spaces in s to construct a sentence where each word is a valid dictionary word.
+ * Return all such possible sentences.
+ * For example, given
+ * s = "catsanddog",
+ * dict = ["cat", "cats", "and", "sand", "dog"].
+ * A solution is ["cats and dog", "cat sand dog"].
  */
 
 public class WordBreak2 {
     public static void main(String[] args) {
         String s = "catsanddog";
-        Set<String> dict =new HashSet<String>();
+        Set<String> dict = new HashSet<String>();
         dict.add("cat");
         dict.add("cats");
         dict.add("and");
         dict.add("sand");
         dict.add("dog");
-        WordBreak2 a=new WordBreak2();
-        System.out.println(a.wordBreak(s,dict).toString());
-        System.out.println(a.wordBreak2B(s,dict).toString());
-        System.out.println(a.wordBreak2C(s,dict).toString());
+        WordBreak2 a = new WordBreak2();
+        System.out.println(a.wordBreak(s, dict).toString());
+        System.out.println(a.wordBreak2B(s, dict).toString());
+        System.out.println(a.wordBreak2C(s, dict).toString());
     }
+
     public ArrayList<String> wordBreak(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)

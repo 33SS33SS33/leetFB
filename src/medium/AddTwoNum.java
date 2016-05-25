@@ -10,7 +10,8 @@ package medium;
  */
 
 /**
- * 实现中注意维护进位，陷阱的话记住最后还要判一下有没有进位，如果有再生成一位-*/
+ * 实现中注意维护进位，陷阱的话记住最后还要判一下有没有进位，如果有再生成一位-
+ */
 class AddTwoNum {
     public static void main(String[] args) {
         AddTwoNum s = new AddTwoNum();

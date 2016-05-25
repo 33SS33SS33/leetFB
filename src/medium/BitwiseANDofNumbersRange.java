@@ -1,12 +1,9 @@
 package medium;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive
  */
+
 
 /**
  * 如果两个数字在某个范围 其实总会有左半边的数字是相同的 这道题其实就是求出来这些相同的部分 比如 11200--- 11456 其实就是要找出来11000(因为只有这两位是相同 所以相与才会有1)
