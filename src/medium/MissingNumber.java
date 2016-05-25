@@ -1,19 +1,15 @@
 package medium;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/4/8.
+ * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+ * For example,
+ * Given nums = [0, 1, 3] return 2.
+ * Note:
+ * Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+ *
+ * Tags: Array, Math, Bit Manipulation
+ * Similar Problems: (H) First Missing Positive, (M) Single Number, (H) Find the Duplicate Number
  */
-
-/**
-* Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
-* For example,
-* Given nums = [0, 1, 3] return 2.
-* Note:
-* Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
-*
-* Tags: Array, Math, Bit Manipulation
-* Similar Problems: (H) First Missing Positive, (M) Single Number, (H) Find the Duplicate Number
-*/
 
 /**首先 可以用等差数列之和减去当前数组之和就可以 未实现
  还可以用位操作 异或
@@ -21,11 +17,12 @@ package medium;
  */
 public class MissingNumber {
     public static void main(String[] args) {
-        int[] A = {1,2,0};
+        int[] A = { 1, 2, 0 };
         System.out.println(new MissingNumber().missingNumber1(A));
         System.out.println(new MissingNumber().missingNumber2(A));
         System.out.println(new MissingNumber().missingNumber3(A));
     }
+
     /**
      * Math   不好
      * Considering that the n numbers are distinct, we can get the sum of the array

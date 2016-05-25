@@ -10,9 +10,11 @@ import java.util.List;
 public class ZigzagIterator {
     Iterator<Integer>[] ivs;
     int p = 0;
+
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
         ivs = new Iterator[] { v1.iterator(), v2.iterator() };
     }
+
     public int next() {
         for (; ; ) {
             Iterator<Integer> i = ivs[p++ % ivs.length];
@@ -21,6 +23,7 @@ public class ZigzagIterator {
             }
         }
     }
+
     public boolean hasNext() {
         for (Iterator i : ivs) {
             if (i.hasNext()) {

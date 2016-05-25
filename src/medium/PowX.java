@@ -58,6 +58,7 @@ class PowX {
             return power(x, n);
         }
     }
+
     public double power(double x, int n) {
         if (n == 0)
             return 1;

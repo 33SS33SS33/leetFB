@@ -4,10 +4,13 @@ package medium;
  * Sort a linked list in O(n log n) time using constant space complexity.
  * Tags: Linkedlist, Sort
  */
-/**使用mergesort即可 每次都用快慢指针找中点 然后分割链表
- 注意快指针要是头指针的下一个节点 否则分割只有两个元素的链表会分不开 （因为slow会向前走一步）
- 而且当分成两部分的时候  slow就是前一部分的末尾 记得用none来结尾 然后下一部分的开始是slow.Next
- 也需要练习手写最普通的mergesort mergesort有迭代和递归两种 未实现*/
+
+/**
+ * 使用mergesort即可 每次都用快慢指针找中点 然后分割链表
+ * 注意快指针要是头指针的下一个节点 否则分割只有两个元素的链表会分不开 （因为slow会向前走一步）
+ * 而且当分成两部分的时候  slow就是前一部分的末尾 记得用none来结尾 然后下一部分的开始是slow.Next
+ * 也需要练习手写最普通的mergesort mergesort有迭代和递归两种 未实现
+ */
 class SortList {
     public static void main(String[] args) {
 

@@ -5,17 +5,13 @@ package medium;
  * objects of the same color are adjacent, with the colors in the order red,white and blue.
  * Here, we will use the integers 0, 1, and 2 to represent the color red,
  * white, and blue respectively.
-
  * Note:
  * You are not suppose to use the library's sort function for this problem.
-
  * Follow up:
  * A rather straight forward solution is a two-pass algorithm using counting sort.
  * First, iterate the array counting number of 0's, 1's, and 2's, then
  * overwrite array with total number of 0's, then 1's and followed by 2's.
- *
  * Could you come up with an one-pass algorithm using only constant space?
-
  * Tags: Array, Two Pointers, Sort
  */
 class SortColors {
@@ -35,27 +31,45 @@ class SortColors {
             System.out.print(i);
         }
         System.out.println();
-
-       s.sortColorsA(A2);
+        s.sortColorsA(A2);
         for (int i : A2) {
             System.out.print(i);
         }
         System.out.println();
-
-         s.sortColorsB(A3);
+        s.sortColorsB(A3);
         for (int i : A3) {
             System.out.print(i);
         }
         System.out.println();
-
-      s.sortColors(A4);
+        s.sortColors(A4);
         for (int i : A4) {
             System.out.print(i);
         }
     }
 
+    /**
+     * 最好的 理解了 哈哈哈~~~
+     * One-pass count sorting
+     * Remember the count of red, and count of red + white
+     */
+    public void onePassSortColors(int[] A) {
+        if (A == null || A.length == 0)
+            return;
+        int i = -1; // red count, start of white
+        int j = -1; // red + white count, start of blue
+        for (int k = 0; k < A.length; k++) {
+            int v = A[k];
+            A[k] = 2; // overwrite as blue
+            if (v == 0) {
+                A[++j] = 1; // write white first, then red
+                A[++i] = 0; // overwrite 1 when there is no white yet
+            } else if (v == 1)
+                A[++j] = 1;
+        }
+    }
 
-    /** 最简单的
+    /**
+     * 最简单的
      * two-pass count sorting
      */
     public void sortColors(int[] A) {
@@ -83,27 +97,9 @@ class SortColors {
         }
     }
 
-    /** 最好的 理解了 哈哈哈~~~
-     * One-pass count sorting
-     * Remember the count of red, and count of red + white
+    /**
+     * creek  improved 计数排序
      */
-    public void onePassSortColors(int[] A) {
-        if (A == null || A.length == 0)
-            return;
-        int i = -1; // red count, start of white 
-        int j = -1; // red + white count, start of blue
-        for (int k = 0; k < A.length; k++) {
-            int v = A[k];
-            A[k] = 2; // overwrite as blue
-            if (v == 0) {
-                A[++j] = 1; // write white first, then red
-                A[++i] = 0; // overwrite 1 when there is no white yet
-            } else if (v == 1)
-                A[++j] = 1;
-        }
-    }
-
-    /**creek  improved 计数排序*/
     public void sortColorsA(int[] nums) {
         if (nums == null || nums.length < 2) {
             return;
@@ -124,7 +120,9 @@ class SortColors {
         }
     }
 
-    /**creek 计数排序----*/
+    /**
+     * creek 计数排序----
+     */
     public void sortColorsB(int[] nums) {
         if (nums == null || nums.length < 2) {
             return;

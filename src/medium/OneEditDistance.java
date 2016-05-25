@@ -4,13 +4,16 @@ package medium;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 
+/**
+ * edit distance就是指当前的字符串是否能通过替换一个或者添加或者删除一个字符来变成另外一个字符串
+ * 主要就是先通过长度来判断  长度相等的话就 挨个比对
+ * 如果长度差1的话 就找到第一个不同的字符  然后把长的串的这个字符插入进短的 看相同不相同
+ */
+
 //Given two strings S and T, determine if they are both one edit distance apart.
-/**edit distance就是指当前的字符串是否能通过替换一个或者添加或者删除一个字符来变成另外一个字符串
- 主要就是先通过长度来判断  长度相等的话就 挨个比对
- 如果长度差1的话 就找到第一个不同的字符  然后把长的串的这个字符插入进短的 看相同不相同*/
 public class OneEditDistance {
     public static void main(String[] args) {
-        System.out.print(new OneEditDistance().isOneEditDistance("wwq3","ww"));
+        System.out.print(new OneEditDistance().isOneEditDistance("wwq3", "ww"));
     }
 
     public boolean isOneEditDistance(String s, String t) {

@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * you may move to adjacent numbers on the row below.
  * For example, given the following triangle
  * [
- *    [2],
- *   [3,4],
- *  [6,5,7],
+ * [2],
+ * [3,4],
+ * [6,5,7],
  * [4,1,8,3]
  * ]
  * The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
@@ -20,11 +20,13 @@ import java.util.ArrayList;
  * Tags: Array, DP
  */
 
-/**这道题可以从下往上 或者从上往下
- 从下往上的话会比较简单, 这次用的从下往上
- 从上往下的思路在右边 下次可以试试
- 由于是从下往上 所以res先保存最下面一行的数组  然后移动到上一行  然后遍历这一行  分别计算这一行的元素和他下面相邻的两个元素的和的最小值  然后更新res
- 这样直到了最上面 因为只剩了一列了  所以res[0]保存的就是当前的最小值*/
+/**
+ * 这道题可以从下往上 或者从上往下
+ * 从下往上的话会比较简单, 这次用的从下往上
+ * 从上往下的思路在右边 下次可以试试
+ * 由于是从下往上 所以res先保存最下面一行的数组  然后移动到上一行  然后遍历这一行  分别计算这一行的元素和他下面相邻的两个元素的和的最小值  然后更新res
+ * 这样直到了最上面 因为只剩了一列了  所以res[0]保存的就是当前的最小值
+ */
 class Triangle {
     enum TestType {
         TEST1, TEST2;

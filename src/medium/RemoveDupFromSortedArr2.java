@@ -9,8 +9,10 @@ package medium;
  * Tags: Array, Two pointers
  */
 
-/**设置一个变量 是记录新的数组的末端的指针
- 注意counter-2的运用 这样就可以确认当前的nums[counter]有没有超过两个*/
+/**
+ * 设置一个变量 是记录新的数组的末端的指针
+ * 注意counter-2的运用 这样就可以确认当前的nums[counter]有没有超过两个
+ */
 
 class RemoveDupFromSortedArr2 {
     public static void main(String[] args) {
@@ -22,7 +24,8 @@ class RemoveDupFromSortedArr2 {
         System.out.println(removeDuplicatesC(num3));
     }
 
-    /** 最好的
+    /**
+     * 最好的
      * skip if length <=2
      * compare current element with second last element
      */
@@ -42,7 +45,9 @@ class RemoveDupFromSortedArr2 {
         return len;
     }
 
-    /**--better--*/
+    /**
+     * --better--
+     */
     public static int removeDuplicatesC(int[] A) {
         if (A.length <= 2)
             return A.length;
@@ -59,7 +64,6 @@ class RemoveDupFromSortedArr2 {
         }
         return prev + 1;
     }
-
 
     public static int removeDuplicatesB(int[] A) {
         if (A == null || A.length == 0)

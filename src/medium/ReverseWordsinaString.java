@@ -1,29 +1,29 @@
 package medium;
 
-/**Given an input string, reverse the string word by word.
+/**
+ * Given an input string, reverse the string word by word.
  * For example,
  * Given s = "the sky is blue",
  * return "blue is sky the".
- *
  * Clarification:
  * What constitutes a word?
  * A sequence of non-space characters constitutes a word.
  * Could the input string contain leading or trailing spaces?
  * Yes. However, your reversed string should not contain leading or trailing
  * spaces.
- *
  * How about multiple spaces between two words?
  * Reduce them to a single space in the reversed string.
- *
  * Tags: String
  */
-/**split用来分割 返回的是分割之后的list 默认是用空格
- join用来连接 join最前的字符表示用什么字符连接 
- [::-1]用来颠倒
- 下次写一个不用这些函数的
- 进步步骤就是 先去空格 头空格 中间多的空格 尾部空格
- 然后颠倒整个list*/
 
+/**
+ * split用来分割 返回的是分割之后的list 默认是用空格
+ * join用来连接 join最前的字符表示用什么字符连接 
+ * [::-1]用来颠倒
+ * 下次写一个不用这些函数的
+ * 进步步骤就是 先去空格 头空格 中间多的空格 尾部空格
+ * 然后颠倒整个list
+ */
 
 class ReverseWordsinaString {
     public static void main(String[] args) {
@@ -59,7 +59,9 @@ class ReverseWordsinaString {
                     word.append(c);
                     i++;
                 }
-                res = res.length() == 0 ? word.toString() : word.toString() + " " + res; // insert to front of res
+                res = res.length() == 0 ?
+                        word.toString() :
+                        word.toString() + " " + res; // insert to front of res
                 i--; // reset i
             }
         }

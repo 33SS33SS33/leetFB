@@ -1,13 +1,13 @@
 package medium;
-
+import java.lang.reflect.Array;
+import java.util.Arrays;
 /**
  * Created by GAOSHANSHAN835 on 2016/3/3.
  */
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
-/**--creek*/
+/**
+ * --creek
+ */
 public class QueueS<E> {
     public static void main(String[] args) {
         QueueS<Integer> q = new QueueS<Integer>(Integer.class, 5);
@@ -20,6 +20,7 @@ public class QueueS<E> {
         q.push(6);
         System.out.println(q);
     }
+
     E[] arr;
     int head = -1;
     int tail = -1;
@@ -71,6 +72,5 @@ public class QueueS<E> {
     public String toString() {
         return Arrays.toString(this.arr);
     }
-
 
 }

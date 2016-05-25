@@ -8,7 +8,6 @@ package medium;
  * For example,
  * Given [5, 7, 7, 8, 8, 10] and target value 8,
  * return [3, 4].
-
  * Tags: Array, Binary Search
  */
 class SearchForARange {
@@ -48,6 +47,7 @@ class SearchForARange {
         }
         return range;
     }
+
     private int binarySearch(int[] A, int left, int right, int target) {
         while (left <= right) {
             int mid = left + (right - left) / 2;
@@ -60,9 +60,12 @@ class SearchForARange {
         }
         return -1;
     }
-    /** 如果我们不寻找那个元素先，而是直接相等的时候也向一个方向继续夹逼，
+
+    /**
+     * 如果我们不寻找那个元素先，而是直接相等的时候也向一个方向继续夹逼，
      * 如果向右夹逼，最后就会停在右边界，而向左夹逼则会停在左边界，
-     * 如此用停下来的两个边界就可以知道结果了，只需要两次二分查找。*/
+     * 如此用停下来的两个边界就可以知道结果了，只需要两次二分查找。
+     */
     public int[] searchRangeC(int[] A, int target) {
         int[] res = { -1, -1 };
         if (A == null || A.length == 0) {
@@ -105,6 +108,7 @@ class SearchForARange {
         binarySearch(nums, 0, nums.length - 1, target, arr);
         return arr;
     }
+
     public void binarySearch(int[] nums, int left, int right, int target, int[] arr) {
         if (right < left)
             return;

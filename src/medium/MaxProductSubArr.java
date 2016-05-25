@@ -6,19 +6,21 @@ package medium;
  * For example, given the array [2,3,-2,4],
  * the contiguous subarray [2,3] has the largest product = 6.
  * Tags: Array, DP
- *
- *  (E) House Robber (M) Product of Array Except Self
-
+ * (E) House Robber (M) Product of Array Except Self
  */
-/**这道题是maximum subarray sum 的变体
- 已然用动归 DP来解决 每个dp数组保存的都是以当前元素结尾的乘积最大值
- 但是要注意因为是相乘 负负得正 所以还要保存最小值 因为最小值碰到个负数很可能就会变成最大值*/
+
+/**
+ * 这道题是maximum subarray sum 的变体
+ * 已然用动归 DP来解决 每个dp数组保存的都是以当前元素结尾的乘积最大值
+ * 但是要注意因为是相乘 负负得正 所以还要保存最小值 因为最小值碰到个负数很可能就会变成最大值
+ */
 class MaxProductSubArr {
     public static void main(String[] args) {
         int[] A = { 2, 3, -2, 4 };
         System.out.println(maxProductA(A));
         System.out.println(maxProductB(A));
     }
+
     /**
      * DP, update according to A[i]
      * f(k) = Largest product subarray, from index 0 up to k.
@@ -57,6 +59,7 @@ class MaxProductSubArr {
         }
         return max;
     }
+
     public static int calProduct(int[] A, int i, int j) {
         int result = 1;
         for (int m = i; m <= j; m++) {

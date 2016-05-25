@@ -6,7 +6,6 @@ import java.util.*;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
 public class PermutePalindrome2 {
-
     Set<String> permute(ArrayList<Character> chars, final String single) {
         if (chars.isEmpty()) {
             return Collections.singleton(single);

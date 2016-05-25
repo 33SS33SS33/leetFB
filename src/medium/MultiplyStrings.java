@@ -4,7 +4,7 @@ package medium;
  * Given two numbers represented as strings, return multiplication of the numbers as a string.
  * Note: The numbers can be arbitrarily large and are non-negative.
  * Converting the input string to integer is NOT allowed.
-   You should NOT use internal library such as BigInteger.
+ * You should NOT use internal library such as BigInteger.
  * Tags: Math, String
  */
 class MultiplyStrings {
@@ -16,13 +16,14 @@ class MultiplyStrings {
         System.out.println(multiplyB(num1, num2));
         System.out.print(multiplyC(num1, num2));
     }
+
     //https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
     public static String multiply(String num1, String num2) {
         int m = num1.length(), n = num2.length();
         int[] pos = new int[m + n];
 
-        for(int i = m - 1; i >= 0; i--) {
-            for(int j = n - 1; j >= 0; j--) {
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
                 int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
                 int p1 = i + j, p2 = i + j + 1;
                 int sum = mul + pos[p2];
@@ -32,7 +33,9 @@ class MultiplyStrings {
             }
         }
         StringBuilder sb = new StringBuilder();
-        for(int p : pos) if(!(sb.length() == 0 && p == 0)) sb.append(p);
+        for (int p : pos)
+            if (!(sb.length() == 0 && p == 0))
+                sb.append(p);
         return sb.length() == 0 ? "0" : sb.toString();
     }
 
@@ -61,7 +64,8 @@ class MultiplyStrings {
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
                 // note += below
-                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j] - '0'); // reverse to keep zeros of result but skip unnecessary zeros
+                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j]
+                        - '0'); // reverse to keep zeros of result but skip unnecessary zeros
                 res[m + n - i - j - 1] += res[m + n - i - j - 2] / 10;
                 res[m + n - i - j - 2] %= 10;
             }

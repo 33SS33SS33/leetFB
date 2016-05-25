@@ -6,13 +6,14 @@ package medium;
  * leaving only distinct numbers from the original list.
  * Given 1->2->3->3->4->4->5, return 1->2->5.
  * Given 1->1->1->2->3, return 2->3.
- *
  * Tag: Linkedlist
  * /**这里要把出现重复的元素全部删除
  */
 
-/**三个指针 一个存前一个节点 一个是当前的 一个是向后游动的
- 游动的在循环内定义比较好  可以看代码*/
+/**
+ * 三个指针 一个存前一个节点 一个是当前的 一个是向后游动的
+ * 游动的在循环内定义比较好  可以看代码
+ */
 class RemoveDupFromSortedList2 {
     public static void main(String[] args) {
         ListNode head = buildTestList1();
@@ -25,14 +26,12 @@ class RemoveDupFromSortedList2 {
         System.out.println("---");
     }
 
-
     /**
      * Set a pre pointer
      */
     public static ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null)
             return head;
-
         ListNode dummyHead = new ListNode(0); // dummy head
         dummyHead.next = head;
         ListNode pre = dummyHead; // two pointers
@@ -69,7 +68,6 @@ class RemoveDupFromSortedList2 {
         return t.next;
     }
 
-
     public static class ListNode {
         int      val;
         ListNode next;
@@ -79,6 +77,7 @@ class RemoveDupFromSortedList2 {
             next = null;
         }
     }
+
     static ListNode buildTestList1() {
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);

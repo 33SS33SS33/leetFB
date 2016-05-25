@@ -1,21 +1,19 @@
 package medium;
 
-
 /**
  * Created by GAOSHANSHAN835 on 2016/4/15.
  */
 
 /**
  * "Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
- You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.
- Example:
- Given 1->2->3->4->5->NULL,
- return 1->3->5->2->4->NULL.
- Note:
- The relative order inside both the even and odd groups should remain as it was in the input.
- The first node is considered odd, the second node even and so on ..."
-
- 就是当长度为奇数和长度为偶数的时候 都画个图 来思考一下就行
+ * You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.
+ * Example:
+ * Given 1->2->3->4->5->NULL,
+ * return 1->3->5->2->4->NULL.
+ * Note:
+ * The relative order inside both the even and odd groups should remain as it was in the input.
+ * The first node is considered odd, the second node even and so on ..."
+ * 就是当长度为奇数和长度为偶数的时候 都画个图 来思考一下就行
  */
 public class OddEvenLinkedList {
     public static void main(String[] args) {
@@ -26,6 +24,7 @@ public class OddEvenLinkedList {
 
     /**
      * 将一个链表内的奇数元素放在前面，偶数元素放在后面
+     *
      * @param head 链表首节点
      * @return 转换后的链表
      */
@@ -57,6 +56,7 @@ public class OddEvenLinkedList {
         oddCurr.next = even.next; //偶数链表接在奇数链表后面
         return odd.next;
     }
+
     static ListNode buildList() {
         ListNode node0 = new ListNode(0);
         ListNode node1 = new ListNode(1);
@@ -71,6 +71,7 @@ public class OddEvenLinkedList {
 
         return node0;
     }
+
     static class ListNode {
         int      val;
         ListNode next;

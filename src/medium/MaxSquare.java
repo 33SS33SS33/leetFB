@@ -27,24 +27,26 @@ public class MaxSquare {
      * 最好的
      * Top, Left, and Top Left decides the size of the square.
      * If all of them are same, then the size of square increases by 1.
-     *  If they're not same, they can increase by 1 to the minimal square.
+     * If they're not same, they can increase by 1 to the minimal square.
      * If you take an example and work it out,
      * it'll be much easier to understand when it comes to dynamic programing. :)
-
-     * b[i][j] represent the edge length of the largest square ENDING at position (i, j)*/
+     * <p/>
+     * b[i][j] represent the edge length of the largest square ENDING at position (i, j)
+     */
     public int maximalSquareA(char[][] a) {
-        if(a.length == 0) return 0;
+        if (a.length == 0)
+            return 0;
         int m = a.length, n = a[0].length, result = 0;
-        int[][] b = new int[m+1][n+1];
-        for (int i = 1 ; i <= m; i++) {
+        int[][] b = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                if(a[i-1][j-1] == '1') {
-                    b[i][j] = Math.min(Math.min(b[i][j-1] , b[i-1][j-1]), b[i-1][j]) + 1;
+                if (a[i - 1][j - 1] == '1') {
+                    b[i][j] = Math.min(Math.min(b[i][j - 1], b[i - 1][j - 1]), b[i - 1][j]) + 1;
                     result = Math.max(b[i][j], result); // update result
                 }
             }
         }
-        return result*result;
+        return result * result;
     }
 
     public int maximalSquareC(char[][] matrix) {
@@ -58,6 +60,7 @@ public class MaxSquare {
         }
         return max;
     }
+
     int maximalSquare(char[][] matrix, final int x, final int y) {
         int l = 1;
         done:
@@ -77,7 +80,6 @@ public class MaxSquare {
         }
         return l * l;
     }
-
 
     public int maximalSquareB(char[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)

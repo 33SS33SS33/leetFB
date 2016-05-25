@@ -21,11 +21,14 @@ class SimplifyPath {
         System.out.println(simplifyPath("/a/./b/../../c/"));
         System.out.println(simplifyPath("/../"));
         System.out.println(simplifyPath("/home//foo/"));
-        System.out.println(simplifyPath("/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
-        System.out.println(simplifyPathB("/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
+        System.out.println(
+                simplifyPath("/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
+        System.out.println(simplifyPathB(
+                "/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
     }
 
-    /** 最好的
+    /**
+     * 最好的
      * Split words with /, use a stack to save directories
      * If ".", skip
      * If "..", check stack. If stack empty, skip; If not, pop
