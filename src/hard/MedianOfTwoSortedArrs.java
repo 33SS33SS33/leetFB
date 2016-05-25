@@ -3,7 +3,6 @@ package hard;
 /**
  * There are two sorted arrays A and B of size m and n respectively. Find the
  * median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
- * 
  * Tags: Divide and Conquer, Array, Binary Search
  */
 class MedianOfTwoSortedArrs {
@@ -52,10 +51,12 @@ class MedianOfTwoSortedArrs {
                 r = midA; // l, i
         }
         // A[l-1], A[l], B[k-l], and B[k-l+1] 
-        int a = Math.max(l > 0 ? A[l - 1] : Integer.MIN_VALUE, k - l >= 0 ? B[k - l] : Integer.MIN_VALUE);
+        int a = Math.max(l > 0 ? A[l - 1] : Integer.MIN_VALUE,
+                k - l >= 0 ? B[k - l] : Integer.MIN_VALUE);
         if ((n + m) % 2 == 1)
             return (double) a; // odd
-        int b = Math.min(l < n ? A[l] : Integer.MAX_VALUE, k - l + 1 < m ? B[k - l + 1] : Integer.MAX_VALUE);
+        int b = Math.min(l < n ? A[l] : Integer.MAX_VALUE,
+                k - l + 1 < m ? B[k - l + 1] : Integer.MAX_VALUE);
         return (a + b) / 2.0; // even
     }
 

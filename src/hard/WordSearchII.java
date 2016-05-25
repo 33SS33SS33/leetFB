@@ -9,8 +9,6 @@ import java.util.Set;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- */
-/**
  * Given a 2D board and a list of words from the dictionary, find all words in the board.
  * Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are
  * those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
@@ -82,7 +80,7 @@ public class WordSearchII {
         visited[x][y] = false;
     }*/
 
-    public  List<String> findWordsB(char[][] board, String[] words) {
+    public List<String> findWordsB(char[][] board, String[] words) {
         TrieNode root = new TrieNode(null, '\0');
         for (String w : words) {
             root.insert(w.toCharArray(), 0, w.length());

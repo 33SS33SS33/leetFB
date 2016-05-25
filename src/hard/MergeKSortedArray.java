@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
  */
 
 /***
- * creek----This problem can be solved by using a heap. The time is O(nlog(n)).-
+ * creek----This problem can be solved by using a heap. The time is O(nlog(n)).
  */
 public class MergeKSortedArray {
     public static void main(String[] args) {

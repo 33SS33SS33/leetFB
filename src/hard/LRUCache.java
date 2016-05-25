@@ -5,19 +5,15 @@ import java.util.*;
 /**
  * Design and implement a data structure for Least Recently Used (LRU) cache.
  * It should support the following operations: get and set.
- *
  * get(key) - Get the value (will always be positive) of the key if the key
  * exists in the cache, otherwise return -1.
  * (get means use, so we need to update)
- *
  * set(key, value) - Set or insert the value if the key is not already present.
  * When the cache reached its capacity, it should invalidate the least recently
  * used item before inserting a new item.
- *
  * Tags: Data Structure
- * 
  * Use 2 data structures to implement an LRU Cache
- * 1. A Queue which is implemented using a doubly linekd list. The max size of 
+ * 1. A Queue which is implemented using a doubly linekd list. The max size of
  * the queue will be equal to cache size. Put most recently used at the end
  * 2. A Hash with Node's value as key and the Node as value
  * 3. A dummy head for Doubly LinkedList
@@ -28,21 +24,22 @@ import java.util.*;
  这里用的少的定义就是插入的比较靠前 所以如果用了一个本身在队列里的 就可以把他踢出来 然后再插入禁区*/
 class LRUCache {
     public static void main(String[] args) {
-        
+
     }
 
     /**
      * Doubly linked list node
      */
-    static class Node{
+    static class Node {
         Node next;
         Node prev;
-        int key;
-        int val;
-        
-        Node () {}
+        int  key;
+        int  val;
 
-        Node (int key, int val) {
+        Node() {
+        }
+
+        Node(int key, int val) {
             this.key = key;
             this.val = val;
         }
@@ -52,7 +49,8 @@ class LRUCache {
          */
         private void delete() {
             prev.next = next;
-            if (next != null) next.prev = prev;
+            if (next != null)
+                next.prev = prev;
         }
 
         /**
@@ -60,14 +58,15 @@ class LRUCache {
          */
         private void addAfter(Node preNode) {
             next = preNode.next;
-            if (next != null) next.prev = this;
+            if (next != null)
+                next.prev = this;
             preNode.next = this;
             prev = preNode;
         }
     }
 
-    Node dummy = new Node();
-    Node tail = dummy;
+    Node               dummy = new Node();
+    Node               tail  = dummy;
     Map<Integer, Node> cache = new HashMap<Integer, Node>();
     int capacity;
 
@@ -82,7 +81,8 @@ class LRUCache {
      * Then return its value
      */
     public int get(int key) {
-        if (!cache.containsKey(key)) return -1;
+        if (!cache.containsKey(key))
+            return -1;
         Node n = cache.get(key);
         moveToTail(n);
         return n.val;
@@ -106,7 +106,7 @@ class LRUCache {
         cache.put(key, n);
         addToTail(n); // update usage
 
-        if (cache.size() > capacity){
+        if (cache.size() > capacity) {
             n = dummy.next;
             cache.remove(n.key);
             n.delete(); // delete dummy
@@ -116,8 +116,9 @@ class LRUCache {
     /**
      * Delete and add to tail
      */
-    private void moveToTail(Node n){
-        if (n == tail) return;
+    private void moveToTail(Node n) {
+        if (n == tail)
+            return;
         n.delete(); // unlink node with other nodes first
         addToTail(n); // add it to tail
     }
@@ -125,7 +126,7 @@ class LRUCache {
     /**
      * Add node after tail and update tail to that node
      */
-    private void addToTail(Node n){
+    private void addToTail(Node n) {
         n.addAfter(tail);
         tail = n;
     }

@@ -28,10 +28,13 @@ public class TheSkylineProblem {
 
     static class SortedBuilds {
         int[][] buildings;
-        int p = 0;
-        /**需要写PriorityQueue*/
-//        PriorityQueue<int[]> inserted = new PriorityQueue<>((a, b) -> li(a) - li(b));
-        PriorityQueue<int[]> inserted = new PriorityQueue(10,null);
+        int  p = 0;
+        /**
+         * 需要写PriorityQueue
+         */
+        //        PriorityQueue<int[]> inserted = new PriorityQueue<>((a, b) -> li(a) - li(b));
+        PriorityQueue<int[]> inserted = new PriorityQueue(10, null);
+
         SortedBuilds(int[][] buildings) {
             this.buildings = buildings;
         }
@@ -39,6 +42,7 @@ public class TheSkylineProblem {
         boolean hasNext() {
             return p < buildings.length || !inserted.isEmpty();
         }
+
         int[] next() {
             if (p < buildings.length && !inserted.isEmpty()) {
                 if (li(buildings[p]) < li(inserted.peek())) {
@@ -52,6 +56,7 @@ public class TheSkylineProblem {
                 return inserted.poll();
             }
         }
+
         void insert(int[] building) {
             inserted.add(building);
         }

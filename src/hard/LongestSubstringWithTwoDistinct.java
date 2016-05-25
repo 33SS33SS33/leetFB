@@ -5,7 +5,6 @@ package hard;
  */
 
 /**
- * --------Hard------
  * Longest Substring with At Most Two Distinct Characters
  */
 public class LongestSubstringWithTwoDistinct {

@@ -29,7 +29,7 @@ import java.util.*;
 class LongestConsecutiveSeq {
     public static void main(String[] args) {
         LongestConsecutiveSeq l = new LongestConsecutiveSeq();
-        int[] a = {100, 4, 200, 1, 3, 2};
+        int[] a = { 100, 4, 200, 1, 3, 2 };
         System.out.println(l.longestConsecutive(a));
         System.out.println(l.longestConsecutiveB(a));
         System.out.println(l.longestConsecutiveB2(a));
@@ -44,15 +44,19 @@ class LongestConsecutiveSeq {
      * including num[i] ~ num[i], low ~ upp, upp ~ low
      */
     public int longestConsecutive(int[] num) {
-        if (num == null || num.length == 0) return 0;
+        if (num == null || num.length == 0)
+            return 0;
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         int maxLen = 0;
-        for(int i = 0; i < num.length; i++) {
-            if (map.containsKey(num[i])) continue; // skip duplicates
+        for (int i = 0; i < num.length; i++) {
+            if (map.containsKey(num[i]))
+                continue; // skip duplicates
             int low = num[i]; // initialize ranges
             int upp = num[i];
-            if (map.containsKey(num[i] - 1)) low = map.get(num[i] - 1);
-            if (map.containsKey(num[i] + 1)) upp = map.get(num[i] + 1);
+            if (map.containsKey(num[i] - 1))
+                low = map.get(num[i] - 1);
+            if (map.containsKey(num[i] + 1))
+                upp = map.get(num[i] + 1);
             maxLen = Math.max(maxLen, upp - low + 1); // update length
             // put possible ranges into map for next iteration
             map.put(num[i], num[i]);
@@ -61,8 +65,11 @@ class LongestConsecutiveSeq {
         }
         return maxLen;
     }
-    /**use a HashSet to add and remove elements. HashSet is implemented by using a hash table.
-     * Elements are not ordered. The add, remove and contains methods have constant time complexity O(1).*/
+
+    /**
+     * use a HashSet to add and remove elements. HashSet is implemented by using a hash table.
+     * Elements are not ordered. The add, remove and contains methods have constant time complexity O(1).
+     */
     public static int longestConsecutiveB(int[] num) {
         // if array is empty, return 0
         if (num.length == 0) {
@@ -91,11 +98,13 @@ class LongestConsecutiveSeq {
         return max;
     }
 
-    /*其实这个题看起来是数字处理，排序的问题，但是如果要达到好的时间复杂度，还得从图的角度来考虑。
-    思路是把这些数字看成图的顶点，而边就是他相邻的数字，然后进行深度优先搜索。通俗一点说就是先把数字放到一个集合中，
-    拿到一个数字，就往其两边搜索，得到包含这个数字的最长串，并且把用过的数字从集合中移除（因为连续的关系，一个数字不会出现在两个串中）。
-    最后比较当前串是不是比当前最大串要长，是则更新。如此继续直到集合为空。如果我们用HashSet来存储数字，则可以认为访问时间是常量的，
-    那么算法需要一次扫描来建立集合，第二次扫描来找出最长串，所以复杂度是O(2*n)=O(n)，空间复杂度是集合的大小，即O(n)*/
+    /**
+     * 其实这个题看起来是数字处理，排序的问题，但是如果要达到好的时间复杂度，还得从图的角度来考虑。
+     * 思路是把这些数字看成图的顶点，而边就是他相邻的数字，然后进行深度优先搜索。通俗一点说就是先把数字放到一个集合中，
+     * 拿到一个数字，就往其两边搜索，得到包含这个数字的最长串，并且把用过的数字从集合中移除（因为连续的关系，一个数字不会出现在两个串中）。
+     * 最后比较当前串是不是比当前最大串要长，是则更新。如此继续直到集合为空。如果我们用HashSet来存储数字，则可以认为访问时间是常量的，
+     * 那么算法需要一次扫描来建立集合，第二次扫描来找出最长串，所以复杂度是O(2*n)=O(n)，空间复杂度是集合的大小，即O(n)
+     */
     public int longestConsecutiveB2(int[] num) {
         if (num == null || num.length == 0)
             return 0;

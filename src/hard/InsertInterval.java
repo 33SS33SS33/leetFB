@@ -26,78 +26,89 @@ import java.util.*;
  */
 class InsertInterval {
     public static void main(String[] args) {
-        Interval interval1=new Interval(1,3);
-        Interval interval2=new Interval(6,9);
-        Interval interval3=new Interval(2,5);
-        List<Interval> intervals=new LinkedList<Interval>();
+        Interval interval1 = new Interval(1, 3);
+        Interval interval2 = new Interval(6, 9);
+        Interval interval3 = new Interval(2, 5);
+        List<Interval> intervals = new LinkedList<Interval>();
         intervals.add(interval1);
         intervals.add(interval2);
-        List<Interval> res=new InsertInterval().insertA(intervals,interval3);
-        List<Interval> res2=new InsertInterval().insertB(intervals,interval3);
-        List<Interval> res3=new InsertInterval().insertC(intervals,interval3);
-        List<Interval> res4=new InsertInterval().InsertInterval(intervals,interval3);
+        List<Interval> res = new InsertInterval().insertA(intervals, interval3);
+        List<Interval> res2 = new InsertInterval().insertB(intervals, interval3);
+        List<Interval> res3 = new InsertInterval().insertC(intervals, interval3);
+        List<Interval> res4 = new InsertInterval().InsertInterval(intervals, interval3);
         System.out.print(res.toString());
         System.out.print(res2.toString());
         System.out.print(res3.toString());
         System.out.print(res4.toString());
     }
 
-    /**--------creek-------!!!!*/
+    /**
+     * --------creek-------!!!!
+     */
     public ArrayList<Interval> InsertInterval(List<Interval> intervals, Interval newInterval) {
         ArrayList<Interval> result = new ArrayList<Interval>();
-        for(Interval interval: intervals){
-            if(interval.end < newInterval.start){
+        for (Interval interval : intervals) {
+            if (interval.end < newInterval.start) {
                 result.add(interval);
-            }else if(interval.start > newInterval.end){
+            } else if (interval.start > newInterval.end) {
                 result.add(newInterval);
                 newInterval = interval;
-            }else if(interval.end >= newInterval.start || interval.start <= newInterval.end){
-                newInterval = new Interval(Math.min(interval.start, newInterval.start), Math.max(newInterval.end, interval.end));
+            } else if (interval.end >= newInterval.start || interval.start <= newInterval.end) {
+                newInterval = new Interval(Math.min(interval.start, newInterval.start),
+                        Math.max(newInterval.end, interval.end));
             }
         }
         result.add(newInterval);
         return result;
     }
 
-    /**非原地方法
+    /**
+     * 非原地方法
      * O(n), not in place solution, make use of intervals are sorted
-     * Go through the list, compare interval's start and end with the last 
+     * Go through the list, compare interval's start and end with the last
      * interval of result, they may overlap
      */
     public List<Interval> insertA(List<Interval> intervals, Interval newInterval) {
         List<Interval> res = new ArrayList<Interval>();
         res.add(newInterval);
-        if (intervals == null || intervals.size() == 0) return res;
+        if (intervals == null || intervals.size() == 0)
+            return res;
         for (Interval i : intervals) {
             int a = res.get(res.size() - 1).start;
             int b = res.get(res.size() - 1).end;
-            if (i.end < a) res.add(res.size() - 1, i); // no overlap, add to second last
-            else if (b < i.start) res.add(i); // no overlap, add to last
+            if (i.end < a)
+                res.add(res.size() - 1, i); // no overlap, add to second last
+            else if (b < i.start)
+                res.add(i); // no overlap, add to last
             else {
                 a = Math.min(a, i.start);
                 b = Math.max(b, i.end);
-                res.set(res.size()- 1, new Interval(a, b));
+                res.set(res.size() - 1, new Interval(a, b));
             }
         }
         return res;
     }
-    
-    /** 原地方法
+
+    /**
+     * 原地方法
      * In place solution
      * Find start and end point of the interval to be merged
      */
     public List<Interval> insertB(List<Interval> intervals, Interval newInterval) {
         List<Interval> results = new ArrayList<Interval>();
-        if (intervals == null||intervals.size() == 0){
+        if (intervals == null || intervals.size() == 0) {
             results.add(newInterval);
             return results;
         }
         // find position for new interval
         int start = 0, end = 0; // end points to the position after
-        for (Interval i : intervals){
-            if (newInterval.start > i.end) start++;
-            if (newInterval.end >= i.start) end++;
-            else break;
+        for (Interval i : intervals) {
+            if (newInterval.start > i.end)
+                start++;
+            if (newInterval.end >= i.start)
+                end++;
+            else
+                break;
         }
         if (start == end) {
             results.addAll(intervals);
@@ -105,34 +116,37 @@ class InsertInterval {
             return results;
         }
         // add intervals from 0 to start
-        for (int i = 0; i < start; i++) results.add(intervals.get(i));
+        for (int i = 0; i < start; i++)
+            results.add(intervals.get(i));
         // build and add overlapped interval
-        Interval interval = new Interval(Math.min(newInterval.start, intervals.get(start).start), Math.max(newInterval.end, intervals.get(end - 1).end)); // note that it's end - 1
+        Interval interval = new Interval(Math.min(newInterval.start, intervals.get(start).start),
+                Math.max(newInterval.end, intervals.get(end - 1).end)); // note that it's end - 1
         results.add(interval);
         // add remainning intervals
-        for (int i = end; i < intervals.size(); i++) results.add(intervals.get(i));
+        for (int i = end; i < intervals.size(); i++)
+            results.add(intervals.get(i));
         return results;
     }
 
     public ArrayList<Interval> insertC(List<Interval> intervals, Interval newInterval) {
         ArrayList<Interval> res = new ArrayList<Interval>();
-        if(intervals.size()==0) {
+        if (intervals.size() == 0) {
             res.add(newInterval);
             return res;
         }
-        int i=0;
-        while(i<intervals.size() && intervals.get(i).end<newInterval.start) {
+        int i = 0;
+        while (i < intervals.size() && intervals.get(i).end < newInterval.start) {
             res.add(intervals.get(i));
             i++;
         }
-        if(i<intervals.size())
+        if (i < intervals.size())
             newInterval.start = Math.min(newInterval.start, intervals.get(i).start);
         res.add(newInterval);
-        while(i<intervals.size() && intervals.get(i).start<=newInterval.end) {
+        while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
             newInterval.end = Math.max(newInterval.end, intervals.get(i).end);
             i++;
         }
-        while(i<intervals.size()) {
+        while (i < intervals.size()) {
             res.add(intervals.get(i));
             i++;
         }
@@ -142,8 +156,16 @@ class InsertInterval {
     public static class Interval {
         int start;
         int end;
-        Interval() { start = 0; end = 0; }
-        Interval(int s, int e) { start = s; end = e; }
+
+        Interval() {
+            start = 0;
+            end = 0;
+        }
+
+        Interval(int s, int e) {
+            start = s;
+            end = e;
+        }
 
         @Override public String toString() {
             return "Interval{" +

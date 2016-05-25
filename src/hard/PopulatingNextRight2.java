@@ -5,28 +5,28 @@ package hard;
  * What if the given tree could be any binary tree? Would your previous
  * solution still work?
  * Note:
- * 
  * You may only use constant extra space.
  * For example,
  * Given the following binary tree,
- *          1
- *        /  \
- *       2    3
- *      / \    \
- *     4   5    7
+ * 1
+ * /  \
+ * 2    3
+ * / \    \
+ * 4   5    7
  * After calling your function, the tree should look like:
- *          1 -> NULL
- *        /  \
- *       2 -> 3 -> NULL
- *      / \    \
- *     4-> 5 -> 7 -> NULL
- * 
+ * 1 -> NULL
+ * /  \
+ * 2 -> 3 -> NULL
+ * / \    \
+ * 4-> 5 -> 7 -> NULL
  * Tags: Tree ,DFS
+ * 普通二叉树Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
+ * The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
+ * Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.
+ * Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
+ * The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
+ * Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.
  */
-/**普通二叉树*/
-/**Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
-The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
-Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.*/
 
 /**
  * 其实每层都可以看成链表 最重要的是要保存一个dummy头部
@@ -38,18 +38,19 @@ Each node has no parent pointer. Therefore, there is no way linking the rightChi
  */
 class PopulatingNextRight2 {
     public static void main(String[] args) {
-        TreeLinkNode root= buildTree();
-        PopulatingNextRight2 r=new PopulatingNextRight2();
+        TreeLinkNode root = buildTree();
+        PopulatingNextRight2 r = new PopulatingNextRight2();
         r.connect(root);
     }
-    
+
     /**
      * Store the head of next level
-     * Store previous node 
+     * Store previous node
      * Do level order traversal with a pointer
      */
     public void connect(TreeLinkNode root) {
-        if(root == null) return;
+        if (root == null)
+            return;
         TreeLinkNode cur = root;  // current node of current level
         TreeLinkNode prev; // previous node
         TreeLinkNode nextHead; // nextHead of the next level
@@ -58,13 +59,17 @@ class PopulatingNextRight2 {
             prev = null;
             while (cur != null) {
                 if (cur.left != null) { // left child
-                    if (prev != null) prev.next = cur.left;
-                    else nextHead = cur.left; // set nextHead
+                    if (prev != null)
+                        prev.next = cur.left;
+                    else
+                        nextHead = cur.left; // set nextHead
                     prev = cur.left; // move right
                 }
                 if (cur.right != null) { // right child
-                    if (prev != null) prev.next = cur.right;
-                    else nextHead = cur.right; // set nextHead
+                    if (prev != null)
+                        prev.next = cur.right;
+                    else
+                        nextHead = cur.right; // set nextHead
                     prev = cur.right; // move right
                 }
                 cur = cur.next; // move right to next node in same level
@@ -94,10 +99,14 @@ class PopulatingNextRight2 {
         t7.left = t8;
         return t0;
     }
+
     public static class TreeLinkNode {
-        int val;
+        int          val;
         TreeLinkNode left, right, next;
-        TreeLinkNode(int x) { val = x; }
+
+        TreeLinkNode(int x) {
+            val = x;
+        }
     }
 
 }

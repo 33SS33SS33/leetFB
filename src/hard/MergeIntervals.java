@@ -17,7 +17,6 @@ import java.util.*;
  * 但是要 注意 res最后是[1,4] 然后要插入[2,3]这种情况 所以用了 max
  */
 
-
 class MergeIntervals {
     public static void main(String[] args) {
         Interval interval1 = new Interval(1, 3);

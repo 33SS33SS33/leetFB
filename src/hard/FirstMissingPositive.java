@@ -6,7 +6,6 @@ package hard;
  * Given [1,2,0] return 3,
  * and [3,4,-1,1] return 2.
  * Your algorithm should run in O(n) time and uses constant space.
- * 
  * Tags: Array
  */
 
@@ -18,19 +17,20 @@ package hard;
  */
 class FirstMissingPositive {
     public static void main(String[] args) {
-        int[] A = {3,4,-1,1};
+        int[] A = { 3, 4, -1, 1 };
         System.out.println(new FirstMissingPositive().firstMissingPositive(A));
         System.out.println(new FirstMissingPositive().firstMissingPositiveB(A));
         System.out.println(new FirstMissingPositive().firstMissingPositiveD(A));
     }
-    
+
     /**
      * Position of integer n should be n - 1 if sorted
      * Correct form [1, 2, 3, 4, ..., #, n]
      * If not in position swap it with A[A[p]-1]
      */
     public static int firstMissingPositive(int[] A) {
-        if (A == null || A.length == 0) return 1;
+        if (A == null || A.length == 0)
+            return 1;
         int n = A.length;
         for (int i = 0; i < n; i++) {
             int num = A[i];
@@ -40,38 +40,38 @@ class FirstMissingPositive {
                 num = A[i];
             }
         }
-        for (int i = 0; i < n; i++) 
-            if (A[i] != i + 1) return i + 1;
+        for (int i = 0; i < n; i++)
+            if (A[i] != i + 1)
+                return i + 1;
         return n + 1; // nothing in middle losing, return largest
     }
-
 
     public int firstMissingPositiveB(int[] A) {
         final int N = A.length;
         next:
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             int v = A[i];
-            if(v == i + 1) continue ;
-            while(true){
-                if(v <= 0 || v > N){
+            if (v == i + 1)
+                continue;
+            while (true) {
+                if (v <= 0 || v > N) {
                     continue next;
                 }
                 int t = A[v - 1];
-                if(t == v){
+                if (t == v) {
                     continue next;
                 }
                 A[v - 1] = v;
                 v = t;
             }
         }
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             int v = A[i];
-            if (v != i + 1){
+            if (v != i + 1) {
                 return i + 1;
             }
         }
         return N + 1;
-
     }
 
     /**creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.*/
@@ -81,15 +81,15 @@ class FirstMissingPositive {
             while (A[i] != i + 1) {
                 if (A[i] <= 0 || A[i] >= n)
                     break;
-                if(A[i]==A[A[i]-1])
+                if (A[i] == A[A[i] - 1])
                     break;
                 int temp = A[i];
                 A[i] = A[temp - 1];
                 A[temp - 1] = temp;
             }
         }
-        for (int i = 0; i < n; i++){
-            if (A[i] != i + 1){
+        for (int i = 0; i < n; i++) {
+            if (A[i] != i + 1) {
                 return i + 1;
             }
         }
