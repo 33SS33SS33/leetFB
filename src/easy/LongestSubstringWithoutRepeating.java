@@ -7,7 +7,6 @@ import java.util.*;
  * characters. For example, the longest substring without repeating letters for
  * "abcabcbb" is "abc", which the length is 3. For "bbbbb" the longest
  * substring is "b", with the length of 1.
- *
  * Tags: Hashtable, Two pointers, String
  */
 class LongestSubstringWithoutRepeating {
@@ -26,7 +25,8 @@ class LongestSubstringWithoutRepeating {
         System.out.println(lengthOfLongestSubstringD("fdjskajfhh"));
     }
 
-    /**最好的
+    /**
+     * 最好的
      * Traverse the string
      * Get current character
      * Update start point
@@ -38,15 +38,16 @@ class LongestSubstringWithoutRepeating {
      * then move the left pointer to the right of the same character last found. Note that the two pointers can only move forward.
      */
     public static int lengthOfLongestSubstring(String s) {
-        if (s.length()==0) return 0;
+        if (s.length() == 0)
+            return 0;
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-        int max=0;
-        for (int i=0, j=0; i<s.length(); ++i){
-            if (map.containsKey(s.charAt(i))){
-                j = Math.max(j,map.get(s.charAt(i))+1);
+        int max = 0;
+        for (int i = 0, j = 0; i < s.length(); ++i) {
+            if (map.containsKey(s.charAt(i))) {
+                j = Math.max(j, map.get(s.charAt(i)) + 1);
             }
-            map.put(s.charAt(i),i);
-            max = Math.max(max,i-j+1);
+            map.put(s.charAt(i), i);
+            max = Math.max(max, i - j + 1);
         }
         return max;
     }
@@ -116,8 +117,6 @@ class LongestSubstringWithoutRepeating {
         }
         return Math.max(pre, map.size());
     }
-
-
 
     public static int lengthOfLongestSubstringC(String s) {
         // Note: The Solution object is instantiated only once and is reused by each test case.

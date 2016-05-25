@@ -2,18 +2,18 @@ package easy;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-/**
  * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
  * For example,
  * Given [[0, 30],[5, 10],[15, 20]],
  * return false.
  * 一个人能不能参加所有会议按照start来排序 如果后一个的end 小于 前一个的start 就return False
+ * 按照start来排序 如果后一个的end 小于 前一个的start 就return False
  */
 
-/**按照start来排序 如果后一个的end 小于 前一个的start 就return False*/
-
-/**会议中间时间没有重叠的话就可以参加*/
+/**
+ * 按照start来排序 如果后一个的end 小于 前一个的start 就return False
+ * 会议中间时间没有重叠的话就可以参加
+ */
 public class MeetingRooms {
     public static void main(String[] args) {
         Interval inter1 = new Interval(1, 4);

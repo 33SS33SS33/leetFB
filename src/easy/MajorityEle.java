@@ -10,15 +10,17 @@ import java.util.Arrays;
  * Tags: Divide and Conquer, Array, Bit Manipulation
  */
 
-/**还是用那个投票算法 好像用bit也能做 未实现 重要*/
+/**
+ * 还是用那个投票算法 好像用bit也能做 未实现 重要
+ */
 class MajorityEle {
     public static void main(String[] args) {
-        int[] num={1,2,1,3,6,1,4,1,1};
+        int[] num = { 1, 2, 1, 3, 6, 1, 4, 1, 1 };
         System.out.println(new MajorityEle().majorityElement(num));
         System.out.println(new MajorityEle().majorityElementB(num));
         System.out.println(new MajorityEle().majorityElementC(num));
     }
-    
+
     /**
      * Go through the array, assign maj ele if count is 0
      * Add 1 to count if same element, otherwise minus 1
@@ -34,7 +36,7 @@ class MajorityEle {
         }
         return maj;
     }
-    
+
     /**
      * Runtime: O(n) — Bit manipulation: We would need 32 iterations, each
      * calculating the number of 1's for the ith bit of all n numbers. Since a
@@ -43,9 +45,11 @@ class MajorityEle {
      * be the one bit that has the greater count.
      */
 
-    /**creek
+    /**
+     * creek
      * Since the majority always take more than a half space, the middle element is guaranteed to be the majority.
-     * Sorting array takes nlog(n). So the time complexity of this solution is nlog(n). Cheers!*/
+     * Sorting array takes nlog(n). So the time complexity of this solution is nlog(n). Cheers!
+     */
     public int majorityElementB(int[] num) {
         if (num.length == 1) {
             return num[0];
@@ -53,10 +57,12 @@ class MajorityEle {
         Arrays.sort(num);
         return num[num.length / 2];
     }
-    /** creek Naive
+
+    /**
+     * creek Naive
      * sort the array first, which takes time of nlog(n).
      * Then scan once to find the longest consecutive substrings.
-     *  */
+     */
     public int majorityElementC(int[] num) {
         if (num.length == 1) {
             return num[0];

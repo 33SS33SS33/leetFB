@@ -35,7 +35,8 @@ class PalindromeNo {
         System.out.println(isPalindrome(1000000021));
     }
 
-    /** 一位一位比较
+    /**
+     * 一位一位比较
      * Clarify whether negative nums are palindrom first
      * Compare each digit
      */
@@ -57,7 +58,8 @@ class PalindromeNo {
         return true;
     }
 
-    /** 可能会溢出
+    /**
+     * 可能会溢出
      * compare the reversed result, can go out of integer's range
      */
     public static int reverse(int num) {

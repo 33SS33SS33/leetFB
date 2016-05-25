@@ -2,6 +2,13 @@ package easy;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
+ * <p/>
+ * Given two binary strings, return their sum (also a binary string).
+ * For example,
+ * a = "11"
+ * b = "1"
+ * Return "100".
+ * Tags: Math, String
  */
 
 /**
@@ -13,7 +20,7 @@ package easy;
  * Tags: Math, String
  */
 
-/*就是二进制加法 从后往前加也可以 记得str int转换*/
+/**就是二进制加法 从后往前加也可以 记得str int转换*/
 class AddBinary {
     public static void main(String[] args) {
         String a = "11";
@@ -24,7 +31,8 @@ class AddBinary {
         System.out.println(addBinaryD(a, b));
     }
 
-    /** 最好的
+    /**
+     * 最好的
      * Traverse the longest binary backwards
      * Use + to insert to front, turn digit sum to int and restore to binary
      */

@@ -2,19 +2,6 @@ package easy;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- * <p/>
- * Given a positive integer, return its corresponding column title as appear in
- * an Excel sheet.
- * For example:
- * 1 -> A
- * 2 -> B
- * 3 -> C
- * ...
- * 26 -> Z
- * 27 -> AA
- * 28 -> AB
- * Tags: Math
- * <p/>
  * Given a positive integer, return its corresponding column title as appear in
  * an Excel sheet.
  * For example:
@@ -29,23 +16,11 @@ package easy;
  */
 
 /**
- * Given a positive integer, return its corresponding column title as appear in
- * an Excel sheet.
- * For example:
- * 1 -> A
- * 2 -> B
- * 3 -> C
- * ...
- * 26 -> Z
- * 27 -> AA
- * 28 -> AB
- * Tags: Math
+ * 涉及了进制转换 挺重要的题
+ * 进制转换的时候 取余就是当前位值
+ * 然后剩下的位数要除以26
+ * 注意一下减一
  */
-
-/**涉及了进制转换 挺重要的题
- 进制转换的时候 取余就是当前位值
- 然后剩下的位数要除以26
- 注意一下减一*/
 class ExcelSheetColTitle {
     public static void main(String[] args) {
         System.out.println(convertToTitleRec(28));
@@ -53,7 +28,8 @@ class ExcelSheetColTitle {
         System.out.println(convertToTitleB(28));
     }
 
-    /** 最好的
+    /**
+     * 最好的
      * creek
      * The key is n--. The minimum in 26-bit number is mapped to 1, not 0.
      */
@@ -72,7 +48,8 @@ class ExcelSheetColTitle {
         return sb.toString();
     }
 
-    /**Get the remainder in each loop
+    /**
+     * Get the remainder in each loop
      * It should be the last digit
      * Note that the map shall have 1 offset
      */

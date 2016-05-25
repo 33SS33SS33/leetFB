@@ -5,7 +5,10 @@ import java.util.Stack;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  */
-/**在push的时候用一个临时栈来把顺序倒一下就好 stack存的是queue的顺序 所以剩下的操作都是o1*/
+
+/**
+ * 在push的时候用一个临时栈来把顺序倒一下就好 stack存的是queue的顺序 所以剩下的操作都是o1
+ */
 public class ImplementQueueusingStacks {
     // should use Deque<Integer> stack in modern java
     Stack<Integer> stack = new Stack<Integer>();

@@ -13,7 +13,9 @@ import java.util.Arrays;
  * Tags: Array, Two pointers
  */
 
-/**两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找*/
+/**
+ * 两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找
+ */
 class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray r = new RemoveDuplicatesFromSortedArray();

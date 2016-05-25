@@ -80,7 +80,9 @@ class CountAndSay {
         return res;
     }
 
-    /**------creek-----*/
+    /**
+     * ------creek-----
+     */
     public static String countAndSayC(int n) {
         if (n <= 0)
             return null;

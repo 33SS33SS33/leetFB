@@ -16,7 +16,9 @@ import java.util.*;
  * Tags: Array
  */
 
-/**两边一定是1 中间的就是i+i-1*/
+/**
+ * 两边一定是1 中间的就是i+i-1
+ */
 class PascalsTriangle {
     public static void main(String[] args) {
         PascalsTriangle p = new PascalsTriangle();

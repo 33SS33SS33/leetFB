@@ -1,17 +1,18 @@
 package easy;
 
 import java.util.Stack;
-/**用一个tuple来记录当前的最小值*/
+
 /**
  * Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
  * push(x) -- Push element x onto stack.
  * pop() -- Removes the element on top of the stack.
  * top() -- Get the top element.
  * getMin() -- Retrieve the minimum element in the stack.
-
  * Tags: Stack, Data Structure
-
+ * 用一个tuple来记录当前的最小值
  * Standard solution, two ss a minStack to store minimums
+ * Standard solution, two ss
+ * a minStack to store minimums
  */
 /*class MinStack {
 

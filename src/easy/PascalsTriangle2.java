@@ -12,7 +12,9 @@ import java.util.List;
  * Tags: Array
  */
 
-/**只用一个数组记录上一次的即可*/
+/**
+ * 只用一个数组记录上一次的即可
+ */
 class PascalsTriangle2 {
     public static void main(String[] args) {
         PascalsTriangle2 p = new PascalsTriangle2();

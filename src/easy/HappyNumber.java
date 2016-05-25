@@ -5,9 +5,6 @@ import java.util.Set;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * Example: 19 is a happy number
  * 12 + 92 = 82
  * 82 + 22 = 68

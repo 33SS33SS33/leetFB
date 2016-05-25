@@ -7,7 +7,10 @@ package easy;
  * Given 1->1->2->3->3, return 1->2->3.
  * Tags: Linkedlist
  */
-/**要么删掉重复的  要么往前移动*/
+
+/**
+ * 要么删掉重复的  要么往前移动
+ */
 class RemoveDuplicatesFromSortedList {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedList r = new RemoveDuplicatesFromSortedList();
@@ -15,7 +18,9 @@ class RemoveDuplicatesFromSortedList {
         System.out.print(r.deleteDuplicatesB(head));
     }
 
-    /**creek---good---*/
+    /**
+     * creek---good---
+     */
     public ListNode deleteDuplicatesB(ListNode head) {
         if (head == null || head.next == null)
             return head;
@@ -93,6 +98,7 @@ class RemoveDuplicatesFromSortedList {
             next = null;
         }
     }
+
     static ListNode buildList() {
         ListNode node0 = new ListNode(1);
         ListNode node1 = new ListNode(1);
