@@ -12,15 +12,8 @@ package easy;
  */
 
 /**
- * Given two binary strings, return their sum (also a binary string).
- * For example,
- * a = "11"
- * b = "1"
- * Return "100".
- * Tags: Math, String
+ * 就是二进制加法 从后往前加也可以 记得str int转换
  */
-
-/**就是二进制加法 从后往前加也可以 记得str int转换*/
 class AddBinary {
     public static void main(String[] args) {
         String a = "11";

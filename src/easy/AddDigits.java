@@ -9,7 +9,9 @@ package easy;
  * Could you do it without any loop/recursion in O(1) runtime?
  */
 
-/**可以通过找规律直接算出来*/
+/**
+ * 可以通过找规律直接算出来
+ */
 public class AddDigits {
     public static void main(String[] args) {
         System.out.println(addDigits(222));
