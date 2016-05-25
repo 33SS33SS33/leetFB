@@ -13,7 +13,6 @@ import java.util.List;
  * As long as you have different numbers of people on your left and on your right, moving a little to the side with more people decreases the sum of distances. So to minimize it, you must have equally many people on your left and on your right. Same with above/below.
  * 比如如果你找个点 这个点左边有1个人 右边有2个人 那么你只要向右边移动一个 那么总得距离就会缩小 因为左边加1 右边减2 所以平衡点就是中间的店 中位数  如果是偶数个人 在两个中间点中得任意一个点都行
  * 所以算法很简单 只需要先计算x的中位数 再y的中位数即可"
-
  * "A group of two or more people wants to meet and minimize the total travel distance.
  * You are given a 2D grid of values 0 or 1, where each 1 marks the home of someone in the group.
  * The distance is calculated using Manhattan Distance, where distance(p1, p2) = |p2.x - p1.x| + |p2.y - p1.y|.
@@ -28,6 +27,12 @@ import java.util.List;
  * Try to solve it in one dimension first. How can this solution apply to the two dimension case?"
  */
 public class BestMeetingPoint {
+    public static void main(String[] args) {
+        int[][] grid = { { 1, 0, 0, 0, 1 }, { 0, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0 } };
+        new BestMeetingPoint().minTotalDistance(grid);
+        System.out.print(new BestMeetingPoint().minTotalDistance(grid));
+
+    }
 
     public int minTotalDistance(int[][] grid) {
         int m = grid.length;

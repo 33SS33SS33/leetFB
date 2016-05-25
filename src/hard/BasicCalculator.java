@@ -10,10 +10,6 @@ import java.util.Stack;
  */
 
 /**
- * Some examples: "1 + 1" = 2, "(1)" = 1, "(1-(4-5))" = 2
- */
-
-/**
  * 可以把所有都看成加法只是加正数还是加负数
  * 所以有一个sign来记录标志位
  * 如果碰见括号 就先把之前的结果还有sign保存进栈 然后括号结束在拿出来计算
@@ -21,6 +17,7 @@ import java.util.Stack;
  * 这道题的整体逻辑其实是先拼出来一个数字 然后如果碰见了加减号 就先把之前的那个带加减号的运算算了
  * 如果碰见了括号 之前的res sign 入栈 然后res sign清零 开始计算括号里面的
  * 所以返回的时候要把最后一个数字给算了
+ * Some examples: "1 + 1" = 2, "(1)" = 1, "(1-(4-5))" = 2
  */
 public class BasicCalculator {
     enum TokenType {DIGIT, OP}

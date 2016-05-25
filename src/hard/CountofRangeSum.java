@@ -17,7 +17,7 @@ package hard;
 public class CountofRangeSum {
     public static void main(String[] args) {
         int[] nums = { -2, 5, -1 };
-        System.out.println(new CountofRangeSum().countRangeSum(nums,-2,2));
+        System.out.println(new CountofRangeSum().countRangeSum(nums, -2, 2));
     }
 
     public int countRangeSum(int[] nums, int lower, int upper) {

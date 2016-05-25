@@ -16,7 +16,7 @@ package hard;
  */
 class Candy {
     public static void main(String[] args) {
-        int[] ratings = {1,3,4,6,2};
+        int[] ratings = { 1, 3, 4, 6, 2 };
 
         System.out.println(new Candy().candyA(ratings));
         System.out.println(new Candy().candyB(ratings));
@@ -38,27 +38,29 @@ class Candy {
             candies[i] = ratings[i] > ratings[i - 1] ? candies[i - 1] + 1 : 1;
         int res = candies[candies.length - 1];
         for (int i = ratings.length - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1])    
+            if (ratings[i] > ratings[i + 1])
                 candies[i] = Math.max(candies[i], candies[i + 1] + 1);
             res += candies[i];
         }
         return res;
     }
-    
+
     /**
      * O(n) Time, O(1) Space
      * Use a var to store decreasing sequence length
      * Use a var to store previous candies
      */
     public int candyB(int[] ratings) {
-        if (ratings.length < 2) return ratings.length;
+        if (ratings.length < 2)
+            return ratings.length;
         int res = 1;
         int dec = 0;
         int gap = 0;
         int curCandy = 1;
         for (int i = 1; i < ratings.length; i++) {
             if (ratings[i] < ratings[i - 1]) {
-                if (dec == 0) gap = curCandy;
+                if (dec == 0)
+                    gap = curCandy;
                 dec++;
                 curCandy = 1;
                 res += dec + curCandy;
@@ -68,8 +70,10 @@ class Candy {
                 }
             } else {
                 dec = 0;
-                if (ratings[i] > ratings[i - 1]) curCandy++;
-                else curCandy = 1;
+                if (ratings[i] > ratings[i - 1])
+                    curCandy++;
+                else
+                    curCandy = 1;
                 res += curCandy;
             }
         }
@@ -103,6 +107,5 @@ class Candy {
         }
         return result;
     }
-
 
 }

@@ -11,13 +11,10 @@ package hard;
  * "2e10" => true
  * Note: It is intended for the problem statement to be ambiguous. You should
  * gather all requirements up front before implementing one.
- * 
- * Tags: Math, String
+ *  LinkedIn
+ * Tags: Math, String  (E) String to Integer (atoi)
  */
-/* LinkedIn
- Math String
- (E) String to Integer (atoi)
-*/
+
 class ValidNumber {
     public static void main(String[] args) {
         String s="1.33";

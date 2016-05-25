@@ -1,9 +1,11 @@
 package hard;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
- */
-/**
  * "Given a non-empty binary search tree and a target value, find k values in the BST that are closest to the target.
  * Note:
  * Given target value is a floating point.
@@ -14,10 +16,6 @@ package hard;
  * Tree Stack
  */
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
 /**
  * "就是在中序的时候保留一个窗口 窗口是个最大堆 窗口不满的时候就往里加数字
  * 窗口满了开始比较  如果当前这个数字的距离比堆里那个最大的距离小 就替换
@@ -27,7 +25,7 @@ import java.util.Stack;
 public class ClosestBinarySearchTreeValue2 {
     public static void main(String[] args) {
         TreeNode head = buildTree();
-        System.out.println(new ClosestBinarySearchTreeValue2().closestKValues(head,4,2));
+        System.out.println(new ClosestBinarySearchTreeValue2().closestKValues(head, 4, 2));
     }
 
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
@@ -48,6 +46,7 @@ public class ClosestBinarySearchTreeValue2 {
         }
         return res;
     }
+
     // inorder traversal
     void inorder(TreeNode root, double target, boolean reverse, Stack<Integer> stack) {
         if (root == null)
