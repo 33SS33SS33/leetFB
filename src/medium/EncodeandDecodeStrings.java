@@ -5,26 +5,24 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-/**"	"Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original
+ * "	"Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original
  * list of strings.
-
- Machine 1 (sender) has the function:
- string encode(vector<string> strs) {
- // ... your code
- return encoded_string;
- }
- Machine 2 (receiver) has the function:
- vector<string> decode(string s) {
- //... your code
- return strs;
- }
- So Machine 1 does:
- string encoded_string = encode(strs);
- and Machine 2 does:
- vector<string> strs2 = decode(encoded_string);
- strs2 in Machine 2 should be the same as strs in Machine 1.
- Implement the encode and decode methods."
+ * Machine 1 (sender) has the function:
+ * string encode(vector<string> strs) {
+ * // ... your code
+ * return encoded_string;
+ * }
+ * Machine 2 (receiver) has the function:
+ * vector<string> decode(string s) {
+ * //... your code
+ * return strs;
+ * }
+ * So Machine 1 does:
+ * string encoded_string = encode(strs);
+ * and Machine 2 does:
+ * vector<string> strs2 = decode(encoded_string);
+ * strs2 in Machine 2 should be the same as strs in Machine 1.
+ * Implement the encode and decode methods."
  */
 
 /**
@@ -33,15 +31,14 @@ import java.util.List;
  */
 public class EncodeandDecodeStrings {
     public static void main(String[] args) {
-        EncodeandDecodeStrings d=new EncodeandDecodeStrings();
-        List<String> sList=new ArrayList<String>();
+        EncodeandDecodeStrings d = new EncodeandDecodeStrings();
+        List<String> sList = new ArrayList<String>();
         sList.add("iiy");
         System.out.println(d.encode(sList));
-//        System.out.println(d.decode("iiy").toString());
+        //        System.out.println(d.decode("iiy").toString());
     }
 
-
-    static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
+    static final int    MAX_LEN     = Integer.toHexString(Integer.MAX_VALUE).length();
     // lazy ... should be byte[]
     static final String NUM_PATTERN = "%0" + MAX_LEN + "x";
     /*  [count] [str len] [str  ...]             ... [str len][str  ...  ]

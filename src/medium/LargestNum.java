@@ -18,7 +18,7 @@ import java.util.*;
 class LargestNum {
     public static void main(String[] args) {
         LargestNum ln = new LargestNum();
-        int[] num = { 3, 30, 34, 5, 9 ,0};
+        int[] num = { 3, 30, 34, 5, 9, 0 };
         System.out.println(ln.largestNumber(num));
         System.out.println(ln.largestNumberB(num));
     }

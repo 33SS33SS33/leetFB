@@ -40,6 +40,7 @@ class LongestPalindromicSubstring {
         }
         return res;
     }
+
     /*Insert char to the original input string If the index is even, return # If the index is odd, return char in the original string
      */
     private char get(String s, int i) {
@@ -54,10 +55,12 @@ class LongestPalindromicSubstring {
      * Expand from center character and center of two chars
      * Update result according to the returned length
      */
-       /**基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
-    比如串abc,中心可以是a,b,c,或者是ab的间隙，bc的间隙）往两边同时进行扫描，直到不是回文串为止。
-    假设字符串的长度为n,那么中心的个数为2*n-1(字符作为中心有n个，间隙有n-1个）。
-    对于每个中心往两边扫描的复杂度为O(n),所以时间复杂度为O((2*n-1)*n)=O(n^2),空间复杂度为O(1)*/
+    /**
+     * 基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
+     * 比如串abc,中心可以是a,b,c,或者是ab的间隙，bc的间隙）往两边同时进行扫描，直到不是回文串为止。
+     * 假设字符串的长度为n,那么中心的个数为2*n-1(字符作为中心有n个，间隙有n-1个）。
+     * 对于每个中心往两边扫描的复杂度为O(n),所以时间复杂度为O((2*n-1)*n)=O(n^2),空间复杂度为O(1)
+     */
     public String longestPalindromeC(String s) {
         if (s == null || s.length() == 0)
             return "";
@@ -73,6 +76,7 @@ class LongestPalindromicSubstring {
         }
         return longest;
     }
+
     private String expandAroundCenter(String s, int i, int j) {
         int l = i;
         int r = j;
@@ -141,6 +145,7 @@ class LongestPalindromicSubstring {
         }
         return s.substring((centerIdx - 1 - maxLen) / 2, (centerIdx - 1 + maxLen) / 2);
     }
+
     private String preProcess(String s) {
         int n = s.length();
         if (n == 0)
@@ -152,7 +157,6 @@ class LongestPalindromicSubstring {
         res += "#$";
         return res;
     }
-
 
     /*而第二种方法是用动态规划，思路比较复杂一些，但是实现代码会比较简短。
     基本思路是外层循环i从后往前扫，内层循环j从i当前字符扫到结尾处。
@@ -178,6 +182,7 @@ class LongestPalindromicSubstring {
         }
         return res;
     }
+
     /**
      * DP Time O(n^2) Space O(n^2)
      */

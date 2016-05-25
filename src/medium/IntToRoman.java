@@ -12,8 +12,10 @@ class IntToRoman {
         System.out.println(new IntToRoman().intToRomanC(3));
     }
 
-    public static final int[] intDict = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-    public static final String[] romanDict = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+    public static final int[]    intDict   = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4,
+            1 };
+    public static final String[] romanDict = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X",
+            "IX", "V", "IV", "I" };
 
     /**
      * Recursion
@@ -28,7 +30,7 @@ class IntToRoman {
         }
         return ""; // Note the return statement
     }
-    
+
     /**
      * While loop
      * Go through the dict, if num >= intDict[i], append roman integer
@@ -51,6 +53,7 @@ class IntToRoman {
 
     static final int[]  N = { 1, 5, 10, 50, 100, 500, 1000 };
     static final char[] C = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
+
     public static String intToRomanC(int num) {
         String buff = "";
         char last = 0;

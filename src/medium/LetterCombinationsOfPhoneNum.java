@@ -33,21 +33,25 @@ class LetterCombinationsOfPhoneNum {
             "wxyz"  // 9
     };
 
-    /**最好的*/
+    /**
+     * 最好的
+     */
     public List<String> letterCombinations(String digits) {
         LinkedList<String> ans = new LinkedList<String>();
-        String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        String[] mapping = new String[] { "0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs",
+                "tuv", "wxyz" };
         ans.add("");
-        for(int i =0; i<digits.length();i++){
+        for (int i = 0; i < digits.length(); i++) {
             int x = Character.getNumericValue(digits.charAt(i));
-            while(ans.peek().length()==i){
+            while (ans.peek().length() == i) {
                 String t = ans.remove();
-                for(char s : mapping[x].toCharArray())
-                    ans.add(t+s);
+                for (char s : mapping[x].toCharArray())
+                    ans.add(t + s);
             }
         }
         return ans;
     }
+
     /**
      * Backtracking to generate all combinations
      */
@@ -58,6 +62,7 @@ class LetterCombinationsOfPhoneNum {
         helper(digits, 0, "", res);
         return res;
     }
+
     private void helper(String digits, int s, String comb, List<String> res) {
         if (s == digits.length()) { // all digits done, stop
             res.add(comb);
@@ -87,6 +92,7 @@ class LetterCombinationsOfPhoneNum {
         getString(digits, temp, result, map);
         return result;
     }
+
     public void getString(String digits, ArrayList<Character> temp, ArrayList<String> result,
             HashMap<Integer, String> map) {
         if (digits.length() == 0) {

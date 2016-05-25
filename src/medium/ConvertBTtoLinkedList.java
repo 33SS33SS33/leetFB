@@ -20,6 +20,7 @@ public class ConvertBTtoLinkedList {
     }
 
     static Node root;
+
     /* This is the core function to convert Tree to list. This function follows
      steps 1 and 2 of the above algorithm */
     Node bintree2listUtil(Node node) {
@@ -33,7 +34,8 @@ public class ConvertBTtoLinkedList {
             Node left = bintree2listUtil(node.left);
             // Find inorder predecessor. After this loop, left
             // will point to the inorder predecessor
-            for (; left.right != null; left = left.right);
+            for (; left.right != null; left = left.right)
+                ;
             // Make root as next of the predecessor
             left.right = node;
             // Make predecssor as previous of root
@@ -45,7 +47,8 @@ public class ConvertBTtoLinkedList {
             Node right = bintree2listUtil(node.right);
             // Find inorder successor. After this loop, right
             // will point to the inorder successor
-            for (; right.left != null; right = right.left);
+            for (; right.left != null; right = right.left)
+                ;
             // Make root as previous of successor
             right.left = node;
             // Make successor as next of root
@@ -72,6 +75,7 @@ public class ConvertBTtoLinkedList {
         }
         return node;
     }
+
     /* Function to print nodes in a given doubly linked list */
     void printList(Node node) {
         while (node != null) {
@@ -79,11 +83,13 @@ public class ConvertBTtoLinkedList {
             node = node.right;
         }
     }
+
     // Java program to convert binary tree to double linked list
     // A binary tree node
     static class Node {
         int  data;
         Node left, right;
+
         Node(int item) {
             data = item;
             left = right = null;

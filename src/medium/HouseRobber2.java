@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * After robbing those houses on that street, the thief has found himself a new place for his thievery
  * so that he will not get too much attention.
  * This time,all houses at this place are arranged in a circle. That means the first house is the neighbor of the last one.
@@ -34,6 +31,7 @@ public class HouseRobber2 {
             return nums[0];
         return Math.max(rob(nums, 0, nums.length - 1), rob(nums, 1, nums.length - 1));
     }
+
     static int rob(int[] num, int st, int len) {
         if (len == 0)
             return 0;

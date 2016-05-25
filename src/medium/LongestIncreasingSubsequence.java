@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by shanshan on 16/5/9.
- */
-
-/**
  * "Given an unsorted array of integers, find the length of longest increasing subsequence.
  * For example,
  * Given [10, 9, 2, 5, 3, 7, 101, 18],

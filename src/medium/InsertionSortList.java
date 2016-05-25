@@ -14,12 +14,10 @@ import java.util.List;
  */
 class InsertionSortList {
     public static void main(String[] args) {
-        ListNode n1=buildList();
+        ListNode n1 = buildList();
         n1 = insertionSortList(n1);
         printList(n1);
     }
-
-
 
     /**
      * Check the list one by one to find a node that has smaller value than
@@ -93,7 +91,7 @@ class InsertionSortList {
 
     }
 
-    public static ListNode buildList(){
+    public static ListNode buildList() {
         ListNode n1 = new ListNode(2);
         ListNode n2 = new ListNode(3);
         ListNode n3 = new ListNode(4);
@@ -108,6 +106,7 @@ class InsertionSortList {
         n5.next = n6;
         return n1;
     }
+
     public static class ListNode {
         int      val;
         ListNode next;

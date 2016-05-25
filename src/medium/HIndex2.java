@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/7.
- */
-
-/**
  * Follow up for H-Index: What if the citations array is sorted in ascending order? Could you optimize your algorithm?
  */
 

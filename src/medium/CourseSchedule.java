@@ -4,8 +4,6 @@ import java.util.*;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-/**
  * There are a total of n courses you have to take, labeled from 0 to n - 1.
  * Some courses may have prerequisites, for example to take course 0 you have to first take course 1,
  * which is expressed as a pair: [0,1]
@@ -17,6 +15,7 @@ import java.util.*;
  * There are a total of 2 courses to take. To take course 1 you should have finished course 0,
  * and to take course 0 you should also have finished course 1. So it is impossible.
  */
+
 /**这题需要用到拓扑排序
  可以用改进的DFS 每次dfs另外传入一个变量 来记录当前的路径 当某个点发现自己已经在路径上了 就说明有环 就返回False 这里要注意 要在递归退出来之后 再将当前的点标记为searched 要不就无法前进到有环的那个点
  没有实现DFS
@@ -34,14 +33,15 @@ import java.util.*;
  */
 public class CourseSchedule {
     public static void main(String[] args) {
-        int[][] prerequisites = {{1,0}};
-        int[][] prerequisites2 = {{1,0},{0,1}};
+        int[][] prerequisites = { { 1, 0 } };
+        int[][] prerequisites2 = { { 1, 0 }, { 0, 1 } };
 
-        System.out.println(new CourseSchedule().canFinishA(2,prerequisites));
-        System.out.println(new CourseSchedule().canFinishB(2,prerequisites));
-        System.out.println(new CourseSchedule().canFinishA(2,prerequisites2));
-        System.out.println(new CourseSchedule().canFinishB(2,prerequisites2));
+        System.out.println(new CourseSchedule().canFinishA(2, prerequisites));
+        System.out.println(new CourseSchedule().canFinishB(2, prerequisites));
+        System.out.println(new CourseSchedule().canFinishA(2, prerequisites2));
+        System.out.println(new CourseSchedule().canFinishB(2, prerequisites2));
     }
+
     /**
      * creek BFS------
      */
@@ -113,6 +113,7 @@ public class CourseSchedule {
         }
         return true;
     }
+
     private boolean canFinishDFS(HashMap<Integer, ArrayList<Integer>> map, int[] visit, int i) {
         if (visit[i] == -1)
             return false;

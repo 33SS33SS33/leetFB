@@ -2,7 +2,6 @@ package medium;
 
 /**
  * Created by shanshan on 16/5/9.
- * <p/>
  * "Additive number is a positive integer whose digits can form additive sequence.
  * A valid additive sequence should contain at least three numbers. Except for the first two numbers,
  * each subsequent number in the sequence must be the sum of the preceding two.

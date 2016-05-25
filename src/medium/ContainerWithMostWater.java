@@ -6,26 +6,24 @@ package medium;
  * endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together
  * with x-axis forms a container, such that the container contains the most
  * water.
- *
  * Note: You may not slant the container.
  * Tags: Array, Two pointers
  */
 class ContainerWithMostWater {
     public static void main(String[] args) {
-        int[] height = { 2, 4, 3, 2,7 };
+        int[] height = { 2, 4, 3, 2, 7 };
         System.out.println(new ContainerWithMostWater().maxAreaA(height));
         System.out.println(new ContainerWithMostWater().maxAreaA2(height));
     }
 
     /**
-     * 2 pointers, low and high
+     * creek 2 pointers, low and high
      * curArea = (high - low) * min(height[high], height[low])
      * maxArea = max(maxArea, curArea)
      * Move lower pointer towards center for the next loop
      * Stop when two pointers meet, cause one line can form a container
      * Different from block
      */
-    /**creek*/
     public int maxAreaA(int[] height) {
         if (height == null || height.length < 2) {
             return 0;
@@ -61,7 +59,5 @@ class ContainerWithMostWater {
         }
         return max;
     }
-
-
 
 }

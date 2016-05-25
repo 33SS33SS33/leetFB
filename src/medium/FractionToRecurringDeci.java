@@ -7,7 +7,6 @@ import java.util.*;
  * return the fraction in string format.
  * If the fractional part is repeating, enclose the repeating part in
  * parentheses.
- *
  * For example,
  * Given numerator = 1, denominator = 2, return "0.5".
  * Given numerator = 2, denominator = 1, return "2".
@@ -25,9 +24,9 @@ import java.util.*;
 class FractionToRecurringDeci {
     public static void main(String[] args) {
         FractionToRecurringDeci f = new FractionToRecurringDeci();
-         System.out.println(f.fractionToDecimal(1, 2));
-         System.out.println(f.fractionToDecimal(2, 1));
-         System.out.println(f.fractionToDecimal(2, 3));
+        System.out.println(f.fractionToDecimal(1, 2));
+        System.out.println(f.fractionToDecimal(2, 1));
+        System.out.println(f.fractionToDecimal(2, 3));
         System.out.println(f.fractionToDecimal(Integer.MAX_VALUE, Integer.MIN_VALUE));
         System.out.println(f.fractionToDecimal2(Integer.MAX_VALUE, Integer.MIN_VALUE));
         System.out.println(f.fractionToDecimalC(Integer.MAX_VALUE, Integer.MIN_VALUE));

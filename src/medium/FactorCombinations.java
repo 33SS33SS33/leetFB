@@ -7,9 +7,6 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * Numbers can be regarded as product of its factors. For example,
  * 8 = 2 x 2 x 2;
  * = 2 x 4.
@@ -20,7 +17,9 @@ import java.util.List;
  * Factors should be greater than 1 and less than n.
  */
 
-/**使用dfs 但是很慢  待优化 未实现*/
+/**
+ * 使用dfs 但是很慢  待优化 未实现
+ */
 public class FactorCombinations {
     public static void main(String[] args) throws IOException {
         System.out.println(getFactors(33));
@@ -29,6 +28,7 @@ public class FactorCombinations {
     public static List<List<Integer>> getFactors(int n) {
         return getFactors(n, 2, n);
     }
+
     static List<List<Integer>> getFactors(int n, int low, int high) {
         List<List<Integer>> found = new ArrayList<List<Integer>>();
         if (low <= n && n < high) {
