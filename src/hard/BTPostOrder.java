@@ -22,10 +22,8 @@ import java.util.Collections;
 /**最简单的办法
  pre-order traversal is root-left-right, and post order is left-right-root. modify the code for pre-order to make it root-right-left,
  and then reverse the output so that we can get left-right-root . 就是把先序遍历变成 根-右子树-左子树 然后再把结果倒序
-
  还有一种方法就是 设置一个标志位 记录当前节点有没有访问过  标志位为true的节点说明已经遍历了他的左子树和右子树 然后才可以遍历当前的节点*/
 class BTPostOrder {
-
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
@@ -60,7 +58,7 @@ class BTPostOrder {
         res.add(root.val);
     }
 
-    /**   很好的思想~~
+    /** 很好的思想~~
      * post order: left - right - root
      * modify pre order: root - left - right to root - right - left
      * reverse the result
