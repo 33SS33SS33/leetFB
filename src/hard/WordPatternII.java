@@ -33,8 +33,8 @@ public class WordPatternII {
     }
 
     public boolean wordPatternMatch(String pattern, String str) {
-        Map<Character, String> map = new HashMap<>();
-        Set<String> set = new HashSet<>();
+        Map<Character, String> map = new HashMap<Character, String>();
+        Set<String> set = new HashSet<String>();
         return isMatch(str, 0, pattern, 0, map, set);
     }
 
