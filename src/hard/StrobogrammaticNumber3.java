@@ -18,6 +18,12 @@ package hard;
  * 然后单独计算小于i的个数的时候 是直接用数学方法算出来  i的位数-1 的个数  然后再算出来i的位数一共有多少个 然后从这些里面找出来小于i的 然后把两个个数加起来
  */
 public class StrobogrammaticNumber3 {
+    public static void main(String[] args) {
+        String low="makes";
+        String high="coding";
+        System.out.println(new StrobogrammaticNumber3().strobogrammaticInRange(low,high));
+    }
+
     char[][] pairs = { { '0', '0' }, { '1', '1' }, { '6', '9' }, { '8', '8' }, { '9', '6' } };
     int      count = 0;
 
@@ -37,7 +43,6 @@ public class StrobogrammaticNumber3 {
             count++;
             return;
         }
-
         for (char[] p : pairs) {
             c[left] = p[0];
             c[right] = p[1];

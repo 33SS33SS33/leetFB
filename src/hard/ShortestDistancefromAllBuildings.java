@@ -1,7 +1,8 @@
 package hard;
 
 /**
- * "You want to build a house on an empty land which reaches all buildings in the shortest amount of distance. You can only move up, down, left and right. You are given a 2D grid of values 0, 1 or 2, where:
+ * "You want to build a house on an empty land which reaches all buildings in the shortest amount of distance.
+ * You can only move up, down, left and right. You are given a 2D grid of values 0, 1 or 2, where:
  * Each 0 marks an empty land which you can pass by freely.
  * Each 1 marks a building which you cannot pass through.
  * Each 2 marks an obstacle which you cannot pass through.
@@ -20,7 +21,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**"使用bfs即可 最关键的地方在于建立一个同样的矩阵记录距离
- 然后原先的矩阵就当碰见一个building的时候 就bfs一下它到所有其他点得距离 这里比较方便的就是 可以使用-1 -2 -3来给building编号 这样每次只用检查这个点是不是等于id+1 就可以知道这个点有没有走过
+ 然后原先的矩阵就当碰见一个building的时候 就bfs一下它到所有其他点得距离 这里比较方便的就是
+ 可以使用-1 -2 -3来给building编号 这样每次只用检查这个点是不是等于id+1 就可以知道这个点有没有走过
  最后的无解的判断也是通过id来进行的"	*/
 public class ShortestDistancefromAllBuildings {
     public static void main(String[] args) {
@@ -59,7 +61,6 @@ public class ShortestDistancefromAllBuildings {
                                     // is 'level'.
                                     distance[nextRow][nextCol] += level;
                                     reach[nextRow][nextCol]++;
-
                                     isVisited[nextRow][nextCol] = true;
                                     myQueue.offer(new int[] { nextRow, nextCol });
                                 }
