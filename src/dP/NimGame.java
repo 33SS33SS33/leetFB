@@ -16,4 +16,18 @@ package dP;
  * 如其中有一个必败 那么这次就一定能必胜 所以是4的倍数就输
  **/
 public class NimGame {
+    public static void main(String[] args) {
+        System.out.println(canWinNimB(4));
+    }
+
+/*    public boolean canWinNim(int n) {
+        return (n & 0b11) != 0;
+    }*/
+
+    public static boolean canWinNimB(int n) {
+        if (n % 4 == 0)
+            return false;
+        else
+            return true;
+    }
 }

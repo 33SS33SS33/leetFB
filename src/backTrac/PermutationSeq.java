@@ -30,12 +30,6 @@ class PermutationSeq {
     public static void main(String[] args) {
         System.out.println(getPermutation(3, 1)); // 123
         System.out.println(getPermutationB(3, 1)); // 123
-        System.out.println(getPermutation(3, 2)); // 132
-        System.out.println(getPermutationB(3, 2)); // 132
-        System.out.println(getPermutation(3, 3)); // 213
-        System.out.println(getPermutationB(3, 3)); // 213
-        System.out.println(getPermutation(3, 4)); // 231
-        System.out.println(getPermutationB(3, 4)); // 231
         System.out.println(getPermutation(3, 5)); // 312
         System.out.println(getPermutationB(3, 5)); // 312
         System.out.println(getPermutation(3, 6)); // 321
@@ -148,4 +142,5 @@ class PermutationSeq {
         }
         return buf.toString();
     }
+
 }
