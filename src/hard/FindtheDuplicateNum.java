@@ -13,31 +13,14 @@ package hard;
  * Your runtime complexity should be less than O(n2).
  * There is only one duplicate number in the array, but it could be repeated more than once.
  */
+//错的
 public class FindtheDuplicateNum {
     public static void main(String[] args) {
         int[] num = { 0, 1, 2, 4, 2, 3 };
         System.out.println(new FindtheDuplicateNum().findDuplicate(num));
+        System.out.println(new FindtheDuplicateNum().findDuplicateB(num));
     }
 
-    /*
-        int findDuplicate3(vector<int>&nums) {
-            if (nums.size() > 1) {
-                int slow = nums[0];
-                int fast = nums[nums[0]];
-                while (slow != fast) {
-                    slow = nums[slow];
-                    fast = nums[nums[fast]];
-                }
-
-                fast = 0;
-                while (fast != slow) {
-                    fast = nums[fast];
-                    slow = nums[slow];
-                }
-                return slow;
-            }
-            return -1;
-        }*/
     public int findDuplicate(int[] nums) {
         int n = nums.length;
         for (int i = 0; i < nums.length; i++)

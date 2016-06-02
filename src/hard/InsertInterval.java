@@ -34,16 +34,14 @@ class InsertInterval {
         intervals.add(interval2);
         List<Interval> res = new InsertInterval().insertA(intervals, interval3);
         List<Interval> res2 = new InsertInterval().insertB(intervals, interval3);
-        List<Interval> res3 = new InsertInterval().insertC(intervals, interval3);
         List<Interval> res4 = new InsertInterval().InsertInterval(intervals, interval3);
         System.out.print(res.toString());
         System.out.print(res2.toString());
-        System.out.print(res3.toString());
         System.out.print(res4.toString());
     }
 
     /**
-     * --------creek-------!!!!
+     * --------creek-------!!!!最好的
      */
     public ArrayList<Interval> InsertInterval(List<Interval> intervals, Interval newInterval) {
         ArrayList<Interval> result = new ArrayList<Interval>();
@@ -128,30 +126,6 @@ class InsertInterval {
         return results;
     }
 
-    public ArrayList<Interval> insertC(List<Interval> intervals, Interval newInterval) {
-        ArrayList<Interval> res = new ArrayList<Interval>();
-        if (intervals.size() == 0) {
-            res.add(newInterval);
-            return res;
-        }
-        int i = 0;
-        while (i < intervals.size() && intervals.get(i).end < newInterval.start) {
-            res.add(intervals.get(i));
-            i++;
-        }
-        if (i < intervals.size())
-            newInterval.start = Math.min(newInterval.start, intervals.get(i).start);
-        res.add(newInterval);
-        while (i < intervals.size() && intervals.get(i).start <= newInterval.end) {
-            newInterval.end = Math.max(newInterval.end, intervals.get(i).end);
-            i++;
-        }
-        while (i < intervals.size()) {
-            res.add(intervals.get(i));
-            i++;
-        }
-        return res;
-    }
 
     public static class Interval {
         int start;

@@ -19,11 +19,13 @@ import java.util.HashMap;
 /**
  * 使用动态规划 DP
  * 思考的时候 把T固定住比较容易想 比如 如果T是rab  那么S是rab的时候 然后S变长了 变成rabb/rabc的时候
- * As a typical way to implement a dynamic programming algorithm, we construct a matrix dp, where each cell dp[i][j] represents the number of solutions of aligning substring T[0..i] with S[0..j];
+ * As a typical way to implement a dynamic programming algorithm, we construct a matrix dp,
+ * where each cell dp[i][j] represents the number of solutions of aligning substring T[0..i] with S[0..j];
  * Rule 1). dp[0][j] = 1, since aligning T = "" with any substring of S would have only ONE solution which is to delete all characters in S.
  * Rule 2). when i > 0, dp[i][j] can be derived by two cases:
  * case 1). if T[i] != S[j], then the solution would be to ignore the character S[j] and align substring T[0..i] with S[0..(j-1)]. Therefore, dp[i][j] = dp[i][j-1].
- * case 2). if T[i] == S[j], then first we could adopt the solution in case 1), but also we could match the characters T[i] and S[j] and align the rest of them (i.e. T[0..(i-1)] and S[0..(j-1)]. As a result, dp[i][j] = dp[i][j-1] + d[i-1][j-1]
+ * case 2). if T[i] == S[j], then first we could adopt the solution in case 1),
+ * but also we could match the characters T[i] and S[j] and align the rest of them (i.e. T[0..(i-1)] and S[0..(j-1)]. As a result, dp[i][j] = dp[i][j-1] + d[i-1][j-1]
  * e.g. T = B, S = ABC
  * dp[1][2]=1: Align T'=B and S'=AB, only one solution, which is to remove character A in S'.
  */
@@ -46,8 +48,8 @@ class DistinctSubsequences {
      * dp[0][j] = 1, means T is empty, and there is always 1 substring
      * and dp[i][0] = 0, means S is empty
      * dp[i][j] = dp[i][j-1]        (from S[1...j - 1] no S[j])
-     * + (dp[i-1][j-1]    (S[j] == T[i] and we are going to use S[j])
-     * or 0)          (S[j] != T[i] so we could not use S[j])
+     * + (dp[i-1][j-1]    (S[j] == T[i] and we are going to use S[j])or 0)
+     * (S[j] != T[i] so we could not use S[j])
      */
     public int numDistinct(String s, String t) {
         if (s == null || t == null)
@@ -61,8 +63,7 @@ class DistinctSubsequences {
             dp[0][i] = 1;
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
-                dp[i][j] =
-                        dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
+                dp[i][j] = dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
         return dp[m][n];
     }
 

@@ -19,7 +19,7 @@ package hard;
  */
 class FindDup {
     public static void main(String[] args) {
-        int[] num = { 1, 2, 3, 1, 4 };
+        int[] num = { 1, 2, 3, 1, 4 ,3};
         new FindDup().printRepeating(num);
     }
 
