@@ -24,7 +24,7 @@ class Candy {
     }
 
     /**
-     * O(n) Time, O(n) Space
+     * O(n) Time, O(n) Space  最好的
      * From left to right, if ratings[i] increase, give one more
      * From right to left, if ratings[i] increase, give one more
      * Answer should be the max of two array

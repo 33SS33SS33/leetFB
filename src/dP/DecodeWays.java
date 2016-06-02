@@ -27,7 +27,7 @@ class DecodeWays {
     }
 
     /**
-     * Optimal, DP
+     * Optimal, DP 一维动归
      * Reduce space to O(1)
      */
     public int numDecodingsOptimal(String s) {
@@ -47,7 +47,7 @@ class DecodeWays {
     }
 
     /**
-     * Time O(n), Space O(n)
+     * Time O(n), Space O(n) 二维动归
      * note that there can be zeros in s
      */
     public static int numDecodings(String s) {

@@ -53,21 +53,6 @@ public class WordBreak2 {
         }
     }
 
-    ArrayList<ArrayList<Interval>> deepCopy(ArrayList<ArrayList<Interval>> paths) {
-        if (paths == null)
-            return null;
-        ArrayList<ArrayList<Interval>> res = new ArrayList<ArrayList<Interval>>(paths.size());
-        for (int i = 0; i < paths.size(); i++) {
-            ArrayList<Interval> path = paths.get(i);
-            ArrayList<Interval> copy = new ArrayList<Interval>(path.size());
-            for (int j = 0; j < path.size(); j++) {
-                copy.add(new Interval(path.get(j)));
-            }
-            res.add(copy);
-        }
-        return res;
-    }
-
     /**
      * DP 用动态规划的代码复杂度要远远高于brute force的解法，而且本质来说并没有很大的提高
      */
@@ -118,6 +103,20 @@ public class WordBreak2 {
         return res;
     }
 
+    ArrayList<ArrayList<Interval>> deepCopy(ArrayList<ArrayList<Interval>> paths) {
+        if (paths == null)
+            return null;
+        ArrayList<ArrayList<Interval>> res = new ArrayList<ArrayList<Interval>>(paths.size());
+        for (int i = 0; i < paths.size(); i++) {
+            ArrayList<Interval> path = paths.get(i);
+            ArrayList<Interval> copy = new ArrayList<Interval>(path.size());
+            for (int j = 0; j < path.size(); j++) {
+                copy.add(new Interval(path.get(j)));
+            }
+            res.add(copy);
+        }
+        return res;
+    }
     /**
      * creek-----
      */
