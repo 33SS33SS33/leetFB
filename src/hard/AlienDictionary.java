@@ -2,6 +2,7 @@ package hard;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 /**
  * Created by GAOSHANSHAN835 on 2016/5/7.
@@ -50,7 +51,11 @@ public class AlienDictionary {
         String[] words = { "wrt", "wrf", "er", "ett", "rftt" };
         System.out.println(new AlienDictionary().alienOrder(words));
     }
+/*    private void filterBizStepData(final MonitorItemDTO item) {
+        List<AlarmItem> alarmItems = bizStepFilter.filter(item);
 
+        alarmItemDAO.batchInsert(alarmItems);
+    }*/
     public String alienOrder(String[] words) {
         Node[] node = new Node[26];
         boolean[] happen = new boolean[26];
