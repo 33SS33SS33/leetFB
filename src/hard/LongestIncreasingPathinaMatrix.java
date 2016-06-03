@@ -16,7 +16,6 @@ package hard;
  * ]
  * Return 4
  * The longest increasing path is [1, 2, 6, 9].
- * <p/>
  * Example 2:
  * nums = [
  * [3,4,5],
@@ -25,7 +24,6 @@ package hard;
  * ]
  * Return 4
  * The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
- * <p/>
  * Depth-first Search Topological Sort Memoization
  */
 public class LongestIncreasingPathinaMatrix {
