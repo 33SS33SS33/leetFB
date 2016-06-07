@@ -2,7 +2,9 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/11.
- * "You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+ * "You are given coins of different denominations and a total amount of money amount.
+ * Write a function to compute the fewest number of coins that you need to make up that amount.
+ * If that amount of money cannot be made up by any combination of the coins, return -1.
  * Example 1:
  * coins = [1, 2, 5], amount = 11
  * return 3 (11 = 5 + 5 + 1)
@@ -21,6 +23,11 @@ package medium;
  * 注意一下初始值的设置  设置的是一个不可能得数从而才能知道什么时候返回-1"
  */
 public class CoinChange {
+    public static void main(String[] args) {
+        int[] coins = { 1, 2, 5 };
+        System.out.println(new CoinChange().coinChange(coins, 11));
+        System.out.println(new CoinChange().coinChangeB(coins, 11));
+    }
 
     /**
      * Recursive Method:
@@ -52,7 +59,6 @@ public class CoinChange {
         count[rem - 1] = (min == Integer.MAX_VALUE) ? -1 : min;
         return count[rem - 1];
     }
-    //
 
     /**
      * Iterative Method:

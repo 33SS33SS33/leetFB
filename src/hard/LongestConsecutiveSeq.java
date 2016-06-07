@@ -36,38 +36,7 @@ class LongestConsecutiveSeq {
     }
 
     /**
-     * Use a map to store ranges
-     * Get lower bound with smaller value
-     * Get upper bound with larger value
-     * Update max length with new bound
-     * Put all possible ranges into map
-     * including num[i] ~ num[i], low ~ upp, upp ~ low
-     */
-    public int longestConsecutive(int[] num) {
-        if (num == null || num.length == 0)
-            return 0;
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int maxLen = 0;
-        for (int i = 0; i < num.length; i++) {
-            if (map.containsKey(num[i]))
-                continue; // skip duplicates
-            int low = num[i]; // initialize ranges
-            int upp = num[i];
-            if (map.containsKey(num[i] - 1))
-                low = map.get(num[i] - 1);
-            if (map.containsKey(num[i] + 1))
-                upp = map.get(num[i] + 1);
-            maxLen = Math.max(maxLen, upp - low + 1); // update length
-            // put possible ranges into map for next iteration
-            map.put(num[i], num[i]);
-            map.put(low, upp);
-            map.put(upp, low);
-        }
-        return maxLen;
-    }
-
-    /**
-     * use a HashSet to add and remove elements. HashSet is implemented by using a hash table.
+     * use a HashSet to add and remove elements. HashSet is implemented by using a hash table. 最好的
      * Elements are not ordered. The add, remove and contains methods have constant time complexity O(1).
      */
     public static int longestConsecutiveB(int[] num) {
@@ -96,6 +65,37 @@ class LongestConsecutiveSeq {
             max = Math.max(count, max);
         }
         return max;
+    }
+
+    /**
+     * Use a map to store ranges
+     * Get lower bound with smaller value
+     * Get upper bound with larger value
+     * Update max length with new bound
+     * Put all possible ranges into map
+     * including num[i] ~ num[i], low ~ upp, upp ~ low
+     */
+    public int longestConsecutive(int[] num) {
+        if (num == null || num.length == 0)
+            return 0;
+        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int maxLen = 0;
+        for (int i = 0; i < num.length; i++) {
+            if (map.containsKey(num[i]))
+                continue; // skip duplicates
+            int low = num[i]; // initialize ranges
+            int upp = num[i];
+            if (map.containsKey(num[i] - 1))
+                low = map.get(num[i] - 1);
+            if (map.containsKey(num[i] + 1))
+                upp = map.get(num[i] + 1);
+            maxLen = Math.max(maxLen, upp - low + 1); // update length
+            // put possible ranges into map for next iteration
+            map.put(num[i], num[i]);
+            map.put(low, upp);
+            map.put(upp, low);
+        }
+        return maxLen;
     }
 
     /**

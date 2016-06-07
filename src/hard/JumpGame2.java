@@ -13,31 +13,10 @@ package hard;
  */
 class JumpGame2 {
     public static void main(String[] args) {
-        int[] A = { 1, 1, 3, 1, 2 };
+        int[] A = { 0, 1, 3, 1, 2 };
         System.out.println(new JumpGame2().jump(A));
         System.out.println(new JumpGame2().jumpB(A));
-    }
-
-    /**
-     * Use last to store how far we already can reach Compare i with last
-     * If we run out of it, update and add 1 more step to result
-     * Return if last is already bigger than or equal to the length
-     * Use cur to store how far we can reach for the next step
-     */
-    public int jump(int[] A) {
-        int step = 0;
-        int last = 0; // how far we already can reach
-        int cur = 0; // how far can we reach for next step
-        for (int i = 0; i < A.length; i++) {
-            if (i > last) { // run out of we can reach, need one more step
-                last = cur;
-                step++;
-                if (last >= A.length)
-                    return step;
-            }
-            cur = Math.max(cur, i + A[i]);
-        }
-        return step;
+        System.out.println(new JumpGame2().jumpC(A));
     }
 
     /**
@@ -59,7 +38,50 @@ class JumpGame2 {
             reach = Math.max(reach, A[i] + i);
         }
         if (reach < A.length - 1)
-            return 0;
+            return -1;
         return step;
     }
+
+    /**
+     * 动归
+     */
+    public int jumpC(int[] A) {
+        int[] steps = new int[A.length];
+
+        steps[0] = 0;
+        for (int i = 1; i < A.length; i++) {
+            steps[i] = Integer.MAX_VALUE;
+            for (int j = 0; j < i; j++) {
+                if (steps[j] != Integer.MAX_VALUE && j + A[j] >= i) {
+                    steps[i] = steps[j] + 1;
+                    break;
+                }
+            }
+        }
+        return steps[A.length - 1];
+    }
+
+    /**
+     * 错的
+     * Use last to store how far we already can reach Compare i with last
+     * If we run out of it, update and add 1 more step to result
+     * Return if last is already bigger than or equal to the length
+     * Use cur to store how far we can reach for the next step
+     */
+    public int jump(int[] A) {
+        int step = 0;
+        int last = 0; // how far we already can reach
+        int cur = 0; // how far can we reach for next step
+        for (int i = 0; i < A.length; i++) {
+            if (i > last) { // run out of we can reach, need one more step
+                last = cur;
+                step++;
+                if (last >= A.length)
+                    return step;
+            }
+            cur = Math.max(cur, i + A[i]);
+        }
+        return step;
+    }
+
 }

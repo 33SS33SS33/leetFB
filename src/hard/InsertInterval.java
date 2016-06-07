@@ -32,12 +32,38 @@ class InsertInterval {
         List<Interval> intervals = new LinkedList<Interval>();
         intervals.add(interval1);
         intervals.add(interval2);
+        List<Interval> ress = new InsertInterval().InsertIntervalS(intervals, interval3);
         List<Interval> res = new InsertInterval().insertA(intervals, interval3);
         List<Interval> res2 = new InsertInterval().insertB(intervals, interval3);
         List<Interval> res4 = new InsertInterval().InsertInterval(intervals, interval3);
+        System.out.print(ress.toString());
         System.out.print(res.toString());
         System.out.print(res2.toString());
         System.out.print(res4.toString());
+    }
+
+    /**
+     * -!!!!最好的
+     */
+    public List<Interval> InsertIntervalS(List<Interval> intervals, Interval newInterval) {
+        if (intervals == null || newInterval == null) {
+            return intervals;
+        }
+        ArrayList<Interval> result = new ArrayList<Interval>();
+        int insertPos = 0;
+        for (Interval interval : intervals) {
+            if (interval.end < newInterval.start) {
+                result.add(interval);
+                insertPos++;
+            } else if (interval.start > newInterval.end) {
+                result.add(interval);
+            } else {
+                newInterval = new Interval(Math.min(interval.start, newInterval.start),
+                        Math.max(newInterval.end, interval.end));
+            }
+        }
+        result.add(insertPos, newInterval);
+        return result;
     }
 
     /**
@@ -125,7 +151,6 @@ class InsertInterval {
             results.add(intervals.get(i));
         return results;
     }
-
 
     public static class Interval {
         int start;

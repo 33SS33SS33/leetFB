@@ -15,7 +15,7 @@ import java.util.Stack;
  */
 class LongestValidParen {
     public static void main(String[] args) {
-        System.out.println(longestValidParentheses("(()")); // 2
+        System.out.println(longestValidParenthesesD("(()")); // 2
         System.out.println(longestValidParentheses("()(()")); // 2
         System.out.println(longestValidParenthesesB("()(()")); // 2
         System.out.println(longestValidParentheses("()(()(")); // 2
@@ -23,7 +23,7 @@ class LongestValidParen {
         System.out.println(longestValidParentheses("()(()(((")); // 2
         System.out.println(longestValidParentheses("(((((()")); // 2
         System.out.println(longestValidParentheses(")()())")); // 4
-        System.out.println(longestValidParentheses("((((((")); // 0
+        System.out.println(longestValidParenthesesD("((((((")); // 0
         System.out.println(longestValidParentheses("))))))")); // 0
         System.out.println(longestValidParentheses(")()(())")); // 6
         System.out.println(longestValidParentheses("(())()")); // 6
@@ -33,6 +33,29 @@ class LongestValidParen {
         System.out.println(longestValidParenthesesD(")()()")); // 4
     }
 
+    /**最好的*/
+    public static int longestValidParenthesesD(String s) {
+        if (s == null || s.length() == 0)
+            return 0;
+        LinkedList<Integer> stack = new LinkedList<Integer>();
+        int start = 0;
+        int max = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                stack.push(i);
+            } else {
+                if (stack.isEmpty()) {
+                    start = i + 1;
+                } else {
+                    stack.pop();
+                    max = stack.isEmpty() ?
+                            Math.max(max, i - start + 1) :
+                            Math.max(max, i - stack.peek());
+                }
+            }
+        }
+        return max;
+    }
     /**
      * Optimized DP
      * Build a stack for indices of open parentheses
@@ -84,8 +107,8 @@ class LongestValidParen {
             else if (stack.isEmpty())
                 continue;
             else if (stack.peek() > 0)
-                dp[i] = 2 + dp[stack.pop() - 1] + dp[i
-                        - 1]; // connect two valid sequences, or increase the length of current valid sequence.
+                // connect two valid sequences, or increase the length of current valid sequence.
+                dp[i] = 2 + dp[stack.pop() - 1] + dp[i - 1];
             else {
                 dp[i] = 2 + dp[i - 1]; // leftmost char is a '('
                 stack.pop();
@@ -126,26 +149,4 @@ class LongestValidParen {
         return longest;
     }
 
-    public static int longestValidParenthesesD(String s) {
-        if (s == null || s.length() == 0)
-            return 0;
-        LinkedList<Integer> stack = new LinkedList<Integer>();
-        int start = 0;
-        int max = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                stack.push(i);
-            } else {
-                if (stack.isEmpty()) {
-                    start = i + 1;
-                } else {
-                    stack.pop();
-                    max = stack.isEmpty() ?
-                            Math.max(max, i - start + 1) :
-                            Math.max(max, i - stack.peek());
-                }
-            }
-        }
-        return max;
-    }
 }
