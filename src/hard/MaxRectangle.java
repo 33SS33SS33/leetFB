@@ -15,12 +15,12 @@ class MaxRectangle {
         System.out.println(new MaxRectangle().maximalRectangleC(matrix));
     }
 
-    /**假设我们把矩阵沿着某一行切下来，然后把切的行作为底面，将自底面往上的矩阵看成一个直方图（histogram）。
-     直方图的中每个项的高度就是从底面行开始往上1的数量。根据Largest Rectangle in Histogram我们就可以求出当前行作为矩阵下边缘的一个最大矩阵。
-     接下来如果对每一行都做一次Largest Rectangle in Histogram，
-     从其中选出最大的矩阵，那么它就是整个矩阵中面积最大的子矩阵。
-     所以完成对一行为底边的矩阵求解复杂度是O(n+n)=O(n)。接下来对每一行都做一次，那么算法总时间复杂度是O(m*n)*/
     /**
+     * 假设我们把矩阵沿着某一行切下来，然后把切的行作为底面，将自底面往上的矩阵看成一个直方图（histogram）。
+     * 直方图的中每个项的高度就是从底面行开始往上1的数量。根据Largest Rectangle in Histogram我们就可以求出当前行作为矩阵下边缘的一个最大矩阵。
+     * 接下来如果对每一行都做一次Largest Rectangle in Histogram，
+     * 从其中选出最大的矩阵，那么它就是整个矩阵中面积最大的子矩阵。
+     * 所以完成对一行为底边的矩阵求解复杂度是O(n+n)=O(n)。接下来对每一行都做一次，那么算法总时间复杂度是O(m*n)
      * row by row
      * create a height integer array to bigger than column size
      * set last height to zero(out of bounds)
