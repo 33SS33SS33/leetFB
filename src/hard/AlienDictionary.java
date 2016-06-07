@@ -52,9 +52,19 @@ public class AlienDictionary {
         System.out.println(new AlienDictionary().alienOrder(words));
     }
 /*    private void filterBizStepData(final MonitorItemDTO item) {
-        List<AlarmItem> alarmItems = bizStepFilter.filter(item);
+        final List<AlarmItem> alarmItems = bizStepFilter.filter(item);
 
         alarmItemDAO.batchInsert(alarmItems);
+
+        Logger.info(this,"start thread to notify alarm ");
+        threadPoolTaskExecutor.execute(new Runnable() {
+            public void run() {
+                Logger.info(this, "start to notify alarm ");
+                alarmNotifyRemoteService.alarmNotify(alarmItems);
+                Logger.info(this,"end to notify alarm ");
+            }
+        });
+
     }*/
     public String alienOrder(String[] words) {
         Node[] node = new Node[26];
