@@ -3,9 +3,7 @@ package medium;
 /**
  * Implement pow(x, n).
  * Tags: Math, Binary Search
- */
-
-/**
+ * <p/>
  * 使用二分法处理, 注意n<0的情况
  * n每次都除以2 直到等于0 然后返回1
  * 然后依次返回乘积 每个状态下都注意n的奇偶问题即可
@@ -13,9 +11,23 @@ package medium;
 class PowX {
     public static void main(String[] args) {
         PowX p = new PowX();
+        System.out.println(p.powa(2.0, 5));
         System.out.println(p.pow(2.0, 5));
         System.out.println(p.powB(2.0, 5));
         System.out.println(p.powB2(2.0, 5));
+    }
+
+    /**
+     * 最好的
+     */
+    public double powa(double x, int n) {
+        if (n == 0)
+            return 1;
+        if (n < 0) {
+            n = -n;
+            x = 1 / x;
+        }
+        return (n % 2 == 0) ? powa(x * x, n / 2) : x * powa(x * x, n / 2);
     }
 
     /**

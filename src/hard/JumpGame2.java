@@ -20,6 +20,27 @@ class JumpGame2 {
     }
 
     /**
+     * I try to change this problem to a BFS problem, where nodes in level i are all the
+     * nodes that can be reached in i-1th jump. for example. 2 3 1 1 4 , is 2|| 3 1|| 1 4 ||
+     * clearly, the minimum jump of 4 is 2 since 4 is in level 3. my ac code.
+     */
+    int jumpA(int A[], int n) {
+        if (n < 2)
+            return 0;
+        int level = 0, currentMax = 0, i = 0, nextMax = 0;
+        while (currentMax - i + 1 > 0) { //nodes count of current level>0
+            level++;
+            //traverse current level , and update the max nextMax=max(nextMax,A[i]+i);
+            for (; i <= currentMax; i++) {
+                if (nextMax >= n - 1)
+                    return level; // if last element is in level+1, then the min jump=level
+            }
+            currentMax = nextMax;
+        }
+        return 0;
+    }
+
+    /**
      * ganker--其实思路和Jump Game还是类似的，只是原来的全局最优现在要分成step步最优和step-1步最优
      * （假设当前步数是step）。当走到超过step-1步最远的位置时，说明step-1不能到达当前一步，
      * 我们就可以更新步数，将step+1。时间复杂度仍然是O(n)，空间复杂度也是O(1)
