@@ -23,7 +23,7 @@ class ZigZagConversion {
     }
 
     /**
-     * Build an array of StringBuffers
+     * Build an array of StringBuffers 最好的
      * Traverse the given string and append characters in correct StringBuffer
      * Append all other rows to first row to get output
      */
@@ -34,10 +34,10 @@ class ZigZagConversion {
         int len = s.length();
         int i = 0;
         while (i < len) {
-            for (int j = 0; j < nRows && i < len; j++) { // from 0 to nRows - 1
+            for (int j = 0; j < nRows && i < len; j++) { // from 0 to nRows - 1 / vertically down
                 sb[j].append(s.charAt(i++));
             }
-            for (int j = nRows - 2; j > 0 && i < len; j--) { // nRows - 2 to 1
+            for (int j = nRows - 2; j > 0 && i < len; j--) { // nRows - 2 to 1  obliquely up
                 sb[j].append(s.charAt(i++));
             }
         }
