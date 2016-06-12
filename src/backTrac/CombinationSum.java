@@ -59,21 +59,5 @@ class CombinationSum {
                 break; // too big
         }
     }
-
-    private void helper2(int[] candidates, int target, int start, ArrayList<Integer> item,
-            List<List<Integer>> res) {
-        if (target < 0)
-            return;
-        if (target == 0) {
-            res.add(new ArrayList<Integer>(item));
-            return;
-        }
-        for (int i = start; i < candidates.length; i++) {
-            if (i > 0 && candidates[i] == candidates[i - 1])
-                continue;
-            item.add(candidates[i]);
-            helper(candidates, i, target - candidates[i], item, res);
-            item.remove(item.size() - 1);
-        }
-    }
+    
 }

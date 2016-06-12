@@ -33,7 +33,9 @@ class LongestValidParen {
         System.out.println(longestValidParenthesesD(")()()")); // 4
     }
 
-    /**最好的*/
+    /**
+     * 最好的
+     */
     public static int longestValidParenthesesD(String s) {
         if (s == null || s.length() == 0)
             return 0;
@@ -56,6 +58,32 @@ class LongestValidParen {
         }
         return max;
     }
+
+    /**
+     * 如上
+     */
+    public int longestValidParenthesesA(String s) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int max = 0;
+        int left = -1;
+        for (int j = 0; j < s.length(); j++) {
+            if (s.charAt(j) == '(')
+                stack.push(j);
+            else {
+                if (stack.isEmpty())
+                    left = j;
+                else {
+                    stack.pop();
+                    if (stack.isEmpty())
+                        max = Math.max(max, j - left);
+                    else
+                        max = Math.max(max, j - stack.peek());
+                }
+            }
+        }
+        return max;
+    }
+
     /**
      * Optimized DP
      * Build a stack for indices of open parentheses
