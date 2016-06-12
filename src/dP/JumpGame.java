@@ -19,7 +19,7 @@ class JumpGame {
         System.out.println(j.canJump(A));
         System.out.println(j.canJumpB(A));
         System.out.println(j.canJumpC(A));
-        System.out.println(j.canJumpD(A));
+        System.out.println(j.canJumpa(A));
         System.out.println(j.canJump(B));
         System.out.println(j.canJumpB(B));
         System.out.println(j.canJump(C));
@@ -27,7 +27,21 @@ class JumpGame {
         System.out.println(j.canJump(D));
         System.out.println(j.canJumpB(D));
         System.out.println(j.canJumpC(D));
-        System.out.println(j.canJumpD(D));
+        System.out.println(j.canJumpa(D));
+    }
+
+    /**
+     * 最好的
+     */
+    public boolean canJumpa(int[] A) {
+        int max = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (i > max) {
+                return false;
+            }
+            max = Math.max(A[i] + i, max);
+        }
+        return true;
     }
 
     /**
@@ -70,25 +84,6 @@ class JumpGame {
         return true;
     }
 
-    public boolean canJumpD(int[] A) {
-        int max = 0;
-        for (int i = 0; i < A.length; i++) {
-            if (i > max) {
-                return false;
-            }
-            max = Math.max(A[i] + i, max);
-        }
-        return true;
-    }
-
-    public boolean canJumpE(int A[], int n) {
-        int last = n - 1, i;
-        for (i = n - 2; i >= 0; i--) {
-            if (i + A[i] >= last)
-                last = i;
-        }
-        return last <= 0;
-    }
 
     /**
      * creek

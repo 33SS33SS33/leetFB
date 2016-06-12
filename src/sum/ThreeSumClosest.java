@@ -19,8 +19,32 @@ class ThreeSumClosest {
         ThreeSumClosest t = new ThreeSumClosest();
         int[] s = { -1, 0, 1, 2, -1, -4 };
         int target = 4;
+        System.out.println(threeSumClosestA(s, target));
         System.out.println(threeSumClosest(s, target));
         System.out.print(threeSumClosestB(s, target));
+    }
+
+    /**
+     * 最好的
+     */
+    public static int threeSumClosestA(int[] num, int target) {
+        int result = num[0] + num[1] + num[num.length - 1];
+        Arrays.sort(num);
+        for (int i = 0; i < num.length - 2; i++) {
+            int start = i + 1, end = num.length - 1;
+            while (start < end) {
+                int sum = num[i] + num[start] + num[end];
+                if (sum > target) {
+                    end--;
+                } else {
+                    start++;
+                }
+                if (Math.abs(sum - target) < Math.abs(result - target)) {
+                    result = sum;
+                }
+            }
+        }
+        return result;
     }
 
     /**

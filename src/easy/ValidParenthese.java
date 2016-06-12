@@ -21,9 +21,11 @@ class ValidParenthese {
         System.out.println(v.isValidB("([)]"));
         System.out.println(v.isValidC("([)]"));
         System.out.println(v.isValid("[({(())}[()])]"));
+        System.out.println(v.isValidA("[({(())}[()])]"));
         System.out.println(v.isValidB("[({(())}[()])]"));
         System.out.println(v.isValidC("[({(())}[()])]"));
         System.out.println(v.isValid("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
+        System.out.println(v.isValidA("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
         System.out.println(v.isValidB("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
         System.out.println(v.isValidC("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
     }
@@ -49,6 +51,30 @@ class ValidParenthese {
                 }
             }
         }
+        return stack.empty();
+    }
+
+    /**
+     * ???
+     */
+    public boolean isValidA(String s) {
+        Stack<Character> stack = new Stack<Character>();
+        // Iterate through string until empty
+        for (int i = 0; i < s.length(); i++) {
+            // Push any open parentheses onto stack
+            if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{')
+                stack.push(s.charAt(i));
+                // Check stack for corresponding closing parentheses, false if not valid
+            else if (s.charAt(i) == ')' && !stack.empty() && stack.peek() == '(')
+                stack.pop();
+            else if (s.charAt(i) == ']' && !stack.empty() && stack.peek() == '[')
+                stack.pop();
+            else if (s.charAt(i) == '}' && !stack.empty() && stack.peek() == '{')
+                stack.pop();
+            else
+                return false;
+        }
+        // return true if no open parentheses left in stack
         return stack.empty();
     }
 

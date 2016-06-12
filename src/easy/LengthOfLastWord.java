@@ -20,19 +20,15 @@ class LengthOfLastWord {
         System.out.println(lengthOfLastWord(a));
         System.out.println(lengthOfLastWordB(a));
         System.out.println(lengthOfLastWordC(a));
-        System.out.println(lengthOfLastWordD(a));
         System.out.println(lengthOfLastWord(b));
         System.out.println(lengthOfLastWordB(b));
         System.out.println(lengthOfLastWordC(b));
-        System.out.println(lengthOfLastWordD(b));
         System.out.println(lengthOfLastWord(c));
         System.out.println(lengthOfLastWordB(c));
         System.out.println(lengthOfLastWordC(c));
-        System.out.println(lengthOfLastWordD(c));
         System.out.println(lengthOfLastWord(d));
         System.out.println(lengthOfLastWordB(d));
         System.out.println(lengthOfLastWordC(d));
-        System.out.println(lengthOfLastWordD(d));
     }
 
     /**
@@ -86,25 +82,6 @@ class LengthOfLastWord {
                 len++;
         }
         return len;
-    }
-
-    public static int lengthOfLastWordD(String s) {
-        if (s == null || s.length() == 0)
-            return 0;
-        int result = 0;
-        int len = s.length();
-        boolean flag = false;
-        for (int i = len - 1; i >= 0; i--) {
-            char c = s.charAt(i);
-            if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-                flag = true;
-                result++;
-            } else {
-                if (flag)
-                    return result;
-            }
-        }
-        return result;
     }
 
 }

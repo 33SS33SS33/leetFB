@@ -60,20 +60,34 @@ class CombinationSum {
         }
     }
 
-    private void helper2(int[] candidates, int target, int start, ArrayList<Integer> item,
-            List<List<Integer>> res) {
-        if (target < 0)
-            return;
+    /**
+     * Sort the candidates and we choose from small to large recursively, every time we add
+     * a candidate to our possible sub result, we subtract the target to a new smaller one.
+     */
+    public List<List<Integer>> combinationSumB(int[] candidates, int target) {
+        List<List<Integer>> ret = new LinkedList<List<Integer>>();
+        Arrays.sort(candidates); // sort the candidates
+        // collect possible candidates from small to large to eliminate duplicates,
+        recurse(new ArrayList<Integer>(), target, candidates, 0, ret);
+        return ret;
+    }
+
+    // the index here means we are allowed to choose candidates from that index
+    private void recurse(List<Integer> list, int target, int[] candidates, int index,
+            List<List<Integer>> ret) {
         if (target == 0) {
-            res.add(new ArrayList<Integer>(item));
+            ret.add(list);
             return;
         }
-        for (int i = start; i < candidates.length; i++) {
-            if (i > 0 && candidates[i] == candidates[i - 1])
-                continue;
-            item.add(candidates[i]);
-            helper(candidates, i, target - candidates[i], item, res);
-            item.remove(item.size() - 1);
+        for (int i = index; i < candidates.length; i++) {
+            int newTarget = target - candidates[i];
+            if (newTarget >= 0) {
+                List<Integer> copy = new ArrayList<Integer>(list);
+                copy.add(candidates[i]);
+                recurse(copy, newTarget, candidates, i, ret);
+            } else {
+                break;
+            }
         }
     }
 }

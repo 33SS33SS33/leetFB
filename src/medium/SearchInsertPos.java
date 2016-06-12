@@ -23,7 +23,7 @@ class SearchInsertPos {
     }
 
     /**
-     * 二分法迭代
+     * 二分法迭代  最好的
      * Binary search
      * r = m - 1, l = m + 1
      * 复杂度是O(logn)，空间复杂度O(1)

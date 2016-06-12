@@ -12,7 +12,7 @@ class SwapNodeinPairs {
     public static void main(String[] args) {
         SwapNodeinPairs r = new SwapNodeinPairs();
         ListNode head = buildList();
-        ListNode r2 = r.swapPairsA(head);
+        ListNode r2 = r.swapPairs(head);
         while (r2.next != null) {
             System.out.print(r2.next == null ? r2.val : r2.val + "->");
             r2 = r2.next;
@@ -31,6 +31,18 @@ class SwapNodeinPairs {
             System.out.print(r4.next == null ? r4.val : r4.val + "->");
             r4 = r4.next;
         }
+    }
+
+    /**
+     * 最好的
+     */
+    public ListNode swapPairs(ListNode head) {
+        if ((head == null) || (head.next == null))
+            return head;
+        ListNode n = head.next;
+        head.next = swapPairs(head.next.next);
+        n.next = head;
+        return n;
     }
 
     /**

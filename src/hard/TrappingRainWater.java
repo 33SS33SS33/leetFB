@@ -6,9 +6,7 @@ package hard;
  * For example,
  * Given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], return 6.
  * Tags: Array, Stack, Two pointers
- */
-
-/**
+ * <p/>
  * 对任意位置i，在i上的积水，不包括i本身, 由左右两边最高的bar：A[left] = max{A[j], j<i}, A[right] = max{A[j], j>i}决定。
  * 定义Hmin = min(A[left], A[right])，则积水量Si为：
  * Hmin <= A[i]时，Si = 0
@@ -22,11 +20,36 @@ class TrappingRainWater {
         int[] B = { 5, 4, 3, 2, 8 };
         TrappingRainWater m = new TrappingRainWater();
         System.out.println(m.TrappingRainWaterA(A));
+        System.out.println(m.trap(A));
         System.out.println(m.TrappingRainWaterB(A));
         System.out.println(m.TrappingRainWaterA(B));
+        System.out.println(m.trap(B));
         System.out.println(m.TrappingRainWaterB(B));
     }
 
+    /**
+     * Keep track of the maximum height from both forward directions backward 最好的
+     * directions, call them leftmax and rightmax
+     */
+    public int trap(int[] A) {
+        int a = 0;
+        int b = A.length - 1;
+        int max = 0;
+        int leftmax = 0;
+        int rightmax = 0;
+        while (a <= b) {
+            leftmax = Math.max(leftmax, A[a]);
+            rightmax = Math.max(rightmax, A[b]);
+            if (leftmax < rightmax) {
+                max += (leftmax - A[a]); // leftmax is smaller than rightmax, so the (leftmax-A[a]) water can be stored
+                a++;
+            } else {
+                max += (rightmax - A[b]);
+                b--;
+            }
+        }
+        return max;
+    }
     /**
      * Calculate the area of all and blocks ，Then return all - block to get the trapped water
      * Start from two sides
@@ -57,6 +80,7 @@ class TrappingRainWater {
         }
         return all - block;
     }
+
 
     /**
      * creek--

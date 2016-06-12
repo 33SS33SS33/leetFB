@@ -15,11 +15,43 @@ class SearchForARange {
         SearchForARange s = new SearchForARange();
         int[] A = { 1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
         int[] range = s.searchRange(A, 3);
+        int[] range1 = s.searchRangeA(A, 3);
         int[] range2 = s.searchRangeB(A, 3);
         int[] range3 = s.searchRangeC(A, 3);
         System.out.println(range[0] + " ~ " + range[1]);
+        System.out.println(range1[0] + " ~ " + range1[1]);
         System.out.println(range2[0] + " ~ " + range2[1]);
         System.out.println(range3[0] + " ~ " + range3[1]);
+    }
+
+    /**
+     * 最好的
+     */
+    public int[] searchRangeA(int[] A, int target) {
+        int start = firstGreaterEqual(A, target);
+        if (start == A.length || A[start] != target) {
+            return new int[] { -1, -1 };
+        }
+        return new int[] { start, firstGreaterEqual(A, target + 1) - 1 };
+    }
+
+    //find the first number that is greater than or equal to target.
+    //could return A.length if target is greater than A[A.length-1].
+    //actually this is the same as lower_bound in C++ STL.
+    private static int firstGreaterEqual(int[] A, int target) {
+        int low = 0, high = A.length;
+        while (low < high) {
+            int mid = low + ((high - low) >> 1);
+            //low <= mid < high
+            if (A[mid] < target) {
+                low = mid + 1;
+            } else {
+                //should not be mid-1 when A[mid]==target.
+                //could be mid even if A[mid]>target because mid<high.
+                high = mid;
+            }
+        }
+        return low;
     }
 
     /**

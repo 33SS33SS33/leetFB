@@ -13,11 +13,20 @@ class RemoveElement {
         // int[] A = { 1 };
         int[] A = { 1, 2, 1 };
         int[] B = { 1, 2, 3, 4 };
+        int[] C = { 1, 2, 3, 4 };
         int elem = 1;
         System.out.println(r.removeElement(A, elem));
+        System.out.println(r.removeElementA(C, elem));
         System.out.println(r.removeElementB(B, elem));
     }
 
+    public int removeElementA(int[] A, int elem) {
+        int begin = 0;
+        for (int i = 0; i < A.length; i++)
+            if (A[i] != elem)
+                A[begin++] = A[i];
+        return begin;
+    }
     /**
      * Order is not important
      * Just move the last elem to removed position

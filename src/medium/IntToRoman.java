@@ -8,7 +8,7 @@ package medium;
 class IntToRoman {
     public static void main(String[] args) {
         System.out.println(new IntToRoman().intToRoman(3));
-        System.out.println(new IntToRoman().intToRoman2(3));
+        System.out.println(new IntToRoman().intToRomanB(3));
         System.out.println(new IntToRoman().intToRomanC(3));
     }
 
@@ -37,7 +37,7 @@ class IntToRoman {
      * num -= intDict[i]
      * if num < intDict[i], i++
      */
-    public String intToRoman2(int num) {
+    public String intToRomanB(int num) {
         StringBuilder sb = new StringBuilder();
         int i = 0;
         while (num > 0 && i < intDict.length) {
@@ -51,37 +51,14 @@ class IntToRoman {
         return sb.toString();
     }
 
-    static final int[]  N = { 1, 5, 10, 50, 100, 500, 1000 };
-    static final char[] C = { 'I', 'V', 'X', 'L', 'C', 'D', 'M' };
-
-    public static String intToRomanC(int num) {
-        String buff = "";
-        char last = 0;
-        int samecount = 0;
-        while (num > 0) {
-            for (int i = N.length - 1; i >= 0; i--) {
-                if (num >= N[i]) {
-                    num -= N[i];
-                    buff += C[i];
-                    if (last == C[i]) {
-                        samecount++;
-                    } else {
-                        samecount = 0;
-                    }
-                    if (samecount == 3) {
-                        int s = 5 * N[i];
-                        buff = buff.substring(0, buff.length() - 4);
-                        if (!buff.isEmpty() && buff.charAt(buff.length() - 1) == C[i + 1]) {
-                            s += N[i + 1];
-                            buff = buff.substring(0, buff.length() - 1);
-                        }
-                        return buff + C[i] + intToRomanC(s) + intToRomanC(num);
-                    }
-                    last = C[i];
-                    break;
-                }
+    public String intToRomanC(int num) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < intDict.length; i++) {
+            while (num >= intDict[i]) {
+                num -= intDict[i];
+                sb.append(romanDict[i]);
             }
         }
-        return buff;
+        return sb.toString();
     }
 }

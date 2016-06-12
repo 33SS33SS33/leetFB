@@ -6,9 +6,7 @@ import java.util.*;
  * Merge k sorted linked lists and return it as one sorted list. Analyze and
  * describe its complexity.
  * Tags: Divide and Conquer, Linkedlist, Heap
- */
-
-/**
+ * <p/>
  * 使用priority queue 来做
  * 放进去tuple的原因是因为要不然heap无法排序
  * 整体思路就是用所有链表的头一个节点建立heap
@@ -29,7 +27,33 @@ class MergeKSortedList {
         }
     }
 
-    /**最好的*/
+    /**
+     * Use a heap, O(n * log(k)) 最好的
+     */
+    public ListNode mergeKLists(List<ListNode> lists) {
+        if (lists == null || lists.size() == 0)
+            return null;
+        // Build priority queue
+        Queue<ListNode> queue = new PriorityQueue<ListNode>(lists.size(),
+                new Comparator<ListNode>() {
+                    @Override public int compare(ListNode n1, ListNode n2) {
+                        return n1.val - n2.val;
+                    }
+                });
+        for (ListNode n : lists)
+            if (n != null)
+                queue.add(n);
+        ListNode dummy = new ListNode(0); // set dummy head
+        ListNode tail = dummy;
+        while (!queue.isEmpty()) { // build next
+            tail.next = queue.poll();
+            tail = tail.next;
+            if (tail.next != null)
+                queue.add(tail.next);
+        }
+        return dummy.next;
+    }
+
     /**
      * 维护一个大小为k的堆，每次取堆顶的最小元素放到结果中，然后读取该元素的下一个元素放入堆中，重新维护好。
      * 因为每个链表是有序的，每次又是去当前k个元素中最小的，所以当所有链表都读完时结束，这个时候所有元素按从小到大放在结果链表中。
@@ -37,6 +61,8 @@ class MergeKSortedList {
      * 空间复杂度是堆的大小，即为O(k)。
      */
     public ListNode mergeKListsB(List<ListNode> lists) {
+        if (lists == null || lists.size() == 0)
+            return null;
         PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, new Comparator<ListNode>() {
             @Override public int compare(ListNode n1, ListNode n2) {
                 return n1.val - n2.val;
@@ -74,8 +100,8 @@ class MergeKSortedList {
         if (lists.size() == 2)
             return mergeTwoLists(lists.get(0), lists.get(1));
         /*merge two halves*/
-        return mergeTwoLists(mergeKLists(lists.subList(0, lists.size() / 2)),
-                mergeKLists(lists.subList(lists.size() / 2, lists.size())));
+        return mergeTwoLists(mergeKListsA(lists.subList(0, lists.size() / 2)),
+                mergeKListsA(lists.subList(lists.size() / 2, lists.size())));
     }
 
     /**
@@ -94,33 +120,6 @@ class MergeKSortedList {
             l2.next = mergeTwoLists(l1, l2.next); // notice l2.next
             return l2;
         }
-    }
-
-    /**
-     * Use a heap, O(n * log(k))
-     */
-    public ListNode mergeKLists(List<ListNode> lists) {
-        if (lists == null || lists.size() == 0)
-            return null;
-        // Build priority queue
-        Queue<ListNode> queue = new PriorityQueue<ListNode>(lists.size(),
-                new Comparator<ListNode>() {
-                    @Override public int compare(ListNode n1, ListNode n2) {
-                        return n1.val - n2.val;
-                    }
-                });
-        for (ListNode n : lists)
-            if (n != null)
-                queue.add(n);
-        ListNode dummy = new ListNode(0); // set dummy head
-        ListNode tail = dummy;
-        while (!queue.isEmpty()) { // build next
-            tail.next = queue.poll();
-            tail = tail.next;
-            if (tail.next != null)
-                queue.add(tail.next);
-        }
-        return dummy.next;
     }
 
     static ListNode buildList() {
