@@ -1,17 +1,16 @@
 package sum;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
+ */
+
+/**
  * Given an array S of n integers, are there elements a, b, c in S such that a
- * + b + c = 0? Find all unique triplets in the array which gives the sum
- * of zero.
+ * + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
  * Note:
  * Elements in a triplet (a,b,c) must be in <strong>non-descending</strong>
  * order.
@@ -27,12 +26,72 @@ class ThreeSum {
     public static void main(String[] args) {
         int[] s = { -1, 0, 1, 2, -1, -4 };
         //        t.printResult(t.threeSum(s));
+        List<List<Integer>> res1 = threeSumA(s);
         List<List<Integer>> res = threeSum(s);
+        System.out.println(res1.toString());
         System.out.println(res.toString());
         ArrayList<ArrayList<Integer>> res2 = threeSumB(s);
         System.out.println(res2.toString());
         ArrayList<ArrayList<Integer>> res3 = threeSumD(s);
         System.out.println(res3.toString());
+    }
+
+    /**
+     * 最好的
+     */
+    public List<List<Integer>> threeSuma(int[] nums) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (nums == null || nums.length < 3)
+            return result;
+        Arrays.sort(nums);
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue; // Skip same results
+            int target = 0 - nums[i];
+            int j = i + 1, k = len - 1;
+            while (j < k) {
+                if (nums[j] + nums[k] == target) {
+                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    while (j < k && nums[j] == nums[j + 1])
+                        j++; // Skip same results
+                    while (j < k && nums[k] == nums[k - 1])
+                        k--; // Skip same results
+                    j++;
+                    k--;
+                } else if (nums[j] + nums[k] < target) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+        }
+        return result;
+    }
+
+    public static List<List<Integer>> threeSumA(int[] num) {
+        Arrays.sort(num);
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        for (int i = 0; i < num.length - 2; i++) {
+            if (i == 0 || (i > 0 && num[i] != num[i - 1])) {
+                int lo = i + 1, hi = num.length - 1, sum = 0 - num[i];
+                while (lo < hi) {
+                    if (num[lo] + num[hi] == sum) {
+                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
+                        while (lo < hi && num[lo] == num[lo + 1])
+                            lo++;
+                        while (lo < hi && num[hi] == num[hi - 1])
+                            hi--;
+                        lo++;
+                        hi--;
+                    } else if (num[lo] + num[hi] < sum)
+                        lo++;
+                    else
+                        hi--;
+                }
+            }
+        }
+        return res;
     }
 
     /**
