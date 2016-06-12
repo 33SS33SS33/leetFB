@@ -29,13 +29,34 @@ import java.util.*;
 class PermutationSeq {
     public static void main(String[] args) {
         System.out.println(getPermutation(3, 1)); // 123
+        System.out.println(getPermutationA(3, 1)); // 123
         System.out.println(getPermutationB(3, 1)); // 123
         System.out.println(getPermutation(3, 5)); // 312
         System.out.println(getPermutationB(3, 5)); // 312
         System.out.println(getPermutation(3, 6)); // 321
+        System.out.println(getPermutationA(3, 6)); // 321
         System.out.println(getPermutationB(3, 6)); // 321
         System.out.println(getPermutationC(3, 6)); // 321
         System.out.println(getPermutationD(3, 6)); // 321
+    }
+
+    public static String getPermutationA(int n, int k) {
+        List<Integer> num = new LinkedList<Integer>();
+        for (int i = 1; i <= n; i++)
+            num.add(i);
+        int[] fact = new int[n]; // factorial
+        fact[0] = 1;
+        for (int i = 1; i < n; i++)
+            fact[i] = i * fact[i - 1];
+        k = k - 1;
+        StringBuilder sb = new StringBuilder();
+        for (int i = n; i > 0; i--) {
+            int ind = k / fact[i - 1];
+            k = k % fact[i - 1];
+            sb.append(num.get(ind));
+            num.remove(ind);
+        }
+        return sb.toString();
     }
 
     /**
