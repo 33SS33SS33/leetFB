@@ -18,7 +18,7 @@ public class MergeTwoSortedLists {
     }
 
     /**
-     * 递归
+     * 递归  最好的
      * Recursive
      * the order of l1, l2 doesn't matter
      */
