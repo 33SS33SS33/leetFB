@@ -11,7 +11,7 @@ public class MaxSubArray {
     }
 
     /**
-     * 3.8遇到 经典动归
+     * 3.8遇到 经典动归 最好的
      */
     public int maxSubArray2(int[] A) {
         if (A == null || A.length == 0)

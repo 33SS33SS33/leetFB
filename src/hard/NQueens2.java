@@ -11,9 +11,13 @@ import java.util.Set;
 class NQueens2 {
     public static void main(String[] args) {
         System.out.println(totalNQueens(2));
+        System.out.println(new NQueens2().totalNQueensB(2));
         System.out.println(totalNQueens(3));
+        System.out.println(new NQueens2().totalNQueensB(3));
         System.out.println(totalNQueens(4));
+        System.out.println(new NQueens2().totalNQueensB(4));
         System.out.println(totalNQueens(5));
+        System.out.println(new NQueens2().totalNQueensB(5));
     }
 
     /**
