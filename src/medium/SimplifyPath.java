@@ -27,8 +27,23 @@ class SimplifyPath {
                 "/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
     }
 
+    //最好的
+    public String simplifyPatha(String path) {
+        Deque<String> stack = new LinkedList<>();
+        Set<String> skip = new HashSet<>(Arrays.asList("..",".",""));
+        for (String dir : path.split("/")) {
+            if (dir.equals("..") && !stack.isEmpty())
+                stack.pop();
+            else if (!skip.contains(dir))
+                stack.push(dir);
+        }
+        String res = "";
+        for (String dir : stack)
+            res = "/" + dir + res;
+        return res.isEmpty() ? "/" : res;
+    }
+
     /**
-     * 最好的
      * Split words with /, use a stack to save directories
      * If ".", skip
      * If "..", check stack. If stack empty, skip; If not, pop

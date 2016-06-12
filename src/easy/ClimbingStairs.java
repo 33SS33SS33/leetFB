@@ -13,6 +13,21 @@ class ClimbingStairs {
         System.out.println(climbStairsC(44));
     }
 
+    // bottom-up approach 最好的
+    public static int climbStairsC(int n) {
+        if (n < 0)
+            return -1;
+        if (n == 0 || n == 1)
+            return 1;
+        int[] cache = new int[n + 1];
+        cache[0] = 1;
+        cache[1] = 1;
+        for (int i = 2; i < cache.length; i++) {
+            cache[i] = cache[i - 1] + cache[i - 2]; // only need the last 2
+        }
+        return cache[n];
+    }
+
     /**
      * Bottom-up approach
      * Remember the previous two solutions
@@ -50,18 +65,5 @@ class ClimbingStairs {
         return cache[n];
     }
 
-    // bottom-up approach
-    public static int climbStairsC(int n) {
-        if (n < 0)
-            return -1;
-        if (n == 0 || n == 1)
-            return 1;
-        int[] cache = new int[n + 1];
-        cache[0] = 1;
-        cache[1] = 1;
-        for (int i = 2; i < cache.length; i++) {
-            cache[i] = cache[i - 1] + cache[i - 2]; // only need the last 2
-        }
-        return cache[n];
-    }
+
 }

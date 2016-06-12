@@ -7,10 +7,8 @@ package medium;
  * Given 1->2->3->3->4->4->5, return 1->2->5.
  * Given 1->1->1->2->3, return 2->3.
  * Tag: Linkedlist
- * /**这里要把出现重复的元素全部删除
- */
-
-/**
+ *
+ * 这里要把出现重复的元素全部删除
  * 三个指针 一个存前一个节点 一个是当前的 一个是向后游动的
  * 游动的在循环内定义比较好  可以看代码
  */
@@ -27,7 +25,7 @@ class RemoveDupFromSortedList2 {
     }
 
     /**
-     * Set a pre pointer
+     * Set a pre pointer 最好的
      */
     public static ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null)
@@ -49,7 +47,7 @@ class RemoveDupFromSortedList2 {
     }
 
     /**
-     * creeek-----
+     * creek-----
      */
     public static ListNode deleteDuplicatesB(ListNode head) {
         ListNode t = new ListNode(0);

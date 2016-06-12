@@ -26,12 +26,29 @@ class LargestRectangleInHist {
     public static void main(String[] args) {
         int[] height = { 2, 1, 5, 6, 2, 3 };
         int[] height2 = { 1, 2, 3, 4, 5, 6 };
+        System.out.println(new LargestRectangleInHist().largestRectangleAreaa(height));
         System.out.println(new LargestRectangleInHist().largestRectangleArea(height));
         System.out.println(new LargestRectangleInHist().largestRectangleAreaB(height));
         System.out.println(new LargestRectangleInHist().largestRectangleAreaC(height));
         System.out.println(new LargestRectangleInHist().largestRectangleAreaD(height));
     }
 
+    public int largestRectangleAreaa(int[] height) {
+        int len = height.length;
+        Stack<Integer> s = new Stack<Integer>();
+        int maxArea = 0;
+        for(int i = 0; i <= len; i++){
+            int h = (i == len ? 0 : height[i]);
+            if(s.isEmpty() || h >= height[s.peek()]){
+                s.push(i);
+            }else{
+                int tp = s.pop();
+                maxArea = Math.max(maxArea, height[tp] * (s.isEmpty() ? i : i - 1 - s.peek()));
+                i--;
+            }
+        }
+        return maxArea;
+    }
     /**
      * Only height is smaller do update happens
      * Stack for indices

@@ -22,6 +22,21 @@ class UniquePaths2 {
         obstacleGrid[1][1] = 1;
         System.out.println(uniquePathsWithObstacles(obstacleGrid));
         System.out.println(uniquePathsWithObstaclesB(obstacleGrid));
+        System.out.println(uniquePathsWithObstaclesa(obstacleGrid));
+    }
+
+    public static int uniquePathsWithObstaclesa(int[][] obstacleGrid) {
+        int width = obstacleGrid[0].length;
+        int[] dp = new int[width];
+        dp[0] = 1;
+        for (int[] row : obstacleGrid) {
+            for (int j = 0; j < width; j++) {
+                if (row[j] == 1) dp[j] = 0;
+                else if (j > 0)
+                    dp[j] += dp[j - 1];
+            }
+        }
+        return dp[width - 1];
     }
 
     /**

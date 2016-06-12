@@ -1,5 +1,7 @@
 package backTrac;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -25,15 +27,30 @@ class Combinations {
             System.out.print(l.toString());
         }
         System.out.println();
-        //        List<List<String>> lists2 = combineB(4, 2);
-        //        for (List<String> l : lists2) {
-        //            System.out.print(l.toString());
-        //        }
+        List<List<Integer>> lists2 = new Combinations().combine(4, 2);
+        for (List<Integer> l : lists2) {
+            System.out.print(l.toString());
+        }
         System.out.println();
         ArrayList<ArrayList<Integer>> lists3 = combineC(4, 2);
         for (ArrayList<Integer> l : lists3) {
             System.out.print(l.toString());
         }
+    }
+
+
+    //最好的
+    public  List<List<Integer>> combine(int n, int k) {
+        if (k == n || k == 0) {
+            List<Integer> row = new LinkedList<>();
+            for (int i = 1; i <= k; ++i) {
+                row.add(i);
+            }
+            return new LinkedList<>(Arrays.asList(row)); }
+        List<List<Integer>> result = this.combine(n - 1, k - 1);
+        result.forEach(e -> e.add(n));
+        result.addAll(this.combine(n - 1, k));
+        return result;
     }
 
     /**
@@ -84,32 +101,5 @@ class Combinations {
         }
     }
 
-    /**
-     * From back to start
-     */
-/*    public static List<List<String>> combineB(int n, int k) {
-        List<List<String>> res = new ArrayList<List<String>>();
-        combine(n, k, new ArrayList<String>(), res);
-        return res;
-    }
-    public static void combine(int n, int k, List<String> comb, List<List<String>> result) {
-        if (k == 0) {
-            result.add(comb); 
-            return;
-        }
-        if (n <= k) { // choose all
-            for (int i = n; i > 0; i--) {
-                comb.add(i + "");
-            }
-            result.add(comb);
-            return;
-        }
-        // with n, choose k-1 from n-1
-        List<String> combWithN = new ArrayList<String>(comb);
-        combWithN.add(n + "");
-        combine(n - 1, k - 1, combWithN, result);
-        // without n, choose k from n-1
-        combine(n - 1, k, comb, result);
-    }*/
 
 }

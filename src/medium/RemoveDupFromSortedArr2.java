@@ -17,13 +17,23 @@ package medium;
 class RemoveDupFromSortedArr2 {
     public static void main(String[] args) {
         int[] num = { 1, 1, 1, 2, 2, 3 };
+        int[] num1 = { 1, 1, 1, 2, 2, 3 };
         int[] num2 = { 1, 1, 1, 2, 2, 3 };
         int[] num3 = { 1, 1, 1, 2, 2, 3 };
-        System.out.println(removeDuplicatesA(num));
+        System.out.println(removeDuplicates(num));
+        System.out.println(removeDuplicatesA(num1));
         System.out.println(removeDuplicatesB(num2));
         System.out.println(removeDuplicatesC(num3));
     }
 
+    //最简单的???
+    public static int removeDuplicates(int[] nums) {
+        int i = 0;
+        for (int n : nums)
+            if (i < 2 || n > nums[i-2])
+                nums[i++] = n;
+        return i;
+    }
     /**
      * 最好的
      * skip if length <=2

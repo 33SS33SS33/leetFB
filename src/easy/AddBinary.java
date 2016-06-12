@@ -2,7 +2,6 @@ package easy;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- * <p/>
  * Given two binary strings, return their sum (also a binary string).
  * For example,
  * a = "11"
@@ -21,7 +20,6 @@ class AddBinary {
         System.out.println(addBinary(a, b));
         System.out.println(addBinaryB(a, b));
         System.out.println(addBinaryC(a, b));
-        System.out.println(addBinaryD(a, b));
     }
 
     /**
@@ -45,6 +43,32 @@ class AddBinary {
         }
         return carry == 0 ? res : "1" + res;
     }
+
+//    最好的
+    public static String addBinaryC(String a, String b) {
+        if(a == null || a.isEmpty()) { return b;
+        }
+        if(b == null || b.isEmpty()) {
+            return a; }
+        char[] aArray
+                = a.toCharArray();
+        char[] bArray = b.toCharArray();
+        StringBuilder stb = new StringBuilder();
+        int i = aArray.length - 1;
+        int j = bArray.length - 1;
+        int aByte;
+        int bByte;
+        int carry = 0;
+        int result;
+        while(i > -1 || j > -1 || carry == 1) {
+            aByte = (i > -1) ? Character.getNumericValue(aArray[i--]) : 0;
+            bByte = (j > -1) ? Character.getNumericValue(bArray[j--]) : 0;
+            result = aByte ^ bByte ^ carry;
+            carry = ((aByte + bByte + carry) >= 2) ? 1 : 0; stb.append(result);
+        }
+        return stb.reverse().toString();
+    }
+
 
     // add 0 and calculate one by one
     public static String addBinaryB(String a, String b) {
@@ -90,78 +114,6 @@ class AddBinary {
         return result.reverse().toString();
     }
 
-    public static String addBinaryC(String a, String b) {
-        if (a == null || a.length() == 0)
-            return b;
-        if (b == null || b.length() == 0)
-            return a;
-        int pa = a.length() - 1;
-        int pb = b.length() - 1;
-        int flag = 0;
-        StringBuilder sb = new StringBuilder();
-        while (pa >= 0 || pb >= 0) {
-            int va = 0;
-            int vb = 0;
-            if (pa >= 0) {
-                va = a.charAt(pa) == '0' ? 0 : 1;
-                pa--;
-            }
-            if (pb >= 0) {
-                vb = b.charAt(pb) == '0' ? 0 : 1;
-                pb--;
-            }
-            int sum = va + vb + flag;
-            if (sum >= 2) {
-                sb.append(String.valueOf(sum - 2));
-                flag = 1;
-            } else {
-                flag = 0;
-                sb.append(String.valueOf(sum));
-            }
-        }
-        if (flag == 1) {
-            sb.append("1");
-        }
-        String reversed = sb.reverse().toString();
-        return reversed;
-    }
 
-    /*时间复杂度是O(max(m,n))，m和n分别是两个字符串的长度，空间复杂度是结果的长度O(max(m,n))*/
-    public static String addBinaryD(String a, String b) {
-        if (a == null || a.length() == 0)
-            return b;
-        if (b == null || b.length() == 0)
-            return a;
-        int i = a.length() - 1;
-        int j = b.length() - 1;
-        int carry = 0;
-        StringBuilder res = new StringBuilder();
-        while (i >= 0 && j >= 0) {
-            int digit = (int) (a.charAt(i) - '0' + b.charAt(j) - '0') + carry;
-            carry = digit / 2;
-            digit %= 2;
-            res.append(digit);
-            i--;
-            j--;
-        }
-        while (i >= 0) {
-            int digit = (int) (a.charAt(i) - '0') + carry;
-            carry = digit / 2;
-            digit %= 2;
-            res.append(digit);
-            i--;
-        }
-        while (j >= 0) {
-            int digit = (int) (b.charAt(j) - '0') + carry;
-            carry = digit / 2;
-            digit %= 2;
-            res.append(digit);
-            j--;
-        }
-        if (carry > 0) {
-            res.append(carry);
-        }
-        return res.reverse().toString();
-    }
 }
 

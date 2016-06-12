@@ -18,6 +18,14 @@ class RemoveDuplicatesFromSortedList {
         System.out.print(r.deleteDuplicatesB(head));
     }
 
+
+    public ListNode deleteDuplicatesa(ListNode head) {
+        if(head == null || head.next == null)
+            return head;
+        head.next = deleteDuplicatesa(head.next);
+        return head.val == head.next.val ? head.next : head;
+    }
+
     /**
      * creek---good---
      */
