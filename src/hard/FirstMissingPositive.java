@@ -21,7 +21,7 @@ class FirstMissingPositive {
         int[] A = { 3, 4, -1, 1 };
         System.out.println(new FirstMissingPositive().firstMissingPositive(A));
         System.out.println(new FirstMissingPositive().firstMissingPositiveB(A));
-        System.out.println(new FirstMissingPositive().firstMissingPositiveD(A));
+        System.out.println(new FirstMissingPositive().firstMissingPositiveC(A));
     }
 
     /**
@@ -78,7 +78,7 @@ class FirstMissingPositive {
     /**
      * creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.
      */
-    public int firstMissingPositiveD(int[] A) {
+    public int firstMissingPositiveC(int[] A) {
         int n = A.length;
         for (int i = 0; i < n; i++) {
             while (A[i] != i + 1) {

@@ -17,6 +17,33 @@ class MultiplyStrings {
         System.out.print(multiplyC(num1, num2));
     }
 
+    public String multiplya(String num1, String num2) {
+        int n1 = num1.length(), n2 = num2.length();
+        int[] products = new int[n1 + n2];
+        for (int i = n1 - 1; i >= 0; i--) {
+            for (int j = n2 - 1; j >= 0; j--) {
+                int d1 = num1.charAt(i) - '0';
+                int d2 = num2.charAt(j) - '0';
+                products[i + j + 1] += d1 * d2;
+            }
+        }
+        int carry = 0;
+        for (int i = products.length - 1; i >= 0; i--) {
+            int tmp = (products[i] + carry) % 10;
+            carry = (products[i] + carry) / 10;
+            products[i] = tmp;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int num : products)
+            sb.append(num);
+        while (sb.length() != 0 && sb.charAt(0) == '0')
+            sb.deleteCharAt(0);
+        return sb.length() == 0 ? "0" : sb.toString();
+    }
+
+    /**
+     * 最好的
+     */
     //https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
     public static String multiply(String num1, String num2) {
         int m = num1.length(), n = num2.length();
@@ -62,7 +89,8 @@ class MultiplyStrings {
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
                 // note += below
-                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j] - '0'); // reverse to keep zeros of result but skip unnecessary zeros
+                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j]
+                        - '0'); // reverse to keep zeros of result but skip unnecessary zeros
                 res[m + n - i - j - 1] += res[m + n - i - j - 2] / 10;
                 res[m + n - i - j - 2] %= 10;
             }

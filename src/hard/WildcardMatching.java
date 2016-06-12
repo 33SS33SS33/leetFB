@@ -46,6 +46,7 @@ class WildcardMatching {
         System.out.println(w.isMatch("aa", "ab")); // false
         /**s*/
         System.out.println(w.isMatch("bbbbbbbbbb", "*bbbbb")); // true
+        System.out.println(w.isMatchA("bbbbbbbbbb", "*bbbbb")); // true
         System.out.println(w.isMatchB("bbbbbbbbbb", "*bbbbb")); // true
         /** and ? */
         System.out.println(w.isMatch("b", "*?*?")); // false
@@ -53,7 +54,7 @@ class WildcardMatching {
     }
 
     /**
-     * DP, two pointers
+     * DP, two pointers    O(length(s)+length(p))  最好的
      * remember the index of * and matched sequence
      * advance only pattern pointer when * is found
      * match the sequence after * in pattern with the rest of the string
@@ -65,7 +66,8 @@ class WildcardMatching {
             return false;
         int s = 0, p = 0, match = 0, astroIdx = -1; // must be -1
         while (s < str.length()) {
-            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))) { // found ? or same chars
+            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern
+                    .charAt(p))) { // found ? or same chars
                 s++; // move both pointers
                 p++;
             } else if (p < pattern.length() && pattern.charAt(p) == '*') { // found *
@@ -83,6 +85,33 @@ class WildcardMatching {
         while (p < pattern.length() && pattern.charAt(p) == '*')
             p++;
         return p == pattern.length(); // no remaining
+    }
+
+    /**
+     * O(m*n)
+     */
+    public boolean isMatchA(String s, String p) {
+        int count = 0;
+        for (char c : p.toCharArray()) {
+            if (c == '*')
+                count++;
+        }
+        if (p.length() - count > s.length())
+            return false;
+        boolean[][] dp = new boolean[p.length() + 1][s.length() + 1];
+        dp[0][0] = true;
+        for (int j = 1; j <= p.length(); j++) {
+            char pattern = p.charAt(j - 1);
+            dp[j][0] = dp[j - 1][0] && pattern == '*';
+            for (int i = 1; i <= s.length(); i++) {
+                char letter = s.charAt(i - 1);
+                if (pattern != '*') {
+                    dp[j][i] = dp[j - 1][i - 1] && (pattern == '?' || pattern == letter);
+                } else
+                    dp[j][i] = dp[j][i - 1] || dp[j - 1][i];
+            }
+        }
+        return dp[p.length()][s.length()];
     }
 
     /**
@@ -119,37 +148,4 @@ class WildcardMatching {
         return j == p.length();
     }
 
-    /**
-     * O(length(s)+length(p))
-     */
-    public boolean isMatchC(String s, String p) {
-        int i = 0;
-        int j = 0;
-        int starIndex = -1;
-        int iIndex = -1;
-        while (i < s.length()) {  // advancing both pointers
-            if (j < p.length() && (p.charAt(j) == '?' || p.charAt(j) == s.charAt(i))) {
-                ++i;
-                ++j;
-            } else if (j < p.length()
-                    && p.charAt(j) == '*') { // * found, only advancing pattern pointer
-                starIndex = j;
-                iIndex = i;
-                j++;
-            } else if (starIndex != -1) {  // last pattern pointer was *, advancing string pointer
-                j = starIndex + 1;
-                i = iIndex + 1;
-                iIndex++;
-
-            } else {   //current pattern pointer is not star, last patter pointer was not *
-                //characters do not match
-                return false;
-            }
-        }
-        //check for remaining characters in pattern
-        while (j < p.length() && p.charAt(j) == '*') {
-            ++j;
-        }
-        return j == p.length();
-    }
 }
