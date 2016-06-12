@@ -44,7 +44,7 @@ class PartitionList {
     }
 
     /**
-     * Build left and right lists and concatenate
+     * Build left and right lists and concatenate 最好的
      */
     public static ListNode partition(ListNode head, int x) {
         if (head == null || head.next == null)

@@ -13,15 +13,24 @@ class MergeSortedArray {
     public static void main(String[] args) {
         int A[] = new int[7];
         int B[] = { 1, 3, 9 };
-        new MergeSortedArray().merge(A, 4, B, 3);
+        new MergeSortedArray().mergea(A, 4, B, 3);
 
         for (int i : A) {
             System.out.print(i);
         }
     }
 
+    //最好的
+    public void mergea(int A[], int m, int B[], int n) {
+        int i=m-1, j=n-1, k=m+n-1;
+        while (i>-1 && j>-1)
+            A[k--]= (A[i]>B[j]) ? A[i--] : B[j--];
+        while (j>-1)
+            A[k--]=B[j--];
+    }
+
     /**
-     * 最好的
+     *
      * Merge from behind
      */
     private void merge(int A[], int m, int B[], int n) {
