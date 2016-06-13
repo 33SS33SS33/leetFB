@@ -18,7 +18,28 @@ class ReadNMultipleRead4 {
     public static void main(String[] args) {
         char[] buf = { 's', 'e', 't', 's', 'e', 't' };
         int n = 2;
-        System.out.println(new ReadNMultipleRead4().read(buf, n));
+        System.out.println(new ReadNMultipleRead4().reada(buf, n));
+    }
+
+    private int    buffPtr = 0;
+    private int    buffCnt = 0;
+    private char[] buff    = new char[4];
+
+    public int reada(char[] buf, int n) {
+        int ptr = 0;
+        while (ptr < n) {
+            if (buffPtr == 0) {
+                buffCnt = read4(buff);
+            }
+            if (buffCnt == 0)
+                break;
+            while (ptr < n && buffPtr < buffCnt) {
+                buf[ptr++] = buff[buffPtr++];
+            }
+            if (buffPtr >= buffCnt)
+                buffPtr = 0;
+        }
+        return ptr;
     }
 
     /**
