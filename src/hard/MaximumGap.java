@@ -10,9 +10,6 @@ import java.util.*;
  * You may assume all elements in the array are non-negative integers and fit
  * in the 32-bit signed integer range.
  * Tags: Sort
- */
-
-/**
  * 重要 注意size等于0的时候的处理
  * 使用了桶排序 桶排序最困难的地方就是在于确定桶的大小以及一共应该有多少个桶
  * 假设有N个元素A到B。
@@ -32,7 +29,7 @@ class MaximumGap {
     }
 
     /**
-     * O(n) Time, O(n) Space
+     * O(n) Time, O(n) Space 最好的
      * Find max and min in one traverse
      * Calculate bucket length and divide numbers into buckets
      * Traverse buckets to find max gap

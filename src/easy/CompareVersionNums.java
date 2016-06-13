@@ -26,7 +26,7 @@ class CompareVersionNums {
     }
 
     /**
-     * Compare each level and compare the rest
+     * Compare each level and compare the rest 最好的
      * Note the input can be complex than the example, more dots, more zeros
      */
     static int compareVersion(String version1, String version2) {

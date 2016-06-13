@@ -8,9 +8,6 @@ import java.util.Arrays;
  * You may assume that the array is non-empty and the majority element always
  * exist in the array.
  * Tags: Divide and Conquer, Array, Bit Manipulation
- */
-
-/**
  * 还是用那个投票算法 好像用bit也能做 未实现 重要
  */
 class MajorityEle {
