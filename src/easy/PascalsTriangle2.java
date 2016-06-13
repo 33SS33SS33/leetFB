@@ -10,17 +10,29 @@ import java.util.List;
  * Note:
  * Could you optimize your algorithm to use only O(k) extra space?
  * Tags: Array
- */
-
-/**
+ * <p/>
  * 只用一个数组记录上一次的即可
  */
 class PascalsTriangle2 {
     public static void main(String[] args) {
         PascalsTriangle2 p = new PascalsTriangle2();
         int k = 3;
+        System.out.println(p.getRowa(k).toString());
         System.out.println(p.getRow(k).toString());
         System.out.println(p.getRowB(k).toString());
+    }
+
+    public List<Integer> getRowa(int rowIndex) {
+        List<Integer> list = new ArrayList<Integer>();
+        if (rowIndex < 0)
+            return list;
+        for (int i = 0; i < rowIndex + 1; i++) {
+            list.add(0, 1);
+            for (int j = 1; j < list.size() - 1; j++) {
+                list.set(j, list.get(j) + list.get(j + 1));
+            }
+        }
+        return list;
     }
 
     /**

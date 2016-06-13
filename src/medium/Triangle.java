@@ -36,7 +36,22 @@ class Triangle {
         List<List<Integer>> input = generateInput(TestType.TEST1);
         // List<List<Integer>> input = generateInput(TestType.TEST2);
         testInput(input);
-        System.out.println(minimumTotalA(input));
+        System.out.println(minimumTotala(input));
+    }
+
+    /**
+     * The idea is simple.
+     * 1) Go from bottom to top.
+     * 2) We start form the row above the bottom row [size()-2].
+     * 3) Each number add the smaller number of two numbers that below it.
+     * 4) And finally we get to the top we the smallest sum.
+     */
+    public static int minimumTotala(List<List<Integer>> triangle) {
+        for (int i = triangle.size() - 2; i >= 0; i--)
+            for (int j = 0; j <= i; j++)
+                triangle.get(i).set(j, triangle.get(i).get(j) + Math.min(triangle.
+                        get(i + 1).get(j), triangle.get(i + 1).get(j + 1)));
+        return triangle.get(0).get(0);
     }
 
     /**

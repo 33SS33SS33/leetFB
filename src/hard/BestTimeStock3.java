@@ -8,9 +8,7 @@ package hard;
  * You may not engage in multiple transactions at the same time (ie, you must
  * sell the stock before you buy again).
  * Tags: Array, DP
- */
-
-/**
+ * <p/>
  * Prices: 1 4 5 7 6 3 2 9
  * left = [0, 3, 4, 6, 6, 6, 6, 8]
  * right= [8, 7, 7, 7, 7, 7, 7, 0]
@@ -47,7 +45,8 @@ class BestTimeStock3 {
         for (int i = len - 2; i >= 0; i--) {
             peak = Math.max(peak, prices[i]);
             maxSince[i] = Math.max(maxSince[i + 1], peak - prices[i]);
-            maxProfit = Math.max(maxProfit, maxBy[i] + maxSince[i]); // find i such that maxBy[i]+maxSince[i+1] is the max two-transaction profit, no overlap
+            maxProfit = Math.max(maxProfit, maxBy[i]
+                    + maxSince[i]); // find i such that maxBy[i]+maxSince[i+1] is the max two-transaction profit, no overlap
         }
         return maxProfit;
     }

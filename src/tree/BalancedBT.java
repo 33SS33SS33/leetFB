@@ -5,9 +5,7 @@ package tree;
  * For this problem, a height-balanced binary tree is defined as a binary tree
  * in which the depth of the two subtrees of every node never differ by more than 1.
  * Tags: Tree, DFS
- */
-
-/**
+ * <p/>
  * 还是自底向上的得到深度值 然后计算
  */
 class BalancedBT {
@@ -23,7 +21,7 @@ class BalancedBT {
             return true;
         return Math.abs(height(root.left) - height(root.right)) <= 1 &&
                 isBalancedA(root.left) && isBalancedA(root.right);
-        //        return isBalanced2();
+        // return isBalanced2();
     }
 
     int height(TreeNode root) {

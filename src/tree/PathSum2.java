@@ -1,13 +1,12 @@
 package tree;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
+ * <p/>
  * Given a binary tree and a sum, find all root-to-leaf paths where each path's
  * sum equals the given sum.
  * For example:
@@ -25,9 +24,7 @@ import java.util.List;
  * [5,8,4,5]
  * ]
  * Tags: Tree, DFS
- */
-
-/**
+ * <p/>
  * 先序遍历二叉树即可
  * 每次从一个节点到下一个节点的时候 就从sum把当前节点的val减掉
  * 然后判断一下到了叶子节点 如果sum等于当前节点的值 就把路径加进去
@@ -45,12 +42,36 @@ class PathSum2 {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
+        System.out.println(new PathSum2().pathSuma(root, 7).toString());
         System.out.println(new PathSum2().pathSumA(root, 7).toString());
         System.out.println(new PathSum2().pathSumB(root, 7).toString());
         System.out.println(new PathSum2().pathSumA(root, 10).toString());
         System.out.println(new PathSum2().pathSumB(root, 10).toString());
         System.out.println(new PathSum2().pathSumA(root, 4).toString());
         System.out.println(new PathSum2().pathSumB(root, 4).toString());
+    }
+
+    public List<List<Integer>> pathSuma(TreeNode root, int sum) {
+        List<List<Integer>> result = new LinkedList<List<Integer>>();
+        List<Integer> currentResult = new LinkedList<Integer>();
+        pathSuma(root, sum, currentResult, result);
+        return result;
+    }
+
+    public void pathSuma(TreeNode root, int sum, List<Integer> currentResult,
+            List<List<Integer>> result) {
+        if (root == null)
+            return;
+        currentResult.add(new Integer(root.val));
+        if (root.left == null && root.right == null && sum == root.val) {
+            result.add(new LinkedList(currentResult));
+            currentResult.remove(currentResult.size() - 1);//don't forget to remove the last integer
+            return;
+        } else {
+            pathSuma(root.left, sum - root.val, currentResult, result);
+            pathSuma(root.right, sum - root.val, currentResult, result);
+        }
+        currentResult.remove(currentResult.size() - 1);
     }
 
     public List<List<Integer>> pathSumA(TreeNode root, int sum) {
