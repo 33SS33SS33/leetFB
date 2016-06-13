@@ -14,7 +14,7 @@ package medium;
  * 已然用动归 DP来解决 每个dp数组保存的都是以当前元素结尾的乘积最大值
  * 但是要注意因为是相乘 负负得正 所以还要保存最小值 因为最小值碰到个负数很可能就会变成最大值
  */
-class MaxProductSubArr {
+class MaxProductSubarr {
     public static void main(String[] args) {
         int[] A = { 2, 3, -2, 4 };
         System.out.println(maxProductA(A));

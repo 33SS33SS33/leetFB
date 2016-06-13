@@ -3,9 +3,7 @@ package medium;
 /**
  * Sort a linked list in O(n log n) time using constant space complexity.
  * Tags: Linkedlist, Sort
- */
-
-/**
+ * <p/>
  * 使用mergesort即可 每次都用快慢指针找中点 然后分割链表
  * 注意快指针要是头指针的下一个节点 否则分割只有两个元素的链表会分不开 （因为slow会向前走一步）
  * 而且当分成两部分的时候  slow就是前一部分的末尾 记得用none来结尾 然后下一部分的开始是slow.Next
@@ -14,6 +12,43 @@ package medium;
 class SortList {
     public static void main(String[] args) {
 
+    }
+
+    /**
+     * 最好的
+     */
+    public ListNode sortLista(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode f = head.next.next;
+        ListNode p = head;
+        while (f != null && f.next != null) {
+            p = p.next;
+            f = f.next.next;
+        }
+        ListNode h2 = sortLista(p.next);
+        p.next = null;
+        return merge(sortLista(head), h2);
+    }
+
+    public ListNode merge(ListNode h1, ListNode h2) {
+        ListNode hn = new ListNode(Integer.MIN_VALUE);
+        ListNode c = hn;
+        while (h1 != null && h2 != null) {
+            if (h1.val < h2.val) {
+                c.next = h1;
+                h1 = h1.next;
+            } else {
+                c.next = h2;
+                h2 = h2.next;
+            }
+            c = c.next;
+        }
+        if (h1 != null)
+            c.next = h1;
+        if (h2 != null)
+            c.next = h2;
+        return hn.next;
     }
 
     /**
