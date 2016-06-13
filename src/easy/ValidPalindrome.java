@@ -13,9 +13,7 @@ import java.util.Stack;
  * ask during an interview.
  * For the purpose of this problem, we define empty string as valid palindrome.
  * Tags: Two pointers, String
- */
-
-/**
+ * <p/>
  * 用l<r判断比较好 否则会越界 记得每个循环都加上l<r的判断
  */
 class ValidPalindrome {

@@ -17,17 +17,45 @@ import java.util.ArrayList;
  * 2. L-sub + Node
  * 3. R-sub + Node
  * 4. L-sub + Node + R-sub
- */
-
-/** 后序遍历 然后返回最大值
+ * <p/>
+ * 后序遍历 然后返回最大值
  * 注意一下返回值  如果是本身节点然后加上左右节点 这个值不应该返回  因为父节点无法使用这个path   所以使用self.res直接对res进行更新
  * 所以返回值只是返回当前节点  带上左或者右某一条路径 或者都不带 值返回本身  所以在处理left和right的时候 要把负数变为0
  */
 class BinaryTreeMaximumPathSum {
     public static void main(String[] args) {
         TreeNode head = buildTree();
+        System.out.println(new BinaryTreeMaximumPathSum().maxPathSuma(head));
         System.out.println(new BinaryTreeMaximumPathSum().maxPathSum(head));
         System.out.println(new BinaryTreeMaximumPathSum().maxPathSumB(head));
+    }
+
+    /**
+     * 最好的
+     * A path from start to end, goes up on the tree for 0 or more steps, then goes
+     * down for 0 or more steps. Once it goes down, it can't go up. Each path has a
+     * highest node, which is also the lowest common ancestor of all other nodes on
+     * the path.
+     * A recursive method maxPathDown(TreeNode node) (1) computes the
+     * maximum path sum with highest node is the input node, update maximum if
+     * necessary (2) returns the maximum sum of the path that can be extended to
+     * input node's parent.
+     */
+    int maxValue;
+
+    public int maxPathSuma(TreeNode root) {
+        maxValue = Integer.MIN_VALUE;
+        maxPathDown(root);
+        return maxValue;
+    }
+
+    private int maxPathDown(TreeNode node) {
+        if (node == null)
+            return 0;
+        int left = Math.max(0, maxPathDown(node.left));
+        int right = Math.max(0, maxPathDown(node.right));
+        maxValue = Math.max(maxValue, left + right + node.val);
+        return Math.max(left, right) + node.val;
     }
 
     /**
@@ -67,7 +95,9 @@ class BinaryTreeMaximumPathSum {
      * 而返回值则是自己的值加上左子树返回值，右子树返回值或者0（注意这里是“或者”，而不是“加上”，因为返回值只取一支的路径和）。
      * 在过程中求得当前最长路径时比较一下是不是目前最长的，如果是则更新
      */
-    /**算法的本质还是一次树的遍历，所以复杂度是O(n)。而空间上仍然是栈大小O(logn)*/
+    /**
+     * 算法的本质还是一次树的遍历，所以复杂度是O(n)。而空间上仍然是栈大小O(logn)
+     */
     public int maxPathSumB(TreeNode root) {
         if (root == null)
             return 0;
