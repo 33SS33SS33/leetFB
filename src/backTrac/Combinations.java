@@ -1,7 +1,5 @@
 package backTrac;
 
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,31 +25,31 @@ class Combinations {
             System.out.print(l.toString());
         }
         System.out.println();
-        List<List<Integer>> lists2 = new Combinations().combine(4, 2);
+        List<List<Integer>> lists2 = new Combinations().combineA(4, 2);
         for (List<Integer> l : lists2) {
             System.out.print(l.toString());
         }
         System.out.println();
-        ArrayList<ArrayList<Integer>> lists3 = combineC(4, 2);
+        ArrayList<ArrayList<Integer>> lists3 = combineB(4, 2);
         for (ArrayList<Integer> l : lists3) {
             System.out.print(l.toString());
         }
     }
 
 
-    //最好的
+/*    //最好的
     public  List<List<Integer>> combine(int n, int k) {
         if (k == n || k == 0) {
-            List<Integer> row = new LinkedList<>();
+            List<Integer> row = new ArrayList<Integer>();
             for (int i = 1; i <= k; ++i) {
                 row.add(i);
             }
-            return new LinkedList<>(Arrays.asList(row)); }
+            return new LinkedList<Integer>(Arrays.asList(row)); }
         List<List<Integer>> result = this.combine(n - 1, k - 1);
         result.forEach(e -> e.add(n));
         result.addAll(this.combine(n - 1, k));
         return result;
-    }
+    }*/
 
     /**
      * 最好的
@@ -79,7 +77,7 @@ class Combinations {
     /**
      * creek DFS
      */
-    public static ArrayList<ArrayList<Integer>> combineC(int n, int k) {
+    public static ArrayList<ArrayList<Integer>> combineB(int n, int k) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (n <= 0 || n < k)
             return result;

@@ -30,11 +30,27 @@ class BTInOrder {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
+        System.out.println(new BTInOrder().inorderTraversala(root));
         System.out.println(new BTInOrder().inorderTraversal(root));
         System.out.println(new BTInOrder().inorderTraversalB(root));
         System.out.println(new BTInOrder().inorderTraversalC(root));
     }
 
+    public List<Integer> inorderTraversala(TreeNode root) {
+        List<Integer> list = new ArrayList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.add(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            list.add(cur.val);
+            cur = cur.right;
+        }
+        return list;
+    }
     /**
      * The recursive solution is trivial. 递归法
      * 算法的时间复杂度是O(n), 而空间复杂度则是递归栈的大小，即O(logn)

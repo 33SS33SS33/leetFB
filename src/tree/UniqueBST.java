@@ -24,10 +24,21 @@ package tree;
  */
 class UniqueBST {
     public static void main(String[] args) {
+        System.out.println(numTreesa(5));
         System.out.println(numTreesA(5));
         System.out.println(numTreesB(5));
     }
 
+    public static int numTreesa(int n) {
+        int[] G = new int[n + 1];
+        G[0] = G[1] = 1;
+        for (int i = 2; i <= n; ++i) {
+            for (int j = 1; j <= i; ++j) {
+                G[i] += G[j - 1] * G[i - j];
+            }
+        }
+        return G[n];
+    }
     /**
      * DP, Bottom-up approach.
      * a BST can be destruct to root, left subtree and right subtree.
@@ -39,9 +50,11 @@ class UniqueBST {
      * + ...
      * + a[n-1] * a[0]     // put n at root, 1...n-1 left
      */
-        /*时间上每次求解i个结点的二叉查找树数量的需要一个i步的循环，总体要求n次，
-    所以总时间复杂度是O(1+2+...+n)=O(n^2)。
-    空间上需要一个数组来维护，并且需要前i个的所有信息，所以是O(n)*/
+    /**
+     * 时间上每次求解i个结点的二叉查找树数量的需要一个i步的循环，总体要求n次，
+     * 所以总时间复杂度是O(1+2+...+n)=O(n^2)。
+     * 空间上需要一个数组来维护，并且需要前i个的所有信息，所以是O(n)
+     */
     public static int numTreesA(int n) {
         if (n < 0)
             return 0;

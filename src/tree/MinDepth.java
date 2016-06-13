@@ -10,7 +10,9 @@ import java.util.Queue;
  * Tags: Tree, DFS
  */
 
-/**就是分情况  当叶子节点的时候 当只有一个节点的时候 （这俩计算一样） 还有就是两边都有节点的时候*/
+/**
+ * 就是分情况  当叶子节点的时候 当只有一个节点的时候 （这俩计算一样） 还有就是两边都有节点的时候
+ */
 public class MinDepth {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -26,16 +28,22 @@ public class MinDepth {
         n1.right = n4;
         n2.right = n5;
 
+        System.out.println(new MinDepth().minDeptha(root));
         System.out.println(new MinDepth().minDepthA(root));
         System.out.println(new MinDepth().minDepthB(root));
         System.out.println(new MinDepth().minDepth(root));
     }
 
+        public int minDeptha(TreeNode root) {
+            if (root == null)
+                return 0;
+            int left = minDeptha(root.left);
+            int right = minDeptha(root.right);
+            return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
+        }
+
     /**
-     * Recursive 递归*/
-     /* Get minDepth of left and right subtree
-     * If one side is 0, return the other side plus 1
-     * Return the smaller one + 1
+     * Recursive 递归
      */
     public int minDepthA(TreeNode root) {
         if (root == null)

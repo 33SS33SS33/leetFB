@@ -15,8 +15,16 @@ import java.util.LinkedList;
 class MaxDepth {
     public static void main(String[] args) {
         TreeNode head = buildTree();
+        System.out.println(new MaxDepth().maxDeptha(head));
         System.out.println(new MaxDepth().maxDepthA(head));
         System.out.println(new MaxDepth().maxDepthB(head));
+    }
+
+    public int maxDeptha(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(maxDeptha(root.left), maxDeptha(root.right));
     }
 
     /**

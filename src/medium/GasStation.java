@@ -12,9 +12,7 @@ package medium;
  * Note:
  * The solution is guaranteed to be unique.
  * Tags: Greedy
- */
-
-/**
+ * <p/>
  * 复杂度是O(n)
  * 如果所有站点拥有的gas小于所有站点的cost 那么肯定无解 所以就返回-1
  * 如果能从一个站点能到另一个站点 那就说明 一定之前从一个起点开始 能到达这个点

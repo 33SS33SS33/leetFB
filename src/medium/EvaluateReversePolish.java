@@ -19,10 +19,69 @@ import java.util.*;
  */
 class EvaluateReversePolish {
     public static void main(String[] args) {
-        // String[] tokens = {"2", "1", "+", "3", "*"};
+        String[] tokens = { "2", "1", "+", "3", "*" };
         // String[] tokens = {"4", "13", "5", "/", "+"};
-        String[] tokens = { "3", "-4", "+" };
+        //        String[] tokens = { "3", "-4", "+" };
+        System.out.println(evalRPNa(tokens));
         System.out.println(evalRPN(tokens));
+        System.out.println(evalRPNA(tokens));
+        System.out.println(evalRPNB(tokens));
+    }
+
+    /**
+     * 最好的
+     */
+    public static int evalRPNa(String[] tokens) {
+        int a, b;
+        Stack<Integer> S = new Stack<Integer>();
+        for (String s : tokens) {
+            if (s.equals("+")) {
+                S.add(S.pop() + S.pop());
+            } else if (s.equals("/")) {
+                b = S.pop();
+                a = S.pop();
+                S.add(a / b);
+            } else if (s.equals("*")) {
+                S.add(S.pop() * S.pop());
+            } else if (s.equals("-")) {
+                b = S.pop();
+                a = S.pop();
+                S.add(a - b);
+            } else {
+                S.add(Integer.parseInt(s));
+            }
+        }
+        return S.pop();
+    }
+
+    public static int evalRPNA(String[] tokens) {
+        final Deque<Integer> stack = new LinkedList<Integer>();
+        for (String t : tokens) {
+            if ("+".equals(t)) {
+                Integer v2 = stack.pop();
+                Integer v1 = stack.pop();
+
+                stack.push(v1 + v2);
+            } else if ("-".equals(t)) {
+                Integer v2 = stack.pop();
+                Integer v1 = stack.pop();
+
+                stack.push(v1 - v2);
+            } else if ("*".equals(t)) {
+                Integer v2 = stack.pop();
+                Integer v1 = stack.pop();
+
+                stack.push(v1 * v2);
+            } else if ("/".equals(t)) {
+                Integer v2 = stack.pop();
+                Integer v1 = stack.pop();
+
+                stack.push(v1 / v2);
+            } else {
+                stack.push(Integer.valueOf(t));
+            }
+        }
+        return stack.pop();
     }
 
     /**
@@ -80,4 +139,37 @@ class EvaluateReversePolish {
         return res;
     }
 
+    /**
+     * use switch statement
+     */
+    public static int evalRPNB(String[] tokens) {
+        int returnValue = 0;
+        String operators = "+-*/";
+        Stack<String> stack = new Stack<String>();
+        for (String t : tokens) {
+            if (!operators.contains(t)) {
+                stack.push(t);
+            } else {
+                int a = Integer.valueOf(stack.pop());
+                int b = Integer.valueOf(stack.pop());
+                int index = operators.indexOf(t);
+                switch (index) {
+                case 0:
+                    stack.push(String.valueOf(a + b));
+                    break;
+                case 1:
+                    stack.push(String.valueOf(b - a));
+                    break;
+                case 2:
+                    stack.push(String.valueOf(a * b));
+                    break;
+                case 3:
+                    stack.push(String.valueOf(b / a));
+                    break;
+                }
+            }
+        }
+        returnValue = Integer.valueOf(stack.pop());
+        return returnValue;
+    }
 }

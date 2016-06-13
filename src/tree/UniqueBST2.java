@@ -28,6 +28,35 @@ class UniqueBST2 {
 
     }
 
+    public List<TreeNode> generateTreesa(int n) {
+        return genTrees2(1, n);
+    }
+
+    public List<TreeNode> genTrees2(int start, int end) {
+        List<TreeNode> list = new ArrayList<TreeNode>();
+        if (start > end) {
+            list.add(null);
+            return list;
+        }
+        if (start == end) {
+            list.add(new TreeNode(start));
+            return list;
+        }
+        List<TreeNode> left, right;
+        for (int i = start; i <= end; i++) {
+            left = genTrees2(start, i - 1);
+            right = genTrees2(i + 1, end);
+            for (TreeNode lnode : left) {
+                for (TreeNode rnode : right) {
+                    TreeNode root = new TreeNode(i);
+                    root.left = lnode;
+                    root.right = rnode;
+                    list.add(root);
+                }
+            }
+        }
+        return list;
+    }
     /**
      * 1..n is the in-order traversal for any BST with nodes 1 to n.
      * if pick i-th node as root

@@ -14,21 +14,37 @@ import java.util.*;
  * [1,4,6,4,1]
  * ]
  * Tags: Array
- */
-
-/**
+ * <p/>
  * 两边一定是1 中间的就是i+i-1
  */
 class PascalsTriangle {
     public static void main(String[] args) {
         PascalsTriangle p = new PascalsTriangle();
         int k = 3;
+        System.out.println(p.generatea(k).toString());
         System.out.println(p.generate(k).toString());
         System.out.println(p.generateB(k).toString());
     }
 
     /**
-     * Definition
+     * 最好的
+     */
+    public List<List<Integer>> generatea(int numRows) {
+        List<List<Integer>> allrows = new ArrayList<List<Integer>>();
+        ArrayList<Integer> row = new ArrayList<Integer>();
+        for (int i = 0; i < numRows; i++) {
+            row.add(0, 1);
+            for (int j = 1; j < row.size() - 1; j++)
+                row.set(j, row.get(j) + row.get(j + 1));
+            allrows.add(new ArrayList<Integer>(row));
+        }
+        return allrows;
+    }
+
+    /**
+     * Definition two loops, one go through the row, one go through the column
+     * calculate element value: K(i)(j)=K(i-1)(j-1)+K(i-1)(j) except for the first and last
+     * element
      */
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> triangle = new ArrayList<List<Integer>>();

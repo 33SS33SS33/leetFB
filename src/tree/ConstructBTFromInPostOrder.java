@@ -7,9 +7,7 @@ import java.util.*;
  * Note:
  * You may assume that duplicates do not exist in the tree.
  * Tags: Tree, Array, DFS
- */
-
-/**
+ * <p/>
  * 跟上面题思路差不多
  * 只是后序的话  确定根是从后往前走  最后的元素是根 倒数第二个就是右子树的根
  * 每次pop最后一个  然后用它来分割中序的字符串
@@ -51,7 +49,12 @@ class ConstructBTFromInPostOrder {
         return root;
     }
 
-    /*复杂度和空间复杂度也还是O(n)*/
+    /**
+     * The the basic idea is to take the last element in postorder array as the root, find the
+     * position of the root in the inorder array; then locate the range for left sub-tree and
+     * right sub-tree and do recursion. Use a HashMap to record the index of root in the
+     * inorder array 复杂度和空间复杂度也还是O(n)
+     */
     public TreeNode buildTreeB(int[] inorder, int[] postorder) {
         if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0) {
             return null;

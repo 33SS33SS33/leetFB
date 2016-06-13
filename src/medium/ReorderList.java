@@ -2,17 +2,13 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/8.
- * <p/>
  * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
  * reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
  * You must do this in-place without altering the nodes' values.
  * For example,
  * Given {1,2,3,4}, reorder it to {1,4,2,3}.
- * <p/>
  * Tags: Linkedlist
- */
-
-/**
+ * <p/>
  * 一共分三分步
  * 第一步是用快慢指针找到链表的中点 然后把链表从中点分成两部分 （记得处理前一部分的最后一个元素 让他的next = None）
  * 第二步 把第二部分的链表倒序反转（记得处理第二部分的第一个元素 让他的next=None ）
@@ -34,7 +30,7 @@ class ReorderList {
     }
 
     /**
-     * Find mid point, then split list into 2 halves
+     * Find mid point, then split list into 2 halves  最好的
      * Reverse latter half, then merge two lists
      */
     private void reorderList(ListNode head) {

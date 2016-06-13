@@ -10,9 +10,7 @@ import java.util.*;
  * dict = ["leet", "code"].
  * Return true because "leetcode" can be segmented as "leet code".
  * Tags: DP
- */
-
-/**
+ * <p/>
  * 一个DP问题。定义possible[i] 为S字符串上[0,i]的子串是否可以被segmented by dictionary.
  * 那么
  * possible[i] = true      if  S[0,i]在dictionary里面
@@ -32,7 +30,7 @@ class WordBreak {
     }
 
     /**
-     * DP, bottom-up
+     * DP, bottom-up  最好的
      * Build from first character to last in input
      * Record whether it can be break in a boolean array
      * Traverse from start to current position and check whether current

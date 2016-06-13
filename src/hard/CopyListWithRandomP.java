@@ -7,7 +7,7 @@ import java.util.*;
  * pointer which could point to any node in the list or null.
  * Return a deep copy of the list.
  * Tags: Hashtable, Linkedlist
- *
+ * <p/>
  * 难点在于如何知道一个点是不是在之前就已经被copy 比如先通过随机的指针建立了节点3
  * 当通过next访问刀到3得时候如何知道3是之前创建过的
  * 只需要用一个hashtable跟踪一下就知道了
@@ -17,10 +17,10 @@ class CopyListWithRandomP {
     public static void main(String[] args) {
         RandomListNode node = buildList();
 
-        RandomListNode res=new CopyListWithRandomP().copyRandomListA(node);
+        RandomListNode res = new CopyListWithRandomP().copyRandomListA(node);
         while (res != null) {
             System.out.print(res.label + ",");
-            if(res.random!=null) {
+            if (res.random != null) {
                 System.out.print(res.random.label + ",");
             }
             res = res.next;
@@ -28,16 +28,14 @@ class CopyListWithRandomP {
     }
 
     /**
-     * Use a hashmap to store map between original node and copy node 递归 最好了 第一解法
+     * Use a hashmap to store map between original node and copy node 递归 最好的 第一解法
+     * Get copy node from map
      */
     public RandomListNode copyRandomListA(RandomListNode head) {
         Map<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
         return helper(head, map);
     }
 
-    /**
-     * Get copy node from map
-     */
     public RandomListNode helper(RandomListNode node, Map<RandomListNode, RandomListNode> map) {
         if (node == null)
             return null;
@@ -49,6 +47,7 @@ class CopyListWithRandomP {
         res.random = helper(node.random, map); // build copy
         return res;
     }
+
     /**
      * creek ------
      */
@@ -80,8 +79,6 @@ class CopyListWithRandomP {
         }
         return newHead;
     }
-
-
 
     /**
      * Insert a same node after current node 太复杂了
@@ -117,29 +114,6 @@ class CopyListWithRandomP {
         }
         return dummy;
     }
-
-    /**
-     * O(n) runtime, O(n) space – Hash table 错的
-     */
-/*    public RandomListNode copyRandomListC(RandomListNode head) {
-        Map<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
-        RandomListNode p = head;
-        RandomListNode dummy = new RandomListNode(0);
-        RandomListNode q = dummy;
-        while (p != null) {
-            q.next = new RandomListNode(p.label);
-            map.put(p, q.next);
-            q = q.next;
-        }
-        p = head;
-        q = dummy;
-        while (p != null) {
-            q.next.random = map.get(p.random);
-            p = p.next;
-            q = q.next;
-        }
-        return dummy.next;
-    }*/
 
     /**
      * O(n) runtime, O(1) space – Modify original structure

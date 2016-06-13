@@ -29,9 +29,7 @@ package tree;
  * 4->5->6->7 -> NULL
  * Tags: Tree, DFS
  * 完美二叉树
- */
-
-/**
+ * <p/>
  * 首先 设置一个pre来保存每一层最左边的节点
  * 然后再设置一个cur用来从左到右遍历这一层
  * 其实主要是用cur来从左到右把下一层的next连起来
@@ -42,11 +40,27 @@ class PopulatingNextRight {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();
         TreeLinkNode root2 = buildTree();
+        TreeLinkNode root3 = buildTree();
         PopulatingNextRight r = new PopulatingNextRight();
+        r.connect(root2);
         r.connectA(root);
         r.connectB(root2);
     }
 
+    public void connect(TreeLinkNode root) {
+        TreeLinkNode level_start = root;
+        while (level_start != null) {
+            TreeLinkNode cur = level_start;
+            while (cur != null) {
+                if (cur.left != null)
+                    cur.left.next = cur.right;
+                if (cur.right != null && cur.next != null)
+                    cur.right.next = cur.next.left;
+                cur = cur.next;
+            }
+            level_start = level_start.left;
+        }
+    }
     /**
      * Iterative
      * Store node in previous line

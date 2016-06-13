@@ -14,9 +14,7 @@ import java.util.HashMap;
  * S = "rabbbit", T = "rabbit"
  * Return 3.
  * Tags: DP, String
- */
-
-/**
+ * <p/>
  * 使用动态规划 DP
  * 思考的时候 把T固定住比较容易想 比如 如果T是rab  那么S是rab的时候 然后S变长了 变成rabb/rabc的时候
  * As a typical way to implement a dynamic programming algorithm, we construct a matrix dp,
@@ -33,9 +31,30 @@ class DistinctSubsequences {
     public static void main(String[] args) {
         String S = "rabbbit";
         String T = "rabbit";
+        System.out.println(new DistinctSubsequences().numDistincta(S, T));
         System.out.println(new DistinctSubsequences().numDistinct(S, T));
         System.out.println(new DistinctSubsequences().numDistinctOptimal(S, T));
         System.out.println(new DistinctSubsequences().numDistinct3(S, T));
+    }
+
+    public int numDistincta(String S, String T) {
+        // array creation
+        int[][] mem = new int[T.length() + 1][S.length() + 1];
+        // filling the first row: with 1s
+        for (int j = 0; j <= S.length(); j++) {
+            mem[0][j] = 1;
+        }
+        // the first column is 0 by default in every other rows but the first, which we need.
+        for (int i = 0; i < T.length(); i++) {
+            for (int j = 0; j < S.length(); j++) {
+                if (T.charAt(i) == S.charAt(j)) {
+                    mem[i + 1][j + 1] = mem[i][j] + mem[i + 1][j];
+                } else {
+                    mem[i + 1][j + 1] = mem[i + 1][j];
+                }
+            }
+        }
+        return mem[T.length()][S.length()];
     }
 
     /**
@@ -63,7 +82,8 @@ class DistinctSubsequences {
             dp[0][i] = 1;
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
-                dp[i][j] = dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
+                dp[i][j] =
+                        dp[i][j - 1] + (t.charAt(i - 1) == s.charAt(j - 1) ? dp[i - 1][j - 1] : 0);
         return dp[m][n];
     }
 

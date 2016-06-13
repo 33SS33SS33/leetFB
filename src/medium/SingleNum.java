@@ -3,15 +3,12 @@ package medium;
 import java.util.*;
 
 /**
- * Given an array of integers, every element appears twice except for one. Find
- * that single one.
+ * Given an array of integers, every element appears twice except for one. Find that single one.
  * Note:
  * Your algorithm should have a linear runtime complexity. Could you implement
  * it without using extra memory?
  * Tags: Hashtable, Bit Manipulation
- */
-
-/**
+ * <p/>
  * 可以用字典 如果字典没有key就插入  如果字典有key 就删除 最后剩下的key就是
  * 不用多余空间的话  就要用异或操作 异或操作有交换律还有结合律
  */
@@ -24,7 +21,7 @@ class SingleNum {
     }
 
     /**
-     * Without extra space
+     * Without extra space 最好的
      * XOR of two equal numbers is 0 : a^a=0. This is the main idea of the
      * algorithm.
      */

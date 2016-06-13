@@ -6,9 +6,7 @@ import java.util.ArrayList;
  * Given a singly linked list where elements are sorted in ascending order,
  * convert it to a height balanced BST.
  * Tags: DFS, Linked list
- */
-
-/**
+ * <p/>
  * 使用快慢指针来找中点
  * 另外一种o(N)的算法 在右边的链接里 http://bangbingsyb.blogspot.com/2014/11/leetcode-convert-sorted-list-to-binary.html
  */
@@ -72,10 +70,12 @@ class ConvertSortedListToBST {
         return root;
     }
 
-    /*这里的问题是对于一个链表我们是不能常量时间访问它的中间元素的。这时候就要利用到树的中序遍历了，
-    按照递归中序遍历的顺序对链表结点一个个进行访问，而我们要构造的二分查找树正是按照链表的顺序来的。
-    思路就是先对左子树进行递归，然后将当前结点作为根，迭代到下一个链表结点，最后在递归求出右子树即可。
-    整体过程就是一次中序遍历，时间复杂度是O(n)，空间复杂度是栈空间O(logn)。*/
+    /**
+     * 这里的问题是对于一个链表我们是不能常量时间访问它的中间元素的。这时候就要利用到树的中序遍历了，
+     * 按照递归中序遍历的顺序对链表结点一个个进行访问，而我们要构造的二分查找树正是按照链表的顺序来的。
+     * 思路就是先对左子树进行递归，然后将当前结点作为根，迭代到下一个链表结点，最后在递归求出右子树即可。
+     * 整体过程就是一次中序遍历，时间复杂度是O(n)，空间复杂度是栈空间O(logn)。
+     */
     public TreeNode sortedListToBSTC(ListNode head) {
         if (head == null)
             return null;

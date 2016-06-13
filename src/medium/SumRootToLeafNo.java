@@ -15,9 +15,7 @@ import java.util.ArrayList;
  * The root-to-leaf path 1->3 represents the number 13.
  * Return the sum = 12 + 13 = 25.
  * Tags: Tree, DFS
- */
-
-/**
+ * <p/>
  * 用先序遍历 判断到了叶子节点就把当前path的值加起来放进res即可
  */
 class SumRootToLeafNo {
@@ -29,6 +27,9 @@ class SumRootToLeafNo {
         System.out.println(new SumRootToLeafNo().sumNumbersB(head));
     }
 
+    /**
+     * 最好的
+     */
     public static int sumNumbersC1(TreeNode root) {
         int res = 0;
         if (root == null)
@@ -69,7 +70,7 @@ class SumRootToLeafNo {
             return 0;
         if (root.left == null && root.right == null)
             return sum * 10 + root.val;
-        return helper(root.left, sum * 10 + root.val) + helper(root.right, sum * 10 + root.val);
+        return helper2(root.left, sum * 10 + root.val) + helper2(root.right, sum * 10 + root.val);
     }
 
     /**

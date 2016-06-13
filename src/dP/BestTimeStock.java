@@ -18,7 +18,41 @@ class BestTimeStock {
         System.out.println(maxProfit(prices));
         System.out.println(maxProfitB(prices));
         System.out.println(maxProfit3(prices));
+        System.out.println(maxProfitb(prices));
         System.out.println(maxProfitA(prices));
+    }
+
+    /**
+     * ganker 最好的
+     */
+    public static int maxProfit3(int[] prices) {
+        if (prices == null || prices.length == 0)
+            return 0;
+        int local = 0;
+        int global = 0;
+        for (int i = 0; i < prices.length - 1; i++) {
+            local = Math.max(local + prices[i + 1] - prices[i], 0);
+            global = Math.max(local, global);
+        }
+        return global;
+    }
+
+    public static int maxProfitb(int[] prices) {
+        if (prices.length == 0) {
+            return 0;
+        }
+        int max = 0, min = prices[0];
+        int profit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] < min) {
+                min = prices[i];
+            } else {
+                if (prices[i] - min > profit) {
+                    profit = prices[i] - min;
+                }
+            }
+        }
+        return profit;
     }
 
     /**
@@ -64,21 +98,6 @@ class BestTimeStock {
             }
         }
         return max;
-    }
-
-    /**
-     * ganker
-     */
-    public static int maxProfit3(int[] prices) {
-        if (prices == null || prices.length == 0)
-            return 0;
-        int local = 0;
-        int global = 0;
-        for (int i = 0; i < prices.length - 1; i++) {
-            local = Math.max(local + prices[i + 1] - prices[i], 0);
-            global = Math.max(local, global);
-        }
-        return global;
     }
 
     /**

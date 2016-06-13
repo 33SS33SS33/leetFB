@@ -11,9 +11,7 @@ import java.util.Arrays;
  * Find the minimum element.
  * The array may contain duplicates.
  * Tags: Array, Binary Search
- */
-
-/**
+ * <p/>
  * 和Search in Rotated Sorted Array II 基本一样 貌似可以把min的判断去掉 未实现
  * 需要仔细研究一下二分查找的start和end的设置情况 重要
  */
@@ -28,6 +26,9 @@ class FindRotatedArrMin2 {
         System.out.println(new FindRotatedArrMin2().findMinB(num));
     }
 
+    /**
+     * 最好的
+     */
     public int findMinA(int[] nums) {
         int l = 0, r = nums.length - 1;
         while (l < r) {

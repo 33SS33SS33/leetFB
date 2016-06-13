@@ -8,9 +8,7 @@ package hard;
  * You may not engage in multiple transactions at the same time (ie, you must
  * sell the stock before you buy again).
  * Tags: Array, DP
- */
-
-/**
+ * <p/>
  * Prices: 1 4 5 7 6 3 2 9
  * left = [0, 3, 4, 6, 6, 6, 6, 8]
  * right= [8, 7, 7, 7, 7, 7, 7, 0]
@@ -20,9 +18,33 @@ class BestTimeStock3 {
     public static void main(String[] args) {
         BestTimeStock3 b = new BestTimeStock3();
         int[] prices = { 6, 1, 3, 2, 4, 7, 6, 10, 15 };
+        System.out.println(b.maxProfita(prices));
         System.out.println(b.maxProfit(prices));
         System.out.println(b.maxProfitA(prices));
         System.out.println(b.maxProfitC(prices));
+    }
+
+    /**
+     * The thinking is simple and is inspired by the best solution from Single Number II (I
+     * read through the discussion after I use DP). Assume we only have 0 money at first; 4
+     * Variables to maintain some interested 'ceilings' so far: The maximum of if we've just
+     * buy 1st stock, if we've just sold 1nd stock, if we've just buy 2nd stock, if we've just
+     * sold 2nd stock. Very simple code too and work well. I have to say the logic is simple
+     * than those in Single Number II.
+     */
+    public int maxProfita(int[] prices) {
+        int hold1 = Integer.MIN_VALUE, hold2 = Integer.MIN_VALUE;
+        int release1 = 0, release2 = 0;
+        for (int i : prices) { // Assume we only have 0money at first
+            release2 = Math
+                    .max(release2, hold2 + i); // The maximum if we've just sold 2 nd stock so far.
+            hold2 = Math
+                    .max(hold2, release1 - i); // The maximum if we've just buy 2 nd stock so far.
+            release1 = Math
+                    .max(release1, hold1 + i); // The maximum if we've just sold 1 nd stock so far.
+            hold1 = Math.max(hold1, -i); // The maximum if we've just buy 1 st stock so far.
+        }
+        return release2; ///Since release1 is initiated as 0, so release2 will always higher than release1.
     }
 
     /**
@@ -47,7 +69,8 @@ class BestTimeStock3 {
         for (int i = len - 2; i >= 0; i--) {
             peak = Math.max(peak, prices[i]);
             maxSince[i] = Math.max(maxSince[i + 1], peak - prices[i]);
-            maxProfit = Math.max(maxProfit, maxBy[i] + maxSince[i]); // find i such that maxBy[i]+maxSince[i+1] is the max two-transaction profit, no overlap
+            maxProfit = Math.max(maxProfit, maxBy[i]
+                    + maxSince[i]); // find i such that maxBy[i]+maxSince[i+1] is the max two-transaction profit, no overlap
         }
         return maxProfit;
     }

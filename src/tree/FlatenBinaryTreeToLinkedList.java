@@ -64,6 +64,21 @@ class FlatenBinaryTreeToLinkedList {
     }
 
     /**
+     * 最好的
+     */
+    private TreeNode prev = null;
+
+    public void flattena(TreeNode root) {
+        if (root == null)
+            return;
+        flattena(root.right);
+        flattena(root.left);
+        root.right = prev;
+        root.left = null;
+        prev = root;
+    }
+
+    /**
      * Add root's right subtree to left node's rightmost child
      * Then set that subtree as root's right subtree
      * And set root's left child to null
