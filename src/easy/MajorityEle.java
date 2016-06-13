@@ -19,7 +19,7 @@ class MajorityEle {
     }
 
     /**
-     * Go through the array, assign maj ele if count is 0
+     * Go through the array, assign maj ele if count is 0 最好的
      * Add 1 to count if same element, otherwise minus 1
      */
     public static int majorityElement(int[] num) {

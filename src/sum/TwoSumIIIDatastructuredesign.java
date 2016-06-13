@@ -5,40 +5,27 @@ import java.util.Map;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- */
 
-/**
  * 还是哈希表就行
  */
 public class TwoSumIIIDatastructuredesign {
-    class TwoSum {
-        Map<Integer, Integer> nums = new HashMap<Integer, Integer>();
-
+    //
+/*    public class TwoSum {
+        private HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         public void add(int number) {
-            Integer c = nums.get(number);
-            if (c == null)
-                c = 0;
-            c++;
-            nums.put(number, c);
+            map.put(number, map.containsKey(number) ? map.get(number) + 1 : 1);
         }
-
         public boolean find(int value) {
-            for (Integer n : nums.keySet()) {
-                Integer c = nums.get(value - n);
-                if (c == null)
-                    continue;
-                if (value - n == n) {
-                    if (c > 1) {
-                        return true;
-                    }
-                } else {
-                    return true;
-                }
-            }
-            return false;
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                int i = entry.getKey();
+                int j = value - i;
+                if ((i == j && entry.getValue() > 1) || (i != j && map.containsKey(j)
+                return true; }
         }
+        return false;
     }
-
+}
+}*/
     /**
      * ---creek----!
      */
