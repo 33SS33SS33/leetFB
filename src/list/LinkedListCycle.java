@@ -14,7 +14,7 @@ class LinkedListCycle {
     }
 
     /**
-     * Runnner's technique
+     * Runnner's technique 最好的
      * Check the next and next next of faster node is slower node or not.
      */
     public static boolean hasCycle(ListNode head) {

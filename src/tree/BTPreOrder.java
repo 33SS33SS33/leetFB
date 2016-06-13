@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -32,6 +33,25 @@ class BTPreOrder {
         n2.right = n5;
         System.out.println(new BTPreOrder().preorderTraversal(root));
         System.out.println(new BTPreOrder().preorderTraversalB(root));
+    }
+
+    /**
+     * Note that in this solution only right children are stored to stack.
+     */
+    public List<Integer> preorderTraversala(TreeNode node) {
+        List<Integer> list = new LinkedList<Integer>();
+        Stack<TreeNode> rights = new Stack<TreeNode>();
+        while (node != null) {
+            list.add(node.val);
+            if (node.right != null) {
+                rights.push(node.right);
+            }
+            node = node.left;
+            if (node == null && !rights.isEmpty()) {
+                node = rights.pop();
+            }
+        }
+        return list;
     }
 
     /**

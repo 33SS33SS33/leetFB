@@ -1,6 +1,7 @@
 package backTrac;
 
 import java.util.*;
+
 /**
  * Given a string s, partition s such that every substring of the partition is a palindrome.
  * Return all possible palindrome partitioning of s.
@@ -11,22 +12,48 @@ import java.util.*;
  * ["a","a","b"]
  * ]
  * Tags: Backtracking
- */
-
-/**
+ * <p/>
  * 用的DFS
  * 把当前的字符串从头开始切割 如果切出来的是回文 就把剩下的字符串继续切 然后继续判断 直到切完了整个字符串
  * 回文的特点是正反都一样 s == s[::-1] 后面的切片就是把字符串逆序输出
- * 还要注意切片的循环的范围选择for i in xrange(1,len(s)): 这里用的是从1到len(s) 这样可以保证不会切出来空的list
+ * 还要注意切片的循环的范围选择for i in x range(1,len(s)): 这里用的是从1到len(s) 这样可以保证不会切出来空的list
  * 但是也会导致并没有对s整体进行判断(因为最大切到倒数第二位)
  * 所以在下面又加了if对整体的s以及长度等于1的s进行判断
  */
 class PalindromePartition {
     public static void main(String[] args) {
+        System.out.println(partitiona("aab"));
         System.out.println(partition("aab"));
         System.out.println(new PalindromePartition().partitionD("aab"));
+        System.out.println(partitiona("aa"));
         System.out.println(partition("aa"));
         System.out.println(new PalindromePartition().partitionD("aa"));
+    }
+
+    /**
+     * 最好的
+     */
+    public static List<List<String>> partitiona(String s) {
+        int len = s.length();
+        List<List<String>>[] result = new List[len + 1];
+        result[0] = new ArrayList<List<String>>();
+        result[0].add(new ArrayList<String>());
+        boolean[][] pair = new boolean[len][len];
+        for (int i = 0; i < s.length(); i++) {
+            result[i + 1] = new ArrayList<List<String>>();
+            for (int left = 0; left <= i; left++) {
+                if (s.charAt(left) == s.charAt(i) && (i - left <= 1 || pair[left + 1][i - 1])) {
+                    pair[left][i] = true;
+                    String str = s.substring(left, i + 1);
+                    for (List<String> r : result[left]) {
+                        List<String> ri = new ArrayList<String>(r);
+                        ri.add(str);
+                        result[i + 1].add(ri);
+                    }
+                }
+            }
+        }
+        return result[len];
     }
 
     /**

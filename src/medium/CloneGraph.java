@@ -1,12 +1,9 @@
 package medium;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
  * Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
  * OJ's undirected graph serialization:Nodes are labeled uniquely.
  * We use # as a separator for each node, and , as a separator for node label
@@ -41,6 +38,9 @@ class CloneGraph {
 
     }
 
+    /**
+     * 最好的
+     */
     private HashMap<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
 
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
@@ -50,7 +50,6 @@ class CloneGraph {
     private UndirectedGraphNode clone(UndirectedGraphNode node) {
         if (node == null)
             return null;
-
         if (map.containsKey(node.label)) {
             return map.get(node.label);
         }
@@ -122,38 +121,6 @@ class CloneGraph {
         return map.get(node.label);
     }
 
-    public UndirectedGraphNode cloneGraphC(UndirectedGraphNode node) {
-        if (node == null)
-            return null;
-        // visit
-        HashMap<UndirectedGraphNode, UndirectedGraphNode> clone = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
-        Deque<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
-        queue.add(node);
-        while (queue.size() > 0) {
-            UndirectedGraphNode n = queue.poll();
-            if (!clone.containsKey(n)) {
-                clone.put(n, new UndirectedGraphNode(n.label));
-                for (UndirectedGraphNode neighbor : n.neighbors) {
-                    queue.add(neighbor);
-                }
-            }
-        }
-        queue.add(node);
-        HashSet<UndirectedGraphNode> visit = new HashSet<UndirectedGraphNode>();
-        while (queue.size() > 0) {
-            UndirectedGraphNode n = queue.poll();
-            if (!visit.contains(n)) {
-                visit.add(n);
-                UndirectedGraphNode c = clone.get(n);
-                for (UndirectedGraphNode neighbor : n.neighbors) {
-                    c.neighbors.add(clone.get(neighbor));
-                    queue.add(neighbor);
-                }
-            }
-        }
-        return clone.get(node);
-    }
-
     /**
      * DFS 深度优先 非递归
      */
@@ -179,7 +146,9 @@ class CloneGraph {
         return map.get(node);
     }
 
-    /*深度优先 递归实现*/
+    /**
+     * 深度优先 递归实现
+     */
     public UndirectedGraphNode cloneGraphD2(UndirectedGraphNode node) {
         if (node == null)
             return null;
