@@ -29,8 +29,8 @@ class SimplifyPath {
 
     //最好的
     public String simplifyPatha(String path) {
-        Deque<String> stack = new LinkedList<>();
-        Set<String> skip = new HashSet<>(Arrays.asList("..",".",""));
+        Deque<String> stack = new LinkedList<String>();
+        Set<String> skip = new HashSet<String>(Arrays.asList("..",".",""));
         for (String dir : path.split("/")) {
             if (dir.equals("..") && !stack.isEmpty())
                 stack.pop();

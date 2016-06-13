@@ -31,10 +31,17 @@ class SameTree {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
+        System.out.println(new SameTree().isSameTree(root1, root2));
         System.out.println(new SameTree().isSameTreeA(root1, root2));
         System.out.println(new SameTree().isSameTreeB(root1, root2));
     }
-
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null) return true;
+        if(p == null || q == null) return false;
+        if(p.val == q.val)
+            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        return false;
+    }
     /**
      * Recursive, pre-order check
      * If both node's values are the same, left subtrees are same and so right
