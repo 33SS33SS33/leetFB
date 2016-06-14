@@ -1,6 +1,7 @@
 package backTrac;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -30,9 +31,17 @@ import java.util.List;
  */
 class Graycode {
     public static void main(String[] args) {
-        System.out.println(new Graycode().grayCodeA(3));
+        System.out.println(new Graycode().grayCode(3));
     }
 
+
+//    The idea is simple. G(i) = i^ (i/2).
+    public List<Integer> grayCode(int n) {
+        List<Integer> result = new LinkedList<>();
+        for (int i = 0; i < 1<<n; i++)
+            result.add(i ^ i>>1);
+        return result;
+    }
     /**
      * 最好的~~~
      * generate 0, 1 then add 10 from back to get 11, 10
