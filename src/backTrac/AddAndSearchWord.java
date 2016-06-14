@@ -2,12 +2,11 @@ package backTrac;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/8.
- */
-
-/**
+ * <p/>
  * 使用字典树
  * 对于'.'用dfs搜索即可
  */
+
 public class AddAndSearchWord {
     static class TrieNode {
         // Initialize your data structure here.

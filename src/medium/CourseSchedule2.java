@@ -83,6 +83,9 @@ public class CourseSchedule2 {
         }
     }
 
+    /**
+     * 最好的
+     */
     //https://leetcode.com/discuss/35605/two-ac-solution-in-java-using-bfs-and-dfs-with-explanation
     public int[] findOrderB(int numCourses, int[][] prerequisites) {
         int[] incLinkCounts = new int[numCourses];
@@ -154,6 +157,5 @@ public class CourseSchedule2 {
         order.push(from);
         return true;
     }
-
 
 }
