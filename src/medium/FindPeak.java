@@ -17,11 +17,34 @@ package medium;
  */
 class FindPeak {
     public static void main(String[] args) {
-        int[] num = { 1, 2, 1, 3, 1, 4, 1 };
-        /**错的*/
+        int[] num = { 1, 2, 3, 1, 4 };
+        System.out.println(new FindPeak().findPeakElementa(num));
         System.out.println(new FindPeak().findPeakElement(num));
         System.out.println(new FindPeak().findPeakElementB(num));
         System.out.println(new FindPeak().findPeakElementC(num));
+    }
+
+    public int findPeakElementa(int[] num) {
+        return helper(num, 0, num.length - 1);
+    }
+
+    public int helper(int[] num, int start, int end) {
+        if (start == end) {
+            return start;
+        } else if (start + 1 == end) {
+            if (num[start] > num[end])
+                return start;
+            return end;
+        } else {
+            int m = (start + end) / 2;
+            if (num[m] > num[m - 1] && num[m] > num[m + 1]) {
+                return m;
+            } else if (num[m - 1] > num[m] && num[m] > num[m + 1]) {
+                return helper(num, start, m - 1);
+            } else {
+                return helper(num, m + 1, end);
+            }
+        }
     }
 
     /**
