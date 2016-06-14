@@ -8,9 +8,6 @@ package medium;
  * Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
  * Tags: Array, Math, Bit Manipulation
  * Similar Problems: (H) First Missing Positive, (M) Single Number, (H) Find the Duplicate Number
- */
-
-/**
  * 首先 可以用等差数列之和减去当前数组之和就可以 未实现
  * 还可以用位操作 异或
  * 思路是 这个数组其实就是0到n的数列里少了一个数字 那么如果把这个数组和一个0到n得完全的数列并起来
@@ -18,22 +15,22 @@ package medium;
  */
 public class MissingNumber {
     public static void main(String[] args) {
-        int[] A = { 1, 2, 0 };
+        int[] A = {1, 2, 0};
         System.out.println(new MissingNumber().missingNumber1(A));
         System.out.println(new MissingNumber().missingNumber2(A));
         System.out.println(new MissingNumber().missingNumber3(A));
     }
 
     /**
-     * Math   不好
-     * Considering that the n numbers are distinct, we can get the sum of the array
-     * Then substract it from the sum of 0 ~ n
+     * Bit Manipulation
+     * xor all numbers in the array and from 0 to n, the result is the missing number
      */
-    public int missingNumber1(int[] nums) {
-        int res = nums.length * (nums.length + 1) / 2; // may overflow
-        for (int n : nums)
-            res -= n;
-        return res;
+    public int missingNumber3(int[] nums) {
+        int xor = 0;
+        for (int i = 0; i < nums.length; i++) {
+            xor = xor ^ nums[i] ^ (i + 1);
+        }
+        return xor;
     }
 
     /**
@@ -48,14 +45,14 @@ public class MissingNumber {
     }
 
     /**
-     * Bit Manipulation
-     * xor all numbers in the array and from 0 to n, the result is the missing number
+     * Math   不好
+     * Considering that the n numbers are distinct, we can get the sum of the array
+     * Then substract it from the sum of 0 ~ n
      */
-    public int missingNumber3(int[] nums) {
-        int xor = 0;
-        for (int i = 0; i < nums.length; i++) {
-            xor = xor ^ nums[i] ^ (i + 1);
-        }
-        return xor;
+    public int missingNumber1(int[] nums) {
+        int res = nums.length * (nums.length + 1) / 2; // may overflow
+        for (int n : nums)
+            res -= n;
+        return res;
     }
 }

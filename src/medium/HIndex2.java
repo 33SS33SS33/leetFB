@@ -3,9 +3,6 @@ package medium;
 /**
  * Created by GAOSHANSHAN835 on 2016/5/7.
  * Follow up for H-Index: What if the citations array is sorted in ascending order? Could you optimize your algorithm?
- */
-
-/**
  * 用二分 和上题类似 但是没搞懂原理 还需要研究
  * 要从hindex的定义入手 h是合法的时候 此时数组有h个文章的引用不超过3 有n-h个文章的引用不小于3
  * 在二分查找的时候 右边表示是有n-mid个文章引用不小于当前mid的引用 所以查找的目标就是找到的这个位置L 所以只要找到这个位置有n-mid个文章

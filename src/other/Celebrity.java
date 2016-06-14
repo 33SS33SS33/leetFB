@@ -5,9 +5,6 @@ package other;
  * function:  isFriend(a, b)
  * Returns true if b is treated as a friend by a group of persons, say,
  * represented as an array
- */
-
-/**
  * 可以通过一遍就过滤出来一个候选的
  * The key part is the first loop.
  * To understand this you can think the knows(a,b) as a a < b comparison, if a knows b then a < b, if a does not know b, a > b.

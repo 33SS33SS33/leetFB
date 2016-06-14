@@ -27,6 +27,7 @@ import java.util.Arrays;
  * 有点慢  可以用heap来优化 未实现
  */
 public class SuperUglyNumber {
+
     public int nthSuperUglyNumber(int n, int[] primes) {
         int[] d = new int[n];
         d[0] = 1;

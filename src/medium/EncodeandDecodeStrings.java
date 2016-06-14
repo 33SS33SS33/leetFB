@@ -23,9 +23,6 @@ import java.util.List;
  * vector<string> strs2 = decode(encoded_string);
  * strs2 in Machine 2 should be the same as strs in Machine 1.
  * Implement the encode and decode methods."
- */
-
-/**
  * 把字符串合并成  字符串长度+冒号+字符串这种形式
  * 然后在还原的时候 只需要先find冒号 然后通过字符串长度把字符串切分出来即可 因为是用的前缀的表达 所以不用担心字符串里出现冒号的情况"
  */
@@ -38,7 +35,29 @@ public class EncodeandDecodeStrings {
         //        System.out.println(d.decode("iiy").toString());
     }
 
-    static final int    MAX_LEN     = Integer.toHexString(Integer.MAX_VALUE).length();
+    // Encodes a list of strings to a single string.
+    public String encodea(List<String> strs) {
+        StringBuilder sb = new StringBuilder();
+        for (String s : strs) {
+            sb.append(s.length()).append('/').append(s);
+        }
+        return sb.toString();
+    }
+
+    // Decodes a single string to a list of strings.
+    public List<String> decodea(String s) {
+        List<String> ret = new ArrayList<String>();
+        int i = 0;
+        while (i < s.length()) {
+            int slash = s.indexOf('/', i);
+            int size = Integer.valueOf(s.substring(i, slash));
+            ret.add(s.substring(slash + 1, slash + size + 1));
+            i = slash + size + 1;
+        }
+        return ret;
+    }
+
+    static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
     // lazy ... should be byte[]
     static final String NUM_PATTERN = "%0" + MAX_LEN + "x";
     /*  [count] [str len] [str  ...]             ... [str len][str  ...  ]

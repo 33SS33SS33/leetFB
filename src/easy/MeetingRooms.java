@@ -1,5 +1,8 @@
 package easy;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
@@ -16,8 +19,24 @@ public class MeetingRooms {
     public static void main(String[] args) {
         Interval inter1 = new Interval(1, 4);
         Interval inter2 = new Interval(5, 6);
-        Interval[] intervals = { inter1, inter2 };
+        Interval[] intervals = {inter1, inter2};
+        System.out.println(new MeetingRooms().canAttendMeetingsa(intervals));
         System.out.println(new MeetingRooms().canAttendMeetings(intervals));
+    }
+
+    public boolean canAttendMeetingsa(Interval[] intervals) {
+        if (intervals == null)
+            return false;
+        // Sort the intervals by start time
+        Arrays.sort(intervals, new Comparator<Interval>() {
+            public int compare(Interval a, Interval b) {
+                return a.start - b.start;
+            }
+        });
+        for (int i = 1; i < intervals.length; i++)
+            if (intervals[i].start < intervals[i - 1].end)
+                return false;
+        return true;
     }
 
     public boolean canAttendMeetings(Interval[] intervals) {

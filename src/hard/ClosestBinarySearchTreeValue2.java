@@ -26,6 +26,7 @@ public class ClosestBinarySearchTreeValue2 {
         System.out.println(new ClosestBinarySearchTreeValue2().closestKValues(head, 4, 2));
     }
 
+    //最好的
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
         List<Integer> res = new ArrayList<Integer>();
         Stack<Integer> s1 = new Stack<Integer>(); // predecessors

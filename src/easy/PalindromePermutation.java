@@ -1,16 +1,12 @@
 package easy;
 
+import java.util.*;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
  * "Given a string, determine if a permutation of the string could form a palindrome.
  * For example,
  * ""code"" -> False, ""aab"" -> True, ""carerac"" -> True."
- */
-
-import java.util.HashMap;
-import java.util.Map;
-
-/**
  * 能不能回文就是最多只能有一个字母出现了奇数次
  */
 public class PalindromePermutation {
@@ -22,6 +18,22 @@ public class PalindromePermutation {
         System.out.println(p.canPermutePalindrome(k));
         System.out.println(p.canPermutePalindrome(l));
         System.out.println(p.canPermutePalindrome(m));
+    }
+
+    public boolean canPermutePalindromea(String s) {
+        Set<Character> set = new HashSet<Character>();
+        for (int i = 0; i < s.length(); ++i) {
+            if (!set.contains(s.charAt(i))) set.add(s.charAt(i));
+            else set.remove(s.charAt(i));
+        }
+        return set.size() == 0 || set.size() == 1;
+    }
+
+    public boolean canPermutePalindromea2(String s) {
+        BitSet bs = new BitSet();
+        for (byte b : s.getBytes())
+            bs.flip(b);
+        return bs.cardinality() < 2;
     }
 
     public boolean canPermutePalindrome(String s) {

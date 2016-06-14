@@ -14,9 +14,7 @@ import java.util.List;
  * 5
  * All root-to-leaf paths are:
  * ["1->2->5", "1->3"]
- */
 
-/**
  * 用DFS就行
  * 但是Path的操作一定要注意!!! 重要
  * 如果在函数体内操作path  那么会修改path的值 比如Path+= [1] 会影响后面的path的值
@@ -28,6 +26,7 @@ public class BinaryTreePaths {
         System.out.println(new BinaryTreePaths().binaryTreePathsB(head).toString());
     }
 
+    //最好的
     public List<String> binaryTreePathsA(TreeNode root) {
         List<String> answer = new ArrayList<String>();
         if (root != null)

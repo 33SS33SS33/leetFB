@@ -22,7 +22,30 @@ import java.util.List;
  */
 public class FactorCombinations {
     public static void main(String[] args) throws IOException {
+        System.out.println(getFactorsa(33));
         System.out.println(getFactors(33));
+    }
+
+    public static List<List<Integer>> getFactorsa(int n) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        helper(result, new ArrayList<Integer>(), n, 2);
+        return result;
+    }
+
+    public static void helper(List<List<Integer>> result, List<Integer> item, int n, int start) {
+        if (n <= 1) {
+            if (item.size() > 1) {
+                result.add(new ArrayList<Integer>(item));
+            }
+            return;
+        }
+        for (int i = start; i <= n; ++i) {
+            if (n % i == 0) {
+                item.add(i);
+                helper(result, item, n / i, i);
+                item.remove(item.size() - 1);
+            }
+        }
     }
 
     public static List<List<Integer>> getFactors(int n) {

@@ -20,11 +20,51 @@ package hard;
  */
 public class PaintHouse2 {
     public static void main(String[] args) {
-        int[][] costs = { {}, {}, {} };
-        System.out.print(new PaintHouse2().minCost(costs));
+        int[][] costs = {{}, {}, {}};
+        System.out.print(new PaintHouse2().minCostII(costs));
     }
+/*
+    public int minCostII(int[][] costs) {
+        if (costs == null || costs.length == 0) return 0;
+        int n = costs.length, k = costs[0].length;
+// min1 is the index of the 1st-smallest cost till previous house
+// min2 is the index of the 2nd-smallest cost till previous house int min1 = -1, min2 = -1;
+        for (int i = 0; i < n; i++) {
+            int last1 = min1, last2 = min2;
+            min1 = -1;
+            min2 = -1;
+            for (int j = 0; j < k; j++) {
+                if (j != last1) {
+// current color j is different to last min1
+                costs[i][j] += last1 < 0 ? 0 : costs[i - 1][last1]; } else {
+                costs[i][j] += last2 < 0 ? 0 : costs[i - 1][last2]; }
+// find the indices of 1st and 2nd smallest cost of painting current
+                if (min1 < 0 || costs[i][j] < costs[i][min1]) { min2 = min1; min1 = j;
+                } else if (min2 < 0 || costs[i][j] < costs[i][min2]) { min2 = j;
+                } }
+        }
+        return costs[n - 1][min1]; }*/
 
-    public int minCost(int[][] costs) {
-        return 0;
+    public int minCostII(int[][] costs) {
+        if (costs.length == 0 || costs[0].length == 0) {
+            return 0;
+        }
+        int m = costs.length, n = costs[0].length, m1 = 0, m2 = 0;
+        int[] dp = new int[n];
+        for (int i = 0; i < m; i++) {
+            int t1 = m1, t2 = m2;
+            m1 = Integer.MAX_VALUE;
+            m2 = Integer.MAX_VALUE;
+            for (int j = 0; j < n; j++) {
+                dp[j] = (dp[j] == t1 ? t2 : t1) + costs[i][j];
+                if (m1 <= dp[j]) {
+                    m2 = Math.min(dp[j], m2);
+                } else {
+                    m2 = m1;
+                    m1 = dp[j];
+                }
+            }
+        }
+        return m1;
     }
 }
