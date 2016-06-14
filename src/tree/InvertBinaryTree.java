@@ -7,9 +7,6 @@ import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * 用BFS来翻转
  */
 public class InvertBinaryTree {
@@ -37,6 +34,9 @@ public class InvertBinaryTree {
         System.out.println(new InvertBinaryTree().levelOrder(res3));
     }
 
+    /**
+     * 最好的
+     */
     public TreeNode invertTree(TreeNode root) {
         if (root == null)
             return null;
@@ -44,6 +44,58 @@ public class InvertBinaryTree {
         TreeNode newRight = invertTree(root.left);
         root.left = newLeft;
         root.right = newRight;
+        return root;
+    }
+    /**
+     * The above solution is correct, but it is also bound to the application stack, which
+     means that it's no so much scalable - (you can find the problem size that will
+     overflow the stack and crash your application), so more robust solution would be to
+     use stack data structure.
+     */
+
+    /**
+     * creek   Iterative
+     */
+    public TreeNode invertTreeB(TreeNode root) {
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
+        if (root != null) {
+            queue.add(root);
+        }
+        while (!queue.isEmpty()) {
+            TreeNode p = queue.poll();
+            if (p.left != null)
+                queue.add(p.left);
+            if (p.right != null)
+                queue.add(p.right);
+            TreeNode temp = p.left;
+            p.left = p.right;
+            p.right = temp;
+        }
+        return root;
+    }
+
+    /**
+     * Finally we can easly convert the above solution to BFS - or so called level order
+     * traversal.
+     */
+    public TreeNode invertTreec(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        final Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            final TreeNode node = queue.poll();
+            final TreeNode left = node.left;
+            node.left = node.right;
+            node.right = left;
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
         return root;
     }
 
@@ -65,27 +117,6 @@ public class InvertBinaryTree {
             helper(p.left);
         if (p.right != null)
             helper(p.right);
-    }
-
-    /**
-     * creek   Iterative
-     */
-    public TreeNode invertTreeB(TreeNode root) {
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-        if (root != null) {
-            queue.add(root);
-        }
-        while (!queue.isEmpty()) {
-            TreeNode p = queue.poll();
-            if (p.left != null)
-                queue.add(p.left);
-            if (p.right != null)
-                queue.add(p.right);
-            TreeNode temp = p.left;
-            p.left = p.right;
-            p.right = temp;
-        }
-        return root;
     }
 
     private List<List<Integer>> levelOrder(TreeNode root) {

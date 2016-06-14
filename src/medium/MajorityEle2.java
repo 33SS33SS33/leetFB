@@ -9,9 +9,6 @@ import java.util.Map;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
  * The algorithm should run in linear time and in O(1) space.
- */
-
-/**
  * boyer-moore-majority-vote-algorithm 使用了这个算法
  * 首先要观察一下 符合要求的最多有几个众数  这道题是2个
  * 然后设置4个变量 两个变量存候选的众数 两个变量存对应候选数的出现次数
