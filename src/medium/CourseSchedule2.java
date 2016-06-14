@@ -8,9 +8,7 @@ import java.util.*;
  * 只是这道题是要输出访问顺序 所以在访问的时候用list把节点记下来就行了
  * 注意一下当prerequisties为空的时候的情况  这个时候 就应该返回所有的course number 因为没有前置 所以也没有顺序
  * stack = [x for x in xrange(numCourses) if not preNeighbor[x]] 注意一下xrange的范围要用课程数量 因为用的是defaultdict 这样才会为每一个课程数量创建一个对应的key
- */
-
-/**
+ * <p/>
  * There are a total of n courses you have to take, labeled from 0 to n - 1.
  * Some courses may have prerequisites, for example to take course 0 you have to first take course 1,
  * which is expressed as a pair: [0,1]
@@ -157,70 +155,5 @@ public class CourseSchedule2 {
         return true;
     }
 
-   /* static class Vertex {
 
-        int id;
-
-        Vertex(int id){
-            this.id = id;
-        }
-
-        Set<Integer> in  = new HashSet<Integer>();
-        Set<Integer> out = new HashSet<Integer>();
-
-        boolean isSink(){
-            return out.isEmpty();
-        }
-    }
-
-    Vertex safe(Vertex[] G, int id){
-        if(G[id] == null){
-            G[id] = new Vertex(id);
-        }
-
-        return G[id];
-    }
-
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        Vertex[] G = new Vertex[numCourses];
-
-        for(int[] p : prerequisites){
-            safe(G, p[0]).out.add(p[1]);
-            safe(G, p[1]).in.add(p[0]);
-        }
-
-        Set<Vertex> S = Arrays.stream(G)
-                .filter(v -> v != null)
-                .collect(Collectors.toSet());
-
-
-        LinkedHashSet<Integer> order = new LinkedHashSet<Integer>(numCourses);
-
-        loop:
-        while(!S.isEmpty()){
-
-            for(Vertex v : S){
-                if(v.isSink()){
-                    order.add(v.id);
-
-                    S.remove(v);
-
-                    for(int i : v.in){
-                        G[i].out.remove(v.id);
-                    }
-
-                    continue loop;
-                }
-            }
-
-            return new int[]{};
-        }
-
-        // fill courses not in G
-        order.addAll(IntStream.range(0, numCourses).boxed().collect(Collectors.toSet()));
-
-        return order.stream()
-                .mapToInt(i -> i)
-                .toArray();
-    }*/
 }

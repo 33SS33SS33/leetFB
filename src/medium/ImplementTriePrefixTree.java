@@ -5,9 +5,6 @@ package medium;
  * 创建最基本的字典树
  * 字典树是这样  根不保存数据  只有关于孩子的节点信息 用字典来存储
  * 一个节点只代表一个字母 一个根可以有26个孩子
- */
-
-/**
  * 标准答案
  */
 public class ImplementTriePrefixTree {

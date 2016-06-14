@@ -42,6 +42,9 @@ public class CourseSchedule {
         System.out.println(new CourseSchedule().canFinishB(2, prerequisites2));
     }
 
+    /**
+     * 最好的
+     */
     public boolean canFinisha(int numCourses, int[][] prerequisites) {
         int[][] matrix = new int[numCourses][numCourses]; // i -> j
         int[] indegree = new int[numCourses];
