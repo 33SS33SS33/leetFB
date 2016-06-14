@@ -8,9 +8,7 @@ package medium;
  * Meanwhile, the security system for these houses remain the same as for those in the previous street.
  * Given a list of non-negative integers representing the amount of money of each house,
  * determine the maximum amount of money you can rob tonight without alerting the police.
- */
-
-/**
+ * <p/>
  * DP 动态规划  很经典
  * 动态规划推算转移方程的时候 当前的D(i)表示的是当前状态的最优解
  * 而且推算的时候不要只考虑D(i-1)的状态 也要考虑 D(i-2)…之类的状态
@@ -20,8 +18,25 @@ package medium;
 public class HouseRobber2 {
     public static void main(String[] args) {
         int[] nums = { 2, 4, 1, 6 };
+        System.out.println(roba(nums));
         System.out.println(robA(nums));
         System.out.println(robB(nums));
+    }
+
+    public static int roba(int[] nums) {
+        if (nums.length == 1)
+            return nums[0];
+        return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1));
+    }
+
+    private static int roba(int[] num, int lo, int hi) {
+        int include = 0, exclude = 0;
+        for (int j = lo; j <= hi; j++) {
+            int i = include, e = exclude;
+            include = e + num[j];
+            exclude = Math.max(e, i);
+        }
+        return Math.max(include, exclude);
     }
 
     public static int robA(int[] nums) {

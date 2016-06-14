@@ -9,9 +9,7 @@ import java.util.*;
  * Note: You may assume k is always valid, 1 ≤ k ≤ array's length.
  * Tags: Divide and Conquer, Heap
  * Similar Problems: (M) Wiggle Sort II
- */
-
-/**
+ * <p/>
  * 使用快速选择算法 quick select
  * 算法有些类似快排 先选娶一个pivot 这里我选了数组第一个元素  然后把比pivot小的数放进一个数组  把比pivot大的数放进另外一个数组
  * 结束后开始和k比较  首先如果k比那个存big的数组的长度要小  就说明k落在这个数组里
@@ -24,13 +22,27 @@ class KthLargest {
     public static void main(String[] args) {
         KthLargest K = new KthLargest();
         int[] A = { 1, 23, 12, 9, 30, 2, 50 };
+        System.out.println(K.findKthLargesta(A, 3));
         System.out.println(K.findKthLargest(A, 3));
         System.out.println(K.findKthLargestB(A, 3));
         System.out.println(K.findKthLargestC(A, 3));
     }
 
     /**
-     * 最好的
+     * 最好的 O(N lg K) running time + O(K) memory
+     */
+    public int findKthLargesta(int[] nums, int k) {
+        final PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+        for (int val : nums) {
+            pq.offer(val);
+            if (pq.size() > k) {
+                pq.poll();
+            }
+        }
+        return pq.peek();
+    }
+
+    /**
      * Priority Queue
      * O(n) + k * O(logn)
      */

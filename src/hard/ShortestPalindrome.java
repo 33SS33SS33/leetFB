@@ -7,9 +7,7 @@ package hard;
  * For example:
  * Given "aacecaaa", return "aaacecaaa".
  * Given "abcd", return "dcbabcd".
- */
-
-/**
+ * <p/>
  * 这道题其实就是让你找以index 0开始的最长的回文子串  找到之后就把缺的补齐即可
  * 即补充完成之后的回文串中心必定在原字符串中，所以原字符串以第一个字符为起点必然存在至少一个回文串（长度可以为1），
  * 那么任务就变为找到原字符串中以第一个字符为起点最长的回文串，
@@ -30,6 +28,24 @@ public class ShortestPalindrome {
         String s = "abcd";
         System.out.println(shortestPalindrome(s));
         System.out.println(shortestPalindrome("aabba"));
+    }
+
+    /**
+     * 最好的
+     */
+    public static String shortestPalindromea(String s) {
+        int j = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == s.charAt(j)) {
+                j += 1;
+            }
+        }
+        if (j == s.length()) {
+            return s;
+        }
+        String suffix = s.substring(j);
+        return new StringBuffer(suffix).reverse().toString() + shortestPalindromea(
+                s.substring(0, j)) + suffix;
     }
 
     public static String shortestPalindrome(String s) {

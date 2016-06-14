@@ -21,9 +21,7 @@ import java.util.Set;
  * ['i','f','l','v']
  * ]
  * Return ["eat","oath"].
- */
-
-/**
+ * <p/>
  * 使用了字典树 trie tree 然后和第一题的答案结合起来即可
  * 因为是一个字母一个字母的搜索 所以哈希表不行 必须用字典树才能比较有效率
  */
@@ -38,9 +36,13 @@ public class WordSearchII {
         //        System.out.println(exist2(board, word));
     }
 
-    Set<String> res = new HashSet<String>();
 
-/*    public List<String> findWordsA(char[][] board, String[] words) {
+    /**
+     * 最好的
+     */
+  /*    Set<String> res = new HashSet<String>();
+
+      public List<String> findWordsA(char[][] board, String[] words) {
         Trie trie = new Trie();
         for (String word : words) {
             trie.insert(word);
@@ -79,7 +81,6 @@ public class WordSearchII {
         dfs(board, visited, str, x, y + 1, trie);
         visited[x][y] = false;
     }*/
-
     public List<String> findWordsB(char[][] board, String[] words) {
         TrieNode root = new TrieNode(null, '\0');
         for (String w : words) {
