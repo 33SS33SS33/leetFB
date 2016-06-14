@@ -22,7 +22,9 @@ import java.util.Map;
  * 最后如果是203 那么前面变成了2 而且尾部的也什么都没有了 因为中间位是0 所以是20个 010-019 110-119
  */
 
-/**每次右移一位和1与*/
+/**
+ * 每次右移一位和1与
+ */
 public class NumberofDigitOne {
     public static void main(String[] args) {
         System.out.print(new NumberofDigitOne().countDigitOne(13));

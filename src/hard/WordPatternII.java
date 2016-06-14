@@ -38,10 +38,13 @@ public class WordPatternII {
         return isMatch(str, 0, pattern, 0, map, set);
     }
 
-    boolean isMatch(String str, int i, String pat, int j, Map<Character, String> map, Set<String> set) {
+    boolean isMatch(String str, int i, String pat, int j, Map<Character, String> map,
+            Set<String> set) {
         // base case
-        if (i == str.length() && j == pat.length()) return true;
-        if (i == str.length() || j == pat.length()) return false;
+        if (i == str.length() && j == pat.length())
+            return true;
+        if (i == str.length() || j == pat.length())
+            return false;
         // get current pattern character
         char c = pat.charAt(j);
         // if the pattern character exists

@@ -45,11 +45,11 @@ class SetMartixZeros {
                 }
             }
         }
-        for(int i = 1; i < matrix.length; i++) {
-            for(int j = 1; j < matrix[0].length; j++) {
-                if(matrix[i][0] == 0 || matrix[0][j] == 0) {
+        for (int i = 1; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
-                 }
+                }
             }
         }
         //set first column and row

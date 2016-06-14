@@ -20,10 +20,12 @@ package hard;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**"使用bfs即可 最关键的地方在于建立一个同样的矩阵记录距离
- 然后原先的矩阵就当碰见一个building的时候 就bfs一下它到所有其他点得距离 这里比较方便的就是
- 可以使用-1 -2 -3来给building编号 这样每次只用检查这个点是不是等于id+1 就可以知道这个点有没有走过
- 最后的无解的判断也是通过id来进行的"	*/
+/**
+ * "使用bfs即可 最关键的地方在于建立一个同样的矩阵记录距离
+ * 然后原先的矩阵就当碰见一个building的时候 就bfs一下它到所有其他点得距离 这里比较方便的就是
+ * 可以使用-1 -2 -3来给building编号 这样每次只用检查这个点是不是等于id+1 就可以知道这个点有没有走过
+ * 最后的无解的判断也是通过id来进行的"
+ */
 public class ShortestDistancefromAllBuildings {
     public static void main(String[] args) {
         ShortestDistancefromAllBuildings r = new ShortestDistancefromAllBuildings();

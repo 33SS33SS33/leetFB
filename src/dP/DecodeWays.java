@@ -43,6 +43,7 @@ class DecodeWays {
                         memo[i + 1];
         return memo[0];
     }
+
     /**
      * Optimal, DP 一维动归
      * Reduce space to O(1)

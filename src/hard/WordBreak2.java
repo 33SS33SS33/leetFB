@@ -57,7 +57,9 @@ public class WordBreak2 {
                 else {
                     String remain = s.substring(i, len); // remaining string
                     List<String> remainDecomp = res.containsKey(remain) ?
-                            res.get(remain) : wordBreak(remain, dict); // avoid backtracking if a decomposition is already there
+                            res.get(remain) :
+                            wordBreak(remain,
+                                    dict); // avoid backtracking if a decomposition is already there
                     if (remainDecomp != null) {
                         for (String w : remainDecomp)
                             words.add(pref + " " + w);

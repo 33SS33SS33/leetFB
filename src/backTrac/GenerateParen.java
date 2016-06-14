@@ -77,6 +77,7 @@ class GenerateParen {
         }
         return lists.get(lists.size() - 1);
     }
+
     /**
      * 递归
      */

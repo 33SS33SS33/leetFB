@@ -38,7 +38,7 @@ class DungeonGame {
         int[][] dungeon = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
         int[][] dungeon2 = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
         System.out.println(new DungeonGame().calculateMinimumHP(dungeon));
-        System.out.print(new DungeonGame().calculateMinimumHPB(dungeon2));
+        System.out.println(new DungeonGame().calculateMinimumHPa(dungeon));
     }
 
     /**
@@ -65,34 +65,28 @@ class DungeonGame {
         return dungeon[0][0];
     }
 
-    /**
-     * creek------
-     */
-    public int calculateMinimumHPB(int[][] dungeon) {
+    public int calculateMinimumHPa(int[][] dungeon) {
+        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
+            return 0;
         int m = dungeon.length;
         int n = dungeon[0].length;
-        //init dp table
-        int[][] h = new int[m][n];
-        h[m - 1][n - 1] = Math.max(1 - dungeon[m - 1][n - 1], 1);
-        //init last row
+        int[][] health = new int[m][n];
+        health[m - 1][n - 1] = Math.max(1 - dungeon[m - 1][n - 1], 1);
         for (int i = m - 2; i >= 0; i--) {
-            h[i][n - 1] = Math.max(h[i + 1][n - 1] - dungeon[i][n - 1], 1);
+            health[i][n - 1] = Math.max(health[i + 1][n - 1] - dungeon[i][n - 1], 1);
         }
-        //init last column
         for (int j = n - 2; j >= 0; j--) {
-            h[m - 1][j] = Math.max(h[m - 1][j + 1] - dungeon[m - 1][j], 1);
+            health[m - 1][j] = Math.max(health[m - 1][j + 1] - dungeon[m - 1][j], 1);
         }
-        //calculate dp table
         for (int i = m - 2; i >= 0; i--) {
             for (int j = n - 2; j >= 0; j--) {
-                int down = Math.max(h[i + 1][j] - dungeon[i][j], 1);
-                int right = Math.max(h[i][j + 1] - dungeon[i][j], 1);
-                h[i][j] = Math.min(right, down);
+                int down = Math.max(health[i + 1][j] - dungeon[i][j], 1);
+                int right = Math.max(health[i][j + 1] - dungeon[i][j], 1);
+                health[i][j] = Math.min(right, down);
             }
         }
-        return h[0][0];
+        return health[0][0];
     }
-
     /**
      * Why “from the bottom right corner to left top”?
      * It depends on the way you formulate the problem. If you define a value

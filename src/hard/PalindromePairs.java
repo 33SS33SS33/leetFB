@@ -23,8 +23,8 @@ import java.util.List;
  */
 public class PalindromePairs {
     public static void main(String[] args) {
-        String[] words= { "bat", "tab", "cat" };
-        String[] words2= { "abcd", "dcba", "lls", "s", "sssll" };
+        String[] words = { "bat", "tab", "cat" };
+        String[] words2 = { "abcd", "dcba", "lls", "s", "sssll" };
         System.out.println(new PalindromePairs().palindromePairs(words));
         System.out.print(new PalindromePairs().palindromePairs(words2));
     }
@@ -41,8 +41,10 @@ public class PalindromePairs {
             while (l <= r) {
                 String s = words[i].substring(l, r);
                 Integer j = map.get(new StringBuilder(s).reverse().toString());
-                if (j != null && i != j && isPalindrome( words[i].substring(l == 0 ? r : 0, l == 0 ? words[i].length() : l)))
-                    pairs.add(Arrays.asList(l == 0 ? new Integer[] { i, j } : new Integer[] { j, i }));
+                if (j != null && i != j && isPalindrome(
+                        words[i].substring(l == 0 ? r : 0, l == 0 ? words[i].length() : l)))
+                    pairs.add(Arrays.asList(
+                            l == 0 ? new Integer[] { i, j } : new Integer[] { j, i }));
                 if (r < words[i].length())
                     ++r;
                 else

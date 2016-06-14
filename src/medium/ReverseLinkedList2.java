@@ -48,6 +48,7 @@ class ReverseLinkedList2 {
         // second reversing: dummy->1 - 4 - 3 - 2 - 5; pre = 1, start = 2, then = 5 (finish)
         return dummy.next;
     }
+
     /**
      * Move pointers to m
      * Then insert next code to sublist's head till we reach n

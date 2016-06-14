@@ -26,8 +26,7 @@ import java.util.Queue;
  */
 public class FindMedianfromDataStream {
 
-    private Queue<Long> small = new PriorityQueue(),
-            large = new PriorityQueue();
+    private Queue<Long> small = new PriorityQueue(), large = new PriorityQueue();
 
     public void addNum(int num) {
         large.add((long) num);
@@ -37,8 +36,6 @@ public class FindMedianfromDataStream {
     }
 
     public double findMedian() {
-        return large.size() > small.size()
-                ? large.peek()
-                : (large.peek() - small.peek()) / 2.0;
+        return large.size() > small.size() ? large.peek() : (large.peek() - small.peek()) / 2.0;
     }
 }

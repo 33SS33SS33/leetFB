@@ -75,6 +75,7 @@ public class BasicCalculator {
 
     static class RPNCalculator {
         LinkedList<Integer> stack = new LinkedList<Integer>();
+
         void addToken(Token t) {
             if (t.type == TokenType.OP) {
                 int v2 = stack.pop();
@@ -99,6 +100,7 @@ public class BasicCalculator {
                 stack.push(t.val);
             }
         }
+
         int val() {
             return stack.peek();
         }

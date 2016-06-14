@@ -11,7 +11,7 @@ import java.util.*;
  * Given height = [2,1,5,6,2,3],
  * return 10.
  * Tags: Array, Stack
- *
+ * <p/>
  * 主要思路可以看geeksforgeeks
  * 首先 主体思路就是对于每个bar 我们都去求出以当前的bar为最低的bar的面积
  * 然后所有这些面积的最大值就是结果
@@ -37,11 +37,11 @@ class LargestRectangleInHist {
         int len = height.length;
         Stack<Integer> s = new Stack<Integer>();
         int maxArea = 0;
-        for(int i = 0; i <= len; i++){
+        for (int i = 0; i <= len; i++) {
             int h = (i == len ? 0 : height[i]);
-            if(s.isEmpty() || h >= height[s.peek()]){
+            if (s.isEmpty() || h >= height[s.peek()]) {
                 s.push(i);
-            }else{
+            } else {
                 int tp = s.pop();
                 maxArea = Math.max(maxArea, height[tp] * (s.isEmpty() ? i : i - 1 - s.peek()));
                 i--;
@@ -49,6 +49,7 @@ class LargestRectangleInHist {
         }
         return maxArea;
     }
+
     /**
      * Only height is smaller do update happens
      * Stack for indices
@@ -61,7 +62,8 @@ class LargestRectangleInHist {
         int max = 0;
         Stack<Integer> s = new Stack<Integer>(); // store indices
         for (int i = 0; i < height.length; i++) {
-            while (!s.isEmpty() && height[i] < height[s.peek()]) {//update when current height is smaller
+            while (!s.isEmpty() && height[i] < height[s
+                    .peek()]) {//update when current height is smaller
                 int h = height[s.pop()];
                 int w = (s.isEmpty() ? i : i - s.peek() - 1);
                 max = Math.max(max, h * w);

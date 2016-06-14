@@ -84,7 +84,6 @@ class JumpGame {
         return true;
     }
 
-
     /**
      * creek
      * The key to solve this problem is to find:

@@ -61,6 +61,7 @@ class PopulatingNextRight {
             level_start = level_start.left;
         }
     }
+
     /**
      * Iterative
      * Store node in previous line

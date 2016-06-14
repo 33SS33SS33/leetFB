@@ -34,14 +34,14 @@ class Graycode {
         System.out.println(new Graycode().grayCode(3));
     }
 
-
-//    The idea is simple. G(i) = i^ (i/2).
+    //    The idea is simple. G(i) = i^ (i/2).
     public List<Integer> grayCode(int n) {
         List<Integer> result = new LinkedList<>();
-        for (int i = 0; i < 1<<n; i++)
-            result.add(i ^ i>>1);
+        for (int i = 0; i < 1 << n; i++)
+            result.add(i ^ i >> 1);
         return result;
     }
+
     /**
      * 最好的~~~
      * generate 0, 1 then add 10 from back to get 11, 10

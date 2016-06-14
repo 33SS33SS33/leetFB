@@ -2,10 +2,10 @@ package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
- A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
- Write a function to count the total strobogrammatic numbers that exist in the range of low <= num <= high.
- For example,
- Given low = "50", high = "100", return 3. Because 69, 88, and 96 are three strobogrammatic numbers.
+ * A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+ * Write a function to count the total strobogrammatic numbers that exist in the range of low <= num <= high.
+ * For example,
+ * Given low = "50", high = "100", return 3. Because 69, 88, and 96 are three strobogrammatic numbers.
  */
 
 /**
@@ -15,7 +15,7 @@ package hard;
  */
 public class StrobogrammaticNumber3 {
     public static void main(String[] args) {
-        System.out.println(new StrobogrammaticNumber3().strobogrammaticInRange("50","100"));
+        System.out.println(new StrobogrammaticNumber3().strobogrammaticInRange("50", "100"));
     }
 
     char[][] pairs = { { '0', '0' }, { '1', '1' }, { '6', '9' }, { '8', '8' }, { '9', '6' } };

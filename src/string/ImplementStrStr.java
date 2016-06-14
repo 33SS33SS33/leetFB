@@ -69,6 +69,7 @@ public class ImplementStrStr {
         }
         return -1;
     }
+
     /**
      * brute force
      */

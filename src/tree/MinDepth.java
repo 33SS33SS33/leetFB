@@ -34,13 +34,13 @@ public class MinDepth {
         System.out.println(new MinDepth().minDepth(root));
     }
 
-        public int minDeptha(TreeNode root) {
-            if (root == null)
-                return 0;
-            int left = minDeptha(root.left);
-            int right = minDeptha(root.right);
-            return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
-        }
+    public int minDeptha(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = minDeptha(root.left);
+        int right = minDeptha(root.right);
+        return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
+    }
 
     /**
      * Recursive 递归

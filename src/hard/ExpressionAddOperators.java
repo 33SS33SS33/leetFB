@@ -13,7 +13,7 @@ import java.util.List;
  * "105", 5 -> ["1*0+5","10-5"]
  * "00", 0 -> ["0+0", "0-0", "0*0"]
  * "3456237490", 9191 -> []
- *
+ * <p/>
  * 自己写的用eval的超时了
  * 难点在于乘法的处理  要用到变量存储之前的结果
  * 注意last的使用
@@ -33,7 +33,8 @@ public class ExpressionAddOperators {
         return rst;
     }
 
-    public void helper(List<String> rst, String path, String num, int target, int pos, long eval, long multed) {
+    public void helper(List<String> rst, String path, String num, int target, int pos, long eval,
+            long multed) {
         if (pos == num.length()) {
             if (target == eval)
                 rst.add(path);
@@ -48,7 +49,8 @@ public class ExpressionAddOperators {
             } else {
                 helper(rst, path + "+" + cur, num, target, i + 1, eval + cur, cur);
                 helper(rst, path + "-" + cur, num, target, i + 1, eval - cur, -cur);
-                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur);
+                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur,
+                        multed * cur);
             }
         }
     }

@@ -141,7 +141,6 @@ class LongestSubstringWithoutRepeating {
         return max;
     }
 
-
     public static int lengthOfLongestSubstringe(String s) {
         boolean[] exist = new boolean[256];
         int i = 0, maxLen = 0;

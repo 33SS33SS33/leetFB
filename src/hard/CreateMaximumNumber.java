@@ -30,7 +30,7 @@ package hard;
  * python是可以直接比较两个数组的大小的
  * https://leetcode.com/discuss/75756/share-my-greedy-solution
  * http://algobox.org/2015/12/24/create-maximum-number/
- *
+ * <p/>
  * Many of the posts have the same algorithm. In short we can first solve 2 simpler problem
  * Create the maximum number of one array
  * Create the maximum number of two array using all of their digits.

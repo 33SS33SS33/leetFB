@@ -32,7 +32,9 @@ class ValidSudoku {
         System.out.println(v.isValidSudokuC(board));
     }
 
-    /**Each time send the coordinates to check if the board is partially valid.*/
+    /**
+     * Each time send the coordinates to check if the board is partially valid.
+     */
     public boolean isValidSudokuA(char[][] board) {
         for (int i = 0; i < 9; i++) {
             if (!isParticallyValid(board, i, 0, i, 8))
@@ -60,6 +62,7 @@ class ValidSudoku {
         }
         return true;
     }
+
     /**
      * Use three arrays of integers to do masking
      */

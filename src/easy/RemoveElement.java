@@ -27,6 +27,7 @@ class RemoveElement {
                 A[begin++] = A[i];
         return begin;
     }
+
     /**
      * Order is not important
      * Just move the last elem to removed position
