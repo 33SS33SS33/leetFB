@@ -14,9 +14,7 @@ import java.util.*;
  * 2, [[1,0],[0,1]]
  * There are a total of 2 courses to take. To take course 1 you should have finished course 0,
  * and to take course 0 you should also have finished course 1. So it is impossible.
- */
-
-/**
+ * <p/>
  * 这题需要用到拓扑排序
  * 可以用改进的DFS 每次dfs另外传入一个变量 来记录当前的路径 当某个点发现自己已经在路径上了 就说明有环 就返回False 这里要注意 要在递归退出来之后 再将当前的点标记为searched 要不就无法前进到有环的那个点
  * 没有实现DFS
@@ -36,10 +34,41 @@ public class CourseSchedule {
         int[][] prerequisites = { { 1, 0 } };
         int[][] prerequisites2 = { { 1, 0 }, { 0, 1 } };
 
+        System.out.println(new CourseSchedule().canFinisha(2, prerequisites));
         System.out.println(new CourseSchedule().canFinishA(2, prerequisites));
         System.out.println(new CourseSchedule().canFinishB(2, prerequisites));
+        System.out.println(new CourseSchedule().canFinisha(2, prerequisites2));
         System.out.println(new CourseSchedule().canFinishA(2, prerequisites2));
         System.out.println(new CourseSchedule().canFinishB(2, prerequisites2));
+    }
+
+    public boolean canFinisha(int numCourses, int[][] prerequisites) {
+        int[][] matrix = new int[numCourses][numCourses]; // i -> j
+        int[] indegree = new int[numCourses];
+        for (int i = 0; i < prerequisites.length; i++) {
+            int ready = prerequisites[i][0];
+            int pre = prerequisites[i][1];
+            if (matrix[pre][ready] == 0)
+                indegree[ready]++; //duplicate case
+            matrix[pre][ready] = 1;
+        }
+        int count = 0;
+        Queue<Integer> queue = new LinkedList();
+        for (int i = 0; i < indegree.length; i++) {
+            if (indegree[i] == 0)
+                queue.offer(i);
+        }
+        while (!queue.isEmpty()) {
+            int course = queue.poll();
+            count++;
+            for (int i = 0; i < numCourses; i++) {
+                if (matrix[course][i] != 0) {
+                    if (--indegree[i] == 0)
+                        queue.offer(i);
+                }
+            }
+        }
+        return count == numCourses;
     }
 
     /**

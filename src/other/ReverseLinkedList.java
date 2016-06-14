@@ -30,6 +30,35 @@ class ReverseLinkedList {
 
     /**
      * 递归
+     */
+    public Node reverseListb(Node head) {
+        return reverseListInt(head, null);
+    }
+
+    public Node reverseListInt(Node head, Node newHead) {
+        if (head == null)
+            return newHead;
+        Node next = head.next;
+        head.next = newHead;
+        return reverseListInt(next, head);
+    }
+
+    /**
+     * 迭代
+     */
+    public Node reverseLista(Node head) {
+        Node newHead = null;
+        while (head != null) {
+            Node next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next;
+        }
+        return newHead;
+    }
+
+    /**
+     * 递归
      * Recursive
      * Divide the list in 2 parts - first node and rest of the linked list
      * Call reverse for the rest of the linked list
