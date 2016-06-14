@@ -19,6 +19,7 @@ public class FirstBadVersion {
         System.out.println(new FirstBadVersion().firstBadVersionB(3));
     }
 
+    //最好的
     public int firstBadVersion(int n) {
         int start = 1, end = n;
         while (start < end) {
