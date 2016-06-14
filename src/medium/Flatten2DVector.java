@@ -1,13 +1,10 @@
 package medium;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
 import java.util.Iterator;
 import java.util.List;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/18.
  * 先把2d转成一个一维list即可
  */
 public class Flatten2DVector {

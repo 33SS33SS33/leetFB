@@ -8,9 +8,7 @@ package easy;
  * return false.
  * 一个人能不能参加所有会议按照start来排序 如果后一个的end 小于 前一个的start 就return False
  * 按照start来排序 如果后一个的end 小于 前一个的start 就return False
- */
-
-/**
+ * <p/>
  * 按照start来排序 如果后一个的end 小于 前一个的start 就return False
  * 会议中间时间没有重叠的话就可以参加
  */
