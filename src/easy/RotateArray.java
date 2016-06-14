@@ -1,12 +1,9 @@
 package easy;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/6.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/6.
  * Rotate an array of n elements to the right by k steps
  * For example, with n = 7 and k = 3,
  * the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
@@ -18,9 +15,7 @@ import java.util.*;
  * Related problem:
  * Reverse Words in a String II
  * Tags: Array
- */
-
-/**
+ * <p/>
  * 重要的一道题 有很多解法
  * 比如重新构造两个字符串 然后拼接 要用到额外的空间 未实现
  * 将两部分翻转 之后再整体翻转 实现
@@ -47,6 +42,23 @@ class RotateArray {
         int k3 = 2;
         r.rotate3(nums3, k3);
         System.out.println(Arrays.toString(nums3));
+    }
+
+    public void rotatea(int[] nums, int k) {
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+
+    public void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
     }
 
     /**

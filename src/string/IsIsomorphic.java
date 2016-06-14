@@ -6,18 +6,34 @@ import java.util.Map;
 /**
  * Created by GAOSHANSHAN835 on 2015/12/23.
  * For example,"egg" and "add" are isomorphic, "foo" and "bar" are not.
- */
-
-/**
+ * <p/>
  * 有很多解法 很重要的题目
  */
 public class IsIsomorphic {
     public static void main(String[] args) {
         String s = "foo";
         String t = "bar";
+        System.out.println(new IsIsomorphic().isIsomorphica(s, t));
         System.out.println(new IsIsomorphic().isIsomorphicA(s, t));
         System.out.println(new IsIsomorphic().isIsomorphicB(s, t));
         System.out.println();
+    }
+
+    /**
+     * The main idea is to store the last seen positions of current (i-th) characters in both 最好的
+     * strings. If previously stored positions are different then we know that the fact they're
+     * occuring in the current i-th position simultaneously is a mistake. We could use a
+     * map for storing but as we deal with chars which are basically ints and can be used as
+     * indices we can do the whole thing with an array
+     */
+    public boolean isIsomorphica(String s1, String s2) {
+        int[] m = new int[512];
+        for (int i = 0; i < s1.length(); i++) {
+            if (m[s1.charAt(i)] != m[s2.charAt(i) + 256])
+                return false;
+            m[s1.charAt(i)] = m[s2.charAt(i) + 256] = i + 1;
+        }
+        return true;
     }
 
     public boolean isIsomorphicA(String s, String t) {

@@ -5,9 +5,7 @@ import java.util.BitSet;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Count the number of prime numbers less than a non-negative number, n.
- */
-
-/**
+ * <p/>
  * 埃拉托斯特尼筛法
  */
 public class CountPrimes {

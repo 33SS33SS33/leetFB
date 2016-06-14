@@ -14,9 +14,7 @@ import java.util.*;
  * Cache result for each bytes.
  * Related problem: Reverse Integer
  * Tags: Bit Manipulation
- */
-
-/**
+ * <p/>
  * 优化的办法就是先把0000 - 1111的翻转都存起来 这样就可以四位四位的截取 然后查询了
  */
 class ReverseBits {

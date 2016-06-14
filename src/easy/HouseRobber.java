@@ -7,16 +7,39 @@ package easy;
  * security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
  * Given a list of non-negative integers representing the amount of money of each house,
  * determine the maximum amount of money you can rob tonight without alerting the police.
- */
-
-/**
+ * <p/>
  * dp[i] = max(dp[i-2]+nums[i], dp[i-1])
  * 注意一下初始化条件 dp[0], dp[1] = nums[0], max(nums[0], nums[1])
  */
 public class HouseRobber {
     public static void main(String[] args) {
         int[] num = { 5, 4, 6, 7 };
+        System.out.println(new HouseRobber().roba(num));
         System.out.println(new HouseRobber().rob(num));
+    }
+
+    /**
+     * dp[i][1] means we rob the current house and dp[i][0] means we don't,
+     */
+    public int roba(int[] num) {
+        int[][] dp = new int[num.length + 1][2];
+        for (int i = 1; i <= num.length; i++) {
+            dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1]);
+            dp[i][1] = num[i - 1] + dp[i - 1][0];
+        }
+        return Math.max(dp[num.length][0], dp[num.length][1]);
+    }
+
+    /**上面的简化为*/
+    public int roba2(int[] num) {
+        int prevNo = 0;
+        int prevYes = 0;
+        for (int n : num) {
+            int temp = prevNo;
+            prevNo = Math.max(prevNo, prevYes);
+            prevYes = n + temp;
+        }
+        return Math.max(prevNo, prevYes);
     }
 
     public int rob(int[] num) {

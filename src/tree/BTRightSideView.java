@@ -6,9 +6,7 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
+ * <p/>
  * 用BFS即可
  * BFS一般要用到双端队列 而且要用两个循环 大循环是遍历整个树或图(如果下一层所有节点是空 循环结束) 小循环是访问当前这一层的所有节点 然后压人下一层所有的节点
  * BFS可以一个用while 一个用for 重要
@@ -19,6 +17,26 @@ public class BTRightSideView {
         System.out.println(new BTRightSideView().rightSideViewA(root));
         System.out.println(new BTRightSideView().rightSideViewC(root));
         System.out.println(new BTRightSideView().rightSideViewB(root));
+    }
+
+    /**
+     * elegant-- 最好的
+     */
+    public List<Integer> rightSideViewC(TreeNode root) {
+        List<Integer> result = new ArrayList<Integer>();
+        rightView(root, result, 0);
+        return result;
+    }
+
+    public void rightView(TreeNode curr, List<Integer> result, int currDepth) {
+        if (curr == null) {
+            return;
+        }
+        if (currDepth == result.size()) {
+            result.add(curr.val);
+        }
+        rightView(curr.right, result, currDepth + 1);
+        rightView(curr.left, result, currDepth + 1);
     }
 
     /**
@@ -36,26 +54,6 @@ public class BTRightSideView {
             rt.addAll(left.subList(right.size(), left.size()));
         }
         return rt;
-    }
-
-    /**
-     * elegant--
-     */
-    public List<Integer> rightSideViewC(TreeNode root) {
-        List<Integer> result = new ArrayList<Integer>();
-        rightView(root, result, 0);
-        return result;
-    }
-
-    public void rightView(TreeNode curr, List<Integer> result, int currDepth) {
-        if (curr == null) {
-            return;
-        }
-        if (currDepth == result.size()) {
-            result.add(curr.val);
-        }
-        rightView(curr.right, result, currDepth + 1);
-        rightView(curr.left, result, currDepth + 1);
     }
 
     public List<Integer> rightSideViewB(TreeNode root) {

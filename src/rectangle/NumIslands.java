@@ -7,9 +7,7 @@ package rectangle;
  * 00100
  * 00011
  * answer：3
- */
-
-/**
+ * <p/>
  * 使用DFS即可 设置一个矩阵记录有没有访问过
  * 然后遍历grid 如果这个点为1且没访问过 就调用dfs开始查找他附近都是1的点 然后visit都置为True 这样就说明找到了一个岛
  * dfs的时候 少一层递归会快很多  所以才直接限定了dfs的调用
@@ -26,7 +24,7 @@ public class NumIslands {
     }
 
     /**
-     * creek-----
+     * creek-----最好的
      */
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0)

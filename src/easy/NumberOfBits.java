@@ -11,10 +11,20 @@ class NumberOfBits {
     public static void main(String[] args) {
         NumberOfBits nob = new NumberOfBits();
         int n = 111;
+        System.out.println(nob.hammingWeighta(n));
         System.out.println(nob.hammingWeight(n));
         System.out.println(nob.hammingWeightB(n));
         System.out.println(nob.hammingWeightC(n));
         System.out.println(nob.hammingWeightD(n));
+    }
+
+    public static int hammingWeighta(int n) {
+        int ones = 0;
+        while (n != 0) {
+            ones = ones + (n & 1);
+            n = n >>> 1;
+        }
+        return ones;
     }
 
     /**
