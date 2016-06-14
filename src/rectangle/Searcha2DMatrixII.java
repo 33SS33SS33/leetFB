@@ -15,9 +15,7 @@ package rectangle;
  * ]
  * Given target = 5, return true.
  * Given target = 20, return false.
- */
-
-/**
+ * <p/>
  * 首先row设置从第一行开始 列从最后一行开始  先移动列
  * 直到当前比target小  那么就往下移动行 如果碰见了元素超过了 target 就继续向左移动列
  */
@@ -30,7 +28,9 @@ public class Searcha2DMatrixII {
         System.out.println(s.searchMatrixB(matrix, 5));
     }
 
-    /**最好的*/
+    /**
+     * 最好的
+     */
     public boolean searchMatrixA(int[][] matrix, int target) {
         if (matrix == null || matrix.length < 1 || matrix[0].length < 1) {
             return false;

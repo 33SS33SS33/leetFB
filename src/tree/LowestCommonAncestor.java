@@ -6,9 +6,7 @@ package tree;
  * write a program to find the least common ancestor.
  * Allow a node to be a descendant of itself
  * Tags: Tree
- */
-
-/**
+ * <p/>
  * 有递归和迭代两种解法
  * 递归比较好理解 首先检查当前节点是否为None或者p或者q 如果是直接返回
  * 然后递归分别访问当前节点的左右子树 如果左右子树分别找到了两个节点 那么就说明当前的节点就是他们的祖先
@@ -56,7 +54,7 @@ class LowestCommonAncestor {
     }
 
     /**
-     * creek------
+     * creek------ 最好的
      */
     public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {
         return lcaHelper(root, p, q).node;

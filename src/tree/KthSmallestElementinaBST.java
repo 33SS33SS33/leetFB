@@ -11,7 +11,6 @@ import java.util.Stack;
  * 要熟练掌握二叉树的 递归和迭代遍历
  */
 
-// * 错的
 public class KthSmallestElementinaBST {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(4);
@@ -25,8 +24,52 @@ public class KthSmallestElementinaBST {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
+        System.out.println(new KthSmallestElementinaBST().kthSmallesta(root, 3));
+        System.out.println(new KthSmallestElementinaBST().kthSmallesta3(root, 3));
         System.out.println(new KthSmallestElementinaBST().kthSmallestA(root, 3));
         System.out.println(new KthSmallestElementinaBST().kthSmallestB(root, 3));
+    }
+
+    /**
+     * Binary Search (dfs): most preferable
+     */
+    public int kthSmallesta(TreeNode root, int k) {
+        int count = countNodes(root.left);
+        if (k <= count) {
+            return kthSmallesta(root.left, k);
+        } else if (k > count + 1) {
+            return kthSmallesta(root.right, k - 1 - count); // 1 is counted as current node
+        }
+        return root.val;
+    }
+
+    public int countNodes(TreeNode n) {
+        if (n == null)
+            return 0;
+        return 1 + countNodes(n.left) + countNodes(n.right);
+    }
+
+    /**
+     * DFS in-order iterative
+     */
+    public int kthSmallesta3(TreeNode root, int k) {
+        Stack<TreeNode> st = new Stack<TreeNode>();
+        while (root != null) {
+            st.push(root);
+            root = root.left;
+        }
+        while (k != 0) {
+            TreeNode n = st.pop();
+            k--;
+            if (k == 0)
+                return n.val;
+            TreeNode right = n.right;
+            while (right != null) {
+                st.push(right);
+                right = right.left;
+            }
+        }
+        return -1; // never hit if k is valid
     }
 
     boolean reachLeftMost = false;
@@ -44,7 +87,6 @@ public class KthSmallestElementinaBST {
         if (stop) {
             return;
         }
-        // visit
         if (root == null) {
             reachLeftMost = true;
             return;

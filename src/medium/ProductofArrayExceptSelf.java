@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- */
-
-/**
  * 解法比较巧妙
  * 由于output[i] = (x0 * x1 * ... * xi-1) * (xi+1 * .... * xn-1)
  * 因此执行两趟循环：

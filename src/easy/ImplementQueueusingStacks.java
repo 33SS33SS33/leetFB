@@ -3,41 +3,30 @@ package easy;
 import java.util.Stack;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
- * 在push的时候用一个临时栈来把顺序倒一下就好 stack存的是queue的顺序 所以剩下的操作都是o1
+ * Created by GAOSHANSHAN835 on 2016/3/3.
  */
 public class ImplementQueueusingStacks {
-    // should use Deque<Integer> stack in modern java
-    Stack<Integer> stack = new Stack<Integer>();
 
-    // Push element x to the back of queue.
+    Stack<Integer> input  = new Stack();
+    Stack<Integer> output = new Stack();
+
     public void push(int x) {
-        Stack<Integer> rev = new Stack<Integer>();
-        while (!stack.empty()) {
-            rev.push(stack.pop());
-        }
-        rev.push(x);
-        while (!rev.empty()) {
-            stack.push(rev.pop());
-        }
+        input.push(x);
     }
 
-    // Removes the element from in front of queue.
     public void pop() {
-        stack.pop();
+        peek();
+        output.pop();
     }
 
-    // Get the front element.
     public int peek() {
-        return stack.peek();
+        if (output.empty())
+            while (!input.empty())
+                output.push(input.pop());
+        return output.peek();
     }
 
-    // Return whether the queue is empty.
     public boolean empty() {
-        return stack.empty();
+        return input.empty() && output.empty();
     }
 }
-

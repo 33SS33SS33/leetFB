@@ -1,5 +1,7 @@
 package hard;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.LinkedList;
 
 /**
@@ -15,9 +17,7 @@ import java.util.LinkedList;
  * 1  3  -1  -3 [5  3  6] 7       6
  * 1  3  -1  -3  5 [3  6  7]      7
  * Therefore, return the max sliding window as [3,3,5,5,6,7].
- */
-
-/**
+ * <p/>
  * 遍历数组nums，使用双端队列deque维护滑动窗口内有可能成为最大值元素的数组下标
  * 由于数组中的每一个元素至多只会入队、出队一次，因此均摊时间复杂度为O(n)
  * 记当前下标为i，则滑动窗口的有效下标范围为[i - (k - 1), i]
@@ -29,10 +29,42 @@ import java.util.LinkedList;
 public class SlidingWindowMaximum {
     public static void main(String[] args) {
         int[] A = { 1, 3, -1, -3, 5, 3, 6, 7 };
+        int[] res1 = maxSlidingWindowa(A, 3);
         int[] res = maxSlidingWindow(A, 3);
-        for (int i : res) {
-            System.out.println(i);
+        for (int i : res1) {
+            System.out.print(i + " ");
         }
+        System.out.println();
+        for (int i : res) {
+            System.out.print(i + " ");
+        }
+    }
+
+    public static int[] maxSlidingWindowa(int[] a, int k) {
+        if (a == null || k <= 0) {
+            return new int[0];
+        }
+        int n = a.length;
+        int[] r = new int[n - k + 1];
+        int ri = 0;
+        // store index
+        Deque<Integer> q = new ArrayDeque<Integer>();
+        for (int i = 0; i < a.length; i++) {
+            // remove numbers out of range k
+            while (!q.isEmpty() && q.peek() < i - k + 1) {
+                q.poll();
+            }
+            // remove smaller numbers in k range as they are useless
+            while (!q.isEmpty() && a[q.peekLast()] < a[i]) {
+                q.pollLast();
+            }
+            // q contains index... r contains content
+            q.offer(i);
+            if (i >= k - 1) {
+                r[ri++] = a[q.peek()];
+            }
+        }
+        return r;
     }
 
     public static int[] maxSlidingWindow(int[] nums, int k) {

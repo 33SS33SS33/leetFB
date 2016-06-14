@@ -16,9 +16,7 @@ package medium;
  * Given word1 = "makes", word2 = "coding", return 1.
  * Note:
  * You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
- */
-
-/**
+ * <p/>
  * 两个变量 一个存word1得位置  一个存word2得位置 每次碰见就计算一次距离
  */
 public class ShortestWordDistance {
@@ -27,9 +25,14 @@ public class ShortestWordDistance {
         String word1 = "cog";
         String word2 = "car";
         int res = new ShortestWordDistance().shortestDistance(words, word1, word2);
+        int res2 = new ShortestWordDistance().shortestDistanceb(words, word1, word2);
         System.out.println(res);
+        System.out.println(res2);
     }
 
+    /**
+     * 最好的
+     */
     public int shortestDistance(String[] words, String word1, String word2) {
         int len = words.length;
         int i1 = -1;
@@ -45,5 +48,19 @@ public class ShortestWordDistance {
             }
         }
         return len;
+    }
+
+    //错的
+    public int shortestDistanceb(String[] words, String word1, String word2) {
+        int index = -1, minDistance = Integer.MAX_VALUE;
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(word1) || words[i].equals(word2)) {
+                if (index != -1 && !words[index].equals(words[i])) {
+                    minDistance = Math.min(minDistance, i - index);
+                }
+                index = i;
+            }
+        }
+        return minDistance;
     }
 }

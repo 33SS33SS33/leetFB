@@ -2,9 +2,6 @@ package list;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * 首先快慢指针找中点
  * 然后把中点之后的翻转
  * 然后翻转过后的和开头的挨个比较
