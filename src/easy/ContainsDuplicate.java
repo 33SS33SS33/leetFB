@@ -7,9 +7,7 @@ import java.util.Set;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given an array of integers, find if the array contains any duplicates.
  * Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
- */
-
-/**
+ * <p/>
  * 用set
  */
 public class ContainsDuplicate {
@@ -18,6 +16,9 @@ public class ContainsDuplicate {
         System.out.println(containsDuplicate(num));
     }
 
+    /**
+     * 最好的
+     */
     public static boolean containsDuplicate(int[] nums) {
         Set<Integer> s = new HashSet<Integer>();
         for (int n : nums) {

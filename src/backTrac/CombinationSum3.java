@@ -1,6 +1,7 @@
 package backTrac;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,16 +10,37 @@ import java.util.List;
  * Ensure that numbers within the set are sorted in ascending order.
  * Example 1: Input: k = 3, n = 7 Output: [[1,2,4]]
  * Example 2: Input: k = 3, n = 9 Output: [[1,2,6], [1,3,5], [2,3,4]]
- */
-
-/**
+ * <p/>
  * DFS即可
  */
 public class CombinationSum3 {
     public static void main(String[] args) {
         CombinationSum3 cs = new CombinationSum3();
+        System.out.println(cs.combinationSum3a(3, 7));
         System.out.println(cs.combinationSum3A(3, 7));
         System.out.println(cs.combinationSum3B(3, 9));
+    }
+
+    private List<List<Integer>> res = new ArrayList<List<Integer>>();
+
+    public List<List<Integer>> combinationSum3a(int k, int n) {
+        findCombo(k, n, 1, new LinkedList<Integer>());
+        return res;
+    }
+
+    public void findCombo(int k, int n, int start, List<Integer> list) {
+        if (k == 1) {
+            if (n < start || n > 9)
+                return;
+            list.add(n);
+            res.add(list);
+            return;
+        }
+        for (int i = start; i <= n / k && i < 10; i++) {
+            List<Integer> subList = new LinkedList<Integer>(list);
+            subList.add(i);
+            findCombo(k - 1, n - i, i + 1, subList);
+        }
     }
 
     public List<List<Integer>> combinationSum3A(int k, int n) {

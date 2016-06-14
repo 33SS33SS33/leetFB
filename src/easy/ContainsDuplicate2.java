@@ -16,12 +16,28 @@ public class ContainsDuplicate2 {
     public static void main(String[] args) {
         int[] num = { 1, 3, 7, 5, 8 };
         int[] num2 = { 1, 3, 7, 3, 8 };
+        System.out.println(containsNearbyDuplicatea(num, 3));
         System.out.println(containsNearbyDuplicate(num, 3));
         System.out.println(containsNearbyDuplicateB(num, 3));
         System.out.println(containsNearbyDuplicateC(num, 3));
+        System.out.println(containsNearbyDuplicatea(num2, 3));
         System.out.println(containsNearbyDuplicate(num2, 3));
         System.out.println(containsNearbyDuplicateB(num2, 3));
         System.out.println(containsNearbyDuplicateC(num2, 3));
+    }
+
+    /**
+     * 最好的
+     */
+    public static boolean containsNearbyDuplicatea(int[] nums, int k) {
+        Set<Integer> set = new HashSet<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (i > k)
+                set.remove(nums[i - k - 1]);
+            if (!set.add(nums[i]))
+                return true;
+        }
+        return false;
     }
 
     /**
