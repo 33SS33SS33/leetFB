@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * DP 动态规划
  * 状态转移方程：
  * dp[x][y] = min(dp[x - 1][y - 1], dp[x][y - 1], dp[x - 1][y]) + 1
@@ -30,7 +27,6 @@ public class MaxSquare {
      * If they're not same, they can increase by 1 to the minimal square.
      * If you take an example and work it out,
      * it'll be much easier to understand when it comes to dynamic programing. :)
-     * <p/>
      * b[i][j] represent the edge length of the largest square ENDING at position (i, j)
      */
     public int maximalSquareA(char[][] a) {

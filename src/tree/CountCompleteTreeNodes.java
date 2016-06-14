@@ -8,9 +8,7 @@ package tree;
  * level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
  * Tags: Tree, Binary Search
  * Similar Problems: (E) Closest Binary Search Tree Value
- */
-
-/**
+ * <p/>
  * 首先先计算树的高度  树的高度是从0开始算的  然后直接把最左边的子树压到低的出来的就是高度
  * 然后对最下面的一排子树进行二分查找 如果是满二叉树 最底层应该有2^height个节点 所以将最下面的节点编号 0 …..2^height -1 然后进行二分查找 如果中间值有节点 则就继续往右半部分找 否则往左半部分找 直到left > right
  * 本题最关键的是如何找到二叉树的第n个节点 由于之前把最后一层的节点编号了 如果用二进制表示的 下面的节点比如 01节点 就说明是碰见0就先左走 然后碰见1就往右走
@@ -31,9 +29,52 @@ public class CountCompleteTreeNodes {
         n1.right = n4;
         n2.left = n5;
         n2.right = n6;
+        System.out.println(new CountCompleteTreeNodes().countNodesa(root));
         System.out.println(new CountCompleteTreeNodes().countNodesA(root));
-        System.out.println(new CountCompleteTreeNodes().countNodesB(root));
         System.out.println(new CountCompleteTreeNodes().countNodesC(root));
+    }
+
+    /**
+     * creek-------
+     * Steps to solve this problem:
+     * 1) get the height of left-most part
+     * 2) get the height of right-most part
+     * 3) when they are equal, the # of nodes = 2^h -1
+     * 4) when they are not equal, recursively get # of nodes from left&right sub-trees
+     * Time complexity is O(h^2)
+     */
+    public int countNodesa(TreeNode root) {
+        if (root == null)
+            return 0;
+        int left = getLeftHeight(root) + 1;
+        int right = getRightHeight(root) + 1;
+        if (left == right) {
+            return (2 << (left - 1)) - 1;
+        } else {
+            return countNodesa(root.left) + countNodesa(root.right) + 1;
+        }
+    }
+
+    public int getLeftHeight(TreeNode n) {
+        if (n == null)
+            return 0;
+        int height = 0;
+        while (n.left != null) {
+            height++;
+            n = n.left;
+        }
+        return height;
+    }
+
+    public int getRightHeight(TreeNode n) {
+        if (n == null)
+            return 0;
+        int height = 0;
+        while (n.right != null) {
+            height++;
+            n = n.right;
+        }
+        return height;
     }
 
     public int countNodesC(TreeNode root) {
@@ -107,49 +148,6 @@ public class CountCompleteTreeNodes {
         if (root == null)
             return 0;
         return 1 + height(root.left);
-    }
-
-    /**
-     * creek-------
-     * Steps to solve this problem:
-     * 1) get the height of left-most part
-     * 2) get the height of right-most part
-     * 3) when they are equal, the # of nodes = 2^h -1
-     * 4) when they are not equal, recursively get # of nodes from left&right sub-trees
-     * Time complexity is O(h^2)
-     */
-    public int countNodesB(TreeNode root) {
-        if (root == null)
-            return 0;
-        int left = getLeftHeight(root) + 1;
-        int right = getRightHeight(root) + 1;
-        if (left == right) {
-            return (2 << (left - 1)) - 1;
-        } else {
-            return countNodesB(root.left) + countNodesB(root.right) + 1;
-        }
-    }
-
-    public int getLeftHeight(TreeNode n) {
-        if (n == null)
-            return 0;
-        int height = 0;
-        while (n.left != null) {
-            height++;
-            n = n.left;
-        }
-        return height;
-    }
-
-    public int getRightHeight(TreeNode n) {
-        if (n == null)
-            return 0;
-        int height = 0;
-        while (n.right != null) {
-            height++;
-            n = n.right;
-        }
-        return height;
     }
 
     public static class TreeNode {

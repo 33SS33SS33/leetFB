@@ -7,9 +7,6 @@ import java.util.Stack;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
-
-/**
  * 可以把所有都看成加法只是加正数还是加负数
  * 所以有一个sign来记录标志位
  * 如果碰见括号 就先把之前的结果还有sign保存进栈 然后括号结束在拿出来计算

@@ -8,9 +8,7 @@ import java.util.*;
  * find out whether there are two distinct indices i and j in the array such that the difference between nums[i]
  * and nums[j] is at most t and the difference between i and j is at most k.
  * BST
- */
-
-/**
+ * <p/>
  * 使了滑动窗口还有桶排序 bucket sort
  * 题目中 t是两个元素值的差 k是两个元素索引的差 所以整体思想是创建k个桶 每个桶的范围是t
  * 也就是说 比如[10, 5, 2, 15, 20] k = 3 t = 7
@@ -23,9 +21,30 @@ import java.util.*;
 public class ContainsDuplicate3 {
     public static void main(String[] args) {
         int[] num = { 1, 8, 7, 5, 8 };
+        System.out.println(containsNearbyAlmostDuplicatea(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicate(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicateB(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicateC(num, 3, 2));
+    }
+
+    public static boolean containsNearbyAlmostDuplicatea(int[] nums, int k, int t) {
+        if (k < 1 || t < 0)
+            return false;
+        Map<Long, Long> map = new HashMap<Long, Long>();
+        for (int i = 0; i < nums.length; i++) {
+            long remappedNum = (long) nums[i] - Integer.MIN_VALUE;
+            long bucket = remappedNum / ((long) t + 1);
+            if (map.containsKey(bucket) || (map.containsKey(bucket - 1)
+                    && remappedNum - map.get(bucket - 1) <= t) || (map.containsKey(bucket + 1)
+                    && map.get(bucket + 1) - remappedNum <= t))
+                return true;
+            if (map.entrySet().size() >= k) {
+                long lastBucket = ((long) nums[i - k] - Integer.MIN_VALUE) / ((long) t + 1);
+                map.remove(lastBucket);
+            }
+            map.put(bucket, remappedNum);
+        }
+        return false;
     }
 
     /**
