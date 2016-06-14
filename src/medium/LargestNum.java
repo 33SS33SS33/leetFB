@@ -9,9 +9,7 @@ import java.util.*;
  * Note: The result may be very large, so you need to return a string instead
  * of an integer.
  * Tags: Sort
- */
-
-/**
+ * <p/>
  * 要使用cmp函数来排序 比较规则是x+y 和y+x的大小 而且要倒序
  * 同时要注意[0,0]这种特殊情况
  */
@@ -24,7 +22,7 @@ class LargestNum {
     }
 
     /**
-     * Create a comparator for sorting
+     * Create a comparator for sorting 最好的
      * Convert num to String and compare the concatenated result of them
      * Note {0, 0} is a special case
      */

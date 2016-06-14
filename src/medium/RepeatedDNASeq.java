@@ -1,12 +1,9 @@
 package medium;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/8.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/8.
  * All DNA is composed of a series of nucleotides abbreviated as A, C, G, and
  * T, for example: "ACGAATTCCG". When studying DNA, it is sometimes useful to
  * identify repeated sequences within the DNA.
@@ -17,9 +14,7 @@ import java.util.*;
  * Return:
  * ["AAAAACCCCC", "CCCCCAAAAA"].
  * Tags: Bit Manipulation
- */
-
-/**
+ * <p/>
  * 这个题首先想到的是用字典解决 从头到尾扫描每个子串 如果字典没有就添加子串进字典 如果有了就说明出现了重复 但是这样会memory超限
  * 为了结局memory超限的问题
  * 可以用位运算 A:00 C:01 G:10 T:11
@@ -33,11 +28,33 @@ class RepeatedDNASeq {
         List<String> res = findRepeatedDnaSequences(s);
 
         /**错的？？？？？*/
-        List<String> res2 = findRepeatedDnaSequencesB(s);
+        List<String> res1 = findRepeatedDnaSequencesa(s);
         List<String> res3 = findRepeatedDnaSequencesC(s);
         System.out.println(res);
-        System.out.println(res2);
+        System.out.println(res1);
         System.out.println(res3);
+    }
+
+    public static List<String> findRepeatedDnaSequencesa(String s) {
+        Set<Integer> words = new HashSet<Integer>();
+        Set<Integer> doubleWords = new HashSet<Integer>();
+        List<String> rv = new ArrayList<String>();
+        char[] map = new char[26];
+        //map['A' - 'A'] = 0;
+        map['C' - 'A'] = 1;
+        map['G' - 'A'] = 2;
+        map['T' - 'A'] = 3;
+        for (int i = 0; i < s.length() - 9; i++) {
+            int v = 0;
+            for (int j = i; j < i + 10; j++) {
+                v <<= 2;
+                v |= map[s.charAt(j) - 'A'];
+            }
+            if (!words.add(v) && doubleWords.add(v)) {
+                rv.add(s.substring(i, i + 10));
+            }
+        }
+        return rv;
     }
 
     /**
@@ -70,25 +87,6 @@ class RepeatedDNASeq {
     }
 
     /**
-     * HashSet with previous appeared results
-     * O(n) Space
-     */
-    public static List<String> findRepeatedDnaSequencesB(String s) {
-        List<String> res = new ArrayList<String>();
-        if (s == null || s.length() < 10)
-            return res;
-        Set<String> set = new HashSet<String>();
-        for (int i = 0; i < s.length() - 10; i++) {
-            String sub = s.substring(i, i + 10);
-            if (set.contains(sub)) {
-                res.add(s);
-            }
-            set.add(s);
-        }
-        return res;
-    }
-
-    /**
      * creek
      * For example, given s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT", return: ["AAAAACCCCC", "CCCCCAAAAA"].
      * The key to solve this problem is that each of the 4 nucleotides can be stored in 2 bits.
@@ -101,13 +99,11 @@ class RepeatedDNASeq {
         if (len < 10) {
             return result;
         }
-
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         map.put('A', 0);
         map.put('C', 1);
         map.put('G', 2);
         map.put('T', 3);
-
         Set<Integer> temp = new HashSet<Integer>();
         Set<Integer> added = new HashSet<Integer>();
         int hash = 0;

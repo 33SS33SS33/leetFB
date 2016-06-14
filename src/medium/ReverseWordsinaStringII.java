@@ -2,9 +2,7 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- */
-
-/**
+ * <p/>
  * 输入的字符串不包含前缀或者后缀空格，然后字符串只有以单个空格分隔。
  * 要求不开辟任何其他存储空间，在原先字符串上进行替换。
  * 字符串是按照单个字符存进数组的
@@ -15,7 +13,35 @@ public class ReverseWordsinaStringII {
         String s1 = "asannbc 21212";
         char[] c1 = s1.toCharArray();
         new ReverseWordsinaStringII().reverseWords(c1);
+        new ReverseWordsinaStringII().reverseWordsa(c1);
         System.out.println(c1);
+    }
+
+    public void reverseWordsa(char[] s) {
+        // Three step to reverse
+        // 1, reverse the whole sentence
+        reverse2(s, 0, s.length - 1);
+        // 2, reverse each word
+        int start = 0;
+        int end = -1;
+        for (int i = 0; i < s.length; i++) {
+            if (s[i] == ' ') {
+                reverse2(s, start, i - 1);
+                start = i + 1;
+            }
+        }
+        // 3, reverse the last word, if there is only one word this will solve the corner case
+        reverse2(s, start, s.length - 1);
+    }
+
+    public void reverse2(char[] s, int start, int end) {
+        while (start < end) {
+            char temp = s[start];
+            s[start] = s[end];
+            s[end] = temp;
+            start++;
+            end--;
+        }
     }
 
     public void reverseWords(char[] s) {
