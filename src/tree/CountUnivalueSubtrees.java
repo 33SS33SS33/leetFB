@@ -12,9 +12,7 @@ package tree;
  * / \   \
  * 5   5   5
  * return 4.
- */
-
-/**
+ * <p/>
  * 只要叶子节点 就一定是一个univalue tree 所以使用后序遍历即可 如果自己的左右子树都是 那么自己的值又和左右子树都一样 那么就把自己也算上(记得考虑子树是none的情况)
  * 然后返回即可
  */
@@ -33,34 +31,24 @@ public class CountUnivalueSubtrees {
         n1.right = n4;
         n2.left = n5;
         n2.right = n6;
-        System.out.println(new CountUnivalueSubtrees().countUnivalSubtrees(root));
+        System.out.println(new CountUnivalueSubtrees().countUnivalSubtreesa(root));
+        System.out.println(new CountUnivalueSubtrees().countUnivalSubtreesa2(root));
     }
 
-    public int countUnivalSubtrees(TreeNode root) {
-        return _countUnivalSubtrees(root)[0];
+    int count = 0;
+
+    public int countUnivalSubtreesa(TreeNode root) {
+        all(root, 0);
+        return count;
     }
 
-    // [count, uniq val]
-    Integer[] _countUnivalSubtrees(TreeNode root) {
+    boolean all(TreeNode root, int val) {
         if (root == null)
-            return new Integer[] { 0, null };
-
-        Integer[] left = _countUnivalSubtrees(root.left);
-        patch(left, root, root.left);
-
-        Integer[] right = _countUnivalSubtrees(root.right);
-        patch(right, root, root.right);
-
-        if (Objects.equals(left[1], root.val) && Objects.equals(right[1], root.val)) {
-            return new Integer[] { left[0] + right[0] + 1, root.val };
-        }
-        return new Integer[] { left[0] + right[0], null };
-    }
-
-    void patch(Integer[] v, TreeNode parent, TreeNode me) {
-        if (me == null) {
-            v[1] = parent.val;
-        }
+            return true;
+        if (!all(root.left, root.val) | !all(root.right, root.val))
+            return false;
+        count++;
+        return root.val == val;
     }
 
     public static class TreeNode {
@@ -73,9 +61,28 @@ public class CountUnivalueSubtrees {
         }
     }
 
-    private static class Objects {
-        public static boolean equals(Integer obj1, Integer obj2) {
-            return obj1.equals(obj2);
+    public int countUnivalSubtreesa2(TreeNode root) {
+        int[] count = new int[1];
+        helper(root, count);
+        return count[0];
+    }
+
+    private boolean helper(TreeNode node, int[] count) {
+        if (node == null) {
+            return true;
         }
+        boolean left = helper(node.left, count);
+        boolean right = helper(node.right, count);
+        if (left && right) {
+            if (node.left != null && node.val != node.left.val) {
+                return false;
+            }
+            if (node.right != null && node.val != node.right.val) {
+                return false;
+            }
+            count[0]++;
+            return true;
+        }
+        return false;
     }
 }

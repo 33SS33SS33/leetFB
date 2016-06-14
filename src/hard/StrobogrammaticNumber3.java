@@ -1,21 +1,61 @@
 package hard;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
  * A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
  * Write a function to count the total strobogrammatic numbers that exist in the range of low <= num <= high.
  * For example,
  * Given low = "50", high = "100", return 3. Because 69, 88, and 96 are three strobogrammatic numbers.
- */
-
-/**
+ * <p/>
  * 主要思路是比如求50-100范围的时候 先计算小于50的个数  再计算小于100的个数 然后用小于100的个数减去小于50的个数
  * 然后单独计算小于i的个数的时候 是直接用数学方法算出来  i的位数-1 的个数
  * 然后再算出来i的位数一共有多少个 然后从这些里面找出来小于i的 然后把两个个数加起来
  */
 public class StrobogrammaticNumber3 {
     public static void main(String[] args) {
+        System.out.println(new StrobogrammaticNumber3().strobogrammaticInRangea("50", "100"));
         System.out.println(new StrobogrammaticNumber3().strobogrammaticInRange("50", "100"));
+    }
+
+    /**
+     * 最好的
+     */
+    public int strobogrammaticInRangea(String low, String high) {
+        int count = 0;
+        List<String> rst = new ArrayList<String>();
+        for (int n = low.length(); n <= high.length(); n++) {
+            rst.addAll(helper(n, n));
+        }
+        for (String num : rst) {
+            if ((num.length() == low.length() && num.compareTo(low) < 0) || (
+                    num.length() == high.length() && num.compareTo(high) > 0))
+                continue;
+            count++;
+        }
+        return count;
+    }
+
+    private List<String> helper(int cur, int max) {
+        if (cur == 0)
+            return new ArrayList<String>(Arrays.asList(""));
+        if (cur == 1)
+            return new ArrayList<String>(Arrays.asList("1", "8", "0"));
+        List<String> rst = new ArrayList<String>();
+        List<String> center = helper(cur - 2, max);
+        for (int i = 0; i < center.size(); i++) {
+            String tmp = center.get(i);
+            if (cur != max)
+                rst.add("0" + tmp + "0");
+            rst.add("1" + tmp + "1");
+            rst.add("6" + tmp + "9");
+            rst.add("8" + tmp + "8");
+            rst.add("9" + tmp + "6");
+        }
+        return rst;
     }
 
     char[][] pairs = { { '0', '0' }, { '1', '1' }, { '6', '9' }, { '8', '8' }, { '9', '6' } };
