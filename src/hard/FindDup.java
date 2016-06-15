@@ -8,9 +8,6 @@ package hard;
  * For example, let n be 7 and array be {1, 2, 3, 1, 3, 6, 6}, the answer
  * should be 1, 3 and 6.
  * Tags: Array
- */
-
-/**
  * 两种解法 重要
  * 第一种十分巧妙  其实这道题是链表找环的变形 数组的值就是表示的下一个链表  next[0]就是这个链表的入口 未实现
  * 第二种就是使用binary search 但是注意这里search都是用的索引  而不是值

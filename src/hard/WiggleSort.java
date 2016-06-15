@@ -1,4 +1,4 @@
-package hard;
+    package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
@@ -19,6 +19,9 @@ class WiggleSort {
         }
     }
 
+    /**
+     * 最好的
+     */
     public void wiggleSorta(int[] nums) {
         for (int i = 0; i < nums.length; i++)
             if (i % 2 == 1) {

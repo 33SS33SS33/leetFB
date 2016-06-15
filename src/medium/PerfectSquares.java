@@ -20,6 +20,9 @@ public class PerfectSquares {
         System.out.println("res: " + res);
     }
 
+    /**
+     * 最好的
+     */
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);

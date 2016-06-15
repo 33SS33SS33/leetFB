@@ -2,9 +2,6 @@ package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/18.
- */
-
-/**
  * Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive),
  * prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
  * Note:
@@ -19,6 +16,24 @@ public class FindtheDuplicateNum {
         int[] num = { 0, 1, 2, 4, 2, 3 };
         System.out.println(new FindtheDuplicateNum().findDuplicate(num));
         System.out.println(new FindtheDuplicateNum().findDuplicateB(num));
+    }
+
+    public int findDuplicatea(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < nums.length; i++)
+            nums[i]--;
+        int slow = n - 1;
+        int fast = n - 1;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        slow = n - 1;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow + 1;
     }
 
     public int findDuplicate(int[] nums) {

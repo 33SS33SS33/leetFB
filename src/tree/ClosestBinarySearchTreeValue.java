@@ -6,9 +6,7 @@ package tree;
  * Note:
  * Given target value is a floating point.
  * You are guaranteed to have only one unique value in the BST that is closest to the target."
- */
-
-/**
+ * <p/>
  * 就是小了就往右走 大了就往左走
  * 每次都计算一下最小值即可
  * "
@@ -34,7 +32,8 @@ public class ClosestBinarySearchTreeValue {
     public int closestValuea(TreeNode root, double target) {
         int a = root.val;
         TreeNode kid = target < a ? root.left : root.right;
-        if (kid == null) return a;
+        if (kid == null)
+            return a;
         int b = closestValuea(kid, target);
         return Math.abs(a - target) < Math.abs(b - target) ? a : b;
     }
@@ -71,7 +70,7 @@ public class ClosestBinarySearchTreeValue {
     }
 
     static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
 
