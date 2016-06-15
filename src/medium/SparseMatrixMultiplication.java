@@ -19,12 +19,12 @@ import java.util.List;
  * |  1 0 0 |   | 7 0 0 |   |  7 0 0 |
  * AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |
  * | 0 0 1 |"
- */
 
-/**
  * 模拟矩阵乘法即可  乘法之前可以先检查一下这个位置是否为0来加速
  */
 public class SparseMatrixMultiplication {
+
+    /**best*/
     public int[][] multiply(int[][] A, int[][] B) {
         int m = A.length, n = A[0].length, nB = B[0].length;
         int[][] C = new int[m][nB];

@@ -1,5 +1,7 @@
 package medium;
 
+import java.math.BigInteger;
+
 /**
  * Created by shanshan on 16/5/9.
  * "Additive number is a positive integer whose digits can form additive sequence.
@@ -14,9 +16,7 @@ package medium;
  * Given a string represents an integer, write a function to determine if it's an additive number.
  * Follow up:
  * How would you handle overflow for very large input integers?"
- */
-
-/**
+ * <p/>
  * "使用DFS
  * For循环 切割字符串 每次就切出来一个 添加进path 然后再切割一个
  * if确保切出来的数字没有0开头的 比如02 03
@@ -27,4 +27,27 @@ package medium;
  * 不等于就返回 False"
  */
 public class AdditiveNumber {
+    public boolean isAdditiveNumber(String num) {
+        int n = num.length();
+        for (int i = 1; i <= n / 2; ++i) {
+            BigInteger x1 = new BigInteger(num.substring(0, i));
+            for (int j = 1; Math.max(j, i) <= n - i - j; ++j) {
+                if (num.charAt(i) == '0' && j > 1)
+                    break;
+                BigInteger x2 = new BigInteger(num.substring(i, i + j));
+                if (isValid(x1, x2, j + i, num))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isValid(BigInteger x1, BigInteger x2, int start, String num) {
+        if (start == num.length())
+            return true;
+        x2 = x2.add(x1);
+        x1 = x2.subtract(x1);
+        String sum = x2.toString();
+        return num.startsWith(sum, start) && isValid(x1, x2, start + sum.length(), num);
+    }
 }

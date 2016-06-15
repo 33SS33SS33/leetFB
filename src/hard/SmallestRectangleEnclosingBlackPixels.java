@@ -2,9 +2,6 @@ package hard;
 
 /**
  * Created by shanshan on 16/5/9.
- */
-
-/**
  * "An image is represented by a binary matrix with 0 as a white pixel and 1 as a black pixel.
  * The black pixels are connected, i.e., there is only one black region. Pixels are connected horizontally and vertically.
  * Given the location (x, y) of one of the black pixels,
@@ -29,6 +26,9 @@ public class SmallestRectangleEnclosingBlackPixels {
         System.out.println(new SmallestRectangleEnclosingBlackPixels().minArea(iImage, 0, 2));
     }
 
+    /**
+     * 最好的
+     */
     private char[][] image;
 
     public int minArea(char[][] iImage, int x, int y) {

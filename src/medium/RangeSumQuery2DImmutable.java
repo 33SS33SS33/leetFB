@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by shanshan on 16/5/9.
- */
-
-/**
  * "用一个辅助矩阵每一个元素表示的是从左上角的起点到当前点得所有的和
  * 然后这个矩阵可以行列都比原来的矩阵大1 这样比较好处理边界问题
  * 生成以后就返回 当前右下角元素的值 - (左下角旁边的值 + 右上角上边的值 - 左上角的2对角的那个5) 因为被加了两次"
@@ -29,7 +26,9 @@ package medium;
  * DP
  */
 public class RangeSumQuery2DImmutable {
-
+    /**
+     * 最好的
+     */
     private int[][] dp;
 
     public void NumMatrix(int[][] matrix) {
