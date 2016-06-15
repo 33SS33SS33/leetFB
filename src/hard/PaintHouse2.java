@@ -20,7 +20,7 @@ package hard;
  */
 public class PaintHouse2 {
     public static void main(String[] args) {
-        int[][] costs = {{}, {}, {}};
+        int[][] costs = { {}, {}, {} };
         System.out.print(new PaintHouse2().minCostII(costs));
     }
 /*

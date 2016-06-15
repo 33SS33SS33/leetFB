@@ -26,6 +26,7 @@ public class BullsandCows {
         System.out.println(new BullsandCows().getHint2("1807", "7810"));
         System.out.println(new BullsandCows().getHint2("1123", "0111"));
     }
+
     /**
      * 最好的 更简洁的
      */
@@ -45,6 +46,7 @@ public class BullsandCows {
         }
         return bulls + "A" + cows + "B";
     }
+
     public String getHint(String secret, String guess) {
         int bulls = 0;
         int cows = 0;
@@ -65,6 +67,5 @@ public class BullsandCows {
         }
         return bulls + "A" + cows + "B";
     }
-
 
 }

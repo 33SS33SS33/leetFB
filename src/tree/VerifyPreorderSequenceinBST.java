@@ -10,7 +10,7 @@ import java.util.Stack;
  * You may assume each number in the sequence is unique.
  * Follow up:
  * Could you do it using only constant space complexity?
- * <p>
+ * <p/>
  * 二叉搜索树先序遍历序列的特点是降序的部分一定是向左走的，一旦开始升序说明开始向右走了，
  * 则上一个降序的点则限定了后面的数的最小值。如果继续降序，说明又向左走了，这样等到下次向右走得时候也要再次更新最小值。
  * 10
@@ -30,8 +30,10 @@ public class VerifyPreorderSequenceinBST {
         int low = Integer.MIN_VALUE;
         Stack<Integer> path = new Stack();
         for (int p : preorder) {
-            if (p < low) return false;
-            while (!path.empty() && p > path.peek()) low = path.pop();
+            if (p < low)
+                return false;
+            while (!path.empty() && p > path.peek())
+                low = path.pop();
             path.push(p);
         }
         return true;
@@ -40,8 +42,10 @@ public class VerifyPreorderSequenceinBST {
     public boolean verifyPreordera2(int[] preorder) {
         int low = Integer.MIN_VALUE, i = -1;
         for (int p : preorder) {
-            if (p < low) return false;
-            while (i >= 0 && p > preorder[i]) low = preorder[i--];
+            if (p < low)
+                return false;
+            while (i >= 0 && p > preorder[i])
+                low = preorder[i--];
             preorder[++i] = p;
         }
         return true;

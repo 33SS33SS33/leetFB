@@ -101,6 +101,7 @@ public class WordPatternII {
                 set.remove(str.substring(0, i));
                 map.remove(pattern.charAt(0));
             }
-        } return false;
+        }
+        return false;
     }
 }

@@ -31,6 +31,6 @@ public class UglyNumber2 {
             if (factor5 == min)
                 factor5 = 5 * ugly[++index5];
         }
-            return ugly[n - 1];
-        }
+        return ugly[n - 1];
     }
+}

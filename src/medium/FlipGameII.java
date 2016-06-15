@@ -23,6 +23,7 @@ public class FlipGameII {
         System.out.println(canWin("++++"));
         System.out.println(canWinb("++++"));
     }
+
     public static boolean canWin(String s) {
         if (s == null || s.length() < 2) {
             return false;

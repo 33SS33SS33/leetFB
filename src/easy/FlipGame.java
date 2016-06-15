@@ -25,6 +25,7 @@ public class FlipGame {
         System.out.println(generatePossibleNextMovesa("++++"));
         System.out.println(generatePossibleNextMoves("++++"));
     }
+
     /**
      * 最好的
      */

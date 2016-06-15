@@ -57,7 +57,7 @@ public class EncodeandDecodeStrings {
         return ret;
     }
 
-    static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
+    static final int    MAX_LEN     = Integer.toHexString(Integer.MAX_VALUE).length();
     // lazy ... should be byte[]
     static final String NUM_PATTERN = "%0" + MAX_LEN + "x";
     /*  [count] [str len] [str  ...]             ... [str len][str  ...  ]

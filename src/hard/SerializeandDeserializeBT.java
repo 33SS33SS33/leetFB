@@ -26,8 +26,7 @@ public class SerializeandDeserializeBT {
     public static void main(String[] args) {
         TreeNode head = buildTree();
         System.out.println(new SerializeandDeserializeBT().serialize(head));
-        System.out.println(new SerializeandDeserializeBT()
-                .deserialize("1,2,X,X,3,4,X,X,5,X,X"));
+        System.out.println(new SerializeandDeserializeBT().deserialize("1,2,X,X,3,4,X,X,5,X,X"));
     }
 
     private static final String spliter = ",";

@@ -30,7 +30,9 @@ public class HouseRobber {
         return Math.max(dp[num.length][0], dp[num.length][1]);
     }
 
-    /**上面的简化为*/
+    /**
+     * 上面的简化为
+     */
     public int roba2(int[] num) {
         int prevNo = 0;
         int prevYes = 0;

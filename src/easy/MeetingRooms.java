@@ -19,7 +19,7 @@ public class MeetingRooms {
     public static void main(String[] args) {
         Interval inter1 = new Interval(1, 4);
         Interval inter2 = new Interval(5, 6);
-        Interval[] intervals = {inter1, inter2};
+        Interval[] intervals = { inter1, inter2 };
         System.out.println(new MeetingRooms().canAttendMeetingsa(intervals));
         System.out.println(new MeetingRooms().canAttendMeetings(intervals));
     }

@@ -20,7 +20,9 @@ public class MinimumHeightTrees {
         System.out.println(res.toString());
     }
 
-    /**best*/
+    /**
+     * best
+     */
     public List<Integer> findMinHeightTreesa(int n, int[][] edges) {
         if (n == 1)
             return Collections.singletonList(0);

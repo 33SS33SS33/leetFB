@@ -8,7 +8,7 @@ package medium;
  * Find the minimum cost to paint all houses.
  * Note:
  * All costs are positive integers.
- * <p>
+ * <p/>
  * 用dp即可 每个房子只可能有三个颜色 就是三个状态 0, 1, 2
  * 如果是0 那么前一个房子只可能是1,2
  * 如果是1 那么前一个房子只可能是0,2
@@ -20,10 +20,10 @@ package medium;
  */
 public class PaintHouse {
     public static void main(String[] args) {
-        int[][] costs = {{}, {}, {}};
+        int[][] costs = { {}, {}, {} };
         System.out.print(new PaintHouse().minCosta(costs));
         System.out.print(new PaintHouse().minCosta2(costs));
-//        System.out.print(new PaintHouse().minCost(costs));
+        //        System.out.print(new PaintHouse().minCost(costs));
     }
 
     public int minCosta(int[][] costs) {
@@ -39,9 +39,9 @@ public class PaintHouse {
         return Math.min(Math.min(costs[n][0], costs[n][1]), costs[n][2]);
     }
 
-
     public int minCosta2(int[][] costs) {
-        if (costs == null || costs.length == 0) return 0;
+        if (costs == null || costs.length == 0)
+            return 0;
         int[] prevRow = costs[0];
         for (int i = 1; i < costs.length; i++) {
             int[] currRow = new int[3];
@@ -52,13 +52,12 @@ public class PaintHouse {
         return Math.min(prevRow[0], Math.min(prevRow[1], prevRow[2]));
     }
 
-
-    static final int RED = 001;
-    static final int BLUE = 100;
-    static final int GREEN = 011;
-    static final int NONE = 000;
-    static final int ALL = 111;
-    static final int[] COLORS = {RED, BLUE, GREEN};
+    static final int   RED    = 001;
+    static final int   BLUE   = 100;
+    static final int   GREEN  = 011;
+    static final int   NONE   = 000;
+    static final int   ALL    = 111;
+    static final int[] COLORS = { RED, BLUE, GREEN };
 
     public int minCost(int[][] costs) {
         if (costs.length == 0)
