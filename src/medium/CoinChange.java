@@ -13,9 +13,7 @@ package medium;
  * return -1.
  * Note:
  * You may assume that you have an infinite number of each kind of coin."
- */
-
-/**
+ * <p/>
  * "使用dp解
  * 通项公式为
  * res[i] = min([res[i-j] for j in coins if i-j>=0]) + 1
