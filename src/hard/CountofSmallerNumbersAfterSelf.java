@@ -14,9 +14,7 @@ import java.util.List;
  * To the right of 6 there is 1 smaller element (1).
  * To the right of 1 there is 0 smaller element.
  * Return the array [2, 1, 1, 0]."
- */
 
-/**
  * "这道题有好多解法 树状数组 线段树 归并排序 待学习 未实现
  * 线段树 还有树状数组一定要学习 重要
  * 相似题目 Range Sum Query - Mutable
@@ -39,7 +37,7 @@ public class CountofSmallerNumbersAfterSelf {
     }
 
     /**
-     * Traverse from the back to the beginning of the array,
+     * Traverse from the back to the beginning of the array, best
      * maintain an sorted array of numbers have been visited.
      * Use findIndex() to find the first element in the sorted array which is larger or equal to target number.
      * For example, [5,2,3,6,1], when we reach 2, we have a sorted array[1,3,6], findIndex() returns 1,
