@@ -1,4 +1,6 @@
 package hard;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * "You want to build a house on an empty land which reaches all buildings in the shortest amount of distance.
@@ -17,8 +19,6 @@ package hard;
  * There will be at least one building. If it is not possible to build such house according to the above rules, return -1."
  */
 
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * "使用bfs即可 最关键的地方在于建立一个同样的矩阵记录距离
