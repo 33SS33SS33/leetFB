@@ -1,5 +1,9 @@
 package hard;
 
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * Created by shanshan on 16/5/9.
  * "用先序遍历 然后再重新构造就可以
@@ -23,11 +27,49 @@ public class SerializeandDeserializeBT {
         TreeNode head = buildTree();
         System.out.println(new SerializeandDeserializeBT().serialize(head));
         System.out.println(new SerializeandDeserializeBT()
-                .deserialize("1,2,null,null,3,4,null,null,5,null,null"));
+                .deserialize("1,2,X,X,3,4,X,X,5,X,X"));
     }
 
-    /*错的*/
+    private static final String spliter = ",";
+    private static final String NN      = "X";
+
+    // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        buildString(root, sb);
+        return sb.toString();
+    }
+
+    private void buildString(TreeNode node, StringBuilder sb) {
+        if (node == null) {
+            sb.append(NN).append(spliter);
+        } else {
+            sb.append(node.val).append(spliter);
+            buildString(node.left, sb);
+            buildString(node.right, sb);
+        }
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        Deque<String> nodes = new LinkedList<String>();
+        nodes.addAll(Arrays.asList(data.split(spliter)));
+        return buildTree(nodes);
+    }
+
+    private TreeNode buildTree(Deque<String> nodes) {
+        String val = nodes.remove();
+        if (val.equals(NN))
+            return null;
+        else {
+            TreeNode node = new TreeNode(Integer.valueOf(val));
+            node.left = buildTree(nodes);
+            node.right = buildTree(nodes);
+            return node;
+        }
+    }
+    /*错的*/
+/*    public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
         helperS(root, sb);
         return sb.toString();
@@ -65,7 +107,7 @@ public class SerializeandDeserializeBT {
         node.right = helperD(vals, index);
 
         return node;
-    }
+    }*/
 
     private static TreeNode buildTree() {
         TreeNode t0 = new TreeNode(1);

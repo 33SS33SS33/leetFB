@@ -2,9 +2,6 @@ package easy;
 
 /**
  * Created by shanshan on 16/5/9.
- */
-
-/**
  * You are playing the following Bulls and Cows game with your friend:
  * You write down a number and ask your friend to guess what the number is. Each time your friend makes a guess,
  * you provide a hint that indicates how many digits in said guess match your secret number exactly in both digit and position (called "bulls")
@@ -29,7 +26,25 @@ public class BullsandCows {
         System.out.println(new BullsandCows().getHint2("1807", "7810"));
         System.out.println(new BullsandCows().getHint2("1123", "0111"));
     }
-
+    /**
+     * 最好的 更简洁的
+     */
+    public String getHint2(String secret, String guess) {
+        int bulls = 0;
+        int cows = 0;
+        int[] numbers = new int[10];
+        for (int i = 0; i < secret.length(); i++) {
+            if (secret.charAt(i) == guess.charAt(i))
+                bulls++;
+            else {
+                if (numbers[secret.charAt(i) - '0']++ < 0)
+                    cows++;
+                if (numbers[guess.charAt(i) - '0']-- > 0)
+                    cows++;
+            }
+        }
+        return bulls + "A" + cows + "B";
+    }
     public String getHint(String secret, String guess) {
         int bulls = 0;
         int cows = 0;
@@ -51,20 +66,5 @@ public class BullsandCows {
         return bulls + "A" + cows + "B";
     }
 
-    public String getHint2(String secret, String guess) {
-        int bulls = 0;
-        int cows = 0;
-        int[] numbers = new int[10];
-        for (int i = 0; i < secret.length(); i++) {
-            if (secret.charAt(i) == guess.charAt(i))
-                bulls++;
-            else {
-                if (numbers[secret.charAt(i) - '0']++ < 0)
-                    cows++;
-                if (numbers[guess.charAt(i) - '0']-- > 0)
-                    cows++;
-            }
-        }
-        return bulls + "A" + cows + "B";
-    }
+
 }

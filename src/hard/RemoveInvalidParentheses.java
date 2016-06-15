@@ -1,12 +1,9 @@
 package hard;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/5/6.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/5/6.
  * Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
  * Note: The input string may contain letters other than the parentheses ( and ).
  * Examples:
@@ -25,6 +22,9 @@ public class RemoveInvalidParentheses {
         System.out.println(removeInvalidParentheses(s3));
     }
 
+    /**
+     * 最好的
+     */
     public static List<String> removeInvalidParentheses(String s) {
         List<String> res = new ArrayList<String>();
         if (s == null)
