@@ -9,9 +9,7 @@ package dP;
  * For example
  * if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove,
  * the last stone will always be removed by your friend."
- */
-
-/**
+ * <p/>
  * 用dp的思想想的时候会发现 若当前是n 那么n的胜负之和n-1 n-2 n-3胜负有关 如果这三个都必胜 那么n必败
  * 如其中有一个必败 那么这次就一定能必胜 所以是4的倍数就输
  **/
@@ -23,11 +21,19 @@ public class NimGame {
 /*    public boolean canWinNim(int n) {
         return (n & 0b11) != 0;
     }*/
-
+    /**
+     * 最好的
+     */
     public static boolean canWinNimB(int n) {
         if (n % 4 == 0)
             return false;
         else
             return true;
+    }
+
+    public static boolean canWinNimBb(int n) {
+        if (n <= 0)
+            throw new IllegalArgumentException();
+        return !(n % 4 == 0);
     }
 }

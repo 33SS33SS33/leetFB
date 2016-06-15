@@ -20,20 +20,18 @@ public class FindtheDuplicateNum {
 
     public int findDuplicatea(int[] nums) {
         int n = nums.length;
-        for (int i = 0; i < nums.length; i++)
-            nums[i]--;
-        int slow = n - 1;
-        int fast = n - 1;
+        int slow = n;
+        int fast = n;
         do {
-            slow = nums[slow];
-            fast = nums[nums[fast]];
+            slow = nums[slow - 1];
+            fast = nums[nums[fast - 1] - 1];
         } while (slow != fast);
-        slow = n - 1;
+        slow = n;
         while (slow != fast) {
-            slow = nums[slow];
-            fast = nums[fast];
+            slow = nums[slow - 1];
+            fast = nums[fast - 1];
         }
-        return slow + 1;
+        return slow;
     }
 
     public int findDuplicate(int[] nums) {

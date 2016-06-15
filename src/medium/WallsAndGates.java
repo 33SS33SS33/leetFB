@@ -1,17 +1,17 @@
 package medium;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/5/6.
- */
-
-import java.util.List;
-
-/**
  * "You are given a m x n 2D grid initialized with these three possible values.
  * -1 - A wall or an obstacle.
  * 0 - A gate.
- * INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may assume that the distance to a gate is less than 2147483647.
- * Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it should be filled with INF.
+ * INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to
+ * represent INF as you may assume that the distance to a gate is less than 2147483647.
+ * Fill each empty room with the distance to its nearest gate.
+ * If it is impossible to reach a gate, it should be filled with INF.
  * For example, given the 2D grid:
  * INF  -1  0  INF
  * INF INF INF  -1
@@ -22,19 +22,53 @@ import java.util.List;
  * 2   2   1  -1
  * 1  -1   2  -1
  * 0  -1   3   4"
- */
-
-/**
+ * <p/>
  * "首先找到gate的位置 然后从gate的位置开始进行BFS
- * 这道题最关键的地方在于 对于下一个点进行判断是否是INF的值 这样就不用记录访问了哪些点 因为如果已经算过的店 肯定小于 INF的值 而且这样也可以防止覆盖掉之前已经计算过的点"
+ * 这道题最关键的地方在于 对于下一个点进行判断是否是INF的值 这样就不用记录访问了哪些点
+ * 因为如果已经算过的店 肯定小于 INF的值 而且这样也可以防止覆盖掉之前已经计算过的点"
  */
 public class WallsAndGates {
     public static void main(String[] args) {
         int[][] rooms = { { 0, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
-        wallsAndGates(rooms);
+        wallsAndGatesa(rooms);
         for (int i = 0; i < rooms.length; i++) {
             for (int j = 0; j < rooms[0].length; j++) {
                 System.out.print(rooms[i][j]);
+            }
+        }
+    }
+
+    /**
+     * 最好的
+     */
+    public static void wallsAndGatesa(int[][] rooms) {
+        if (rooms.length == 0 || rooms[0].length == 0)
+            return;
+        Queue<int[]> queue = new LinkedList<int[]>();
+        for (int i = 0; i < rooms.length; i++) {
+            for (int j = 0; j < rooms[0].length; j++) {
+                if (rooms[i][j] == 0)
+                    queue.add(new int[] { i, j });
+            }
+        }
+        while (!queue.isEmpty()) {
+            int[] top = queue.remove();
+            int row = top[0], col = top[1];
+            if (row > 0 && rooms[row - 1][col] == Integer.MAX_VALUE) {
+                rooms[row - 1][col] = rooms[row][col] + 1;
+                queue.add(new int[] { row - 1, col });
+            }
+            if (row < rooms.length - 1 && rooms[row + 1][col] == Integer.MAX_VALUE) {
+                rooms[row + 1][col] = rooms[row][col] + 1;
+                queue.add(new int[] { row + 1, col });
+            }
+            if (col > 0 && rooms[row][col - 1] == Integer.MAX_VALUE) {
+                rooms[row][col - 1] = rooms[row][col] + 1;
+                queue.add(new int[] { row, col - 1 });
+            }
+            if (col < rooms[0].length - 1 && rooms[row][col + 1] == Integer.MAX_VALUE) {
+                rooms[row][col + 1] = rooms[row][col] + 1;
+                queue.add(new int[] { row, col + 1 });
             }
         }
     }
