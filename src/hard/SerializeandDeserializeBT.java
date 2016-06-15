@@ -2,13 +2,6 @@ package hard;
 
 /**
  * Created by shanshan on 16/5/9.
- */
-
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.LinkedList;
-
-/**
  * "用先序遍历 然后再重新构造就可以
  * 应该也可以按层遍历 然后bfs构造 未实现"
  * "Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer,
