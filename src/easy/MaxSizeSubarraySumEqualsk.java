@@ -4,6 +4,8 @@ package easy;
  * Created by GAOSHANSHAN835 on 2016/5/11.
  */
 
+import java.util.HashMap;
+
 /**
  * "Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn't one, return 0 instead.
  * Example 1:
@@ -19,4 +21,16 @@ package easy;
  * 注意一下哈希表最开始存的0 是考虑了如果当前的和直接等于k的情况"
  */
 public class MaxSizeSubarraySumEqualsk {
+
+    public int maxSubArrayLen(int[] nums, int k) {
+        int sum = 0, max = 0;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            sum = sum + nums[i];
+            if (sum == k) max = i + 1;
+            else if (map.containsKey(sum - k)) max = Math.max(max, i - map.get(sum - k));
+            if (!map.containsKey(sum)) map.put(sum, i);
+        }
+        return max;
+    }
 }

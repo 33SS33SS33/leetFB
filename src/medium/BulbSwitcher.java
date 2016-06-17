@@ -24,7 +24,7 @@ import static medium.Sqrt.sqrt;
 
 public class BulbSwitcher {
 
-    int bulbSwitch(int n) {
-        return sqrt(n);
-    }
+        public int bulbSwitch(int n) {
+            return (int)Math.sqrt(n);
+        }
 }

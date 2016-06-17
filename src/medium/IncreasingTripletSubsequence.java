@@ -18,8 +18,21 @@ public class IncreasingTripletSubsequence {
         int[] nums = { 1, 2, 3, 0, 1 };
         int[] nums2 = { 5, 4, 3, 2, 1 };
 
+        System.out.println(s.increasingTripleta(nums));
         System.out.println(s.increasingTriplet(nums));
+        System.out.println(s.increasingTripleta(nums2));
         System.out.println(s.increasingTriplet(nums2));
+    }
+
+    public boolean increasingTripleta(int[] nums) {
+        // start with two largest values, as soon as we find a number bigger than both, while both have been updated, return true.
+        int small = Integer.MAX_VALUE, big = Integer.MAX_VALUE;
+        for (int n : nums) {
+            if (n <= small) { small = n; } // update small if n is smaller than both
+            else if (n <= big) { big = n; } // update big only if greater than small but smaller than big
+            else return true; // return if you find a number bigger than both
+        }
+        return false;
     }
 
     public boolean increasingTriplet(int[] nums) {

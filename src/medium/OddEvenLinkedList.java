@@ -22,6 +22,22 @@ public class OddEvenLinkedList {
         System.out.print(oddEvenList(head));
     }
 
+    public ListNode oddEvenLista(ListNode head) {
+        if (head != null) {
+
+            ListNode odd = head, even = head.next, evenHead = even;
+
+            while (even != null && even.next != null) {
+                odd.next = odd.next.next;
+                even.next = even.next.next;
+                odd = odd.next;
+                even = even.next;
+            }
+            odd.next = evenHead;
+        }
+        return head;
+    }
+
     /**
      * 将一个链表内的奇数元素放在前面，偶数元素放在后面
      *
