@@ -1,13 +1,14 @@
 package hard;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/6/2.
- */
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
+
+/**
+ * Created by GAOSHANSHAN835 on 2016/6/2.
+ */
+
 
 /**
  * Given a data stream input of non-negative integers a1, a2, ..., an, ...,
