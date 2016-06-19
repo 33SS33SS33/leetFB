@@ -7,11 +7,11 @@ package medium;
  * For example,
  * 1
  * \
- * 3
- * / \
+ *  3
+ *  / \
  * 2   4
- * \
- * 5
+ *      \
+ *      5
  * Longest consecutive sequence path is 3-4-5, so return 3.
  * 2
  * \
@@ -26,6 +26,8 @@ package medium;
  * 这道题用dfs来遍历 主要就是dfs的时候 需要一个有一个counter来记录当前的长度 如果断掉了 就把counter置为1重新开始"
  */
 public class BTLongestConsecutiveSequence {
+
+    //best
     private int max = 0;
 
     public int longestConsecutive(TreeNode root) {

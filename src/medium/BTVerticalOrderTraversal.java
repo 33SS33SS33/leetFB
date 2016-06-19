@@ -1,5 +1,7 @@
 package medium;
 
+import java.util.*;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/5/11.
  * "Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
@@ -18,17 +20,17 @@ package medium;
  * [20],
  * [7]
  * ]
- */
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-/**
+ * <p>
  * "首先根节点的值是0 然后往左走 就减1 往右走就加1 然后用个字典把值一样的记录到一起就行了
  */
+
 public class BTVerticalOrderTraversal {
-/*    public List<List<Integer>> verticalOrder(TreeNode root) {
+    public static void main(String[] args) {
+        TreeNode root = buildTree();
+        System.out.println(new BTVerticalOrderTraversal().verticalOrder(root));
+    }
+
+    public List<List<Integer>> verticalOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null) {
             return res;
@@ -63,5 +65,30 @@ public class BTVerticalOrderTraversal {
             res.add(map.get(min++));
         }
         return res;
-    }*/
+    }
+
+    static TreeNode buildTree() {
+        TreeNode root = new TreeNode(1);
+        TreeNode n1 = new TreeNode(2);
+        TreeNode n2 = new TreeNode(3);
+        TreeNode n3 = new TreeNode(4);
+        TreeNode n4 = new TreeNode(5);
+        TreeNode n5 = new TreeNode(6);
+        root.left = n1;
+        root.right = n2;
+        n1.left = n3;
+        n1.right = n4;
+        n2.right = n5;
+        return root;
+    }
+
+    static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 }

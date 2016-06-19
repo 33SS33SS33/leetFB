@@ -32,6 +32,16 @@ public class BitwiseANDofNumbersRange {
         return m * moveFactor;
     }
 
+    /**
+     * creek--
+     */
+    public static int rangeBitwiseAndB(int m, int n) {
+        while (n > m) {
+            n = n & n - 1;
+        }
+        return m & n;
+    }
+
     static final int    SIZE = Integer.SIZE;
     static final long[] POW  = new long[SIZE + 1];
 
@@ -53,13 +63,5 @@ public class BitwiseANDofNumbersRange {
         return 0;
     }
 
-    /**
-     * creek--
-     */
-    public static int rangeBitwiseAndB(int m, int n) {
-        while (n > m) {
-            n = n & n - 1;
-        }
-        return m & n;
-    }
+
 }
