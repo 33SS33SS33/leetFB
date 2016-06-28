@@ -2,9 +2,7 @@ package other;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- */
 
-/**
  * Merge sort an integer arrays
  * Tags: Sort
  */

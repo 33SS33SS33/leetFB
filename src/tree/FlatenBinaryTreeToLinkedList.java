@@ -27,9 +27,7 @@ import java.util.*;
  * If you notice carefully in the flattened tree, each node's right child
  * points to the next node of a pre-order traversal.
  * Tags: Tree, DFS
- */
 
-/**
  * 首先 发现flatten之后的树就是按着先序遍历之前的树
  * 设置一个head指针 他表示的是你当前右子树的末尾
  * 然后按着先序依次把节点挪过去

@@ -7,9 +7,6 @@ package medium;
  * Given sorted array A = [1,1,1,2,2,3],
  * Your function should return length = 5, and A is now [1,1,2,2,3].
  * Tags: Array, Two pointers
- */
-
-/**
  * 设置一个变量 是记录新的数组的末端的指针
  * 注意counter-2的运用 这样就可以确认当前的nums[counter]有没有超过两个
  */

@@ -18,9 +18,7 @@ import java.util.ArrayList;
  * Bonus point if you are able to do this using only O(n) extra space, where n
  * is the total number of rows in the triangle.
  * Tags: Array, DP
- */
 
-/**
  * 这道题可以从下往上 或者从上往下
  * 从下往上的话会比较简单, 这次用的从下往上
  * 从上往下的思路在右边 下次可以试试

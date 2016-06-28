@@ -10,7 +10,6 @@ package medium;
  * and each of them had received 3, 0, 6, 1, 5 citations respectively.
  * Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each,
  * his h-index is 3.
- * <p/>
  * 这道题的切入点应该是这样  h这个值是和几篇文章有关  而只有数组的索引是和文章的数量有关 所以关注点应该在索引上
  * 首先把数组按倒序排列 Then, we look for the last position in which f is greater than or equal to the position (we call h this position).
  * For example, if we have a researcher with 5 publications A, B, C, D, and E with 10, 8, 5, 4, and 3 citations, respectively,

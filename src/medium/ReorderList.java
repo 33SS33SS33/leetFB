@@ -8,7 +8,6 @@ package medium;
  * For example,
  * Given {1,2,3,4}, reorder it to {1,4,2,3}.
  * Tags: Linkedlist
- * <p/>
  * 一共分三分步
  * 第一步是用快慢指针找到链表的中点 然后把链表从中点分成两部分 （记得处理前一部分的最后一个元素 让他的next = None）
  * 第二步 把第二部分的链表倒序反转（记得处理第二部分的第一个元素 让他的next=None ）

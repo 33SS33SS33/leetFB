@@ -2,9 +2,6 @@ package tree;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28.
- */
-
-/**
  * 树的路径的最大值，不一定从根开始
  */
 public class MaxPathSum {

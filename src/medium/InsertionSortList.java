@@ -3,7 +3,6 @@ package medium;
 /**
  * Sort a linked list using insertion sort.
  * Tags: Linkedlist, Sort
- * <p/>
  * 模拟插入排序即可 需要用的到假链表头
  * 注意先不要将dummy和head连起来 这样是两个独立的链表 会比较好 把未排序的链表的元素插入进排序好的链表里
  * 要不容易打环

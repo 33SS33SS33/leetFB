@@ -2,9 +2,7 @@ package sum;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- */
 
-/**
  * 还是two sum 的题 直接用了哈希表来解 也可以用two pointer 还有binary search
  */
 public class TwoSumIIInputarrayissorted {

@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
- */
-
-/**
  * Quick sort an integer arrays
  * Tags: Sort
  */

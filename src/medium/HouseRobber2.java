@@ -8,7 +8,6 @@ package medium;
  * Meanwhile, the security system for these houses remain the same as for those in the previous street.
  * Given a list of non-negative integers representing the amount of money of each house,
  * determine the maximum amount of money you can rob tonight without alerting the police.
- * <p/>
  * DP 动态规划  很经典
  * 动态规划推算转移方程的时候 当前的D(i)表示的是当前状态的最优解
  * 而且推算的时候不要只考虑D(i-1)的状态 也要考虑 D(i-2)…之类的状态

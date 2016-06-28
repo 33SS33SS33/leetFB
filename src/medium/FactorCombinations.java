@@ -15,9 +15,6 @@ import java.util.List;
  * Each combination's factors must be sorted ascending, for example: The factors of 2 and 6 is [2, 6], not [6, 2].
  * You may assume that n is always positive.
  * Factors should be greater than 1 and less than n.
- */
-
-/**
  * 使用dfs 但是很慢  待优化 未实现
  */
 public class FactorCombinations {

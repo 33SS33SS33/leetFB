@@ -6,7 +6,6 @@ package medium;
  * Find the minimum element.
  * You may assume no duplicate exists in the array.
  * Tags: Array, Binary Search
- * <p/>
  * 使用二分查找即可  二分查找要变形一下 把中点和最后的元素比较
  * 如果中点元素比最后的元素大 则说明后面的是乱序的 最小值在里面
  * 如果中点元素比最后的小 则说明后面是正确的 那最小值就在前面

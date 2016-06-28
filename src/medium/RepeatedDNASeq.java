@@ -14,7 +14,6 @@ import java.util.*;
  * Return:
  * ["AAAAACCCCC", "CCCCCAAAAA"].
  * Tags: Bit Manipulation
- * <p/>
  * 这个题首先想到的是用字典解决 从头到尾扫描每个子串 如果字典没有就添加子串进字典 如果有了就说明出现了重复 但是这样会memory超限
  * 为了结局memory超限的问题
  * 可以用位运算 A:00 C:01 G:10 T:11

@@ -7,9 +7,7 @@ import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
 
-/**
  * 核心思路就是把左边的换成右边的样子 所以用后序的遍历方式 然后新建一棵树就行了
  * 就是注意建立新树的时候的顺序即可 注意递归的返回值 特别是not root or not root.left
  * Root                  L

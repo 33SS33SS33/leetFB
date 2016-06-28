@@ -9,9 +9,6 @@ package medium;
  * Note:
  * 1 <= m <= n <= length of the list
  * Tags: Linkedlist
- */
-
-/**
  * 用一个假的链表头
  * 保存reverse之前的节点 然后每个元素逐个倒转 然后再把倒转部分的头和尾颠倒一下
  */

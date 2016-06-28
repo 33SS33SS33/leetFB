@@ -6,7 +6,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by shanshan on 16/6/18.
  * Design a simplified version of Twitter where users can post tweets,
- * follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed. Your design should support the following methods:
+ * follow/unfollow another user and is able to see the 10 most recent tweets in the user's news feed.
+ * Your design should support the following methods:
 
  postTweet(userId, tweetId): Compose a new tweet.
  getNewsFeed(userId): Retrieve the 10 most recent tweet ids in the user's news feed.

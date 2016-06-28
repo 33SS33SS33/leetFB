@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/3/2.
- */
-
-/**
  * Return true if there exists i, j, k
  * such that arr[i] < arr[j] < arr[k] given 0 ≤ i < j < k ≤ n-1 else return false.
  * Given [1, 2, 3, 4, 5],

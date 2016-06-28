@@ -7,9 +7,6 @@ package medium;
  * Given 1->2->3->4->5->NULL and k = 2,
  * return 4->5->1->2->3->NULL.
  * Tags: Linked List, Two Pointers
- */
-
-/**
  * 就是把右边的元素挪到左边 挪动k个 k有可能比链表长度长  如果等于链表长度其实就是原来的链表
  * 首先找到链表的末尾并且计算链表的长度
  * 然后把链表的末尾和链表头连接起来 再往前跑length - k%length 然后在这个位置把链表断开即可

@@ -2,7 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/4/14.
-
  * 给定一个字符串，找出最多有多少个chunked palindrome,
  * 正常的palindrome是abccba, chunked palindrome的定义是：比如volvo, 可以把vo划分在一起，(vo) (l) (vo)，
  * 那么它是个palindrome。求实现返回最大的chunk 数量。

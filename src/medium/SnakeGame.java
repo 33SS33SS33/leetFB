@@ -25,8 +25,8 @@ import java.util.LinkedList;
  | |F| |
  | |S|S|
  snake.move("U"); -> Returns 1
-
  */
+
 public class SnakeGame {
     class Position{
         int x;

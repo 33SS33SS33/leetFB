@@ -1,12 +1,9 @@
 package other;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
  * Implement a hash table
  * Tags: DS
  */

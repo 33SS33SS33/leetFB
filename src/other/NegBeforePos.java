@@ -2,9 +2,7 @@ package other;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- */
 
-/**
  * Given an array which has n integers. It has both positive and negative
  * integers. Now you need to sort this array in such a way that, the negative
  * integers should be in the front, and the positive integers should at the

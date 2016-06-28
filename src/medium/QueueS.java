@@ -4,9 +4,6 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 /**
  * Created by GAOSHANSHAN835 on 2016/3/3.
- */
-
-/**
  * --creek
  */
 public class QueueS<E> {

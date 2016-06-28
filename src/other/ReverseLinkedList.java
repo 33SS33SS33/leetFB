@@ -3,7 +3,6 @@ package other;
 /**
  * Write a function to reverse a linked list
  * Tags: LinkedList
- * <p/>
  * 递归的方法应该看一看
  * 都写了
  */
