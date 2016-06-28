@@ -1,4 +1,4 @@
-package hard;
+package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
