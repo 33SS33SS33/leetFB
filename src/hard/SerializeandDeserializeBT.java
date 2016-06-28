@@ -8,9 +8,11 @@ import java.util.LinkedList;
  * Created by shanshan on 16/5/9.
  * "用先序遍历 然后再重新构造就可以
  * 应该也可以按层遍历 然后bfs构造 未实现"
- * "Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer,
+ * "Serialization is the process of converting a data structure or object into a sequence of bits
+ * so that it can be stored in a file or memory buffer,
  * or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
- * Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work.
+ * Design an algorithm to serialize and deserialize a binary tree. There is no restriction on
+ * how your serialization/deserialization algorithm should work.
  * You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
  * For example, you may serialize the following tree
  * 1

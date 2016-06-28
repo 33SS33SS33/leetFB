@@ -1,12 +1,9 @@
 package hard;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
  * Google:
  * Implement peek() for java iterator()
  * Example [1,2,3,4,5]

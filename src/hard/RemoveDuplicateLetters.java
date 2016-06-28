@@ -2,8 +2,9 @@ package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/11.
-
- * "Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
+ * "Given a string which contains only lowercase letters, remove duplicate letters
+ * so that every letter appear once and only once. You must make sure your result is the smallest
+ * in lexicographical order among all possible results.
  * Example:
  * Given ""bcabc""
  * Return ""abc""
@@ -13,7 +14,8 @@ package hard;
  * 从开始遍历字符串，直到遇到首个唯一字符为止，从前缀中挑选出字典序最小的作为首字符。
  * 然后从剩余字符串中移除所有与首字母相同的字母。
  * 重复此过程，直到选出所有唯一字符为止。
- * Python的代码 其实用的是这个思路  他的逻辑是 按照排序过的set来选字符   然后把从他开始的后缀截取出来  如果这个后缀的set和s的set一样  就说明当前这个字符是首个唯一字符或者首个唯一字符这些之前的字符  然后把他去掉
+ * Python的代码 其实用的是这个思路  他的逻辑是 按照排序过的set来选字符   然后把从他开始的后缀截取出来
+ * 如果这个后缀的set和s的set一样  就说明当前这个字符是首个唯一字符或者首个唯一字符这些之前的字符  然后把他去掉
  * 因为已经是排序的 所以这个字符肯定也是字典序最小的  就可以作为首字符了"
  * "	https://leetcode.com/discuss/73761/a-short-o-n-recursive-greedy-solution
  */
