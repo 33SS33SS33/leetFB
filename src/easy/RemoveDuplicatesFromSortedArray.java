@@ -11,9 +11,6 @@ import java.util.Arrays;
  * Given input array A = [1,1,2],
  * Your function should return length = 2, and A is now [1,2].
  * Tags: Array, Two pointers
- */
-
-/**
  * 两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找
  */
 class RemoveDuplicatesFromSortedArray {

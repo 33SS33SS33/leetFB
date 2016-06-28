@@ -14,9 +14,7 @@ import java.util.*;
  * [1,2],[3,10],[12,16].
  * This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
  * Tags: Array, Sort
- */
 
-/**
  * 和mergeIntervals差不多 但是要考虑更多的情况
  * 因为插入的话  可能会new的那个区间会整个插入到当前区间的前面 而没有 merge
  * 然后也会有merge的情况 而且merge的时候 还要考虑start的大小 不光考虑end

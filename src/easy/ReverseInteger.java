@@ -2,9 +2,6 @@ package easy;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- */
-
-/**
  * Reverse digits of an integer.
  * Example1: x = 123, return 321
  * Example2: x = -123, return -321

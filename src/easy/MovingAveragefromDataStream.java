@@ -15,9 +15,10 @@ import java.util.Queue;
  m.next(5) = (10 + 3 + 5) / 3
  */
 
-/*Essentially, we just need to keep track of the sum of the current window as we go.
+/**Essentially, we just need to keep track of the sum of the current window as we go.
 This prevents an O(n) traversal over the Queue as we add new numbers to get the new average.
-If we need to evict then we just subtract that number off of our sum and divide by the size*/
+If we need to evict then we just subtract that number off of our sum and divide by the size
+ */
 public class MovingAveragefromDataStream {
     private double previousSum = 0.0;
     private int maxSize;

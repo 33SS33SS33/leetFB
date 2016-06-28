@@ -1,12 +1,9 @@
 package hard;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/5/23.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/5/23.
  * Given a list of unique words. Find all pairs of distinct indices (i, j) in the given list,
  * so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
  * Example 1:

@@ -12,9 +12,7 @@ package easy;
  * Here is an example of version numbers ordering:
  * 0.1 < 1.1 < 1.2 < 13.37
  * Tags: String
- */
 
-/**
  * 就是用.来切分 切了之后挨个比较 可能有一个字符串会溢出 就自动给个0
  */
 class CompareVersionNums {

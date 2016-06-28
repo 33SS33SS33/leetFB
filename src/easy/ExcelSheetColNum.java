@@ -15,9 +15,6 @@ import java.util.HashMap;
  * AA -> 27
  * AB -> 28
  * Tags: Math
- */
-
-/**
  * 还是一样 从后倒着往前走 但是有一个count要记录现在是几次方了
  */
 class ExcelSheetColNum {

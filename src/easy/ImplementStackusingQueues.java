@@ -5,9 +5,7 @@ import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- */
 
-/**
  * 用一个deque就可以了  每次push的时候  都把之前的给加到后面 这样dq的顺序其实就是堆栈的顺序
  */
 public class ImplementStackusingQueues {

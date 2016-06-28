@@ -5,9 +5,6 @@ import java.util.PriorityQueue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/3/4.
- */
-
-/***
  * creek----This problem can be solved by using a heap. The time is O(nlog(n)).
  */
 public class MergeKSortedArray {

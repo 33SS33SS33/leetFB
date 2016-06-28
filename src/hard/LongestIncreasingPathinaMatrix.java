@@ -2,9 +2,7 @@ package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/23.
- */
 
-/**
  * Given an integer matrix, find the length of the longest increasing path.
  * From each cell, you can either move to four directions: left, right, up or down.
  * You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).

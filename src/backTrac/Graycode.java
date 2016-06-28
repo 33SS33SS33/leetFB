@@ -21,9 +21,7 @@ import java.util.List;
  * For now, the judge is able to judge based on one instance of gray code
  * sequence. Sorry about that.
  * Tags: Backtracking
- */
 
-/**
  * 先写出来格雷码 找规律
  * 格雷码就是下一个数字和这一个数字只能有一位是不一样的
  * 规律就是如果要求n位的格雷码 其实就是逆序遍历n-1位的格雷码 然后每个格雷码加上1<<n-1

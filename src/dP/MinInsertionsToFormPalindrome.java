@@ -2,9 +2,6 @@ package dP;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
-/**
  * Given a string, find the minimum number of characters to be inserted to
  * convert it to palindrome.
  * Tags: Recursive, DP

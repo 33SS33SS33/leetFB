@@ -22,9 +22,7 @@ import java.util.*;
  * All words contain only lowercase alphabetic characters.
  * Amazon Yelp
  * Tags: Array, Backtracking, BFS, String
- */
 
-/**
  * 十分重要的一道题
  * 思路和word ladderI类似  不过这次只用了单方向的bfs
  * 关键的地方在于用defaultdict来存储当前这个单词的上几个单词(只存储距离为1的)  然后一层一层遍历

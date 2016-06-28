@@ -10,9 +10,7 @@ package hard;
  * All costs are positive integers.
  * Follow up:
  * Could you solve it in O(nk) runtime?"
- */
 
-/**
  * "这道题关键的地方在于 其实根据上一座房子来计算当前的房子的cost的时候 只需要上一座房子的最小的cost和第二小的cost
  * 原因是 如果不考虑各个房子要不同颜色 每座房子都选最小的cost就行了 那么现在需要不同颜色了  如果两个临近的房子撞色了  那么就可以参考第二小的cost就行
  * 所以代码里使用了reduce来处理 然后前一座cost只存的有最小的那个 还有第二小的 注意一下index 最小的cost的那个位置其实存的是第二小的cost

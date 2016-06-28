@@ -10,7 +10,6 @@ import java.util.List;
  * Note:
  * Could you optimize your algorithm to use only O(k) extra space?
  * Tags: Array
- * <p/>
  * 只用一个数组记录上一次的即可
  */
 class PascalsTriangle2 {

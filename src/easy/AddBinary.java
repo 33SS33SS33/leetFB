@@ -8,9 +8,7 @@ package easy;
  * b = "1"
  * Return "100".
  * Tags: Math, String
- */
 
-/**
  * 就是二进制加法 从后往前加也可以 记得str int转换
  */
 class AddBinary {

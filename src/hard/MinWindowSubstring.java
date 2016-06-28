@@ -13,9 +13,6 @@ import java.util.*;
  * If there is no such window in S that covers all characters in T, return the empty string "".
  * If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
  * Tags: Hashtable, Two Pointers, String
- */
-
-/**
  * 整体思路就是用两个指针 然后首先往前找到第一个window 然后就缩小start指针 然后再往前继续找
  * count是用来计算现在的窗口缺了几种T的字母 所以当一种都不缺的时候 就是找到了一个window 这时候就要开始进入while 移动start
  * 注意这里移动的时候 dic[s[start]]有可能是负数 就是这个字母出现的次数 多余T的次数  比如 AABC ABC 所以这种情况

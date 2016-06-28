@@ -8,9 +8,7 @@ package hard;
  * Note:
  * The order of the result is not important. So in the above example, [5, 3] is also correct.
  * Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
- */
 
-/**
  * 思路诡异 使用异或
  * 首先 从头到尾异或一遍 得出来的结果是那两个不同数字异或合体的结果
  * 把他拆出来的逻辑是

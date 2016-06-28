@@ -14,7 +14,6 @@ import java.util.*;
  * [1,4,6,4,1]
  * ]
  * Tags: Array
- * <p/>
  * 两边一定是1 中间的就是i+i-1
  */
 class PascalsTriangle {
