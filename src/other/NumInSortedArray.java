@@ -2,7 +2,6 @@ package other;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
-
  * Find how many times a number shows in an sorted array
  * Tags: Array
  */

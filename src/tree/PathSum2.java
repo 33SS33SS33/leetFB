@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- * <p/>
  * Given a binary tree and a sum, find all root-to-leaf paths where each path's
  * sum equals the given sum.
  * For example:

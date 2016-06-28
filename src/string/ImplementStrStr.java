@@ -2,7 +2,6 @@ package string;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/4.
-
  * Implement strStr().
  * Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
  * Tags: Two Pointers, String

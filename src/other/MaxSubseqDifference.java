@@ -2,7 +2,6 @@ package other;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
-
  * Find two contiguous subsequences in an array with maximum difference. The
  * subsequences may be overlapping.
  * Tags: Array

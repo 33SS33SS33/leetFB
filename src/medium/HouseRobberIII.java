@@ -8,7 +8,6 @@ package medium;
  * It will automatically contact the police if two directly-linked houses were broken into on the same night.
 
  Determine the maximum amount of money the thief can rob tonight without alerting the police.
-
  Example 1:
   3
  / \

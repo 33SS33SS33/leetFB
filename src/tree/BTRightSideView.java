@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * <p/>
  * 用BFS即可
  * BFS一般要用到双端队列 而且要用两个循环 大循环是遍历整个树或图(如果下一层所有节点是空 循环结束) 小循环是访问当前这一层的所有节点 然后压人下一层所有的节点
  * BFS可以一个用while 一个用for 重要

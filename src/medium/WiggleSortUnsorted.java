@@ -2,9 +2,6 @@ package medium;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
-/**
  * Given a random array, re-arrange it to wiggle style.
  * i.e.
  * [1] A0 >= A1 <= A2 >= A3 .... .... An.

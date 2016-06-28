@@ -2,7 +2,6 @@ package tree;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
-
  * Given a Binary Tree, find the deepest leaf node that is left child of its parent.
  * Tags: Tree, DFS, Backtracking
  */

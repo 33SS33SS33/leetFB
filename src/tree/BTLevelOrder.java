@@ -22,7 +22,6 @@ import java.util.Queue;
  * [15,7]
  * ]
  * Tags: Tree, BFS
-
  * 使用BFS 注意BFS判断一下level是不是为空
  */
 class BTLevelOrder {

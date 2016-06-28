@@ -4,7 +4,6 @@ import java.util.*;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
-
  * Given a matrix with each grid a color type. Start from a random point, find
  * the perimeter of the region of the same color.
  * Tags: BFS
