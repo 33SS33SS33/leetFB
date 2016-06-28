@@ -9,6 +9,12 @@ package easy;
  * Note that 1 is typically treated as an ugly number.
  */
 public class UglyNumber {
+    public static void main(String[] args) {
+        UglyNumber r = new UglyNumber();
+        System.out.println(r.isUgly(7));
+        System.out.println(r.isUglya2(7));
+    }
+
     public boolean isUgly(int num) {
         for (int i = 2; i < 6 && num > 0; i++)
             while (num % i == 0)

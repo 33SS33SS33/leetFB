@@ -9,6 +9,12 @@ package easy;
  Given s = "leetcode", return "leotcede".
  */
 public class ReverseVowelsofaString {
+    public static void main(String[] args) {
+        ReverseVowelsofaString r = new ReverseVowelsofaString();
+        System.out.println(r.reverseVowels("hello"));
+        System.out.println(r.reverseVowels("leetcode"));
+
+    }
 
     public String reverseVowels(String s) {
         if(s == null || s.length()==0) return s;
@@ -17,7 +23,6 @@ public class ReverseVowelsofaString {
         int start = 0;
         int end = s.length()-1;
         while(start<end){
-
             while(start<end && !vowels.contains(chars[start]+"")){
                 start++;
             }
@@ -25,11 +30,9 @@ public class ReverseVowelsofaString {
             while(start<end && !vowels.contains(chars[end]+"")){
                 end--;
             }
-
             char temp = chars[start];
             chars[start] = chars[end];
             chars[end] = temp;
-
             start++;
             end--;
         }

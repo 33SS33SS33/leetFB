@@ -7,6 +7,12 @@ package easy;
  Given s = "hello", return "olleh".
  */
 public class ReverseString {
+    public static void main(String[] args) {
+        ReverseString r = new ReverseString();
+        System.out.println(r.reverseStringa("tyutyu"));
+        System.out.println(r.reverseString("tyutyu"));
+
+    }
 
     public String reverseStringa(String s) {
         char[] word = s.toCharArray();

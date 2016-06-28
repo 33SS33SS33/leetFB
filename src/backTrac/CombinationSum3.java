@@ -10,7 +10,7 @@ import java.util.List;
  * Ensure that numbers within the set are sorted in ascending order.
  * Example 1: Input: k = 3, n = 7 Output: [[1,2,4]]
  * Example 2: Input: k = 3, n = 9 Output: [[1,2,6], [1,3,5], [2,3,4]]
- * <p/>
+ *
  * DFS即可
  */
 public class CombinationSum3 {

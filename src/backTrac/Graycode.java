@@ -30,6 +30,7 @@ import java.util.List;
 class Graycode {
     public static void main(String[] args) {
         System.out.println(new Graycode().grayCode(3));
+        System.out.println(new Graycode().grayCodeA(3));
     }
 
     //    The idea is simple. G(i) = i^ (i/2).

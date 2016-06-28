@@ -24,10 +24,12 @@ import java.util.Map;
  * 缩写在的话  如果缩写里只有一个word 还等于查询的word 也算是独一无二的
  */
 public class UniqueWordAbbreviation {
-    public class ValidWordAbbr {
+    public static void main(String[] args) {
+    }
+
         Map<String, String> map = new HashMap<String, String>();
 
-        public ValidWordAbbr(String[] dictionary) {
+        public UniqueWordAbbreviation(String[] dictionary) {
             for (String dic : dictionary) {
                 String key = getKey(dic);
                 if (map.containsKey(key)) {
@@ -48,5 +50,4 @@ public class UniqueWordAbbreviation {
                     .charAt(word.length() - 1);
             return key;
         }
-    }
 }

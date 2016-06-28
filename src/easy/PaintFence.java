@@ -11,6 +11,9 @@ package easy;
  * DP的题 注意这里是两个临近的篱笆有可能是同色的 但是同色的不超过两个
  */
 public class PaintFence {
+    public static void main(String[] args) {
+        System.out.println(new PaintFence().numWays(2,3));
+    }
 
     public int numWays(int n, int k) {
         if (n == 0)

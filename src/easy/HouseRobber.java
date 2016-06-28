@@ -15,7 +15,10 @@ public class HouseRobber {
     public static void main(String[] args) {
         int[] num = { 5, 4, 6, 7 };
         System.out.println(new HouseRobber().roba(num));
+        System.out.println(new HouseRobber().roba2(num));
         System.out.println(new HouseRobber().rob(num));
+        System.out.println(new HouseRobber().robA(num));
+        System.out.println(new HouseRobber().robB(num));
     }
 
     /**

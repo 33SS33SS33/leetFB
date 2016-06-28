@@ -17,7 +17,13 @@ package dP;
  * s2[i] = s1[i - 1] + prices[i]; // Only one way from s1"
  */
 public class BestTimeToBuySellStockWithCooldown {
-    public int maxProfita(int[] prices) {
+    public static void main(String[] args) {
+        int[] prices = { 1, 2, 10, 100 };
+        System.out.println(maxProfita(prices));
+        System.out.println(maxProfit(prices));
+    }
+
+    public static int maxProfita(int[] prices) {
         int sell = 0, prev_sell = 0, buy = Integer.MIN_VALUE, prev_buy;
         for (int price : prices) {
             prev_buy = buy;
@@ -32,7 +38,7 @@ public class BestTimeToBuySellStockWithCooldown {
      * https://leetcode.com/discuss/71354/share-my-thinking-process
      * O(n) Time, O(1) Space
      */
-    public int maxProfit(int[] prices) {
+    public static int maxProfit(int[] prices) {
         if (prices == null || prices.length < 2)
             return 0;
         int sell = 0, lastSell = 0, buy = -prices[0], lastBuy;

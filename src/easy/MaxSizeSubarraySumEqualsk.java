@@ -21,6 +21,10 @@ import java.util.HashMap;
  * 注意一下哈希表最开始存的0 是考虑了如果当前的和直接等于k的情况"
  */
 public class MaxSizeSubarraySumEqualsk {
+    public static void main(String[] args) {
+        int[] num = { 1, -1, 5, -2, 3 };
+        System.out.println(new MaxSizeSubarraySumEqualsk().maxSubArrayLen(num,3));
+    }
 
     public int maxSubArrayLen(int[] nums, int k) {
         int sum = 0, max = 0;

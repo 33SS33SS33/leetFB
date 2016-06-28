@@ -8,6 +8,11 @@ package easy;
  * 和power of two一样 也可以直接用个3最大的次方去除 一下就可以
  */
 public class PowerofThree {
+    public static void main(String[] args) {
+        System.out.println(new PowerofThree().isPowerOfThreea(16));
+        System.out.println(new PowerofThree().isPowerOfThree(9));
+        System.out.println(new PowerofThree().isPowerOfThreeb(16));
+    }
     public boolean isPowerOfThreea(int n) {
         return Integer.toString(n, 3).matches("10*");
     }
