@@ -4,7 +4,6 @@ package medium;
  * Created by shanshan on 16/6/17.
  * Given a binary tree, find the largest subtree which is a Binary Search Tree (BST),
  * where largest means subtree with largest number of nodes in it.
-
  Note:
  A subtree must include all of its descendants.
  Here's an example:

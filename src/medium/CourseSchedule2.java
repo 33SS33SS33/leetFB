@@ -16,6 +16,7 @@ import java.util.*;
  * Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.
  * There may be multiple correct orders, you just need to return one of them.
  * If it is impossible to finish all courses, return an empty array.
+ *
  * For example:
  * 2, [[1,0]]
  * There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]

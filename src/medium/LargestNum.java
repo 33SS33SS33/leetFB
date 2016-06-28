@@ -9,7 +9,6 @@ import java.util.*;
  * Note: The result may be very large, so you need to return a string instead
  * of an integer.
  * Tags: Sort
- * <p/>
  * 要使用cmp函数来排序 比较规则是x+y 和y+x的大小 而且要倒序
  * 同时要注意[0,0]这种特殊情况
  */
