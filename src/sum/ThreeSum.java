@@ -22,8 +22,8 @@ import java.util.List;
 class ThreeSum {
     public static void main(String[] args) {
         int[] s = { -1, 0, 1, 2, -1, -4 };
-        //        t.printResult(t.threeSum(s));
-        List<List<Integer>> res1 = threeSumA(s);
+//                t.printResult(t.threeSuma(s));
+        List<List<Integer>> res1 = threeSuma(s);
         List<List<Integer>> res = threeSum(s);
         System.out.println(res1.toString());
         System.out.println(res.toString());
@@ -36,7 +36,7 @@ class ThreeSum {
     /**
      * 最好的
      */
-    public List<List<Integer>> threeSuma(int[] nums) {
+    public static List<List<Integer>> threeSuma(int[] nums) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3)
             return result;
@@ -66,30 +66,6 @@ class ThreeSum {
         return result;
     }
 
-    public static List<List<Integer>> threeSumA(int[] num) {
-        Arrays.sort(num);
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        for (int i = 0; i < num.length - 2; i++) {
-            if (i == 0 || (i > 0 && num[i] != num[i - 1])) {
-                int lo = i + 1, hi = num.length - 1, sum = 0 - num[i];
-                while (lo < hi) {
-                    if (num[lo] + num[hi] == sum) {
-                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
-                        while (lo < hi && num[lo] == num[lo + 1])
-                            lo++;
-                        while (lo < hi && num[hi] == num[hi - 1])
-                            hi--;
-                        lo++;
-                        hi--;
-                    } else if (num[lo] + num[hi] < sum)
-                        lo++;
-                    else
-                        hi--;
-                }
-            }
-        }
-        return res;
-    }
 
     /**
      * Two Pointers.
