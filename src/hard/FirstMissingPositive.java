@@ -19,7 +19,9 @@ package hard;
 class FirstMissingPositive {
     public static void main(String[] args) {
         int[] A = { 3, 4, -1, 1 };
+        int[] B = { 3, 4, 2, 1 };
         System.out.println(new FirstMissingPositive().firstMissingPositive(A));
+        System.out.println(new FirstMissingPositive().firstMissingPositive(B));
         System.out.println(new FirstMissingPositive().firstMissingPositiveB(A));
         System.out.println(new FirstMissingPositive().firstMissingPositiveC(A));
     }
@@ -46,6 +48,8 @@ class FirstMissingPositive {
                 return i + 1;
         return n + 1; // nothing in middle losing, return largest
     }
+
+
 
     public int firstMissingPositiveB(int[] A) {
         final int N = A.length;

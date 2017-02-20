@@ -16,7 +16,8 @@ import java.util.*;
  * and to take course 0 you should also have finished course 1. So it is impossible.
  * <p/>
  * 这题需要用到拓扑排序
- * 可以用改进的DFS 每次dfs另外传入一个变量 来记录当前的路径 当某个点发现自己已经在路径上了 就说明有环 就返回False 这里要注意 要在递归退出来之后 再将当前的点标记为searched 要不就无法前进到有环的那个点
+ * 可以用改进的DFS 每次dfs另外传入一个变量 来记录当前的路径 当某个点发现自己已经在路径上了 就说明有环 就返回False
+ * 这里要注意 要在递归退出来之后 再将当前的点标记为searched 要不就无法前进到有环的那个点
  * 没有实现DFS
  * 实现了BFS的拓扑排序
  * 需要用两个数组记录入度和出度 入度是数字 出度要记录有哪些节点
@@ -43,7 +44,7 @@ public class CourseSchedule {
     }
 
     /**
-     * 最好的
+     * 最好的 BFS Topological sort
      */
     public boolean canFinisha(int numCourses, int[][] prerequisites) {
         int[][] matrix = new int[numCourses][numCourses]; // i -> j

@@ -31,6 +31,8 @@ package medium;
  * 最后把数组的元素都往右移动一位即可"
  */
 public class GameofLife {
+
+
     public void gameOfLifea(int[][] board) {
         if (board == null || board.length == 0)
             return;
@@ -65,6 +67,9 @@ public class GameofLife {
         lives -= board[i][j] & 1;
         return lives;
     }
+
+
+
 
     int[][] dir = { { 1, -1 }, { 1, 0 }, { 1, 1 }, { 0, -1 }, { 0, 1 }, { -1, -1 }, { -1, 0 },
             { -1, 1 } };

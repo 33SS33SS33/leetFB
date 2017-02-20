@@ -29,6 +29,9 @@ class IntersectionOfLinkedList {
 
     }
 
+
+    /** 最好的
+     * */
     public ListNode getIntersectionNodeb(ListNode headA, ListNode headB) {
         if (null == headA || null == headB)
             return null;

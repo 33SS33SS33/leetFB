@@ -4,7 +4,8 @@ package hard;
  * Created by GAOSHANSHAN835 on 2016/5/18.
  * Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive),
  * prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
- * Note:
+ *
+ *  Note:
  * You must not modify the array (assume the array is read only).
  * You must use only constant, O(1) extra space.
  * Your runtime complexity should be less than O(n2).
@@ -13,7 +14,8 @@ package hard;
 //错的
 public class FindtheDuplicateNum {
     public static void main(String[] args) {
-        int[] num = { 0, 1, 2, 4, 2, 3 };
+        int[] num = { 1, 2, 4, 2, 3 };
+        System.out.println(new FindtheDuplicateNum().findDuplicatea(num));
         System.out.println(new FindtheDuplicateNum().findDuplicate(num));
         System.out.println(new FindtheDuplicateNum().findDuplicateB(num));
     }
@@ -33,6 +35,7 @@ public class FindtheDuplicateNum {
         }
         return slow;
     }
+
 
     public int findDuplicate(int[] nums) {
         int n = nums.length;

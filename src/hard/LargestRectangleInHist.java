@@ -62,8 +62,7 @@ class LargestRectangleInHist {
         int max = 0;
         Stack<Integer> s = new Stack<Integer>(); // store indices
         for (int i = 0; i < height.length; i++) {
-            while (!s.isEmpty() && height[i] < height[s
-                    .peek()]) {//update when current height is smaller
+            while (!s.isEmpty() && height[i] < height[s.peek()]) {//update when current height is smaller
                 int h = height[s.pop()];
                 int w = (s.isEmpty() ? i : i - s.peek() - 1);
                 max = Math.max(max, h * w);

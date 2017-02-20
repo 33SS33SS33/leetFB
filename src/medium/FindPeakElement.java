@@ -14,13 +14,13 @@ package medium;
  * 这道题第一次写的解法是错的  这道题如果mid不是peak的话 只需要看右边的那个元素是不是大于mid  如果大于mid 那么右边一定会有一个peak
  * 因为如果右边是个递增到结束的数列 那么结尾的那个就是peak 否则就往前找
  */
-class FindPeak {
+class FindPeakElement {
     public static void main(String[] args) {
         int[] num = { 1, 2, 3, 1, 4 };
-        System.out.println(new FindPeak().findPeakElementa(num));
-        System.out.println(new FindPeak().findPeakElement(num));
-        System.out.println(new FindPeak().findPeakElementB(num));
-        System.out.println(new FindPeak().findPeakElementC(num));
+        System.out.println(new FindPeakElement().findPeakElementa(num));
+        System.out.println(new FindPeakElement().findPeakElement(num));
+        System.out.println(new FindPeakElement().findPeakElementB(num));
+        System.out.println(new FindPeakElement().findPeakElementC(num));
     }
 
     public int findPeakElementa(int[] num) {

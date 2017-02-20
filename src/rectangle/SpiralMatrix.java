@@ -21,9 +21,9 @@ class SpiralMatrix {
         List<Integer> res3 = spiralOrderA(matrix);
         List<Integer> res = spiralOrderB(matrix);
         List<Integer> res4 = spiralOrder(matrix);
-        System.out.print(res.toString());
-        System.out.print(res3.toString());
-        System.out.print(res4.toString());
+        System.out.println(res.toString());
+        System.out.println(res3.toString());
+        System.out.println(res4.toString());
     }
 
     public static List<Integer> spiralOrder(int[][] matrix) {

@@ -21,28 +21,6 @@ public class CombinationSum3 {
         System.out.println(cs.combinationSum3B(3, 9));
     }
 
-    private List<List<Integer>> res = new ArrayList<List<Integer>>();
-
-    public List<List<Integer>> combinationSum3a(int k, int n) {
-        findCombo(k, n, 1, new LinkedList<Integer>());
-        return res;
-    }
-
-    public void findCombo(int k, int n, int start, List<Integer> list) {
-        if (k == 1) {
-            if (n < start || n > 9)
-                return;
-            list.add(n);
-            res.add(list);
-            return;
-        }
-        for (int i = start; i <= n / k && i < 10; i++) {
-            List<Integer> subList = new LinkedList<Integer>(list);
-            subList.add(i);
-            findCombo(k - 1, n - i, i + 1, subList);
-        }
-    }
-
     public List<List<Integer>> combinationSum3A(int k, int n) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         backtrack(ans, new ArrayList<Integer>(), k, 1, n);
@@ -65,6 +43,30 @@ public class CombinationSum3 {
             }
         }
     }
+
+    private List<List<Integer>> res = new ArrayList<List<Integer>>();
+
+    public List<List<Integer>> combinationSum3a(int k, int n) {
+        findCombo(k, n, 1, new LinkedList<Integer>());
+        return res;
+    }
+
+    public void findCombo(int k, int n, int start, List<Integer> list) {
+        if (k == 1) {
+            if (n < start || n > 9)
+                return;
+            list.add(n);
+            res.add(list);
+            return;
+        }
+        for (int i = start; i <= n / k && i < 10; i++) {
+            List<Integer> subList = new LinkedList<Integer>(list);
+            subList.add(i);
+            findCombo(k - 1, n - i, i + 1, subList);
+        }
+    }
+
+
 
     /**
      * creek

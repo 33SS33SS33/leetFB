@@ -38,10 +38,8 @@ class ConstructBTPreInOrder {
             if (inorder[pos] == preorder[ps])
                 break;
         }
-        root.left = buildTree(preorder, inorder, ps + 1, ps - is + pos, is,
-                pos - 1); // left subtree
-        root.right = buildTree(preorder, inorder, ps - is + pos + 1, pe, pos + 1,
-                ie); // right subtree
+        root.left = buildTree(preorder, inorder, ps + 1, ps - is + pos, is, pos - 1); // left subtree
+        root.right = buildTree(preorder, inorder, ps - is + pos + 1, pe, pos + 1, ie); // right subtree
         return root;
     }
 

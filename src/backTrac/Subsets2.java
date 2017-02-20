@@ -24,7 +24,7 @@ import java.util.*;
  * 因为元素相同的只需要在path上加上就行了
  * 应该也能用之前的办法做 待确认
  */
-class SubsetsWithDup {
+class Subsets2 {
     public static void main(String[] args) {
         int[] num = { 1, 2, 2 };
         List<List<Integer>> res = subsetsWithDup(num);
@@ -62,8 +62,7 @@ class SubsetsWithDup {
      * Add number to list and pass list and i+1 to next backtrack
      * Reset list after that
      */
-    private static void subsetsHelper(List<List<Integer>> res, List<Integer> list, int[] num,
-            int pos) {
+    private static void subsetsHelper(List<List<Integer>> res, List<Integer> list, int[] num, int pos) {
         res.add(new ArrayList<Integer>(list));
         for (int i = pos; i < num.length; i++) {
             if (i != pos && num[i] == num[i - 1])

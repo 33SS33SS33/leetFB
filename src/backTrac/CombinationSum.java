@@ -23,7 +23,7 @@ class CombinationSum {
     public static void main(String[] args) {
         int[] candidates = { 2, 3, 6, 7 };
         int target = 7;
-        List<List<Integer>> list = new CombinationSum().combinationSum(candidates, target);
+        List<List<Integer>> list = combinationSum(candidates, target);
         for (List<Integer> l : list)
             System.out.println(l.toString());
     }
@@ -34,7 +34,7 @@ class CombinationSum {
      * [2, 2, 3]
      * [7]
      */
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (candidates == null || candidates.length == 0)
             return res;
@@ -43,7 +43,7 @@ class CombinationSum {
         return res;
     }
 
-    private void helper(int[] candidates, int target, int pos, List<Integer> comb,
+    private static void helper(int[] candidates, int target, int pos, List<Integer> comb,
             List<List<Integer>> res) {
         if (target == 0) {
             res.add(new ArrayList<Integer>(comb)); // dereference

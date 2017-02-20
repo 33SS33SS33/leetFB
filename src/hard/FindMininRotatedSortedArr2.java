@@ -15,15 +15,15 @@ import java.util.Arrays;
  * 和Search in Rotated Sorted Array II 基本一样 貌似可以把min的判断去掉 未实现
  * 需要仔细研究一下二分查找的start和end的设置情况 重要
  */
-class FindRotatedArrMin2 {
+class FindMininRotatedSortedArr2 {
     public static void main(String[] args) {
         // int[] num = { 2, 3, 3, 4, 5, 6, 7, 0, 0, 0, 1, 1, 2, 2, 2 };
         // int[] num = { 3, 3, 1 };
         int[] num = { 10, 1, 4, 10, 10, 10 };
-        System.out.println(new FindRotatedArrMin2().findMinA(num));
-        System.out.println(new FindRotatedArrMin2().findMin(num));
-        System.out.println(new FindRotatedArrMin2().findMin2(num));
-        System.out.println(new FindRotatedArrMin2().findMinB(num));
+        System.out.println(new FindMininRotatedSortedArr2().findMinA(num));
+        System.out.println(new FindMininRotatedSortedArr2().findMin(num));
+        System.out.println(new FindMininRotatedSortedArr2().findMin2(num));
+        System.out.println(new FindMininRotatedSortedArr2().findMinB(num));
     }
 
     /**

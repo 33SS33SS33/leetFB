@@ -17,6 +17,7 @@ import java.util.HashMap;
  * What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
  */
 public class IntersectionofTwoArraysII {
+
     public int[] intersect(int[] nums1, int[] nums2) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         ArrayList<Integer> result = new ArrayList<Integer>();

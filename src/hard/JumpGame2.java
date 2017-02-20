@@ -1,5 +1,7 @@
 package hard;
 
+import static java.lang.Math.max;
+
 /**
  * Given an array of non-negative integers, you are initially positioned at the
  * first index of the array.
@@ -13,7 +15,8 @@ package hard;
  */
 class JumpGame2 {
     public static void main(String[] args) {
-        int[] A = { 0, 1, 3, 1, 2 };
+        int[] A = { 2,3,1,1,4};
+        System.out.println(new JumpGame2().jumpA(A,5));
         System.out.println(new JumpGame2().jump(A));
         System.out.println(new JumpGame2().jumpB(A));
         System.out.println(new JumpGame2().jumpC(A));
@@ -56,7 +59,7 @@ class JumpGame2 {
                 step++;
                 lastReach = reach;
             }
-            reach = Math.max(reach, A[i] + i);
+            reach = max(reach, A[i] + i);
         }
         if (reach < A.length - 1)
             return -1;
@@ -100,9 +103,24 @@ class JumpGame2 {
                 if (last >= A.length)
                     return step;
             }
-            cur = Math.max(cur, i + A[i]);
+            cur = max(cur, i + A[i]);
         }
         return step;
+    }
+
+    int jump(int A[], int n) {
+        if (n < 2) return 0;
+        int level = 0, currentMax = 0, i = 0, nextMax = 0;
+
+        while (currentMax - i + 1 > 0) {        //nodes count of current level>0
+            level++;
+            for (; i <= currentMax; i++) {    //traverse current level , and update the max reach of next level
+                nextMax = max(nextMax, A[i] + i);
+                if (nextMax >= n - 1) return level;   // if last element is in level+1,  then the min jump=level
+            }
+            currentMax = nextMax;
+        }
+        return 0;
     }
 
 }
