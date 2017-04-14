@@ -46,9 +46,7 @@ public class BurstBalloons {
             return memo[left][right];
         int ans = 0;
         for (int i = left + 1; i < right; ++i)
-            ans = Math.max(ans,
-                    nums[left] * nums[i] * nums[right] + burst(memo, nums, left, i) + burst(memo,
-                            nums, i, right));
+            ans = Math.max(ans, nums[left] * nums[i] * nums[right] + burst(memo, nums, left, i) + burst(memo, nums, i, right));
         memo[left][right] = ans;
         return ans;
     }

@@ -72,6 +72,7 @@ public class CountofSmallerNumbersAfterSelf {
                 end = mid;
             }
         }
+        //重新判断一下
         if (sorted.get(start) >= target)
             return start;
         return end;
