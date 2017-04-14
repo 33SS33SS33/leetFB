@@ -46,8 +46,7 @@ public class UniqueWordAbbreviation {
         }
 
         private String getKey(String word) {
-            String key = word.charAt(0) + Integer.toString(word.length() - 2) + word
-                    .charAt(word.length() - 1);
+            String key = word.charAt(0) + Integer.toString(word.length() - 2) + word.charAt(word.length() - 1);
             return key;
         }
 }

@@ -6,7 +6,7 @@ package list;
  * Can you solve it without using extra space?
  * Tags: Linkedlist, Two pointers
  */
-class oLinkedListCycle {
+class LinkedListCycle {
     public static void main(String[] args) {
         LinkedListCycle2 r = new LinkedListCycle2();
         ListNode head = buildList();
