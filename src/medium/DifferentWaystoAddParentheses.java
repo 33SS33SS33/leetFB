@@ -26,6 +26,7 @@ import java.util.Scanner;
  * -->compute("2") * compute("3-4*5")
  * -->compute("2*3") - compute("4*5")
  * -->compute("2*3-4") * compute("5")
+ *
  * 这道题最重要的地方就是分割循环计算字符串 需要多看代码 并且记住!!
  * for i, v in enumerate(input[start:end]):
  * if str(v) in '+-*':
@@ -44,9 +45,7 @@ public class DifferentWaystoAddParentheses {
     public List<Integer> diffWaysToComputea(String input) {
         List<Integer> ret = new LinkedList<Integer>();
         for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == '-' ||
-                    input.charAt(i) == '*' ||
-                    input.charAt(i) == '+') {
+            if (input.charAt(i) == '-' || input.charAt(i) == '*' || input.charAt(i) == '+') {
                 String part1 = input.substring(0, i);
                 String part2 = input.substring(i + 1);
                 List<Integer> part1Ret = diffWaysToComputea(part1);

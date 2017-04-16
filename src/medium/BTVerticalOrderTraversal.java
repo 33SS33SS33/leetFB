@@ -40,6 +40,7 @@ public class BTVerticalOrderTraversal {
         Queue<TreeNode> queue = new LinkedList<>();
 //use a HashMap to store the TreeNode and the according cloumn value
         HashMap<TreeNode, Integer> weight = new HashMap<TreeNode, Integer>();
+
         queue.offer(root);
         weight.put(root, 0);
         int min = 0;

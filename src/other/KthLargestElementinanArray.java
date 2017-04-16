@@ -18,9 +18,9 @@ import java.util.*;
  * 需要练习手写快排 未实现
  * 第二遍small的if写错了  重要
  */
-class KthLargest {
+class KthLargestElementinanArray {
     public static void main(String[] args) {
-        KthLargest K = new KthLargest();
+        KthLargestElementinanArray K = new KthLargestElementinanArray();
         int[] A = { 1, 23, 12, 9, 30, 2, 50 };
         System.out.println(K.findKthLargesta(A, 3));
         System.out.println(K.findKthLargest(A, 3));

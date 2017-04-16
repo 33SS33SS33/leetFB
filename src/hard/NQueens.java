@@ -120,8 +120,7 @@ class NQueens {
 
     private boolean check(int row, int[] columnForRow) {
         for (int i = 0; i < row; i++) {
-            if (columnForRow[row] == columnForRow[i]
-                    || Math.abs(columnForRow[row] - columnForRow[i]) == row - i)
+            if (columnForRow[row] == columnForRow[i] || Math.abs(columnForRow[row] - columnForRow[i]) == row - i)
                 return false;
         }
         return true;
