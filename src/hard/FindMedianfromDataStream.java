@@ -29,7 +29,7 @@ public class FindMedianfromDataStream {
     /**
      * 最好的
      */
-    private Queue<Long> small = new PriorityQueue(), large = new PriorityQueue();
+    private  Queue<Long> small = new PriorityQueue(), large = new PriorityQueue();
 
     public void addNum(int num) {
         large.add((long) num);
@@ -42,13 +42,4 @@ public class FindMedianfromDataStream {
         return large.size() > small.size() ? large.peek() : (large.peek() - small.peek()) / 2.0;
     }
 
-/*    Queue<Integer> q = new PriorityQueue(), z = q, t,
-            Q = new PriorityQueue(Collections.reverseOrder());
-    public void addNum(int num) {
-        (t=Q).add(num);
-        (Q=q).add((q=t).poll());
-    }
-    public double findMedian() {
-        return (Q.peek() + z.peek()) / 2.;
-    }*/
 }

@@ -51,6 +51,26 @@ class Subsets {
     }
 
     /**
+     * 最好的
+     * Remember the start position and do backtracking
+     */
+    public static List<List<Integer>> subsetsB(int[] s) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(s);
+        subsetsB(s, 0, new ArrayList<Integer>(), res);
+        return res;
+    }
+
+    public static void subsetsB(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
+        result.add(new ArrayList<Integer>(set));
+        for (int i = start; i < s.length; i++) {
+            set.add(s[i]); // with i
+            subsetsB(s, i + 1, set, result); // DFS
+            set.remove(set.size() - 1); // remove last element
+        }
+    }
+
+    /**
      * 非递归  更好理解
      */
     public static ArrayList<ArrayList<Integer>> subsets2(int[] S) {
@@ -70,24 +90,7 @@ class Subsets {
         return res;
     }
 
-    /**
-     * Remember the start position and do backtracking
-     */
-    public static List<List<Integer>> subsetsB(int[] s) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        Arrays.sort(s);
-        subsetsB(s, 0, new ArrayList<Integer>(), res);
-        return res;
-    }
 
-    public static void subsetsB(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
-        result.add(new ArrayList<Integer>(set));
-        for (int i = start; i < s.length; i++) {
-            set.add(s[i]); // with i
-            subsetsB(s, i + 1, set, result); // DFS
-            set.remove(set.size() - 1); // remove last element
-        }
-    }
 
     /**
      * Recursive down to two branches.

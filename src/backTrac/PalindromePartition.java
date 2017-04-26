@@ -22,41 +22,11 @@ import java.util.*;
  */
 class PalindromePartition {
     public static void main(String[] args) {
-        System.out.println(partitiona("aab"));
         System.out.println(partition("aab"));
-        System.out.println(new PalindromePartition().partitionD("aab"));
-        System.out.println(partitiona("aa"));
-        System.out.println(partition("aa"));
-        System.out.println(new PalindromePartition().partitionD("aa"));
     }
 
     /**
      * 最好的
-     */
-    public static List<List<String>> partitiona(String s) {
-        int len = s.length();
-        List<List<String>>[] result = new List[len + 1];
-        result[0] = new ArrayList<List<String>>();
-        result[0].add(new ArrayList<String>());
-        boolean[][] pair = new boolean[len][len];
-        for (int i = 0; i < s.length(); i++) {
-            result[i + 1] = new ArrayList<List<String>>();
-            for (int left = 0; left <= i; left++) {
-                if (s.charAt(left) == s.charAt(i) && (i - left <= 1 || pair[left + 1][i - 1])) {
-                    pair[left][i] = true;
-                    String str = s.substring(left, i + 1);
-                    for (List<String> r : result[left]) {
-                        List<String> ri = new ArrayList<String>(r);
-                        ri.add(str);
-                        result[i + 1].add(ri);
-                    }
-                }
-            }
-        }
-        return result[len];
-    }
-
-    /**
      * Backtracking
      */
     public static List<List<String>> partition(String s) {
@@ -70,14 +40,14 @@ class PalindromePartition {
     public static void partition(String s, int pos, List<List<String>> res, List<String> cut) {
         if (pos == s.length()) { // note the stop condition
             res.add(new ArrayList<String>(cut)); // dereference
-            return;
-        }
-        for (int i = pos + 1; i <= s.length(); i++) {
-            String prefix = s.substring(pos, i);
-            if (isPalindrome(prefix)) {
-                cut.add(prefix);
-                partition(s, i, res, cut); // update pos with i
-                cut.remove(cut.size() - 1);
+        }else {
+            for (int i = pos + 1; i <= s.length(); i++) {// start from 1
+                String prefix = s.substring(pos, i);
+                if (isPalindrome(prefix)) {
+                    cut.add(prefix);
+                    partition(s, i, res, cut); // update pos with i
+                    cut.remove(cut.size() - 1);
+                }
             }
         }
     }
@@ -94,35 +64,29 @@ class PalindromePartition {
         return true;
     }
 
-    /**
-     * creek----Depth-first Search
-     */
-    public ArrayList<ArrayList<String>> partitionD(String s) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        if (s == null || s.length() == 0) {
-            return result;
-        }
-        ArrayList<String> partition = new ArrayList<String>();//track each possible partition
-        addPalindrome(s, 0, partition, result);
-        return result;
+    public static List<List<String>> partitionaa(String s) {
+        List<List<String>> list = new ArrayList<>();
+        backtrack(list, new ArrayList<>(), s, 0);
+        return list;
     }
 
-    private void addPalindrome(String s, int start, ArrayList<String> partition,
-            ArrayList<ArrayList<String>> result) {
-        //stop condition
-        if (start == s.length()) {
-            ArrayList<String> temp = new ArrayList<String>(partition);
-            result.add(temp);
-            return;
-        }
-        for (int i = start + 1; i <= s.length(); i++) {
-            String str = s.substring(start, i);
-            if (isPalindrome(str)) {
-                partition.add(str);
-                addPalindrome(s, i, partition, result);
-                partition.remove(partition.size() - 1);
+    public static void backtrack(List<List<String>> list, List<String> tempList, String s, int start){
+        if(start == s.length())
+            list.add(new ArrayList<>(tempList));
+        else{
+            for(int i = start; i < s.length(); i++){
+                if(isPalindrome(s, start, i)){
+                    tempList.add(s.substring(start, i + 1));
+                    backtrack(list, tempList, s, i + 1);
+                    tempList.remove(tempList.size() - 1);
+                }
             }
         }
     }
 
+    public static boolean isPalindrome(String s, int low, int high){
+        while(low < high)
+            if(s.charAt(low++) != s.charAt(high--)) return false;
+        return true;
+    }
 }

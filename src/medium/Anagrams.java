@@ -13,7 +13,8 @@ import java.util.Map;
  */
 class Anagrams {
     public static void main(String[] args) {
-        String[] strs = { "dog", "dot", "cog", "log", "god", "tod" };
+        String[] strs = {"dog", "dot", "cog", "log", "god", "tod"};
+        System.out.println(anagrams(strs).toString());
         System.out.println(anagrams(strs).toString());
         System.out.println(anagramsB(strs).toString());
     }

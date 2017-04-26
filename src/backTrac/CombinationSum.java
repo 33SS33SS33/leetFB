@@ -21,11 +21,33 @@ import java.util.*;
 class CombinationSum {
     // [2, 3, 6, 7], 7
     public static void main(String[] args) {
-        int[] candidates = { 2, 3, 6, 7 };
+        int[] candidates = {2, 3, 6, 7};
         int target = 7;
-        List<List<Integer>> list = combinationSum(candidates, target);
+        List<List<Integer>> list = combinationSuma(candidates, target);
         for (List<Integer> l : list)
             System.out.println(l.toString());
+    }
+
+    /**
+     * 最好的
+     */
+    public static List<List<Integer>> combinationSuma(int[] nums, int target) {
+        List<List<Integer>> list = new ArrayList<>();
+        Arrays.sort(nums);
+        backtrack(list, new ArrayList<>(), nums, target, 0);
+        return list;
+    }
+
+    private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
+        if (remain < 0) return;
+        else if (remain == 0) list.add(new ArrayList<>(tempList));
+        else {
+            for (int i = start; i < nums.length; i++) {
+                tempList.add(nums[i]);
+                backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+                tempList.remove(tempList.size() - 1);
+            }
+        }
     }
 
     /**
@@ -43,8 +65,7 @@ class CombinationSum {
         return res;
     }
 
-    private static void helper(int[] candidates, int target, int pos, List<Integer> comb,
-            List<List<Integer>> res) {
+    private static void helper(int[] candidates, int target, int pos, List<Integer> comb, List<List<Integer>> res) {
         if (target == 0) {
             res.add(new ArrayList<Integer>(comb)); // dereference
             return;
@@ -74,7 +95,7 @@ class CombinationSum {
 
     // the index here means we are allowed to choose candidates from that index
     private void recurse(List<Integer> list, int target, int[] candidates, int index,
-            List<List<Integer>> ret) {
+                         List<List<Integer>> ret) {
         if (target == 0) {
             ret.add(list);
             return;

@@ -33,18 +33,15 @@ public class WordPatternII {
      * 最好的
      */
     public boolean wordPatternMatch(String pattern, String str) {
-        Map<Character, String> map = new HashMap<Character, String>();
-        Set<String> set = new HashSet<String>();
+        Map<Character, String> map = new HashMap<>();
+        Set<String> set = new HashSet<>();
         return isMatch(str, 0, pattern, 0, map, set);
     }
 
-    boolean isMatch(String str, int i, String pat, int j, Map<Character, String> map,
-            Set<String> set) {
+    boolean isMatch(String str, int i, String pat, int j, Map<Character, String> map, Set<String> set) {
         // base case
-        if (i == str.length() && j == pat.length())
-            return true;
-        if (i == str.length() || j == pat.length())
-            return false;
+        if (i == str.length() && j == pat.length()) return true;
+        if (i == str.length() || j == pat.length()) return false;
         // get current pattern character
         char c = pat.charAt(j);
         // if the pattern character exists
@@ -74,12 +71,11 @@ public class WordPatternII {
             map.remove(c);
             set.remove(p);
         }
-        // we've tried our best but still no luck
         return false;
     }
 
     Map<Character, String> map = new HashMap();
-    Set<String>            set = new HashSet();
+    Set<String> set = new HashSet();
 
     public boolean wordPatternMatchb(String pattern, String str) {
         if (pattern.isEmpty())

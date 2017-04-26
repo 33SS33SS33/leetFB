@@ -56,8 +56,7 @@ class DungeonGame {
             dungeon[m][j] = Math.max(dungeon[m][j + 1] - dungeon[m][j], 1);
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
-                dungeon[i][j] = Math
-                        .max(Math.min(dungeon[i + 1][j], dungeon[i][j + 1]) - dungeon[i][j], 1);
+                dungeon[i][j] = Math.max(Math.min(dungeon[i + 1][j], dungeon[i][j + 1]) - dungeon[i][j], 1);
             }
         }
         return dungeon[0][0];

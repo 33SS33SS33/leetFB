@@ -44,7 +44,13 @@ class Subsets2 {
     }
 
     /**
+     * 最好的
      * Backtrack to generate all subsets
+     * Add list to result
+     * Backtrack from current position to the end of array
+     * Skip duplicates first
+     * Add number to list and pass list and i+1 to next backtrack
+     * Reset list after that
      */
     public static List<List<Integer>> subsetsWithDup(int[] num) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
@@ -55,13 +61,6 @@ class Subsets2 {
         return res;
     }
 
-    /**
-     * Add list to result
-     * Backtrack from current position to the end of array
-     * Skip duplicates first
-     * Add number to list and pass list and i+1 to next backtrack
-     * Reset list after that
-     */
     private static void subsetsHelper(List<List<Integer>> res, List<Integer> list, int[] num, int pos) {
         res.add(new ArrayList<Integer>(list));
         for (int i = pos; i < num.length; i++) {
