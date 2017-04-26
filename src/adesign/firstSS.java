@@ -5,6 +5,8 @@ package adesign;
  */
 public class firstSS {
 
+
+   // 算法课程   http://algs4.cs.princeton.edu/40graphs/
 /**
  *
  * 287. Find the Duplicate Number
@@ -54,6 +56,18 @@ public class firstSS {
  *	379	Design Phone Directory
  *
  * 	269	Alien Dictionary
+ *
+ * 	329. Longest Increasing Path in a Matrix
+ *
+ * 	218	The Skyline Problem
+ *
+ *312. Burst Balloons
+ *
+ *282. Expression Add Operators
+ *
+ *	315	Count of Smaller Numbers After Self
+ *
+ *
  */
 
 }

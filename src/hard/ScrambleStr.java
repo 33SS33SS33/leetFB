@@ -57,6 +57,41 @@ class ScrambleStr {
     }
 
     /**
+     * 最好的
+     * separate s1 into two parts, namely --s11--, --------s12--------
+     * separate s2 into two parts, namely --s21--, --------s22--------, and
+     * test the corresponding part (s11 and s21 && s12 and s22) with isScramble.
+     * separate s2 into two parts, namely --------s23--------, --s24--, and
+     * test the corresponding part (s11 and s24 && s12 and s23) with isScramble.
+     * <p/>
+     * Note that before testing each sub-part with isScramble, anagram is used
+     * first to test if the corresponding parts are anagrams. If not, skip
+     * directly.
+     */
+    static boolean isScramble2(String s1, String s2) {
+        if (s1 == null || s2 == null || s1.length() != s2.length())
+            return false;
+        if (s1.equals(s2))
+            return true;
+        /*check anagram*/
+        char[] c1 = s1.toCharArray();
+        char[] c2 = s2.toCharArray();
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+        if (!Arrays.equals(c1, c2))
+            return false; // not anagram, can't be scramble
+        for (int i = 1; i < s1.length(); i++) {
+            if (isScramble2(s1.substring(0, i), s2.substring(0, i))
+                    && isScramble2(s1.substring(i), s2.substring(i)))
+                return true;
+            if (isScramble2(s1.substring(0, i), s2.substring(s2.length() - i))
+                    && isScramble2(s1.substring(i), s2.substring(0, s2.length() - i)))
+                return true;
+        }
+        return false; // didn't pass the test
+    }
+
+    /**
      * DP 三维动态规划
      * f[n][i][j] means isScramble(s1[i: i+n], s2[j: j+n])
      * f[n][i][j] = f[k][i][j] && f[n - k][i+k][j+k]
@@ -111,37 +146,4 @@ class ScrambleStr {
         return res[0][0][s1.length()];
     }
 
-    /**
-     * separate s1 into two parts, namely --s11--, --------s12--------
-     * separate s2 into two parts, namely --s21--, --------s22--------, and
-     * test the corresponding part (s11 and s21 && s12 and s22) with isScramble.
-     * separate s2 into two parts, namely --------s23--------, --s24--, and
-     * test the corresponding part (s11 and s24 && s12 and s23) with isScramble.
-     * <p/>
-     * Note that before testing each sub-part with isScramble, anagram is used
-     * first to test if the corresponding parts are anagrams. If not, skip
-     * directly.
-     */
-    static boolean isScramble2(String s1, String s2) {
-        if (s1 == null || s2 == null || s1.length() != s2.length())
-            return false;
-        if (s1.equals(s2))
-            return true;
-        /*check anagram*/
-        char[] c1 = s1.toCharArray();
-        char[] c2 = s2.toCharArray();
-        Arrays.sort(c1);
-        Arrays.sort(c2);
-        if (!Arrays.equals(c1, c2))
-            return false; // not anagram, can't be scramble
-        for (int i = 1; i < s1.length(); i++) {
-            if (isScramble2(s1.substring(0, i), s2.substring(0, i)) && isScramble2(s1.substring(i),
-                    s2.substring(i)))
-                return true;
-            if (isScramble2(s1.substring(0, i), s2.substring(s2.length() - i)) && isScramble2(
-                    s1.substring(i), s2.substring(0, s2.length() - i)))
-                return true;
-        }
-        return false; // didn't pass the test
-    }
 }

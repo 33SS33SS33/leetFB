@@ -43,6 +43,7 @@ class LetterCombinationsOfPhoneNum {
         for (int i = 0; i < digits.length(); i++) {
             int x = Character.getNumericValue(digits.charAt(i));
             while (ans.peek().length() == i) {
+                //看不懂这里
                 String t = ans.remove();
                 for (char s : mapping[x].toCharArray())
                     ans.add(t + s);
