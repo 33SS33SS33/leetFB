@@ -12,61 +12,39 @@ class NQueens2 {
     public static void main(String[] args) {
         System.out.println(totalNQueens(2));
         System.out.println(new NQueens2().totalNQueensB(2));
+        System.out.println(new NQueens2().totalNQueensb(2));
         System.out.println(totalNQueens(3));
         System.out.println(new NQueens2().totalNQueensB(3));
         System.out.println(totalNQueens(4));
         System.out.println(new NQueens2().totalNQueensB(4));
         System.out.println(totalNQueens(5));
         System.out.println(new NQueens2().totalNQueensB(5));
+        System.out.println(new NQueens2().totalNQueensb(5));
     }
 
-    /**
-     * backtrace program using bit-wise operation to speed up calculation.
-     * 'limit'is all '1's.
-     * 'h'    is the bits all the queens vertically projected on a row. If
-     * h==limit, then it's done, answer++.
-     * 'r'    is the bits all the queens anti-diagonally projected on a row.
-     * 'l'    is the bits all the queens diagonally projected on a row.
-     * h|r|l  is all the occupied bits. Then pos = limit & (~(h|r|l)) is all
-     * the free positions.
-     * p = pos & (-pos)
-     * gives the right most '1'. pos -= p means we will place
-     * a queen on this bit represented by p.
-     * 'h+p'  means one more queue vertically projected on next row.
-     * '(r+p) << 1'
-     * means one more queue anti-diagonally projected on next row.
-     * Because we are moving to next row and the projection is skew from
-     * right to left, we have to shift left one position after moved to
-     * next row.
-     * '(l+p) >> 1'
-     * means one more queue diagonally projected on next row. Because we
-     * are moving to next row and the projection is skew from left to
-     * right, we have to shift right one position after moved to next
-     * row.
-     * https://oj.leetcode.com/discuss/743/whats-your-solution
-     */
-    public static int totalNQueens(int n) {
-        ans = 0;
-        limit = (1 << n) - 1; // note that parentheses can't be ignored
-        dfs(0, 0, 0);
-        return ans;
+
+    //最好的
+    int result = 0;
+
+    public int totalNQueensb(int n) {
+        boolean[] column = new boolean[n];
+        boolean[] d1 = new boolean[2 * n - 1];
+        boolean[] d2 = new boolean[2 * n - 1];
+        helper(0, n, column, d1, d2);
+        return result;
     }
 
-    static int ans, limit;
-
-    /**
-     * Backtracking
-     */
-    public static void dfs(int h, int r, int l) {
-        if (h == limit) {
-            ans++;
+    private void helper(int row, int n, boolean[] column, boolean[] d1, boolean[] d2) {
+        if (row == n) {
+            result++;
             return;
         }
-        int pos = limit & (~(h | r | l));
-        while (pos != 0) { // has position
-            int p = pos & (-pos); // right most 1
-            pos -= p; // place a queen, 1 -> 0 on that position
-            dfs(h + p, (r + p) << 1, (l + p) >> 1);
+        for (int col = 0; col < n; col++) {
+            if (!column[col] && !d1[col + row] && !d2[n - 1 - row + col]) {
+                column[col] = d1[col + row] = d2[n - 1 - row + col] = true;
+                helper(row + 1, n, column, d1, d2);
+                column[col] = d1[col + row] = d2[n - 1 - row + col] = false;
+            }
         }
     }
 
@@ -78,7 +56,7 @@ class NQueens2 {
      * if delta(col, row) equals, same diagnol1;
      * if sum(col, row) equals, same diagnal2.
      */
-    private final Set<Integer> occupiedCols   = new HashSet<Integer>();
+    private final Set<Integer> occupiedCols = new HashSet<Integer>();
     private final Set<Integer> occupiedDiag1s = new HashSet<Integer>();
     private final Set<Integer> occupiedDiag2s = new HashSet<Integer>();
 
@@ -112,4 +90,52 @@ class NQueens2 {
         }
         return count;
     }
+
+    /**
+     * backtrace program using bit-wise operation to speed up calculation.
+     * 'limit'is all '1's.
+     * 'h'    is the bits all the queens vertically projected on a row. If
+     * h==limit, then it's done, answer++.
+     * 'r'    is the bits all the queens anti-diagonally projected on a row.
+     * 'l'    is the bits all the queens diagonally projected on a row.
+     * h|r|l  is all the occupied bits. Then pos = limit & (~(h|r|l)) is all
+     * the free positions.
+     * p = pos & (-pos)
+     * gives the right most '1'. pos -= p means we will place
+     * a queen on this bit represented by p.
+     * 'h+p'  means one more queue vertically projected on next row.
+     * '(r+p) << 1'
+     * means one more queue anti-diagonally projected on next row.
+     * Because we are moving to next row and the projection is skew from
+     * right to left, we have to shift left one position after moved to
+     * next row.
+     * '(l+p) >> 1'
+     * means one more queue diagonally projected on next row. Because we
+     * are moving to next row and the projection is skew from left to
+     * right, we have to shift right one position after moved to next
+     * row.
+     * https://oj.leetcode.com/discuss/743/whats-your-solution
+     */
+    static int ans, limit;
+
+    public static int totalNQueens(int n) {
+        ans = 0;
+        limit = (1 << n) - 1; // note that parentheses can't be ignored
+        dfs(0, 0, 0);
+        return ans;
+    }
+
+    public static void dfs(int h, int r, int l) {
+        if (h == limit) {
+            ans++;
+            return;
+        }
+        int pos = limit & (~(h | r | l));
+        while (pos != 0) { // has position
+            int p = pos & (-pos); // right most 1
+            pos -= p; // place a queen, 1 -> 0 on that position
+            dfs(h + p, (r + p) << 1, (l + p) >> 1);
+        }
+    }
+
 }

@@ -11,41 +11,32 @@ import java.util.*;
  */
 class GenerateParen {
     public static void main(String[] args) {
-        System.out.println(generateParenthesisA(3));
+        System.out.println(generateParenthesisa(3));
         System.out.println(generateParenthesis(3));
         System.out.println(generateParenthesisB(3));
         System.out.println(generateParenthesisC(3));
     }
 
     /**
-     * Backtracking 回溯法
-     * Helper function use left and right to represent available parentheses
-     * Initialize left as n, right as 0
-     */
-    public static List<String> generateParenthesisA(int n) {
-        List<String> ans = new ArrayList<String>();
-        if (n <= 0)
-            return ans;
-        dfs(n, 0, "", ans);
-        return ans;
+     *  最好的
+     *  */
+    public static List<String> generateParenthesisa(int n) {
+        List<String> list = new ArrayList<String>();
+        backtrack(list, "", 0, 0, n);
+        return list;
     }
 
-    /**
-     * @param left  available left parentheses
-     * @param right available right parentheses
-     * @param res   current result
-     * @param ans   the answer list of the problem
-     */
-    public static void dfs(int left, int right, String res, List<String> ans) {
-        if (left == 0 && right == 0) {
-            ans.add(res);
+    public static void backtrack(List<String> list, String str, int open, int close, int max) {
+        if (str.length() == max * 2) {
+            list.add(str);
             return;
         }
-        if (left > 0)
-            dfs(left - 1, right + 1, res + "(", ans); // add (, right + 1
-        if (right > 0)
-            dfs(left, right - 1, res + ")", ans); // add ), right - 1
+        if (open < max)
+            backtrack(list, str + "(", open + 1, close, max);
+        if (close < open)
+            backtrack(list, str + ")", open, close + 1, max);
     }
+
 
     /**
      * My method is DP. First consider how to get the result f(n) from previous result
@@ -85,7 +76,7 @@ class GenerateParen {
         if (n == 0)
             return new ArrayList<String>();
         if (n == 1)
-            return Arrays.asList(new String[] { "()" });
+            return Arrays.asList(new String[]{"()"});
         HashSet<String> temp = new HashSet<String>();
         for (String s : generateParenthesisB(n - 1)) {
             temp.add("(" + s + ")");

@@ -21,59 +21,7 @@ class LetterCombinationsOfPhoneNum {
         System.out.println(new LetterCombinationsOfPhoneNum().letterCombinationsB("23"));
     }
 
-    private static final String[] LETTERS = { "",     // 0
-            "",     // 1
-            "abc",  // 2
-            "def",  // 3
-            "ghi",  // 4
-            "jkl",  // 5
-            "mno",  // 6
-            "pqrs", // 7
-            "tuv",  // 8
-            "wxyz"  // 9
-    };
-
-    /**
-     * 最好的
-     */
-    public List<String> letterCombinations(String digits) {
-        LinkedList<String> ans = new LinkedList<String>();
-        String[] mapping = new String[] { "0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-        ans.add("");
-        for (int i = 0; i < digits.length(); i++) {
-            int x = Character.getNumericValue(digits.charAt(i));
-            while (ans.peek().length() == i) {
-                //看不懂这里
-                String t = ans.remove();
-                for (char s : mapping[x].toCharArray())
-                    ans.add(t + s);
-            }
-        }
-        return ans;
-    }
-
-    /**
-     * Backtracking to generate all combinations
-     */
-    public List<String> letterCombinationsA(String digits) {
-        List<String> res = new ArrayList<String>();
-        if (digits == null)
-            return res;
-        helper(digits, 0, "", res);
-        return res;
-    }
-
-    private void helper(String digits, int s, String comb, List<String> res) {
-        if (s == digits.length()) { // all digits done, stop
-            res.add(comb);
-            return;
-        }
-        String c = LETTERS[digits.charAt(s) - '0']; // note how to get int index
-        for (int i = 0; i < c.length(); i++) { // note its i starts from 0
-            helper(digits, s + 1, comb + c.charAt(i), res); // backtracking
-        }
-    }
-
+    //最好的
     public List<String> letterCombinationsB(String digits) {
         HashMap<Integer, String> map = new HashMap<Integer, String>();
         map.put(2, "abc");
@@ -94,7 +42,7 @@ class LetterCombinationsOfPhoneNum {
     }
 
     public void getString(String digits, ArrayList<Character> temp, ArrayList<String> result,
-            HashMap<Integer, String> map) {
+                          HashMap<Integer, String> map) {
         if (digits.length() == 0) {
             char[] arr = new char[temp.size()];
             for (int i = 0; i < temp.size(); i++) {
@@ -110,6 +58,59 @@ class LetterCombinationsOfPhoneNum {
             getString(digits.substring(1), temp, result, map);
             temp.remove(temp.size() - 1);
         }
+    }
+
+    /**
+     * *
+     * Backtracking to generate all combinations
+     */
+    private static final String[] LETTERS = {"",     // 0
+            "",     // 1
+            "abc",  // 2
+            "def",  // 3
+            "ghi",  // 4
+            "jkl",  // 5
+            "mno",  // 6
+            "pqrs", // 7
+            "tuv",  // 8
+            "wxyz"  // 9
+    };
+
+    public List<String> letterCombinationsA(String digits) {
+        List<String> res = new ArrayList<String>();
+        if (digits == null)
+            return res;
+        helper(digits, 0, "", res);
+        return res;
+    }
+
+    private void helper(String digits, int s, String comb, List<String> res) {
+        if (s == digits.length()) { // all digits done, stop
+            res.add(comb);
+            return;
+        }
+        String c = LETTERS[digits.charAt(s) - '0']; // note how to get int index
+        for (int i = 0; i < c.length(); i++) { // note its i starts from 0
+            helper(digits, s + 1, comb + c.charAt(i), res); // backtracking
+        }
+    }
+
+    /**
+     */
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> ans = new LinkedList<String>();
+        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        ans.add("");
+        for (int i = 0; i < digits.length(); i++) {
+            int x = Character.getNumericValue(digits.charAt(i));
+            while (ans.peek().length() == i) {
+                //看不懂这里
+                String t = ans.remove();
+                for (char s : mapping[x].toCharArray())
+                    ans.add(t + s);
+            }
+        }
+        return ans;
     }
 
 }

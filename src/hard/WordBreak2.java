@@ -11,7 +11,7 @@ import java.util.*;
  * dict = ["cat", "cats", "and", "sand", "dog"].
  * A solution is ["cats and dog", "cat sand dog"].
  * Tags: DP, Backtracking
-
+ * <p>
  * DFS会超时 可以加入word break I 里面的那个判断的dp 在每次dfs前先判断当前的s可以不可以被dic分掉
  */
 public class WordBreak2 {
@@ -25,11 +25,34 @@ public class WordBreak2 {
         System.out.println(new WordBreak2().wordBreakC(s, dict).toString());
     }
 
+    //最好的
+    public ArrayList<String> wordBreakC(String s, Set<String> dict) {
+        ArrayList<String> res = new ArrayList<String>();
+        if (s == null || s.length() == 0)
+            return res;
+        helper(s, dict, 0, "", res);
+        return res;
+    }
+
+    private void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res) {
+        if (start >= s.length()) {
+            res.add(item);
+            return;
+        }
+        StringBuilder str = new StringBuilder();
+        for (int i = start; i < s.length(); i++) {
+            str.append(s.charAt(i));
+            if (dict.contains(str.toString())) {
+                String newItem = item.length() > 0 ? (item + " " + str.toString()) : str.toString();
+                helper(s, dict, i + 1, newItem, res);
+            }
+        }
+    }
+
     /**
      * Memory function
      * Store how a word can be decomposed
      */
-    Map<String, List<String>> res = new HashMap<String, List<String>>();
 
     /**
      * DP, Backtracking
@@ -44,6 +67,8 @@ public class WordBreak2 {
      * If yes, get the result from memory function
      * If there is an result, add each word to current solution with front in
      */
+    Map<String, List<String>> res = new HashMap<String, List<String>>();
+
     public List<String> wordBreak(String s, Set<String> dict) {
         List<String> words = new ArrayList<String>();
         int len = s.length();
@@ -54,10 +79,8 @@ public class WordBreak2 {
                     words.add(pref); // reach the end
                 else {
                     String remain = s.substring(i, len); // remaining string
-                    List<String> remainDecomp = res.containsKey(remain) ?
-                            res.get(remain) :
-                            wordBreak(remain,
-                                    dict); // avoid backtracking if a decomposition is already there
+                    // avoid backtracking if a decomposition is already there
+                    List<String> remainDecomp = res.containsKey(remain) ? res.get(remain) : wordBreak(remain, dict);
                     if (remainDecomp != null) {
                         for (String w : remainDecomp)
                             words.add(pref + " " + w);
@@ -100,26 +123,4 @@ public class WordBreak2 {
         return words;
     }
 
-    public ArrayList<String> wordBreakC(String s, Set<String> dict) {
-        ArrayList<String> res = new ArrayList<String>();
-        if (s == null || s.length() == 0)
-            return res;
-        helper(s, dict, 0, "", res);
-        return res;
-    }
-
-    private void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res) {
-        if (start >= s.length()) {
-            res.add(item);
-            return;
-        }
-        StringBuilder str = new StringBuilder();
-        for (int i = start; i < s.length(); i++) {
-            str.append(s.charAt(i));
-            if (dict.contains(str.toString())) {
-                String newItem = item.length() > 0 ? (item + " " + str.toString()) : str.toString();
-                helper(s, dict, i + 1, newItem, res);
-            }
-        }
-    }
 }

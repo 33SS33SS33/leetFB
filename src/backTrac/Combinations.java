@@ -37,6 +37,7 @@ class Combinations {
     }
 
     /**
+     * * 最好的
      * creek DFS
      */
     public static ArrayList<ArrayList<Integer>> combineB(int n, int k) {
@@ -56,27 +57,12 @@ class Combinations {
         for (int i = start; i <= n; i++) {
             item.add(i);
             dfs(n, k, i + 1, item, res);
-            item.remove(item.size() - 1); //?
+            item.remove(item.size() - 1); //
         }
     }
 
 
-/*    //最好的
-    public  List<List<Integer>> combine(int n, int k) {
-        if (k == n || k == 0) {
-            List<Integer> row = new ArrayList<Integer>();
-            for (int i = 1; i <= k; ++i) {
-                row.add(i);
-            }
-            return new LinkedList<Integer>(Arrays.asList(row)); }
-        List<List<Integer>> result = this.combine(n - 1, k - 1);
-        result.forEach(e -> e.add(n));
-        result.addAll(this.combine(n - 1, k));
-        return result;
-    }*/
-
     /**
-     * 最好的
      * Ascending order, track start  DFS
      */
     public static List<List<Integer>> combineA(int n, int k) {
@@ -86,7 +72,7 @@ class Combinations {
     }
 
     public static void combine(int n, int k, int start, List<Integer> comb,
-            List<List<Integer>> result) {
+                               List<List<Integer>> result) {
         if (k == 0) { // is a solution
             result.add(comb);
             return;
@@ -97,7 +83,5 @@ class Combinations {
             combine(n, k - 1, i + 1, copy, result); // choose k-1 from i+1 to n
         }
     }
-
-
 
 }

@@ -26,67 +26,78 @@ import java.util.*;
  */
 class NQueens {
     public static void main(String[] args) {
-        List<String[]> res = new NQueens().solveNQueensB(4);
+        List<String[]> res = new NQueens().solveNQueensa(4);
         for (String[] l : res) {
             for (String i : l) {
                 System.out.println(i);
             }
         }
-        //        System.out.println(new NQueens().solveNQueensB(3));
+        System.out.println(new NQueens().solveNQueensaa(4));
     }
 
-    int limit, total; // limit is all ones, total is # of rows
-    String[]       strings; // for a solution
-    List<String[]> res; // solutions
-    StringBuilder  sb; // for a row
-    List<Integer>  indices; // store solution
+    public static List<List<String>> solveNQueensaa(int n) {
+        List<List<String>> solutions = new ArrayList<>();
+        if (n <= 0) return solutions;
+        boolean[] cols = new boolean[n];
+        boolean[] d1 = new boolean[2 * n - 1]; // diagonal 1, from upper left to lower right. d1idx = cidx - ridx + n - 1
+        boolean[] d2 = new boolean[2 * n - 1]; // diagonal 2, from upper right to lower left  d2idx = (n-cidx) - ridx + n - 2
+        solveNQueens(n, 0, cols, d1, d2, new ArrayList<String>(), solutions);
+        return solutions;
+    }
 
-    public List<String[]> solveNQueens(int n) {
-        res = new ArrayList<String[]>();
-        if (n <= 0)
-            return res;
-        total = n;
-        strings = new String[n];
-        sb = new StringBuilder();
-        for (int i = 0; i < n; i++)
-            sb.append(".");
-        indices = new ArrayList<Integer>();
-        limit = (1 << n) - 1;
-        dfs(0, 0, 0);
+    private static void solveNQueens(int n, int rowidx, boolean[] cols, boolean[] d1, boolean[] d2,
+                                     List<String> oneSolution, List<List<String>> solutions) {
+        if (rowidx == n) {
+            solutions.add(new ArrayList<String>(oneSolution));
+            return;
+        }
+        // in each recursive level, place one Queue in one row.
+        char[] row = new char[n];
+        Arrays.fill(row, '.');
+        for (int colidx = 0; colidx < n; colidx++) {
+            int d1idx = colidx - rowidx + n - 1;
+            int d2idx = (n - colidx) - rowidx + n - 2;
+            if (!cols[colidx] && !d1[d1idx] && !d2[d2idx]) {
+                row[colidx] = 'Q';
+                oneSolution.add(new String(row));
+                cols[colidx] = d1[d1idx] = d2[d2idx] = true;
+
+                solveNQueens(n, rowidx + 1, cols, d1, d2, oneSolution, solutions);
+
+                row[colidx] = '.';
+                oneSolution.remove(oneSolution.size() - 1);
+                cols[colidx] = d1[d1idx] = d2[d2idx] = false;
+            }
+        }
+    }
+
+    //最好的
+    public static List<String[]> solveNQueensa(int n) {
+        List<String[]> res = new ArrayList<>();
+        helper(0, new boolean[n], new boolean[2 * n], new boolean[2 * n], new String[n], res);
         return res;
     }
 
-    /**
-     * Save indices of each line in a list
-     * Retrieve the indices of each line when there is a solution
-     */
-    public void dfs(int h, int r, int l) {
-        if (h == limit) {
-            for (int i = indices.size() - 1; i >= 0; i--) {
-                int gap = h - indices.get(i); // last position
-                h = indices.get(i);
-                int n = 0;
-                while (gap > 0) {
-                    n++;
-                    gap >>= 1;
+    private static void helper(int r, boolean[] cols, boolean[] d1, boolean[] d2,
+                        String[] board, List<String[]> res) {
+        if (r == board.length) res.add(board.clone());
+        else {
+            for (int c = 0; c < board.length; c++) {
+                int id1 = r - c + board.length, id2 = 2 * board.length - r - c - 1;
+                if (!cols[c] && !d1[id1] && !d2[id2]) {
+                    char[] row = new char[board.length];
+                    Arrays.fill(row, '.');
+                    row[c] = 'Q';
+                    board[r] = new String(row);
+                    cols[c] = true; d1[id1] = true; d2[id2] = true;
+                    helper(r + 1, cols, d1, d2, board, res);
+                    cols[c] = false; d1[id1] = false; d2[id2] = false;
                 }
-                StringBuilder ans = new StringBuilder(sb);
-                ans.setCharAt(n - 1, 'Q'); // note n - 1
-                strings[i] = ans.toString();
             }
-            res.add(strings); // add to result
-            strings = new String[total]; // reset strings
-            return;
         }
-        indices.add(h); // add then remove
-        int pos = limit & (~(h | r | l)); // set unsaved pos to zero, note ~
-        while (pos != 0) {
-            int p = pos & (-pos); // rightmost 1
-            pos -= p; // note how to place a queen
-            dfs(h + p, (r + p) << 1, (l + p) >> 1);
-        }
-        indices.remove(indices.size() - 1); // remove added h
     }
+
+
 
     public ArrayList<String[]> solveNQueensB(int n) {
         ArrayList<String[]> res = new ArrayList<String[]>();
