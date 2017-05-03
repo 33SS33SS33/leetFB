@@ -1,77 +1,46 @@
 package backTrac;
 
+
 /**
- * Created by GAOSHANSHAN835 on 2016/1/8.
- * 使用字典树
- * 对于'.'用dfs搜索即可
+ * Created by GAOSHANSHAN835 on 2016/3/4.
  */
-
 public class AddAndSearchWord {
-    static class TrieNode {
-        // Initialize your data structure here.
-        TrieNode[] children = new TrieNode[26];
-        int        count    = 0;
+    public class TrieNode {
+        public TrieNode[] children = new TrieNode[26];
+        public String item = "";
+    }
 
-        public TrieNode() {
-        }
+    private TrieNode root = new TrieNode();
 
-        TrieNode safe(int i) {
-            if (children[i] == null) {
-                children[i] = new TrieNode();
+    public void addWord(String word) {
+        TrieNode node = root;
+        for (char c : word.toCharArray()) {
+            if (node.children[c - 'a'] == null) {
+                node.children[c - 'a'] = new TrieNode();
             }
-            return children[i];
+            node = node.children[c - 'a'];
         }
+        node.item = word;
+    }
 
-        int index(char c) {
-            return (int) (c - 'a');
-        }
+    public boolean search(String word) {
+        return match(word.toCharArray(), 0, root);
+    }
 
-        void insert(char[] word, int st, int len) {
-            if (len == 0) {
-                this.count++;
-                return;
-            }
-            TrieNode t = safe(index(word[st]));
-            t.insert(word, st + 1, len - 1);
-        }
-
-        boolean search(char[] word, int st, int len) {
-            if (len == 0) {
-                return this.count > 0;
-            }
-            if (word[st] == '.') {
-                for (TrieNode t : children) {
-                    if (t != null) {
-                        if (t.search(word, st + 1, len - 1)) {
-                            return true;
-                        }
+    private boolean match(char[] chs, int k, TrieNode node) {
+        if (k == chs.length) return !node.item.equals("");
+        if (chs[k] != '.') {
+            return node.children[chs[k] - 'a'] != null && match(chs, k + 1, node.children[chs[k] - 'a']);
+        } else {
+            for (int i = 0; i < node.children.length; i++) {
+                if (node.children[i] != null) {
+                    if (match(chs, k + 1, node.children[i])) {
+                        return true;
                     }
                 }
-                return false;
             }
-            TrieNode t = children[index(word[st])];
-            if (t == null) {
-                return false;
-            }
-            return t.search(word, st + 1, len - 1);
         }
+        return false;
     }
 
-    TrieNode root = new TrieNode();
-
-    // Adds a word into the data structure.
-    public void addWord(String word) {
-        root.insert(word.toCharArray(), 0, word.length());
-    }
-
-    // Returns if the word is in the data structure. A word could
-    // contain the dot character '.' to represent any one letter.
-    public boolean search(String word) {
-        return root.search(word.toCharArray(), 0, word.length());
-    }
 }
-
-// Your WordDictionary object will be instantiated and called as such:
-// WordDictionary wordDictionary = new WordDictionary();
-// wordDictionary.addWord("word");
-// wordDictionary.search("pattern");
