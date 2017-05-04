@@ -66,19 +66,26 @@ class WildcardMatching {
             return false;
         int s = 0, p = 0, match = 0, astroIdx = -1; // must be -1
         while (s < str.length()) {
-            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern
-                    .charAt(p))) { // found ? or same chars
-                s++; // move both pointers
+            // advancing both pointers
+            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))) { // found ? or same chars
+                s++;
                 p++;
-            } else if (p < pattern.length() && pattern.charAt(p) == '*') { // found *
+            }
+            // * found, only advancing pattern pointer
+            else if (p < pattern.length() && pattern.charAt(p) == '*') { // found *
                 astroIdx = p; // save astroid index in pattern
                 match = s; // save current index of string
                 p++; // only move pattern pointer forward
-            } else if (astroIdx != -1) { // try to find last astroid
+            }
+            // last pattern pointer was *, advancing string pointer
+            else if (astroIdx != -1) { // try to find last astroid
                 p = astroIdx + 1; // move to * one char behind astroid
                 match++; // move current index of string
                 s = match;
-            } else
+            }
+            //current pattern pointer is not star, last patter pointer was not *
+            //characters do not match
+            else
                 return false; // not ?, not same char, not *, don't match
         }
         // check remaining characters in pattern, can only be astroid
