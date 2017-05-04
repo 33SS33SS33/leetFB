@@ -66,8 +66,7 @@ class WildcardMatching {
             return false;
         int s = 0, p = 0, match = 0, astroIdx = -1; // must be -1
         while (s < str.length()) {
-            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern
-                    .charAt(p))) { // found ? or same chars
+            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))) { // found ? or same chars
                 s++; // move both pointers
                 p++;
             } else if (p < pattern.length() && pattern.charAt(p) == '*') { // found *
