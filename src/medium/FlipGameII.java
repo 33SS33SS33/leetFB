@@ -48,8 +48,7 @@ public class FlipGameII {
             /*if(list.isEmpty())
             return false;*/
         for (String str : list) {
-            if (!canWinb(
-                    str)) // if there is any one way the next player can't win, take it and you'll win
+            if (!canWinb(str)) // if there is any one way the next player can't win, take it and you'll win
                 return true;
         }
         return false;

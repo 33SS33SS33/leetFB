@@ -15,9 +15,9 @@ public class PalindromePermutation {
         String k = "ewewi";
         String l = "code";
         String m = "carerac";
+        System.out.println(p.canPermutePalindromea(k));
+        System.out.println(p.canPermutePalindromea2(k));
         System.out.println(p.canPermutePalindrome(k));
-        System.out.println(p.canPermutePalindrome(l));
-        System.out.println(p.canPermutePalindrome(m));
     }
 
     public boolean canPermutePalindromea(String s) {

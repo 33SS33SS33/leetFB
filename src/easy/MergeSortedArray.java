@@ -9,7 +9,7 @@ package easy;
  * A and B are m and n respectively.
  * Tags: Array
  */
-class MergeSortedArray {
+class  MergeSortedArray {
     public static void main(String[] args) {
         int A[] = new int[7];
         int B[] = { 1, 3, 9 };

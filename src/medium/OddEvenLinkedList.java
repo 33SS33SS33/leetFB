@@ -74,7 +74,7 @@ public class OddEvenLinkedList {
         return odd.next;
     }
 
-    static ListNode buildList() {
+    public static ListNode buildList() {
         ListNode node0 = new ListNode(0);
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);

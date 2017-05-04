@@ -17,9 +17,14 @@ import java.util.Map;
  * 构造完了之后直接把前一半颠倒了添加即可"
  */
 public class PalindromePermutation2 {
-
+    public static void main(String[] args) {
+        String k = "ewewi";
+        String l = "code";
+        String m = "carerac";
+        System.out.println(generatePalindromes(k));
+    }
     //最好的
-    public List<String> generatePalindromes(String s) {
+    public static List<String> generatePalindromes(String s) {
         int odd = 0;
         String mid = "";
         List<String> res = new ArrayList<String>();
@@ -49,7 +54,7 @@ public class PalindromePermutation2 {
     }
 
     // generate all unique permutation from list
-    void getPerm(List<Character> list, String mid, boolean[] used, StringBuilder sb,
+    static void  getPerm(List<Character> list, String mid, boolean[] used, StringBuilder sb,
             List<String> res) {
         if (sb.length() == list.size()) {
             // form the palindromic string

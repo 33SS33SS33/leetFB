@@ -42,7 +42,8 @@ public class records {
      PermutationSeq
      countNumbersWithUniqueDigits
      Permutations2
-
+     PalindromePermutation2
+     TrappingRainWater
 
      */
 }

@@ -19,14 +19,18 @@ import java.util.List;
  * which indicates how many characters have we abbreviated. When we reach the end or need to put
  * a character in the current solution, and count is bigger than zero, we add the number into the solution.*/
 public class GeneralizedAbbreviation {
-    public List<String> generateAbbreviations(String word) {
+    public static void main(String[] args) {
+        String S = "word";
+        System.out.println(generateAbbreviations(S));
+    }
+    public static List<String> generateAbbreviations(String word) {
         List<String> ret = new ArrayList<String>();
         backtrack(ret, word, 0, "", 0);
 
         return ret;
     }
 
-    private void backtrack(List<String> ret, String word, int pos, String cur, int count) {
+    private static void backtrack(List<String> ret, String word, int pos, String cur, int count) {
         if (pos == word.length()) {
             if (count > 0) cur += count;
             ret.add(cur);
