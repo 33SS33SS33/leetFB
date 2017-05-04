@@ -22,7 +22,7 @@ import java.util.*;
  * All words contain only lowercase alphabetic characters.
  * Amazon Yelp
  * Tags: Array, Backtracking, BFS, String
-
+ * <p>
  * 十分重要的一道题
  * 思路和word ladderI类似  不过这次只用了单方向的bfs
  * 关键的地方在于用defaultdict来存储当前这个单词的上几个单词(只存储距离为1的)  然后一层一层遍历
@@ -33,11 +33,81 @@ class WordLadder2 {
     public static void main(String[] args) {
         String start = "hit";
         String end = "cog";
-        String[] arr = { "hot", "dot", "dog", "lot", "log" };
+        String[] arr = {"hot", "dot", "dog", "lot", "log"};
         Set<String> dict = new HashSet<String>(Arrays.asList(arr));
         System.out.println(new WordLadder2().findLadders(start, end, dict).toString());
         System.out.println("------------------");
         System.out.println(new WordLadder2().findLaddersB(start, end, dict).toString());
+    }
+
+    Map<String, List<String>> map;
+    List<List<String>> results;
+
+    public List<List<String>> findLaddersA(String start, String end, Set<String> dict) {
+        results = new ArrayList<>();
+        if (dict.size() == 0)
+            return results;
+        int min = Integer.MAX_VALUE;
+        Queue<String> queue = new ArrayDeque<>();
+        queue.add(start);
+        map = new HashMap<>();
+        Map<String, Integer> ladder = new HashMap<>();
+        for (String string : dict)
+            ladder.put(string, Integer.MAX_VALUE);
+        ladder.put(start, 0);
+        dict.add(end);
+        //BFS: Dijisktra search
+        while (!queue.isEmpty()) {
+            String word = queue.poll();
+            int step = ladder.get(word) + 1;//'step' indicates how many steps are needed to travel to one word.
+            if (step > min) break;
+            for (int i = 0; i < word.length(); i++) {
+                StringBuilder builder = new StringBuilder(word);
+                for (char ch = 'a'; ch <= 'z'; ch++) {
+                    builder.setCharAt(i, ch);
+                    String new_word = builder.toString();
+                    if (ladder.containsKey(new_word)) {
+                        if (step > ladder.get(new_word))//Check if it is the shortest path to one word.
+                            continue;
+                        else if (step < ladder.get(new_word)) {
+                            queue.add(new_word);
+                            ladder.put(new_word, step);
+                        } else ;// It is a KEY line. If one word already appeared in one ladder,
+                        // Do not insert the same word inside the queue twice. Otherwise it gets TLE.
+                        if (map.containsKey(new_word)) //Build adjacent Graph
+                            map.get(new_word).add(word);
+                        else {
+                            List<String> list = new LinkedList<String>();
+                            list.add(word);
+                            map.put(new_word, list);
+                            //It is possible to write three lines in one:
+                            //map.put(new_word,new LinkedList<String>(Arrays.asList(new String[]{word})));
+                            //Which one is better?
+                        }
+                        if (new_word.equals(end))
+                            min = step;
+                    }//End if dict contains new_word
+                }//End:Iteration from 'a' to 'z'
+            }//End:Iteration from the first to the last
+        }//End While
+        //BackTracking
+        LinkedList<String> result = new LinkedList<>();
+        backTrace(end, start, result);
+        return results;
+    }
+
+    private void backTrace(String word, String start, List<String> list) {
+        if (word.equals(start)) {
+            list.add(0, start);
+            results.add(new ArrayList<>(list));
+            list.remove(0);
+            return;
+        }
+        list.add(0, word);
+        if (map.get(word) != null)
+            for (String s : map.get(word))
+                backTrace(s, start, list);
+        list.remove(0);
     }
 
     /**
@@ -57,7 +127,7 @@ class WordLadder2 {
      * Initialize map with lists
      */
     void bfs(Map<String, List<String>> map, Map<String, Integer> dist, String start, String end,
-            Set<String> dict) {
+             Set<String> dict) {
         Queue<String> q = new LinkedList<String>();
         q.offer(start);
         dict.add(start); // make sure start and end in dictionary
@@ -104,7 +174,7 @@ class WordLadder2 {
      * Add path to result if word is start
      */
     void dfs(List<List<String>> res, List<String> path, String word, String start,
-            Map<String, Integer> dist, Map<String, List<String>> map) {
+             Map<String, Integer> dist, Map<String, List<String>> map) {
         if (word.equals(start)) {
             path.add(0, word);
             res.add(new ArrayList<String>(path));
@@ -193,7 +263,7 @@ class WordLadder2 {
      * 在面试中时间上花费太大，也不是很合适，大家主要还是了解一下思路哈。
      */
     public ArrayList<ArrayList<String>> findLaddersC(String start, String end,
-            HashSet<String> dict) {
+                                                     HashSet<String> dict) {
         ArrayList<ArrayList<String>> res = new ArrayList<ArrayList<String>>();
         HashSet<String> unvisitedSet = new HashSet<String>();
         unvisitedSet.addAll(dict);
@@ -256,7 +326,7 @@ class WordLadder2 {
     }
 
     private void getPaths(String cur, String end, ArrayList<String> list, int level,
-            Map<String, List<String>> nextMap, ArrayList<ArrayList<String>> res) {
+                          Map<String, List<String>> nextMap, ArrayList<ArrayList<String>> res) {
         if (cur.equals(end)) {
             res.add(new ArrayList<String>(list));
         } else if (level > 0) {
@@ -271,7 +341,7 @@ class WordLadder2 {
 
     class StringWithLevel {
         String str;
-        int    level;
+        int level;
 
         public StringWithLevel(String str, int level) {
             this.str = str;
@@ -280,8 +350,8 @@ class WordLadder2 {
     }
 
     class WordNode {
-        String   word;
-        int      numSteps;
+        String word;
+        int numSteps;
         WordNode pre;
 
         public WordNode(String word, int numSteps, WordNode pre) {

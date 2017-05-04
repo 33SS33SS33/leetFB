@@ -37,5 +37,12 @@ public class records {
      DistinctSubsequences
      WordLadder2
 
+     2017-5-4
+     WordSearchII
+     PermutationSeq
+     countNumbersWithUniqueDigits
+     Permutations2
+
+
      */
 }
