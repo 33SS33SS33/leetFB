@@ -14,10 +14,10 @@ package aFB;
  */
 public class NumIslands {
     public static void main(String[] args) {
-        char[][] grid = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' },
-                { '0', '0', '1', '0', '0' }, { '0', '0', '0', '1', '1' } };
-        char[][] grid2 = { { '1', '1', '0', '0', '0' }, { '1', '1', '0', '0', '0' },
-                { '0', '0', '1', '0', '0' }, { '0', '0', '0', '1', '1' } };
+        char[][] grid = {{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'},
+                {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}};
+        char[][] grid2 = {{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'},
+                {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}};
         System.out.println(new NumIslands().numIslands(grid));
         System.out.print(new NumIslands().numIslands2(grid2));
     }
@@ -88,7 +88,7 @@ public class NumIslands {
         // x, y - 1
         // x, y + 1
         visited[x][y] = true;
-        for (int[] xy : new int[][] { { x - 1, y }, { x + 1, y }, { x, y - 1 }, { x, y + 1 } }) {
+        for (int[] xy : new int[][]{{x - 1, y}, {x + 1, y}, {x, y - 1}, {x, y + 1}}) {
             int _x = xy[0];
             int _y = xy[1];
             if (allowed(_x, _y, mx, my, grid, visited)) {

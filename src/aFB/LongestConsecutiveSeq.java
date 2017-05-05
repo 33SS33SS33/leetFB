@@ -11,7 +11,7 @@ import java.util.*;
  * length: 4.
  * Your algorithm should run in O(n) complexity.
  * Tags: Array, HashTable
-
+ * <p>
  * We can solve this problem in O(n) time using an Efficient Solution. The idea is to use Hashing.
  * We first insert all elements in a Hash. Then check all the possible starts of consecutive subsequences. Below is complete algorithm.
  * 1) Create an empty hash.
@@ -27,7 +27,7 @@ import java.util.*;
 class LongestConsecutiveSeq {
     public static void main(String[] args) {
         LongestConsecutiveSeq l = new LongestConsecutiveSeq();
-        int[] a = { 100, 4, 200, 1, 3, 2 };
+        int[] a = {100, 4, 200, 1, 3, 2};
         System.out.println(l.longestConsecutivea(a));
         System.out.println(l.longestConsecutive(a));
         System.out.println(l.longestConsecutiveB(a));
@@ -94,7 +94,6 @@ class LongestConsecutiveSeq {
         }
         return res;
     }
-
 
 
     /**

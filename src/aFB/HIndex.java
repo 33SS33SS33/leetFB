@@ -2,7 +2,7 @@ package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/7.
- * 8Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
+ * Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher's h-index.
  * According to the definition of h-index on Wikipedia: "A scientist has index h if h of his/her N papers have at least h citations each,
  * and the other N − h papers have no more than h citations each."
  * For example,
@@ -22,7 +22,7 @@ package aFB;
  */
 public class HIndex {
     public static void main(String[] args) {
-        int[] nums = { 3, 0, 6, 1, 5 };
+        int[] nums = {3, 0, 6, 1, 5};
         System.out.println(new HIndex().hIndex(nums));
     }
 

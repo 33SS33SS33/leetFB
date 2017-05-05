@@ -23,7 +23,7 @@ import java.util.*;
 class WordBreak {
     public static void main(String[] args) {
         String s = "leetcode";
-        String[] words = { "leet", "code", };
+        String[] words = {"leet", "code",};
         Set<String> dict = new HashSet<String>(Arrays.asList(words));
         System.out.println(new WordBreak().wordBreak(s, dict));
         System.out.println(new WordBreak().wordBreakB(s, dict));

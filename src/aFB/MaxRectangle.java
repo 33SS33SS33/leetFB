@@ -9,7 +9,7 @@ import java.util.*;
  */
 class MaxRectangle {
     public static void main(String[] args) {
-        char[][] matrix = { { '1', '1', '1' }, { '1', '1', '0' }, { '1', '1', '0' } };
+        char[][] matrix = {{'1', '1', '1'}, {'1', '1', '0'}, {'1', '1', '0'}};
         System.out.println(new MaxRectangle().maximalRectangleA(matrix));
         System.out.println(new MaxRectangle().maximalRectangleB(matrix));
         System.out.println(new MaxRectangle().maximalRectangleC(matrix));

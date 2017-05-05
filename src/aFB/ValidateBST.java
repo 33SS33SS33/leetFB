@@ -144,8 +144,8 @@ class ValidateBST {
     //define a BNode class with TreeNode and it's boundaries
     class BNode {
         TreeNode n;
-        double   left;
-        double   right;
+        double left;
+        double right;
 
         public BNode(TreeNode n, double left, double right) {
             this.n = n;
@@ -155,7 +155,7 @@ class ValidateBST {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

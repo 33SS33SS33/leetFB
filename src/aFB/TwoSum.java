@@ -20,7 +20,7 @@ import java.util.Map;
 class TwoSum {
     public static void main(String[] args) {
         TwoSum t = new TwoSum();
-        int[] numbers = { 4, 2, 7 }; // 6 = 2+4
+        int[] numbers = {4, 2, 7}; // 6 = 2+4
         int target = 6;
         int[] res = t.twoSum(numbers, target);
         int[] res1 = t.twoSumB(numbers, target);
@@ -56,7 +56,7 @@ class TwoSum {
             int newTarget = target - numbers[i];
             // O(1) search
             if (map.containsKey(newTarget) && i != map.get(newTarget)) { // can't be same indices
-                return new int[] { i + 1, map.get(newTarget) + 1 };
+                return new int[]{i + 1, map.get(newTarget) + 1};
             }
         }
         return null;

@@ -7,7 +7,7 @@ package aFB;
  */
 class Sqrt {
     public static void main(String[] args) {
-        int[] nums = { -1, 1, 2, 4, 9, 16, 25 };
+        int[] nums = {-1, 1, 2, 4, 9, 16, 25};
         for (int i = 0; i < nums.length; i++) {
             System.out.println(sqrt(nums[i]));
         }

@@ -8,7 +8,7 @@ package aFB;
  * b = "1"
  * Return "100".
  * Tags: Math, String
-
+ * <p>
  * 就是二进制加法 从后往前加也可以 记得str int转换
  */
 class AddBinary {
@@ -16,52 +16,9 @@ class AddBinary {
         String a = "11";
         String b = "1";
         System.out.println(addBinary(a, b));
-        System.out.println(addBinaryB(a, b));
         System.out.println(addBinaryC(a, b));
-
-            String s1 = "Programming";
-            String s2 = new String("Programming");
-            String s3 = "Program" + "ming";
-            System.out.println(s1 == s2);
-            System.out.println(s1 == s3);
-            System.out.println(s1 == s1.intern());
-            System.out.println(s());
-
-
-        try {
-            try {
-                throw new Sneeze();
-            }
-            catch ( Annoyance a1 ) {
-                System.out.println("Caught Annoyance");
-                throw a1;
-            }
-        }
-        catch ( Sneeze s ) {
-            System.out.println("Caught Sneeze");
-            return ;
-        }
-        finally {
-            System.out.println("Hello World!");
-        }
-
     }
 
-    static class Annoyance extends Exception {}
-    static class Sneeze extends Annoyance {}
-
-
-    public static int s(){
-        int ret=0;
-        try{
-            throw  new Exception();
-        }catch(Exception e){
-            ret=1;
-            return ret;
-        }finally{
-            ret=2;
-        }
-    }
     /**
      * 最好的
      * Traverse the longest binary backwards
@@ -109,50 +66,6 @@ class AddBinary {
             stb.append(result);
         }
         return stb.reverse().toString();
-    }
-
-    // add 0 and calculate one by one
-    public static String addBinaryB(String a, String b) {
-        if (a == null)
-            return b;
-        if (b == null)
-            return a;
-        StringBuilder result = new StringBuilder();
-        int lenA = a.length();
-        int lenB = b.length();
-        int i = lenA - 1;
-        int j = lenB - 1;
-        boolean carry = false;
-        while (i > -1 || j > -1) {
-            char c1 = i > -1 ? a.charAt(i) : '0';
-            char c2 = j > -1 ? b.charAt(j) : '0';
-            if (c1 == '1' && c2 == '1') {
-                if (carry)
-                    result.append(1);
-                else
-                    result.append(0);
-                carry = true; // set carry for next digit
-            } else if (c1 == '1' || c2 == '1') {
-                if (carry) {
-                    result.append(0);
-                    carry = true; // set carry for next digit
-                } else {
-                    result.append(1);
-                    carry = false;
-                }
-            } else {
-                if (carry)
-                    result.append(1);
-                else
-                    result.append(0);
-                carry = false;
-            }
-            i--;
-            j--;
-        }
-        if (carry)
-            result.append('1');
-        return result.reverse().toString();
     }
 
 }

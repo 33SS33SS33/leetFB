@@ -77,7 +77,7 @@ class LowestCommonAncestor {
     }
 
     class Entity {
-        public int      count;
+        public int count;
         public TreeNode node;
 
         public Entity(int count, TreeNode node) {
@@ -87,7 +87,7 @@ class LowestCommonAncestor {
     }
 
     static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

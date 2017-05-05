@@ -32,7 +32,7 @@ public class SerializeandDeserializeBT {
     }
 
     private static final String spliter = ",";
-    private static final String NN      = "X";
+    private static final String NN = "X";
 
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
@@ -126,7 +126,7 @@ public class SerializeandDeserializeBT {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

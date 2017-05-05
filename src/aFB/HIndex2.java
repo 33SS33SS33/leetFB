@@ -12,7 +12,7 @@ package aFB;
  */
 public class HIndex2 {
     public static void main(String[] args) {
-        int[] nums = { 0, 1, 3, 5, 6 };
+        int[] nums = {0, 1, 3, 5, 6};
         System.out.println(new HIndex2().hIndex2(nums));
     }
 

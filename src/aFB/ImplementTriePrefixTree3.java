@@ -12,10 +12,10 @@ public class ImplementTriePrefixTree3 {
     }
 
     private class TrieNode {//字典树节点
-        private int        num;//有多少单词通过这个节点,即节点字符出现的次数
+        private int num;//有多少单词通过这个节点,即节点字符出现的次数
         private TrieNode[] son;//所有的儿子节点
-        private boolean    isEnd;//是不是最后一个节点
-        private char       val;//节点的值
+        private boolean isEnd;//是不是最后一个节点
+        private char val;//节点的值
 
         TrieNode() {
             num = 1;
@@ -128,8 +128,8 @@ public class ImplementTriePrefixTree3 {
 
     public static void main(String[] args) {
         ImplementTriePrefixTree3 tree = new ImplementTriePrefixTree3();
-        String[] strs = { "banana", "band", "bee", "absolute", "acm", };
-        String[] prefix = { "ba", "b", "band", "abc", };
+        String[] strs = {"banana", "band", "bee", "absolute", "acm",};
+        String[] prefix = {"ba", "b", "band", "abc",};
         for (String str : strs) {
             tree.insert(str);
         }

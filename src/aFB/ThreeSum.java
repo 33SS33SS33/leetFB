@@ -21,7 +21,7 @@ import java.util.List;
  */
 class ThreeSum {
     public static void main(String[] args) {
-        int[] s = { -1, 0, 1, 2, -1, -4 };
+        int[] s = {-1, 0, 1, 2, -1, -4};
 //                t.printResult(t.threeSuma(s));
         List<List<Integer>> res1 = threeSuma(s);
         List<List<Integer>> res = threeSum(s);

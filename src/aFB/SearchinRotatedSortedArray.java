@@ -10,7 +10,7 @@ package aFB;
 public class SearchinRotatedSortedArray {
     public static void main(String[] args) {
         SearchinRotatedSortedArray r = new SearchinRotatedSortedArray();
-        int[] nums = { 4, 5, 6, 7, 1, 2, 3 };
+        int[] nums = {4, 5, 6, 7, 1, 2, 3};
         int k = 3;
         int t1 = r.searchA(nums, k);
         int t2 = r.searchB(nums, k);

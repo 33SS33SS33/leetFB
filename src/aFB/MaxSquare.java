@@ -12,8 +12,8 @@ package aFB;
 public class MaxSquare {
     public static void main(String[] args) {
         MaxSquare s = new MaxSquare();
-        char[][] matrix = { { '0', '0', '1', '1' }, { '0', '0', '1', '1' },
-                { '1', '1', '1', '1' } };
+        char[][] matrix = {{'0', '0', '1', '1'}, {'0', '0', '1', '1'},
+                {'1', '1', '1', '1'}};
         System.out.println(s.maximalSquareA(matrix));
         System.out.println(s.maximalSquareB(matrix));
         System.out.println(s.maximalSquareC(matrix));

@@ -10,7 +10,7 @@ package aFB;
  */
 public class ProductofArrayExceptSelf {
     public static void main(String[] args) {
-        int[] A = { 1, 2, 8, 9, 3, 5 };
+        int[] A = {1, 2, 8, 9, 3, 5};
         ProductofArrayExceptSelf s = new ProductofArrayExceptSelf();
         int[] res = s.productExceptSelfA(A);
         for (int i = 0; i < res.length; i++) {

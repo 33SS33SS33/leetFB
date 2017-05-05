@@ -16,14 +16,14 @@ package aFB;
  */
 class ReadNMultipleRead4 {
     public static void main(String[] args) {
-        char[] buf = { 's', 'e', 't', 's', 'e', 't' };
+        char[] buf = {'s', 'e', 't', 's', 'e', 't'};
         int n = 2;
         System.out.println(new ReadNMultipleRead4().reada(buf, n));
     }
 
-    private int    buffPtr = 0;
-    private int    buffCnt = 0;
-    private char[] buff    = new char[4];
+    private int buffPtr = 0;
+    private int buffCnt = 0;
+    private char[] buff = new char[4];
 
     public int reada(char[] buf, int n) {
         int ptr = 0;

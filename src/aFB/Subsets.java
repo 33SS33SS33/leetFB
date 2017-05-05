@@ -20,14 +20,14 @@ import java.util.*;
  * []
  * ]
  * Tags: Array, Backtracking, Bit Manipulation
-
+ * <p>
  * 用DP 动态规划
  * [1,2] 和[1,2,3]的子集的差异在于 [1,2,3]是包含了[1,2]的所有子集再加上 把[1,2]所有的子集插入3元素  这两个加起来就是[1,2,3]的子集
  * 题目要求必须是非降序的 所以先将nums排序即可
  */
 class Subsets {
     public static void main(String[] args) {
-        int[] nums = { 2, 1, 5 };
+        int[] nums = {2, 1, 5};
 /*        List<List<Integer>> res = subsetsA(nums);
         for (List<Integer> l : res) {
             System.out.println(l.toString());
@@ -89,7 +89,6 @@ class Subsets {
         }
         return res;
     }
-
 
 
     /**

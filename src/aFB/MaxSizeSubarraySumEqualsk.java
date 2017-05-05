@@ -22,8 +22,8 @@ import java.util.HashMap;
  */
 public class MaxSizeSubarraySumEqualsk {
     public static void main(String[] args) {
-        int[] num = { 1, -1, 5, -2, 3 };
-        System.out.println(new MaxSizeSubarraySumEqualsk().maxSubArrayLen(num,3));
+        int[] num = {1, -1, 5, -2, 3};
+        System.out.println(new MaxSizeSubarraySumEqualsk().maxSubArrayLen(num, 3));
     }
 
     public int maxSubArrayLen(int[] nums, int k) {

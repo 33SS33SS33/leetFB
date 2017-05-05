@@ -19,10 +19,10 @@ class SortColors {
     public static void main(String[] args) {
         SortColors s = new SortColors();
         // normal case
-        int[] A = { 0, 1, 0, 1, 2, 1, 0 };
-        int[] A2 = { 0, 1, 0, 1, 2, 1, 0 };
-        int[] A3 = { 0, 1, 0, 1, 2, 1, 0 };
-        int[] A4 = { 0, 1, 0, 1, 2, 1, 0 };
+        int[] A = {0, 1, 0, 1, 2, 1, 0};
+        int[] A2 = {0, 1, 0, 1, 2, 1, 0};
+        int[] A3 = {0, 1, 0, 1, 2, 1, 0};
+        int[] A4 = {0, 1, 0, 1, 2, 1, 0};
         // other test cases
         // int[] A = {1, 2, 0};
         // int[] A = {2};

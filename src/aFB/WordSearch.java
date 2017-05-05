@@ -19,7 +19,7 @@ package aFB;
  */
 class WordSearch {
     public static void main(String[] args) {
-        char[][] board = { { 'A', 'B', 'C', 'E' }, { 'S', 'F', 'C', 'S' }, { 'A', 'D', 'E', 'E' } };
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
         String word = "SEE";
         // String word = "ABCCED";
         // String word = "ABCB";
@@ -91,7 +91,7 @@ class WordSearch {
     }
 
     private static boolean search(char[][] board, String word, int index, int i, int j,
-            boolean[][] used) {
+                                  boolean[][] used) {
         if (index == word.length())
             return true;
         if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j]

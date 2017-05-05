@@ -13,10 +13,10 @@ package aFB;
 
 class RemoveDupFromSortedArr2 {
     public static void main(String[] args) {
-        int[] num = { 1, 1, 1, 2, 2, 3 };
-        int[] num1 = { 1, 1, 1, 2, 2, 3 };
-        int[] num2 = { 1, 1, 1, 2, 2, 3 };
-        int[] num3 = { 1, 1, 1, 2, 2, 3 };
+        int[] num = {1, 1, 1, 2, 2, 3};
+        int[] num1 = {1, 1, 1, 2, 2, 3};
+        int[] num2 = {1, 1, 1, 2, 2, 3};
+        int[] num3 = {1, 1, 1, 2, 2, 3};
         System.out.println(removeDuplicates(num));
         System.out.println(removeDuplicatesA(num1));
         System.out.println(removeDuplicatesB(num2));

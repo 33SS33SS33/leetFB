@@ -16,9 +16,9 @@ import java.util.Arrays;
 class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray r = new RemoveDuplicatesFromSortedArray();
-        int[] A = { 1, 1, 2, 2, 3 };
-        int[] B = { 1, 1, 2, 2, 3 };
-        int[] C = { 1, 1, 2, 2, 3 };
+        int[] A = {1, 1, 2, 2, 3};
+        int[] B = {1, 1, 2, 2, 3};
+        int[] C = {1, 1, 2, 2, 3};
         System.out.println(r.removeDup(A));
         System.out.println(r.removeDupStandard(B));
         int[] res = r.removeDuplicatesC(C);

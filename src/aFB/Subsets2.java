@@ -26,7 +26,7 @@ import java.util.*;
  */
 class Subsets2 {
     public static void main(String[] args) {
-        int[] num = { 1, 2, 2 };
+        int[] num = {1, 2, 2};
         List<List<Integer>> res = subsetsWithDup(num);
         for (List<Integer> l : res) {
             System.out.println(l.toString());

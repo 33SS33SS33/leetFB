@@ -67,7 +67,8 @@ class MergeIntervals {
      * Sort according to start date
      */
     class MyComparator implements Comparator<Interval> {
-        @Override public int compare(Interval i1, Interval i2) {
+        @Override
+        public int compare(Interval i1, Interval i2) {
             return i1.start - i2.start;
         }
     }
@@ -111,7 +112,8 @@ class MergeIntervals {
             end = e;
         }
 
-        @Override public String toString() {
+        @Override
+        public String toString() {
             return "Interval{" +
                     "start=" + start +
                     ", end=" + end +

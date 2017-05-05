@@ -14,7 +14,7 @@ package aFB;
  */
 class ReadNGivenRead4 {
     public static void main(String[] args) {
-        char[] buf = { 's', 'e', 't', 's', 'e', 't' };
+        char[] buf = {'s', 'e', 't', 's', 'e', 't'};
         int n = 2;
         System.out.println(readb(buf, n));
     }

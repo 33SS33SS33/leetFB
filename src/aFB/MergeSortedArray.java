@@ -9,10 +9,10 @@ package aFB;
  * A and B are m and n respectively.
  * Tags: Array
  */
-class  MergeSortedArray {
+class MergeSortedArray {
     public static void main(String[] args) {
         int A[] = new int[7];
-        int B[] = { 1, 3, 9 };
+        int B[] = {1, 3, 9};
         new MergeSortedArray().mergea(A, 4, B, 3);
 
         for (int i : A) {

@@ -96,7 +96,7 @@ class ReverseLinkedList {
     }
 
     static class Node {
-        int  val;
+        int val;
         Node next;
 
         Node(int val) {

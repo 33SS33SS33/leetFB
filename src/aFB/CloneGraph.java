@@ -157,7 +157,7 @@ class CloneGraph {
     }
 
     private void helper(UndirectedGraphNode node,
-            HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
+                        HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
         for (int i = 0; i < node.neighbors.size(); i++) {
             UndirectedGraphNode cur = node.neighbors.get(i);
             if (!map.containsKey(cur)) {
@@ -170,7 +170,7 @@ class CloneGraph {
     }
 
     class UndirectedGraphNode {
-        int                       label;
+        int label;
         List<UndirectedGraphNode> neighbors;
 
         UndirectedGraphNode(int x) {

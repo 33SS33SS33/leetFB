@@ -21,7 +21,7 @@ import java.util.*;
 class KthLargestElementinanArray {
     public static void main(String[] args) {
         KthLargestElementinanArray K = new KthLargestElementinanArray();
-        int[] A = { 1, 23, 12, 9, 30, 2, 50 };
+        int[] A = {1, 23, 12, 9, 30, 2, 50};
         System.out.println(K.findKthLargesta(A, 3));
         System.out.println(K.findKthLargest(A, 3));
         System.out.println(K.findKthLargestB(A, 3));

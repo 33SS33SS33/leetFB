@@ -26,7 +26,7 @@ package aFB;
  * Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
  * The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
  * Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.
-
+ * <p>
  * 其实每层都可以看成链表 最重要的是要保存一个dummy头部
  * 整体思路是  通过走一遍上层的节点 然后把下层的节点的next连起来
  * 用了dummy头十分巧妙
@@ -158,7 +158,7 @@ class PopulatingNextRight2 {
     }
 
     public static class TreeLinkNode {
-        int          val;
+        int val;
         TreeLinkNode left, right, next;
 
         TreeLinkNode(int x) {

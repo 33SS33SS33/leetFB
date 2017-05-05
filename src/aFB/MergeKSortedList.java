@@ -36,7 +36,8 @@ class MergeKSortedList {
         // Build priority queue
         Queue<ListNode> queue = new PriorityQueue<ListNode>(lists.size(),
                 new Comparator<ListNode>() {
-                    @Override public int compare(ListNode n1, ListNode n2) {
+                    @Override
+                    public int compare(ListNode n1, ListNode n2) {
                         return n1.val - n2.val;
                     }
                 });
@@ -64,7 +65,8 @@ class MergeKSortedList {
         if (lists == null || lists.size() == 0)
             return null;
         PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, new Comparator<ListNode>() {
-            @Override public int compare(ListNode n1, ListNode n2) {
+            @Override
+            public int compare(ListNode n1, ListNode n2) {
                 return n1.val - n2.val;
             }
         });
@@ -141,7 +143,7 @@ class MergeKSortedList {
     }
 
     public static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {
