@@ -19,7 +19,12 @@ package aFB;
  * Therefore the output is 7.
  */
 public class CombinationSumIV {
-    public int combinationSum4(int[] nums, int target) {
+    public static void main(String[] args) {
+        int[] prices = {1, 3, 2};
+        System.out.println(combinationSum4(prices, 4));
+    }
+
+    public static int combinationSum4(int[] nums, int target) {
         if (target == 0) {
             return 1;
         }

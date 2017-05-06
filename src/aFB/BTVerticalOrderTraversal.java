@@ -35,10 +35,10 @@ public class BTVerticalOrderTraversal {
         if (root == null) {
             return res;
         }
-//map's key is column, we assume the root column is zero, the left node wi ll minus 1 ,and the right node will plus 1
+        //map's key is column, we assume the root column is zero, the left node wi ll minus 1 ,and the right node will plus 1
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();
         Queue<TreeNode> queue = new LinkedList<>();
-//use a HashMap to store the TreeNode and the according cloumn value
+        //use a HashMap to store the TreeNode and the according cloumn value
         HashMap<TreeNode, Integer> weight = new HashMap<TreeNode, Integer>();
 
         queue.offer(root);
