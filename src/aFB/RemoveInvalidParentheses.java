@@ -62,7 +62,7 @@ public class RemoveInvalidParentheses {
         return res;
     }
 
-    // helper function checks if string s contains valid parantheses
+    // DFS helper function checks if string s contains valid parantheses
     static boolean isValid(String s) {
         int count = 0;
         for (int i = 0; i < s.length(); i++) {
