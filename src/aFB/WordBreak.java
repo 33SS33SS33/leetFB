@@ -40,7 +40,7 @@ class WordBreak {
         if (s == null || s.length() == 0 || dict == null)
             return false;
         int len = s.length();
-        boolean[] can = new boolean[len + 1];
+        boolean[] can = new boolean[len + 1];  //???
         can[0] = true;
         for (int i = 1; i <= len; i++) {
             for (int j = 0; j < i; j++) {

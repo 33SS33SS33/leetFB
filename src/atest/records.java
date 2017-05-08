@@ -47,6 +47,9 @@ public class records {
 
      20170505
      MinWindowSubstring
+     MergeKSortedList
+     ReadNMultipleRead4
+     MultiplyStrings
 
      */
 }

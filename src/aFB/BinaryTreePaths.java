@@ -43,6 +43,7 @@ public class BinaryTreePaths {
             searchBT(root.right, path + root.val + "->", answer);
     }
 
+
     public List<String> binaryTreePathsB(TreeNode root) {
         List<String> res = new ArrayList<String>();
         StringBuilder sb = new StringBuilder();

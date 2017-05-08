@@ -25,15 +25,44 @@ class MinWindowSubstring {
         String S = "ADOBECODEBANC";
         String T = "ABC";
         String res = minWindowB(S, T);
-        String res2 = minWindow(S, T);
         System.out.println(res);
-        System.out.print(res2);
+    }
+
+
+    //make the template more applicable for Longest Substring Without Repeating Character
+    public int lengthOfLongestSubstringa(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int len = 0;
+        int head = 0, i = 0;
+        int[] sTable = new int[256];
+        int repeat = 0;
+        while (i < s.length()) {
+            if (sTable[s.charAt(i++)]++ > 0) repeat++;   //total number of repeat
+            while (repeat > 0) {
+                if (sTable[s.charAt(head++)]-- > 1) repeat--;
+            }
+            len = Math.max(len, i - head);
+        }
+        return len;
     }
 
     /**
      * creek----
+     * Use two maps to store count of characters
+     * One for T and one for S
+     * Use minLength to remember the minimum length of window
+     * Use letterCnt to store whether S include all characters in T
+     * Use two pointers, one slow, one fast
+     * Traverse through S with fast pointer
+     * If the character is in T, update it in window, update letterCnt
+     * If letterCnt >= length of T, try to update slow pointer position
+     * When we have chars that not in T or more than the count in T, update
+     * Update count in window as well
+     * Compare with minLength and update result as well
      */
-    public  static String minWindowB(String s, String t) {
+    public static String minWindowB(String s, String t) {
         if (t.length() > s.length())
             return "";
         String result = "";
@@ -76,63 +105,5 @@ class MinWindowSubstring {
         return result;
     }
 
-    /**
-     * Use two maps to store count of characters
-     * One for T and one for S
-     * Use minLength to remember the minimum length of window
-     * Use letterCnt to store whether S include all characters in T
-     * Use two pointers, one slow, one fast
-     * Traverse through S with fast pointer
-     * If the character is in T, update it in window, update letterCnt
-     * If letterCnt >= length of T, try to update slow pointer position
-     * When we have chars that not in T or more than the count in T, update
-     * Update count in window as well
-     * Compare with minLength and update result as well
-     */
-    public static String minWindow(String S, String T) {
-        if (S == null || T == null)
-            return "";
-        if (S.length() == 0 || T.length() == 0 || T.length() > S.length())
-            return "";
-        HashMap<Character, Integer> dict = new HashMap<Character, Integer>();
-        for (int i = 0; i < T.length(); i++) {
-            char c = T.charAt(i);
-            dict.put(c, dict.containsKey(c) ? dict.get(c) + 1 : 1);
-        }
-        HashMap<Character, Integer> found = new HashMap<Character, Integer>();
-        int foundCounter = 0;
-        int start = 0;
-        int end = 0;
-        int min = Integer.MAX_VALUE;
-        String minWindow = "";
-        while (end < S.length()) {
-            char c = S.charAt(end);
-            if (dict.containsKey(c)) {
-                if (found.containsKey(c)) {
-                    if (found.get(c) < dict.get(c))
-                        foundCounter++;
-                    found.put(c, found.get(c) + 1);
-                } else {
-                    found.put(c, 1);
-                    foundCounter++;
-                }
-            }
-            if (foundCounter == T.length()) {
-                //When foundCounter equals to T.length(), in other words, found all characters.
-                char sc = S.charAt(start);
-                while (!found.containsKey(sc) || found.get(sc) > dict.get(sc)) {
-                    if (found.containsKey(sc) && found.get(sc) > dict.get(sc))
-                        found.put(sc, found.get(sc) - 1);
-                    start++;
-                    sc = S.charAt(start);
-                }
-                if (end - start + 1 < min) {
-                    minWindow = S.substring(start, end + 1);
-                    min = end - start + 1;
-                }
-            }
-            end++;
-        }
-        return minWindow;
-    }
+
 }

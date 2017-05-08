@@ -38,8 +38,9 @@ class ValidateBST {
 
     // add range of current value and do recursive check
     public boolean isValidBSTB(TreeNode root, int min, int max) {
-        return root == null || root.val > min && root.val < max && isValidBSTB(root.left, min,
-                root.val) && isValidBSTB(root.right, root.val, max);
+        return root == null || root.val > min && root.val < max
+                && isValidBSTB(root.left, min, root.val)
+                && isValidBSTB(root.right, root.val, max);
     }
 
     /*时间复杂度是O(n)，空间复杂度是O(logn)*/
