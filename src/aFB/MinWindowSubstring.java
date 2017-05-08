@@ -24,8 +24,8 @@ class MinWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
         String T = "ABC";
-        String res = new MinWindowSubstring().minWindowB(S, T);
-        String res2 = new MinWindowSubstring().minWindow(S, T);
+        String res = minWindowB(S, T);
+        String res2 = minWindow(S, T);
         System.out.println(res);
         System.out.print(res2);
     }
@@ -33,7 +33,7 @@ class MinWindowSubstring {
     /**
      * creek----
      */
-    public String minWindowB(String s, String t) {
+    public  static String minWindowB(String s, String t) {
         if (t.length() > s.length())
             return "";
         String result = "";
@@ -89,7 +89,7 @@ class MinWindowSubstring {
      * Update count in window as well
      * Compare with minLength and update result as well
      */
-    public String minWindow(String S, String T) {
+    public static String minWindow(String S, String T) {
         if (S == null || T == null)
             return "";
         if (S.length() == 0 || T.length() == 0 || T.length() > S.length())

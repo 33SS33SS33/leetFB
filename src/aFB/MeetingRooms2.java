@@ -24,11 +24,11 @@ public class MeetingRooms2 {
         Interval inter2 = new Interval(2, 6);
         Interval inter3 = new Interval(4, 6);
         Interval[] intervals = {inter1, inter2, inter3};
-        System.out.println(new MeetingRooms2().minMeetingRooms(intervals));
+        System.out.println(minMeetingRooms1(intervals));
     }
 
     //最好的
-    public int minMeetingRooms1(Interval[] intervals) {
+    public static int minMeetingRooms1(Interval[] intervals) {
         if (intervals == null || intervals.length == 0)
             return 0;
         // Sort the intervals by start time

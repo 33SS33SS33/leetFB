@@ -45,5 +45,8 @@ public class records {
      PalindromePermutation2
      TrappingRainWater
 
+     20170505
+     MinWindowSubstring
+
      */
 }
