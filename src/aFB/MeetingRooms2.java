@@ -18,7 +18,7 @@ import java.util.*;
  */
 
 //P705
-public class MeetingRooms2 {
+public class    MeetingRooms2 {
     public static void main(String[] args) {
         Interval inter1 = new Interval(1, 4);
         Interval inter2 = new Interval(2, 6);
@@ -27,7 +27,7 @@ public class MeetingRooms2 {
         System.out.println(new MeetingRooms2().minMeetingRooms(intervals));
     }
 
-    //最好的
+    //最好的  uses min heap, average time complexity is O(nlogn).
     public int minMeetingRooms1(Interval[] intervals) {
         if (intervals == null || intervals.length == 0)
             return 0;

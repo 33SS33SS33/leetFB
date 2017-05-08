@@ -13,7 +13,6 @@ package aFB;
 public class FirstBadVersion {
     public static void main(String[] args) {
         System.out.println(new FirstBadVersion().firstBadVersion(3));
-        System.out.println(new FirstBadVersion().firstBadVersionB(3));
     }
 
     //最好的
@@ -29,20 +28,7 @@ public class FirstBadVersion {
         return start;
     }
 
-    public int firstBadVersionB(int n) {
-        int good = 0; // not exists
-        int bad = n;
-        for (; ; ) {
-            if (bad - good <= 1)
-                return bad;
-            int t = (bad - good) / 2 + good; // fuck overflow
-            if (isBadVersion(t)) {
-                bad = t;
-            } else {
-                good = t;
-            }
-        }
-    }
+
 
     boolean isBadVersion(int version) {
         return true;

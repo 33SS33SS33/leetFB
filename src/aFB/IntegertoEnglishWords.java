@@ -14,6 +14,7 @@ package aFB;
  */
 public class IntegertoEnglishWords {
     public static void main(String[] args) {
+        System.out.println(new IntegertoEnglishWords().numberToWords(76));
         System.out.println(new IntegertoEnglishWords().numberToWords(123));
         System.out.println(new IntegertoEnglishWords().numberToWords(12345));
         System.out.println(new IntegertoEnglishWords().numberToWords(1234567));
