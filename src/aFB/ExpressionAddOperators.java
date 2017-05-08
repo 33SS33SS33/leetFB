@@ -17,6 +17,10 @@ import java.util.List;
  * 自己写的用eval的超时了
  * 难点在于乘法的处理  要用到变量存储之前的结果
  * 注意last的使用  回溯法
+ * This problem has a lot of edge cases to be considered:
+ * overflow: we use a long type once it is larger than Integer.MAX_VALUE or minimum, we get over it.
+ * 0 sequence: because we can't have numbers with multiple digits started with zero, we have to deal with it too.
+ * a little trick is that we should save the value that is to be multiplied in the next recursion.
  */
 public class ExpressionAddOperators {
     public static void main(String[] args) {

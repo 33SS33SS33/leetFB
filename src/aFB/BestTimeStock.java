@@ -13,9 +13,7 @@ class BestTimeStock {
     public static void main(String[] args) {
         int[] prices = {1, 4, 2};
         System.out.println(maxProfit(prices));
-        System.out.println(maxProfitB(prices));
         System.out.println(maxProfit3(prices));
-        System.out.println(maxProfitb(prices));
     }
 
     /**
@@ -33,26 +31,9 @@ class BestTimeStock {
         return global;
     }
 
-    public static int maxProfitb(int[] prices) {
-        if (prices.length == 0) {
-            return 0;
-        }
-        int max = 0, min = prices[0];
-        int profit = 0;
-        for (int i = 1; i < prices.length; i++) {
-            if (prices[i] < min) {
-                min = prices[i];
-            } else {
-                if (prices[i] - min > profit) {
-                    profit = prices[i] - min;
-                }
-            }
-        }
-        return profit;
-    }
 
     /**
-     * Optimized bottom-up approach
+     * Optimized bottom-up approach  也很好啊
      * O(n) Time, O(1) Space
      * Just record yesterday's profit
      * Update min, max and profit
@@ -68,30 +49,6 @@ class BestTimeStock {
             min = Math.min(min, prices[i]); // update min
             if (prices[i] > prices[i - 1])
                 max = Math.max(max, prices[i] - min);
-        }
-        return max;
-    }
-
-    /**
-     * Bottom-up approach
-     * O(n) Time, O(n) Space
-     * Store max profit of each day using an integer array
-     * Profit of next day can only be same as last day or update because of
-     * higher price today
-     */
-    public static int maxProfitB(int[] prices) {
-        if (prices == null || prices.length < 2)
-            return 0; // need at least 2 days
-        int min = prices[0];
-        int max = 0;
-        int len = prices.length;
-        int[] history = new int[len];
-        for (int i = 0; i < len - 1; i++) {
-            min = min < prices[i] ? min : prices[i];
-            if (i > 0) { // skip first day
-                history[i] = Math.max(history[i - 1], prices[i] - min);
-                max = history[i] > max ? history[i] : max;
-            }
         }
         return max;
     }

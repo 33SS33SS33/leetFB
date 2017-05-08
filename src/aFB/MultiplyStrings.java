@@ -17,6 +17,30 @@ class MultiplyStrings {
         System.out.print(multiplyC(num1, num2));
     }
 
+
+    /**
+     * 最好的
+     */
+    //https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
+    public static String multiply(String num1, String num2) {
+        int m = num1.length(), n = num2.length();
+        int[] pos = new int[m + n];
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 0; j--) {
+                int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                int p1 = i + j, p2 = i + j + 1;
+                int sum = mul + pos[p2];
+                pos[p1] += sum / 10;
+                pos[p2] = (sum) % 10;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int p : pos)
+            if (!(sb.length() == 0 && p == 0))
+                sb.append(p);
+        return sb.length() == 0 ? "0" : sb.toString();
+    }
+
     public String multiplya(String num1, String num2) {
         int n1 = num1.length(), n2 = num2.length();
         int[] products = new int[n1 + n2];
@@ -41,28 +65,6 @@ class MultiplyStrings {
         return sb.length() == 0 ? "0" : sb.toString();
     }
 
-    /**
-     * 最好的
-     */
-    //https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
-    public static String multiply(String num1, String num2) {
-        int m = num1.length(), n = num2.length();
-        int[] pos = new int[m + n];
-        for (int i = m - 1; i >= 0; i--) {
-            for (int j = n - 1; j >= 0; j--) {
-                int mul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
-                int p1 = i + j, p2 = i + j + 1;
-                int sum = mul + pos[p2];
-                pos[p1] += sum / 10;
-                pos[p2] = (sum) % 10;
-            }
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int p : pos)
-            if (!(sb.length() == 0 && p == 0))
-                sb.append(p);
-        return sb.length() == 0 ? "0" : sb.toString();
-    }
 
     /**假设第一个数长度是n，第二个数长度是m，我们知道结果长度为m+n或者m+n-1（没有进位的情况）。
      对于某一位i，要计算这个位上的数字，我们需要对所有能组合出这一位结果的位进行乘法，
@@ -89,8 +91,8 @@ class MultiplyStrings {
         for (int i = m - 1; i >= 0; i--) {
             for (int j = n - 1; j >= 0; j--) {
                 // note += below
-                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j]
-                        - '0'); // reverse to keep zeros of result but skip unnecessary zeros
+                // reverse to keep zeros of result but skip unnecessary zeros
+                res[m + n - i - j - 2] += (c1[i] - '0') * (c2[j] - '0');
                 res[m + n - i - j - 1] += res[m + n - i - j - 2] / 10;
                 res[m + n - i - j - 2] %= 10;
             }

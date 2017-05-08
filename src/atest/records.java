@@ -49,5 +49,11 @@ public class records {
      RemoveInvalidParentheses
      RegularExpMatching
 
+     20170505
+     MinWindowSubstring
+     MergeKSortedList
+     ReadNMultipleRead4
+     MultiplyStrings
+
      */
 }

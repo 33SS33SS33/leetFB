@@ -1,12 +1,9 @@
 package aFB;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.Stack;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
  * Implement an iterator over a binary search tree (BST). Your iterator will be
  * initialized with the root node of a BST.
  * Calling next() will return the next smallest number in the BST.

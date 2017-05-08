@@ -10,8 +10,24 @@ package aFB;
 //Given two strings S and T, determine if they are both one edit distance apart.
 public class OneEditDistance {
     public static void main(String[] args) {
+        System.out.print(new OneEditDistance().isOneEditDistanceaa("wwq3", "ww"));
         System.out.print(new OneEditDistance().isOneEditDistance("wwq3", "ww"));
-        System.out.print(new OneEditDistance().isOneEditDistancea("wwq", "ww"));
+        System.out.print(new OneEditDistance().isOneEditDistancea("wwq3", "ww"));
+    }
+
+    public boolean isOneEditDistanceaa(String s, String t) {
+        for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
+            if (s.charAt(i) != t.charAt(i)) {
+                if (s.length() == t.length()) // s has the same length as t, so the only possibility is replacing one char in s and t
+                    return s.substring(i + 1).equals(t.substring(i + 1));
+                else if (s.length() < t.length()) // t is longer than s, so the only possibility is deleting one char from t
+                    return s.substring(i).equals(t.substring(i + 1));
+                else // s is longer than t, so the only possibility is deleting one char from s
+                    return t.substring(i).equals(s.substring(i + 1));
+            }
+        }
+        //All previous chars are the same, the only possibility is deleting the end char in the longer one of s and t
+        return Math.abs(s.length() - t.length()) == 1;
     }
 
     /**
@@ -20,8 +36,7 @@ public class OneEditDistance {
     public boolean isOneEditDistancea(String s, String t) {
         for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
             if (s.charAt(i) != t.charAt(i)) {
-                return s.substring(i + (s.length() >= t.length() ? 1 : 0))
-                        .equals(t.substring(i + (s.length() <= t.length() ? 1 : 0)));
+                return s.substring(i + (s.length() >= t.length() ? 1 : 0)).equals(t.substring(i + (s.length() <= t.length() ? 1 : 0)));
             }
         }
         return Math.abs(s.length() - t.length()) == 1;
