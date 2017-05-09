@@ -45,15 +45,18 @@ public class records {
      PalindromePermutation2
      TrappingRainWater
 
-     20170506
-     RemoveInvalidParentheses
-     RegularExpMatching
-
      20170505
      MinWindowSubstring
      MergeKSortedList
      ReadNMultipleRead4
      MultiplyStrings
+
+     20170506
+     RemoveInvalidParentheses
+     RegularExpMatching
+
+     20170509
+
 
      */
 }
