@@ -37,6 +37,7 @@ class ReadNGivenRead4 {
         return readBytes;
     }
 
+    //最好的
     public static int readb(char[] buf, int n) {
         boolean eof = false; // end of file flag
         int total = 0; // total bytes have read

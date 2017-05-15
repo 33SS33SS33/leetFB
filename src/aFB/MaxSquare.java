@@ -2,6 +2,13 @@ package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+ * For example, given the following matrix:
+ * 1 0 1 0 0
+ * 1 0 1 1 1
+ * 1 1 1 1 1
+ * 1 0 0 1 0
+ * Return 4.
  * DP 动态规划
  * 状态转移方程：
  * dp[x][y] = min(dp[x - 1][y - 1], dp[x][y - 1], dp[x - 1][y]) + 1

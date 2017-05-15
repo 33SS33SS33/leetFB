@@ -31,7 +31,6 @@ class BestTimeStock {
         return global;
     }
 
-
     /**
      * Optimized bottom-up approach  也很好啊
      * O(n) Time, O(1) Space

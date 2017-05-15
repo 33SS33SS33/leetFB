@@ -51,6 +51,7 @@ public class ImplementStrStr {
         }
     }
 
+/*
     public int strStr2(String haystack, String needle) {
         int l1 = haystack.length(), l2 = needle.length();
         if (l1 < l2) {
@@ -66,6 +67,7 @@ public class ImplementStrStr {
         }
         return -1;
     }
+*/
 
     /**
      * brute force

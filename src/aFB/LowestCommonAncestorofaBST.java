@@ -1,4 +1,4 @@
-package tree;
+package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -31,11 +31,6 @@ public class LowestCommonAncestorofaBST {
         return root;
     }
 
-    public TreeNode lowestCommonAncestora2(TreeNode root, TreeNode p, TreeNode q) {
-        return (root.val - p.val) * (root.val - q.val) < 1 ?
-                root :
-                lowestCommonAncestora2(p.val < root.val ? root.left : root.right, p, q);
-    }
 
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // make sure p < q
