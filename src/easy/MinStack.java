@@ -11,27 +11,10 @@ import java.util.Stack;
  * Tags: Stack, Data Structure
  * 用一个tuple来记录当前的最小值
  * Standard solution, two ss a minStack to store minimums
- * Standard solution, two ss
- * a minStack to store minimums
- * Standard solution, two ss
- * a minStack to store minimums
- * <p/>
- * Standard solution, two ss
- * a minStack to store minimums
- * <p/>
- * Standard solution, two ss
- * a minStack to store minimums
- * <p/>
- * Standard solution, two ss
- * a minStack to store minimums
  */
 /*class MinStack {
 
     public Stack s = new Stack<>();
-    *//**
- * Standard solution, two ss
- * a minStack to store minimums
- *//*
     public Stack minStack = new Stack<>();
 
     public void push(int x) {
