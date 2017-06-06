@@ -1,7 +1,5 @@
 package aFB;
 
-import javax.management.relation.Relation;
-
 /**
  * Given:
  * function:  isFriend(a, b)
@@ -10,7 +8,7 @@ import javax.management.relation.Relation;
  * 可以通过一遍就过滤出来一个候选的
  * The key part is the first loop.
  * To understand this you can think the knows(a,b) as a a < b comparison, if a knows b then a < b, if a does not know b, a > b.
- * hen if there is a celebrity, he/she must be the "maximum" of the n people.
+ * then if there is a celebrity, he/she must be the "maximum" of the n people.
  * 然后只需要检查这个候选的是不是就行了
  */
 
@@ -22,7 +20,6 @@ class FindTheCelebrity {
     public static void main(String[] args) {
 
     }
-
 
     /**
      * The first pass is to pick out the candidate. If candidate knows i, then switch candidate.
