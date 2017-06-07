@@ -2,9 +2,6 @@ package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
-/**
  * The count-and-say sequence is the sequence of integers beginning as follows:
  * 1, 11, 21, 1211, 111221, ...
  * 1 is read off as "one 1" or 11.

@@ -8,11 +8,11 @@ import java.util.*;
  * If two nodes are in the same row and column, the order should be from left to right.
  * Examples:
  * Given binary tree [3,9,20,null,null,15,7],
- * 3
- * / \
+ *   3
+ *  / \
  * 9  20
- * /  \
- * 15   7
+ *   /  \
+ *  15   7
  * return its vertical order traversal as:
  * [
  * [9],
@@ -20,7 +20,6 @@ import java.util.*;
  * [20],
  * [7]
  * ]
- * <p>
  * "首先根节点的值是0 然后往左走 就减1 往右走就加1 然后用个字典把值一样的记录到一起就行了
  */
 
@@ -37,43 +36,34 @@ public class BTVerticalOrderTraversal {
         if (root == null) {
             return res;
         }
-
         Map<Integer, ArrayList<Integer>> map = new HashMap<>();
         Queue<TreeNode> q = new LinkedList<>();
         Queue<Integer> cols = new LinkedList<>();
-
         q.add(root);
         cols.add(0);
-
         int min = 0;
         int max = 0;
-
         while (!q.isEmpty()) {
             TreeNode node = q.poll();
             int col = cols.poll();
-
             if (!map.containsKey(col)) {
                 map.put(col, new ArrayList<Integer>());
             }
             map.get(col).add(node.val);
-
             if (node.left != null) {
                 q.add(node.left);
                 cols.add(col - 1);
                 min = Math.min(min, col - 1);
             }
-
             if (node.right != null) {
                 q.add(node.right);
                 cols.add(col + 1);
                 max = Math.max(max, col + 1);
             }
         }
-
         for (int i = min; i <= max; i++) {
             res.add(map.get(i));
         }
-
         return res;
     }
 

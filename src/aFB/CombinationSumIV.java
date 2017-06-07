@@ -15,7 +15,6 @@ package aFB;
  * (2, 1, 1)
  * (2, 2)
  * (3, 1)
- * <p>
  * Note that different sequences are counted as different combinations.
  * Therefore the output is 7.
  */
