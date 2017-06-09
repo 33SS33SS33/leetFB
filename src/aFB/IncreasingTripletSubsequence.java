@@ -16,9 +16,7 @@ public class IncreasingTripletSubsequence {
         int[] nums2 = {5, 4, 3, 2, 1};
 
         System.out.println(s.increasingTripleta(nums));
-        System.out.println(s.increasingTriplet(nums));
         System.out.println(s.increasingTripleta(nums2));
-        System.out.println(s.increasingTriplet(nums2));
     }
 
     public boolean increasingTripleta(int[] nums) {
@@ -36,19 +34,5 @@ public class IncreasingTripletSubsequence {
         return false;
     }
 
-    public boolean increasingTriplet(int[] nums) {
-        int x = Integer.MAX_VALUE;
-        int y = Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            int z = nums[i];
-            if (x >= z) {
-                x = z;
-            } else if (y >= z) {
-                y = z;
-            } else {
-                return true;
-            }
-        }
-        return false;
-    }
+
 }
