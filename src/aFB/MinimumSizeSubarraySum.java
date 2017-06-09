@@ -2,12 +2,10 @@ package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * <p>
  * Given an array of n positive integers and a positive integer s, find the minimal length of a subarray of which the sum ≥ s.
  * If there isn't one, return 0 instead.
  * For example, given the array [2,3,1,2,4,3] and s = 7,
  * the subarray [4,3] has the minimal length under the problem constraint.
- * <p>
  * 注意题目要求的sum>=s
  * O(N)
  * 使用滑动窗口 就是如果sum小于s 就移动end向后 如果sum大于等于s 就然后就进另一个循环 每次将左边的往右移动 然后更新最小长度 直到sum小于s 或者 start>end

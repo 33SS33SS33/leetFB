@@ -73,9 +73,9 @@ public class KthSmallestElementinaBST {
     }
 
     boolean reachLeftMost = false;
-    boolean stop          = false;
-    int     kth           = 0;
-    int     k             = 0;
+    boolean stop = false;
+    int kth = 0;
+    int k = 0;
 
     public int kthSmallestA(TreeNode root, int k) {
         this.k = k;
@@ -131,7 +131,7 @@ public class KthSmallestElementinaBST {
      */
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

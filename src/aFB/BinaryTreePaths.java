@@ -7,11 +7,11 @@ import java.util.List;
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given a binary tree, return all root-to-leaf paths.
  * For example, given the following binary tree:
- *   1
- *  /  \
+ * 1
+ * /  \
  * 2    3
- *  \
- *   5
+ * \
+ * 5
  * All root-to-leaf paths are:
  * ["1->2->5", "1->3"]
  * <p/>

@@ -26,7 +26,7 @@ public class GraphValidTree {
     /**
      * 啊啊
      */
-     //http://www.geeksforgeeks.org/union-find/
+    //http://www.geeksforgeeks.org/union-find/
     //https://discuss.leetcode.com/topic/21712/ac-java-union-find-solution/6
     public static boolean validTree(int n, int[][] edges) {
         // initialize n isolated islands

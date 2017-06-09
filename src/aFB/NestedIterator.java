@@ -1,8 +1,5 @@
 package aFB;
 
-import java.util.Iterator;
-import java.util.Stack;
-
 /**
  * Created by shanshan on 16/6/17.
  * Given a nested list of integers, implement an iterator to flatten it.

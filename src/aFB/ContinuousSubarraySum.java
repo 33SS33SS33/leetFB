@@ -23,7 +23,8 @@ public class ContinuousSubarraySum {
         System.out.println(checkSubarraySum(prices, 6));
     }
 
-    /**啊啊！！！！！
+    /**
+     * 啊啊！！！！！
      * We iterate through the input array exactly once, keeping track of the running sum mod k of the elements in the process.
      * If we find that a running sum value at index j has been previously seen before in some earlier index i in the array,
      * then we know that the sub-array (i,j] contains a desired sum.

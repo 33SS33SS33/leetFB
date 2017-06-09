@@ -18,7 +18,7 @@ import java.util.*;
  */
 
 //P705
-public class    MeetingRooms2 {
+public class MeetingRooms2 {
     public static void main(String[] args) {
         Interval inter1 = new Interval(1, 4);
         Interval inter2 = new Interval(2, 6);
