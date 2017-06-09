@@ -36,7 +36,7 @@ class ExcelSheetColTitle {
         }
         StringBuilder sb = new StringBuilder();
         while (n > 0) {
-            n--;
+            n--;  //the key????
             char ch = (char) (n % 26 + 'A');
             n /= 26;
             sb.append(ch);

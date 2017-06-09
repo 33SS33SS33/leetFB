@@ -18,11 +18,16 @@ public class GraphValidTree {
     public static void main(String[] args) {
         int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {1, 4}};
         int[][] edges2 = {{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}};
-        System.out.println(graphValidTree(5, edges));
-        System.out.println(graphValidTree(5, edges2));
+        System.out.println(validTree(5, edges));
+        System.out.println(validTree(5, edges2));
     }
 
-    public boolean validTree(int n, int[][] edges) {
+    /**
+     * 啊啊
+     */
+     //http://www.geeksforgeeks.org/union-find/
+    //https://discuss.leetcode.com/topic/21712/ac-java-union-find-solution/6
+    public static boolean validTree(int n, int[][] edges) {
         // initialize n isolated islands
         int[] nums = new int[n];
         Arrays.fill(nums, -1);
@@ -30,39 +35,19 @@ public class GraphValidTree {
         for (int i = 0; i < edges.length; i++) {
             int x = finda(nums, edges[i][0]);
             int y = finda(nums, edges[i][1]);
-            // if two vertices happen to be in the same set // then there's a cycle
+            // if two vertices happen to be in the same set then there's a cycle
             if (x == y)
                 return false;
-            // union
+            // union  ？？
             nums[x] = y;
         }
         return edges.length == n - 1;
     }
 
-    int finda(int nums[], int i) {
+    static int finda(int nums[], int i) {
         if (nums[i] == -1)
             return i;
-        return find(nums, nums[i]);
+        return finda(nums, nums[i]);
     }
 
-    public static boolean graphValidTree(int n, int[][] edges) {
-        int[] root = new int[n];
-        for (int i = 0; i < n; i++)
-            root[i] = i;
-        for (int i = 0; i < edges.length; i++) {
-            int root1 = find(root, edges[i][0]);
-            int root2 = find(root, edges[i][1]);
-            if (root1 == root2)
-                return false;
-            root[root2] = root1;
-        }
-        return edges.length == n - 1;
-    }
-
-    private static int find(int[] root, int e) {
-        if (root[e] == e)
-            return e;
-        else
-            return find(root, root[e]);
-    }
 }
