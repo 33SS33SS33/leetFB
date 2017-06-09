@@ -24,6 +24,7 @@ public class HIndex {
     public static void main(String[] args) {
         int[] nums = {3, 0, 6, 1, 5};
         System.out.println(new HIndex().hIndex(nums));
+        System.out.println(new HIndex().hIndex2(nums));
     }
 
     /**
@@ -53,4 +54,39 @@ public class HIndex {
         return 0;
     }
 
+    public int hIndex2(int[] citations) {
+        int length = citations.length;
+        int start = 0;
+        int end = length - 1;
+        int hIndex = 0;
+
+        while (start <= end) {
+            int current = divideByPartition(citations, start, end);
+            if (length - current <= citations[current]) {
+                hIndex = length - current;
+                end = current - 1;
+            } else
+                start = current + 1;
+        }
+
+        return hIndex;
+    }
+
+    private int divideByPartition(int[] a, int start, int end) {
+        if (start == end) return end;
+
+        int p = a[end];
+        int head = start;
+        for (int current = start; current < end; current++) {
+            if (a[current] < p) {
+                int temp = a[head];
+                a[head] = a[current];
+                a[current] = temp;
+                head++;
+            }
+        }
+        a[end] = a[head];
+        a[head] = p;
+        return head;
+    }
 }
