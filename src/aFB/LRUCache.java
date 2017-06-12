@@ -1,6 +1,7 @@
 package aFB;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Design and implement a data structure for Least Recently Used (LRU) cache.

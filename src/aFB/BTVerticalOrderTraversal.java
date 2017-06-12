@@ -8,11 +8,11 @@ import java.util.*;
  * If two nodes are in the same row and column, the order should be from left to right.
  * Examples:
  * Given binary tree [3,9,20,null,null,15,7],
- *   3
- *  / \
+ * 3
+ * / \
  * 9  20
- *   /  \
- *  15   7
+ * /  \
+ * 15   7
  * return its vertical order traversal as:
  * [
  * [9],

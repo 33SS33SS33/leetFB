@@ -16,12 +16,12 @@ import java.util.*;
  * Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming
  * a self-cycle.
  * Visually, the graph looks like the following:
- *    1
- *   / \
- *  /   \
+ * 1
+ * / \
+ * /   \
  * 0 --- 2
- *      / \
- *      \_/
+ * / \
+ * \_/
  * Tags: DFS, BFS, Graph
  * 遍历方法可以BFS可以DFS 右边的链接都有
  * 需要用一个dic来保存 图中的节点（key）和复制的节点（value）

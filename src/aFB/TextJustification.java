@@ -1,6 +1,8 @@
 package aFB;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Given an array of words and a length L, format the text such that each line
