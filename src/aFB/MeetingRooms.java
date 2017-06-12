@@ -21,7 +21,6 @@ public class MeetingRooms {
         Interval inter2 = new Interval(5, 6);
         Interval[] intervals = {inter1, inter2};
         System.out.println(new MeetingRooms().canAttendMeetingsa(intervals));
-        System.out.println(new MeetingRooms().canAttendMeetings(intervals));
     }
 
     public boolean canAttendMeetingsa(Interval[] intervals) {
@@ -36,18 +35,6 @@ public class MeetingRooms {
         for (int i = 1; i < intervals.length; i++)
             if (intervals[i].start < intervals[i - 1].end)
                 return false;
-        return true;
-    }
-
-    public boolean canAttendMeetings(Interval[] intervals) {
-        //Arrays.sort(intervals, (a, b) -> a.start - b.start);
-        int maxend = 0;
-        for (Interval i : intervals) {
-            if (i.start < maxend) {
-                return false;
-            }
-            maxend = Math.max(maxend, i.end);
-        }
         return true;
     }
 

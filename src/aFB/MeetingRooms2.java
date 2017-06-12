@@ -9,7 +9,6 @@ import java.util.*;
  * For example,
  * Given [[0, 30],[5, 10],[15, 20]],
  * return 2.
- * <p/>
  * 最多需要多少房子
  * 一个数组是start排序 一个数组是end 排序  然后就按照最基本的逻辑开房间的逻辑即可
  * 就是在开房间之前检查有几个房间已经end了 end了 就是avail +1 然后用一间房 就avail-1
@@ -76,7 +75,6 @@ public class    MeetingRooms2 {
     static class RoomAllocator {
         List<Interval> rooms = new ArrayList<Interval>();
         int currentTime = -1;
-
         void alloc(Interval room) {
             for (int i = 0; i < rooms.size(); i++) {
                 if (rooms.get(i).end <= currentTime) {
@@ -86,7 +84,6 @@ public class    MeetingRooms2 {
             }
             rooms.add(room);
         }
-
         void freeBefore(int time) {
             currentTime = time;
         }
@@ -95,15 +92,14 @@ public class    MeetingRooms2 {
     public static class Interval {
         int start;
         int end;
-
         Interval() {
             start = 0;
             end = 0;
         }
-
         Interval(int s, int e) {
             start = s;
             end = e;
         }
     }
+
 }
