@@ -12,7 +12,6 @@ package aFB;
  * All costs are positive integers.
  * Follow up:
  * Could you solve it in O(nk) runtime?"
- * <p>
  * "这道题关键的地方在于 其实根据上一座房子来计算当前的房子的cost的时候 只需要上一座房子的最小的cost和第二小的cost
  * 原因是 如果不考虑各个房子要不同颜色 每座房子都选最小的cost就行了 那么现在需要不同颜色了  如果两个临近的房子撞色了  那么就可以参考第二小的cost就行
  * 所以代码里使用了reduce来处理 然后前一座cost只存的有最小的那个 还有第二小的 注意一下index 最小的cost的那个位置其实存的是第二小的cost
@@ -21,29 +20,39 @@ package aFB;
 public class PaintHouse2 {
     public static void main(String[] args) {
         int[][] costs = {{}, {}, {}};
+        System.out.print(new PaintHouse2().minCostIIa(costs));
         System.out.print(new PaintHouse2().minCostII(costs));
     }
-/*
-    public int minCostII(int[][] costs) {
-        if (costs == null || costs.length == 0) return 0;
+
+    public int minCostIIa(int[][] costs) {
+        if (costs == null || costs.length == 0)
+            return 0;
         int n = costs.length, k = costs[0].length;
-// min1 is the index of the 1st-smallest cost till previous house
-// min2 is the index of the 2nd-smallest cost till previous house int min1 = -1, min2 = -1;
+        // min1 is the index of the 1st-smallest cost till previous house
+        // min2 is the index of the 2nd-smallest cost till previous house
+        int min1 = -1, min2 = -1;
         for (int i = 0; i < n; i++) {
             int last1 = min1, last2 = min2;
             min1 = -1;
             min2 = -1;
             for (int j = 0; j < k; j++) {
                 if (j != last1) {
-// current color j is different to last min1
-                costs[i][j] += last1 < 0 ? 0 : costs[i - 1][last1]; } else {
-                costs[i][j] += last2 < 0 ? 0 : costs[i - 1][last2]; }
-// find the indices of 1st and 2nd smallest cost of painting current
-                if (min1 < 0 || costs[i][j] < costs[i][min1]) { min2 = min1; min1 = j;
-                } else if (min2 < 0 || costs[i][j] < costs[i][min2]) { min2 = j;
-                } }
+                    // current color j is different to last min1
+                    costs[i][j] += last1 < 0 ? 0 : costs[i - 1][last1];
+                } else {
+                    costs[i][j] += last2 < 0 ? 0 : costs[i - 1][last2];
+                }
+                    // find the indices of 1st and 2nd smallest cost of painting current house i
+                if (min1 < 0 || costs[i][j] < costs[i][min1]) {
+                    min2 = min1;
+                    min1 = j;
+                } else if (min2 < 0 || costs[i][j] < costs[i][min2]) {
+                    min2 = j;
+                }
+            }
         }
-        return costs[n - 1][min1]; }*/
+        return costs[n - 1][min1];
+    }
 
     public int minCostII(int[][] costs) {
         if (costs.length == 0 || costs[0].length == 0) {
