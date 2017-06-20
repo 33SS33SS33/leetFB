@@ -24,7 +24,7 @@ class LetterCombinationsOfPhoneNum {
         System.out.println(new LetterCombinationsOfPhoneNum().letterCombinationsB("23"));
     }
 
-    //最好的 backtrack
+    //最好懂的 backtrack
     public List<String> letterCombinationsB(String digits) {
         HashMap<Integer, String> map = new HashMap<Integer, String>();
         map.put(2, "abc");

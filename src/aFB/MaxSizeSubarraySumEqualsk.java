@@ -23,6 +23,7 @@ public class MaxSizeSubarraySumEqualsk {
         System.out.println(new MaxSizeSubarraySumEqualsk().maxSubArrayLen(num, 3));
     }
 
+    //最好的
     public int maxSubArrayLen(int[] nums, int k) {
         int sum = 0, max = 0;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();

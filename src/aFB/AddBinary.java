@@ -8,7 +8,6 @@ package aFB;
  * b = "1"
  * Return "100".
  * Tags: Math, String
- * <p>
  * 就是二进制加法 从后往前加也可以 记得str int转换
  */
 class AddBinary {
@@ -19,12 +18,26 @@ class AddBinary {
         System.out.println(addBinaryC(a, b));
     }
 
+    //  最好的
+    public static String addBinary(String a, String b) {
+        StringBuilder sb = new StringBuilder();
+        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+        while (i >= 0 || j >= 0) {
+            int sum = carry;
+            if (j >= 0) sum += b.charAt(j--) - '0';
+            if (i >= 0) sum += a.charAt(i--) - '0';
+            sb.append(sum % 2);
+            carry = sum / 2;
+        }
+        if (carry != 0) sb.append(carry);
+        return sb.reverse().toString();
+    }
+
     /**
-     * 最好的
      * Traverse the longest binary backwards
      * Use + to insert to front, turn digit sum to int and restore to binary
      */
-    public static String addBinary(String a, String b) {
+    public static String addBinaryb(String a, String b) {
         int m = a.length();
         int n = b.length();
         int carry = 0;
@@ -41,7 +54,8 @@ class AddBinary {
         return carry == 0 ? res : "1" + res;
     }
 
-    //    最好的
+
+
     public static String addBinaryC(String a, String b) {
         if (a == null || a.isEmpty()) {
             return b;

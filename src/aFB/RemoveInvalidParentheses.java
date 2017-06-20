@@ -25,6 +25,7 @@ public class RemoveInvalidParentheses {
         System.out.println(removeInvalidParentheses2(s3));
     }
 
+    //最好的
     public static List<String> removeInvalidParentheses2(String s) {
         List<String> ans = new ArrayList<>();
         remove(s, ans, 0, 0, new char[]{'(', ')'});
