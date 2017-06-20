@@ -23,15 +23,6 @@ class RemoveDupFromSortedArr2 {
         System.out.println(removeDuplicatesC(num3));
     }
 
-    //最简单的???
-    public static int removeDuplicates(int[] nums) {
-        int i = 0;
-        for (int n : nums)
-            if (i < 2 || n > nums[i - 2])
-                nums[i++] = n;
-        return i;
-    }
-
     /**
      * 最好的
      * skip if length <=2
@@ -71,6 +62,15 @@ class RemoveDupFromSortedArr2 {
             }
         }
         return prev + 1;
+    }
+
+    //最简单的???
+    public static int removeDuplicates(int[] nums) {
+        int i = 0;
+        for (int n : nums)
+            if (i < 2 || n > nums[i - 2])
+                nums[i++] = n;
+        return i;
     }
 
     public static int removeDuplicatesB(int[] A) {
