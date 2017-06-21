@@ -13,7 +13,6 @@ import java.util.List;
  * "105", 5 -> ["1*0+5","10-5"]
  * "00", 0 -> ["0+0", "0-0", "0*0"]
  * "3456237490", 9191 -> []
- * <p/>
  * 自己写的用eval的超时了
  * 难点在于乘法的处理  要用到变量存储之前的结果
  * 注意last的使用  回溯法
@@ -29,6 +28,7 @@ public class ExpressionAddOperators {
         System.out.println(new ExpressionAddOperators().addOperators(num, target));
     }
 
+    //最好的
     public List<String> addOperators(String num, int target) {
         List<String> rst = new ArrayList<String>();
         if (num == null || num.length() == 0)

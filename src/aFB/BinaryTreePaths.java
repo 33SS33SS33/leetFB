@@ -14,7 +14,6 @@ import java.util.List;
  * 5
  * All root-to-leaf paths are:
  * ["1->2->5", "1->3"]
- * <p/>
  * 用DFS就行
  * 但是Path的操作一定要注意!!! 重要
  * 如果在函数体内操作path  那么会修改path的值 比如Path+= [1] 会影响后面的path的值
@@ -24,23 +23,6 @@ public class BinaryTreePaths {
     public static void main(String[] args) {
         TreeNode head = buildTree();
         System.out.println(new BinaryTreePaths().binaryTreePathsB(head).toString());
-    }
-
-    //最好的
-    public List<String> binaryTreePathsA(TreeNode root) {
-        List<String> answer = new ArrayList<String>();
-        if (root != null)
-            searchBT(root, "", answer);
-        return answer;
-    }
-
-    private void searchBT(TreeNode root, String path, List<String> answer) {
-        if (root.left == null && root.right == null)
-            answer.add(path + root.val);
-        if (root.left != null)
-            searchBT(root.left, path + root.val + "->", answer);
-        if (root.right != null)
-            searchBT(root.right, path + root.val + "->", answer);
     }
 
 
@@ -65,6 +47,23 @@ public class BinaryTreePaths {
             helper(res, root.right, sb);
         }
         sb.setLength(len);
+    }
+
+    //最好的
+    public List<String> binaryTreePathsA(TreeNode root) {
+        List<String> answer = new ArrayList<String>();
+        if (root != null)
+            searchBT(root, "", answer);
+        return answer;
+    }
+
+    private void searchBT(TreeNode root, String path, List<String> answer) {
+        if (root.left == null && root.right == null)
+            answer.add(path + root.val);
+        if (root.left != null)
+            searchBT(root.left, path + root.val + "->", answer);
+        if (root.right != null)
+            searchBT(root.right, path + root.val + "->", answer);
     }
 
     private static TreeNode buildTree() {

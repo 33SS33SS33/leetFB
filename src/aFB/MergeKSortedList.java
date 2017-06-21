@@ -6,7 +6,6 @@ import java.util.*;
  * Merge k sorted linked lists and return it as one sorted list. Analyze and
  * describe its complexity.
  * Tags: Divide and Conquer, Linkedlist, Heap
- * <p/>
  * 使用priority queue 来做
  * 放进去tuple的原因是因为要不然heap无法排序
  * 整体思路就是用所有链表的头一个节点建立heap
@@ -59,7 +58,10 @@ class MergeKSortedList {
         return dummy.next;
     }
 
-
+    /**
+     * 第二种
+     * Divide and conquer  merge two halves, divide to merge two lists
+     */
     public ListNode mergeKListsA(List<ListNode> lists) {
         /*base cases*/
         if (lists.size() == 0)
@@ -73,9 +75,6 @@ class MergeKSortedList {
                 mergeKListsA(lists.subList(lists.size() / 2, lists.size())));
     }
 
-    /**
-     * Divide and conquer  merge two halves, divide to merge two lists
-     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null)
             return l2;

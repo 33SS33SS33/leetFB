@@ -22,6 +22,7 @@ class FindTheCelebrity {
     }
 
     /**
+     * 最好的
      * The first pass is to pick out the candidate. If candidate knows i, then switch candidate.
      * The second pass is to check whether the candidate is real.
      */

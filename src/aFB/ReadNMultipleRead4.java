@@ -9,7 +9,6 @@ package aFB;
  * Similar to Read N Characters Given Read4, but the read
  * function may be called multiple times
  * Tags:
- * <p/>
  * 和上道题基本一样 这里要处理的问题是 如果一个字符串长度是5
  * 然后他第一次read(3) 然后又read(2) 这样的话 其实第一次是读了4个
  * 所以要把第一次剩下的那个留第二次的用 所以用了个全局的queue来处理 其他基本一样
@@ -21,6 +20,7 @@ class ReadNMultipleRead4 {
         System.out.println(new ReadNMultipleRead4().reada(buf, n));
     }
 
+    //最好的
     private int buffPtr = 0;
     private int buffCnt = 0;
     private char[] buff = new char[4];

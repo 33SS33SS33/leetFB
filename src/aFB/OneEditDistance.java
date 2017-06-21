@@ -15,6 +15,9 @@ public class OneEditDistance {
         System.out.print(new OneEditDistance().isOneEditDistancea("wwq3", "ww"));
     }
 
+    /**
+     * 最好的
+     */
     public boolean isOneEditDistanceaa(String s, String t) {
         for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
             if (s.charAt(i) != t.charAt(i)) {
@@ -30,9 +33,6 @@ public class OneEditDistance {
         return Math.abs(s.length() - t.length()) == 1;
     }
 
-    /**
-     * 最好的
-     */
     public boolean isOneEditDistancea(String s, String t) {
         for (int i = 0; i < Math.min(s.length(), t.length()); i++) {
             if (s.charAt(i) != t.charAt(i)) {
