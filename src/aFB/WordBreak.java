@@ -55,7 +55,7 @@ class WordBreak {
     }
 
     /**
-     * backtracking, TLE
+     * backtracking, TLE 不好
      */
     public static boolean wordBreakB(String s, Set<String> dict) {
         if (s == null || dict == null)

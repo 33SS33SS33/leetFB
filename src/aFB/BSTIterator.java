@@ -12,7 +12,6 @@ import java.util.Stack;
  * BSTIterator i = new BSTIterator(root);
  * while (i.hasNext()) v[f()] = i.next();
  * Tags: Tree, Stack
- * <p>
  * 用一个栈 先存放所有的左节点
  * 然后如果弹出一个元素 就检查这个节点有没有右节点 有的话就 把右节点入栈
  * 然后再入栈所有右节点的左节点

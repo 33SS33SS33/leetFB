@@ -1,5 +1,7 @@
 package aFB;
 
+import java.util.*;
+
 /**
  * Created by krystal on 5/8/17.
  * Given a nested list of integers, implement an iterator to flatten it.
