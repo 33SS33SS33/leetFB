@@ -2,6 +2,7 @@ package aFB;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -22,7 +23,6 @@ import java.util.List;
  * []
  * ]
  * Tags: Array, Backtracking, Bit Manipulation
- * <p>
  * 用DP 动态规划
  * [1,2] 和[1,2,3]的子集的差异在于 [1,2,3]是包含了[1,2]的所有子集再加上 把[1,2]所有的子集插入3元素  这两个加起来就是[1,2,3]的子集
  * 题目要求必须是非降序的 所以先将nums排序即可
@@ -30,28 +30,13 @@ import java.util.List;
 class Subsets {
     public static void main(String[] args) {
         int[] nums = {2, 1, 5};
-/*        List<List<Integer>> res = subsetsA(nums);
-        for (List<Integer> l : res) {
-            System.out.println(l.toString());
-        }
-        List<List<Integer>> resB = subsetsB(nums);
-        for (List<Integer> l : resB) {
-            System.out.println(l.toString());
-        }
-        ArrayList<ArrayList<Integer>> res1 = subsets1(nums);
-        for (List<Integer> l : res1) {
-            System.out.println(l.toString());
-        }*/
         ArrayList<ArrayList<Integer>> res2 = subsets2(nums);
         for (List<Integer> l : res2) {
             System.out.println(l.toString());
         }
-/*        ArrayList<ArrayList<Integer>> res3 = subsets3(nums);
-        for (List<Integer> l : res3) {
-            System.out.println(l.toString());
-        }*/
     }
-
+//所有backtrack
+// https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
     /**
      * 最好的
      * Remember the start position and do backtracking
@@ -70,6 +55,24 @@ class Subsets {
             subsetsB(s, i + 1, set, result); // DFS
             set.remove(set.size() - 1); // remove last element
         }
+    }
+
+    //位运算
+    //https://discuss.leetcode.com/topic/2764/my-solution-using-bit-manipulation/13
+    public List<List<Integer>> subsets(int[] S) {
+        Arrays.sort(S);
+        int totalNumber = 1 << S.length;
+        List<List<Integer>> collection = new ArrayList<List<Integer>>(totalNumber);
+        for (int i=0; i<totalNumber; i++) {
+            List<Integer> set = new LinkedList<Integer>();
+            for (int j=0; j<S.length; j++) {
+                if ((i & (1<<j)) != 0) {
+                    set.add(S[j]);
+                }
+            }
+            collection.add(set);
+        }
+        return collection;
     }
 
     /**

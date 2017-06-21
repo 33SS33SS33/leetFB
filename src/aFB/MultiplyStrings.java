@@ -11,18 +11,18 @@ class MultiplyStrings {
     public static void main(String[] args) {
         String num1 = "322";
         String num2 = "4";
-        System.out.println(multiply(num1, num2));
+        System.out.println(multiply1(num1, num2));
+        System.out.println(multiplya(num1, num2));
         System.out.println(multiplyA(num1, num2));
         System.out.println(multiplyB(num1, num2));
-        System.out.print(multiplyC(num1, num2));
+        System.out.println(multiplyC(num1, num2));
     }
-
 
     /**
      * 最好的
      */
     //https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
-    public static String multiply(String num1, String num2) {
+    public static String multiply1(String num1, String num2) {
         int m = num1.length(), n = num2.length();
         int[] pos = new int[m + n];
         for (int i = m - 1; i >= 0; i--) {
@@ -41,7 +41,8 @@ class MultiplyStrings {
         return sb.length() == 0 ? "0" : sb.toString();
     }
 
-    public String multiplya(String num1, String num2) {
+    //从后往前处理
+    public static String multiplya(String num1, String num2) {
         int n1 = num1.length(), n2 = num2.length();
         int[] products = new int[n1 + n2];
         for (int i = n1 - 1; i >= 0; i--) {
@@ -65,6 +66,38 @@ class MultiplyStrings {
         return sb.length() == 0 ? "0" : sb.toString();
     }
 
+    /**
+     * creek 类似上面
+     * The key to solve this problem is multiplying each digit of the numbers
+     * at the corresponding positions and get the sum values at each position.
+     * That is how we do multiplication manually.
+     */
+    public static String multiplyB(String num1, String num2) {
+        String n1 = new StringBuilder(num1).reverse().toString();
+        String n2 = new StringBuilder(num2).reverse().toString();
+        int[] d = new int[num1.length() + num2.length()];
+        //multiply each digit and sum at the corresponding positions
+        for (int i = 0; i < n1.length(); i++) {
+            for (int j = 0; j < n2.length(); j++) {
+                d[i + j] += (n1.charAt(i) - '0') * (n2.charAt(j) - '0');
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        //calculate each digit
+        for (int i = 0; i < d.length; i++) {
+            int mod = d[i] % 10;
+            int carry = d[i] / 10;
+            if (i + 1 < d.length) {
+                d[i + 1] += carry;
+            }
+            sb.insert(0, mod);
+        }
+        //remove front 0's
+        while (sb.charAt(0) == '0' && sb.length() > 1) {
+            sb.deleteCharAt(0);
+        }
+        return sb.toString();
+    }
 
     /**假设第一个数长度是n，第二个数长度是m，我们知道结果长度为m+n或者m+n-1（没有进位的情况）。
      对于某一位i，要计算这个位上的数字，我们需要对所有能组合出这一位结果的位进行乘法，
@@ -109,38 +142,7 @@ class MultiplyStrings {
         return "0";
     }
 
-    /**
-     * creek
-     * The key to solve this problem is multiplying each digit of the numbers at the corresponding positions and get the sum values at each position.
-     * That is how we do multiplication manually.
-     */
-    public static String multiplyB(String num1, String num2) {
-        String n1 = new StringBuilder(num1).reverse().toString();
-        String n2 = new StringBuilder(num2).reverse().toString();
-        int[] d = new int[num1.length() + num2.length()];
-        //multiply each digit and sum at the corresponding positions
-        for (int i = 0; i < n1.length(); i++) {
-            for (int j = 0; j < n2.length(); j++) {
-                d[i + j] += (n1.charAt(i) - '0') * (n2.charAt(j) - '0');
-            }
-        }
-        StringBuilder sb = new StringBuilder();
-        //calculate each digit
-        for (int i = 0; i < d.length; i++) {
-            int mod = d[i] % 10;
-            int carry = d[i] / 10;
-            if (i + 1 < d.length) {
-                d[i + 1] += carry;
-            }
-            sb.insert(0, mod);
-        }
-        //remove front 0's
-        while (sb.charAt(0) == '0' && sb.length() > 1) {
-            sb.deleteCharAt(0);
-        }
-        return sb.toString();
-    }
-
+    // 不懂啊这个
     public static String multiplyC(String num1, String num2) {
         if (num1 == null || num2 == null || num1.length() == 0 || num2.length() == 0)
             return "";
@@ -162,4 +164,5 @@ class MultiplyStrings {
         }
         return res.reverse().toString();
     }
+
 }

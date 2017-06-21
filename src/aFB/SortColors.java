@@ -70,7 +70,7 @@ class SortColors {
     }
 
     /**
-     * 最简单的
+     * 简单的
      * two-pass count sorting
      */
     public void sortColors(int[] A) {

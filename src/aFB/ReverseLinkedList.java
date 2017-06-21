@@ -19,7 +19,7 @@ class ReverseLinkedList {
         n3.next = n4;
         n4.next = n5;
         ReverseLinkedList r = new ReverseLinkedList();
-        Node reversed = r.reverseListB(n1);
+        Node reversed = r.reverseListb(n1);
         Node cur = reversed;
         while (cur != null) {
             System.out.print(cur.next != null ? cur.val + "->" : cur.val);
@@ -30,6 +30,7 @@ class ReverseLinkedList {
     /**
      * 递归
      */
+    //https://discuss.leetcode.com/topic/13268/in-place-iterative-and-recursive-java-solution
     public Node reverseListb(Node head) {
         return reverseListInt(head, null);
     }
@@ -40,20 +41,6 @@ class ReverseLinkedList {
         Node next = head.next;
         head.next = newHead;
         return reverseListInt(next, head);
-    }
-
-    /**
-     * 迭代
-     */
-    public Node reverseLista(Node head) {
-        Node newHead = null;
-        while (head != null) {
-            Node next = head.next;
-            head.next = newHead;
-            newHead = head;
-            head = next;
-        }
-        return newHead;
     }
 
     /**
@@ -74,25 +61,17 @@ class ReverseLinkedList {
     }
 
     /**
-     * creek--Iterative 迭代
+     * 迭代
      */
-    public Node reverseListB(Node head) {
-        if (head == null || head.next == null)
-            return head;
-        Node p1 = head;
-        Node p2 = head.next;
-        head.next = null;
-        while (p1 != null && p2 != null) {
-            Node t = p2.next;
-            p2.next = p1;
-            p1 = p2;
-            if (t != null) {
-                p2 = t;
-            } else {
-                break;
-            }
+    public Node reverseLista(Node head) {
+        Node newHead = null;
+        while (head != null) {
+            Node next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next;
         }
-        return p2;
+        return newHead;
     }
 
     static class Node {

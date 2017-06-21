@@ -1,7 +1,6 @@
 package aFB;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,7 +10,6 @@ import java.util.List;
  * The right subtree of a node contains only nodes with keys greater than the node's key.
  * Both the left and right subtrees must also be binary search trees.
  * Tags: Tree, DFS
- * <p/>
  * 使用先序遍历
  * 如果访问了左节点  则当前点得值是左节点的最大值
  * 如果访问了右节点  则当前点得值是右节点的最小值
@@ -22,34 +20,17 @@ class ValidateBST {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);
         ValidateBST v = new ValidateBST();
         System.out.println(v.isValidBST(r));
-        System.out.println(v.isValidBSTA(r));
         System.out.println(v.isValidBSTB(r));
         System.out.println(v.isValidBSTC(r));
         System.out.println(v.isValidBSTD(r));
     }
 
     /**
-     * Recursive------- still cost O(n)
-     * Failed if input include Integer MAX and Integer MIN
-     */
-    public boolean isValidBSTB(TreeNode root) {
-        return isValidBSTB(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
-    }
-
-    // add range of current value and do recursive check
-    public boolean isValidBSTB(TreeNode root, int min, int max) {
-        return root == null || root.val > min && root.val < max
-                && isValidBSTB(root.left, min, root.val)
-                && isValidBSTB(root.right, root.val, max);
-    }
-
-    /*时间复杂度是O(n)，空间复杂度是O(logn)*/
-    /**
-     * Recursive
+     * 不懂啊  Recursive
      * Check current node
      * Check left subtree
      * Compare with current node and set predecessor
-     * Check right subtree
+     * Check right subtree  时间复杂度是O(n)，空间复杂度是O(logn)
      */
     Integer pred = null;
 
@@ -120,29 +101,20 @@ class ValidateBST {
     }
 
     /**
-     * creek------Iterative
+     * 不好的  Recursive------- still cost O(n)
+     * Failed if input include Integer MAX and Integer MIN
      */
-    public boolean isValidBSTA(TreeNode root) {
-        if (root == null)
-            return true;
-        LinkedList<BNode> queue = new LinkedList<BNode>();
-        queue.add(new BNode(root, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY));
-        while (!queue.isEmpty()) {
-            BNode b = queue.poll();
-            if (b.n.val <= b.left || b.n.val >= b.right) {
-                return false;
-            }
-            if (b.n.left != null) {
-                queue.offer(new BNode(b.n.left, b.left, b.n.val));
-            }
-            if (b.n.right != null) {
-                queue.offer(new BNode(b.n.right, b.n.val, b.right));
-            }
-        }
-        return true;
+    public boolean isValidBSTB(TreeNode root) {
+        return isValidBSTB(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    //define a BNode class with TreeNode and it's boundaries
+    // add range of current value and do recursive check
+    public boolean isValidBSTB(TreeNode root, int min, int max) {
+        return root == null || root.val > min && root.val < max
+                && isValidBSTB(root.left, min, root.val)
+                && isValidBSTB(root.right, root.val, max);
+    }
+
     class BNode {
         TreeNode n;
         double left;
