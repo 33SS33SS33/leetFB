@@ -45,6 +45,15 @@ public class InorderSuccessorinBST {
         }
     }
 
+    public TreeNode inorderSuccessor2(TreeNode root, TreeNode p) {
+        while (root != null && root.val <= p.val)
+            root = root.right;
+        if (root == null)
+            return null;
+        TreeNode left = inorderSuccessor2(root.left, p);
+        return (left != null && left.val > p.val) ? left : root;
+    }
+
     public static class TreeNode {
         int val;
         TreeNode left;

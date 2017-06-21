@@ -32,6 +32,7 @@ class BestTimeStock {
     }
 
     /**
+     * 不懂啊！！！
      * Optimized bottom-up approach  也很好啊
      * O(n) Time, O(1) Space
      * Just record yesterday's profit
