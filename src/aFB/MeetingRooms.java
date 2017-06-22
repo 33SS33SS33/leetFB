@@ -5,14 +5,13 @@ import java.util.Comparator;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all meetings.
+ * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei),
+ * determine if a person could attend all meetings.
  * For example,
  * Given [[0, 30],[5, 10],[15, 20]],
  * return false.
- * 一个人能不能参加所有会议按照start来排序 如果后一个的end 小于 前一个的start 就return False
- * 按照start来排序 如果后一个的end 小于 前一个的start 就return False
- * <p/>
- * 按照start来排序 如果后一个的end 小于 前一个的start 就return False
+ * 一个人能不能参加所有会议
+ * 按照start来排序 如果后一个的start 小于 前一个的end 就return False
  * 会议中间时间没有重叠的话就可以参加
  */
 public class MeetingRooms {
@@ -23,6 +22,7 @@ public class MeetingRooms {
         System.out.println(new MeetingRooms().canAttendMeetingsa(intervals));
     }
 
+    //最好的
     public boolean canAttendMeetingsa(Interval[] intervals) {
         if (intervals == null)
             return false;

@@ -31,6 +31,7 @@ class WordSearch {
      * 最好的
      * Use boolean array to remember whether a word is used
      * Traverse each position and do DFS
+     * 总的时间复杂度最坏是O(m^2*n^2)
      */
     public static boolean existA(char[][] board, String word) {
         if (board == null || board.length == 0 || board[0].length == 0 || word == null)
@@ -56,25 +57,47 @@ class WordSearch {
         // outside board or doesn't match
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(n))
             return false;
-
-        board[i][j] = '#'; // mark 
+        board[i][j] = '#'; // mark
         // search 4 connectivity
         boolean res = dfs(board, i - 1, j, word, n + 1) || dfs(board, i + 1, j, word, n + 1)
                 || dfs(board, i, j - 1, word, n + 1) || dfs(board, i, j + 1, word, n + 1);
-
         board[i][j] = word.charAt(n);// reset mark
         return res;
     }
 
+    //类似上面的方法 位运算
+    public boolean exist(char[][] board, String word) {
+        char[] w = word.toCharArray();
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                if (exist(board, y, x, w, 0)) return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean exist(char[][] board, int y, int x, char[] word, int i) {
+        if (i == word.length) return true;
+        if (y < 0 || x < 0 || y == board.length || x == board[y].length) return false;
+        if (board[y][x] != word[i]) return false;
+        board[y][x] ^= 256;
+        boolean exist = exist(board, y, x + 1, word, i + 1)
+                || exist(board, y, x - 1, word, i + 1)
+                || exist(board, y + 1, x, word, i + 1)
+                || exist(board, y - 1, x, word, i + 1);
+        board[y][x] ^= 256;
+        return exist;
+    }
+
     /**
      * solution2
+     * 这道题很容易感觉出来是图的题目，其实本质上还是做深度优先搜索。基本思路就是从某一个元素出发，
+     * 往上下左右深度搜索是否有相等于word的字符串。这里注意每次从一个元素出发时要重置访问标记
+     * （也就是说虽然单次搜索字符不能重复使用，但是每次从一个新的元素出发，字符还是重新可以用的）。
+     * 深度优先搜索的算法就不再重复解释了，不了解的朋友可以看看wiki - 深度优先搜索。我们知道一次搜索的复杂度是O(E+V)，
+     * E是边的数量，V是顶点数量，在这个问题中他们都是O(m*n)量级的（因为一个顶点有固定上下左右四条边）。
+     * 加上我们对每个顶点都要做一次搜索， 所以总的时间复杂度最坏是O(m^2*n^2)，空间上就是要用一个数组来记录访问情况，所以是O(m*n).
      */
-    /*这道题很容易感觉出来是图的题目，其实本质上还是做深度优先搜索。基本思路就是从某一个元素出发，
-    往上下左右深度搜索是否有相等于word的字符串。这里注意每次从一个元素出发时要重置访问标记
-    （也就是说虽然单次搜索字符不能重复使用，但是每次从一个新的元素出发，字符还是重新可以用的）。
-    深度优先搜索的算法就不再重复解释了，不了解的朋友可以看看wiki - 深度优先搜索。我们知道一次搜索的复杂度是O(E+V)，
-    E是边的数量，V是顶点数量，在这个问题中他们都是O(m*n)量级的（因为一个顶点有固定上下左右四条边）。
-    加上我们对每个顶点都要做一次搜索， 所以总的时间复杂度最坏是O(m^2*n^2)，空间上就是要用一个数组来记录访问情况，所以是O(m*n)*/
     public static boolean existB(char[][] board, String word) {
         if (word == null || word.length() == 0)
             return true;
@@ -99,9 +122,10 @@ class WordSearch {
             return false;
         used[i][j] = true;
         boolean res =
-                search(board, word, index + 1, i - 1, j, used) || search(board, word, index + 1,
-                        i + 1, j, used) || search(board, word, index + 1, i, j - 1, used) || search(
-                        board, word, index + 1, i, j + 1, used);
+                search(board, word, index + 1, i - 1, j, used)
+                        || search(board, word, index + 1, i + 1, j, used)
+                        || search(board, word, index + 1, i, j - 1, used)
+                        || search(board, word, index + 1, i, j + 1, used);
         used[i][j] = false;
         return res;
     }

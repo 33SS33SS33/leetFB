@@ -22,7 +22,7 @@ class CountAndSay {
     }
 
     /**
-     * Build from n - 1 to n
+     * Build from n - 1 to n 最好的
      * Traverse and get count of each char and append to result
      */
     public static String countAndSay(int n) {

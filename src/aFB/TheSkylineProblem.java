@@ -1,9 +1,6 @@
 package aFB;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
@@ -20,11 +17,43 @@ import java.util.PriorityQueue;
 public class TheSkylineProblem {
     public static void main(String[] args) {
         int[][] num = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-        System.out.println(new TheSkylineProblem().getSkylinea(num));
-
+        System.out.println(new TheSkylineProblem().getSkyline(num));
+        System.out.println(new TheSkylineProblem().getSkylineb(num));
     }
 
-    public List<int[]> getSkylinea(int[][] buildings) {
+    //最好的 不懂啊～～！！
+    //https://discuss.leetcode.com/topic/22482/short-java-solution/4
+    public static List<int[]> getSkyline(int[][] buildings) {
+        List<int[]> result = new ArrayList<>();
+        List<int[]> height = new ArrayList<>();
+        for (int[] b : buildings) {
+            height.add(new int[]{b[0], -b[2]});
+            height.add(new int[]{b[1], b[2]});
+        }
+        Collections.sort(height, (a, b) -> {
+            if (a[0] != b[0])
+                return a[0] - b[0];
+            return a[1] - b[1];
+        });
+        Queue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));
+        pq.offer(0);
+        int prev = 0;
+        for (int[] h : height) {
+            if (h[1] < 0) {
+                pq.offer(-h[1]);
+            } else {
+                pq.remove(h[1]);
+            }
+            int cur = pq.peek();
+            if (prev != cur) {
+                result.add(new int[]{h[0], cur});
+                prev = cur;
+            }
+        }
+        return result;
+    }
+
+    public List<int[]> getSkylineb(int[][] buildings) {
         if (buildings.length == 0)
             return new LinkedList<int[]>();
         return recurSkyline(buildings, 0, buildings.length - 1);
@@ -74,135 +103,4 @@ public class TheSkylineProblem {
         return rs;
     }
 
-    /*    public List<int[]> getSkylineb(int[][] buildings) {
-            List<int[]> result = new ArrayList<>();
-            List<int[]> height = new ArrayList<>();
-            for(int[] b:buildings) {
-                height.add(new int[]{b[0], -b[2]});
-                height.add(new int[]{b[1], b[2]});
-            }
-            Collections.sort(height, (a, b) -> {
-                if(a[0] != b[0])
-                    return a[0] - b[0];
-                return a[1] - b[1];
-            });
-            Queue<Integer> pq = new PriorityQueue<>((a, b) -> (b - a));
-            pq.offer(0);
-            int prev = 0;
-            for(int[] h:height) {
-                if(h[1] < 0) {
-                    pq.offer(-h[1]);
-                } else {
-                    pq.remove(h[1]);
-                }
-                int cur = pq.peek();
-                if(prev != cur) {
-                    result.add(new int[]{h[0], cur});
-                    prev = cur;
-                }
-            }
-            return result;
-        }*/
-    static int li(int[] building) {
-        return building[0];
-    }
-
-    static int ri(int[] building) {
-        return building[1];
-    }
-
-    static int hi(int[] building) {
-        return building[2];
-    }
-
-    static class SortedBuilds {
-        int[][] buildings;
-        int p = 0;
-        /**
-         * 需要写PriorityQueue
-         */
-        //        PriorityQueue<int[]> inserted = new PriorityQueue<>((a, b) -> li(a) - li(b));
-        PriorityQueue<int[]> inserted = new PriorityQueue(10, null);
-
-        SortedBuilds(int[][] buildings) {
-            this.buildings = buildings;
-        }
-
-        boolean hasNext() {
-            return p < buildings.length || !inserted.isEmpty();
-        }
-
-        int[] next() {
-            if (p < buildings.length && !inserted.isEmpty()) {
-                if (li(buildings[p]) < li(inserted.peek())) {
-                    return buildings[p++];
-                } else {
-                    return inserted.poll();
-                }
-            } else if (p < buildings.length) {
-                return buildings[p++];
-            } else { // !inserted.isEmpty())
-                return inserted.poll();
-            }
-        }
-
-        void insert(int[] building) {
-            inserted.add(building);
-        }
-    }
-
-    public List<int[]> getSkyline(int[][] buildings) {
-        List<int[]> all = new ArrayList<int[]>();
-        if (buildings.length == 0)
-            return all;
-        SortedBuilds sortedBuilds = new SortedBuilds(buildings);
-        int[] a = sortedBuilds.next();
-        while (sortedBuilds.hasNext()) {
-            int[] b = sortedBuilds.next();
-            if (ri(a) == li(b) && hi(a) == hi(b)) {
-                a = new int[]{li(a), ri(b), hi(a)};
-                continue;
-            }
-            // a.r b.l
-            if (ri(a) <= li(b)) {
-                all.add(new int[]{li(a), hi(a)});
-                if (ri(a) < li(b)) {
-                    all.add(new int[]{ri(a), 0});
-                }
-                a = b;
-                continue;
-            }
-            // a.l b.l
-            if (li(a) == li(b)) {
-                // make a higher than b
-                if (hi(a) < hi(b)) {
-                    sortedBuilds.insert(a);
-                    a = b;
-                    continue;
-                }
-                if (ri(a) < ri(b)) {
-                    sortedBuilds.insert(new int[]{ri(a), ri(b), hi(b)});
-                }
-                // else drop b (b inside a)
-                continue;
-            }
-            //
-            if (hi(a) < hi(b)) {
-                all.add(new int[]{li(a), hi(a)});
-                if (ri(a) > ri(b)) {
-                    sortedBuilds.insert(new int[]{ri(b), ri(a), hi(a)});
-                }
-                a = b;
-                continue;
-            }
-            // a.h >= b.h
-            if (ri(a) < ri(b)) {
-                sortedBuilds.insert(new int[]{ri(a), ri(b), hi(b)});
-            }
-            // else drop b (b inside a)
-        }
-        all.add(new int[]{li(a), hi(a)});
-        all.add(new int[]{ri(a), 0});
-        return all;
-    }
 }

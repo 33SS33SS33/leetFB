@@ -16,7 +16,8 @@ import java.util.*;
  * For the return value, each inner list's elements must follow the lexicographic order.
  * All inputs will be in lower-case.
  * The signature of the function had been updated to return list<list<string>> instead of list<string>,
- * as suggested here. If you still see your function signature return a list<string>, please click the reload button  to reset your code definition.
+ * as suggested here. If you still see your function signature return a list<string>,
+ * please click the reload button  to reset your code definition.
  * 使用哈希表 key是每个字符串排序过的 所以anagrams会有相同的key value就是字符串本身的值
  * 然后遍历字符串数组  把他们都装进字典 这样每个字典key下面就是一个anagrams group
  * 再把每个group排序后返回即可

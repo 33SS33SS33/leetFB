@@ -12,7 +12,7 @@ public class ProductofArrayExceptSelf {
     public static void main(String[] args) {
         int[] A = {1, 2, 8, 9, 3, 5};
         ProductofArrayExceptSelf s = new ProductofArrayExceptSelf();
-        int[] res = s.productExceptSelfA(A);
+        int[] res = s.productExceptSelf(A);
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
@@ -22,33 +22,26 @@ public class ProductofArrayExceptSelf {
             System.out.print(i == res2.length - 1 ? res2[i] : res2[i] + ", ");
         }
         System.out.println();
-        int[] res3 = s.productExceptSelfC(A);
-        for (int i = 0; i < res3.length; i++) {
-            System.out.print(i == res3.length - 1 ? res3[i] : res3[i] + ", ");
+    }
+
+    // Space is O(1) 最好的
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        res[0] = 1;
+        for (int i = 1; i < n; i++) {
+            res[i] = res[i - 1] * nums[i - 1];
         }
-        System.out.println();
+        int right = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            res[i] *= right;
+            right *= nums[i];
+        }
+        return res;
     }
 
     /**
-     * 最好的
-     * creek  Space is O(1).
-     */
-    public int[] productExceptSelfA(int[] nums) {
-        int[] result = new int[nums.length];
-        result[result.length - 1] = 1;
-        for (int i = nums.length - 2; i >= 0; i--) {
-            result[i] = result[i + 1] * nums[i + 1];
-        }
-        int left = 1;
-        for (int i = 0; i < nums.length; i++) {
-            result[i] *= left;
-            left *= nums[i];
-        }
-        return result;
-    }
-
-    /**
-     * creek-----
+     * creek  空间复杂度高
      */
     public int[] productExceptSelfB(int[] nums) {
         int[] result = new int[nums.length];
@@ -69,24 +62,6 @@ public class ProductofArrayExceptSelf {
             result[i] = t1[i] * t2[i];
         }
         return result;
-    }
-
-    public int[] productExceptSelfC(int[] nums) {
-        int[] output = new int[nums.length];
-        if (nums.length == 0)
-            return output;
-        output[0] = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            output[i] = output[i - 1] * nums[i];
-        }
-        output[nums.length - 1] = output[nums.length - 2] * 1;
-        int t = nums[nums.length - 1];
-        for (int i = output.length - 2; i > 0; i--) {
-            output[i] = t * output[i - 1];
-            t *= nums[i];
-        }
-        output[0] = t;
-        return output;
     }
 
 }
