@@ -20,7 +20,6 @@ import java.util.List;
  * []
  * ]
  * Tags: Array, Backtracking
- * <p/>
  * 使用DFS来做
  * 每次都以不同的元素开始dfs 如果元素相同 则跳过
  * 因为元素相同的只需要在path上加上就行了

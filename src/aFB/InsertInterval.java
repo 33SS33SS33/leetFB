@@ -16,7 +16,6 @@ import java.util.List;
  * [1,2],[3,10],[12,16].
  * This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
  * Tags: Array, Sort
- * <p>
  * 和mergeIntervals差不多 但是要考虑更多的情况
  * 因为插入的话  可能会new的那个区间会整个插入到当前区间的前面 而没有 merge
  * 然后也会有merge的情况 而且merge的时候 还要考虑start的大小 不光考虑end
@@ -35,11 +34,9 @@ class InsertInterval {
         List<Interval> ress = new InsertInterval().InsertIntervalS(intervals, interval3);
         List<Interval> res = new InsertInterval().insertA(intervals, interval3);
         List<Interval> res2 = new InsertInterval().insertB(intervals, interval3);
-        List<Interval> res4 = new InsertInterval().InsertInterval(intervals, interval3);
         System.out.print(ress.toString());
         System.out.print(res.toString());
         System.out.print(res2.toString());
-        System.out.print(res4.toString());
     }
 
     /**
@@ -67,27 +64,7 @@ class InsertInterval {
     }
 
     /**
-     * --------creek-------!!!!最好的
-     */
-    public ArrayList<Interval> InsertInterval(List<Interval> intervals, Interval newInterval) {
-        ArrayList<Interval> result = new ArrayList<Interval>();
-        for (Interval interval : intervals) {
-            if (interval.end < newInterval.start) {
-                result.add(interval);
-            } else if (interval.start > newInterval.end) {
-                result.add(newInterval);
-                newInterval = interval;
-            } else if (interval.end >= newInterval.start || interval.start <= newInterval.end) {
-                newInterval = new Interval(Math.min(interval.start, newInterval.start),
-                        Math.max(newInterval.end, interval.end));
-            }
-        }
-        result.add(newInterval);
-        return result;
-    }
-
-    /**
-     * 非原地方法
+     * 非原地方法 和最后一个元素比较
      * O(n), not in place solution, make use of intervals are sorted
      * Go through the list, compare interval's start and end with the last
      * interval of result, they may overlap
