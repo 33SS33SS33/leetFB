@@ -33,15 +33,11 @@ class Subsets2 {
             System.out.println(l.toString());
         }
         System.out.print("------------------");
-        List<List<Integer>> res2 = subsetsWithDupB(num);
+        List<List<Integer>> res2 = subsetsWithDupb(num);
         for (List<Integer> l2 : res2) {
             System.out.println(l2.toString());
         }
-        System.out.print("------------------");
-        ArrayList<ArrayList<Integer>> res3 = subsetsWithDupC(num);
-        for (List<Integer> l2 : res3) {
-            System.out.println(l2.toString());
-        }
+
     }
 
     /**
@@ -73,76 +69,20 @@ class Subsets2 {
         }
     }
 
-    /**
-     * if a number from S is the first one of the numbers with the same value,
-     * it can be used to extend all previous subsets and create new
-     * non-duplicate subsets.
-     * if a number from S is a duplicated number of some value, it cannot be
-     * used to extend all previous subsets. Only part of them. The idea is that
-     * this number should help make some different subsets than its
-     * predecessor. So it only needs to extend subsets which contains its
-     * predecessor.
-     * [1 2 2]
-     * [ ], [1], [2], [1 2]
-     * [1 2 2], [2 2] (add 2 to subsets which have 2)
-     */
-    public static List<List<Integer>> subsetsWithDupB(int[] num) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        res.add(new ArrayList<Integer>()); // empty set
-        if (null == num || num.length == 0)
-            return res;
-        Arrays.sort(num); // sort first
-        int j, prevSize = 0;
-        for (int i = 0; i < num.length; i++) {
-            if (i != 0 && num[i] == num[i - 1]) // dup number
-                j = prevSize; // # of previous sets before last number
-            else
-                j = 0;
-            prevSize = res.size(); // # of previous sets
-            /*add to previous sets with same num*/
-            for (; j < prevSize; j++) {
-                List<Integer> temp = new ArrayList<Integer>(res.get(j));
-                temp.add(num[i]);
-                res.add(temp);
+    //不好懂。。
+    public static List<List<Integer>> subsetsWithDupb(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> ans = new ArrayList();
+        ans.add(new ArrayList()); // add []
+        for (int i = 0, prev = 0; i < nums.length; i++) {
+            int size = ans.size();
+            for (int j = (i == 0 || nums[i] != nums[i - 1]) ? 0 : prev; j < size; j++) {
+                List<Integer> cur = new ArrayList(ans.get(j));
+                cur.add(nums[i]);
+                ans.add(cur);
             }
+            prev = size;
         }
-        return res;
-    }
-
-    /**
-     * creek ----
-     */
-    public static ArrayList<ArrayList<Integer>> subsetsWithDupC(int[] num) {
-        if (num == null)
-            return null;
-        Arrays.sort(num);
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        ArrayList<ArrayList<Integer>> prev = new ArrayList<ArrayList<Integer>>();
-        for (int i = num.length - 1; i >= 0; i--) {
-            //get existing sets
-            if (i == num.length - 1 || num[i] != num[i + 1] || prev.size() == 0) {
-                prev = new ArrayList<ArrayList<Integer>>();
-                for (int j = 0; j < result.size(); j++) {
-                    prev.add(new ArrayList<Integer>(result.get(j)));
-                }
-            }
-            //add current number to each element of the set
-            for (ArrayList<Integer> temp : prev) {
-                temp.add(0, num[i]);
-            }
-            //add each single number as a set, only if current element is different with previous
-            if (i == num.length - 1 || num[i] != num[i + 1]) {
-                ArrayList<Integer> temp = new ArrayList<Integer>();
-                temp.add(num[i]);
-                prev.add(temp);
-            }
-            //add all set created in this iteration
-            for (ArrayList<Integer> temp : prev) {
-                result.add(new ArrayList<Integer>(temp));
-            }
-        }
-        //add empty set
-        result.add(new ArrayList<Integer>());
-        return result;
+        return ans;
     }
 }

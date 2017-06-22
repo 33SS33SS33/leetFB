@@ -36,8 +36,10 @@ public class ImplementStrStr {
         System.out.println(strStrC(str5, str2));
     }
 
-    /*两个循环 大循环就是遍历长字符串
-    然后在长字符串的每个起始位都开始小循环比对字符*/
+    /**
+     * 两个循环 大循环就是遍历长字符串
+     * 然后在长字符串的每个起始位都开始小循环比对字符
+     */
     public static int strStr(String haystack, String needle) {
         for (int i = 0; ; i++) {
             for (int j = 0; ; j++) {
@@ -50,24 +52,6 @@ public class ImplementStrStr {
             }
         }
     }
-
-/*
-    public int strStr2(String haystack, String needle) {
-        int l1 = haystack.length(), l2 = needle.length();
-        if (l1 < l2) {
-            return -1;
-        } else if (l2 == 0) {
-            return 0;
-        }
-        int threshold = l1 - l2;
-        for (int i = 0; i <= threshold; ++i) {
-            if (haystack.substring(i, i + l2).equals(needle)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-*/
 
     /**
      * brute force
@@ -91,8 +75,24 @@ public class ImplementStrStr {
         return -1;
     }
 
+    public int strStr2(String haystack, String needle) {
+        int l1 = haystack.length(), l2 = needle.length();
+        if (l1 < l2) {
+            return -1;
+        } else if (l2 == 0) {
+            return 0;
+        }
+        int threshold = l1 - l2;
+        for (int i = 0; i <= threshold; ++i) {
+            if (haystack.substring(i, i + l2).equals(needle)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     /**
-     * ----------KMP----------
+     * KMP
      */
     public static int strStrC(String haystack, String needle) {
         if (haystack == null || needle == null)

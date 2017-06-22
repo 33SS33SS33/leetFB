@@ -28,8 +28,6 @@ class BTLevelOrder {
     public static void main(String[] args) {
         TreeNode root = buildTree();
         System.out.println(new BTLevelOrder().levelOrder(root));
-        System.out.println(new BTLevelOrder().levelOrderB(root));
-        System.out.println(new BTLevelOrder().levelOrderC(root));
     }
 
     /**
@@ -55,69 +53,6 @@ class BTLevelOrder {
                     queue.add(n.right);
             }
             res.add(curLevel);
-        }
-        return res;
-    }
-
-    /**
-     * creek--
-     */
-    public ArrayList<ArrayList<Integer>> levelOrderB(TreeNode root) {
-        ArrayList<ArrayList<Integer>> al = new ArrayList<ArrayList<Integer>>();
-        ArrayList<Integer> nodeValues = new ArrayList<Integer>();
-        if (root == null)
-            return al;
-        LinkedList<TreeNode> current = new LinkedList<TreeNode>();
-        LinkedList<TreeNode> next = new LinkedList<TreeNode>();
-        current.add(root);
-        while (!current.isEmpty()) {
-            TreeNode node = current.remove();
-            if (node.left != null)
-                next.add(node.left);
-            if (node.right != null)
-                next.add(node.right);
-            nodeValues.add(node.val);
-            if (current.isEmpty()) {
-                current = next;
-                next = new LinkedList<TreeNode>();
-                al.add(nodeValues);
-                nodeValues = new ArrayList();
-            }
-        }
-        return al;
-    }
-
-    /**
-     * ganker
-     * 法的复杂度是就结点的数量，O(n)，空间复杂度是一层的结点数，也是O(n)。---
-     */
-    public ArrayList<ArrayList<Integer>> levelOrderC(TreeNode root) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        if (root == null)
-            return res;
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        int curNum = 0;
-        int lastNum = 1;
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        while (!queue.isEmpty()) {
-            TreeNode cur = queue.poll();
-            lastNum--;
-            list.add(cur.val);
-            if (cur.left != null) {
-                queue.add(cur.left);
-                curNum++;
-            }
-            if (cur.right != null) {
-                queue.add(cur.right);
-                curNum++;
-            }
-            if (lastNum == 0) {
-                lastNum = curNum;
-                curNum = 0;
-                res.add(list);
-                list = new ArrayList<Integer>();
-            }
         }
         return res;
     }
