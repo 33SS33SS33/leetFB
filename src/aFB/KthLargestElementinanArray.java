@@ -11,7 +11,6 @@ import java.util.Queue;
  * Note: You may assume k is always valid, 1 ≤ k ≤ array's length.
  * Tags: Divide and Conquer, Heap
  * Similar Problems: (M) Wiggle Sort II
- * <p/>
  * 使用快速选择算法 quick select
  * 算法有些类似快排 先选娶一个pivot 这里我选了数组第一个元素  然后把比pivot小的数放进一个数组  把比pivot大的数放进另外一个数组
  * 结束后开始和k比较  首先如果k比那个存big的数组的长度要小  就说明k落在这个数组里
@@ -29,9 +28,11 @@ class KthLargestElementinanArray {
         System.out.println(K.findKthLargestB(A, 3));
         System.out.println(K.findKthLargestC(A, 3));
     }
+    //多种解法
+    //https://discuss.leetcode.com/topic/14597/solution-explained/2
 
     /**
-     * 最好的 O(N lg K) running time + O(K) memory
+     * O(N lg K) running time + O(K) memory
      */
     public int findKthLargesta(int[] nums, int k) {
         final PriorityQueue<Integer> pq = new PriorityQueue<Integer>();

@@ -18,7 +18,30 @@ class CountAndSay {
         System.out.println(countAndSay(2));
         System.out.println(countAndSay(3));
         System.out.println(countAndSay(4));
-        System.out.println(countAndSay(5));
+        System.out.println(countAndSaya(5));
+    }
+
+    //????
+    public static String countAndSaya(int n) {
+        StringBuilder curr = new StringBuilder("1");
+        StringBuilder prev;
+        int count;
+        char say;
+        for (int i = 1; i < n; i++) {
+            prev = curr;
+            curr = new StringBuilder();
+            count = 1;
+            say = prev.charAt(0);
+            for (int j = 1, len = prev.length(); j < len; j++) {
+                if (prev.charAt(j) != say) {
+                    curr.append(count).append(say);
+                    count = 1;
+                    say = prev.charAt(j);
+                } else count++;
+            }
+            curr.append(count).append(say);
+        }
+        return curr.toString();
     }
 
     /**
