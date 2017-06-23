@@ -33,22 +33,6 @@ public class AlienDictionary {
         System.out.println(new AlienDictionary().alienOrderA(words));
     }
 
-    /*    private void filterBizStepData(final MonitorItemDTO item) {
-            final List<AlarmItem> alarmItems = bizStepFilter.filter(item);
-
-            alarmItemDAO.batchInsert(alarmItems);
-
-            Logger.info(this,"start thread to notify alarm ");
-            threadPoolTaskExecutor.execute(new Runnable() {
-                public void run() {
-                    Logger.info(this, "start to notify alarm ");
-                    alarmNotifyRemoteService.alarmNotify(alarmItems);
-                    Logger.info(this,"end to notify alarm ");
-                }
-            });
-
-        }*/
-
     public String alienOrderA(String[] words) {
         Map<Character, Set<Character>> map = new HashMap<Character, Set<Character>>();
         Map<Character, Integer> degree = new HashMap<Character, Integer>();

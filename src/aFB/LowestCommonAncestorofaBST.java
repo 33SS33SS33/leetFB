@@ -31,7 +31,7 @@ public class LowestCommonAncestorofaBST {
         return root;
     }
 
-
+    //迭代
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // make sure p < q
         if (p.val > q.val)
@@ -48,8 +48,7 @@ public class LowestCommonAncestorofaBST {
     }
 
     /**
-     * creek--
-     * This problem can be solved by using BST property,
+     * This problem can be solved by using BST property, 递归
      * i.e., left < parent < right for each node. There are 3 cases to handle.
      */
     public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {

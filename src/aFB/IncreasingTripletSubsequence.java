@@ -34,5 +34,4 @@ public class IncreasingTripletSubsequence {
         return false;
     }
 
-
 }
