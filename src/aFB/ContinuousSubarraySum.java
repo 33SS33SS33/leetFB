@@ -13,7 +13,7 @@ import java.util.Map;
  * Output: True
  * Explanation: Because [2, 4] is a continuous subarray of size 2 and sums up to 6.
  * Example 2:
- * Input: [23, 2, 6, 4, 7],  k=6
+ * Input: [23, 2, 6, 4, 7],  k=42
  * Output: True
  * Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.
  */

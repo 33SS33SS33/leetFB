@@ -13,9 +13,24 @@ package aFB;
 public class HIndex2 {
     public static void main(String[] args) {
         int[] nums = {0, 1, 3, 5, 6};
+        System.out.println(new HIndex2().hIndex(nums));
         System.out.println(new HIndex2().hIndex2(nums));
     }
 
+    public static int hIndex(int[] citations) {
+        if (citations == null || citations.length == 0) return 0;
+        int l = 0, r = citations.length;
+        int n = citations.length;
+        while (l < r) {
+            int mid = l + (r - l) / 2;
+            if (citations[mid] == n - mid) return n - mid;
+            if (citations[mid] < citations.length - mid) l = mid + 1;
+            else r = mid;
+        }
+        return n - l;
+    }
+
+    //https://discuss.leetcode.com/topic/23399/standard-binary-search/2
     public int hIndex2(int[] citations) {
         int len = citations.length;
         int lo = 0, hi = len - 1;
@@ -33,4 +48,5 @@ public class HIndex2 {
         }
         return len - lo;
     }
+
 }
