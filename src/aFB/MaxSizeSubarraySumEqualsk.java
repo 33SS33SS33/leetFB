@@ -24,6 +24,7 @@ public class MaxSizeSubarraySumEqualsk {
     }
 
     //最好的
+    //https://discuss.leetcode.com/topic/33259/o-n-super-clean-9-line-java-solution-with-hashmap
     public int maxSubArrayLen(int[] nums, int k) {
         int sum = 0, max = 0;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
