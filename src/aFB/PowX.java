@@ -13,11 +13,10 @@ class PowX {
         System.out.println(p.powa(2.0, 5));
         System.out.println(p.pow(2.0, 5));
         System.out.println(p.powB(2.0, 5));
-        System.out.println(p.powB2(2.0, 5));
     }
 
     /**
-     * 最好的
+     * 最好的 迭代
      */
     public double powa(double x, int n) {
         if (n == 0)
@@ -27,6 +26,28 @@ class PowX {
             x = 1 / x;
         }
         return (n % 2 == 0) ? powa(x * x, n / 2) : x * powa(x * x, n / 2);
+    }
+
+    /**
+     * creek The most understandable solution I have found so far.
+     */
+    public double powB(double x, int n) {
+        if (n < 0) {
+            return 1 / power(x, -n);
+        } else {
+            return power(x, n);
+        }
+    }
+
+    public double power(double x, int n) {
+        if (n == 0)
+            return 1;
+        double v = power(x, n / 2);
+        if (n % 2 == 0) {
+            return v * v;
+        } else {
+            return v * v * x;
+        }
     }
 
     /**
@@ -59,38 +80,4 @@ class PowX {
         return res;
     }
 
-    /**
-     * creek The most understandable solution I have found so far.
-     */
-    public double powB(double x, int n) {
-        if (n < 0) {
-            return 1 / power(x, -n);
-        } else {
-            return power(x, n);
-        }
-    }
-
-    public double power(double x, int n) {
-        if (n == 0)
-            return 1;
-        double v = power(x, n / 2);
-        if (n % 2 == 0) {
-            return v * v;
-        } else {
-            return v * v * x;
-        }
-    }
-
-    double powB2(double x, int n) {
-        if (n == 0)
-            return 1.0;
-        double half = pow(x, n / 2);
-        if (n % 2 == 0) {
-            return half * half;
-        } else if (n > 0) {
-            return half * half * x;
-        } else {
-            return half / x * half;
-        }
-    }
 }

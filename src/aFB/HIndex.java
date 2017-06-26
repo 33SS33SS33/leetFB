@@ -17,19 +17,17 @@ package aFB;
  * then the index is 3 because the fourth paper has only 3 citations.
  * f(A)=10, f(B)=8, f(C)=5, f(D)=4, f(E)=3　→ h-index=4
  * f(A)=25, f(B)=8, f(C)=5, f(D)=3, f(E)=3　→ h-index=3
- * O(N)的算法类似 先过一遍数组 数组的索引是文章的引用次数 如果引用次数大于n了 就放在n索引里 然后值就是这个引用次数出现了几次  所以第n索引的是说出现了多少个大于n的引用
- * 然后也是倒序遍历 找到第一个累加起来超过当前索引的值
+ * O(N)的算法类似 先过一遍数组 数组的索引是文章的引用次数 如果引用次数大于n了 就放在n索引里 然后值就是这个引用次数出现了几次
+ * 所以第n索引的是说出现了多少个大于n的引用 然后也是倒序遍历 找到第一个累加起来超过当前索引的值
  */
 public class HIndex {
     public static void main(String[] args) {
         int[] nums = {3, 0, 6, 1, 5};
         System.out.println(new HIndex().hIndexa(nums));
-        System.out.println(new HIndex().hIndex(nums));
-        System.out.println(new HIndex().hIndex2(nums));
     }
 
     /**
-     * 最好的
+     * 最好的 桶排序
      */
     //https://discuss.leetcode.com/topic/40765/java-bucket-sort-o-n-solution-with-detail-explanation
     public int hIndexa(int[] citations) {
@@ -52,66 +50,4 @@ public class HIndex {
         return 0;
     }
 
-    /**
-     * O(n) time 最好的
-     */
-    public int hIndex(int[] citations) {
-        int length = citations.length;
-        if (length == 0) {
-            return 0;
-        }
-        int[] array2 = new int[length + 1];
-        for (int i = 0; i < length; i++) {
-            if (citations[i] > length) {
-                array2[length] += 1;
-            } else {
-                array2[citations[i]] += 1;
-            }
-        }
-        int t = 0;
-        int result = 0;
-        for (int i = length; i >= 0; i--) {
-            t = t + array2[i];
-            if (t >= i) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    public int hIndex2(int[] citations) {
-        int length = citations.length;
-        int start = 0;
-        int end = length - 1;
-        int hIndex = 0;
-
-        while (start <= end) {
-            int current = divideByPartition(citations, start, end);
-            if (length - current <= citations[current]) {
-                hIndex = length - current;
-                end = current - 1;
-            } else
-                start = current + 1;
-        }
-
-        return hIndex;
-    }
-
-    private int divideByPartition(int[] a, int start, int end) {
-        if (start == end) return end;
-
-        int p = a[end];
-        int head = start;
-        for (int current = start; current < end; current++) {
-            if (a[current] < p) {
-                int temp = a[head];
-                a[head] = a[current];
-                a[current] = temp;
-                head++;
-            }
-        }
-        a[end] = a[head];
-        a[head] = p;
-        return head;
-    }
 }

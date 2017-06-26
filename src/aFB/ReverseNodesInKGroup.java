@@ -25,7 +25,7 @@ class ReverseNodesInKGroup {
     }
 
     /**
-     * 最好的
+     * 最好的 尾插法
      */
     public ListNode reverseKGroupA(ListNode head, int k) {
         ListNode curr = head;
@@ -50,6 +50,7 @@ class ReverseNodesInKGroup {
     }
 
     /**
+     * 头插法 不好。。
      * Use pre and cur to store the node before the sublist and head of sublist
      * Insert next to head each time to reverse a list
      * Stop when the next of current node is next group's head
@@ -111,4 +112,5 @@ class ReverseNodesInKGroup {
             next = null;
         }
     }
+
 }

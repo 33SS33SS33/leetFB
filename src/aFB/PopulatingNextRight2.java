@@ -19,7 +19,7 @@ package aFB;
  * 2 -> 3 -> NULL
  * / \    \
  * 4-> 5 -> 7 -> NULL
- * Tags: Tree ,DFS
+ * Tags: Tree, DFS
  * 普通二叉树Most likely this can be implemented recursively, because you can identify the linking of nodes as sub-problems.
  * The main difficulty of this problem is linking rightChild with the nextSibling of rightChild.
  * Each node has no parent pointer. Therefore, there is no way linking the rightChild with its nextSibling at a level.
@@ -36,67 +36,8 @@ package aFB;
 class PopulatingNextRight2 {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();
-        TreeLinkNode root2 = buildTree();
         PopulatingNextRight2 r = new PopulatingNextRight2();
         r.connect(root);
-        r.connecta(root);
-    }
-
-    /**
-     * The idea is simple: level-order traversal.
-     */
-    public void connectb(TreeLinkNode root) {
-        while (root != null) {
-            TreeLinkNode tempChild = new TreeLinkNode(0);
-            TreeLinkNode currentChild = tempChild;
-            while (root != null) {
-                if (root.left != null) {
-                    currentChild.next = root.left;
-                    currentChild = currentChild.next;
-                }
-                if (root.right != null) {
-                    currentChild.next = root.right;
-                    currentChild = currentChild.next;
-                }
-                root = root.next;
-            }
-            root = tempChild.next;
-        }
-    }
-
-    //based on level order traversal 最好的
-    public void connecta(TreeLinkNode root) {
-        TreeLinkNode head = null; //head of the next level
-        TreeLinkNode prev = null; //the leading node on the next level
-        TreeLinkNode cur = root; //current node of current level
-        while (cur != null) {
-            while (cur != null) { //iterate on the current level
-                //left child
-                if (cur.left != null) {
-                    if (prev != null) {
-                        prev.next = cur.left;
-                    } else {
-                        head = cur.left;
-                    }
-                    prev = cur.left;
-                }
-                //right child
-                if (cur.right != null) {
-                    if (prev != null) {
-                        prev.next = cur.right;
-                    } else {
-                        head = cur.right;
-                    }
-                    prev = cur.right;
-                }
-                //move to next node
-                cur = cur.next;
-            }
-            //move to next level
-            cur = head;
-            head = null;
-            prev = null;
-        }
     }
 
     /**
@@ -135,6 +76,28 @@ class PopulatingNextRight2 {
         }
     }
 
+    /**
+     * The idea is simple: level-order traversal.
+     */
+    public void connectb(TreeLinkNode root) {
+        while (root != null) {
+            TreeLinkNode tempChild = new TreeLinkNode(0);
+            TreeLinkNode currentChild = tempChild;
+            while (root != null) {
+                if (root.left != null) {
+                    currentChild.next = root.left;
+                    currentChild = currentChild.next;
+                }
+                if (root.right != null) {
+                    currentChild.next = root.right;
+                    currentChild = currentChild.next;
+                }
+                root = root.next;
+            }
+            root = tempChild.next;
+        }
+    }
+
     private static TreeLinkNode buildTree() {
         TreeLinkNode t0 = new TreeLinkNode(20);
         TreeLinkNode t1 = new TreeLinkNode(9);
@@ -159,7 +122,6 @@ class PopulatingNextRight2 {
     public static class TreeLinkNode {
         int val;
         TreeLinkNode left, right, next;
-
         TreeLinkNode(int x) {
             val = x;
         }

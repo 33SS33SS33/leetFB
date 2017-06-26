@@ -1,5 +1,7 @@
 package aFB;
 
+import java.util.Stack;
+
 /**
  * Find sum of all left leaves in a given Binary Tree
  * Tags: Tree, DFS
@@ -7,12 +9,48 @@ package aFB;
 class SumOfLeftLeaves {
     public static void main(String[] args) {
         SumOfLeftLeaves s = new SumOfLeftLeaves();
-        int sum = s.sumOfLeftLeaves(s.buildTree());
-        System.out.println(sum);
+        TreeNode root = s.buildTree();
+        System.out.println(s.sumOfLeftLeavesa(root));
+        System.out.println(s.sumOfLeftLeavesb(root));
+        System.out.println(s.sumOfLeftLeaves(root));
+    }
+
+    //递归 最好的
+    public int sumOfLeftLeavesa(TreeNode root) {
+        if (root == null) return 0;
+        int ans = 0;
+        if (root.left != null) {
+            if (root.left.left == null && root.left.right == null) ans += root.left.val;
+            else ans += sumOfLeftLeaves(root.left);
+        }
+        ans += sumOfLeftLeaves(root.right);
+        return ans;
+    }
+
+    //迭代 最好的
+    public int sumOfLeftLeavesb(TreeNode root) {
+        if (root == null) return 0;
+        int ans = 0;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(root);
+        while (!stack.empty()) {
+            TreeNode node = stack.pop();
+            if (node.left != null) {
+                if (node.left.left == null && node.left.right == null)
+                    ans += node.left.val;
+                else
+                    stack.push(node.left);
+            }
+            if (node.right != null) {
+                if (node.right.left != null || node.right.right != null)
+                    stack.push(node.right);
+            }
+        }
+        return ans;
     }
 
     /**
-     * DFS, recursive
+     * DFS, recursive  不要的
      * Make sure current node is not null
      * Check whether left child is leaf node
      * If yes, add its value to result

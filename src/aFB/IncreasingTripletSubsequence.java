@@ -14,9 +14,11 @@ public class IncreasingTripletSubsequence {
         IncreasingTripletSubsequence s = new IncreasingTripletSubsequence();
         int[] nums = {1, 2, 3, 0, 1};
         int[] nums2 = {5, 4, 3, 2, 1};
+        int[] nums3 = {-10, 1, 2, 3, -7};
 
         System.out.println(s.increasingTripleta(nums));
         System.out.println(s.increasingTripleta(nums2));
+        System.out.println(s.increasingTripleta(nums3));
     }
 
     public boolean increasingTripleta(int[] nums) {

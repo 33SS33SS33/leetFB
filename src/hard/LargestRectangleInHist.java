@@ -11,7 +11,6 @@ import java.util.*;
  * Given height = [2,1,5,6,2,3],
  * return 10.
  * Tags: Array, Stack
- * <p/>
  * 主要思路可以看geeksforgeeks
  * 首先 主体思路就是对于每个bar 我们都去求出以当前的bar为最低的bar的面积
  * 然后所有这些面积的最大值就是结果
