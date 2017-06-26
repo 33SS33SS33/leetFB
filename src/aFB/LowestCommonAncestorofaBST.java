@@ -22,6 +22,12 @@ public class LowestCommonAncestorofaBST {
         System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorB(root, n3, n4).val);
     }
 
+    public TreeNode lowestCommonAncestora(TreeNode root, TreeNode p, TreeNode q) {
+        while ((root.val - (long) p.val) * (root.val - (long) q.val) > 0)
+            root = p.val < root.val ? root.left : root.right;
+        return root;
+    }
+
     //迭代
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // make sure p < q
@@ -40,7 +46,7 @@ public class LowestCommonAncestorofaBST {
 
     /**
      * creek 递归
-     * This problem can be solved by using BST property,
+     * This problem can be solved by using BST property, 递归
      * i.e., left < parent < right for each node. There are 3 cases to handle.
      */
     public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {

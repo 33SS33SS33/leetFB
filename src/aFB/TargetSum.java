@@ -30,6 +30,7 @@ public class TargetSum {
         return sum < s || (s + sum) % 2 > 0 ? 0 : subsetSum(nums, (s + sum) >>> 1);
     }
 
+    //不懂啊~~~
     public int subsetSum(int[] nums, int s) {
         int[] dp = new int[s + 1];
         dp[0] = 1;

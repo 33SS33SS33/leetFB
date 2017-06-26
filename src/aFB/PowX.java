@@ -16,19 +16,6 @@ class PowX {
     }
 
     /**
-     * 最好的 迭代
-     */
-    public double powa(double x, int n) {
-        if (n == 0)
-            return 1;
-        if (n < 0) {
-            n = -n;
-            x = 1 / x;
-        }
-        return (n % 2 == 0) ? powa(x * x, n / 2) : x * powa(x * x, n / 2);
-    }
-
-    /**
      * creek The most understandable solution I have found so far.
      */
     public double powB(double x, int n) {
@@ -48,6 +35,19 @@ class PowX {
         } else {
             return v * v * x;
         }
+    }
+
+    /**
+     * 最好的 迭代
+     */
+    public double powa(double x, int n) {
+        if (n == 0)
+            return 1;
+        if (n < 0) {
+            n = -n;
+            x = 1 / x;
+        }
+        return (n % 2 == 0) ? powa(x * x, n / 2) : x * powa(x * x, n / 2);
     }
 
     /**
