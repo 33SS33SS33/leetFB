@@ -1,8 +1,8 @@
 package aFB;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.sun.tools.javac.util.ArrayUtils;
+
+import java.util.*;
 
 /**
  * Created by krystal on 5/4/17.
@@ -26,8 +26,19 @@ import java.util.Map;
  * Output: 2
  */
 public class BrickWall {
+    public static void main(String[] args) {
+        List<List<Integer>> wall = new ArrayList<>();
+        wall.add(Arrays.asList(1,2,2,1));
+        wall.add(Arrays.asList(3,1,2));
+        wall.add(Arrays.asList(1,3,2));
+        wall.add(Arrays.asList(2,4));
+        wall.add(Arrays.asList(3,1,2));
+        wall.add(Arrays.asList(1,3,1,1));
+        System.out.println(leastBricks(wall));
+    }
 
-    public int leastBricks(List<List<Integer>> wall) {
+    //????
+    public static int leastBricks(List<List<Integer>> wall) {
         if (wall.size() == 0) return 0;
         int count = 0;
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
