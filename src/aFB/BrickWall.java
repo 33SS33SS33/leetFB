@@ -1,7 +1,5 @@
 package aFB;
 
-import com.sun.tools.javac.util.ArrayUtils;
-
 import java.util.*;
 
 /**
@@ -52,4 +50,5 @@ public class BrickWall {
         }
         return wall.size() - count;
     }
+
 }

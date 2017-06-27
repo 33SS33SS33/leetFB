@@ -50,5 +50,5 @@ public class IntegertoEnglishWords {
         else
             return LESS_THAN_20[num / 100] + " Hundred " + helper(num % 100);
     }
-    
+
 }

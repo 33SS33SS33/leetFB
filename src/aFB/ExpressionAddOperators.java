@@ -52,7 +52,7 @@ public class ExpressionAddOperators {
             } else {
                 helper(rst, path + "+" + cur, num, target, i + 1, eval + cur, cur);
                 helper(rst, path + "-" + cur, num, target, i + 1, eval - cur, -cur);
-                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur);
+                helper(rst, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur);//????
             }
         }
     }
