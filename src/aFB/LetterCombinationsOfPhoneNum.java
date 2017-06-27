@@ -24,6 +24,26 @@ class LetterCombinationsOfPhoneNum {
         System.out.println(new LetterCombinationsOfPhoneNum().letterCombinationsB("23"));
     }
 
+    /**
+     * 迭代
+     * https://discuss.leetcode.com/topic/8465/my-java-solution-with-fifo-queue/6
+     */
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> ans = new LinkedList<String>();
+        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        ans.add("");
+        for (int i = 0; i < digits.length(); i++) {
+            int x = Character.getNumericValue(digits.charAt(i));
+            while (ans.peek().length() == i) {
+                //看不懂这里
+                String t = ans.remove();
+                for (char s : mapping[x].toCharArray())
+                    ans.add(t + s);
+            }
+        }
+        return ans;
+    }
+
     //最好懂的 backtrack
     public List<String> letterCombinationsB(String digits) {
         HashMap<Integer, String> map = new HashMap<Integer, String>();
@@ -98,22 +118,5 @@ class LetterCombinationsOfPhoneNum {
         }
     }
 
-    /**
-     */
-    public List<String> letterCombinations(String digits) {
-        LinkedList<String> ans = new LinkedList<String>();
-        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        ans.add("");
-        for (int i = 0; i < digits.length(); i++) {
-            int x = Character.getNumericValue(digits.charAt(i));
-            while (ans.peek().length() == i) {
-                //看不懂这里
-                String t = ans.remove();
-                for (char s : mapping[x].toCharArray())
-                    ans.add(t + s);
-            }
-        }
-        return ans;
-    }
 
 }

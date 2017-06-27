@@ -30,6 +30,7 @@ public class BTVerticalOrderTraversal {
         System.out.println(new BTVerticalOrderTraversal().verticalOrder(root));
     }
 
+    //https://discuss.leetcode.com/topic/31954/5ms-java-clean-solution/2
     //最好的
     public List<List<Integer>> verticalOrderA(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
@@ -67,40 +68,45 @@ public class BTVerticalOrderTraversal {
         return res;
     }
 
+    //Alternatively, we can calculate the rang first, then insert into buckets
     public List<List<Integer>> verticalOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
+        List<List<Integer>> cols = new ArrayList<>();
         if (root == null) {
-            return res;
+            return cols;
         }
-        //map's key is column, we assume the root column is zero, the left node wi ll minus 1 ,and the right node will plus 1
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap<Integer, ArrayList<Integer>>();
+        int[] range = new int[]{0, 0};
+        getRange(root, range, 0);
+        for (int i = range[0]; i <= range[1]; i++) {
+            cols.add(new ArrayList<Integer>());
+        }
         Queue<TreeNode> queue = new LinkedList<>();
-        //use a HashMap to store the TreeNode and the according cloumn value
-        HashMap<TreeNode, Integer> weight = new HashMap<TreeNode, Integer>();
-        queue.offer(root);
-        weight.put(root, 0);
-        int min = 0;
+        Queue<Integer> colQueue = new LinkedList<>();
+        queue.add(root);
+        colQueue.add(-range[0]);
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            int w = weight.get(node);
-            if (!map.containsKey(w)) {
-                map.put(w, new ArrayList<>());
-            }
-            map.get(w).add(node.val);
+            int col = colQueue.poll();
+            cols.get(col).add(node.val);
             if (node.left != null) {
                 queue.add(node.left);
-                weight.put(node.left, w - 1);
+                colQueue.add(col - 1);
             }
             if (node.right != null) {
                 queue.add(node.right);
-                weight.put(node.right, w + 1);
+                colQueue.add(col + 1);
             }
-            min = Math.min(min, w);
         }
-        while (map.containsKey(min)) {
-            res.add(map.get(min++));
+        return cols;
+    }
+
+    public void getRange(TreeNode root, int[] range, int col) {
+        if (root == null) {
+            return;
         }
-        return res;
+        range[0] = Math.min(range[0], col);
+        range[1] = Math.max(range[1], col);
+        getRange(root.left, range, col - 1);
+        getRange(root.right, range, col + 1);
     }
 
     static TreeNode buildTree() {

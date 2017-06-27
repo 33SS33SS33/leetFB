@@ -14,14 +14,8 @@ package aFB;
 public class MoveZeroes {
     public static void main(String[] args) {
         int[] num = {1, 4, 3, 0, 8, 1, 0, 0};
-        int[] num2 = {1, 4, 3, 0, 8, 1, 0, 0};
         new MoveZeroes().moveZeroes1(num);
         for (int i : num) {
-            System.out.print(i + ",");
-        }
-        System.out.println();
-        new MoveZeroes().moveZeroes2(num2);
-        for (int i : num2) {
             System.out.print(i + ",");
         }
     }
@@ -29,6 +23,7 @@ public class MoveZeroes {
     /**
      * best 最好的
      */
+    //https://discuss.leetcode.com/topic/24716/simple-o-n-java-solution-using-insert-index/2
     public void moveZeroes1(int[] nums) {
         if (nums == null || nums.length == 0)
             return;
@@ -41,20 +36,5 @@ public class MoveZeroes {
             nums[insertPos++] = 0;
         }
     }
-
-    public static void moveZeroes2(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) {
-                for (int j = i + 1; j < nums.length; j++) {
-                    if (nums[j] != 0) {
-                        nums[i] = nums[j];
-                        nums[j] = 0;
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
 
 }
