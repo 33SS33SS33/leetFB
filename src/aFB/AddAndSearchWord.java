@@ -5,6 +5,7 @@ package aFB;
  * Created by GAOSHANSHAN835 on 2016/3/4.
  */
 public class AddAndSearchWord {
+
     public class TrieNode {
         public TrieNode[] children = new TrieNode[26];
         public String item = "";

@@ -22,12 +22,6 @@ public class LowestCommonAncestorofaBST {
         System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorB(root, n3, n4).val);
     }
 
-    public TreeNode lowestCommonAncestora(TreeNode root, TreeNode p, TreeNode q) {
-        while ((root.val - (long) p.val) * (root.val - (long) q.val) > 0)
-            root = p.val < root.val ? root.left : root.right;
-        return root;
-    }
-
     //迭代
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // make sure p < q
@@ -35,11 +29,7 @@ public class LowestCommonAncestorofaBST {
             return lowestCommonAncestor(root, q, p);
         // find p <= root <= q
         while (!(p.val <= root.val && root.val <= q.val)) {
-            if (root.val > q.val) {
-                root = root.left;
-            } else { // root.val < p.val
-                root = root.right;
-            }
+            root = root.val > q.val ? root.left : root.right;
         }
         return root;
     }

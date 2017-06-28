@@ -13,6 +13,7 @@ import java.util.*;
  * Given the list [1,[4,[6]]],
  * By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
  */
+ //https://discuss.leetcode.com/category/425/flatten-nested-list-iterator
 /*
 public class FlattenNestedListIterator implements Iterator<Integer> {
     Deque<NestedInteger> s;

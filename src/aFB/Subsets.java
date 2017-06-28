@@ -30,7 +30,7 @@ import java.util.List;
 class Subsets {
     public static void main(String[] args) {
         int[] nums = {2, 1, 5};
-        ArrayList<ArrayList<Integer>> res2 = subsets2(nums);
+        List<List<Integer>> res2 = subsetsB(nums);
         for (List<Integer> l : res2) {
             System.out.println(l.toString());
         }
@@ -78,8 +78,8 @@ class Subsets {
     /**
      * 非递归  更好理解
      */
-    public static ArrayList<ArrayList<Integer>> subsets2(int[] S) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+    public static List<List<Integer>> subsets2(int[] S) {
+        List<List<Integer>> res = new ArrayList<>();
         res.add(new ArrayList<Integer>());
         if (S == null || S.length == 0)
             return res;
@@ -94,7 +94,6 @@ class Subsets {
         }
         return res;
     }
-
 
     /**
      * Recursive down to two branches.

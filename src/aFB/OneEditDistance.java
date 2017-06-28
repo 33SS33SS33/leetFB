@@ -27,7 +27,8 @@ public class OneEditDistance {
                     return t.substring(i).equals(s.substring(i + 1));
             }
         }
-        //重要  ！All previous chars are the same, the only possibility is deleting the end char in the longer one of s and t
+        //重要  ！All previous chars are the same, the only possibility
+        // is deleting the end char in the longer one of s and t
         return Math.abs(s.length() - t.length()) == 1;
     }
 
