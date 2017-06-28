@@ -1,4 +1,4 @@
-package BQ;
+package atest;
 
 /**
  * Created by shanshan on 5/7/17.

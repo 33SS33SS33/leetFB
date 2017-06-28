@@ -19,7 +19,6 @@ import java.util.Set;
  * ['i','f','l','v']
  * ]
  * Return ["eat","oath"].
- * <p/>
  * 使用了字典树 trie tree 然后和第一题的答案结合起来即可
  * 因为是一个字母一个字母的搜索 所以哈希表不行 必须用字典树才能比较有效率
  */
@@ -56,7 +55,6 @@ public class WordSearchII {
             res.add(p.word);
             p.word = null;     // de-duplicate
         }
-
         board[i][j] = '#';
         if (i > 0) dfs(board, i - 1, j, p, res);
         if (j > 0) dfs(board, i, j - 1, p, res);
