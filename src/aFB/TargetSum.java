@@ -21,17 +21,21 @@ package aFB;
  * Your output answer is guaranteed to be fitted in a 32-bit integer.
  */
 public class TargetSum {
+    public static void main(String[] args) {
+        int[] num = {1, 1, 1, 1, 1};
+        System.out.println(findTargetSumWays(num, 3));
 
-     //不懂啊～～
-    public int findTargetSumWays(int[] nums, int s) {
+    }
+
+    //不懂啊～～?????
+    public static int findTargetSumWays(int[] nums, int s) {
         int sum = 0;
         for (int n : nums)
             sum += n;
         return sum < s || (s + sum) % 2 > 0 ? 0 : subsetSum(nums, (s + sum) >>> 1);
     }
 
-    //不懂啊~~~
-    public int subsetSum(int[] nums, int s) {
+    public static int subsetSum(int[] nums, int s) {
         int[] dp = new int[s + 1];
         dp[0] = 1;
         for (int n : nums)
@@ -39,4 +43,5 @@ public class TargetSum {
                 dp[i] += dp[i - n];
         return dp[s];
     }
+
 }

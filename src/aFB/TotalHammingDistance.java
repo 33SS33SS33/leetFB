@@ -20,4 +20,5 @@ public class TotalHammingDistance {
         }
         return total;
     }
+
 }
