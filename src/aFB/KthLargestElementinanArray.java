@@ -1,5 +1,6 @@
 package aFB;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -23,13 +24,20 @@ class KthLargestElementinanArray {
     public static void main(String[] args) {
         KthLargestElementinanArray K = new KthLargestElementinanArray();
         int[] A = {1, 23, 12, 9, 30, 2, 50};
+        System.out.println(K.findKthLargest1(A, 3));
         System.out.println(K.findKthLargesta(A, 3));
         System.out.println(K.findKthLargest(A, 3));
-        System.out.println(K.findKthLargestB(A, 3));
-        System.out.println(K.findKthLargestC(A, 3));
+        System.out.println(K.findKthLargestc(A, 3));
     }
+
     //多种解法
     //https://discuss.leetcode.com/topic/14597/solution-explained/2
+    //O(N lg N) running time + O(1) memory
+    public int findKthLargest1(int[] nums, int k) {
+        final int N = nums.length;
+        Arrays.sort(nums);
+        return nums[N - k];
+    }
 
     /**
      * O(N lg K) running time + O(K) memory
@@ -61,93 +69,47 @@ class KthLargestElementinanArray {
         return res;
     }
 
-    /**
-     * QuickSelect
-     * Use partition algorithm in Quick Sort
-     * Compare partition index with k - 1
-     * If index > k - 1, means upper bound can be index - 1
-     * If index < k - 1, means lower bound can be index + 1
-     * If index == k - 1, return that number
-     */
-    public int findKthLargestB(int[] A, int k) {
-        if (k <= 0 || k > A.length)
-            return -1;
-        int l = 0; // initialize
-        int r = A.length - 1;
-        int index;
-        while (l < r) {
-            index = partition(A, l, r);
-            if (index > k) {
-                r = index - 1;
-            } else if (index < k) {
-                l = index + 1;
+    //O(N) best case / O(N^2) worst case running time + O(1) memory
+    public int findKthLargestc(int[] nums, int k) {
+        k = nums.length - k;
+        int lo = 0;
+        int hi = nums.length - 1;
+        while (lo < hi) {
+            final int j = partition(nums, lo, hi);
+            if (j < k) {
+                lo = j + 1;
+            } else if (j > k) {
+                hi = j - 1;
             } else {
-                return A[index];
-            }
-        }
-        return A[l];
-    }
-
-    /**
-     * Choose mid value as pivot
-     * Move two pointers
-     * Swap and move on
-     * Return left pointer
-     */
-    private int partition(int[] a, int left, int right) {
-        int pivot = a[left + (right - left) / 2];
-        while (left <= right) {
-            while (a[left] > pivot)
-                left++;
-            while (a[right] < pivot)
-                right--;
-            if (left <= right) {
-                int temp = a[left];
-                a[left] = a[right];
-                a[right] = temp;
-                left++;
-                right--;
-            }
-        }
-        return left;
-    }
-
-    public int findKthLargestC(int[] nums, int k) {
-        if (k < 1 || nums == null) {
-            return 0;
-        }
-        return getKth(nums.length - k + 1, nums, 0, nums.length - 1);
-    }
-
-    public int getKth(int k, int[] nums, int start, int end) {
-        int pivot = nums[end];
-        int left = start;
-        int right = end;
-        while (true) {
-            while (nums[left] < pivot && left < right) {
-                left++;
-            }
-            while (nums[right] >= pivot && right > left) {
-                right--;
-            }
-            if (left == right) {
                 break;
             }
-            swap(nums, left, right);
         }
-        swap(nums, left, end);
-        if (k == left + 1) {
-            return pivot;
-        } else if (k < left + 1) {
-            return getKth(k, nums, start, left - 1);
-        } else {
-            return getKth(k, nums, left + 1, end);
-        }
+        return nums[k];
     }
 
-    public void swap(int[] nums, int n1, int n2) {
-        int tmp = nums[n1];
-        nums[n1] = nums[n2];
-        nums[n2] = tmp;
+    private int partition(int[] a, int lo, int hi) {
+        int i = lo;
+        int j = hi + 1;
+        while (true) {
+            while (i < hi && less(a[++i], a[lo])) ;
+            while (j > lo && less(a[lo], a[--j])) ;
+            if (i >= j) {
+                break;
+            }
+            exch(a, i, j);
+        }
+        exch(a, lo, j);
+        return j;
     }
+
+    private void exch(int[] a, int i, int j) {
+        final int tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+
+    private boolean less(int v, int w) {
+        return v < w;
+    }
+
 }

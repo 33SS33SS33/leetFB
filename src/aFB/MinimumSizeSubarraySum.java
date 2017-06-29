@@ -23,7 +23,7 @@ public class MinimumSizeSubarraySum {
         System.out.println(v.solveNLogN(s, nums));
     }
 
-    // 清晰的
+    //清晰的
     public int minSubArrayLen(int s, int[] nums) {
         int sum = 0;
         int st = 0;
@@ -87,6 +87,5 @@ public class MinimumSizeSubarraySum {
         }
         return lo;
     }
-
 
 }
