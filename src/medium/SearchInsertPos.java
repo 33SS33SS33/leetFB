@@ -14,7 +14,7 @@ package medium;
  */
 class SearchInsertPos {
     public static void main(String[] args) {
-        int[] A = { 1, 3, 5, 6 };
+        int[] A = {1, 3, 5, 6};
         int target = 5;
         SearchInsertPos a = new SearchInsertPos();
         System.out.println(a.searchInsert(A, target));

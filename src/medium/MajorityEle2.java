@@ -17,7 +17,7 @@ import java.util.Map;
 public class MajorityEle2 {
     public static void main(String[] args) {
         MajorityEle2 l = new MajorityEle2();
-        int[] s = { 1, 3, 1, 5, 2, 1 };
+        int[] s = {1, 3, 1, 5, 2, 1};
         System.out.println(l.majorityElementA(s).toString());
         System.out.println(l.majorityElementB(s).toString());
         System.out.println(l.majorityElementC(s).toString());

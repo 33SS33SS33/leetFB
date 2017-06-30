@@ -123,7 +123,7 @@ class SwapNodeinPairs {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {
@@ -131,4 +131,5 @@ class SwapNodeinPairs {
             next = null;
         }
     }
+
 }

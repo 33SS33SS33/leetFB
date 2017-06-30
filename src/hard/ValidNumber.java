@@ -145,4 +145,5 @@ class ValidNumber {
         else
             return false; // other letter shows up
     }
+
 }

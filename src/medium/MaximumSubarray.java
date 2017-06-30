@@ -12,7 +12,7 @@ package medium;
  */
 class MaximumSubarray {
     public static void main(String[] args) {
-        int[] A = { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
+        int[] A = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
         for (int i : maxSubArrayC(A)) {
             System.out.print(i + ",");
         }
@@ -82,7 +82,7 @@ class MaximumSubarray {
                 end = i;
             }
         }
-        return new int[] { begin, end, maxSoFar };
+        return new int[]{begin, end, maxSoFar};
     }
 
 }

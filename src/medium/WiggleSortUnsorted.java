@@ -10,7 +10,7 @@ package medium;
  */
 class WiggleSortUnsorted {
     public static void main(String[] args) {
-        int[] A = { 1, 2, 8, 9, 3, 5 };
+        int[] A = {1, 2, 8, 9, 3, 5};
         new WiggleSortUnsorted().wiggleSort(A);
         for (int i = 0; i < A.length; i++) {
             System.out.print(i == A.length - 1 ? A[i] : A[i] + ", ");

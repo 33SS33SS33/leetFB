@@ -16,7 +16,7 @@ package medium;
  */
 class FindPeakElement {
     public static void main(String[] args) {
-        int[] num = { 1, 2, 3, 1, 4 };
+        int[] num = {1, 2, 3, 1, 4};
         System.out.println(new FindPeakElement().findPeakElementa(num));
         System.out.println(new FindPeakElement().findPeakElement(num));
         System.out.println(new FindPeakElement().findPeakElementB(num));

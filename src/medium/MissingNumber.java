@@ -15,7 +15,7 @@ package medium;
  */
 public class MissingNumber {
     public static void main(String[] args) {
-        int[] A = { 1, 2, 0 };
+        int[] A = {1, 2, 0};
         System.out.println(new MissingNumber().missingNumber1(A));
         System.out.println(new MissingNumber().missingNumber2(A));
         System.out.println(new MissingNumber().missingNumber3(A));

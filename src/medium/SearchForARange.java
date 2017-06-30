@@ -13,7 +13,7 @@ package medium;
 class SearchForARange {
     public static void main(String[] args) {
         SearchForARange s = new SearchForARange();
-        int[] A = { 1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+        int[] A = {1, 2, 3, 3, 3, 3, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
         int[] range = s.searchRange(A, 3);
         int[] range1 = s.searchRangeA(A, 3);
         int[] range2 = s.searchRangeB(A, 3);
@@ -30,9 +30,9 @@ class SearchForARange {
     public int[] searchRangeA(int[] A, int target) {
         int start = firstGreaterEqual(A, target);
         if (start == A.length || A[start] != target) {
-            return new int[] { -1, -1 };
+            return new int[]{-1, -1};
         }
-        return new int[] { start, firstGreaterEqual(A, target + 1) - 1 };
+        return new int[]{start, firstGreaterEqual(A, target + 1) - 1};
     }
 
     //find the first number that is greater than or equal to target.
@@ -63,7 +63,7 @@ class SearchForARange {
      * Update range with search result and return
      */
     public int[] searchRange(int[] A, int target) {
-        int[] range = { -1, -1 };
+        int[] range = {-1, -1};
         if (A == null || A.length == 0)
             return range;
         int index = binarySearch(A, 0, A.length - 1, target);
@@ -99,7 +99,7 @@ class SearchForARange {
      * 如此用停下来的两个边界就可以知道结果了，只需要两次二分查找。
      */
     public int[] searchRangeC(int[] A, int target) {
-        int[] res = { -1, -1 };
+        int[] res = {-1, -1};
         if (A == null || A.length == 0) {
             return res;
         }

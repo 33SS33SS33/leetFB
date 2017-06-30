@@ -87,7 +87,7 @@ public class ConvertBTtoLinkedList {
     // Java program to convert binary tree to double linked list
     // A binary tree node
     static class Node {
-        int  data;
+        int data;
         Node left, right;
 
         Node(int item) {
@@ -95,4 +95,5 @@ public class ConvertBTtoLinkedList {
             left = right = null;
         }
     }
+
 }

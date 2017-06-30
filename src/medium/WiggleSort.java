@@ -12,7 +12,7 @@ package medium;
 //遍历一遍 当是奇数位的时候 检查一下是不是比之前的大 偶数位的时候检查是不是比之前的小
 class WiggleSort {
     public static void main(String[] args) {
-        int[] A = { 1, 4, 5, 7, 8 };
+        int[] A = {1, 4, 5, 7, 8};
         new WiggleSort().wiggleSort(A);
         for (int i : A) {
             System.out.print(i + ",");

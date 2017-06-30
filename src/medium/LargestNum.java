@@ -15,7 +15,7 @@ import java.util.*;
 class LargestNum {
     public static void main(String[] args) {
         LargestNum ln = new LargestNum();
-        int[] num = { 3, 30, 34, 5, 9, 0 };
+        int[] num = {3, 30, 34, 5, 9, 0};
         System.out.println(ln.largestNumber(num));
         System.out.println(ln.largestNumberB(num));
     }
@@ -33,7 +33,8 @@ class LargestNum {
         for (int i = 0; i < num.length; i++)
             str[i] = num[i] + "";
         Comparator<String> comp = new Comparator<String>() {
-            @Override public int compare(String s1, String s2) {
+            @Override
+            public int compare(String s1, String s2) {
                 return Long.valueOf(s2 + s1).compareTo(Long.valueOf(s1 + s2));
             }
         };

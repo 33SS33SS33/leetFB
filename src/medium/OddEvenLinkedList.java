@@ -90,7 +90,7 @@ public class OddEvenLinkedList {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {

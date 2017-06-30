@@ -20,8 +20,8 @@ package medium;
  */
 class GasStation {
     public static void main(String[] args) {
-        int[] gas = { 2, 4, 1, 6 };
-        int[] cost = { 1, 4, 1, 5 };
+        int[] gas = {2, 4, 1, 6};
+        int[] cost = {1, 4, 1, 5};
         System.out.println(canCompleteCircuit(gas, cost));
         System.out.println(canCompleteCircuitB(gas, cost));
         System.out.println(canCompleteCircuitC(gas, cost));

@@ -22,7 +22,7 @@ package medium;
  */
 public class PaintHouse {
     public static void main(String[] args) {
-        int[][] costs = { {}, {}, {} };
+        int[][] costs = {{}, {}, {}};
         System.out.print(new PaintHouse().minCosta(costs));
         System.out.print(new PaintHouse().minCosta2(costs));
         //        System.out.print(new PaintHouse().minCost(costs));
@@ -54,12 +54,12 @@ public class PaintHouse {
         return Math.min(prevRow[0], Math.min(prevRow[1], prevRow[2]));
     }
 
-    static final int   RED    = 001;
-    static final int   BLUE   = 100;
-    static final int   GREEN  = 011;
-    static final int   NONE   = 000;
-    static final int   ALL    = 111;
-    static final int[] COLORS = { RED, BLUE, GREEN };
+    static final int RED = 001;
+    static final int BLUE = 100;
+    static final int GREEN = 011;
+    static final int NONE = 000;
+    static final int ALL = 111;
+    static final int[] COLORS = {RED, BLUE, GREEN};
 
     public int minCost(int[][] costs) {
         if (costs.length == 0)

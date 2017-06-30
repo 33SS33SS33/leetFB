@@ -7,11 +7,11 @@ package medium;
  * For example,
  * 1
  * \
- *  3
- *  / \
+ * 3
+ * / \
  * 2   4
- *      \
- *      5
+ * \
+ * 5
  * Longest consecutive sequence path is 3-4-5, so return 3.
  * 2
  * \
@@ -49,7 +49,7 @@ public class BTLongestConsecutiveSequence {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 
@@ -72,4 +72,5 @@ public class BTLongestConsecutiveSequence {
         int right = dfs(root.right, count, root.val);
         return Math.max(Math.max(left, right), count);
     }
+
 }

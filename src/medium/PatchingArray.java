@@ -23,7 +23,7 @@ package medium;
  */
 public class PatchingArray {
     public static void main(String[] args) {
-        int[] nums = { 1, 5, 10 };
+        int[] nums = {1, 5, 10};
         System.out.print(new PatchingArray().minPatches(nums, 20));
     }
 

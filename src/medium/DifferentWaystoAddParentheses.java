@@ -11,11 +11,9 @@ import java.util.Scanner;
  * to group numbers and operators. The valid operators are +, - and *.
  * Example 1
  * Input: "2-1-1".
- * <p/>
  * ((2-1)-1) = 0
  * (2-(1-1)) = 2
  * Output: [0, 2]
- * <p/>
  * 很重要的题目 可以用动归 DP 备忘录 未实现
  * 主要思路就是首先将输入的input分割 变成数字或者加减乘除的形式
  * Basic idea is using each operator to divide the whole string into three part:
@@ -26,7 +24,6 @@ import java.util.Scanner;
  * -->compute("2") * compute("3-4*5")
  * -->compute("2*3") - compute("4*5")
  * -->compute("2*3-4") * compute("5")
- *
  * 这道题最重要的地方就是分割循环计算字符串 需要多看代码 并且记住!!
  * for i, v in enumerate(input[start:end]):
  * if str(v) in '+-*':
@@ -54,15 +51,15 @@ public class DifferentWaystoAddParentheses {
                     for (Integer p2 : part2Ret) {
                         int c = 0;
                         switch (input.charAt(i)) {
-                        case '+':
-                            c = p1 + p2;
-                            break;
-                        case '-':
-                            c = p1 - p2;
-                            break;
-                        case '*':
-                            c = p1 * p2;
-                            break;
+                            case '+':
+                                c = p1 + p2;
+                                break;
+                            case '-':
+                                c = p1 - p2;
+                                break;
+                            case '*':
+                                c = p1 * p2;
+                                break;
                         }
                         ret.add(c);
                     }
@@ -130,12 +127,12 @@ public class DifferentWaystoAddParentheses {
 
     int calc(int l, int r, char op) {
         switch (op) {
-        case '+':
-            return l + r;
-        case '-':
-            return l - r;
-        case '*':
-            return l * r;
+            case '+':
+                return l + r;
+            case '-':
+                return l - r;
+            case '*':
+                return l * r;
         }
         // unreachable
         throw new RuntimeException();

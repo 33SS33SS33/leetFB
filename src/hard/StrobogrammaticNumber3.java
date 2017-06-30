@@ -10,7 +10,6 @@ import java.util.List;
  * Write a function to count the total strobogrammatic numbers that exist in the range of low <= num <= high.
  * For example,
  * Given low = "50", high = "100", return 3. Because 69, 88, and 96 are three strobogrammatic numbers.
- * <p/>
  * 主要思路是比如求50-100范围的时候 先计算小于50的个数  再计算小于100的个数 然后用小于100的个数减去小于50的个数
  * 然后单独计算小于i的个数的时候 是直接用数学方法算出来  i的位数-1 的个数
  * 然后再算出来i的位数一共有多少个 然后从这些里面找出来小于i的 然后把两个个数加起来
@@ -86,4 +85,5 @@ public class StrobogrammaticNumber3 {
                 dfs(low, high, c, left + 1, right - 1);
         }
     }
+
 }

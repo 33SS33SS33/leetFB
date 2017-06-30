@@ -11,7 +11,7 @@ package medium;
  */
 class ContainerWithMostWater {
     public static void main(String[] args) {
-        int[] height = { 2, 4, 3, 2, 7 };
+        int[] height = {2, 4, 3, 2, 7};
         System.out.println(new ContainerWithMostWater().maxAreaA(height));
     }
 

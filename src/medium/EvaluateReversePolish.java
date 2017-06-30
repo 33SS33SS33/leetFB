@@ -10,14 +10,14 @@ import java.util.*;
  * ["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
  * ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
  * Tags: Stack
-
+ * <p>
  * 用堆栈处理  碰见数字就入栈 碰见符号就把栈里的元素弹出计算 然后结果入栈
  * 用字典表示了各种符号的操作 很巧妙
  * 对于除法的计算 要注意python会对1/-100这种除法返回-1 只有用1/int(float(-100))这样才行
  */
 class EvaluateReversePolish {
     public static void main(String[] args) {
-        String[] tokens = { "2", "1", "+", "3", "*" };
+        String[] tokens = {"2", "1", "+", "3", "*"};
         // String[] tokens = {"4", "13", "5", "/", "+"};
         //        String[] tokens = { "3", "-4", "+" };
         System.out.println(evalRPNa(tokens));
@@ -152,18 +152,18 @@ class EvaluateReversePolish {
                 int b = Integer.valueOf(stack.pop());
                 int index = operators.indexOf(t);
                 switch (index) {
-                case 0:
-                    stack.push(String.valueOf(a + b));
-                    break;
-                case 1:
-                    stack.push(String.valueOf(b - a));
-                    break;
-                case 2:
-                    stack.push(String.valueOf(a * b));
-                    break;
-                case 3:
-                    stack.push(String.valueOf(b / a));
-                    break;
+                    case 0:
+                        stack.push(String.valueOf(a + b));
+                        break;
+                    case 1:
+                        stack.push(String.valueOf(b - a));
+                        break;
+                    case 2:
+                        stack.push(String.valueOf(a * b));
+                        break;
+                    case 3:
+                        stack.push(String.valueOf(b / a));
+                        break;
                 }
             }
         }

@@ -11,7 +11,6 @@ import java.util.*;
  * dict = ["cat", "cats", "and", "sand", "dog"].
  * A solution is ["cats and dog", "cat sand dog"].
  * Tags: DP, Backtracking
- * <p>
  * DFS会超时 可以加入word break I 里面的那个判断的dp 在每次dfs前先判断当前的s可以不可以被dic分掉
  */
 public class WordBreak2 {
@@ -52,9 +51,6 @@ public class WordBreak2 {
     /**
      * Memory function
      * Store how a word can be decomposed
-     */
-
-    /**
      * DP, Backtracking
      * Store successful decomposition in a map
      * Get prefix

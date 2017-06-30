@@ -7,7 +7,6 @@ package medium;
  * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
  * Output: 7 -> 0 -> 8
  * Tags: Linkedlist, Math
-
  * 实现中注意维护进位，陷阱的话记住最后还要判一下有没有进位，如果有再生成一位-
  */
 class AddTwoNum {
@@ -73,7 +72,7 @@ class AddTwoNum {
     }
 
     public static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {

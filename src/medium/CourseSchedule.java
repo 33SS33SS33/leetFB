@@ -32,8 +32,8 @@ import java.util.*;
  */
 public class CourseSchedule {
     public static void main(String[] args) {
-        int[][] prerequisites = { { 1, 0 } };
-        int[][] prerequisites2 = { { 1, 0 }, { 0, 1 } };
+        int[][] prerequisites = {{1, 0}};
+        int[][] prerequisites2 = {{1, 0}, {0, 1}};
 
         System.out.println(new CourseSchedule().canFinisha(2, prerequisites));
         System.out.println(new CourseSchedule().canFinishA(2, prerequisites));

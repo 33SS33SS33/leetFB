@@ -16,13 +16,13 @@ import java.util.List;
  * Example:
  * Input:
  * [4,3,2,7,8,2,3,1]
- *
+ * <p>
  * Output:
  * [2,3]
  */
 public class FindAllDuplicatesinanArray {
     public static void main(String[] args) {
-        int[] num = { 4,3,2,7,8,2,3,1};
+        int[] num = {4, 3, 2, 7, 8, 2, 3, 1};
         System.out.println(findDuplicates(num));
     }
     // when find a number i, flip the number at position i-1 to negative.

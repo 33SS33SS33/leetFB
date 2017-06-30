@@ -19,7 +19,7 @@ import java.util.*;
  */
 public class ContainsDuplicate3 {
     public static void main(String[] args) {
-        int[] num = { 1, 8, 7, 5, 8 };
+        int[] num = {1, 8, 7, 5, 8};
         System.out.println(containsNearbyAlmostDuplicatea(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicate(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicateB(num, 3, 2));
@@ -105,7 +105,7 @@ public class ContainsDuplicate3 {
 
     static class Tree {
         TreeMap<Integer, Integer> tree = new TreeMap<Integer, Integer>();
-        int                       size = 0;
+        int size = 0;
 
         void add(Integer n) {
             Integer v = tree.get(n);
@@ -144,4 +144,5 @@ public class ContainsDuplicate3 {
             return min;
         }
     }
+
 }

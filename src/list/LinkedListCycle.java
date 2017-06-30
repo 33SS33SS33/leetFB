@@ -47,7 +47,7 @@ class LinkedListCycle {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {
@@ -55,4 +55,5 @@ class LinkedListCycle {
             next = null;
         }
     }
+
 }

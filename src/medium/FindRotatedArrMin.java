@@ -13,7 +13,7 @@ package medium;
  */
 class FindRotatedArrMin {
     public static void main(String[] args) {
-        int[] num = { 3, 4, 5, 6, 1, 2 };
+        int[] num = {3, 4, 5, 6, 1, 2};
         System.out.println(findMin(num));
         System.out.println(findMinB(num));
         System.out.println(findMinC(num));

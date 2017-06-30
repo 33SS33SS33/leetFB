@@ -23,6 +23,7 @@ public class PalindromePermutation2 {
         String m = "carerac";
         System.out.println(generatePalindromes(k));
     }
+
     //最好的
     public static List<String> generatePalindromes(String s) {
         int odd = 0;
@@ -54,8 +55,8 @@ public class PalindromePermutation2 {
     }
 
     // generate all unique permutation from list
-    static void  getPerm(List<Character> list, String mid, boolean[] used, StringBuilder sb,
-            List<String> res) {
+    static void getPerm(List<Character> list, String mid, boolean[] used, StringBuilder sb,
+                        List<String> res) {
         if (sb.length() == list.size()) {
             // form the palindromic string
             res.add(sb.toString() + mid + sb.reverse().toString());

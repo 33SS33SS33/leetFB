@@ -18,7 +18,7 @@ package medium;
  */
 public class ShortestWordDistance3 {
     public static void main(String[] args) {
-        String[] words = { "practice", "makes", "perfect", "coding", "makes" };
+        String[] words = {"practice", "makes", "perfect", "coding", "makes"};
         String word1 = "makes";
         String word2 = "coding";
         System.out.println(new ShortestWordDistance3().shortestWordDistancea(words, word1, word2));

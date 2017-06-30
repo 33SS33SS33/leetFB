@@ -9,9 +9,8 @@ public class Array {
     private Float i;
     private static ArrayList<Float> aList;
 
-    public static void insert(Float i ){
+    public static void insert(Float i) {
         aList.add(i);
     }
-
 
 }

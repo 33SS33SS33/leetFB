@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class MissingRanges {
     public static void main(String[] args) {
-        int[] vals = { 0, 1, 3, 50, 75};
+        int[] vals = {0, 1, 3, 50, 75};
         List<String> res = findMissingRanges(vals, 0, 99);
         for (String s : res) {
             System.out.println(s);

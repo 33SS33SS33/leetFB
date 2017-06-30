@@ -21,7 +21,7 @@ package medium;
  */
 public class CoinChange {
     public static void main(String[] args) {
-        int[] coins = { 1, 2, 5 };
+        int[] coins = {1, 2, 5};
         System.out.println(new CoinChange().coinChange(coins, 11));
         System.out.println(new CoinChange().coinChangeB(coins, 11));
     }
@@ -40,7 +40,7 @@ public class CoinChange {
     }
 
     private int helper(int[] coins, int rem,
-            int[] count) { // rem: remaining coins after the last step; count[rem]: minimum number of coins to sum up to rem
+                       int[] count) { // rem: remaining coins after the last step; count[rem]: minimum number of coins to sum up to rem
         if (rem < 0)
             return -1; // not valid
         if (rem == 0)
@@ -79,4 +79,5 @@ public class CoinChange {
         }
         return dp[amount];
     }
+
 }

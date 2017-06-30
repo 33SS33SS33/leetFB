@@ -16,7 +16,7 @@ package medium;
  */
 public class HouseRobber2 {
     public static void main(String[] args) {
-        int[] nums = { 2, 4, 1, 6 };
+        int[] nums = {2, 4, 1, 6};
         System.out.println(roba(nums));
         System.out.println(robA(nums));
         System.out.println(robB(nums));

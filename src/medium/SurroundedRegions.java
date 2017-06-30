@@ -25,8 +25,8 @@ import java.util.*;
  */
 class SurroundedRegions {
     public static void main(String[] args) {
-        char[][] board = { { 'X', 'X', 'X', 'X' }, { 'X', 'O', 'O', 'X' }, { 'X', 'X', 'O', 'X' },
-                { 'X', 'O', 'X', 'X' } };
+        char[][] board = {{'X', 'X', 'X', 'X'}, {'X', 'O', 'O', 'X'}, {'X', 'X', 'O', 'X'},
+                {'X', 'O', 'X', 'X'}};
         SurroundedRegions surroundedRegions = new SurroundedRegions();
         surroundedRegions.solve(board);
         for (char[] i : board) {
@@ -60,7 +60,7 @@ class SurroundedRegions {
         int m = board.length;
         int n = board[0].length;
         boolean[][] visited = new boolean[m][n];
-        int[][] dir = { { 1, 0 }, { -1, 0 }, { 0, -1 }, { 0, 1 } };
+        int[][] dir = {{1, 0}, {-1, 0}, {0, -1}, {0, 1}};
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] == 'O' && !visited[i][j]) {

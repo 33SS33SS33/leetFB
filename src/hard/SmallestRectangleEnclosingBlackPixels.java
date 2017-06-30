@@ -14,7 +14,6 @@ package hard;
  * ]
  * and x = 0, y = 2,
  * Return 6."
- * <p/>
  * "肯定可以用dfs来做  但是效率比较慢 比较快的是可以用binary search
  * 这题最关键的前提是 只有一个黑色的区域 所以我们可以用binary search 分别找出来这个区域的轮廓  就是最上面的一个还有1的行
  * 最下面的含有1的行 最左面含有1的列 和最右边含有1的列"
@@ -66,4 +65,5 @@ public class SmallestRectangleEnclosingBlackPixels {
         }
         return i;
     }
+
 }

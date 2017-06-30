@@ -6,7 +6,6 @@ package hard;
  * For example,
  * Given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], return 6.
  * Tags: Array, Stack, Two pointers
- * <p/>
  * 对任意位置i，在i上的积水，不包括i本身, 由左右两边最高的bar：A[left] = max{A[j], j<i}, A[right] = max{A[j], j>i}决定。
  * 定义Hmin = min(A[left], A[right])，则积水量Si为：
  * Hmin <= A[i]时，Si = 0
@@ -119,4 +118,5 @@ class TrappingRainWater {
         }
         return result;
     }
+
 }

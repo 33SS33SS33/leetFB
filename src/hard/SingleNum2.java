@@ -7,7 +7,6 @@ package hard;
  * Your algorithm should have a linear runtime complexity. Could you implement
  * it without using extra memory?
  * Tags: Bit Manipulation
- * <p/>
  * 右边的两个连接是这类题的通用解法 https://leetcode.com/discuss/56524/a-general-c-solution-for-these-type-problems
  * https://leetcode.com/discuss/54970/an-general-way-to-handle-all-this-sort-of-questions
  * 如果所有元素都是连续出现了三次 那么把所有这些数字按位加起来 那么每一位都应该是三的倍数 那么除以3余数是0
@@ -63,4 +62,5 @@ class SingleNum2 {
         }
         return res;
     }
+
 }

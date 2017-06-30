@@ -15,7 +15,6 @@ import java.util.Set;
  * pattern = "aabb", str = "xyzabcxzyabc" should return false.
  * Notes:
  * You may assume both pattern and str contains only lowercase letters."
- * <p/>
  * * "用个dict来记录每个pattern的字母对应的word 然后dfs
  * 注意一下在什么时候删除key
  * 有点慢 待优化"
@@ -100,4 +99,5 @@ public class WordPatternII {
         }
         return false;
     }
+
 }

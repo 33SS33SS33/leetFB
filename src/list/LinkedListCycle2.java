@@ -63,7 +63,7 @@ class LinkedListCycle2 {
         return slow;
     }
 
-    static ListNode buildList() {
+    public static ListNode buildList() {
         ListNode node0 = new ListNode(0);
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
@@ -79,7 +79,7 @@ class LinkedListCycle2 {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {
@@ -87,4 +87,5 @@ class LinkedListCycle2 {
             next = null;
         }
     }
+
 }

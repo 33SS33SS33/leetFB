@@ -26,7 +26,7 @@ import java.util.Comparator;
 public class MaximumProductofWordLengths {
     public static void main(String[] args) {
         MaximumProductofWordLengths l = new MaximumProductofWordLengths();
-        String[] s = { "abcw", "baz", "foo", "bar", "xtfn", "abcdef" };
+        String[] s = {"abcw", "baz", "foo", "bar", "xtfn", "abcdef"};
         System.out.println(l.maxProduct(s));
         System.out.println(l.maxProductB(s));
     }

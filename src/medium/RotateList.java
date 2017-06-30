@@ -109,7 +109,7 @@ class RotateList {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {

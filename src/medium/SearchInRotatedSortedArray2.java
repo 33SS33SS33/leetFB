@@ -13,7 +13,7 @@ package medium;
 //这道题目中元素会有重复的情况出现
 class SearchInRotatedSortedArray2 {
     public static void main(String[] args) {
-        int[] A = { 4, 5, 5, 6, 7, 7, 0, 1, 2 };
+        int[] A = {4, 5, 5, 6, 7, 7, 0, 1, 2};
         int target = 3;
         System.out.println(new SearchInRotatedSortedArray2().searchA(A, target));
         System.out.println(new SearchInRotatedSortedArray2().searchB(A, target));

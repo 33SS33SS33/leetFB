@@ -13,7 +13,7 @@ package medium;
  */
 class MaxProductSubarr {
     public static void main(String[] args) {
-        int[] A = { 2, 3, -2, 4 };
+        int[] A = {2, 3, -2, 4};
         System.out.println(maxProductA(A));
         System.out.println(maxProductB(A));
     }

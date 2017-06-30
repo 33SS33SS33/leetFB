@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Flatten2DVector {
     private Iterator<List<Integer>> i;
-    private Iterator<Integer>       j;
+    private Iterator<Integer> j;
 
     public Flatten2DVector(List<List<Integer>> vec2d) {
         i = vec2d.iterator();
