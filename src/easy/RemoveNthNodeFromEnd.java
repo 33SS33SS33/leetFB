@@ -104,7 +104,7 @@ class RemoveNthNodeFromEnd {
     }
 
     class ListNode {
-        int      value;
+        int value;
         ListNode next;
 
         public ListNode(int value) {

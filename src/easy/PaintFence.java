@@ -12,7 +12,7 @@ package easy;
  */
 public class PaintFence {
     public static void main(String[] args) {
-        System.out.println(new PaintFence().numWays(2,3));
+        System.out.println(new PaintFence().numWays(2, 3));
     }
 
     public int numWays(int n, int k) {

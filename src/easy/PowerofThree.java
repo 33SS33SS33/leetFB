@@ -13,17 +13,18 @@ public class PowerofThree {
         System.out.println(new PowerofThree().isPowerOfThree(9));
         System.out.println(new PowerofThree().isPowerOfThreeb(16));
     }
+
     public boolean isPowerOfThreea(int n) {
         return Integer.toString(n, 3).matches("10*");
     }
 
     public boolean isPowerOfThree(int n) {
-        return n>0 && (n==1 || (n%3==0 && isPowerOfThree(n/3)));
+        return n > 0 && (n == 1 || (n % 3 == 0 && isPowerOfThree(n / 3)));
     }
 
     public boolean isPowerOfThreeb(int n) {
-        if(n>1)
-            while(n%3==0) n /= 3;
-        return n==1;
+        if (n > 1)
+            while (n % 3 == 0) n /= 3;
+        return n == 1;
     }
 }

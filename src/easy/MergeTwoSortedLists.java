@@ -86,7 +86,7 @@ public class MergeTwoSortedLists {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         public ListNode(int value) {

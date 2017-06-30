@@ -12,8 +12,8 @@ package dP;
  */
 class MinKStrictAscending {
     public static void main(String[] args) {
-        int[] A = { 10, 2, 20 };
-        int[] B = { 5, 4, 3, 2, 8 };
+        int[] A = {10, 2, 20};
+        int[] B = {5, 4, 3, 2, 8};
         MinKStrictAscending m = new MinKStrictAscending();
         System.out.println(m.minKStrictAscending(A));
         System.out.println(m.minKStrictAscending(B));

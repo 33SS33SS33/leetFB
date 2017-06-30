@@ -12,7 +12,6 @@ import java.util.*;
  * ["a","a","b"]
  * ]
  * Tags: Backtracking
- * <p/>
  * 用的DFS
  * 把当前的字符串从头开始切割 如果切出来的是回文 就把剩下的字符串继续切 然后继续判断 直到切完了整个字符串
  * 回文的特点是正反都一样 s == s[::-1] 后面的切片就是把字符串逆序输出
@@ -40,7 +39,7 @@ class PalindromePartition {
     public static void partition(String s, int pos, List<List<String>> res, List<String> cut) {
         if (pos == s.length()) { // note the stop condition
             res.add(new ArrayList<String>(cut)); // dereference
-        }else {
+        } else {
             for (int i = pos + 1; i <= s.length(); i++) {// start from 1
                 String prefix = s.substring(pos, i);
                 if (isPalindrome(prefix)) {
@@ -70,12 +69,12 @@ class PalindromePartition {
         return list;
     }
 
-    public static void backtrack(List<List<String>> list, List<String> tempList, String s, int start){
-        if(start == s.length())
+    public static void backtrack(List<List<String>> list, List<String> tempList, String s, int start) {
+        if (start == s.length())
             list.add(new ArrayList<>(tempList));
-        else{
-            for(int i = start; i < s.length(); i++){
-                if(isPalindrome(s, start, i)){
+        else {
+            for (int i = start; i < s.length(); i++) {
+                if (isPalindrome(s, start, i)) {
                     tempList.add(s.substring(start, i + 1));
                     backtrack(list, tempList, s, i + 1);
                     tempList.remove(tempList.size() - 1);
@@ -84,9 +83,9 @@ class PalindromePartition {
         }
     }
 
-    public static boolean isPalindrome(String s, int low, int high){
-        while(low < high)
-            if(s.charAt(low++) != s.charAt(high--)) return false;
+    public static boolean isPalindrome(String s, int low, int high) {
+        while (low < high)
+            if (s.charAt(low++) != s.charAt(high--)) return false;
         return true;
     }
 }

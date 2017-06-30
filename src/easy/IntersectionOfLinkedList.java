@@ -30,8 +30,9 @@ class IntersectionOfLinkedList {
     }
 
 
-    /** 最好的
-     * */
+    /**
+     * 最好的
+     */
     public ListNode getIntersectionNodeb(ListNode headA, ListNode headB) {
         if (null == headA || null == headB)
             return null;
@@ -97,7 +98,7 @@ class IntersectionOfLinkedList {
     }
 
     public static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {

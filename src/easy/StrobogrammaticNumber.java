@@ -51,8 +51,8 @@ public class StrobogrammaticNumber {
         return true;
     }
 
-    static final char[][] GOOD_PATTERNS = { { '9', '6' }, { '6', '9' }, { '1', '1' }, { '8', '8' },
-            { '0', '0' }, };
+    static final char[][] GOOD_PATTERNS = {{'9', '6'}, {'6', '9'}, {'1', '1'}, {'8', '8'},
+            {'0', '0'},};
 
     public boolean isStrobogrammatic(String num) {
         char[] S = num.toCharArray();
@@ -65,7 +65,7 @@ public class StrobogrammaticNumber {
     }
 
     boolean isStrobogrammatic(char l, char r) {
-        char[] s = new char[] { l, r };
+        char[] s = new char[]{l, r};
         for (char[] g : GOOD_PATTERNS) {
             if (Arrays.equals(g, s)) {
                 return true;

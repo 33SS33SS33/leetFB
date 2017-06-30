@@ -5,7 +5,7 @@ package dP;
  */
 public class UniquePathsWithObstacles {
     public static void main(String[] args) {
-        int[][] mat = { { 0, 0, 0 }, { 0, 1, 0 }, { 0, 0, 0 } };
+        int[][] mat = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
         System.out.println(uniquePathsWithObstacles(mat));
     }
 
@@ -46,4 +46,5 @@ public class UniquePathsWithObstacles {
         }
         return dp[m - 1][n - 1];
     }
+
 }

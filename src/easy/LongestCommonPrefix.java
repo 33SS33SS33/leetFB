@@ -7,7 +7,7 @@ package easy;
  */
 class LongestCommonPrefix {
     public static void main(String[] args) {
-        String[] strs = { "absss", "abddrre", "abs" };
+        String[] strs = {"absss", "abddrre", "abs"};
         System.out.println(new LongestCommonPrefix().longestCommonPrefix(strs));
         System.out.println(new LongestCommonPrefix().longestCommonPrefixA(strs));
         System.out.println(new LongestCommonPrefix().longestCommonPrefixB(strs));

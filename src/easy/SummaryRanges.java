@@ -15,7 +15,7 @@ import java.util.List;
 public class SummaryRanges {
     public static void main(String[] args) {
         SummaryRanges r = new SummaryRanges();
-        int[] nums = { 0, 1, 2, 4, 5, 7 };
+        int[] nums = {0, 1, 2, 4, 5, 7};
         System.out.println(r.summaryRangesa(nums));
         System.out.println(r.summaryRanges(nums));
         System.out.println(r.summaryRangesB(nums));

@@ -12,7 +12,7 @@ package dP;
  */
 class BestTimeStock2 {
     public static void main(String[] args) {
-        int[] prices = { 1, 2, 10, 100 };
+        int[] prices = {1, 2, 10, 100};
         System.out.println(maxProfit(prices));
         System.out.println(maxProfitA(prices));
     }

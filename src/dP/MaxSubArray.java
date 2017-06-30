@@ -5,7 +5,7 @@ package dP;
  */
 public class MaxSubArray {
     public static void main(String[] args) {
-        int[] s1 = { 1, 2, 5, 1, -1 };
+        int[] s1 = {1, 2, 5, 1, -1};
         System.out.println(new MaxSubArray().maxSubArray2(s1));
         System.out.println(new MaxSubArray().maxSubArray(s1));
     }
@@ -51,4 +51,5 @@ public class MaxSubArray {
         }
         return Math.max(lMaxSum + A[M] + rMaxSum, Math.max(leftAns, rightAns));
     }
+
 }

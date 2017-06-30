@@ -7,7 +7,7 @@ import java.util.Stack;
  */
 public class ImplementQueueusingStacks {
 
-    Stack<Integer> input  = new Stack();
+    Stack<Integer> input = new Stack();
     Stack<Integer> output = new Stack();
 
     public void push(int x) {

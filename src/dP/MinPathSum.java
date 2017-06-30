@@ -8,10 +8,10 @@ package dP;
  */
 class MinPathSum {
     public static void main(String[] args) {
-        int[][] grid = new int[][] {
-                { 1, 3, 1 },
-                { 1, 5, 1 },
-                { 4, 2, 1 } };
+        int[][] grid = new int[][]{
+                {1, 3, 1},
+                {1, 5, 1},
+                {4, 2, 1}};
         printMatrix(grid);
         System.out.println(minPathSum(grid));
     }
@@ -36,7 +36,6 @@ class MinPathSum {
 
         return grid[m - 1][n - 1];
     }
-
 
     private static void printMatrix(int[][] grid) {
         for (int i = 0; i < grid.length; i++) {

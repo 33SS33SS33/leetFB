@@ -18,8 +18,8 @@ class GenerateParen {
     }
 
     /**
-     *  最好的
-     *  */
+     * 最好的
+     */
     public static List<String> generateParenthesisa(int n) {
         List<String> list = new ArrayList<String>();
         backtrack(list, "", 0, 0, n);
@@ -36,7 +36,6 @@ class GenerateParen {
         if (close < open)
             backtrack(list, str + ")", open, close + 1, max);
     }
-
 
     /**
      * My method is DP. First consider how to get the result f(n) from previous result

@@ -1,12 +1,9 @@
 package dP;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- */
-
 import java.util.*;
 
 /**
+ * Created by GAOSHANSHAN835 on 2016/1/7.
  * Find the longest increasing(increasing means one step) sequence in an
  * integer matrix in 4 directions (up down left right), return the sequence
  * For Example:
@@ -19,11 +16,11 @@ import java.util.*;
 class LongestIncreasingSequenceInMat {
     public static void main(String[] args) {
         LongestIncreasingSequenceInMat l = new LongestIncreasingSequenceInMat();
-        int[][] mat = { { 1, 2, 3, 4 }, { 8, 7, 6, 5 }, { 9, 10, 11, 12 } };
+        int[][] mat = {{1, 2, 3, 4}, {8, 7, 6, 5}, {9, 10, 11, 12}};
         System.out.println(Arrays.toString(l.longest(mat)));
     }
 
-    public static final int[][] DIRS = { { -1, 0 }, { 1, 0 }, { 0, -1 }, { 0, 1 } };
+    public static final int[][] DIRS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     int[][] cache;
 
     /**
@@ -31,7 +28,7 @@ class LongestIncreasingSequenceInMat {
      * d[i][j] = max{d[i+1][j], d[i-1][j], d[i][j+1], d[i][j-1]} + 1
      */
     public int[] longest(int[][] mat) {
-        int[] res = new int[] {};
+        int[] res = new int[]{};
         if (mat == null || mat.length == 0 || mat[0].length == 0)
             return res;
         int m = mat.length;
@@ -69,4 +66,5 @@ class LongestIncreasingSequenceInMat {
         }
         return ++cache[i][j]; // add cache[i][j] by 1 and return!
     }
+
 }

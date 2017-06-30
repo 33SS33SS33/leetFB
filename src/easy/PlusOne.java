@@ -9,26 +9,27 @@ package easy;
  */
 class PlusOne {
     public static void main(String[] args) {
-        int[] result = plusOne(new int[] { 9, 9, 9, 9, 8 });
+        int[] result = plusOne(new int[]{9, 9, 9, 9, 8});
         System.out.print("{ ");
         for (int i = 0; i < result.length; i++) {
             System.out.print(result[i] + " ");
         }
         System.out.println("}");
 
-        int[] result2 = plusOneOthers(new int[] { 9, 9, 9, 9, 9 });
+        int[] result2 = plusOneOthers(new int[]{9, 9, 9, 9, 9});
         System.out.print("{ ");
         for (int i = 0; i < result2.length; i++) {
             System.out.print(result2[i] + " ");
         }
         System.out.println("}");
     }
+
     /**
      * 有一个小细节就是如果到了最高位进位仍然存在，那么我们必须重新new一个数组，
-     然后把第一个为赋成1（因为只是加一操作，其余位一定是0，否则不会进最高位）。
-     因为只需要一次扫描，所以算法复杂度是O(n)，n是数组的长度。
-     而空间上，一般情况是O(1)，但是如果数是全9，那么是最坏情况，需要O(n)的额外空间
-
+     * 然后把第一个为赋成1（因为只是加一操作，其余位一定是0，否则不会进最高位）。
+     * 因为只需要一次扫描，所以算法复杂度是O(n)，n是数组的长度。
+     * 而空间上，一般情况是O(1)，但是如果数是全9，那么是最坏情况，需要O(n)的额外空间
+     * <p>
      * Add 1 for the last digit
      * If carry, add one to next digit
      * If no carry, return

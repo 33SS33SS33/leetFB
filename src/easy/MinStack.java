@@ -44,7 +44,8 @@ import java.util.Stack;
  */
 class MinStack {
     /**
-     * Wrapper class for element in stack*/
+     * Wrapper class for element in stack
+     */
     static class Element {
         final int value;
         final int min;

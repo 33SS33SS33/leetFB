@@ -28,22 +28,22 @@ import java.util.*;
 class RotateArray {
     public static void main(String[] args) {
         RotateArray r = new RotateArray();
-        int[] nums = { 1, 2, 3, 4, 5, 6, 7 };
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
         int k = 3;
         r.rotatea(nums, k);
         System.out.println(Arrays.toString(nums));
 
-        int[] nums1 = { 1, 2, 3, 4, 5, 6, 7 };
+        int[] nums1 = {1, 2, 3, 4, 5, 6, 7};
         int k1 = 3;
         r.rotate(nums1, k1);
         System.out.println(Arrays.toString(nums1));
 
-        int[] nums2 = { 1, 2, 3, 4, 5, 6, 7 };
+        int[] nums2 = {1, 2, 3, 4, 5, 6, 7};
         int k2 = 3;
         r.rotate2(nums2, k2);
         System.out.println(Arrays.toString(nums2));
 
-        int[] nums3 = { 1, 2 };
+        int[] nums3 = {1, 2};
         int k3 = 2;
         r.rotate3(nums3, k3);
         System.out.println(Arrays.toString(nums3));

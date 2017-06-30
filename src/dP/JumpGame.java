@@ -12,10 +12,10 @@ package dP;
 class JumpGame {
     public static void main(String[] args) {
         JumpGame j = new JumpGame();
-        int[] A = { 3, 2, 1, 0, 4 };
-        int[] B = { 2, 3, 1, 1, 4 };
-        int[] C = { 0 };
-        int[] D = { 2, 5, 0, 0 };
+        int[] A = {3, 2, 1, 0, 4};
+        int[] B = {2, 3, 1, 1, 4};
+        int[] C = {0};
+        int[] D = {2, 5, 0, 0};
         System.out.println(j.canJump(A));
         System.out.println(j.canJumpB(A));
         System.out.println(j.canJumpC(A));
@@ -107,4 +107,5 @@ class JumpGame {
         }
         return false;
     }
+
 }

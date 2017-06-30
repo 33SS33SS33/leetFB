@@ -27,26 +27,26 @@ public class UniqueWordAbbreviation {
     public static void main(String[] args) {
     }
 
-        Map<String, String> map = new HashMap<String, String>();
+    Map<String, String> map = new HashMap<String, String>();
 
-        public UniqueWordAbbreviation(String[] dictionary) {
-            for (String dic : dictionary) {
-                String key = getKey(dic);
-                if (map.containsKey(key)) {
-                    map.put(key, "");
-                } else {
-                    map.put(key, dic);
-                }
+    public UniqueWordAbbreviation(String[] dictionary) {
+        for (String dic : dictionary) {
+            String key = getKey(dic);
+            if (map.containsKey(key)) {
+                map.put(key, "");
+            } else {
+                map.put(key, dic);
             }
         }
+    }
 
-        public boolean isUnique(String word) {
-            String key = getKey(word);
-            return !map.containsKey(key) || map.get(key).equals(word);
-        }
+    public boolean isUnique(String word) {
+        String key = getKey(word);
+        return !map.containsKey(key) || map.get(key).equals(word);
+    }
 
-        private String getKey(String word) {
-            String key = word.charAt(0) + Integer.toString(word.length() - 2) + word.charAt(word.length() - 1);
-            return key;
-        }
+    private String getKey(String word) {
+        String key = word.charAt(0) + Integer.toString(word.length() - 2) + word.charAt(word.length() - 1);
+        return key;
+    }
 }

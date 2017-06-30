@@ -52,7 +52,7 @@ class Graph {
         visited[s] = false;
     }
 
-    int                 V;
+    int V;
     List<List<Integer>> adjacent;
 
     public Graph(int V) {

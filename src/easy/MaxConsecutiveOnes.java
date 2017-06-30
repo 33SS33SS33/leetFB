@@ -16,7 +16,7 @@ package easy;
  */
 public class MaxConsecutiveOnes {
     public static void main(String[] args) {
-        int[] s = { 1,1,0,1,1,1};
+        int[] s = {1, 1, 0, 1, 1, 1};
         System.out.println(findMaxConsecutiveOnes(s));
     }
 

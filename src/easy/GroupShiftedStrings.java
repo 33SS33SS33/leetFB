@@ -22,7 +22,7 @@ import java.util.*;
  */
 public class GroupShiftedStrings {
     public static void main(String[] args) {
-        String[] words = { "abc", "bcd", "acef", "xyz", "az", "ba", "a", "z" };
+        String[] words = {"abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"};
         System.out.println(new GroupShiftedStrings().groupStrings(words));
     }
 

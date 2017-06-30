@@ -37,7 +37,6 @@ class MinInsertionsToFormPalindrome {
      * 1. Find the minimum # of insertions in the substring str[l+1,…….h].
      * 2. Find the minimum # of insertions in the substring str[l…….h-1].
      * 3. Find the minimum # of insertions in the substring str[l+1……h-1].
-     * <p/>
      * The minimum # of insertions in the string str[l…..h] can be given as:
      * If str[l] is equal to str[h], minInsertions(str[l+1…..h-1])
      * Otherwise,
@@ -57,4 +56,5 @@ class MinInsertionsToFormPalindrome {
                 minInsertions(s, l + 1, h - 1) :
                 Math.min(minInsertions(s, l, h - 1), minInsertions(s, l + 1, h)) + 1;
     }
+
 }

@@ -12,10 +12,10 @@ import java.util.*;
  */
 class Permutations2 {
     public static void main(String[] args) {
-        List<List<Integer>> res1 = permuteUniquea(new int[] { 1, 2, 3 });
-        List<List<Integer>> res = permuteUniqueB(new int[] { 1, 1, 3 });
-        ArrayList<ArrayList<Integer>> res3 = permuteUniqueC(new int[] { 1, 2, 3 });
-        List<List<Integer>> res2 = new Permutations2().permuteUnique(new int[] { 1, 2, 3 });
+        List<List<Integer>> res1 = permuteUniquea(new int[]{1, 2, 3});
+        List<List<Integer>> res = permuteUniqueB(new int[]{1, 1, 3});
+        ArrayList<ArrayList<Integer>> res3 = permuteUniqueC(new int[]{1, 2, 3});
+        List<List<Integer>> res2 = new Permutations2().permuteUnique(new int[]{1, 2, 3});
         for (List<Integer> l : res1)
             System.out.println(l);
         System.out.println("----------");
@@ -36,12 +36,12 @@ class Permutations2 {
         return list;
     }
 
-    private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, boolean [] used){
-        if(tempList.size() == nums.length){
+    private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, boolean[] used) {
+        if (tempList.size() == nums.length) {
             list.add(new ArrayList<>(tempList));
-        } else{
-            for(int i = 0; i < nums.length; i++){
-                if(used[i] || i > 0 && nums[i] == nums[i-1] && !used[i - 1]) continue; //why
+        } else {
+            for (int i = 0; i < nums.length; i++) {
+                if (used[i] || i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) continue; //why
                 used[i] = true;
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums, used);

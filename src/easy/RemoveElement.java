@@ -11,9 +11,9 @@ class RemoveElement {
     public static void main(String[] args) {
         RemoveElement r = new RemoveElement();
         // int[] A = { 1 };
-        int[] A = { 1, 2, 1 };
-        int[] B = { 1, 2, 3, 4 };
-        int[] C = { 1, 2, 3, 4 };
+        int[] A = {1, 2, 1};
+        int[] B = {1, 2, 3, 4};
+        int[] C = {1, 2, 3, 4};
         int elem = 1;
         System.out.println(r.removeElement(A, elem));
         System.out.println(r.removeElementA(C, elem));

@@ -9,7 +9,6 @@ package dP;
  * prices = [1, 2, 3, 0, 2] maxProfit = 3 transactions = [buy, sell, cooldown, buy, sell]
  * Tags: Dynamic Programming
  * Similar Problems: (M) Best Time to Buy and Sell Stock, (M) Best Time to Buy and Sell Stock II
- * <p/>
  * "这题的思路看右边的链接就行 十分清楚
  * 十分重要!! 以后dp的题都试着画出来状态的图
  * * s0[i] = max(s0[i - 1], s2[i - 1]); // Stay at s0, or rest from s2
@@ -18,7 +17,7 @@ package dP;
  */
 public class BestTimeToBuySellStockWithCooldown {
     public static void main(String[] args) {
-        int[] prices = { 1, 2, 10, 100 };
+        int[] prices = {1, 2, 10, 100};
         System.out.println(maxProfita(prices));
         System.out.println(maxProfit(prices));
     }

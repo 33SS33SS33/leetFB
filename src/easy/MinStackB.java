@@ -39,8 +39,8 @@ public class MinStackB {
     }
 
     class Node {
-        int  value;
-        int  min;
+        int value;
+        int min;
         Node next;
 
         Node(int x) {

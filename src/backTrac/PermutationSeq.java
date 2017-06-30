@@ -15,7 +15,7 @@ import java.util.*;
  * Given n and k, return the kth permutation sequence.
  * Note: Given n will be between 1 and 9 inclusive.
  * Tags: Backtracking, Math
-
+ * <p>
  * 使用dfs会超时
  * 需要用到康托展开 可以看下面的帖子
  * http://www.androiddev.net/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80%E5%8F%8A%E5%85%B6%E9%80%86%E8%BF%90%E7%AE%97/
