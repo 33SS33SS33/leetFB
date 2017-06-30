@@ -27,7 +27,7 @@ public class CombinationSumIV {
 
     // 最好的 递归有重复计算，使用DP避免重复计算   啊啊啊啊啊啊啊！！！
     //https://discuss.leetcode.com/topic/52302/1ms-java-dp-solution-with-detailed-explanation
-    public  static int combinationSum4a(int[] nums, int target) {
+    public static int combinationSum4a(int[] nums, int target) {
         int[] comb = new int[target + 1];
         comb[0] = 1;
         for (int i = 1; i < comb.length; i++) {
@@ -53,4 +53,5 @@ public class CombinationSumIV {
         }
         return res;
     }
+
 }

@@ -26,12 +26,12 @@ import java.util.*;
 public class BrickWall {
     public static void main(String[] args) {
         List<List<Integer>> wall = new ArrayList<>();
-        wall.add(Arrays.asList(1,2,2,1));
-        wall.add(Arrays.asList(3,1,2));
-        wall.add(Arrays.asList(1,3,2));
-        wall.add(Arrays.asList(2,4));
-        wall.add(Arrays.asList(3,1,2));
-        wall.add(Arrays.asList(1,3,1,1));
+        wall.add(Arrays.asList(1, 2, 2, 1));
+        wall.add(Arrays.asList(3, 1, 2));
+        wall.add(Arrays.asList(1, 3, 2));
+        wall.add(Arrays.asList(2, 4));
+        wall.add(Arrays.asList(3, 1, 2));
+        wall.add(Arrays.asList(1, 3, 1, 1));
         System.out.println(leastBricks(wall));
     }
 

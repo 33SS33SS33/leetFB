@@ -16,7 +16,8 @@ class MaxRectangle {
         System.out.println(new MaxRectangle().maximalRectangleC(matrix));
     }
 
-    /**不懂啊
+    /**
+     * 不懂啊
      * 假设我们把矩阵沿着某一行切下来，然后把切的行作为底面，将自底面往上的矩阵看成一个直方图（histogram）。
      * 直方图的中每个项的高度就是从底面行开始往上1的数量。根据Largest Rectangle in Histogram我们就可以求出当前行作为矩阵下边缘的一个最大矩阵。
      * 接下来如果对每一行都做一次Largest Rectangle in Histogram，
@@ -138,4 +139,5 @@ class MaxRectangle {
         }
         return max;
     }
+
 }

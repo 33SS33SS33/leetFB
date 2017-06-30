@@ -37,6 +37,7 @@ class Subsets {
     }
 //所有backtrack
 // https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
+
     /**
      * 最好的
      * Remember the start position and do backtracking
@@ -63,10 +64,10 @@ class Subsets {
         Arrays.sort(S);
         int totalNumber = 1 << S.length;
         List<List<Integer>> collection = new ArrayList<List<Integer>>(totalNumber);
-        for (int i=0; i<totalNumber; i++) {
+        for (int i = 0; i < totalNumber; i++) {
             List<Integer> set = new LinkedList<Integer>();
-            for (int j=0; j<S.length; j++) {
-                if ((i & (1<<j)) != 0) {
+            for (int j = 0; j < S.length; j++) {
+                if ((i & (1 << j)) != 0) {
                     set.add(S[j]);
                 }
             }

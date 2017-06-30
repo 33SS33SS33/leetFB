@@ -61,7 +61,6 @@ public class MeetingRooms2 {
         return heap.size();
     }
 
-
     public int minMeetingRooms(Interval[] intervals) {
         //        Arrays.sort(intervals, (a, b) -> a.start - b.start);
         RoomAllocator ra = new RoomAllocator();
@@ -75,6 +74,7 @@ public class MeetingRooms2 {
     static class RoomAllocator {
         List<Interval> rooms = new ArrayList<Interval>();
         int currentTime = -1;
+
         void alloc(Interval room) {
             for (int i = 0; i < rooms.size(); i++) {
                 if (rooms.get(i).end <= currentTime) {
@@ -92,10 +92,12 @@ public class MeetingRooms2 {
     public static class Interval {
         int start;
         int end;
+
         Interval() {
             start = 0;
             end = 0;
         }
+
         Interval(int s, int e) {
             start = s;
             end = e;

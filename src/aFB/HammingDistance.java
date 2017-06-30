@@ -15,7 +15,7 @@ package aFB;
  */
 public class HammingDistance {
     public static void main(String[] args) {
-        System.out.println(hammingDistance(1,4));
+        System.out.println(hammingDistance(1, 4));
     }
 
     public static int hammingDistance(int x, int y) {
@@ -24,4 +24,5 @@ public class HammingDistance {
             count += (xor >> i) & 1;
         return count;
     }
+
 }

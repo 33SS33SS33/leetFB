@@ -122,6 +122,7 @@ class PopulatingNextRight2 {
     public static class TreeLinkNode {
         int val;
         TreeLinkNode left, right, next;
+
         TreeLinkNode(int x) {
             val = x;
         }
