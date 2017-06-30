@@ -23,9 +23,9 @@ import java.util.*;
 class MaximumGap {
     public static void main(String[] args) {
         MaximumGap mg = new MaximumGap();
-        System.out.println(mg.maximumGap(new int[] { 3, 6, 9, 1 }));
-        System.out.println(mg.maximumGapB(new int[] { 3, 6, 9, 1 }));
-        System.out.println(mg.maximumGapC(new int[] { 3, 6, 9, 1 }));
+        System.out.println(mg.maximumGap(new int[]{3, 6, 9, 1}));
+        System.out.println(mg.maximumGapB(new int[]{3, 6, 9, 1}));
+        System.out.println(mg.maximumGapC(new int[]{3, 6, 9, 1}));
     }
 
     /**
@@ -163,4 +163,5 @@ class MaximumGap {
             high = -1;
         }
     }
+
 }

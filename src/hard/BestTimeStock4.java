@@ -11,8 +11,8 @@ package hard;
 class BestTimeStock4 {
     public static void main(String[] args) {
         BestTimeStock4 b = new BestTimeStock4();
-        int[] A = new int[] { 3, 3, 5, 0, 0, 3, 1, 4 };
-        int[] B = new int[] { 3, 2, 6, 5, 0, 3 };
+        int[] A = new int[]{3, 3, 5, 0, 0, 3, 1, 4};
+        int[] B = new int[]{3, 2, 6, 5, 0, 3};
         System.out.println(b.maxProfitOpt(2, A));
         System.out.println(b.maxProfit(2, A));
         System.out.println(b.maxProfitA(2, A));
@@ -131,4 +131,5 @@ class BestTimeStock4 {
         }
         return dp[k][n];
     }
+
 }

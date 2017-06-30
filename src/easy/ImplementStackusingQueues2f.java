@@ -7,7 +7,7 @@ import java.util.LinkedList;
  */
 public class ImplementStackusingQueues2f {
     /**
-     * creek------
+     * creek
      */
     LinkedList<Integer> queue1 = new LinkedList<Integer>();
     LinkedList<Integer> queue2 = new LinkedList<Integer>();
@@ -58,5 +58,6 @@ public class ImplementStackusingQueues2f {
     public boolean empty() {
         return queue1.isEmpty() & queue2.isEmpty();
     }
+
 }
 

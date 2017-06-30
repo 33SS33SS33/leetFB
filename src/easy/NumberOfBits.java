@@ -78,4 +78,5 @@ class NumberOfBits {
     public boolean getBit(int n, int i) {
         return (n & (1 << i)) != 0;
     }
+
 }

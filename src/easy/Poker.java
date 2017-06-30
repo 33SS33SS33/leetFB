@@ -91,4 +91,5 @@ public class Poker {
         System.out.println(c1);     // 洗牌后的第一张
         System.out.println(c2);     // 打印: 红心A
     }
+
 }

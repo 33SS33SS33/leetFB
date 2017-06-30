@@ -14,7 +14,6 @@ import java.util.Map;
  * pattern = "abba", str = "dog dog dog dog" should return false.
  * Notes:
  * You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space."
- * <p/>
  * 和那道ismorphic是类似的  用了set的解法
  */
 public class WordPattern {
@@ -28,4 +27,5 @@ public class WordPattern {
                 return false;
         return true;
     }
+
 }

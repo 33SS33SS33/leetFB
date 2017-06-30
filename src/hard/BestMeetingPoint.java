@@ -18,7 +18,6 @@ import java.util.List;
  * The point (0,2) is an ideal meeting point, as the total travel distance of 2+2+2=6 is minimal. So return 6.
  * Hint:
  * Try to solve it in one dimension first. How can this solution apply to the two dimension case?"
- * <p/>
  * "这道题首先要想出来一维的解法 其实最关键的地方还是在于 在一维的时候
  * 最合适的点就是所有这些人的坐标的中位数  因为在中位数的时候 才能让距离最小
  * As long as you have different numbers of people on your left and on your right,
@@ -31,7 +30,7 @@ import java.util.List;
  */
 public class BestMeetingPoint {
     public static void main(String[] args) {
-        int[][] grid = { { 1, 0, 0, 0, 1 }, { 0, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0 } };
+        int[][] grid = {{1, 0, 0, 0, 1}, {0, 0, 0, 0, 0}, {0, 0, 1, 0, 0}};
         new BestMeetingPoint().minTotalDistance(grid);
         System.out.print(new BestMeetingPoint().minTotalDistance(grid));
 
@@ -88,4 +87,5 @@ public class BestMeetingPoint {
         }
         return total;
     }
+
 }

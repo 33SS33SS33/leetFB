@@ -9,7 +9,7 @@ package hard;
  * Note:
  * The order of the result is not important. So in the above example, [5, 3] is also correct.
  * Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?
-
+ * <p>
  * 思路诡异 使用异或
  * 首先 从头到尾异或一遍 得出来的结果是那两个不同数字异或合体的结果
  * 把他拆出来的逻辑是
@@ -19,7 +19,7 @@ package hard;
  */
 public class SingleNumber3 {
     public static void main(String[] args) {
-        int[] A = { 1, 1, 2, 2, 3, 4 };
+        int[] A = {1, 1, 2, 2, 3, 4};
         int[] res = singleNumber(A);
         for (int i : res) {
             System.out.println(i);
@@ -39,6 +39,6 @@ public class SingleNumber3 {
                 a ^= n;
             }
         }
-        return new int[] { a, aXORb ^ a };
+        return new int[]{a, aXORb ^ a};
     }
 }

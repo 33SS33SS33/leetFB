@@ -12,7 +12,6 @@ import java.util.Arrays;
  * You may assume the string contains only lowercase alphabets.
  * Follow up:
  * What if the inputs contain unicode characters? How would you adapt your solution to such case?
- * <p/>
  * 用哈希表统计或者直接排序就行
  */
 public class ValidAnagram {

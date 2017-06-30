@@ -7,7 +7,6 @@ package hard;
  * and [3,4,-1,1] return 2.
  * Your algorithm should run in O(n) time and uses constant space.
  * Tags: Array
- * <p/>
  * 使用了类似桶排序的办法 扫描两边
  * 第一遍的目的是要让数组的每个元素值i 在索引i-1的位置上 比如a[0]上就要存储1 a[1]就要存储2
  * 这样第二次扫描的时候碰到第一个a[i] != i+1的就是缺少的位置
@@ -18,8 +17,8 @@ package hard;
  */
 class FirstMissingPositive {
     public static void main(String[] args) {
-        int[] A = { 3, 4, -1, 1 };
-        int[] B = { 3, 4, 2, 1 };
+        int[] A = {3, 4, -1, 1};
+        int[] B = {3, 4, 2, 1};
         System.out.println(new FirstMissingPositive().firstMissingPositive(A));
         System.out.println(new FirstMissingPositive().firstMissingPositive(B));
         System.out.println(new FirstMissingPositive().firstMissingPositiveB(A));
@@ -48,7 +47,6 @@ class FirstMissingPositive {
                 return i + 1;
         return n + 1; // nothing in middle losing, return largest
     }
-
 
 
     public int firstMissingPositiveB(int[] A) {

@@ -21,8 +21,8 @@ package hard;
  */
 public class SmallestRectangleEnclosingBlackPixels {
     public static void main(String[] args) {
-        char[][] iImage = { { '0', '0', '1', '0' }, { '0', '1', '1', '0' },
-                { '0', '1', '0', '0' } };
+        char[][] iImage = {{'0', '0', '1', '0'}, {'0', '1', '1', '0'},
+                {'0', '1', '0', '0'}};
         System.out.println(new SmallestRectangleEnclosingBlackPixels().minArea(iImage, 0, 2));
     }
 

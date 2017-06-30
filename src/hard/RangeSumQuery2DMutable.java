@@ -25,8 +25,8 @@ package hard;
 public class RangeSumQuery2DMutable {
     int[][] tree;
     int[][] nums;
-    int     m;
-    int     n;
+    int m;
+    int n;
 
     public void NumMatrix(int[][] matrix) {
         if (matrix.length == 0 || matrix[0].length == 0)
@@ -70,4 +70,5 @@ public class RangeSumQuery2DMutable {
         }
         return sum;
     }
+
 }

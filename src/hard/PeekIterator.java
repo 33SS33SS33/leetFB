@@ -18,13 +18,14 @@ class PeekIterator<T> implements Iterator<T> {
     /**
      * Store next item
      */
-    private       T           nextItem;
+    private T nextItem;
 
     public PeekIterator(Iterator<T> iterator) {
         this.iterator = iterator;
     }
 
-    @Override public boolean hasNext() {
+    @Override
+    public boolean hasNext() {
         if (nextItem != null)
             return true; // check next item
         if (iterator.hasNext())
@@ -32,7 +33,8 @@ class PeekIterator<T> implements Iterator<T> {
         return nextItem != null;
     }
 
-    @Override public T next() {
+    @Override
+    public T next() {
         if (!hasNext())
             throw new NullPointerException();
         T temp = nextItem;
@@ -46,7 +48,9 @@ class PeekIterator<T> implements Iterator<T> {
         return nextItem;
     }
 
-    @Override public void remove() {
+    @Override
+    public void remove() {
         throw new UnsupportedOperationException();
     }
+
 }

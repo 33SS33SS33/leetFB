@@ -14,7 +14,7 @@ public class RemoveLinkedListElements {
     public ListNode removeElementsa(ListNode head, int val) {
         if (head == null)
             return null;
-        head.next = removeElements(head.next, val);
+        head.next = removeElementsa(head.next, val);
         return head.val == val ? head.next : head;
     }
 

@@ -7,7 +7,6 @@ package easy;
  * Return the total number of ways you can paint the fence.
  * Note:
  * n and k are non-negative integers.
- * <p/>
  * DP的题 注意这里是两个临近的篱笆有可能是同色的 但是同色的不超过两个
  */
 public class PaintFence {
@@ -29,4 +28,5 @@ public class PaintFence {
         }
         return diffColorCounts + sameColorCounts;
     }
+
 }

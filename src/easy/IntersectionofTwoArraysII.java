@@ -1,6 +1,7 @@
 package easy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -17,8 +18,13 @@ import java.util.HashMap;
  * What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
  */
 public class IntersectionofTwoArraysII {
+    public static void main(String[] args) {
+        int[] num1 = {1, 2, 2, 1};
+        int[] num2 = {2, 2};
+        System.out.println(Arrays.asList(intersect(num1, num2)).toString());
+    }
 
-    public int[] intersect(int[] nums1, int[] nums2) {
+    public static int[] intersect(int[] nums1, int[] nums2) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         ArrayList<Integer> result = new ArrayList<Integer>();
         for (int i = 0; i < nums1.length; i++) {
@@ -40,4 +46,5 @@ public class IntersectionofTwoArraysII {
 
         return r;
     }
+
 }

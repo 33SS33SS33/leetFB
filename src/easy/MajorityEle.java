@@ -35,15 +35,12 @@ class MajorityEle {
     }
 
     /**
+     * creek
      * Runtime: O(n) — Bit manipulation: We would need 32 iterations, each
      * calculating the number of 1's for the ith bit of all n numbers. Since a
      * majority must exist, therefore, either count of 1's > count of 0's or
      * vice versa (but can never be equal). The majority number’s ith bit must
      * be the one bit that has the greater count.
-     */
-
-    /**
-     * creek
      * Since the majority always take more than a half space, the middle element is guaranteed to be the majority.
      * Sorting array takes nlog(n). So the time complexity of this solution is nlog(n). Cheers!
      */
@@ -79,4 +76,5 @@ class MajorityEle {
         }
         return 0;
     }
+
 }

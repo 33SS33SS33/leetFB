@@ -17,7 +17,7 @@ import java.util.*;
 class SubstringWithConcatOfAllWords {
     public static void main(String[] args) {
         String S = "barfoothefoobarman";
-        String[] L = new String[] { "foo", "bar" };
+        String[] L = new String[]{"foo", "bar"};
         System.out.print(findSubstringA(S, L).toString());
         System.out.print(findSubstringB(S, L).toString());
     }

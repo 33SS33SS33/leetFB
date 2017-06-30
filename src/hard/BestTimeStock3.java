@@ -8,7 +8,6 @@ package hard;
  * You may not engage in multiple transactions at the same time (ie, you must
  * sell the stock before you buy again).
  * Tags: Array, DP
- * <p/>
  * Prices: 1 4 5 7 6 3 2 9
  * left = [0, 3, 4, 6, 6, 6, 6, 8]
  * right= [8, 7, 7, 7, 7, 7, 7, 0]
@@ -17,7 +16,7 @@ package hard;
 class BestTimeStock3 {
     public static void main(String[] args) {
         BestTimeStock3 b = new BestTimeStock3();
-        int[] prices = { 6, 1, 3, 2, 4, 7, 6, 10, 15 };
+        int[] prices = {6, 1, 3, 2, 4, 7, 6, 10, 15};
         System.out.println(b.maxProfita(prices));
         System.out.println(b.maxProfit(prices));
         System.out.println(b.maxProfitA(prices));
@@ -133,4 +132,5 @@ class BestTimeStock3 {
         }
         return profit;
     }
+
 }

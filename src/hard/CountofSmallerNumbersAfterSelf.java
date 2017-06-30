@@ -3,6 +3,7 @@ package hard;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/5/11.
  * "You are given an integer array nums and you have to return a new counts array.
@@ -14,7 +15,6 @@ import java.util.List;
  * To the right of 6 there is 1 smaller element (1).
  * To the right of 1 there is 0 smaller element.
  * Return the array [2, 1, 1, 0]."
-
  * "这道题有好多解法 树状数组 线段树 归并排序 待学习 未实现
  * 线段树 还有树状数组一定要学习 重要
  * 相似题目 Range Sum Query - Mutable
@@ -32,7 +32,7 @@ import java.util.List;
 public class CountofSmallerNumbersAfterSelf {
     public static void main(String[] args) {
         CountofSmallerNumbersAfterSelf r = new CountofSmallerNumbersAfterSelf();
-        int[] nums = { 5, 2, 6, 1 };
+        int[] nums = {5, 2, 6, 1};
         System.out.println(r.countSmaller(nums).toString());
     }
 
@@ -77,4 +77,5 @@ public class CountofSmallerNumbersAfterSelf {
             return start;
         return end;
     }
+
 }

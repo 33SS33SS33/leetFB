@@ -101,8 +101,8 @@ public class LongestSubstringWithTwoDistinct {
     }
 
     static class Context {
-        int                     start  = 0;
-        int                     end    = 0;
+        int start = 0;
+        int end = 0;
         Map<Character, Integer> counts = new HashMap<Character, Integer>();
 
         int len() {
@@ -129,4 +129,5 @@ public class LongestSubstringWithTwoDistinct {
             }
         }
     }
+
 }

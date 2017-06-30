@@ -61,4 +61,5 @@ public class InsertDeleteGetRandomO1Dup {
             return nums.get(rand.nextInt(nums.size()));
         }
     }
+
 }

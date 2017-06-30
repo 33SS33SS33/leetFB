@@ -18,7 +18,6 @@ import java.util.Map;
  * isUnique("cart") -> true
  * isUnique("cane") -> false
  * isUnique("make") -> true"
- * <p/>
  * 使用字典就行 用缩写做key 然后word添加进value
  * 所以长度小于等于一定是独一无二的  缩写没在字典里的也是独一无二的
  * 缩写在的话  如果缩写里只有一个word 还等于查询的word 也算是独一无二的
@@ -49,4 +48,5 @@ public class UniqueWordAbbreviation {
         String key = word.charAt(0) + Integer.toString(word.length() - 2) + word.charAt(word.length() - 1);
         return key;
     }
+
 }

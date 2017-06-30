@@ -20,7 +20,7 @@ package hard;
  * nums2 = [8, 9]
  * k = 3
  * return [9, 8, 9]
-
+ * <p>
  * 问题可以转化为这样的两个子问题：
  * 1. 从数组nums中挑选出t个数，在保持元素相对顺序不变的情况下，使得选出的子数组最大化。
  * 2. 在保持元素相对顺序不变的前提下，将数组nums1与数组nums2合并，使合并后的数组最大化。
@@ -28,7 +28,6 @@ package hard;
  * python是可以直接比较两个数组的大小的
  * https://leetcode.com/discuss/75756/share-my-greedy-solution
  * http://algobox.org/2015/12/24/create-maximum-number/
- * <p/>
  * Many of the posts have the same algorithm. In short we can first solve 2 simpler problem
  * Create the maximum number of one array
  * Create the maximum number of two array using all of their digits.
@@ -37,8 +36,8 @@ package hard;
  */
 public class CreateMaximumNumber {
     public static void main(String[] args) {
-        int[] nums1 = { 3, 4, 6, 5 };
-        int[] nums2 = { 9, 1, 2, 5, 8, 3 };
+        int[] nums1 = {3, 4, 6, 5};
+        int[] nums2 = {9, 1, 2, 5, 8, 3};
         int[] res = new CreateMaximumNumber().maxNumber(nums1, nums2, 5);
         for (int i : res) {
             System.out.print(i + ",");
@@ -83,4 +82,5 @@ public class CreateMaximumNumber {
         }
         return ans;
     }
+
 }

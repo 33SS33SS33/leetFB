@@ -7,7 +7,6 @@ package easy;
  * Input: [3, 2, 1]
  * Output: 1
  * Explanation: The third maximum is 1.
- * <p>
  * Input: [1, 2]
  * Output: 2
  * Explanation: The third maximum does not exist, so the maximum (2) is returned instead.

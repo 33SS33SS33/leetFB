@@ -28,7 +28,7 @@ import java.util.LinkedList;
  */
 public class SlidingWindowMaximum {
     public static void main(String[] args) {
-        int[] A = { 1, 3, -1, -3, 5, 3, 6, 7 };
+        int[] A = {1, 3, -1, -3, 5, 3, 6, 7};
         int[] res1 = maxSlidingWindowa(A, 3);
         int[] res = maxSlidingWindow(A, 3);
         for (int i : res1) {
@@ -80,7 +80,7 @@ public class SlidingWindowMaximum {
 
     static class SlidingMaxQueue {
         int[] nums;
-        int   k;
+        int k;
         LinkedList<Integer> queue = new LinkedList<Integer>();
 
         SlidingMaxQueue(int[] nums, int k) {

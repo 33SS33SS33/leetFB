@@ -10,7 +10,6 @@ import java.util.Set;
  * 82 + 22 = 68
  * 62 + 82 = 100
  * 12 + 02 + 02 = 1
- * <p/>
  * 按照规则构造即可 记录一下出现过的数
  */
 public class HappyNumber {
@@ -123,4 +122,5 @@ public class HappyNumber {
         }
         return result;
     }
+
 }

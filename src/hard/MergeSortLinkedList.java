@@ -141,7 +141,7 @@ public class MergeSortLinkedList {
     }
 
     static class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         ListNode(int x) {
@@ -149,4 +149,5 @@ public class MergeSortLinkedList {
             next = null;
         }
     }
+
 }

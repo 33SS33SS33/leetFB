@@ -37,7 +37,6 @@ import java.util.Arrays;
  * We say that "rgtae" is a scrambled string of "great".
  * Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
  * Tags: DP, String
-
  * 递归加dp
  * 然后最重要的是  如果他们是scramble  他们一定存在一个点 切分他们之后
  * 左部分等于左部分 右部分等于右部分
@@ -63,7 +62,6 @@ class ScrambleStr {
      * test the corresponding part (s11 and s21 && s12 and s22) with isScramble.
      * separate s2 into two parts, namely --------s23--------, --s24--, and
      * test the corresponding part (s11 and s24 && s12 and s23) with isScramble.
-     * <p/>
      * Note that before testing each sub-part with isScramble, anagram is used
      * first to test if the corresponding parts are anagrams. If not, skip
      * directly.

@@ -49,4 +49,5 @@ public class RearrangeStringkDistanceApart {
         }
         return candidatePos;
     }
+
 }

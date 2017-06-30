@@ -21,7 +21,6 @@ import java.util.Map;
  * 首先比如数字 223 然后假设指针到了中间的那个2 那么按照算法 前面应该是3 然后直接乘以10 就是30个 因为 正好是 010-019 110-119 210-219
  * 如果数字变成了213 那么就不能有210-219 所以前面变成了2 然后乘以10 加上4 就是24个 010-019 110-119 210-213
  * 最后如果是203 那么前面变成了2 而且尾部的也什么都没有了 因为中间位是0 所以是20个 010-019 110-119
-
  * 每次右移一位和1与
  */
 public class NumberofDigitOne {
@@ -61,7 +60,7 @@ public class NumberofDigitOne {
     // floor(101)   = 100
     // floor(92)    = 90
     // floor(10111) = 10000
-    int[]                 N     = { 100000000, 10000, 100, 10 };
+    int[] N = {100000000, 10000, 100, 10};
     Map<Integer, Integer> cache = new HashMap<Integer, Integer>();
 
     public int countDigitOne(int n) {
@@ -94,6 +93,7 @@ public class NumberofDigitOne {
                 e *= n;
             }
         }
-        return new int[] { x, x * e };
+        return new int[]{x, x * e};
     }
+
 }

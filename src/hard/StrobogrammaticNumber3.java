@@ -58,8 +58,8 @@ public class StrobogrammaticNumber3 {
         return rst;
     }
 
-    char[][] pairs = { { '0', '0' }, { '1', '1' }, { '6', '9' }, { '8', '8' }, { '9', '6' } };
-    int      count = 0;
+    char[][] pairs = {{'0', '0'}, {'1', '1'}, {'6', '9'}, {'8', '8'}, {'9', '6'}};
+    int count = 0;
 
     public int strobogrammaticInRange(String low, String high) {
         for (int len = low.length(); len <= high.length(); len++) {

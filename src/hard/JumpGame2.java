@@ -15,8 +15,8 @@ import static java.lang.Math.max;
  */
 class JumpGame2 {
     public static void main(String[] args) {
-        int[] A = { 2,3,1,1,4};
-        System.out.println(new JumpGame2().jumpA(A,5));
+        int[] A = {2, 3, 1, 1, 4};
+        System.out.println(new JumpGame2().jumpA(A, 5));
         System.out.println(new JumpGame2().jump(A));
         System.out.println(new JumpGame2().jumpB(A));
         System.out.println(new JumpGame2().jumpC(A));

@@ -26,4 +26,5 @@ public class RangeSumQueryImmutable {
             return nums[j] - nums[i - 1];
         }
     }
+
 }

@@ -43,4 +43,5 @@ public class RemoveDuplicateLetters {
                 s.charAt(pos) + removeDuplicateLetters(
                         s.substring(pos + 1).replaceAll("" + s.charAt(pos), ""));
     }
+
 }

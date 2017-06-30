@@ -37,5 +37,6 @@ public class ImplementStackusingQueues {
     public boolean empty() {
         return queue.isEmpty();
     }
+
 }
 

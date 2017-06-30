@@ -16,8 +16,8 @@ package hard;
  */
 class TrappingRainWater {
     public static void main(String[] args) {
-        int[] A = { 10, 2, 20 };
-        int[] B = { 5, 4, 3, 2, 8 };
+        int[] A = {10, 2, 20};
+        int[] B = {5, 4, 3, 2, 8};
         TrappingRainWater m = new TrappingRainWater();
         System.out.println(m.TrappingRainWaterA(A));
         System.out.println(m.trap(A));

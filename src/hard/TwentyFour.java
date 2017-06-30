@@ -38,8 +38,8 @@ public class TwentyFour {
         }
 
         public Data(int a, int b, int c, int d) {
-            arr = new float[] { a, b, c, d };
-            strs = new String[] { a + "", b + "", c + "", d + "" };
+            arr = new float[]{a, b, c, d};
+            strs = new String[]{a + "", b + "", c + "", d + ""};
             optStr = a + "";
         }
 
@@ -62,38 +62,38 @@ public class TwentyFour {
                 for (int k = 0; k < 6; k++) {
                     Data newData = getNewArr(data, i);
                     switch (k) {
-                    case 0:
-                        newData.arr[j - 1] = x + y;
-                        newData.optStr = xs + "+" + ys;
-                        break;
-                    case 1:
-                        newData.arr[j - 1] = x - y;
-                        newData.optStr = xs + "-" + ys;
-                        break;
-                    case 2:
-                        newData.arr[j - 1] = y - x;
-                        newData.optStr = ys + "-" + xs;
-                        break;
-                    case 3:
-                        newData.arr[j - 1] = x * y;
-                        newData.optStr = xs + "*" + ys;
-                        break;
-                    case 4:
-                        if (y != 0) {
-                            newData.arr[j - 1] = x / y;
-                            newData.optStr = xs + "/" + ys;
-                        } else {
-                            continue;
-                        }
-                        break;
-                    case 5:
-                        if (x != 0) {
-                            newData.arr[j - 1] = y / x;
-                            newData.optStr = ys + "/" + xs;
-                        } else {
-                            continue;
-                        }
-                        break;
+                        case 0:
+                            newData.arr[j - 1] = x + y;
+                            newData.optStr = xs + "+" + ys;
+                            break;
+                        case 1:
+                            newData.arr[j - 1] = x - y;
+                            newData.optStr = xs + "-" + ys;
+                            break;
+                        case 2:
+                            newData.arr[j - 1] = y - x;
+                            newData.optStr = ys + "-" + xs;
+                            break;
+                        case 3:
+                            newData.arr[j - 1] = x * y;
+                            newData.optStr = xs + "*" + ys;
+                            break;
+                        case 4:
+                            if (y != 0) {
+                                newData.arr[j - 1] = x / y;
+                                newData.optStr = xs + "/" + ys;
+                            } else {
+                                continue;
+                            }
+                            break;
+                        case 5:
+                            if (x != 0) {
+                                newData.arr[j - 1] = y / x;
+                                newData.optStr = ys + "/" + xs;
+                            } else {
+                                continue;
+                            }
+                            break;
                     }
                     newData.optStr = "(" + newData.optStr + ")";
                     newData.strs[j - 1] = newData.optStr;

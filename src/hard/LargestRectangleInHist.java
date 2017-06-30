@@ -23,8 +23,8 @@ import java.util.*;
  */
 class LargestRectangleInHist {
     public static void main(String[] args) {
-        int[] height = { 2, 1, 5, 6, 2, 3 };
-        int[] height2 = { 1, 2, 3, 4, 5, 6 };
+        int[] height = {2, 1, 5, 6, 2, 3};
+        int[] height2 = {1, 2, 3, 4, 5, 6};
         System.out.println(new LargestRectangleInHist().largestRectangleAreaa(height));
         System.out.println(new LargestRectangleInHist().largestRectangleArea(height));
         System.out.println(new LargestRectangleInHist().largestRectangleAreaB(height));
@@ -163,4 +163,5 @@ class LargestRectangleInHist {
         }
         return max;
     }
+
 }

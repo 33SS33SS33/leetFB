@@ -26,11 +26,11 @@ package hard;
 public class LongestIncreasingPathinaMatrix {
     public static void main(String[] args) {
         LongestIncreasingPathinaMatrix r = new LongestIncreasingPathinaMatrix();
-        int[][] nums = { { 9, 9, 4 }, { 6, 6, 8 }, { 2, 1, 1 } };
+        int[][] nums = {{9, 9, 4}, {6, 6, 8}, {2, 1, 1}};
         System.out.println(r.longestIncreasingPath(nums));
     }
 
-    public static final int[][] dirs = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
+    public static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public int longestIncreasingPath(int[][] matrix) {
         if (matrix.length == 0)
@@ -61,4 +61,5 @@ public class LongestIncreasingPathinaMatrix {
         cache[i][j] = max;
         return max;
     }
+
 }

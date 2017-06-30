@@ -12,7 +12,6 @@ package easy;
  * overflow. How would you handle such case?
  * There is a more generic way of solving this problem.
  * Tags: Math
- * <p/>
  * Thoughts
  * Problems related with numbers are frequently solved by / and %. No need of extra space is required.
  * This problem is similar with the Reverse Integer problem.

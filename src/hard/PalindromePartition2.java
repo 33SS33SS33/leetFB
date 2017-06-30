@@ -8,7 +8,6 @@ import java.util.*;
  * For example, given s = "aab",
  * Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
  * Tags: DP
- * <p/>
  * 先要用一个二维的dp表来记录下当前字符串 从i到j是不是一个回文
  * 然后再在建立表的同时  进行一维dp的判断 一维dp表示的是当前长度i的最小cut的数量
  * 本题十分重要
@@ -139,4 +138,5 @@ class PalindromePartition2 {
         }
         return true;
     }
+
 }

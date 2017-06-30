@@ -49,4 +49,5 @@ public class MinStackB {
             min = x;
         }
     }
+
 }

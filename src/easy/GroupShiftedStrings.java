@@ -15,7 +15,6 @@ import java.util.*;
  * ["acef"],
  * ["a","z"]
  * ]
- * <p/>
  * 观察一下 就能发现 成组的字符串的特点就是 他们的后一个字符减去前一个字符的差值是相等的  所以用哈希表记录即可
  * 这里注意负数的取余运算 25 % 26 和 -1 % 26是相等的 都是25
  * 重要
@@ -55,4 +54,5 @@ public class GroupShiftedStrings {
         }
         return result;
     }
+
 }

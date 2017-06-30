@@ -8,14 +8,13 @@ package hard;
  * Children with a higher rating get more candies than their neighbors.
  * What is the minimum candies you must give?
  * Tags: Greedy
- * <p/>
  * 当评价的数列是递增的时候 糖果数就是1 2 3 4 5这种等差数列  然后碰见了递减数列的话
  * 糖果数就是 4 3 2 1这样 递减数列最小的那个值是1 递减数列如果从右往左看也是递增的
  * 所以可以从左往右扫描一遍 然后记录递增数列的长度 然后再从右向左扫描一遍  也记录递增数列的长度
  */
 class Candy {
     public static void main(String[] args) {
-        int[] ratings = { 1, 3, 4, 6, 2 };
+        int[] ratings = {1, 3, 4, 6, 2};
 
         System.out.println(new Candy().candyA(ratings));
         System.out.println(new Candy().candyB(ratings));

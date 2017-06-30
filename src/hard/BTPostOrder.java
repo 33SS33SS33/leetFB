@@ -17,7 +17,6 @@ import java.util.Collections;
  * return [3,2,1].
  * Note: Recursive solution is trivial, could you do it iteratively?
  * Tags: Tree, Stack
- * <p/>
  * 最简单的办法
  * pre-order traversal is root-left-right, and post order is left-right-root. modify the code for pre-order to make it root-right-left,
  * and then reverse the output so that we can get left-right-root . 就是把先序遍历变成 根-右子树-左子树 然后再把结果倒序
@@ -130,7 +129,7 @@ class BTPostOrder {
     }
 
     static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 
@@ -138,4 +137,5 @@ class BTPostOrder {
             val = x;
         }
     }
+
 }

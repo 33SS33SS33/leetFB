@@ -2,12 +2,7 @@ package easy;
 
 /**
  * Created by shanshan on 17/2/17.
- */
-
-
-/**
  * Given a binary array, find the maximum number of consecutive 1s in this array.
- * <p>
  * Example 1:
  * Input: [1,1,0,1,1,1]
  * Output: 3
@@ -26,4 +21,5 @@ public class MaxConsecutiveOnes {
             max = Math.max(max, maxHere = n == 0 ? 0 : maxHere + 1);
         return max;
     }
+
 }

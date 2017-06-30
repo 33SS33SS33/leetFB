@@ -21,7 +21,7 @@ public class BasicCalculator {
 
     static class Token {
         TokenType type;
-        int       val;
+        int val;
 
         public Token(int val, TokenType type) {
             this.val = val;
@@ -29,7 +29,7 @@ public class BasicCalculator {
         }
     }
 
-    static final Token   EOL    = new Token(0, TokenType.OP);
+    static final Token EOL = new Token(0, TokenType.OP);
     static final Token[] TOKENS = new Token[256];
 
     static {
@@ -78,20 +78,20 @@ public class BasicCalculator {
                 int v2 = stack.pop();
                 int v1 = stack.pop();
                 switch (t.val) {
-                case '+':
-                    stack.push(v1 + v2);
-                    break;
-                case '-':
-                    stack.push(v1 - v2);
-                    break;
-                case '*':
-                    stack.push(v1 * v2);
-                    break;
-                case '/':
-                    stack.push(v1 / v2);
-                    break;
-                default:
-                    // cant happen
+                    case '+':
+                        stack.push(v1 + v2);
+                        break;
+                    case '-':
+                        stack.push(v1 - v2);
+                        break;
+                    case '*':
+                        stack.push(v1 * v2);
+                        break;
+                    case '/':
+                        stack.push(v1 / v2);
+                        break;
+                    default:
+                        // cant happen
                 }
             } else { // DIGIT
                 stack.push(t.val);
@@ -122,34 +122,34 @@ public class BasicCalculator {
                     }
                     Token top = op.peek();
                     switch (t.val) {
-                    case '(':
-                        op.push(t);
-                        break;
-                    case '+':
-                    case '-':
-                        if (top.val == '+' || top.val == '-' || top.val == '*' || top.val == '/') {
-                            calculator.addToken(op.pop());
-                            continue retry;
-                        }
-                        op.push(t);
-                        break;
-                    case '*':
-                    case '/':
-                        if (top.val == '*' || top.val == '/') {
-                            calculator.addToken(op.pop());
-                            continue retry;
-                        }
-                        op.push(t);
-                        break;
-                    case ')':
-                        while (!op.isEmpty()) {
-                            top = op.pop();
-                            if (top.val == '(')
-                                continue next;
-                            calculator.addToken(top);
-                        }
-                    default:
-                        // cant happen
+                        case '(':
+                            op.push(t);
+                            break;
+                        case '+':
+                        case '-':
+                            if (top.val == '+' || top.val == '-' || top.val == '*' || top.val == '/') {
+                                calculator.addToken(op.pop());
+                                continue retry;
+                            }
+                            op.push(t);
+                            break;
+                        case '*':
+                        case '/':
+                            if (top.val == '*' || top.val == '/') {
+                                calculator.addToken(op.pop());
+                                continue retry;
+                            }
+                            op.push(t);
+                            break;
+                        case ')':
+                            while (!op.isEmpty()) {
+                                top = op.pop();
+                                if (top.val == '(')
+                                    continue next;
+                                calculator.addToken(top);
+                            }
+                        default:
+                            // cant happen
                     }
                     continue next;
                 }
@@ -184,7 +184,7 @@ public class BasicCalculator {
                     sb = new StringBuilder();
                 }
                 if (arr[i] != ')') {
-                    stack.push(new String(new char[] { arr[i] }));
+                    stack.push(new String(new char[]{arr[i]}));
                 } else {
                     // when meet ')', pop and calculate
                     ArrayList<String> t = new ArrayList<String>();
@@ -229,4 +229,5 @@ public class BasicCalculator {
         temp += Integer.valueOf(t.get(0));
         return temp;
     }
+
 }

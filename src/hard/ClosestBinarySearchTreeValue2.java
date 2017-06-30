@@ -14,7 +14,6 @@ import java.util.Stack;
  * Follow up:
  * Assume that the BST is balanced, could you solve it in less than O(n) runtime (where n = total nodes)?"
  * Tree Stack
- * <p/>
  * "就是在中序的时候保留一个窗口 窗口是个最大堆 窗口不满的时候就往里加数字
  * 窗口满了开始比较  如果当前这个数字的距离比堆里那个最大的距离小 就替换
  * 如果比最大的距离还大就可以跳出了
@@ -85,10 +84,11 @@ public class ClosestBinarySearchTreeValue2 {
     static class TreeNode {
         TreeNode left;
         TreeNode right;
-        int      val;
+        int val;
 
         public TreeNode(int val) {
             this.val = val;
         }
     }
+
 }

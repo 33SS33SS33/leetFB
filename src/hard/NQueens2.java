@@ -22,7 +22,6 @@ class NQueens2 {
         System.out.println(new NQueens2().totalNQueensb(5));
     }
 
-
     //最好的
     int result = 0;
 

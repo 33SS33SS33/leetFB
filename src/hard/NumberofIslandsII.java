@@ -34,14 +34,13 @@ import java.util.List;
  * We return the result as an array: [1, 1, 2, 3]
  * Challenge:
  * Can you do it in time complexity O(k log mn), where k is the length of the positions?"
- * <p/>
  * "这道题用了并查集 并且写了一个并查集(带weighted 还有 path compression)的类 重要
  * weighted 就是在合并的时候 size小的树是size大的树的子树
  * path compression就是在找root的时候 把路径上的节点都直接挂在root下面"
  */
 public class NumberofIslandsII {
 
-    private int[][] dir = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
+    private int[][] dir = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         UnionFind2D islands = new UnionFind2D(m, n);
@@ -62,7 +61,7 @@ public class NumberofIslandsII {
     class UnionFind2D {
         private int[] id;
         private int[] sz;
-        private int   m, n, count;
+        private int m, n, count;
 
         public UnionFind2D(int m, int n) {
             this.count = 0;
@@ -116,5 +115,6 @@ public class NumberofIslandsII {
             return i;
         }
     }
+
 }
 

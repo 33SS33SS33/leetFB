@@ -26,15 +26,14 @@ package hard;
  * Any room can contain threats or power-ups, even the first room the knight
  * enters and the bottom-right room where the princess is imprisoned.
  * Tags:DP, Binary Search
-
  * 核心在于从右下角往左上角的dp 这样会比较方便
  * 题目要求骑士在每一刻都至少有1滴血 哪怕第一个空格是5 但是骑士的起始血量也要有1
  * 思路可以看书影博客的
  */
 class DungeonGame {
     public static void main(String[] args) {
-        int[][] dungeon = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
-        int[][] dungeon2 = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
+        int[][] dungeon = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
+        int[][] dungeon2 = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
         System.out.println(new DungeonGame().calculateMinimumHP(dungeon));
         System.out.println(new DungeonGame().calculateMinimumHPa(dungeon));
     }

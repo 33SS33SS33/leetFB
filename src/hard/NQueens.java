@@ -79,7 +79,7 @@ class NQueens {
     }
 
     private static void helper(int r, boolean[] cols, boolean[] d1, boolean[] d2,
-                        String[] board, List<String[]> res) {
+                               String[] board, List<String[]> res) {
         if (r == board.length) res.add(board.clone());
         else {
             for (int c = 0; c < board.length; c++) {
@@ -89,15 +89,17 @@ class NQueens {
                     Arrays.fill(row, '.');
                     row[c] = 'Q';
                     board[r] = new String(row);
-                    cols[c] = true; d1[id1] = true; d2[id2] = true;
+                    cols[c] = true;
+                    d1[id1] = true;
+                    d2[id2] = true;
                     helper(r + 1, cols, d1, d2, board, res);
-                    cols[c] = false; d1[id1] = false; d2[id2] = false;
+                    cols[c] = false;
+                    d1[id1] = false;
+                    d2[id2] = false;
                 }
             }
         }
     }
-
-
 
     public ArrayList<String[]> solveNQueensB(int n) {
         ArrayList<String[]> res = new ArrayList<String[]>();
@@ -136,4 +138,5 @@ class NQueens {
         }
         return true;
     }
+
 }

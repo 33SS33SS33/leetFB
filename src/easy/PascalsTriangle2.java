@@ -69,4 +69,5 @@ class PascalsTriangle2 {
         }
         return result;
     }
+
 }

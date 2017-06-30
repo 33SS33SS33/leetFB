@@ -15,8 +15,15 @@ import java.util.Set;
  */
 
 public class IntersectionofTwoArrays {
+    public static void main(String[] args) {
+        int[] num1 = {1, 2, 2, 1};
+        int[] num2 = {2, 2};
+        System.out.println(Arrays.asList(intersectiona(num1, num2)).toString());
+        System.out.println(Arrays.asList(intersectionb(num1, num2)).toString());
+    }
 
-    public int[] intersectiona(int[] nums1, int[] nums2) {
+    //不对？？？？？
+    public static int[] intersectiona(int[] nums1, int[] nums2) {
         Set<Integer> set = new HashSet<>();
         Set<Integer> intersect = new HashSet<>();
         for (int i = 0; i < nums1.length; i++) {
@@ -35,7 +42,7 @@ public class IntersectionofTwoArrays {
         return result;
     }
 
-    public int[] intersectionb(int[] nums1, int[] nums2) {
+    public static int[] intersectionb(int[] nums1, int[] nums2) {
         Set<Integer> set = new HashSet<>();
         Arrays.sort(nums1);
         Arrays.sort(nums2);
@@ -59,4 +66,5 @@ public class IntersectionofTwoArrays {
         }
         return result;
     }
+
 }

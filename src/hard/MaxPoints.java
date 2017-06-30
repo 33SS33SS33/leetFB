@@ -7,7 +7,6 @@ import java.util.HashMap;
  * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
  * LinkedIn Apple Twitter
  * Tags:Hash Table Math
- * <p/>
  * 解这个平面几何题有3个要点：
  * 1. 如何判断共线?
  * 两点成一直线，所以两点没有共线不共线之说。对于点p1(x1, y1)，p2(x2, y2)，p3(x3, y3)来说，共线的条件是p1-p2连线的斜率与p1-p3连线的斜率相同，即

@@ -10,7 +10,7 @@ package hard;
  */
 class SearchRotatedSortedArr {
     public static void main(String[] args) {
-        int[] A = { 4, 5, 6, 7, 0, 1, 2 };
+        int[] A = {4, 5, 6, 7, 0, 1, 2};
         int target = 1;
         System.out.print(new SearchRotatedSortedArr().search(A, target));
     }
@@ -45,4 +45,5 @@ class SearchRotatedSortedArr {
         }
         return -1;
     }
+
 }

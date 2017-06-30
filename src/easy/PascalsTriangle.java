@@ -90,4 +90,5 @@ class PascalsTriangle {
         }
         return result;
     }
+
 }

@@ -9,7 +9,6 @@ package hard;
  * When s3 = "aadbbcbcac", return true.
  * When s3 = "aadbbbaccc", return false.
  * Tags: DP, String
- * <p/>
  * 使用dp 动态规划  还可以用DFS BFS 未实现
  * 通项公式为
  * dp[i][j] = (dp[i-1][j] and s1[i-1] == s3[i+j-1]) or \

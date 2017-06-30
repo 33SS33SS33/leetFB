@@ -8,8 +8,8 @@ package hard;
 class MedianOfTwoSortedArrs {
     public static void main(String[] args) {
         MedianOfTwoSortedArrs m = new MedianOfTwoSortedArrs();
-        int[] A = { 1, 2, 3, 4, 5 };
-        int[] B = { 2, 4, 5, 6, 7 };
+        int[] A = {1, 2, 3, 4, 5};
+        int[] B = {2, 4, 5, 6, 7};
         System.out.println(m.findMedianSortedArrays(A, B));
         System.out.println(m.findMedianSortedArraysB(A, B));
     }
