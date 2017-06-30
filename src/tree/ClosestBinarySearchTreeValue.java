@@ -6,7 +6,6 @@ package tree;
  * Note:
  * Given target value is a floating point.
  * You are guaranteed to have only one unique value in the BST that is closest to the target."
- * <p/>
  * 就是小了就往右走 大了就往左走
  * 每次都计算一下最小值即可
  * "
@@ -78,4 +77,5 @@ public class ClosestBinarySearchTreeValue {
             val = x;
         }
     }
+
 }

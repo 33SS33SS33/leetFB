@@ -123,10 +123,8 @@ public class InvertBinaryTree {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (root == null)
             return res;
-
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
-
         while (!queue.isEmpty()) {
             List<Integer> curLevel = new ArrayList<Integer>();
             int size = queue.size();
@@ -152,4 +150,5 @@ public class InvertBinaryTree {
             val = x;
         }
     }
+
 }

@@ -8,7 +8,6 @@ package tree;
  * level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
  * Tags: Tree, Binary Search
  * Similar Problems: (E) Closest Binary Search Tree Value
- * <p/>
  * 首先先计算树的高度  树的高度是从0开始算的  然后直接把最左边的子树压到低的出来的就是高度
  * 然后对最下面的一排子树进行二分查找 如果是满二叉树 最底层应该有2^height个节点 所以将最下面的节点编号 0 …..2^height -1 然后进行二分查找 如果中间值有节点 则就继续往右半部分找 否则往左半部分找 直到left > right
  * 本题最关键的是如何找到二叉树的第n个节点 由于之前把最后一层的节点编号了 如果用二进制表示的 下面的节点比如 01节点 就说明是碰见0就先左走 然后碰见1就往右走

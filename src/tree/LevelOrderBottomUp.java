@@ -22,7 +22,6 @@ import java.util.Queue;
  * [3]
  * ]
  * Tags: Tree, BFS
- * <p>
  * DFS BFS都行 遍历的时候存一下当前结点在的level即可 然后插入位置用负数来选择就可以了
  */
 class LevelOrderBottomUp {
@@ -186,4 +185,5 @@ class LevelOrderBottomUp {
             val = x;
         }
     }
+
 }

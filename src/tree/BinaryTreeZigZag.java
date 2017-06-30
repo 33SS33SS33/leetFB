@@ -23,7 +23,6 @@ import java.util.Queue;
  * [15,7]
  * ]
  * Tags: Tree, BFS, Stack
- * <p>
  * 这个题可以用BFS还有DFS BFS比较好
  * 自己的解法类似BFS
  * 把节点一排一排的入栈 然后有一个direction变量  可以用来规定入栈的顺序 从左到右 还是从右到左
@@ -204,4 +203,5 @@ class BinaryTreeZigZag {
             val = x;
         }
     }
+
 }

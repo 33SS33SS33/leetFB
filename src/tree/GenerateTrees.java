@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/4.
- * <p>
  * 错的
  */
 public class GenerateTrees {
@@ -49,4 +48,5 @@ public class GenerateTrees {
             this.value = value;
         }
     }
+
 }

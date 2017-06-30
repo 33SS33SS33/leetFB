@@ -4,7 +4,6 @@ package tree;
  * Given an array where elements are sorted in ascending order, convert it to a
  * <strong>height balanced</strong> BST.
  * Tags: Tree, DFS
- * <p/>
  * 将数组逐次二分 midpoint就是当前的根 然后左边的数组就是左子树 右边的数组就是右子树
  */
 class ConvertSortedArrToBST {
@@ -49,4 +48,5 @@ class ConvertSortedArrToBST {
             val = x;
         }
     }
+
 }
