@@ -115,5 +115,5 @@ public class MinDepth {
             this.value = value;
         }
     }
-    
+
 }

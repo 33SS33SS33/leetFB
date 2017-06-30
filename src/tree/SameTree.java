@@ -5,7 +5,6 @@ package tree;
  * Two binary trees are considered equal if they are structurally identical
  * and the nodes have the same value.
  * Tags: Tree, DFS
- * <p>
  * 先序遍历
  */
 class SameTree {
@@ -76,4 +75,5 @@ class SameTree {
             val = x;
         }
     }
+
 }

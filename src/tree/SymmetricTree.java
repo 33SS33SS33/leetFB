@@ -21,7 +21,6 @@ import java.util.Stack;
  * Note:
  * Bonus points if you could solve it both recursively and iteratively.
  * Tags: Tree, DFS, Stack
- * <p>
  * 要么都没有 要么都有 有的话值相等 切左边的左子树和右边的右子树相等 左边的右子树和右边的左子树相等
  */
 class SymmetricTree {
@@ -144,4 +143,5 @@ class SymmetricTree {
             val = x;
         }
     }
+
 }
