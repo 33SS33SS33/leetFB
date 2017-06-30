@@ -40,4 +40,5 @@ public class PatchingArray {
         }
         return total - i;
     }
+
 }

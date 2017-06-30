@@ -14,8 +14,8 @@ import java.util.*;
  */
 class ConstructBTFromInPostOrder {
     public static void main(String[] args) {
-        int[] inorder = { 4, 2, 5, 1, 3, 6 };
-        int[] postorder = { 4, 5, 2, 6, 3, 1 };
+        int[] inorder = {4, 2, 5, 1, 3, 6};
+        int[] postorder = {4, 5, 2, 6, 3, 1};
         TreeNode root = new ConstructBTFromInPostOrder().buildTree(inorder, postorder);
         TreeNode root2 = new ConstructBTFromInPostOrder().buildTreeB(inorder, postorder);
         System.out.println(new ConstructBTFromInPostOrder().levelOrder(root));
@@ -67,7 +67,7 @@ class ConstructBTFromInPostOrder {
     }
 
     private TreeNode helper(int[] inorder, int[] postorder, int inL, int inR, int postL, int postR,
-            HashMap<Integer, Integer> map) {
+                            HashMap<Integer, Integer> map) {
         if (inL > inR || postL > postR)
             return null;
         TreeNode root = new TreeNode(postorder[postR]);
@@ -101,7 +101,7 @@ class ConstructBTFromInPostOrder {
     }
 
     public class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

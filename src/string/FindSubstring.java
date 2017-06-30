@@ -7,15 +7,12 @@ import java.util.HashMap;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/14.
- */
-
-/**
  * 错的------
  */
 public class FindSubstring {
     public static void main(String[] args) {
         String S = "12344434300";
-        String[] L = { "123", "444343" };
+        String[] L = {"123", "444343"};
 
         System.out.println(new FindSubstring().findSubstring(S, L).toString());
     }

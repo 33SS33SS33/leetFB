@@ -19,7 +19,7 @@ package rectangle;
 class Searcha2DMatrix {
     public static void main(String[] args) {
         Searcha2DMatrix s = new Searcha2DMatrix();
-        int[][] matrix = { { 1, 3, 5, 7 }, { 10, 11, 16, 20 }, { 23, 30, 34, 50 } };
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 50}};
         System.out.println(s.searchMatrix(matrix, 0));
         System.out.println(s.searchMatrix(matrix, 1));
         System.out.println(s.searchMatrix(matrix, 100));

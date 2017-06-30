@@ -8,7 +8,7 @@ import java.util.Queue;
  * The minimum depth is the number of nodes along the shortest path from the
  * root node down to the nearest leaf node.
  * Tags: Tree, DFS
-
+ * <p>
  * 就是分情况  当叶子节点的时候 当只有一个节点的时候 （这俩计算一样） 还有就是两边都有节点的时候
  */
 public class MinDepth {
@@ -108,7 +108,7 @@ public class MinDepth {
     }
 
     static class TreeNode {
-        int      value;
+        int value;
         TreeNode left;
         TreeNode right;
 

@@ -5,7 +5,6 @@ package other;
  * Tags: Tree, Recursive
  */
 class IsSubtree {
-
     /**
      * t1 root of tree, t2 root of subtree
      */
@@ -53,4 +52,5 @@ class IsSubtree {
             this.value = val;
         }
     }
+
 }

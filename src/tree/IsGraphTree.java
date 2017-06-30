@@ -41,13 +41,13 @@ class IsGraphTree<T> {
     }
 
     class Vertex<T> {
-        T               value;
+        T value;
         List<Vertex<T>> adjacent;
     }
 
     class Graph {
         List<Vertex> vertices;
-        List<Edge>   edges;
+        List<Edge> edges;
     }
 
     class Edge {

@@ -24,4 +24,5 @@ class SubstringsStartEndWith1 {
                 count++;
         return count * (count - 1) / 2;
     }
+
 }

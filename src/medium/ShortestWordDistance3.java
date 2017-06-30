@@ -11,7 +11,6 @@ package medium;
  * Given word1 = "makes", word2 = "makes", return 3.
  * Note:
  * You may assume word1 and word2 are both in the list.
- * <p/>
  * 加了一个判断条件 就是相同的时候怎么办
  * 还有更简单的写法 在左边
  * https://leetcode.com/discuss/61457/ac-python-solution-clean-and-fast-in-one-loop
@@ -70,4 +69,5 @@ public class ShortestWordDistance3 {
         }
         return min;
     }
+
 }

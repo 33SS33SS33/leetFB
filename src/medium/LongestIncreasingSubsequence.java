@@ -10,7 +10,6 @@ import java.util.Arrays;
  * The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.
  * Your algorithm should run in O(n2) complexity.
  * Follow up: Could you improve it to O(n log n) time complexity?"
- * <p/>
  * "首先n^2的算法可以用dp 方程是
  * dp[x] = max(dp[x], dp[y] + 1) 其中 y < x 并且 nums[x] > nums[y]
  * nlgn的算法在geekforgeek里 大体思路是这样
@@ -38,4 +37,5 @@ public class LongestIncreasingSubsequence {
         }
         return len;
     }
+
 }

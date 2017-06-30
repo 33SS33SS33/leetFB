@@ -114,7 +114,7 @@ public class BTUpsideDown {
     }
 
     static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

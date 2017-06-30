@@ -9,7 +9,7 @@ package tree;
  */
 class ConvertSortedArrToBST {
     public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5 };
+        int[] arr = {1, 2, 3, 4, 5};
         TreeNode root = sortedArrayToBST(arr);
         System.out.println(root.val);
     }
@@ -41,7 +41,7 @@ class ConvertSortedArrToBST {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

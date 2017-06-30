@@ -7,7 +7,7 @@ package sum;
 public class TwoSumIIInputarrayissorted {
     public static void main(String[] args) {
         TwoSumIIInputarrayissorted t = new TwoSumIIInputarrayissorted();
-        int[] numbers = { 2, 4, 7 }; // 6 = 2+4
+        int[] numbers = {2, 4, 7}; // 6 = 2+4
         int target = 6;
         int[] res1 = t.twoSumB(numbers, target);
         for (int i = 0; i < res1.length; i++) {
@@ -30,9 +30,10 @@ public class TwoSumIIInputarrayissorted {
             } else if (x > target) {
                 j--;
             } else {
-                return new int[] { i + 1, j + 1 };
+                return new int[]{i + 1, j + 1};
             }
         }
         return null;
     }
+
 }

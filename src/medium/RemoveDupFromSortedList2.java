@@ -112,4 +112,5 @@ class RemoveDupFromSortedList2 {
         }
         System.out.println("NULL");
     }
+
 }

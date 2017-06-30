@@ -168,4 +168,5 @@ class ReverseLinkedList2 {
             next = null;
         }
     }
+
 }

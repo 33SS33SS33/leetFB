@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * The root-to-leaf path 1->3 represents the number 13.
  * Return the sum = 12 + 13 = 25.
  * Tags: Tree, DFS
- * <p/>
  * 用先序遍历 判断到了叶子节点就把当前path的值加起来放进res即可
  */
 class SumRootToLeafNo {
@@ -155,4 +154,5 @@ class SumRootToLeafNo {
             val = x;
         }
     }
+
 }

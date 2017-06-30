@@ -9,7 +9,6 @@ package medium;
  * Example:
  * nums = [-4, -2, 2, 4], a = 1, b = 3, c = 5,
  * Result: [3, 9, 15, 33]
- * <p>
  * nums = [-4, -2, 2, 4], a = -1, b = 3, c = 5
  * Result: [-23, -5, 1, 7]
  */
@@ -42,4 +41,5 @@ public class SortTransformedArray {
     private int quad(int x, int a, int b, int c) {
         return a * x * x + b * x + c;
     }
+
 }

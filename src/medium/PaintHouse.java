@@ -10,7 +10,6 @@ package medium;
  * Find the minimum cost to paint all houses.
  * Note:
  * All costs are positive integers.
- * <p/>
  * 用dp即可 每个房子只可能有三个颜色 就是三个状态 0, 1, 2
  * 如果是0 那么前一个房子只可能是1,2
  * 如果是1 那么前一个房子只可能是0,2

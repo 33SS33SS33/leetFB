@@ -10,8 +10,8 @@ import java.util.*;
  */
 class ConstructBTPreInOrder {
     public static void main(String[] args) {
-        int[] preorder = { 1, 2, 4, 5, 3, 6 };
-        int[] inorder = { 4, 2, 5, 1, 3, 6 };
+        int[] preorder = {1, 2, 4, 5, 3, 6};
+        int[] inorder = {4, 2, 5, 1, 3, 6};
         TreeNode root = new ConstructBTPreInOrder().buildTreeA(preorder, inorder);
         TreeNode root2 = new ConstructBTPreInOrder().buildTreeB(preorder, inorder);
         System.out.println(new ConstructBTPreInOrder().levelOrder(root));
@@ -58,7 +58,7 @@ class ConstructBTPreInOrder {
     }
 
     private TreeNode helper(int[] preorder, int preL, int preR, int[] inorder, int inL, int inR,
-            HashMap<Integer, Integer> map) {
+                            HashMap<Integer, Integer> map) {
         if (preL > preR || inL > inR)
             return null;
         TreeNode root = new TreeNode(preorder[preL]);
@@ -69,7 +69,7 @@ class ConstructBTPreInOrder {
     }
 
     public TreeNode construct(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart,
-            int inEnd) {
+                              int inEnd) {
         if (preStart > preEnd || inStart > inEnd) {
             return null;
         }
@@ -112,7 +112,7 @@ class ConstructBTPreInOrder {
     }
 
     public class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

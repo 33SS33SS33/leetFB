@@ -132,7 +132,7 @@ class PopulatingNextRight {
     }
 
     static class TreeLinkNode {
-        int          val;
+        int val;
         TreeLinkNode left;
         TreeLinkNode right;
         TreeLinkNode next;

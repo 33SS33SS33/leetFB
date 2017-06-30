@@ -58,7 +58,7 @@ class PathSum2 {
     }
 
     public void pathSuma(TreeNode root, int sum, List<Integer> currentResult,
-            List<List<Integer>> result) {
+                         List<List<Integer>> result) {
         if (root == null)
             return;
         currentResult.add(new Integer(root.val));
@@ -117,7 +117,7 @@ class PathSum2 {
     }
 
     public void dfs(TreeNode t, int sum, ArrayList<ArrayList<Integer>> result,
-            ArrayList<Integer> l) {
+                    ArrayList<Integer> l) {
         if (t.left == null && t.right == null && sum == 0) {
             ArrayList<Integer> temp = new ArrayList<Integer>();
             temp.addAll(l);
@@ -136,7 +136,7 @@ class PathSum2 {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

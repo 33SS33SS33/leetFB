@@ -84,4 +84,5 @@ class MaxSubseqDifference {
         System.out.println();
         return sum;
     }
+
 }

@@ -10,7 +10,6 @@ package medium;
  * You may assume all input has valid answer.
  * Follow Up:
  * Can you do it in O(n) time and/or in-place with O(1) extra space?"
- * <p>
  * "大体思路是这样 首先要找出来median 然后用median做一个3way partition 这样的话
  * 数组就被分成了两半 前一部分是比median大的 后面哪部分是比median小的  然后就把后一部分和前一部分穿插起来就行了
  * 但是代码跑的空间不够了   应该是快速选择的时候有问题  未实现"

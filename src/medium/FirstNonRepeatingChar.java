@@ -55,4 +55,5 @@ class FirstNonRepeatingChar {
             index = 0;
         }
     }
+
 }

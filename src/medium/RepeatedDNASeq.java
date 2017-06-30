@@ -124,4 +124,5 @@ class RepeatedDNASeq {
         }
         return result;
     }
+
 }

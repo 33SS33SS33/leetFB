@@ -17,7 +17,7 @@ public class MinimumHeightTrees {
     public static void main(String[] args) {
         MinimumHeightTrees mht = new MinimumHeightTrees();
         List<Integer> res = mht.findMinHeightTreesa(6,
-                new int[][] { { 0, 3 }, { 1, 3 }, { 2, 3 }, { 4, 3 }, { 5, 4 } });
+                new int[][]{{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}});
         System.out.println(res.toString());
     }
 

@@ -35,4 +35,5 @@ class DeleteNodeinaLinkedList {
         int  val;
         Node next;
     }
+
 }

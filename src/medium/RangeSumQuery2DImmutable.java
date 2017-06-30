@@ -5,7 +5,8 @@ package medium;
  * "用一个辅助矩阵每一个元素表示的是从左上角的起点到当前点得所有的和
  * 然后这个矩阵可以行列都比原来的矩阵大1 这样比较好处理边界问题
  * 生成以后就返回 当前右下角元素的值 - (左下角旁边的值 + 右上角上边的值 - 左上角的2对角的那个5) 因为被加了两次"
- * "Given a 2D matrix matrix, find the sum of the elements inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
+ * "Given a 2D matrix matrix, find the sum of the elements inside the rectangle
+ * defined by its upper left corner (row1, col1) and lower right corner (row2, col2).
  * Range Sum Query 2D
  * The above rectangle (with the red border) is defined by (row1, col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.
  * Example:
@@ -56,4 +57,5 @@ public class RangeSumQuery2DImmutable {
 
         return dp[iMax + 1][jMax + 1] - dp[iMax + 1][jMin] - dp[iMin][jMax + 1] + dp[iMin][jMin];
     }
+
 }

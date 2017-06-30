@@ -11,7 +11,6 @@ import java.util.List;
  * Find all strobogrammatic numbers that are of length = n.
  * For example,
  * Given n = 2, return ["11","69","88","96"].
- * <p/>
  * 用dfs就行 分奇数和偶数两种情况 先插入最中间的会比较方便(因为每次插入两边的代码好写)
  */
 public class StrobogrammaticNumber2 {
@@ -44,4 +43,5 @@ public class StrobogrammaticNumber2 {
         }
         return res;
     }
+
 }

@@ -102,8 +102,8 @@ public class CountCompleteTreeNodes {
         return res;
     }
 
-    int     leaves = 0;
-    boolean stop   = false;
+    int leaves = 0;
+    boolean stop = false;
 
     public int countNodesA(TreeNode root) {
         int h = height(root);
@@ -151,7 +151,7 @@ public class CountCompleteTreeNodes {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

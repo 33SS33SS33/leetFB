@@ -19,7 +19,6 @@ import java.util.Set;
  * Note:
  * You can assume that no duplicate edges will appear in edges. Since all edges are undirected,
  * [0, 1] is the same as [1, 0] and thus will not appear together in edges."
- * <p>
  * 可以用 union find  先用了dfs 注意一下图里有环的情况 还有对于图的初始化 很可能edge里会有漏掉的点 就是那个点是一个单独的店 所以初始化用了 0-n-1
  */
 public class NumofConnectedComponentsinanUndirectedGraph {
@@ -77,4 +76,5 @@ public class NumofConnectedComponentsinanUndirectedGraph {
         }
         return id;
     }
+
 }

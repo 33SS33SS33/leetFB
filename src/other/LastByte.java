@@ -34,4 +34,5 @@ class LastByte {
             return 1;
         return lastByte(s.substring(0, s.length() - 8)) == 1 ? 2 : 1;
     }
+
 }

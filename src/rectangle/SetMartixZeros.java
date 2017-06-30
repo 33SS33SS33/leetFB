@@ -6,7 +6,7 @@ package rectangle;
  */
 class SetMartixZeros {
     public static void main(String[] args) {
-        int[][] matrix = new int[][] { { 1, 2, 0 }, { 4, 3, 2 }, { 1, 0, 5 } };
+        int[][] matrix = new int[][]{{1, 2, 0}, {4, 3, 2}, {1, 0, 5}};
         SetMartixZeros a = new SetMartixZeros();
         a.setZeros(matrix);
         for (int[] i : matrix) {
@@ -64,4 +64,5 @@ class SetMartixZeros {
             }
         }
     }
+
 }

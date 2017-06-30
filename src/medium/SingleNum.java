@@ -8,7 +8,6 @@ import java.util.*;
  * Your algorithm should have a linear runtime complexity. Could you implement
  * it without using extra memory?
  * Tags: Hashtable, Bit Manipulation
- * <p/>
  * 可以用字典 如果字典没有key就插入  如果字典有key 就删除 最后剩下的key就是
  * 不用多余空间的话  就要用异或操作 异或操作有交换律还有结合律
  */
@@ -62,4 +61,5 @@ class SingleNum {
         Iterator<Integer> it = set.iterator();
         return it.next();
     }
+
 }

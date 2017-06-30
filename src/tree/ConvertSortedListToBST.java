@@ -103,7 +103,7 @@ class ConvertSortedListToBST {
     }
 
     class ListNode {
-        int      val;
+        int val;
         ListNode next;
 
         public ListNode(int val) {
@@ -112,7 +112,7 @@ class ConvertSortedListToBST {
     }
 
     class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

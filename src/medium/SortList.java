@@ -3,7 +3,6 @@ package medium;
 /**
  * Sort a linked list in O(n log n) time using constant space complexity.
  * Tags: Linkedlist, Sort
- * <p/>
  * 使用mergesort即可 每次都用快慢指针找中点 然后分割链表
  * 注意快指针要是头指针的下一个节点 否则分割只有两个元素的链表会分不开 （因为slow会向前走一步）
  * 而且当分成两部分的时候  slow就是前一部分的末尾 记得用none来结尾 然后下一部分的开始是slow.Next
@@ -123,4 +122,5 @@ class SortList {
             next = null;
         }
     }
+
 }

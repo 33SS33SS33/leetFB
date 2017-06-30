@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class ThreeSumSmaller {
     public static void main(String[] args) {
         ThreeSumClosest t = new ThreeSumClosest();
-        int[] s = { -2, 0, 1, 3};
+        int[] s = {-2, 0, 1, 3};
         int target = 2;
         System.out.println(new ThreeSumSmaller().threeSumSmaller(s, target));
     }
@@ -41,4 +41,5 @@ public class ThreeSumSmaller {
         }
         return count;
     }
+
 }

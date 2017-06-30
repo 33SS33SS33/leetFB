@@ -17,7 +17,6 @@ import java.util.Map;
  * Given word1 = "makes", word2 = "coding", return 1.
  * Note:
  * You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.
- * <p/>
  * 先用哈希表记录单词出现的每一个位置
  * 然后找出来这两个单词的位置 遍历一下 找出来最小的距离
  * 找距离的代码比较重要

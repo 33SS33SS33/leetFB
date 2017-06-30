@@ -30,4 +30,5 @@ public class RunLengthEncoding {
         }
         return dest.toString();
     }
+
 }

@@ -40,4 +40,5 @@ class Astroid01 {
             astroid(s, pos + 1, sb, res);
         }
     }
+
 }

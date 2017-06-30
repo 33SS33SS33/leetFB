@@ -74,4 +74,5 @@ class Dijkstra {
         Vertex dest;
         double cost;
     }
+
 }

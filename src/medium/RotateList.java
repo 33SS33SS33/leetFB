@@ -117,4 +117,5 @@ class RotateList {
             next = null;
         }
     }
+
 }

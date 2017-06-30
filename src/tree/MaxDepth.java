@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * The maximum depth is the number of nodes along the longest path from the
  * root node down to the farthest leaf node.
  * Tags: Tree, DFS
-
+ * <p>
  * 使用自底向上bottom-up的递归
  */
 class MaxDepth {
@@ -98,7 +98,7 @@ class MaxDepth {
     }
 
     static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

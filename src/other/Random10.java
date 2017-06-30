@@ -19,4 +19,5 @@ public class Random10 {
     public int rand7() {
         return 1;
     }
+
 }

@@ -9,13 +9,12 @@ import java.util.Arrays;
  * For example, given array S = {-1 2 1 -4}, and target = 1.
  * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
  * Tags: Arrays, Two pointers
-
  * 使用一个循环 然后加上双指针即可 记得start也要移动 要不结果不全
  */
 class ThreeSumClosest {
     public static void main(String[] args) {
         ThreeSumClosest t = new ThreeSumClosest();
-        int[] s = { -1, 0, 1, 2, -1, -4 };
+        int[] s = {-1, 0, 1, 2, -1, -4};
         int target = 4;
         System.out.println(threeSumClosestA(s, target));
         System.out.println(threeSumClosest(s, target));
@@ -115,4 +114,5 @@ class ThreeSumClosest {
         }
         return closest;
     }
+
 }

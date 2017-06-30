@@ -17,7 +17,6 @@ package medium;
  * You cannot update some cells first and then use their updated values to update other cells.
  * In this question, we represent the board using a 2D array. In principle, the board is infinite,
  * which would cause problems when the active area encroaches the border of the array. How would you address these problems?"
- * <p>
  * "注意题目说的是一次性更新 不能更新一个之后 然后再更新周围的
  * 所以使用位操作 大循环是遍历数组内的每一个元素  还有个小循环 就是访问当前元素周围的邻居
  * 然后有一个count变量来记录他周围的邻居（包括他自己）有几个1
@@ -95,4 +94,5 @@ public class GameofLife {
             }
         }
     }
+
 }

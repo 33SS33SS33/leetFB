@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class FourSum {
     public static void main(String[] args) {
-        int[] num = { 1, 0, -1, 0, -2, 2 };
+        int[] num = {1, 0, -1, 0, -2, 2};
         System.out.println(new FourSum().fourSum(num, 0).toString());
         System.out.println(new FourSum().fourSumA(num, 0).toString());
         System.out.println(new FourSum().fourSumB(num, 0).toString());
@@ -169,4 +169,5 @@ public class FourSum {
         }
         return res;
     }
+
 }

@@ -59,7 +59,7 @@ class DeepestNode {
     }
 
     static class Node {
-        int  val;
+        int val;
         Node left;
         Node right;
 

@@ -67,4 +67,5 @@ class MatrixColor {
         }
         return perimeter;
     }
+
 }

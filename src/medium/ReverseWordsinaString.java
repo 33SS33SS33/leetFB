@@ -14,7 +14,6 @@ package medium;
  * How about multiple spaces between two words?
  * Reduce them to a single space in the reversed string.
  * Tags: String
- * <p/>
  * split用来分割 返回的是分割之后的list 默认是用空格
  * join用来连接 join最前的字符表示用什么字符连接 
  * [::-1]用来颠倒
@@ -105,4 +104,5 @@ class ReverseWordsinaString {
         }
         return sb.length() == 0 ? "" : sb.substring(0, sb.length() - 1);
     }
+
 }

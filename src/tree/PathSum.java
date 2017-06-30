@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * 7    2      1
  * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
  * Tags: Tree, DFS
-
+ * <p>
  * 先序遍历 碰到叶子了计算一下
  */
 class PathSum {
@@ -98,7 +98,7 @@ class PathSum {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

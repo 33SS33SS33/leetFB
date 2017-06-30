@@ -92,7 +92,7 @@ class BalancedBT {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

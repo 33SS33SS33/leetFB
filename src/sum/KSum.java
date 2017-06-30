@@ -14,7 +14,7 @@ import java.util.List;
 class KSum {
     public static void main(String[] args) {
         KSum r = new KSum();
-        int[] num = { 7, 2, 5, 1, 6, 3, 8, 9, 10, 4 };
+        int[] num = {7, 2, 5, 1, 6, 3, 8, 9, 10, 4};
         int k = 6;
         int target = 24;
         List<List<Integer>> res = r.kSum(num, k, target);
@@ -78,4 +78,5 @@ class KSum {
         }
         return res;
     }
+
 }

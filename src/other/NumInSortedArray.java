@@ -41,4 +41,5 @@ class NumInSortedArray {
             start--;
         return end - start + 1;
     }
+
 }

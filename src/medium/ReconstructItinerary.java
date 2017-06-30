@@ -6,7 +6,6 @@ import java.util.*;
  * Created by shanshan on 16/6/17.
  * Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order.
  * All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.
- * <p>
  * Note:
  * If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order
  * when read as a single string. For example, the itinerary ["JFK", "LGA"] has a smaller lexical order than ["JFK", "LGB"].
@@ -53,4 +52,5 @@ public class ReconstructItinerary {
         }
         return route;
     }
+
 }

@@ -52,7 +52,7 @@ public class CountUnivalueSubtrees {
     }
 
     public static class TreeNode {
-        Integer  val;
+        Integer val;
         TreeNode left;
         TreeNode right;
 

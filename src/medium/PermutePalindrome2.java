@@ -46,4 +46,5 @@ public class PermutePalindrome2 {
         }
         return new ArrayList<String>(permute(chars, _single));
     }
+
 }
