@@ -19,19 +19,17 @@ package aMaz;
  * Tags: Linkedlist
  * 如果A和B的长度是一样的 那么只需要A和B同时移动 那么第一个相等的点就是交点
  * 所以问题是如何让他们同时移动
- * 所以就用到了首先让A和B从头开始走  然后谁第一个走到了末尾 那么就把它换成另一个的头部 继续走 然后另一个也到了末尾 然后把它也换个头部 这时候两个就同步了
+ * 所以就用到了首先让A和B从头开始走  然后谁第一个走到了末尾 那么就把它换成另一个的头部 继续走 然后另一个也到了末尾
+ * 然后把它也换个头部 这时候两个就同步了
  * 比如A长度是5 B长度是6 当A走到头的时候B还差一个 所以当B到头的是
  * 另一个B刚走了一个 然后另一个是从A开始 这样两个就是同步的了
  */
 class IntersectionOfLinkedList {
-    public static void main(String[] args) {
-
-    }
 
     /**
      * 最好的
      */
-    public ListNode getIntersectionNodeb(ListNode headA, ListNode headB) {
+    public ListNode IntersectionOfLinkedList(ListNode headA, ListNode headB) {
         if (null == headA || null == headB)
             return null;
         ListNode curA = headA, curB = headB;
@@ -42,7 +40,7 @@ class IntersectionOfLinkedList {
         return curA;
     }
 
-    public ListNode getIntersectionNodea(ListNode headA, ListNode headB) {
+    public ListNode IntersectionOfLinkedListb(ListNode headA, ListNode headB) {
         int lenA = length(headA), lenB = length(headB);
         // move headA and headB to the same start point
         while (lenA > lenB) {
@@ -59,29 +57,6 @@ class IntersectionOfLinkedList {
             headB = headB.next;
         }
         return headA;
-    }
-
-    /**
-     * Time O(n), Space O(1)
-     * skip all impossible ones
-     * use recursion to compare next one
-     */
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null)
-            return null;
-        int lenA = length(headA);
-        int lenB = length(headB);
-        int diff = Math.abs(lenA - lenB);
-        if (lenA > lenB)
-            while (diff-- > 0)
-                headA = headA.next;
-        else
-            while (diff-- > 0)
-                headB = headB.next;
-        for (; headA != null && headB != null; headA = headA.next, headB = headB.next)
-            if (headA.equals(headB))
-                return headA;
-        return null;
     }
 
     private int length(ListNode n) {

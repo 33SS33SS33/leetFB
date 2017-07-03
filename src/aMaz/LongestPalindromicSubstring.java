@@ -41,7 +41,9 @@ class LongestPalindromicSubstring {
         return res;
     }
 
-    /*Insert char to the original input string If the index is even, return # If the index is odd, return char in the original string
+    /**
+     * Insert char to the original input string If the index is even, return # If the index is odd,
+     * return char in the original string
      */
     private char get(String s, int i) {
         if (i % 2 == 0)
@@ -54,8 +56,6 @@ class LongestPalindromicSubstring {
      * O(n^2) Time, O(1) Space
      * Expand from center character and center of two chars
      * Update result according to the returned length
-     */
-    /**
      * 基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
      * 比如串abc,中心可以是a,b,c,或者是ab的间隙，bc的间隙）往两边同时进行扫描，直到不是回文串为止。
      * 假设字符串的长度为n,那么中心的个数为2*n-1(字符作为中心有n个，间隙有n-1个）。
@@ -217,16 +217,6 @@ class LongestPalindromicSubstring {
             }
         }
         return longestStr;
-    }
-
-    public static void printTable(int[][] x) {
-        for (int[] y : x) {
-            for (int z : y) {
-                System.out.print(z + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("------");
     }
 
 }

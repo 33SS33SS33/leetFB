@@ -15,7 +15,6 @@ import java.util.*;
 class CopyListWithRandomP {
     public static void main(String[] args) {
         RandomListNode node = buildList();
-
         RandomListNode res = new CopyListWithRandomP().copyRandomListA(node);
         while (res != null) {
             System.out.print(res.label + ",");
@@ -48,7 +47,7 @@ class CopyListWithRandomP {
     }
 
     /**
-     * creek ------
+     * creek ------ 不要了
      */
     public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null)
@@ -77,69 +76,6 @@ class CopyListWithRandomP {
             q = q.next;
         }
         return newHead;
-    }
-
-    /**
-     * Insert a same node after current node 太复杂了
-     * Then split into two lists
-     */
-    public RandomListNode copyRandomListB(RandomListNode head) {
-        if (head == null)
-            return head;
-        RandomListNode p1 = head;
-        while (p1 != null) {
-            RandomListNode copy = new RandomListNode(p1.label);
-            copy.next = p1.next;
-            p1.next = copy;
-            p1 = p1.next.next;
-        }
-        p1 = head;
-        while (p1 != null && p1.next != null) {
-            if (p1.random != null)
-                p1.next.random = p1.random.next;
-            p1 = p1.next.next;
-        }
-        // split lists
-        p1 = head;
-        RandomListNode copy = p1.next;
-        RandomListNode dummy = copy;
-        while (copy != null && p1 != null) {
-            p1.next = p1.next.next;
-            if (copy.next == null)
-                break;
-            copy.next = copy.next.next;
-            copy = copy.next;
-            p1 = p1.next;
-        }
-        return dummy;
-    }
-
-    /**
-     * O(n) runtime, O(1) space – Modify original structure
-     */
-    public RandomListNode copyRandomListD(RandomListNode head) {
-        RandomListNode p = head;
-        while (p != null) {
-            RandomListNode next = p.next;
-            RandomListNode copy = new RandomListNode(p.label);
-            p.next = copy;
-            copy.next = next;
-            p = next;
-        }
-        p = head;
-        while (p != null) {
-            p.next.random = (p.random != null) ? p.random.next : null;
-            p = p.next.next;
-        }
-        p = head;
-        RandomListNode headCopy = (p != null) ? p.next : null;
-        while (p != null) {
-            RandomListNode copy = p.next;
-            p.next = copy.next;
-            p = p.next;
-            copy.next = (p != null) ? p.next : null;
-        }
-        return headCopy;
     }
 
     static RandomListNode buildList() {
