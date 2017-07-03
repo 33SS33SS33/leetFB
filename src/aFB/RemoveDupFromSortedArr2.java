@@ -18,9 +18,7 @@ class RemoveDupFromSortedArr2 {
         int[] num2 = {1, 1, 1, 2, 2, 3};
         int[] num3 = {1, 1, 1, 2, 2, 3};
         System.out.println(removeDuplicates(num));
-        System.out.println(removeDuplicatesA(num1));
-        System.out.println(removeDuplicatesB(num2));
-        System.out.println(removeDuplicatesC(num3));
+        System.out.println(RemoveDupFromSortedArr2a(num1));
     }
 
     /**
@@ -28,7 +26,7 @@ class RemoveDupFromSortedArr2 {
      * skip if length <=2
      * compare current element with second last element
      */
-    public static int removeDuplicatesA(int[] A) {
+    public static int RemoveDupFromSortedArr2a(int[] A) {
         if (A == null)
             return 0;
         int n = A.length;
@@ -44,26 +42,6 @@ class RemoveDupFromSortedArr2 {
         return len;
     }
 
-    /**
-     * --better--
-     */
-    public static int removeDuplicatesC(int[] A) {
-        if (A.length <= 2)
-            return A.length;
-        int prev = 1; // point to previous
-        int curr = 2; // point to current
-        while (curr < A.length) {
-            if (A[curr] == A[prev] && A[curr] == A[prev - 1]) {
-                curr++;
-            } else {
-                prev++;
-                A[prev] = A[curr];
-                curr++;
-            }
-        }
-        return prev + 1;
-    }
-
     //最简单的???
     public static int removeDuplicates(int[] nums) {
         int i = 0;
@@ -73,26 +51,4 @@ class RemoveDupFromSortedArr2 {
         return i;
     }
 
-    public static int removeDuplicatesB(int[] A) {
-        if (A == null || A.length == 0)
-            return 0;
-        int pre = A[0];
-        boolean flag = false;
-        int count = 0;
-        for (int i = 1; i < A.length; i++) {
-            int curr = A[i];
-            if (curr == pre) {
-                if (!flag) {
-                    flag = true;
-                    continue;
-                } else {
-                    count++;
-                }
-            } else {
-                pre = curr;
-                flag = false;
-            }
-        }
-        return A.length - count;
-    }
 }

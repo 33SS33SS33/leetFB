@@ -34,4 +34,5 @@ public class EncodeandDecodeTinyURL {
     public String decode(String shortUrl) {
         return index.get(shortUrl.replace(BASE_HOST, ""));
     }
+
 }

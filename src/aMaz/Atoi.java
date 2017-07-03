@@ -1,4 +1,4 @@
-package easy;
+package aMaz;
 
 /**
  * Implement atoi to convert a string to an integer.
@@ -107,4 +107,5 @@ class Atoi {
         }
         return sign * num;
     }
+
 }

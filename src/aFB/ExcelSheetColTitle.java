@@ -20,9 +20,9 @@ package aFB;
  */
 class ExcelSheetColTitle {
     public static void main(String[] args) {
-        System.out.println(convertToTitleRec(28));
-        System.out.println(convertToTitle(28));
-        System.out.println(convertToTitleB(28));
+        System.out.println(excelSheetColTitleRec(28));
+        System.out.println(excelSheetColTitleb(28));
+        System.out.println(excelSheetColTitle(28));
     }
 
     /**
@@ -30,7 +30,7 @@ class ExcelSheetColTitle {
      * creek
      * The key is n--. The minimum in 26-bit number is mapped to 1, not 0.
      */
-    public static String convertToTitleB(int n) {
+    public static String excelSheetColTitle(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("Input is not valid!");
         }
@@ -50,7 +50,7 @@ class ExcelSheetColTitle {
      * It should be the last digit
      * Note that the map shall have 1 offset
      */
-    public static String convertToTitle(int n) {
+    public static String excelSheetColTitleb(int n) {
         if (n <= 0)
             return "";
         StringBuilder title = new StringBuilder();
@@ -66,7 +66,7 @@ class ExcelSheetColTitle {
     /**
      * Recursive version, one line
      */
-    public static String convertToTitleRec(int n) {
-        return n <= 0 ? "" : convertToTitleRec(--n / 26) + (char) ('A' + (n % 26));
+    public static String excelSheetColTitleRec(int n) {
+        return n <= 0 ? "" : excelSheetColTitleRec(--n / 26) + (char) ('A' + (n % 26));
     }
 }

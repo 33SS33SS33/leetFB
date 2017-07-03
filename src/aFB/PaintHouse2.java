@@ -19,12 +19,12 @@ package aFB;
  */
 public class PaintHouse2 {
     public static void main(String[] args) {
-        int[][] costs = {{}, {}, {}};
-        System.out.print(new PaintHouse2().minCostIIa(costs));
+        int[][] costs = {{1,2,3}, {2,1,2}, {1,2,3}};
+        System.out.println(new PaintHouse2().minCostIIa(costs));
         System.out.print(new PaintHouse2().minCostII(costs));
     }
 
-    //不懂啊
+    //不懂啊  不对啊
     //https://discuss.leetcode.com/topic/22580/ac-java-solution-without-extra-space
     public int minCostIIa(int[][] costs) {
         if (costs == null || costs.length == 0)

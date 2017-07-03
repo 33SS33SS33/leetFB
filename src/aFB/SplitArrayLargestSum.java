@@ -6,11 +6,11 @@ package aFB;
 public class SplitArrayLargestSum {
     public static void main(String[] args) {
         int[] nums = {7, 2, 5, 10, 8};
-        System.out.println(splitArray(nums, 2));
+        System.out.println(SplitArrayLargestSum(nums, 2));
     }
 
     //https://discuss.leetcode.com/category/537/split-array-largest-sum
-    public static int splitArray(int[] nums, int m) {
+    public static int SplitArrayLargestSum(int[] nums, int m) {
         int max = 0;
         long sum = 0;
         for (int num : nums) {

@@ -1,4 +1,4 @@
-package easy;
+package aMaz;
 
 /**
  * Merge two sorted linked lists and return it as a new list. The new list

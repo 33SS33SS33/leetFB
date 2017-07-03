@@ -1,4 +1,4 @@
-package tree;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package easy;
+package aMaz;
 
 import java.util.*;
 

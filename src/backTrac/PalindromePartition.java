@@ -88,4 +88,5 @@ class PalindromePartition {
             if (s.charAt(low++) != s.charAt(high--)) return false;
         return true;
     }
+
 }
