@@ -24,7 +24,7 @@ public class HIndex2 {
         while (l < r) {
             int mid = l + (r - l) / 2;
             if (citations[mid] == n - mid) return n - mid;
-            if (citations[mid] < citations.length - mid) l = mid + 1;
+            if (citations[mid] < n - mid) l = mid + 1;
             else r = mid;
         }
         return n - l;

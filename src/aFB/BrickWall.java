@@ -32,11 +32,11 @@ public class BrickWall {
         wall.add(Arrays.asList(2, 4));
         wall.add(Arrays.asList(3, 1, 2));
         wall.add(Arrays.asList(1, 3, 1, 1));
-        System.out.println(leastBricks(wall));
+        System.out.println(brickWall(wall));
     }
 
     //????
-    public static int leastBricks(List<List<Integer>> wall) {
+    public static int brickWall(List<List<Integer>> wall) {
         if (wall.size() == 0) return 0;
         int count = 0;
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();

@@ -18,7 +18,7 @@ import java.util.Map;
 public class ContiguousArray {
     public static void main(String[] args) {
         int[] prices = {1, 3, 2};
-        System.out.println(findMaxLength(prices));
+        System.out.println(ContiguousArray(prices));
     }
 
     /**
@@ -26,7 +26,7 @@ public class ContiguousArray {
      * then we know there are even number of -1 and 1 between index i and j.
      * Also put the sum to index mapping to a HashMap to make search faster.
      */
-    public static int findMaxLength(int[] nums) {
+    public static int ContiguousArray(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == 0) nums[i] = -1;
         }
