@@ -107,4 +107,5 @@ class Atoi {
         }
         return sign * num;
     }
+
 }

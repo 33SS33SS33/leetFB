@@ -162,5 +162,5 @@ class Permutations {
         }
         return res;
     }
-    
+
 }
