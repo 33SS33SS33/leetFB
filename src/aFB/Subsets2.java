@@ -37,7 +37,6 @@ class Subsets2 {
         for (List<Integer> l2 : res2) {
             System.out.println(l2.toString());
         }
-
     }
 
     /**

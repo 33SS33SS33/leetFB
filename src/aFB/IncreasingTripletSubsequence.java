@@ -22,7 +22,8 @@ public class IncreasingTripletSubsequence {
     }
 
     public boolean increasingTripleta(int[] nums) {
-        // start with two largest values, as soon as we find a number bigger than both, while both have been updated, return true.
+        // start with two largest values, as soon as we find a number bigger than both,
+        // while both have been updated, return true.
         int small = Integer.MAX_VALUE, big = Integer.MAX_VALUE;
         for (int n : nums) {
             if (n <= small) {

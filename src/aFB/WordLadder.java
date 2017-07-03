@@ -31,6 +31,38 @@ public class WordLadder {
     }
 
     /**
+     * creek 最好的
+     */
+    public int ladderLengthB(String beginWord, String endWord, Set<String> wordDict) {
+        LinkedList<WordNode> queue = new LinkedList<WordNode>();
+        queue.add(new WordNode(beginWord, 1));
+        wordDict.add(endWord);
+        while (!queue.isEmpty()) {
+            WordNode top = queue.remove();
+            String word = top.word;
+            if (word.equals(endWord)) {
+                return top.numSteps;
+            }
+            char[] arr = word.toCharArray();
+            for (int i = 0; i < arr.length; i++) {
+                for (char c = 'a'; c <= 'z'; c++) {
+                    char temp = arr[i];
+                    if (arr[i] != c) {
+                        arr[i] = c;
+                    }
+                    String newWord = new String(arr);
+                    if (wordDict.contains(newWord)) {
+                        queue.add(new WordNode(newWord, top.numSteps + 1));
+                        wordDict.remove(newWord);
+                    }
+                    arr[i] = temp;
+                }
+            }
+        }
+        return 0;
+    }
+
+    /**
      * 我们先给题目进行图的映射，顶点则是每个字符串，然后两个字符串如果相差一个字符则我们进行连边。
      * 接下来看看这个方法的优势，注意到我们的字符集只有小写字母，而且字符串长度固定，假设是L。
      * 那么可以注意到每一个字符可以对应的边则有25个（26个小写字母减去自己），那么一个字符串可能存在的边是25*L条。
@@ -77,37 +109,6 @@ public class WordLadder {
         return 0;
     }
 
-    /**
-     * creek
-     */
-    public int ladderLengthB(String beginWord, String endWord, Set<String> wordDict) {
-        LinkedList<WordNode> queue = new LinkedList<WordNode>();
-        queue.add(new WordNode(beginWord, 1));
-        wordDict.add(endWord);
-        while (!queue.isEmpty()) {
-            WordNode top = queue.remove();
-            String word = top.word;
-            if (word.equals(endWord)) {
-                return top.numSteps;
-            }
-            char[] arr = word.toCharArray();
-            for (int i = 0; i < arr.length; i++) {
-                for (char c = 'a'; c <= 'z'; c++) {
-                    char temp = arr[i];
-                    if (arr[i] != c) {
-                        arr[i] = c;
-                    }
-                    String newWord = new String(arr);
-                    if (wordDict.contains(newWord)) {
-                        queue.add(new WordNode(newWord, top.numSteps + 1));
-                        wordDict.remove(newWord);
-                    }
-                    arr[i] = temp;
-                }
-            }
-        }
-        return 0;
-    }
 
     class WordNode {
         String word;

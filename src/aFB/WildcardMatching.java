@@ -22,23 +22,39 @@ package aFB;
 class WildcardMatching {
     public static void main(String[] args) {
         WildcardMatching w = new WildcardMatching();
-        System.out.println(w.isMatch("a", "")); // false
         System.out.println(w.isMatchB("a", "")); // false
-        System.out.println(w.isMatch("", "")); // true
+        System.out.println(w.isMatchB1("a", "")); // false
         System.out.println(w.isMatchB("", "")); // true
-        System.out.println(w.isMatch(null, null)); // true
         System.out.println(w.isMatchB(null, null)); // true
-        System.out.println(w.isMatch("a", null)); // false
-        System.out.println(w.isMatch(null, "null")); // false
         System.out.println(w.isMatchB(null, "null")); // false
+        System.out.println(w.isMatchB1(null, "null")); // false
 
-        System.out.println(w.isMatch("a", "aa")); // false
-        System.out.println(w.isMatch("aa", "a")); // false
-
-        System.out.println(w.isMatch("aa", "aa")); // true
-        System.out.println(w.isMatch("aa", "ab")); // false
-        System.out.println(w.isMatch("b", "*?*?")); // false
         System.out.println(w.isMatchB("b", "*?*?")); // false
+        System.out.println(w.isMatchB1("b", "*?*?")); // false
+    }
+
+    public static boolean isMatchB1(String s, String p) {
+        if (s == null && p == null)
+            return true;
+        if (s == null || p == null)
+            return false;
+        if (p.length() == 0)
+            return s.length() == 0;
+        //p's length 1 is special case
+        if (p.length() == 1 || p.charAt(1) != '*') {
+            if (s.length() < 1 || (p.charAt(0) != '.' && s.charAt(0) != p.charAt(0)))
+                return false;
+            return isMatchB1(s.substring(1), p.substring(1));
+        } else {
+            int len = s.length();
+            int i = -1;
+            while (i < len && (i < 0 || p.charAt(0) == '.' || p.charAt(0) == s.charAt(i))) {
+                if (isMatchB1(s.substring(i + 1), p.substring(2)))
+                    return true;
+                i++;
+            }
+            return false;
+        }
     }
 
     /**
@@ -84,6 +100,10 @@ class WildcardMatching {
      * O(m*n)
      */
     public boolean isMatch(String s, String p) {
+        if (s == null && p == null)
+            return true;
+        if (s == null || p == null)
+            return false;
         int count = 0;
         for (char c : p.toCharArray()) {
             if (c == '*')
@@ -106,6 +126,5 @@ class WildcardMatching {
         }
         return dp[p.length()][s.length()];
     }
-
 
 }

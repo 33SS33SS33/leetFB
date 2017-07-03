@@ -82,7 +82,6 @@ public class AlienDictionary {
         return result;
     }
 
-
     public String alienOrder(String[] words) {
         Node[] node = new Node[26];
         boolean[] happen = new boolean[26];

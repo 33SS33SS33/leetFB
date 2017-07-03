@@ -21,7 +21,6 @@ public class MaxSquare {
         char[][] matrix = {{'0', '0', '1', '1'}, {'0', '0', '1', '1'},
                 {'1', '1', '1', '1'}};
         System.out.println(s.maximalSquareA(matrix));
-
     }
 
     /**

@@ -17,10 +17,12 @@ import java.util.*;
  * If it is impossible to finish all courses, return an empty array.
  * For example:
  * 2, [[1,0]]
- * There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]
+ * There are a total of 2 courses to take. To take course 1 you should have finished course 0.
+ * So the correct course order is [0,1]
  * 4, [[1,0],[2,0],[3,1],[3,2]]
  * There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2.
- * Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3]. Another correct ordering is[0,2,1,3].
+ * Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3].
+ * Another correct ordering is[0,2,1,3].
  */
 public class CourseSchedule2 {
     public static void main(String[] args) {
@@ -32,6 +34,10 @@ public class CourseSchedule2 {
         }
     }
 
+    /**
+     * BFS This solution uses breath-first search and it is easy to understand.
+     * http://www.programcreek.com/2014/05/leetcode-course-schedule-java/
+     */
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         if (prerequisites == null) {
             throw new IllegalArgumentException("illegal prerequisites array");
@@ -61,7 +67,6 @@ public class CourseSchedule2 {
         //initialize result
         int[] result = new int[numCourses];
         int j = 0;
-
         while (!queue.isEmpty()) {
             int c = queue.remove();
             result[j++] = c;

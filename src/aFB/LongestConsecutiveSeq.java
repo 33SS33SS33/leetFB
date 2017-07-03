@@ -74,7 +74,7 @@ class LongestConsecutiveSeq {
     }
 
     /**
-     * 不懂
+     * 不要
      * Use a map to store ranges
      * Get lower bound with smaller value
      * Get upper bound with larger value
@@ -105,7 +105,7 @@ class LongestConsecutiveSeq {
         return maxLen;
     }
 
-    //不懂
+    //不要
     public static int longestConsecutiveB(int[] num) {
         int res = 0;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();

@@ -2,8 +2,7 @@ package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * 迭代递归都可以写
- * 都实现
+ * 迭代递归都可以写 都实现
  */
 public class LowestCommonAncestorofaBST {
     public static void main(String[] args) {
@@ -36,7 +35,7 @@ public class LowestCommonAncestorofaBST {
 
     /**
      * creek 递归
-     * This problem can be solved by using BST property, 递归
+     * This problem can be solved by using BST property
      * i.e., left < parent < right for each node. There are 3 cases to handle.
      */
     public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {

@@ -27,6 +27,7 @@ public class TargetSum {
 
     }
 
+    //https://discuss.leetcode.com/topic/76243/java-15-ms-c-3-ms-o-ns-iterative-dp-solution-using-subset-sum-with-explanation
     //不懂啊～～?????
     public static int findTargetSumWays(int[] nums, int s) {
         int sum = 0;
