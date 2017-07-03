@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 /**
  * Given a string S, find the longest palindromic substring in S. You may

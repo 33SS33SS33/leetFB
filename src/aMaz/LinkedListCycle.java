@@ -1,4 +1,4 @@
-package list;
+package aMaz;
 
 /**
  * Given a linked list, determine if it has a cycle in it.
@@ -8,7 +8,6 @@ package list;
  */
 class LinkedListCycle {
     public static void main(String[] args) {
-        LinkedListCycle2 r = new LinkedListCycle2();
         ListNode head = buildList();
         System.out.print(hasCycle(head));
     }

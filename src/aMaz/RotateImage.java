@@ -1,4 +1,4 @@
-package rectangle;
+package aMaz;
 
 /**
  * You are given an n x n 2D matrix representing an image.
@@ -7,17 +7,17 @@ package rectangle;
  * Could you do this in-place?
  * Tags: Array
  */
-class RotateImg {
+class RotateImage {
     public static void main(String[] args) {
         int[][] matrix = {{1, 2}, {4, 3}};
-        new RotateImg().rotate(matrix);
+        new RotateImage().rotate(matrix);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
             }
             System.out.println();
         }
-        new RotateImg().rotateB(matrix);
+        new RotateImage().rotateB(matrix);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");

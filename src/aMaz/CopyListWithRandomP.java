@@ -1,4 +1,4 @@
-package hard;
+package aMaz;
 
 import java.util.*;
 
