@@ -17,13 +17,7 @@ class RotateImage {
             }
             System.out.println();
         }
-        new RotateImage().rotateB(matrix);
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
+
     }
 
     /**
@@ -44,26 +38,6 @@ class RotateImage {
                 matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1]; // last row
                 matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1]; // last col
                 matrix[j][n - i - 1] = tmp;
-            }
-        }
-    }
-
-    /**
-     * navie
-     */
-    public void rotateB(int[][] matrix) {
-        if (matrix == null || matrix.length == 0)
-            return;
-        int m = matrix.length;
-        int[][] result = new int[m][m];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < m; j++) {
-                result[j][m - 1 - i] = matrix[i][j];
-            }
-        }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < m; j++) {
-                matrix[i][j] = result[i][j];
             }
         }
     }

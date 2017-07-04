@@ -12,8 +12,14 @@ package aMaz;
  * Explanation: The third maximum does not exist, so the maximum (2) is returned instead.
  */
 public class ThirdMaximumNumber {
+    public static void main(String[] args) {
+        int[] m = {3, 2, 1};
+        int[] n = {1, 2};
+        System.out.println(thirdMax(m));
+        System.out.println(thirdMax(n));
+    }
 
-    public int thirdMax(int[] nums) {
+    public static int thirdMax(int[] nums) {
         int max, mid, small, count;
         max = mid = small = Integer.MIN_VALUE;
         count = 0;  //Count how many top elements have been found.
