@@ -29,7 +29,6 @@ class LongestValidParen {
         System.out.println(longestValidParentheses("(())()")); // 6
         System.out.println(longestValidParentheses(")()()")); // 4
         System.out.println(longestValidParenthesesB(")()()")); // 4
-        System.out.println(longestValidParenthesesC(")()()")); // 4
         System.out.println(longestValidParenthesesD(")()()")); // 4
     }
 
@@ -50,34 +49,7 @@ class LongestValidParen {
                     start = i + 1;
                 } else {
                     stack.pop();
-                    max = stack.isEmpty() ?
-                            Math.max(max, i - start + 1) :
-                            Math.max(max, i - stack.peek());
-                }
-            }
-        }
-        return max;
-    }
-
-    /**
-     * 如上
-     */
-    public int longestValidParenthesesA(String s) {
-        Stack<Integer> stack = new Stack<Integer>();
-        int max = 0;
-        int left = -1;
-        for (int j = 0; j < s.length(); j++) {
-            if (s.charAt(j) == '(')
-                stack.push(j);
-            else {
-                if (stack.isEmpty())
-                    left = j;
-                else {
-                    stack.pop();
-                    if (stack.isEmpty())
-                        max = Math.max(max, j - left);
-                    else
-                        max = Math.max(max, j - stack.peek());
+                    max = stack.isEmpty() ? Math.max(max, i - start + 1) : Math.max(max, i - stack.peek());
                 }
             }
         }
@@ -144,37 +116,6 @@ class LongestValidParen {
             max = Math.max(dp[i], max);
         }
         return max;
-    }
-
-    /**
-     * Two pass
-     * Use a stack to store index of unmatched parentheses
-     * Go through the stack and find maximum of difference between indices
-     * Include len - first and last - 0
-     */
-    public static int longestValidParenthesesC(String s) {
-        Stack<Integer> st = new Stack<Integer>(); // store the index of unmatched parens
-        int len = s.length();
-        int longest = 0;
-        for (int i = 0; i < len; i++) {
-            if (s.charAt(i) == '(')
-                st.push(i);
-            else if (s.charAt(i) == ')' && !st.isEmpty() && s.charAt(st.peek()) == '(')
-                st.pop(); // pop if there is a pair
-            else
-                st.push(i); // right paren, empty or top is also right
-        }
-        if (st.isEmpty())
-            return len; // all valid
-        /*calculate longest length between each unpaired*/
-        int a = len, b = 0;
-        while (!st.isEmpty()) {
-            b = st.pop();
-            longest = Math.max(longest, a - b - 1); // update longest
-            a = b;
-        }
-        longest = Math.max(longest, a); // compare with last - 0
-        return longest;
     }
 
 }

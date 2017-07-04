@@ -16,31 +16,31 @@ import static java.lang.Math.max;
 class JumpGame2 {
     public static void main(String[] args) {
         int[] A = {2, 3, 1, 1, 4};
-        System.out.println(new JumpGame2().jumpA(A, 5));
         System.out.println(new JumpGame2().jump(A));
         System.out.println(new JumpGame2().jumpB(A));
         System.out.println(new JumpGame2().jumpC(A));
     }
 
     /**
-     * I try to change this problem to a BFS problem, where nodes in level i are all the
-     * nodes that can be reached in i-1th jump. for example. 2 3 1 1 4 , is 2|| 3 1|| 1 4 ||
-     * clearly, the minimum jump of 4 is 2 since 4 is in level 3. my ac code.
+     * Use last to store how far we already can reach Compare i with last
+     * If we run out of it, update and add 1 more step to result
+     * Return if last is already bigger than or equal to the length
+     * Use cur to store how far we can reach for the next step
      */
-    int jumpA(int A[], int n) {
-        if (n < 2)
-            return 0;
-        int level = 0, currentMax = 0, i = 0, nextMax = 0;
-        while (currentMax - i + 1 > 0) { //nodes count of current level>0
-            level++;
-            //traverse current level , and update the max nextMax=max(nextMax,A[i]+i);
-            for (; i <= currentMax; i++) {
-                if (nextMax >= n - 1)
-                    return level; // if last element is in level+1, then the min jump=level
+    public int jump(int[] A) {
+        int step = 0;
+        int last = 0; // how far we already can reach
+        int cur = 0; // how far can we reach for next step
+        for (int i = 0; i < A.length; i++) {
+            if (i > last) { // run out of we can reach, need one more step
+                last = cur;
+                step++;
+                if (last >= A.length)
+                    return step;
             }
-            currentMax = nextMax;
+            cur = max(cur, i + A[i]);
         }
-        return 0;
+        return step;
     }
 
     /**
@@ -67,11 +67,10 @@ class JumpGame2 {
     }
 
     /**
-     * 动归
+     * DP
      */
     public int jumpC(int[] A) {
         int[] steps = new int[A.length];
-
         steps[0] = 0;
         for (int i = 1; i < A.length; i++) {
             steps[i] = Integer.MAX_VALUE;
@@ -83,44 +82,6 @@ class JumpGame2 {
             }
         }
         return steps[A.length - 1];
-    }
-
-    /**
-     * 错的
-     * Use last to store how far we already can reach Compare i with last
-     * If we run out of it, update and add 1 more step to result
-     * Return if last is already bigger than or equal to the length
-     * Use cur to store how far we can reach for the next step
-     */
-    public int jump(int[] A) {
-        int step = 0;
-        int last = 0; // how far we already can reach
-        int cur = 0; // how far can we reach for next step
-        for (int i = 0; i < A.length; i++) {
-            if (i > last) { // run out of we can reach, need one more step
-                last = cur;
-                step++;
-                if (last >= A.length)
-                    return step;
-            }
-            cur = max(cur, i + A[i]);
-        }
-        return step;
-    }
-
-    int jump(int A[], int n) {
-        if (n < 2) return 0;
-        int level = 0, currentMax = 0, i = 0, nextMax = 0;
-
-        while (currentMax - i + 1 > 0) {        //nodes count of current level>0
-            level++;
-            for (; i <= currentMax; i++) {    //traverse current level , and update the max reach of next level
-                nextMax = max(nextMax, A[i] + i);
-                if (nextMax >= n - 1) return level;   // if last element is in level+1,  then the min jump=level
-            }
-            currentMax = nextMax;
-        }
-        return 0;
     }
 
 }

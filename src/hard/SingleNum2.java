@@ -48,7 +48,9 @@ class SingleNum2 {
         return ones;
     }
 
-    /*时间复杂度是O(n)。而空间复杂度需要一个32个元素的数组，也是固定的，因而空间复杂度是O(1)*/
+    /**
+     * 时间复杂度是O(n)。而空间复杂度需要一个32个元素的数组，也是固定的，因而空间复杂度是O(1)
+     */
     public static int singleNumberC(int[] A) {
         int[] digits = new int[32];
         for (int i = 0; i < 32; i++) {

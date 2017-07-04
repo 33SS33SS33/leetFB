@@ -50,9 +50,7 @@ class ScrambleStr {
     public static void main(String[] args) {
         String s1 = "great";
         String s2 = "rgtae";
-        System.out.println(isScramble(s1, s2));
-        System.out.println(isScramble2(s1, s2));
-        System.out.println(isScramble3(s1, s2));
+        System.out.println(ScrambleStr(s1, s2));
     }
 
     /**
@@ -66,7 +64,7 @@ class ScrambleStr {
      * first to test if the corresponding parts are anagrams. If not, skip
      * directly.
      */
-    static boolean isScramble2(String s1, String s2) {
+    static boolean ScrambleStr(String s1, String s2) {
         if (s1 == null || s2 == null || s1.length() != s2.length())
             return false;
         if (s1.equals(s2))
@@ -79,69 +77,14 @@ class ScrambleStr {
         if (!Arrays.equals(c1, c2))
             return false; // not anagram, can't be scramble
         for (int i = 1; i < s1.length(); i++) {
-            if (isScramble2(s1.substring(0, i), s2.substring(0, i))
-                    && isScramble2(s1.substring(i), s2.substring(i)))
+            if (ScrambleStr(s1.substring(0, i), s2.substring(0, i))
+                    && ScrambleStr(s1.substring(i), s2.substring(i)))
                 return true;
-            if (isScramble2(s1.substring(0, i), s2.substring(s2.length() - i))
-                    && isScramble2(s1.substring(i), s2.substring(0, s2.length() - i)))
+            if (ScrambleStr(s1.substring(0, i), s2.substring(s2.length() - i))
+                    && ScrambleStr(s1.substring(i), s2.substring(0, s2.length() - i)))
                 return true;
         }
         return false; // didn't pass the test
-    }
-
-    /**
-     * DP 三维动态规划
-     * f[n][i][j] means isScramble(s1[i: i+n], s2[j: j+n])
-     * f[n][i][j] = f[k][i][j] && f[n - k][i+k][j+k]
-     * || f[k][i][j+n-k] && f[n-k][i+k][j]
-     */
-    public static boolean isScramble(String s1, String s2) {
-        if (s1.length() != s2.length())
-            return false;
-        if (s1.length() == 0 || s1.equals(s2))
-            return true;
-        int n = s1.length();
-        boolean[][][] res = new boolean[n][n][n];
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                res[0][i][j] = s1.charAt(i) == s2.charAt(j);
-        for (int len = 2; len <= n; len++) {
-            for (int i = n - len; i >= 0; i--) {
-                for (int j = n - len; j >= 0; j--) {
-                    boolean r = false;
-                    for (int k = 1; k < len && r == false; k++) {
-                        r = (res[k - 1][i][j] && res[len - k - 1][i + k][j + k]) || (
-                                res[k - 1][i][j + len - k] && res[len - k - 1][i + k][j]);
-                    }
-                    res[len - 1][i][j] = r;
-                }
-            }
-        }
-        return res[n - 1][0][0];
-    }
-
-    public static boolean isScramble3(String s1, String s2) {
-        if (s1 == null || s2 == null || s1.length() != s2.length())
-            return false;
-        if (s1.length() == 0)
-            return true;
-        boolean[][][] res = new boolean[s1.length()][s2.length()][s1.length() + 1];
-        for (int i = 0; i < s1.length(); i++) {
-            for (int j = 0; j < s2.length(); j++) {
-                res[i][j][1] = s1.charAt(i) == s2.charAt(j);
-            }
-        }
-        for (int len = 2; len <= s1.length(); len++) {
-            for (int i = 0; i < s1.length() - len + 1; i++) {
-                for (int j = 0; j < s2.length() - len + 1; j++) {
-                    for (int k = 1; k < len; k++) {
-                        res[i][j][len] |= res[i][j][k] && res[i + k][j + k][len - k]
-                                || res[i][j + len - k][k] && res[i + k][j][len - k];
-                    }
-                }
-            }
-        }
-        return res[0][0][s1.length()];
     }
 
 }
