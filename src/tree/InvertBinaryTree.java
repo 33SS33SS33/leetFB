@@ -25,13 +25,13 @@ public class InvertBinaryTree {
         n2.left = n5;
         n2.right = n6;
         TreeNode res = new InvertBinaryTree().invertTree(root);
-        System.out.println(new InvertBinaryTree().levelOrder(res));
+//        System.out.println(new InvertBinaryTree().levelOrder(res));
 
         TreeNode res2 = new InvertBinaryTree().invertTreeA(root);
-        System.out.println(new InvertBinaryTree().levelOrder(res2));
+//        System.out.println(new InvertBinaryTree().levelOrder(res2));
 
         TreeNode res3 = new InvertBinaryTree().invertTreeB(root);
-        System.out.println(new InvertBinaryTree().levelOrder(res3));
+//        System.out.println(new InvertBinaryTree().levelOrder(res3));
     }
 
     /**
@@ -117,28 +117,6 @@ public class InvertBinaryTree {
             helper(p.left);
         if (p.right != null)
             helper(p.right);
-    }
-
-    private List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null)
-            return res;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode n = queue.poll();
-                curLevel.add(n.val);
-                if (n.left != null)
-                    queue.add(n.left);
-                if (n.right != null)
-                    queue.add(n.right);
-            }
-            res.add(curLevel);
-        }
-        return res;
     }
 
     public static class TreeNode {

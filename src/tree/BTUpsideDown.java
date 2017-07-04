@@ -29,8 +29,6 @@ public class BTUpsideDown {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(
-                new BTUpsideDown().levelOrder(new BTUpsideDown().upsideDownBinaryTree(root)));
     }
 
     /**
@@ -89,28 +87,6 @@ public class BTUpsideDown {
         // bad side effect
         root.left = null;
         root.right = null;
-    }
-
-    private List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null)
-            return res;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode n = queue.poll();
-                curLevel.add(n.val);
-                if (n.left != null)
-                    queue.add(n.left);
-                if (n.right != null)
-                    queue.add(n.right);
-            }
-            res.add(curLevel);
-        }
-        return res;
     }
 
     static class TreeNode {

@@ -12,7 +12,8 @@ package tree;
  * / \   \
  * 5   5   5
  * return 4.
- * 只要叶子节点 就一定是一个univalue tree 所以使用后序遍历即可 如果自己的左右子树都是 那么自己的值又和左右子树都一样 那么就把自己也算上(记得考虑子树是none的情况)
+ * 只要叶子节点 就一定是一个univalue tree 所以使用后序遍历即可 如果自己的左右子树都是
+ * 那么自己的值又和左右子树都一样 那么就把自己也算上(记得考虑子树是none的情况)
  * 然后返回即可
  */
 public class CountUnivalueSubtrees {

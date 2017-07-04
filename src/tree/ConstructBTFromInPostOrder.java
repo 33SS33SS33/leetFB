@@ -17,8 +17,8 @@ class ConstructBTFromInPostOrder {
         int[] postorder = {4, 5, 2, 6, 3, 1};
         TreeNode root = new ConstructBTFromInPostOrder().buildTree(inorder, postorder);
         TreeNode root2 = new ConstructBTFromInPostOrder().buildTreeB(inorder, postorder);
-        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root));
-        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root2));
+//        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root));
+//        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root2));
     }
 
     /**
@@ -75,28 +75,6 @@ class ConstructBTFromInPostOrder {
         root.right = helper(inorder, postorder, index + 1, inR, postR - (inR - index), postR - 1,
                 map);
         return root;
-    }
-
-    private List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null)
-            return res;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode n = queue.poll();
-                curLevel.add(n.val);
-                if (n.left != null)
-                    queue.add(n.left);
-                if (n.right != null)
-                    queue.add(n.right);
-            }
-            res.add(curLevel);
-        }
-        return res;
     }
 
     public class TreeNode {

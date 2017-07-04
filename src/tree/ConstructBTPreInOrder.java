@@ -14,8 +14,6 @@ class ConstructBTPreInOrder {
         int[] inorder = {4, 2, 5, 1, 3, 6};
         TreeNode root = new ConstructBTPreInOrder().buildTreeA(preorder, inorder);
         TreeNode root2 = new ConstructBTPreInOrder().buildTreeB(preorder, inorder);
-        System.out.println(new ConstructBTPreInOrder().levelOrder(root));
-        System.out.println(new ConstructBTPreInOrder().levelOrder(root2));
     }
 
     /**
@@ -87,28 +85,6 @@ class ConstructBTPreInOrder {
                 k - 1);
         p.right = construct(preorder, preStart + (k - inStart) + 1, preEnd, inorder, k + 1, inEnd);
         return p;
-    }
-
-    private List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null)
-            return res;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                TreeNode n = queue.poll();
-                curLevel.add(n.val);
-                if (n.left != null)
-                    queue.add(n.left);
-                if (n.right != null)
-                    queue.add(n.right);
-            }
-            res.add(curLevel);
-        }
-        return res;
     }
 
     public class TreeNode {

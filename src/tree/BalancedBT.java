@@ -9,9 +9,8 @@ package tree;
  */
 class BalancedBT {
     public static void main(String[] args) {
-        TreeNode head = buildTree();
+        TreeNode head = new BalancedBT().buildTree();
         System.out.println(new BalancedBT().isBalancedA(head));
-        System.out.println(new BalancedBT().isBalancedB(head));
     }
 
     public boolean isBalancedA(TreeNode root) {
@@ -30,44 +29,7 @@ class BalancedBT {
             return Math.max(height(root.left), height(root.right)) + 1;
     }
 
-    /**
-     * creek
-     * 这里我们用一个整数来做返回值，而0或者正数用来表示树的深度，而-1则用来比较此树已经不平衡了，
-     * 如果已经不平衡，则递归一直返回-1即可，也没有继续比较的必要了，
-     * 否则就利用返回的深度信息看看左右子树是不是违反平衡条件，
-     * 如果违反返回-1，否则返回左右子树深度大的加一作为自己的深度即可。
-     * 算法的时间是一次树的遍历O(n)，空间是栈高度O(logn)。
-     */
-    public boolean isBalancedB(TreeNode root) {
-        if (root == null)
-            return true;
-        if (getHeight(root) == -1)
-            return false;
-        return true;
-        //     即   return maxDepth(root) != -1;
-    }
-
-    /**
-     * Modification of max depth
-     * If current node is null, return 0
-     * Compare left depth with right depth
-     * If the difference is bigger than 1, set isBalance false
-     * Otherwise go on to the rest of the nodes
-     */
-    public int getHeight(TreeNode root) {
-        if (root == null)
-            return 0;
-        int left = getHeight(root.left);
-        int right = getHeight(root.right);
-        if (left == -1 || right == -1)
-            return -1;
-        if (Math.abs(left - right) > 1) {
-            return -1;
-        }
-        return Math.max(left, right) + 1;
-    }
-
-    private static TreeNode buildTree() {
+    public static TreeNode buildTree() {
         TreeNode t0 = new TreeNode(20);
         TreeNode t1 = new TreeNode(9);
         TreeNode t2 = new TreeNode(49);

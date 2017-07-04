@@ -27,12 +27,6 @@ class MaxDepth {
     /**
      * Recursive, O(n) 递归
      */
-    /* If tree is empty, return 0
-     * Else
-     * Get the max depth of left subtree recursively
-     * Get the max depth of right subtree recursively
-     * Get the max of max depths of left and right subtrees and add 1 to it
-     */
     private int maxDepthA(TreeNode root) {
         if (root == null)
             return 0;

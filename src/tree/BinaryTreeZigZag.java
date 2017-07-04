@@ -25,9 +25,9 @@ import java.util.Queue;
  * Tags: Tree, BFS, Stack
  * 这个题可以用BFS还有DFS BFS比较好
  * 自己的解法类似BFS
- * 把节点一排一排的入栈 然后有一个direction变量  可以用来规定入栈的顺序 从左到右 还是从右到左
- * 然后下次就反过来
- * 然后每次先遍历栈里的元素 这样就得到当前层的答案  然后再把下一层的入栈
+ * 把节点一排一排的入栈 有一个direction变量 可以用来规定入栈的顺序 从左到右 还是从右到左
+ * 下次就反过来
+ * 每次先遍历栈里的元素 这样就得到当前层的答案 再把下一层的入栈
  */
 
 class BinaryTreeZigZag {
@@ -35,14 +35,13 @@ class BinaryTreeZigZag {
         TreeNode head = buildTree();
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrdera(head).toString());
         System.out.println(new BinaryTreeZigZag().zigzagLevelOrder(head).toString());
-        System.out.println(new BinaryTreeZigZag().zigzagLevelOrderB(head).toString());
-        System.out.println(new BinaryTreeZigZag().zigzagLevelOrderC(head).toString());
     }
 
     /**
-     * O(n) solution by using LinkedList along with ArrayList. So insertion in the
-     * inner list and outer list are both O(1),
-     * 2. Using DFS and creating new lists when needed.
+     * 最好的
+     * O(n) solution by using LinkedList along with ArrayList.
+     * So insertion in the inner list and outer list are both O(1).
+     * Using DFS and creating new lists when needed.
      */
     public List<List<Integer>> zigzagLevelOrdera(TreeNode root) {
         List<List<Integer>> sol = new ArrayList<List<Integer>>();
@@ -95,85 +94,6 @@ class BinaryTreeZigZag {
             }
             toggle = !toggle;
             res.add(curLevel);
-        }
-        return res;
-    }
-
-    /**
-     * Use two lists, one for cur level, one for next level
-     * Use a binary flag to determine whether we toggle the order of current level or not
-     * Update flag after each level
-     */
-    public List<List<Integer>> zigzagLevelOrderB(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null)
-            return res;
-        List<TreeNode> level = new ArrayList<TreeNode>();
-        level.add(root);
-        boolean toggle = false;
-        while (!level.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
-            List<TreeNode> nextLevel = new ArrayList<TreeNode>();
-            while (!level.isEmpty()) {
-                TreeNode temp = level.remove(0);
-                if (!toggle)
-                    curLevel.add(temp.val);
-                else
-                    curLevel.add(0, temp.val); // insert to front
-                if (temp.left != null)
-                    nextLevel.add(temp.left);
-                if (temp.right != null)
-                    nextLevel.add(temp.right);
-            }
-            res.add(curLevel);
-            level = nextLevel;
-            toggle = toggle ? false : true;
-        }
-        return res;
-    }
-
-    /**
-     * use stack
-     */
-    public ArrayList<ArrayList<Integer>> zigzagLevelOrderC(TreeNode root) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-        if (root == null)
-            return res;
-        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
-        int level = 1;
-        ArrayList<Integer> item = new ArrayList<Integer>();
-        item.add(root.val);
-        res.add(item);
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            LinkedList<TreeNode> newStack = new LinkedList<TreeNode>();
-            item = new ArrayList<Integer>();
-            while (!stack.isEmpty()) {
-                TreeNode node = stack.pop();
-                if (level % 2 == 0) {
-                    if (node.left != null) {
-                        newStack.push(node.left);
-                        item.add(node.left.val);
-                    }
-                    if (node.right != null) {
-                        newStack.push(node.right);
-                        item.add(node.right.val);
-                    }
-                } else {
-                    if (node.right != null) {
-                        newStack.push(node.right);
-                        item.add(node.right.val);
-                    }
-                    if (node.left != null) {
-                        newStack.push(node.left);
-                        item.add(node.left.val);
-                    }
-                }
-            }
-            level++;
-            if (item.size() > 0)
-                res.add(item);
-            stack = newStack;
         }
         return res;
     }
