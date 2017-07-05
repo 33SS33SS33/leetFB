@@ -17,38 +17,19 @@ class JumpGame2 {
     public static void main(String[] args) {
         int[] A = {2, 3, 1, 1, 4};
         System.out.println(new JumpGame2().jump(A));
-        System.out.println(new JumpGame2().jumpB(A));
         System.out.println(new JumpGame2().jumpC(A));
-    }
-
-    /**
-     * Use last to store how far we already can reach Compare i with last
-     * If we run out of it, update and add 1 more step to result
-     * Return if last is already bigger than or equal to the length
-     * Use cur to store how far we can reach for the next step
-     */
-    public int jump(int[] A) {
-        int step = 0;
-        int last = 0; // how far we already can reach
-        int cur = 0; // how far can we reach for next step
-        for (int i = 0; i < A.length; i++) {
-            if (i > last) { // run out of we can reach, need one more step
-                last = cur;
-                step++;
-                if (last >= A.length)
-                    return step;
-            }
-            cur = max(cur, i + A[i]);
-        }
-        return step;
     }
 
     /**
      * ganker--其实思路和Jump Game还是类似的，只是原来的全局最优现在要分成step步最优和step-1步最优
      * （假设当前步数是step）。当走到超过step-1步最远的位置时，说明step-1不能到达当前一步，
      * 我们就可以更新步数，将step+1。时间复杂度仍然是O(n)，空间复杂度也是O(1)
+     * Use last to store how far we already can reach Compare i with last
+     * If we run out of it, update and add 1 more step to result
+     * Return if last is already bigger than or equal to the length
+     * Use cur to store how far we can reach for the next step
      */
-    public int jumpB(int[] A) {
+    public int jump(int[] A) {
         if (A == null || A.length == 0)
             return 0;
         int lastReach = 0;
