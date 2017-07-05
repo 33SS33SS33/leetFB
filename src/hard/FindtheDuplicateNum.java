@@ -14,27 +14,9 @@ package hard;
 public class FindtheDuplicateNum {
     public static void main(String[] args) {
         int[] num = {1, 2, 4, 2, 3};
-        System.out.println(new FindtheDuplicateNum().findDuplicatea(num));
         System.out.println(new FindtheDuplicateNum().findDuplicate(num));
         System.out.println(new FindtheDuplicateNum().findDuplicateB(num));
     }
-
-    public int findDuplicatea(int[] nums) {
-        int n = nums.length;
-        int slow = n;
-        int fast = n;
-        do {
-            slow = nums[slow - 1];
-            fast = nums[nums[fast - 1] - 1];
-        } while (slow != fast);
-        slow = n;
-        while (slow != fast) {
-            slow = nums[slow - 1];
-            fast = nums[fast - 1];
-        }
-        return slow;
-    }
-
 
     public int findDuplicate(int[] nums) {
         int n = nums.length;
@@ -51,7 +33,7 @@ public class FindtheDuplicateNum {
             slow = nums[slow];
             fast = nums[fast];
         }
-        return slow + 1;
+        return slow + 1; //???
     }
 
     public static int findDuplicateB(int[] nums) {

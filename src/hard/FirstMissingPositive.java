@@ -21,8 +21,6 @@ class FirstMissingPositive {
         int[] B = {3, 4, 2, 1};
         System.out.println(new FirstMissingPositive().firstMissingPositive(A));
         System.out.println(new FirstMissingPositive().firstMissingPositive(B));
-        System.out.println(new FirstMissingPositive().firstMissingPositiveB(A));
-        System.out.println(new FirstMissingPositive().firstMissingPositiveC(A));
     }
 
     /**
@@ -46,59 +44,6 @@ class FirstMissingPositive {
             if (A[i] != i + 1)
                 return i + 1;
         return n + 1; // nothing in middle losing, return largest
-    }
-
-
-    public int firstMissingPositiveB(int[] A) {
-        final int N = A.length;
-        next:
-        for (int i = 0; i < N; i++) {
-            int v = A[i];
-            if (v == i + 1)
-                continue;
-            while (true) {
-                if (v <= 0 || v > N) {
-                    continue next;
-                }
-                int t = A[v - 1];
-                if (t == v) {
-                    continue next;
-                }
-                A[v - 1] = v;
-                v = t;
-            }
-        }
-        for (int i = 0; i < N; i++) {
-            int v = A[i];
-            if (v != i + 1) {
-                return i + 1;
-            }
-        }
-        return N + 1;
-    }
-
-    /**
-     * creek This problem only considers positive numbers, so we need to shift 1 offset. The ith element is i+1.
-     */
-    public int firstMissingPositiveC(int[] A) {
-        int n = A.length;
-        for (int i = 0; i < n; i++) {
-            while (A[i] != i + 1) {
-                if (A[i] <= 0 || A[i] >= n)
-                    break;
-                if (A[i] == A[A[i] - 1])
-                    break;
-                int temp = A[i];
-                A[i] = A[temp - 1];
-                A[temp - 1] = temp;
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            if (A[i] != i + 1) {
-                return i + 1;
-            }
-        }
-        return n + 1;
     }
 
 }

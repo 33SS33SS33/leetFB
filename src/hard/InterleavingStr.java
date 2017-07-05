@@ -27,6 +27,40 @@ class InterleavingStr {
         System.out.println(isInterleaveC(s1, s2, s3));
     }
 
+    /**
+     * DP,
+     * bottom-up, Time: O(nm), and Space: O(nm)
+     * quick check, length of s3 should be the sum of s1 and s2
+     * 1. i == 0 && j == 0, dp[i][j] is true initially
+     * 2. first row, i == 0, dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1)== s3.charAt(j - 1)
+     * 3. first col, j == 0, dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1)== s3.charAt(i - 1)
+     * 4. dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j- 1))|| (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1))
+     * final result should dp[a][b]
+     */
+    public static boolean isInterleave(String s1, String s2, String s3) {
+        if (s1 == null || s2 == null || s3 == null)
+            return false;
+        int a = s1.length();
+        int b = s2.length();
+        if (s3.length() != a + b)
+            return false;
+        boolean[][] dp = new boolean[a + 1][b + 1];
+        for (int i = 0; i <= a; i++) {
+            for (int j = 0; j <= b; j++) {
+                if (i == 0 && j == 0)
+                    dp[i][j] = true;
+                else if (i == 0)
+                    dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
+                else if (j == 0)
+                    dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i - 1);
+                else
+                    dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1)) || (
+                            dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1));
+            }
+        }
+        return dp[a][b];
+    }
+
     public static boolean isInterleavea(String s1, String s2, String s3) {
         if ((s1.length() + s2.length()) != s3.length())
             return false;
@@ -70,39 +104,6 @@ class InterleavingStr {
         return res[minWord.length()];
     }
 
-    /**
-     * DP,
-     * bottom-up, Time: O(nm), and Space: O(nm)
-     * quick check, length of s3 should be the sum of s1 and s2
-     * 1. i == 0 && j == 0, dp[i][j] is true initially
-     * 2. first row, i == 0, dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1)== s3.charAt(j - 1)
-     * 3. first col, j == 0, dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1)== s3.charAt(i - 1)
-     * 4. dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j- 1))|| (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1))
-     * final result should dp[a][b]
-     */
-    public static boolean isInterleave(String s1, String s2, String s3) {
-        if (s1 == null || s2 == null || s3 == null)
-            return false;
-        int a = s1.length();
-        int b = s2.length();
-        if (s3.length() != a + b)
-            return false;
-        boolean[][] dp = new boolean[a + 1][b + 1];
-        for (int i = 0; i <= a; i++) {
-            for (int j = 0; j <= b; j++) {
-                if (i == 0 && j == 0)
-                    dp[i][j] = true;
-                else if (i == 0)
-                    dp[i][j] = dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
-                else if (j == 0)
-                    dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i - 1);
-                else
-                    dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1)) || (
-                            dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1));
-            }
-        }
-        return dp[a][b];
-    }
 
     /**
      * DP, space optimized, O(m)

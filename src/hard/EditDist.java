@@ -15,7 +15,6 @@ class EditDist {
         String T = "rabbi";
         System.out.println(new EditDist().minDistance(S, T));
         System.out.println(new EditDist().minDistanceOptimal(S, T));
-        System.out.println(new EditDist().minDistanceA(S, T));
     }
 
     /**
@@ -47,9 +46,7 @@ class EditDist {
         for (int i = 1; i < m + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
                 d[i][j] = Math.min(Math.min(d[i][j - 1] + 1, d[i - 1][j] + 1),
-                        word1.charAt(i - 1) == word2.charAt(j - 1) ?
-                                d[i - 1][j - 1] :
-                                d[i - 1][j - 1] + 1);
+                                word1.charAt(i - 1) == word2.charAt(j - 1) ? d[i - 1][j - 1] : d[i - 1][j - 1] + 1);
             }
         }
         return d[m][n];
@@ -78,42 +75,6 @@ class EditDist {
             }
         }
         return d[n];
-    }
-
-    /**
-     * creek
-     */
-    public static int minDistanceA(String word1, String word2) {
-        int len1 = word1.length();
-        int len2 = word2.length();
-        // len1+1, len2+1, because finally return dp[len1][len2]
-        int[][] dp = new int[len1 + 1][len2 + 1];
-        for (int i = 0; i <= len1; i++) {
-            dp[i][0] = i;
-        }
-        for (int j = 0; j <= len2; j++) {
-            dp[0][j] = j;
-        }
-        //iterate though, and check last char
-        for (int i = 0; i < len1; i++) {
-            char c1 = word1.charAt(i);
-            for (int j = 0; j < len2; j++) {
-                char c2 = word2.charAt(j);
-                //if last two chars equal
-                if (c1 == c2) {
-                    //update dp value for +1 length
-                    dp[i + 1][j + 1] = dp[i][j];
-                } else {
-                    int replace = dp[i][j] + 1;
-                    int insert = dp[i][j + 1] + 1;
-                    int delete = dp[i + 1][j] + 1;
-                    int min = replace > insert ? insert : replace;
-                    min = delete > min ? min : delete;
-                    dp[i + 1][j + 1] = min;
-                }
-            }
-        }
-        return dp[len1][len2];
     }
 
 }
