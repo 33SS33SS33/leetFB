@@ -78,16 +78,13 @@ class ImplementStrStr2 {
             return haystack;
         if (haystack.length() < needle.length())
             return null;
-
         int base = 29;
         long patternHash = 0;
         long tempBase = 1;
-
         for (int i = needle.length() - 1; i >= 0; i--) {
             patternHash += (int) needle.charAt(i) * tempBase;
             tempBase *= base;
         }
-
         long hayHash = 0;
         tempBase = 1;
         for (int i = needle.length() - 1; i >= 0; i--) {
@@ -95,11 +92,9 @@ class ImplementStrStr2 {
             tempBase *= base;
         }
         tempBase /= base;
-
         if (hayHash == patternHash) {
             return haystack;
         }
-
         for (int i = needle.length(); i < haystack.length(); i++) {
             hayHash = (hayHash - (int) haystack.charAt(i - needle.length()) * tempBase) * base
                     + (int) haystack.charAt(i);

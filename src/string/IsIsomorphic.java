@@ -6,7 +6,6 @@ import java.util.Map;
 /**
  * Created by GAOSHANSHAN835 on 2015/12/23.
  * For example,"egg" and "add" are isomorphic, "foo" and "bar" are not.
- * <p/>
  * 有很多解法 很重要的题目
  */
 public class IsIsomorphic {
