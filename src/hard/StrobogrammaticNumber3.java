@@ -30,8 +30,7 @@ public class StrobogrammaticNumber3 {
             rst.addAll(helper(n, n));
         }
         for (String num : rst) {
-            if ((num.length() == low.length() && num.compareTo(low) < 0) || (
-                    num.length() == high.length() && num.compareTo(high) > 0))
+            if ((num.length() == low.length() && num.compareTo(low) < 0) || (num.length() == high.length() && num.compareTo(high) > 0))
                 continue;
             count++;
         }

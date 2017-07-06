@@ -19,8 +19,12 @@ package hard;
  * The same letters are at least distance 2 from each other.
  */
 public class RearrangeStringkDistanceApart {
+    public static void main(String[] args) {
+        System.out.println(rearrangeStringkDistanceApart("aabbcc", 3));
+        System.out.println(rearrangeStringkDistanceApart("aaabc", 3));
+    }
 
-    public String rearrangeString(String str, int k) {
+    public static String rearrangeStringkDistanceApart(String str, int k) {
         int length = str.length();
         int[] count = new int[26];
         int[] valid = new int[26];
@@ -38,7 +42,7 @@ public class RearrangeStringkDistanceApart {
         return sb.toString();
     }
 
-    private int findValidMax(int[] count, int[] valid, int index) {
+    private static int findValidMax(int[] count, int[] valid, int index) {
         int max = Integer.MIN_VALUE;
         int candidatePos = -1;
         for (int i = 0; i < count.length; i++) {

@@ -104,7 +104,6 @@ class PalindromePartition2 {
     }
 
     public static int minCut(String s, int count, Set<String> palin) {
-        // System.out.println("s: " + s + " \tcount: " + count);
         if (s == null || s.length() == 0 || isPalindrome(s)) {
             palin.add(s);
             return count;
@@ -114,10 +113,7 @@ class PalindromePartition2 {
             if (isPalindrome(s.substring(0, i))) {
                 palin.add(s.substring(0, i));
                 // add DP here
-                int result = palin.contains(s.substring(i)) ?
-                        count :
-                        minCut(s.substring(i), count + 1, palin);
-                ;
+                int result = palin.contains(s.substring(i)) ? count : minCut(s.substring(i), count + 1, palin);
                 min = Math.min(min, result);
             }
         }

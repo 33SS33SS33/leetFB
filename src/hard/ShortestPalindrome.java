@@ -26,7 +26,7 @@ public class ShortestPalindrome {
     public static void main(String[] args) {
         String s = "abcd";
         System.out.println(shortestPalindromea(s));
-        System.out.println(shortestPalindromea ("aabba"));
+        System.out.println(shortestPalindromea("aabba"));
     }
 
     /**
@@ -43,8 +43,7 @@ public class ShortestPalindrome {
             return s;
         }
         String suffix = s.substring(j);
-        return new StringBuffer(suffix).reverse().toString() + shortestPalindromea(
-                s.substring(0, j)) + suffix;
+        return new StringBuffer(suffix).reverse().toString() + shortestPalindromea(s.substring(0, j)) + suffix;
     }
 
 }

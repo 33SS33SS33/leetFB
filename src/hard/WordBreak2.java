@@ -17,35 +17,8 @@ public class WordBreak2 {
     public static void main(String[] args) {
         String s = "catsanddog";
         Set<String> dict = new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
-        List<String> res = new WordBreak2().wordBreak(s, dict);
-        System.out.println(res.toString());
-        List<String> res2 = new WordBreak2().wordBreakB(s, dict);
-        System.out.println(res2.toString());
-        System.out.println(new WordBreak2().wordBreakC(s, dict).toString());
-    }
-
-    //最好的
-    public ArrayList<String> wordBreakC(String s, Set<String> dict) {
-        ArrayList<String> res = new ArrayList<String>();
-        if (s == null || s.length() == 0)
-            return res;
-        helper(s, dict, 0, "", res);
-        return res;
-    }
-
-    private void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res) {
-        if (start >= s.length()) {
-            res.add(item);
-            return;
-        }
-        StringBuilder str = new StringBuilder();
-        for (int i = start; i < s.length(); i++) {
-            str.append(s.charAt(i));
-            if (dict.contains(str.toString())) {
-                String newItem = item.length() > 0 ? (item + " " + str.toString()) : str.toString();
-                helper(s, dict, i + 1, newItem, res);
-            }
-        }
+        System.out.println(wordBreak(s, dict).toString());
+        System.out.println(wordBreakC(s, dict).toString());
     }
 
     /**
@@ -63,10 +36,12 @@ public class WordBreak2 {
      * If yes, get the result from memory function
      * If there is an result, add each word to current solution with front in
      */
-    Map<String, List<String>> res = new HashMap<String, List<String>>();
+    static Map<String, List<String>> res = new HashMap<String, List<String>>();
 
-    public List<String> wordBreak(String s, Set<String> dict) {
+    public static List<String> wordBreak(String s, Set<String> dict) {
         List<String> words = new ArrayList<String>();
+        if (s == null || s.length() == 0)
+            return words;
         int len = s.length();
         for (int i = 1; i <= len; i++) {
             String pref = s.substring(0, i);
@@ -88,35 +63,28 @@ public class WordBreak2 {
         return words;
     }
 
-    /**
-     * Backtracking
-     * Get prefix first
-     * If prefix is in dictionary, check current length
-     * If reaches the end, add prefix to result
-     * If not, go ahead and decompose the remain string
-     * Get the result list, and concat prefix with those results
-     * Add the concatenated string to result and return
-     */
-    public List<String> wordBreakB(String s, Set<String> dict) {
-        List<String> words = new ArrayList<String>();
-        int len = s.length();
-        for (int i = 1; i <= len; i++) {
-            String pref = s.substring(0, i);
-            if (dict.contains(pref)) {
-                if (i == len)
-                    words.add(pref);
-                else {
-                    String remain = s.substring(i, len);
-                    List<String> remainDecomp = wordBreakB(remain, dict);
-                    if (remainDecomp != null) { // has decompositions
-                        for (String item : remainDecomp) {
-                            words.add(pref + " " + item);
-                        }
-                    }
-                }
+    //最好的
+    public static ArrayList<String> wordBreakC(String s, Set<String> dict) {
+        ArrayList<String> res = new ArrayList<String>();
+        if (s == null || s.length() == 0)
+            return res;
+        helper(s, dict, 0, "", res);
+        return res;
+    }
+
+    private static void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res) {
+        if (start >= s.length()) {
+            res.add(item);
+            return;
+        }
+        StringBuilder str = new StringBuilder();
+        for (int i = start; i < s.length(); i++) {
+            str.append(s.charAt(i));
+            if (dict.contains(str.toString())) {
+                String newItem = item.length() > 0 ? (item + " " + str.toString()) : str.toString();
+                helper(s, dict, i + 1, newItem, res);
             }
         }
-        return words;
     }
 
 }
