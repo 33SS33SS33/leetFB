@@ -19,11 +19,13 @@ public class PalindromePairs {
     public static void main(String[] args) {
         String[] words = {"bat", "tab", "cat"};
         String[] words2 = {"abcd", "dcba", "lls", "s", "sssll"};
-        System.out.println(new PalindromePairs().palindromePairs(words));
-        System.out.print(new PalindromePairs().palindromePairs(words2));
+        System.out.println(palindromePairs(words));
+        System.out.println(palindromePairsa(words));
+        System.out.println(palindromePairs(words2));
+        System.out.println(palindromePairsa(words2));
     }
 
-    public List<List<Integer>> palindromePairs(String[] words) {
+    public static List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> pairs = new LinkedList<List<Integer>>();
         if (words == null)
             return pairs;
@@ -48,20 +50,19 @@ public class PalindromePairs {
         return pairs;
     }
 
-    private boolean isPalindrome(String s) {
+    private static boolean isPalindrome(String s) {
         for (int i = 0; i < s.length() / 2; ++i)
             if (s.charAt(i) != s.charAt(s.length() - 1 - i))
                 return false;
         return true;
     }
 
-    public List<List<Integer>> palindromePairsa(String[] words) {
+    public static List<List<Integer>> palindromePairsa(String[] words) {
         List<List<Integer>> ret = new ArrayList<>();
         if (words == null || words.length < 2) return ret;
         Map<String, Integer> map = new HashMap<String, Integer>();
         for (int i = 0; i < words.length; i++) map.put(words[i], i);
         for (int i = 0; i < words.length; i++) {
-            // System.out.println(words[i]);
             for (int j = 0; j <= words[i].length(); j++) { // notice it should be "j <= words[i].length()"
                 String str1 = words[i].substring(0, j);
                 String str2 = words[i].substring(j);
@@ -72,7 +73,6 @@ public class PalindromePairs {
                         list.add(map.get(str2rvs));
                         list.add(i);
                         ret.add(list);
-                        // System.out.printf("isPal(str1): %s\n", list.toString());
                     }
                 }
                 if (isPalindrome(str2)) {
@@ -83,7 +83,6 @@ public class PalindromePairs {
                         list.add(i);
                         list.add(map.get(str1rvs));
                         ret.add(list);
-                        // System.out.printf("isPal(str2): %s\n", list.toString());
                     }
                 }
             }
