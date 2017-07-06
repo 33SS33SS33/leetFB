@@ -1,6 +1,8 @@
 package hard;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * The n-queens puzzle is the problem of placing n queens on an n×n chessboard
@@ -33,6 +35,33 @@ class NQueens {
             }
         }
         System.out.println(new NQueens().solveNQueensaa(4));
+    }
+
+    //最好的
+    public static List<String[]> solveNQueensa(int n) {
+        List<String[]> res = new ArrayList<>();
+        helper(0, new boolean[n], new boolean[2 * n], new boolean[2 * n], new String[n], res);
+        return res;
+    }
+
+    private static void helper(int r, boolean[] cols, boolean[] d1, boolean[] d2,
+                               String[] board, List<String[]> res) {
+        if (r == board.length)
+            res.add(board.clone());
+        else {
+            for (int c = 0; c < board.length; c++) {
+                int id1 = r - c + board.length, id2 = 2 * board.length - r - c - 1;
+                if (!cols[c] && !d1[id1] && !d2[id2]) {
+                    char[] row = new char[board.length];
+                    Arrays.fill(row, '.');
+                    row[c] = 'Q';
+                    board[r] = new String(row);
+                    cols[c] = d1[id1] = d2[id2] = true;
+                    helper(r + 1, cols, d1, d2, board, res);
+                    cols[c] = d1[id1] = d2[id2] = false;
+                }
+            }
+        }
     }
 
     public static List<List<String>> solveNQueensaa(int n) {
@@ -69,74 +98,6 @@ class NQueens {
                 cols[colidx] = d1[d1idx] = d2[d2idx] = false;
             }
         }
-    }
-
-    //最好的
-    public static List<String[]> solveNQueensa(int n) {
-        List<String[]> res = new ArrayList<>();
-        helper(0, new boolean[n], new boolean[2 * n], new boolean[2 * n], new String[n], res);
-        return res;
-    }
-
-    private static void helper(int r, boolean[] cols, boolean[] d1, boolean[] d2,
-                               String[] board, List<String[]> res) {
-        if (r == board.length) res.add(board.clone());
-        else {
-            for (int c = 0; c < board.length; c++) {
-                int id1 = r - c + board.length, id2 = 2 * board.length - r - c - 1;
-                if (!cols[c] && !d1[id1] && !d2[id2]) {
-                    char[] row = new char[board.length];
-                    Arrays.fill(row, '.');
-                    row[c] = 'Q';
-                    board[r] = new String(row);
-                    cols[c] = true;
-                    d1[id1] = true;
-                    d2[id2] = true;
-                    helper(r + 1, cols, d1, d2, board, res);
-                    cols[c] = false;
-                    d1[id1] = false;
-                    d2[id2] = false;
-                }
-            }
-        }
-    }
-
-    public ArrayList<String[]> solveNQueensB(int n) {
-        ArrayList<String[]> res = new ArrayList<String[]>();
-        helper(n, 0, new int[n], res);
-        return res;
-    }
-
-    private void helper(int n, int row, int[] columnForRow, ArrayList<String[]> res) {
-        if (row == n) {
-            String[] item = new String[n];
-            for (int i = 0; i < n; i++) {
-                StringBuilder strRow = new StringBuilder();
-                for (int j = 0; j < n; j++) {
-                    if (columnForRow[i] == j)
-                        strRow.append('Q');
-                    else
-                        strRow.append('.');
-                }
-                item[i] = strRow.toString();
-            }
-            res.add(item);
-            return;
-        }
-        for (int i = 0; i < n; i++) {
-            columnForRow[row] = i;
-            if (check(row, columnForRow)) {
-                helper(n, row + 1, columnForRow, res);
-            }
-        }
-    }
-
-    private boolean check(int row, int[] columnForRow) {
-        for (int i = 0; i < row; i++) {
-            if (columnForRow[row] == columnForRow[i] || Math.abs(columnForRow[row] - columnForRow[i]) == row - i)
-                return false;
-        }
-        return true;
     }
 
 }
