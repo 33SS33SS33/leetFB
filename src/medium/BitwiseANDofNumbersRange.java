@@ -33,7 +33,7 @@ public class BitwiseANDofNumbersRange {
     }
 
     /**
-     * creek--
+     * creek
      */
     public static int rangeBitwiseAndB(int m, int n) {
         while (n > m) {

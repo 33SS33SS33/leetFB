@@ -13,10 +13,9 @@ class LinkedListCycle2 {
         System.out.print(detectCyclea(head).val);
     }
 
-    /**
-     * 最好的  错的？
-     */
     public static ListNode detectCyclea(ListNode head) {
+        if (head == null)
+            return null;
         ListNode slow = head;
         ListNode fast = head;
         while (fast != null && fast.next != null) {
@@ -32,35 +31,6 @@ class LinkedListCycle2 {
             }
         }
         return null;
-    }
-
-    /**
-     * Reset slow to head after cycle is detected
-     * Then move until slow and fast meets
-     * Each one step every time
-     */
-    public static ListNode detectCycle(ListNode head) {
-        if (head == null)
-            return null;
-        ListNode slow = head;
-        ListNode fast = head;
-        boolean hasCycle = false;
-        while (fast.next != null && fast.next.next != null) {
-            fast = fast.next.next;
-            slow = slow.next;
-            if (fast == slow) {
-                hasCycle = true;
-                break;
-            }
-        }
-        if (!hasCycle)
-            return null;
-        slow = head;
-        while (slow != fast) { // move x steps further
-            fast = fast.next;
-            slow = slow.next;
-        }
-        return slow;
     }
 
     public static ListNode buildList() {

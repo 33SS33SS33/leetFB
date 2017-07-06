@@ -9,12 +9,10 @@ package medium;
  */
 public class ChunkedPalindrome {
     public static void main(String[] args) {
-        ChunkedPalindrome sol = new ChunkedPalindrome();
-        int res = sol.countChunk("aaaaaa");
-        System.out.println(res);
+        System.out.println(countChunk("aaaaaa"));
     }
 
-    public int countChunk(String str) {
+    public static int countChunk(String str) {
         if (str == null || str.length() == 0)
             return 0;
         int sum = 0;
@@ -36,30 +34,4 @@ public class ChunkedPalindrome {
         return sum;
     }
 
-   /* public static int chunkNum(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
-        }
-        int length = s.length();
-        int[][] DP = new int[length][length];
-        for (int i = length - 1; i >= 0; i--) {
-            for (int j = i; j < length; j++) {
-                if (i == j) {
-                    DP[i][j] = 1;
-                } else {
-                    int sum = 0;
-                    int mid = i + (j - i) / 2;
-                    for (int count = i; count <= mid; count++) {
-                        String pre = s.substring(i, count + 1);
-                        String post = s.substring(j - count + i, j + 1);
-                        if (pre.equals(post)) {
-                            sum += DP[count + 1][j - count + i - 1];
-                        }
-                    }
-                    DP[i][j] = sum;
-                }
-            }
-        }
-        return DP[0][length - 1];
-    }*/
 }

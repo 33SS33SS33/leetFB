@@ -43,4 +43,5 @@ public class BombEnemy {
         }
         return ret;
     }
+
 }

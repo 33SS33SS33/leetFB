@@ -34,7 +34,7 @@ class SwapNodeinPairs {
     }
 
     /**
-     * 最好的
+     * 最好的 递归
      */
     public ListNode swapPairs(ListNode head) {
         if ((head == null) || (head.next == null))

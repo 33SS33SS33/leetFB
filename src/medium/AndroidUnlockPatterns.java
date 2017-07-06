@@ -4,7 +4,6 @@ package medium;
  * Created by shanshan on 16/6/17.
  * Given an Android 3x3 key lock screen and two integers m and n, where 1 ≤ m ≤ n ≤ 9,
  * count the total number of unlock patterns of the Android lock screen, which consist of minimum of m keys and maximum n keys.
- * <p>
  * Rules for a valid pattern:
  * Each pattern must connect at least m keys and at most n keys.
  * All the keys must be distinct.

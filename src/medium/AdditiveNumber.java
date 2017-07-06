@@ -26,7 +26,11 @@ import java.math.BigInteger;
  * 不等于就返回 False"
  */
 public class AdditiveNumber {
-    public boolean isAdditiveNumber(String num) {
+    public static void main(String[] args) {
+        System.out.println(isAdditiveNumber("112358"));
+    }
+
+    public static boolean isAdditiveNumber(String num) {
         int n = num.length();
         for (int i = 1; i <= n / 2; ++i) {
             BigInteger x1 = new BigInteger(num.substring(0, i));
@@ -41,7 +45,7 @@ public class AdditiveNumber {
         return false;
     }
 
-    private boolean isValid(BigInteger x1, BigInteger x2, int start, String num) {
+    private static boolean isValid(BigInteger x1, BigInteger x2, int start, String num) {
         if (start == num.length())
             return true;
         x2 = x2.add(x1);
