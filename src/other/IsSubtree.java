@@ -39,8 +39,7 @@ class IsSubtree {
             return false; // one null, one not null
         if (r1.value != r2.value)
             return false; // different root value
-        return (matchTree(r1.left, r2.left) && matchTree(r1.right,
-                r2.right)); // recursively check children
+        return (matchTree(r1.left, r2.left) && matchTree(r1.right, r2.right)); // recursively check children
     }
 
     class Node {
