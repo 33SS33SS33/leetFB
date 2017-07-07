@@ -13,17 +13,17 @@ class DeepestLeftLeafNode {
         System.out.println(new DeepestLeftLeafNode().deepestLeftLeaf(root));
     }
 
+    /**
+     * Backtracking
+     * If is left child, is leaf node, and level > maxLevel
+     * Update result and maxLevel, then return
+     */
     public Node deepestLeftLeaf(Node root) {
         Node res = null;
         deepestLeftLeaf(root, 0, 0, false, res);
         return res;
     }
 
-    /**
-     * Backtracking
-     * If is left child, is leaf node, and level > maxLevel
-     * Update result and maxLevel, then return
-     */
     public void deepestLeftLeaf(Node root, int level, int maxLevel, boolean isLeft, Node res) {
         if (root == null)
             return;

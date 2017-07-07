@@ -31,8 +31,6 @@ public class CountCompleteTreeNodes {
         n2.left = n5;
         n2.right = n6;
         System.out.println(new CountCompleteTreeNodes().countNodesa(root));
-        System.out.println(new CountCompleteTreeNodes().countNodesA(root));
-        System.out.println(new CountCompleteTreeNodes().countNodesC(root));
     }
 
     /**
@@ -76,79 +74,6 @@ public class CountCompleteTreeNodes {
             n = n.right;
         }
         return height;
-    }
-
-    public int countNodesC(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int leftHeight = fullTreeHeight(root.left);
-        int rightHeight = fullTreeHeight(root.right);
-
-        if (leftHeight == rightHeight) {
-            return (1 << leftHeight) + countNodesC(root.right);
-        } else {
-            return (1 << rightHeight) + countNodesC(root.left);
-        }
-    }
-
-    private int fullTreeHeight(TreeNode root) {
-        if (root == null)
-            return 0;
-        int res = 0;
-        while (root != null) {
-            root = root.left;
-            res++;
-        }
-        return res;
-    }
-
-    int leaves = 0;
-    boolean stop = false;
-
-    public int countNodesA(TreeNode root) {
-        int h = height(root);
-        countLeaves(root, h);
-        if (!stop) {
-            // perfect tree
-            return perfectTreeNodeCount(h);
-        }
-        return perfectTreeNodeCount(h - 1) + leaves;
-    }
-
-    void countLeaves(TreeNode root, int heightToLeaf) {
-        if (root == null)
-            return;
-        if (stop)
-            return;
-        if (heightToLeaf == 2) {
-            if (root.right != null) {
-                leaves += 2;
-            } else {
-                // at lease one is null
-                stop = true;
-                if (root.left != null) {
-                    leaves += 1;
-                }
-            }
-            return;
-        }
-        countLeaves(root.left, heightToLeaf - 1);
-        countLeaves(root.right, heightToLeaf - 1);
-    }
-
-    int perfectTreeNodeCount(int height) {
-        if (height == 0)
-            return 0;
-        if (height == 1)
-            return 1;
-        return (int) Math.pow(2, height) - 1;
-    }
-
-    int height(TreeNode root) {
-        if (root == null)
-            return 0;
-        return 1 + height(root.left);
     }
 
     public static class TreeNode {

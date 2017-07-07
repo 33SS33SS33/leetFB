@@ -51,16 +51,6 @@ public class CountUnivalueSubtrees {
         return root.val == val;
     }
 
-    public static class TreeNode {
-        Integer val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
     public int countUnivalSubtreesa2(TreeNode root) {
         int[] count = new int[1];
         helper(root, count);
@@ -84,6 +74,16 @@ public class CountUnivalueSubtrees {
             return true;
         }
         return false;
+    }
+
+    public static class TreeNode {
+        Integer val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
     }
 
 }
