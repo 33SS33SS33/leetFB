@@ -25,18 +25,8 @@ public class MinDepth {
         n1.right = n4;
         n2.right = n5;
 
-        System.out.println(new MinDepth().minDeptha(root));
         System.out.println(new MinDepth().minDepthA(root));
         System.out.println(new MinDepth().minDepthB(root));
-        System.out.println(new MinDepth().minDepth(root));
-    }
-
-    public int minDeptha(TreeNode root) {
-        if (root == null)
-            return 0;
-        int left = minDeptha(root.left);
-        int right = minDeptha(root.right);
-        return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
     }
 
     /**
@@ -55,7 +45,7 @@ public class MinDepth {
     }
 
     /**
-     * creek----
+     * creek----？？？？
      */
     public int minDepthB(TreeNode root) {
         if (root == null) {
@@ -81,29 +71,6 @@ public class MinDepth {
             }
         }
         return 0;
-    }
-
-    public int minDepth(TreeNode root) {
-        if (root == null)
-            return 0;
-        Queue<TreeNode> q = new LinkedList<TreeNode>();
-        q.add(root);
-        TreeNode rightMost = root;
-        int depth = 1;
-        while (!q.isEmpty()) {
-            TreeNode node = q.poll();
-            if (node.left == null && node.right == null)
-                break;
-            if (node.left != null)
-                q.add(node.left);
-            if (node.right != null)
-                q.add(node.right);
-            if (node == rightMost) {
-                depth++;
-                rightMost = (node.right != null) ? node.right : node.left;
-            }
-        }
-        return depth;
     }
 
     static class TreeNode {

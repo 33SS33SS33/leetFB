@@ -1,8 +1,6 @@
 package tree;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
@@ -29,9 +27,6 @@ public class InvertBinaryTree {
 
         TreeNode res2 = new InvertBinaryTree().invertTreeA(root);
 //        System.out.println(new InvertBinaryTree().levelOrder(res2));
-
-        TreeNode res3 = new InvertBinaryTree().invertTreeB(root);
-//        System.out.println(new InvertBinaryTree().levelOrder(res3));
     }
 
     /**
@@ -44,33 +39,6 @@ public class InvertBinaryTree {
         TreeNode newRight = invertTree(root.left);
         root.left = newLeft;
         root.right = newRight;
-        return root;
-    }
-    /**
-     * The above solution is correct, but it is also bound to the application stack, which
-     means that it's no so much scalable - (you can find the problem size that will
-     overflow the stack and crash your application), so more robust solution would be to
-     use stack data structure.
-     */
-
-    /**
-     * creek   Iterative
-     */
-    public TreeNode invertTreeB(TreeNode root) {
-        LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
-        if (root != null) {
-            queue.add(root);
-        }
-        while (!queue.isEmpty()) {
-            TreeNode p = queue.poll();
-            if (p.left != null)
-                queue.add(p.left);
-            if (p.right != null)
-                queue.add(p.right);
-            TreeNode temp = p.left;
-            p.left = p.right;
-            p.right = temp;
-        }
         return root;
     }
 

@@ -72,6 +72,11 @@ class PathSum2 {
         currentResult.remove(currentResult.size() - 1);
     }
 
+    /**
+     * DFS or backtracking
+     * Note that we can't pass path directly
+     * Dereference before recursing
+     */
     public List<List<Integer>> pathSumA(TreeNode root, int sum) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (root == null)
@@ -80,11 +85,6 @@ class PathSum2 {
         return res;
     }
 
-    /**
-     * DFS or backtracking
-     * Note that we can't pass path directly
-     * Dereference before recursing
-     */
     public void pathSum(TreeNode root, int sum, List<Integer> path, List<List<Integer>> res) {
         if (root == null)
             return; // return if current node is null

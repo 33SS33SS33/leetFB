@@ -16,9 +16,6 @@ class ConstructBTFromInPostOrder {
         int[] inorder = {4, 2, 5, 1, 3, 6};
         int[] postorder = {4, 5, 2, 6, 3, 1};
         TreeNode root = new ConstructBTFromInPostOrder().buildTree(inorder, postorder);
-        TreeNode root2 = new ConstructBTFromInPostOrder().buildTreeB(inorder, postorder);
-//        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root));
-//        System.out.println(new ConstructBTFromInPostOrder().levelOrder(root2));
     }
 
     /**
@@ -28,7 +25,7 @@ class ConstructBTFromInPostOrder {
      * For right subtree, ps = pe - ie + pos, pe = pe - 1(without root)
      */
     public TreeNode buildTree(int[] inorder, int[] postorder) {
-        if (inorder == null || postorder == null)
+        if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0)
             return null;
         return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
     }

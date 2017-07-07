@@ -24,7 +24,7 @@ public class ClosestBinarySearchTreeValue {
         n1.right = n4;
         n2.right = n5;
         System.out.println(new ClosestBinarySearchTreeValue().closestValuea(root, 7));
-        System.out.println(new ClosestBinarySearchTreeValue().closestValue(root, 7));
+        System.out.println(new ClosestBinarySearchTreeValue().closestValuea2(root, 7));
     }
 
     //最好的
@@ -37,7 +37,7 @@ public class ClosestBinarySearchTreeValue {
         return Math.abs(a - target) < Math.abs(b - target) ? a : b;
     }
 
-    public int closestValuea2(TreeNode root, double target) {
+    public static int closestValuea2(TreeNode root, double target) {
         int ret = root.val;
         while (root != null) {
             if (Math.abs(target - root.val) < Math.abs(target - ret)) {
@@ -46,26 +46,6 @@ public class ClosestBinarySearchTreeValue {
             root = root.val > target ? root.left : root.right;
         }
         return ret;
-    }
-
-    public int closestValue(TreeNode root, double target) {
-        int closest = root.val;
-        if (root.left != null) {
-            closest = closestValue(closestValue(root.left, target), closest, target);
-        }
-        if (root.right != null) {
-            closest = closestValue(closestValue(root.right, target), closest, target);
-        }
-        return closest;
-    }
-
-    int closestValue(int v1, int v2, double target) {
-        double _v1 = Math.abs(target - v1);
-        double _v2 = Math.abs(target - v2);
-        if (_v1 < _v2)
-            return v1;
-        else
-            return v2;
     }
 
     static class TreeNode {

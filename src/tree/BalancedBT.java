@@ -14,12 +14,10 @@ class BalancedBT {
     }
 
     public boolean isBalancedA(TreeNode root) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
         if (root == null)
             return true;
         return Math.abs(height(root.left) - height(root.right)) <= 1 &&
                 isBalancedA(root.left) && isBalancedA(root.right);
-        // return isBalanced2();
     }
 
     int height(TreeNode root) {
