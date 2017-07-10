@@ -22,6 +22,8 @@ class MergeSortedArray {
 
     //最好的 算法的时间复杂度是O(m+n),m和n分别是两个数组的长度，空间复杂度是O(1)
     public void mergea(int A[], int m, int B[], int n) {
+        if (A == null || B == null)
+            return;
         int i = m - 1, j = n - 1, k = m + n - 1;
         while (i > -1 && j > -1)
             A[k--] = (A[i] > B[j]) ? A[i--] : B[j--];

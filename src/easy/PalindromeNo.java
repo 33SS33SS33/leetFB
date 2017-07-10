@@ -37,21 +37,11 @@ class PalindromeNo {
         System.out.println(isPalindromeB(1000000021));
     }
 
-    public static boolean isPalindromeB(int x) {
-        if (x < 0 || (x != 0 && x % 10 == 0))
-            return false;
-        int rev = 0;
-        while (x > rev) {
-            rev = rev * 10 + x % 10;
-            x = x / 10;
-        }
-        return (x == rev || x == rev / 10);
-    }
-
     /**
      * 一位一位比较
      * Clarify whether negative nums are palindrom first
      * Compare each digit
+     * http://blog.csdn.net/linhuanmars/article/details/21145231
      */
     public static boolean isPalindrome(int num) {
         if (num < 0)
@@ -71,17 +61,15 @@ class PalindromeNo {
         return true;
     }
 
-    /**
-     * 可能会溢出
-     * compare the reversed result, can go out of integer's range
-     */
-/*    public static int reverse(int num) {
-        long rev = 0;
-        while (num != 0) {
-            rev = rev * 10 + num % 10;
-            num /= 10;
+    public static boolean isPalindromeB(int x) {
+        if (x < 0 || (x != 0 && x % 10 == 0))
+            return false;
+        int rev = 0;
+        while (x > rev) {
+            rev = rev * 10 + x % 10;
+            x = x / 10;
         }
-        return num < 0 ? -1 * (int) rev : (int) rev;
-    }*/
+        return (x == rev || x == rev / 10);
+    }
 
 }

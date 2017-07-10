@@ -41,11 +41,8 @@ class PathSum2 {
         n1.right = n4;
         n2.right = n5;
         System.out.println(new PathSum2().pathSuma(root, 7).toString());
-        System.out.println(new PathSum2().pathSumA(root, 7).toString());
         System.out.println(new PathSum2().pathSumB(root, 7).toString());
-        System.out.println(new PathSum2().pathSumA(root, 10).toString());
         System.out.println(new PathSum2().pathSumB(root, 10).toString());
-        System.out.println(new PathSum2().pathSumA(root, 4).toString());
         System.out.println(new PathSum2().pathSumB(root, 4).toString());
     }
 
@@ -73,37 +70,9 @@ class PathSum2 {
     }
 
     /**
-     * DFS or backtracking
-     * Note that we can't pass path directly
-     * Dereference before recursing
-     */
-    public List<List<Integer>> pathSumA(TreeNode root, int sum) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (root == null)
-            return res;
-        pathSum(root, sum, new ArrayList<Integer>(), res);
-        return res;
-    }
-
-    public void pathSum(TreeNode root, int sum, List<Integer> path, List<List<Integer>> res) {
-        if (root == null)
-            return; // return if current node is null
-        sum -= root.val; // update sum
-        if (root.left == null && root.right == null && sum == 0) {
-            path.add(root.val);
-            res.add(new ArrayList<Integer>(path)); // add difference path
-            path.remove(path.size() - 1); // reset path here!
-            return;
-        }
-        path.add(root.val); // add value to current path
-        pathSum(root.left, sum, path, res);
-        pathSum(root.right, sum, path, res);
-        path.remove(path.size() - 1);
-    }
-
-    /**
      * creek-----
      * 这里的时间复杂度仍然只是一次遍历O(n)，而空间复杂度则取决于满足条件的路径和的数量（假设是k条），则空间是O(klogn)。
+     * http://blog.csdn.net/linhuanmars/article/details/23655413
      */
     public List<ArrayList<Integer>> pathSumB(TreeNode root, int sum) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();

@@ -1,7 +1,5 @@
 package medium;
 
-import java.util.ArrayList;
-
 /**
  * Given a binary tree containing digits from 0-9 only, each root-to-leaf path
  * could represent a number.
@@ -29,6 +27,7 @@ class SumRootToLeafNo {
      * 结束条件的话就是如果一个节点是叶子，那么我们应该累加到结果总和中，
      * 如果节点到了空节点，则不是叶子节点，不需要加入到结果中，直接返回0即可。
      * 算法的本质是一次先序遍历，所以时间是O(n)，空间是栈大小，O(logn)。
+     * http://blog.csdn.net/linhuanmars/article/details/22913699
      */
     public int sumNumbersC2(TreeNode root) {
         return helper2(root, 0);

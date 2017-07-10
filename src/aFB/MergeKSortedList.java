@@ -58,36 +58,73 @@ class MergeKSortedList {
         return dummy.next;
     }
 
+    //http://blog.csdn.net/linhuanmars/article/details/19899259
+    public static ListNode mergeKListsa(ArrayList<ListNode> lists) {
+        PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(10, new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode n1, ListNode n2) {
+                return n1.val - n2.val;
+            }
+        });
+        for (int i = 0; i < lists.size(); i++) {
+            ListNode node = lists.get(i);
+            if (node != null) {
+                heap.offer(node);
+            }
+        }
+        ListNode head = null;
+        ListNode pre = head;
+        while (heap.size() > 0) {
+            ListNode cur = heap.poll();
+            if (head == null) {
+                head = cur;
+                pre = head;
+            } else {
+                pre.next = cur;
+            }
+            pre = cur;
+            if (cur.next != null)
+                heap.offer(cur.next);
+        }
+        return head;
+    }
+
     /**
      * 第二种
      * Divide and conquer  merge two halves, divide to merge two lists
      */
-    public ListNode mergeKListsA(List<ListNode> lists) {
-        /*base cases*/
-        if (lists.size() == 0)
+    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+        if (lists == null || lists.size() == 0)
             return null;
-        if (lists.size() == 1)
-            return lists.get(0);
-        if (lists.size() == 2)
-            return mergeTwoLists(lists.get(0), lists.get(1));
-        /*merge two halves*/
-        return mergeTwoLists(mergeKListsA(lists.subList(0, lists.size() / 2)),
-                mergeKListsA(lists.subList(lists.size() / 2, lists.size())));
+        return helper(lists, 0, lists.size() - 1);
     }
 
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        if (l1 == null)
-            return l2;
-        if (l2 == null)
-            return l1;
-        // next node should be the result of comparison
-        if (l1.val < l2.val) {
-            l1.next = mergeTwoLists(l1.next, l2); // notice l1.next
-            return l1;
-        } else {
-            l2.next = mergeTwoLists(l1, l2.next); // notice l2.next
-            return l2;
+    private ListNode helper(ArrayList<ListNode> lists, int l, int r) {
+        if (l < r) {
+            int m = (l + r) / 2;
+            return merge(helper(lists, l, m), helper(lists, m + 1, r));
         }
+        return lists.get(l);
+    }
+
+    private ListNode merge(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = l1;
+        ListNode cur = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                l1 = l1.next;
+            } else {
+                ListNode next = l2.next;
+                cur.next = l2;
+                l2.next = l1;
+                l2 = next;
+            }
+            cur = cur.next;
+        }
+        if (l2 != null)
+            cur.next = l2;
+        return dummy.next;
     }
 
     static ListNode buildList() {

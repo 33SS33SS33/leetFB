@@ -23,7 +23,6 @@ class TwoSum {
         int target = 6;
         int[] res = t.twoSum(numbers, target);
         int[] res1 = t.twoSumB(numbers, target);
-        int[] res2 = t.twoSumC(numbers, target);
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
@@ -31,12 +30,9 @@ class TwoSum {
         for (int i = 0; i < res1.length; i++) {
             System.out.print(i == res1.length - 1 ? res1[i] : res1[i] + ", ");
         }
-        System.out.println();
-        for (int i = 0; i < res2.length; i++) {
-            System.out.print(i == res1.length - 1 ? res2[i] : res2[i] + ", ");
-        }
     }
 
+    //http://blog.csdn.net/linhuanmars/article/details/19711387
     /*在LeetCode原题中是假设结果有且仅有一个的，一般来说面试时会要求出所有的结果，
     这个时候会涉及到重复pair的处理，相关的内容会在3Sum那道题目中*/
 
@@ -67,6 +63,8 @@ class TwoSum {
     public int[] twoSumB(int[] numbers, int target) {
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         int[] result = new int[2];
+        if(numbers==null || numbers.length<2)
+            return null;
         for (int i = 0; i < numbers.length; i++) {
             if (map.containsKey(numbers[i])) {
                 int index = map.get(numbers[i]);
@@ -81,23 +79,8 @@ class TwoSum {
     }
 
     /**
-     * Time complexity in worst case: O(n^2).
-     */
-    public static int[] twoSumC(int[] numbers, int target) {
-        int[] ret = new int[2];
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = i + 1; j < numbers.length; j++) {
-                if (numbers[i] + numbers[j] == target) {
-                    ret[0] = i + 1;
-                    ret[1] = j + 1;
-                }
-            }
-        }
-        return ret;
-    }
-
-    /**
      * 在这里，输出结果改成了满足相加等于target的两个数，而不是他们的index。
+     * 该算法的时间复杂度是O(nlogn+n)=O(nlogn)，空间复杂度取决于排序算法
      */
     public int[] twoSumD(int[] numbers, int target) {
         int[] res = new int[2];

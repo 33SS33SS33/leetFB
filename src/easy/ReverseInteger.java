@@ -10,30 +10,11 @@ public class ReverseInteger {
     public static void main(String[] args) {
         ReverseInteger r = new ReverseInteger();
         int a = 43261596;
-        System.out.println(r.reverse(a));
         System.out.println(r.reverseB(a));
         System.out.println(r.reverseC(a));
-        int b = 100;
-        System.out.println(r.reverse(b));
+        int b = -190;
         System.out.println(r.reverseB(b));
         System.out.println(r.reverseC(b));
-    }
-
-    public int reverse(int x) {
-        if (x == Integer.MIN_VALUE)
-            return 0;
-        if (x < 0)
-            return -reverse(-x);
-        int y = 0;
-        do {
-            // y * 10 + x % 10 > Integer.MAX_VALUE
-            if (y > (Integer.MAX_VALUE - x % 10) / 10) {
-                return 0;
-            }
-            y = y * 10 + x % 10;
-            x /= 10;
-        } while (x > 0);
-        return y;
     }
 
     /**
@@ -56,6 +37,7 @@ public class ReverseInteger {
      * 上面的代码为了后面方便处理，先将数字转为正数。注意Integer.MIN_VALUE的绝对值是比Integer.MAX_VALUE大1的，所以经常要单独处理。
      * 如果不先转为正数也可以，只是在后面要对符号进行一下判断。这种题目考察的就是数字的基本处理，面试的时候尽量不能错，
      * 而且对于corner case要尽量进行考虑，一般来说都是面试的第一道门槛
+     * http://blog.csdn.net/linhuanmars/article/details/20024837
      */
     public int reverseC(int x) {
         if (x == Integer.MIN_VALUE)
