@@ -19,33 +19,6 @@ class ConstructBTFromInPostOrder {
     }
 
     /**
-     * DFS, find root, find range of left and right sub trees
-     * The calculation of post array is trivial
-     * For left subtree, ps = ps, pe = ps - is - 1 + pos(offset, including root)
-     * For right subtree, ps = pe - ie + pos, pe = pe - 1(without root)
-     */
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
-        if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0)
-            return null;
-        return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
-    }
-
-    public TreeNode buildTree(int[] inorder, int[] postorder, int is, int ie, int ps, int pe) {
-        if (ps > pe)
-            return null;
-        TreeNode root = new TreeNode(postorder[pe]);
-        int pos = is;
-        for (; pos <= ie; pos++) {
-            if (inorder[pos] == root.val)
-                break;
-        }
-        // Note how to calcuclate the start and end indices for post array
-        root.left = buildTree(inorder, postorder, is, pos - 1, ps, ps - is - 1 + pos);
-        root.right = buildTree(inorder, postorder, pos + 1, ie, pe - ie + pos, pe - 1);
-        return root;
-    }
-
-    /**
      * The the basic idea is to take the last element in postorder array as the root, find the
      * position of the root in the inorder array; then locate the range for left sub-tree and
      * right sub-tree and do recursion. Use a HashMap to record the index of root in the
@@ -73,6 +46,34 @@ class ConstructBTFromInPostOrder {
                 map);
         return root;
     }
+
+    /**
+     * DFS, find root, find range of left and right sub trees
+     * The calculation of post array is trivial
+     * For left subtree, ps = ps, pe = ps - is - 1 + pos(offset, including root)
+     * For right subtree, ps = pe - ie + pos, pe = pe - 1(without root)
+     */
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0)
+            return null;
+        return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
+    }
+
+    public TreeNode buildTree(int[] inorder, int[] postorder, int is, int ie, int ps, int pe) {
+        if (ps > pe)
+            return null;
+        TreeNode root = new TreeNode(postorder[pe]);
+        int pos = is;
+        for (; pos <= ie; pos++) {
+            if (inorder[pos] == root.val)
+                break;
+        }
+        // Note how to calcuclate the start and end indices for post array
+        root.left = buildTree(inorder, postorder, is, pos - 1, ps, ps - is - 1 + pos);
+        root.right = buildTree(inorder, postorder, pos + 1, ie, pe - ie + pos, pe - 1);
+        return root;
+    }
+
 
     public class TreeNode {
         int val;

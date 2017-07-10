@@ -17,6 +17,7 @@ class PowX {
 
     /**
      * creek The most understandable solution I have found so far.
+     * http://blog.csdn.net/linhuanmars/article/details/20092829
      */
     public double powB(double x, int n) {
         if (n < 0) {

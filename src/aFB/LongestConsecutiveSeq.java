@@ -1,9 +1,6 @@
 package aFB;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Given an unsorted array of integers, find the length of the longest
@@ -30,9 +27,38 @@ class LongestConsecutiveSeq {
     public static void main(String[] args) {
         LongestConsecutiveSeq l = new LongestConsecutiveSeq();
         int[] a = {100, 4, 200, 1, 3, 2};
-        System.out.println(l.longestConsecutivea(a));
         System.out.println(l.longestConsecutive(a));
-        System.out.println(l.longestConsecutiveB(a));
+        System.out.println(l.longestConsecutivea(a));
+    }
+
+    //http://blog.csdn.net/linhuanmars/article/details/22964467
+    public static int longestConsecutive(int[] num) {
+        if (num == null || num.length == 0)
+            return 0;
+        HashSet<Integer> set = new HashSet<Integer>();
+        int res = 1;
+        for (int i = 0; i < num.length; i++) {
+            set.add(num[i]);
+        }
+        while (!set.isEmpty()) {
+            Iterator iter = set.iterator();
+            int item = (Integer) iter.next();
+            set.remove(item);
+            int len = 1;
+            int i = item - 1;
+            while (set.contains(i)) {
+                set.remove(i--);
+                len++;
+            }
+            i = item + 1;
+            while (set.contains(i)) {
+                set.remove(i++);
+                len++;
+            }
+            if (len > res)
+                res = len;
+        }
+        return res;
     }
 
     /**
@@ -72,64 +98,5 @@ class LongestConsecutiveSeq {
         }
         return max;
     }
-
-    /**
-     * 不要
-     * Use a map to store ranges
-     * Get lower bound with smaller value
-     * Get upper bound with larger value
-     * Update max length with new bound
-     * Put all possible ranges into map
-     * including num[i] ~ num[i], low ~ upp, upp ~ low
-     */
-    public int longestConsecutive(int[] num) {
-        if (num == null || num.length == 0)
-            return 0;
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int maxLen = 0;
-        for (int i = 0; i < num.length; i++) {
-            if (map.containsKey(num[i]))
-                continue; // skip duplicates
-            int low = num[i]; // initialize ranges
-            int upp = num[i];
-            if (map.containsKey(num[i] - 1))
-                low = map.get(num[i] - 1);
-            if (map.containsKey(num[i] + 1))
-                upp = map.get(num[i] + 1);
-            maxLen = Math.max(maxLen, upp - low + 1); // update length
-            // put possible ranges into map for next iteration
-            map.put(num[i], num[i]);
-            map.put(low, upp);
-            map.put(upp, low);
-        }
-        return maxLen;
-    }
-
-    //不要
-    public static int longestConsecutiveB(int[] num) {
-        int res = 0;
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int n : num) {
-            if (!map.containsKey(n)) {
-                int left = (map.containsKey(n - 1)) ? map.get(n - 1) : 0;
-                int right = (map.containsKey(n + 1)) ? map.get(n + 1) : 0;
-                // sum: length of the sequence n is in
-                int sum = left + right + 1;
-                map.put(n, sum);
-                // keep track of the max length
-                res = Math.max(res, sum);
-                // extend the length to the boundary(s)
-                // of the sequence
-                // will do nothing if n has no neighbors
-                map.put(n - left, sum);
-                map.put(n + right, sum);
-            } else {
-                // duplicates
-                continue;
-            }
-        }
-        return res;
-    }
-
 
 }

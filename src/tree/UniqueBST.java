@@ -21,9 +21,23 @@ package tree;
  */
 class UniqueBST {
     public static void main(String[] args) {
-        System.out.println(numTreesa(5));
         System.out.println(numTreesA(5));
-        System.out.println(numTreesB(5));
+        System.out.println(numTrees(5));
+    }
+
+    //http://blog.csdn.net/linhuanmars/article/details/24761459
+    public static int numTrees(int n) {
+        if (n <= 0)
+            return 0;
+        int[] res = new int[n + 1];
+        res[0] = 1;
+        res[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = 0; j < i; j++) {
+                res[i] += res[j] * res[i - j - 1];
+            }
+        }
+        return res[n];
     }
 
     /**
@@ -49,30 +63,6 @@ class UniqueBST {
             for (int j = 0; j < i; j++) // from 0 ~ i - 1
                 trees[i] += trees[j] * trees[i - j - 1]; // note i-j-1 + j = i - 1
         return trees[n];
-    }
-
-    // not
-    public static int numTreesa(int n) {
-        int[] G = new int[n + 1];
-        G[0] = G[1] = 1;
-        for (int i = 2; i <= n; ++i) {
-            for (int j = 1; j <= i; ++j) {
-                G[i] += G[j - 1] * G[i - j];
-            }
-        }
-        return G[n];
-    }
-
-    /**
-     * Catalan Number  not
-     */
-    public static int numTreesB(int n) {
-        if (n == 0 || n == 1 || n == 2)
-            return n;
-        int res = 2;
-        for (int i = 3; i <= n; i++)
-            res = res * 2 * (2 * i - 1) / (i + 1); // Catalan Number
-        return res;
     }
 
 }

@@ -16,12 +16,28 @@ class PlusOne {
         }
         System.out.println("}");
 
-        int[] result2 = plusOneOthers(new int[]{9, 9, 9, 9, 9});
+        int[] result2 = plusOnea(new int[]{9, 9, 9, 9, 9});
         System.out.print("{ ");
         for (int i = 0; i < result2.length; i++) {
             System.out.print(result2[i] + " ");
         }
         System.out.println("}");
+    }
+
+    public static int[] plusOnea(int[] digits) {
+        if (digits == null || digits.length == 0)
+            return digits;
+        int carry = 1;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            int digit = (digits[i] + carry) % 10;
+            carry = (digits[i] + carry) / 10;
+            digits[i] = digit;
+            if (carry == 0)
+                return digits;
+        }
+        int[] res = new int[digits.length + 1];
+        res[0] = 1;
+        return res;
     }
 
     /**
@@ -68,31 +84,6 @@ class PlusOne {
         return result;
     }
 
-    /**
-     * creek To solve this problem, we can use a flag to mark if the current digit needs to be changed.
-     */
-    public static int[] plusOneC(int[] digits) {
-        int len = digits.length;
-        boolean flag = true; // flag if the digit needs to be changed
-        for (int i = len - 1; i >= 0; i--) {
-            if (flag) {
-                if (digits[i] == 9) {
-                    digits[i] = 0;
-                } else {
-                    digits[i] = digits[i] + 1;
-                    flag = false;
-                }
-                if (i == 0 && digits[i] == 0) {
-                    int[] y = new int[len + 1];
-                    y[0] = 1;
-                    for (int j = 1; j <= len; j++) {
-                        y[j] = digits[j - 1];
-                    }
-                    digits = y;
-                }
-            }
-        }
-        return digits;
-    }
+
 
 }

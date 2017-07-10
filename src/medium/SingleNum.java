@@ -15,7 +15,7 @@ class SingleNum {
     public static void main(String[] args) {
         int[] A = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7};
         System.out.println(singleNum(A));
-        System.out.println(singleNumNoSpace(A));
+        System.out.println(singleNumbera(A));
         System.out.println(singleNumber(A));
     }
 
@@ -24,10 +24,14 @@ class SingleNum {
      * XOR of two equal numbers is 0 : a^a=0. This is the main idea of the
      * algorithm.
      */
-    public static int singleNumNoSpace(int[] A) {
-        int res = 0;
-        for (int i = 0; i < A.length; i++)
+    public static int singleNumbera(int[] A) {
+        if(A==null || A.length==0)
+            return 0;
+        int res = A[0];
+        for(int i=1;i<A.length;i++)
+        {
             res ^= A[i];
+        }
         return res;
     }
 

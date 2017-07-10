@@ -21,13 +21,14 @@ class SetMartixZeros {
      * Go through the matrix and use first row and first col to remember which
      * cols and rows are to be sets
      * Use two flags for whether first row and first col should be set
-     */
-    /**
      * 这样的做法只需要两个额外变量，所以空间复杂度是O(1)。
      * 时间上来说上面三种方法都是一样的，需要进行两次扫描，一次确定行列置0情况，
      * 一次对矩阵进行实际的置0操作，所以总的时间复杂度是O(m*n)。
+     * http://blog.csdn.net/linhuanmars/article/details/24066199
      */
     public static void setZeros(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return;
         int row = matrix.length;
         int col = matrix[0].length;
         boolean firstRow = false;

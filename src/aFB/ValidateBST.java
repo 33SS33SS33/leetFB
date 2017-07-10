@@ -19,10 +19,27 @@ class ValidateBST {
     public static void main(String[] args) {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);
         ValidateBST v = new ValidateBST();
+        System.out.println(v.isValidBSTa(r));
         System.out.println(v.isValidBST(r));
         System.out.println(v.isValidBSTB(r));
         System.out.println(v.isValidBSTC(r));
         System.out.println(v.isValidBSTD(r));
+    }
+
+    public boolean isValidBSTa(TreeNode root) {
+        ArrayList<Integer> pre = new ArrayList<Integer>();
+        pre.add(null);
+        return helper(root, pre);
+    }
+
+    private boolean helper(TreeNode root, ArrayList<Integer> pre) {
+        if (root == null)
+            return true;
+        boolean left = helper(root.left, pre);
+        if (pre.get(0) != null && root.val <= pre.get(0))
+            return false;
+        pre.set(0, root.val);
+        return left && helper(root.right, pre);
     }
 
     /**

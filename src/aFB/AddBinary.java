@@ -20,6 +20,10 @@ class AddBinary {
 
     //最好的
     public static String addBinary(String a, String b) {
+        if (a == null || a.length() == 0)
+            return b;
+        if (b == null || b.length() == 0)
+            return a;
         StringBuilder sb = new StringBuilder();
         int i = a.length() - 1, j = b.length() - 1, carry = 0;
         while (i >= 0 || j >= 0) {
@@ -38,6 +42,10 @@ class AddBinary {
      * Use + to insert to front, turn digit sum to int and restore to binary
      */
     public static String addBinaryb(String a, String b) {
+        if (a == null || a.length() == 0)
+            return b;
+        if (b == null || b.length() == 0)
+            return a;
         int m = a.length();
         int n = b.length();
         int carry = 0;

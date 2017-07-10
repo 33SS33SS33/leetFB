@@ -71,6 +71,7 @@ public class WordLadder {
      * 这个算法中最坏情况是把所有长度为L的字符串都看一下，或者把字典中的字符串都看一下，而长度为L的字符串总共有26^L，
      * 所以时间复杂度是O(min(26^L, size(dict))，
      * 空间上需要存储访问情况，也是O(min(26^L, size(dict))
+     * http://blog.csdn.net/linhuanmars/article/details/23029973
      */
     public int ladderLength(String start, String end, HashSet<String> dict) {
         if (start == null || end == null || start.length() == 0 || end.length() == 0

@@ -33,6 +33,7 @@ class SpiralMatrixII {
 
     /**
      * 更清晰
+     * 每个元素只访问一次，时间复杂度是O(n^2)
      * use startR, endR, startC, endC to mark the range
      * update relative range whenever finish filling up a row or column
      */
@@ -84,6 +85,32 @@ class SpiralMatrixII {
             lv++;
         }
         return ans;
+    }
+
+    public static int[][] generateMatrixc(int n) {
+        if (n < 0)
+            return null;
+        int[][] res = new int[n][n];
+        int levelNum = n / 2;
+        int num = 1;
+        for (int l = 0; l < levelNum; l++) {
+            for (int i = l; i < n - l; i++) {
+                res[l][i] = num++;
+            }
+            for (int i = l + 1; i < n - l; i++) {
+                res[i][n - 1 - l] = num++;
+            }
+            for (int i = n - 2 - l; i >= l; i--) {
+                res[n - 1 - l][i] = num++;
+            }
+            for (int i = n - 2 - l; i > l; i--) {
+                res[i][l] = num++;
+            }
+        }
+        if (n % 2 == 1) {
+            res[levelNum][levelNum] = num;
+        }
+        return res;
     }
 
 }

@@ -83,37 +83,6 @@ class CloneGraph {
     }
 
     /**
-     * BFS, O(n) Time, O(n) Space 广度优先
-     * Use map<Integer, UndirectedGraphNode> to represent graph
-     * Get node from queue
-     * Check whether in graph already
-     * Add neighbors to queue
-     */
-    public UndirectedGraphNode cloneGraphA(UndirectedGraphNode node) {
-        if (node == null)
-            return null;
-        Queue<UndirectedGraphNode> q = new LinkedList<UndirectedGraphNode>();
-        Map<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
-        q.add(node);
-        while (!q.isEmpty()) { // BFS
-            UndirectedGraphNode cur = q.poll();
-            if (!map.containsKey(cur.label))
-                map.put(cur.label, new UndirectedGraphNode(cur.label)); // put in map to set visited
-            if (cur.neighbors != null) {
-                for (UndirectedGraphNode n : cur.neighbors) {
-                    if (!map.containsKey(n.label)) {
-                        q.add(n);
-                        map.put(n.label, new UndirectedGraphNode(n.label));
-                    }
-                    // add to neighbors
-                    map.get(cur.label).neighbors.add(map.get(n.label));
-                }
-            }
-        }
-        return map.get(node.label);
-    }
-
-    /**
      * DFS 深度优先 非递归
      */
     public UndirectedGraphNode cloneGraphD(UndirectedGraphNode node) {

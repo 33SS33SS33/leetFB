@@ -20,7 +20,7 @@ class ConvertSortedListToBST {
      * 思路就是先对左子树进行递归，然后将当前结点作为根，迭代到下一个链表结点，最后在递归求出右子树即可。
      * 整体过程就是一次中序遍历，时间复杂度是O(n)，空间复杂度是栈空间O(logn)。
      */
-    public TreeNode sortedListToBSTC(ListNode head) {
+    public TreeNode sortedListToBST(ListNode head) {
         if (head == null)
             return null;
         ListNode cur = head;

@@ -77,6 +77,7 @@ class SymmetricTree {
      * 是使用层序遍历来判断对称性质
      * Use a stack to store nodes in order
      * Then pop and compare
+     * http://blog.csdn.net/linhuanmars/article/details/23072829
      */
     private boolean isSymmetric(TreeNode root) {
         if (root == null)

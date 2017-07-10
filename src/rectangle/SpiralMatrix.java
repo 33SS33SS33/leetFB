@@ -17,7 +17,7 @@ import java.util.*;
  */
 class SpiralMatrix {
     public static void main(String[] args) {
-        int[][] matrix = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[][] matrix = new int[][]{{1, 2, 3 ,7}, {4, 5, 6,9}, {7, 8, 9,1}};
         List<Integer> res3 = spiralOrderA(matrix);
         List<Integer> res = spiralOrderB(matrix);
         List<Integer> res4 = spiralOrder(matrix);

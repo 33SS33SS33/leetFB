@@ -27,6 +27,7 @@ class WordSearch {
         System.out.println(existB(board, word));
     }
 
+
     /**
      * 最好的
      * Use boolean array to remember whether a word is used
@@ -77,9 +78,12 @@ class WordSearch {
     }
 
     private boolean exist(char[][] board, int y, int x, char[] word, int i) {
-        if (i == word.length) return true;
-        if (y < 0 || x < 0 || y == board.length || x == board[y].length) return false;
-        if (board[y][x] != word[i]) return false;
+        if (i == word.length)
+            return true;
+        if (y < 0 || x < 0 || y == board.length || x == board[y].length)
+            return false;
+        if (board[y][x] != word[i])
+            return false;
         board[y][x] ^= 256;
         boolean exist = exist(board, y, x + 1, word, i + 1)
                 || exist(board, y, x - 1, word, i + 1)
@@ -97,6 +101,7 @@ class WordSearch {
      * 深度优先搜索的算法就不再重复解释了，不了解的朋友可以看看wiki - 深度优先搜索。我们知道一次搜索的复杂度是O(E+V)，
      * E是边的数量，V是顶点数量，在这个问题中他们都是O(m*n)量级的（因为一个顶点有固定上下左右四条边）。
      * 加上我们对每个顶点都要做一次搜索， 所以总的时间复杂度最坏是O(m^2*n^2)，空间上就是要用一个数组来记录访问情况，所以是O(m*n).
+     * http://blog.csdn.net/linhuanmars/article/details/24336987
      */
     public static boolean existB(char[][] board, String word) {
         if (word == null || word.length() == 0)
@@ -113,20 +118,18 @@ class WordSearch {
         return false;
     }
 
-    private static boolean search(char[][] board, String word, int index, int i, int j,
-                                  boolean[][] used) {
+    private static boolean search(char[][] board, String word, int index, int i, int j, boolean[][] used) {
         if (index == word.length())
             return true;
-        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j]
-                || board[i][j] != word.charAt(index))
+        if (i < 0 || j < 0 || i >= board.length || j >= board[0].length || used[i][j] || board[i][j] != word.charAt(index))
             return false;
         used[i][j] = true;
-        boolean res =
-                search(board, word, index + 1, i - 1, j, used)
-                        || search(board, word, index + 1, i + 1, j, used)
-                        || search(board, word, index + 1, i, j - 1, used)
-                        || search(board, word, index + 1, i, j + 1, used);
+        boolean res = search(board, word, index + 1, i - 1, j, used)
+                || search(board, word, index + 1, i + 1, j, used)
+                || search(board, word, index + 1, i, j - 1, used)
+                || search(board, word, index + 1, i, j + 1, used);
         used[i][j] = false;
         return res;
     }
+
 }

@@ -26,6 +26,7 @@ public class MinDepth {
         n2.right = n5;
 
         System.out.println(new MinDepth().minDepthA(root));
+        System.out.println(new MinDepth().minDepthb(root));
         System.out.println(new MinDepth().minDepthB(root));
     }
 
@@ -42,6 +43,38 @@ public class MinDepth {
         if (right == 0)
             return left + 1;
         return Math.min(left, right) + 1; // plus root
+    }
+
+    //非递归解法同样采用层序遍历(相当于图的BFS），只是在检测到第一个叶子的时候就可以返回了
+    //http://blog.csdn.net/linhuanmars/article/details/19660209
+    public int minDepthb(TreeNode root) {
+        if (root == null)
+            return 0;
+        LinkedList<TreeNode> queue = new LinkedList();
+        int curNum = 0;
+        int lastNum = 1;
+        int level = 1;
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll();
+            if (cur.left == null && cur.right == null)
+                return level;
+            lastNum--;
+            if (cur.left != null) {
+                queue.offer(cur.left);
+                curNum++;
+            }
+            if (cur.right != null) {
+                queue.offer(cur.right);
+                curNum++;
+            }
+            if (lastNum == 0) {
+                lastNum = curNum;
+                curNum = 0;
+                level++;
+            }
+        }
+        return 0;
     }
 
     /**

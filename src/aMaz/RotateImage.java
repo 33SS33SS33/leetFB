@@ -17,7 +17,6 @@ class RotateImage {
             }
             System.out.println();
         }
-
     }
 
     /**

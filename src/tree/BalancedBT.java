@@ -13,6 +13,7 @@ class BalancedBT {
         System.out.println(new BalancedBT().isBalancedA(head));
     }
 
+    //http://blog.csdn.net/linhuanmars/article/details/23731355
     public boolean isBalancedA(TreeNode root) {
         if (root == null)
             return true;
