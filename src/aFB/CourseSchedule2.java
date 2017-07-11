@@ -88,9 +88,6 @@ public class CourseSchedule2 {
         }
     }
 
-    /**
-     *
-     */
     //https://leetcode.com/discuss/35605/two-ac-solution-in-java-using-bfs-and-dfs-with-explanation
     public int[] findOrderB(int numCourses, int[][] prerequisites) {
         int[] incLinkCounts = new int[numCourses];
@@ -100,8 +97,7 @@ public class CourseSchedule2 {
         return solveByDFS(adjs);
     }
 
-    private void initialiseGraph(int[] incLinkCounts, List<List<Integer>> adjs,
-                                 int[][] prerequisites) {
+    private void initialiseGraph(int[] incLinkCounts, List<List<Integer>> adjs, int[][] prerequisites) {
         int n = incLinkCounts.length;
         while (n-- > 0)
             adjs.add(new ArrayList<Integer>());

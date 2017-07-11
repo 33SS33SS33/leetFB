@@ -28,7 +28,8 @@ public class ContiguousArray {
      */
     public static int ContiguousArray(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) nums[i] = -1;
+            if (nums[i] == 0)
+                nums[i] = -1;
         }
         Map<Integer, Integer> sumToIndex = new HashMap<>();
         sumToIndex.put(0, -1);//

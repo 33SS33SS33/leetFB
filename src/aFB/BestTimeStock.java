@@ -12,14 +12,14 @@ package aFB;
 class BestTimeStock {
     public static void main(String[] args) {
         int[] prices = {1, 4, 2};
-        System.out.println(maxProfit(prices));
-        System.out.println(maxProfit3(prices));
+        System.out.println(bestTimeStock2(prices));
+        System.out.println(bestTimeStock(prices));
     }
 
     /**
      * ganker 最好的
      */
-    public static int maxProfit3(int[] prices) {
+    public static int bestTimeStock(int[] prices) {
         if (prices == null || prices.length == 0)
             return 0;
         int local = 0;
@@ -40,7 +40,7 @@ class BestTimeStock {
      * If next price is bigger, it's only possible to update the profit
      * If next price is smaller or equal, it's only possible to update min
      */
-    public static int maxProfit(int[] prices) {
+    public static int bestTimeStock2(int[] prices) {
         if (prices == null || prices.length < 2)
             return 0; // need at least 2
         int max = 0;

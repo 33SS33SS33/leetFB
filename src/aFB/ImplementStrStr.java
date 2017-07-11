@@ -41,6 +41,8 @@ public class ImplementStrStr {
      * 然后在长字符串的每个起始位都开始小循环比对字符
      */
     public static int strStr(String haystack, String needle) {
+        if (haystack == null || needle == null || needle.length() == 0)
+            return 0;
         for (int i = 0; ; i++) {
             for (int j = 0; ; j++) {
                 if (j == needle.length())
@@ -71,22 +73,6 @@ public class ImplementStrStr {
             }
             if (successFlag)
                 return i;
-        }
-        return -1;
-    }
-
-    public int strStr2(String haystack, String needle) {
-        int l1 = haystack.length(), l2 = needle.length();
-        if (l1 < l2) {
-            return -1;
-        } else if (l2 == 0) {
-            return 0;
-        }
-        int threshold = l1 - l2;
-        for (int i = 0; i <= threshold; ++i) {
-            if (haystack.substring(i, i + l2).equals(needle)) {
-                return i;
-            }
         }
         return -1;
     }
@@ -141,4 +127,5 @@ public class ImplementStrStr {
         }
         return next;
     }
+
 }

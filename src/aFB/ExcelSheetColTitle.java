@@ -20,7 +20,6 @@ package aFB;
  */
 class ExcelSheetColTitle {
     public static void main(String[] args) {
-        System.out.println(excelSheetColTitleRec(28));
         System.out.println(excelSheetColTitleb(28));
         System.out.println(excelSheetColTitle(28));
     }
@@ -63,10 +62,4 @@ class ExcelSheetColTitle {
         return title.toString();
     }
 
-    /**
-     * Recursive version, one line
-     */
-    public static String excelSheetColTitleRec(int n) {
-        return n <= 0 ? "" : excelSheetColTitleRec(--n / 26) + (char) ('A' + (n % 26));
-    }
 }

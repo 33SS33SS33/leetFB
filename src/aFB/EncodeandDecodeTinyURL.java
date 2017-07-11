@@ -14,7 +14,8 @@ public class EncodeandDecodeTinyURL {
 
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
-        if (revIndex.containsKey(longUrl)) return BASE_HOST + revIndex.get(longUrl);
+        if (revIndex.containsKey(longUrl))
+            return BASE_HOST + revIndex.get(longUrl);
         String charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         String key = null;
         do {

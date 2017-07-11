@@ -33,10 +33,8 @@ class InsertInterval {
         intervals.add(interval2);
         List<Interval> ress = new InsertInterval().InsertIntervalS(intervals, interval3);
         List<Interval> res = new InsertInterval().insertA(intervals, interval3);
-        List<Interval> res2 = new InsertInterval().insertB(intervals, interval3);
         System.out.print(ress.toString());
         System.out.print(res.toString());
-        System.out.print(res2.toString());
     }
 
     /**
@@ -90,44 +88,6 @@ class InsertInterval {
         return res;
     }
 
-    /**
-     * 原地方法
-     * In place solution
-     * Find start and end point of the interval to be merged
-     */
-    public List<Interval> insertB(List<Interval> intervals, Interval newInterval) {
-        List<Interval> results = new ArrayList<Interval>();
-        if (intervals == null || intervals.size() == 0) {
-            results.add(newInterval);
-            return results;
-        }
-        // find position for new interval
-        int start = 0, end = 0; // end points to the position after
-        for (Interval i : intervals) {
-            if (newInterval.start > i.end)
-                start++;
-            if (newInterval.end >= i.start)
-                end++;
-            else
-                break;
-        }
-        if (start == end) {
-            results.addAll(intervals);
-            results.add(start, newInterval);
-            return results;
-        }
-        // add intervals from 0 to start
-        for (int i = 0; i < start; i++)
-            results.add(intervals.get(i));
-        // build and add overlapped interval
-        Interval interval = new Interval(Math.min(newInterval.start, intervals.get(start).start),
-                Math.max(newInterval.end, intervals.get(end - 1).end)); // note that it's end - 1
-        results.add(interval);
-        // add remainning intervals
-        for (int i = end; i < intervals.size(); i++)
-            results.add(intervals.get(i));
-        return results;
-    }
 
     public static class Interval {
         int start;

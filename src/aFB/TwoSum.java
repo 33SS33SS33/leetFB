@@ -33,10 +33,8 @@ class TwoSum {
     }
 
     //http://blog.csdn.net/linhuanmars/article/details/19711387
-    /*在LeetCode原题中是假设结果有且仅有一个的，一般来说面试时会要求出所有的结果，
-    这个时候会涉及到重复pair的处理，相关的内容会在3Sum那道题目中*/
-
-    /**
+    /**在LeetCode原题中是假设结果有且仅有一个的，一般来说面试时会要求出所有的结果，
+    这个时候会涉及到重复pair的处理，相关的内容会在3Sum那道题目中
      * HashMap, O(n) time, O(n) space
      * key -> number, value -> index
      * Search new target in map and return index if not same
