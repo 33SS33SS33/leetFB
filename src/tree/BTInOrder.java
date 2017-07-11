@@ -30,16 +30,16 @@ class BTInOrder {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new BTInOrder().inorderTraversal(root));
-        System.out.println(new BTInOrder().inorderTraversalB(root));
-        System.out.println(new BTInOrder().inorderTraversalC(root));
+        System.out.println(new BTInOrder().inorderTraversa(root));
+        System.out.println(new BTInOrder().inorderTraversb(root));
+        System.out.println(new BTInOrder().inorderTraversc(root));
     }
 
     /**
      * The recursive solution is trivial. 递归法
      * 算法的时间复杂度是O(n), 而空间复杂度则是递归栈的大小，即O(logn)
      */
-    public List<Integer> inorderTraversalC(TreeNode root) {
+    public List<Integer> inorderTraversa(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         if (root != null) {
             helper(root, result);
@@ -63,7 +63,7 @@ class BTInOrder {
      * Pop the node from stack, add its value, and try to go right
      * Stop if stack is empty or node is null
      */
-    public static List<Integer> inorderTraversal(TreeNode root) {
+    public static List<Integer> inorderTraversb(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         Stack<TreeNode> s = new Stack<TreeNode>();
         while (!s.isEmpty() || root != null) {
@@ -99,8 +99,9 @@ class BTInOrder {
      * a) 如果前驱节点的右孩子为空，将它的右孩子设置为当前节点（做线索使得稍后可以重新返回父结点）。然后将当前节点更新为当前节点的左孩子。
      * b) 如果前驱节点的右孩子为当前节点，表明左子树已经访问完，可以访问当前节点。将它的右孩子重新设为空（恢复树的结构）。
      * 输出当前节点。当前节点更新为当前节点的右孩子。
+     * http://blog.csdn.net/linhuanmars/article/details/20187257
      */
-    public static List<Integer> inorderTraversalB(TreeNode root) {
+    public static List<Integer> inorderTraversc(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if (root == null)
             return res;

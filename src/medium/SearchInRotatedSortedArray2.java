@@ -16,7 +16,6 @@ class SearchInRotatedSortedArray2 {
         int[] A = {4, 5, 5, 6, 7, 7, 0, 1, 2};
         int target = 3;
         System.out.println(new SearchInRotatedSortedArray2().searchA(A, target));
-        System.out.println(new SearchInRotatedSortedArray2().searchB(A, target));
     }
 
     /**
@@ -43,42 +42,6 @@ class SearchInRotatedSortedArray2 {
                 }
             } else {
                 left++;/**重要步骤 平移*/
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Clarification: non-descending order
-     * Ends up same as sequential search at worst.
-     */
-    public boolean searchB(int[] A, int target) {
-        if (A == null || A.length == 0)
-            return false;
-        int l = 0;
-        int r = A.length - 1;
-        while (l <= r) {
-            int m = l + (r - l) / 2;
-            if (A[m] == target)
-                return true;
-            /*skip*/
-            if (A[l] == A[m] && A[m] == A[r]) {
-                l++;
-                r--;
-            } else if (A[l] == A[m])
-                l = m + 1;
-            else if (A[m] == A[r])
-                r = m;
-            else if (A[l] < A[m]) { // left half sorted
-                if (A[l] <= target && target < A[m])
-                    r = m - 1;
-                else
-                    l = m + 1;
-            } else if (A[l] > A[m]) { // right half sorted
-                if (A[m] < target && target <= A[r])
-                    l = m + 1;
-                else
-                    r = m - 1;
             }
         }
         return false;

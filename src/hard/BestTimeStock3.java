@@ -40,6 +40,7 @@ class BestTimeStock3 {
      * 因为否则就不满足local[i][j]必须在最后一天卖出的条件了）。
      * 上面的算法中对于天数需要一次扫描，而每次要对交易次数进行递推式求解，所以时间复杂度是O(n*k)，如果是最多进行两次交易，那么复杂度还是O(n)。
      * 空间上只需要维护当天数据皆可以，所以是O(k)，当k=2，则是O(1)。
+     * http://blog.csdn.net/linhuanmars/article/details/23236995
      */
     public int maxProfitC(int[] prices) {
         if (prices == null || prices.length == 0)

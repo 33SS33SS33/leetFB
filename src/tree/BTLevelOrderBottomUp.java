@@ -24,7 +24,7 @@ import java.util.Queue;
  * Tags: Tree, BFS
  * DFS BFS都行 遍历的时候存一下当前结点在的level即可 然后插入位置用负数来选择就可以了
  */
-class LevelOrderBottomUp {
+class BTLevelOrderBottomUp {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
@@ -37,8 +37,8 @@ class LevelOrderBottomUp {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new LevelOrderBottomUp().levelOrderBottom(root).toString());
-        System.out.println(new LevelOrderBottomUp().levelOrderBottomc(root).toString());
+        System.out.println(new BTLevelOrderBottomUp().btlevelOrderBottom(root).toString());
+        System.out.println(new BTLevelOrderBottomUp().btlevelOrderBottomc(root).toString());
     }
 
     /**
@@ -49,7 +49,7 @@ class LevelOrderBottomUp {
      * Assign next level to current level
      * Add curLevel to first of result each time to get reverse order
      */
-    public List<List<Integer>> levelOrderBottom(TreeNode root) {
+    public List<List<Integer>> btlevelOrderBottom(TreeNode root) {
         List<List<Integer>> res = new LinkedList<List<Integer>>();
         if (root == null)
             return res;
@@ -75,7 +75,7 @@ class LevelOrderBottomUp {
     /**
      * The addFirst() method of LinkedLinked save us from reverse final result.
      */
-    public List<List<Integer>> levelOrderBottomc(TreeNode root) {
+    public List<List<Integer>> btlevelOrderBottomc(TreeNode root) {
         LinkedList<List<Integer>> list = new LinkedList<List<Integer>>();
         addLevel(list, 0, root);
         return list;

@@ -18,7 +18,6 @@ class SearchInsertPos {
         int target = 5;
         SearchInsertPos a = new SearchInsertPos();
         System.out.println(a.searchInsert(A, target));
-        System.out.println(a.searchInsertB(A, target));
         System.out.println(a.searchInsertC(A, target));
     }
 
@@ -64,23 +63,6 @@ class SearchInsertPos {
             return start < mid ? searchInsert(A, target, start, mid - 1) : start;
         else
             return end > mid ? searchInsert(A, target, mid + 1, end) : (end + 1);
-    }
-
-    /**
-     * 不好的
-     * Naively, we can just iterate the array and compare target with ith and (i+1)th element. Time complexity is O(n)
-     */
-    public int searchInsertB(int[] A, int target) {
-        if (A == null)
-            return 0;
-        if (target <= A[0])
-            return 0;
-        for (int i = 0; i < A.length - 1; i++) {
-            if (target > A[i] && target <= A[i + 1]) {
-                return i + 1;
-            }
-        }
-        return A.length;
     }
 
 }

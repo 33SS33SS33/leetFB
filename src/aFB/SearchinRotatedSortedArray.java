@@ -13,7 +13,7 @@ public class SearchinRotatedSortedArray {
         int[] nums = {4, 5, 6, 7, 1, 2, 3};
         int k = 3;
         int t1 = r.searchA(nums, k);
-        int t2 = r.searchB(nums, k);
+        int t2 = r.search(nums, k);
         System.out.println(t1);
         System.out.println(t2);
     }
@@ -54,25 +54,26 @@ public class SearchinRotatedSortedArray {
      * 那么我们只需要判断target是不是在m到r之间，如果是则把左边缘移到m+1，否则就target在另一半，即把右边缘移到m-1。
      * （3）如果A[m]>=A[r]，那么说明从l到m一定是有序的，同样只需要判断target是否在这个范围内，相应的移动边缘即可。
      */
-    public int searchB(int[] nums, int target) {
-        int left = 0;
-        int right = nums.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (target == nums[mid])
-                return mid;
-            if (nums[left] <= nums[mid]) {
-                if (nums[left] <= target && target < nums[mid]) {
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
-                }
-            } else {
-                if (nums[mid] < target && target <= nums[right]) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
+    public static int search(int[] A, int target) {
+        if (A == null || A.length == 0)
+            return -1;
+        int l = 0;
+        int r = A.length - 1;
+        int m;
+        while (l <= r) {
+            m = l + (r - l) / 2;
+            if (A[m] == target)
+                return m;
+            if (A[m] >= A[l]) { // left half sorted
+                if (target >= A[l] && target < A[m]) {
+                    r = m - 1;
+                } else
+                    l = m + 1;
+            } else { // right half sorted
+                if (target > A[m] && target <= A[r]) {
+                    l = m + 1;
+                } else
+                    r = m - 1;
             }
         }
         return -1;

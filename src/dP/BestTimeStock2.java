@@ -14,7 +14,6 @@ class BestTimeStock2 {
     public static void main(String[] args) {
         int[] prices = {1, 2, 10, 100};
         System.out.println(maxProfit(prices));
-        System.out.println(maxProfitA(prices));
     }
 
     /**
@@ -29,17 +28,4 @@ class BestTimeStock2 {
         return max;
     }
 
-    /**
-     * creek
-     */
-    public static int maxProfitA(int[] prices) {
-        int profit = 0;
-        for (int i = 1; i < prices.length; i++) {
-            int diff = prices[i] - prices[i - 1];
-            if (diff > 0) {
-                profit += diff;
-            }
-        }
-        return profit;
-    }
 }

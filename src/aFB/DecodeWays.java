@@ -24,6 +24,7 @@ class DecodeWays {
         System.out.println(d.numDecodingsD("12"));
     }
 
+    //http://blog.csdn.net/linhuanmars/article/details/24570759
     //最好的  不懂。。。
     public int numDecodingsa(String s) {
         int n = s.length();

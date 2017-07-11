@@ -21,9 +21,48 @@ class Searcha2DMatrix {
         Searcha2DMatrix s = new Searcha2DMatrix();
         int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 50}};
         System.out.println(s.searchMatrix(matrix, 0));
-        System.out.println(s.searchMatrix(matrix, 1));
-        System.out.println(s.searchMatrix(matrix, 100));
+        System.out.println(s.searchMatrixA(matrix, 1));
+        System.out.println(s.searchMatrixA(matrix, 30));
         System.out.println(s.searchMatrixA(matrix, 100));
+    }
+
+    /**
+     * 先用行进行二分搜索 确定行之后对列进行二分搜索
+     * Binary search to locate row, then binary search in a row
+     * O(logm + logn)  空间上只需两个辅助变量，因而是O(1)
+     * http://blog.csdn.net/linhuanmars/article/details/24216235
+     */
+    public boolean searchMatrixA(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        int l = 0;
+        int r = matrix.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (matrix[mid][0] == target)
+                return true;
+            if (matrix[mid][0] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        int row = r;   //???????
+        if (row < 0)
+            return false;
+        l = 0;
+        r = matrix[0].length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (matrix[row][mid] == target)
+                return true;
+            if (matrix[row][mid] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return false;
     }
 
     /**
@@ -48,44 +87,6 @@ class Searcha2DMatrix {
                 start = mid + 1;
             } else {
                 end = mid - 1;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * 先用行进行二分搜索 确定行之后对列进行二分搜索
-     * Binary search to locate row, then binary search in a row
-     * O(logm + logn)
-     */
-    public boolean searchMatrixA(int[][] matrix, int target) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
-            return false;
-        int l = 0;
-        int r = matrix.length - 1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (matrix[mid][0] == target)
-                return true;
-            if (matrix[mid][0] > target) {
-                r = mid - 1;
-            } else {
-                l = mid + 1;
-            }
-        }
-        int row = r;
-        if (row < 0)
-            return false;
-        l = 0;
-        r = matrix[0].length - 1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (matrix[row][mid] == target)
-                return true;
-            if (matrix[row][mid] > target) {
-                r = mid - 1;
-            } else {
-                l = mid + 1;
             }
         }
         return false;

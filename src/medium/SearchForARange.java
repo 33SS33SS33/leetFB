@@ -26,6 +26,7 @@ class SearchForARange {
 
     /**
      * 最好的
+     * http://blog.csdn.net/linhuanmars/article/details/20593391
      */
     public int[] searchRangeA(int[] A, int target) {
         int start = firstGreaterEqual(A, target);

@@ -28,7 +28,6 @@ class MaxProductSubarr {
     public static int maxProductA(int[] A) {
         if (A == null || A.length == 0)
             return 0;
-        assert A.length > 0;
         int max = A[0], min = A[0], maxAns = A[0];
         for (int i = 1; i < A.length; i++) {
             int mx = max, mn = min;

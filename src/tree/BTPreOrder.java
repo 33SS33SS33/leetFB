@@ -33,25 +33,7 @@ class BTPreOrder {
         n2.right = n5;
         System.out.println(new BTPreOrder().preorderTraversal(root));
         System.out.println(new BTPreOrder().preorderTraversalB(root));
-    }
-
-    /**
-     * Note that in this solution only right children are stored to stack.
-     */
-    public List<Integer> preorderTraversala(TreeNode node) {
-        List<Integer> list = new LinkedList<Integer>();
-        Stack<TreeNode> rights = new Stack<TreeNode>();
-        while (node != null) {
-            list.add(node.val);
-            if (node.right != null) {
-                rights.push(node.right);
-            }
-            node = node.left;
-            if (node == null && !rights.isEmpty()) {
-                node = rights.pop();
-            }
-        }
-        return list;
+        System.out.println(new BTPreOrder().preorderTraversalC(root));
     }
 
     /**
@@ -89,8 +71,8 @@ class BTPreOrder {
         s.push(root);
         while (!s.isEmpty()) {
             TreeNode curNode = s.pop();
-            res.add(curNode.val); // visit
-            if (curNode.right != null)
+            res.add(curNode.val);
+            if (curNode.right != null) // visit 注意啊~~！！！！
                 s.push(curNode.right);
             if (curNode.left != null)
                 s.push(curNode.left); // left pop first
@@ -101,6 +83,7 @@ class BTPreOrder {
     /**
      * 用线索二叉树  这种方法的缺陷在于会暂时性的改变结点的内容
      * 分别是O(n)和O(1)
+     * http://blog.csdn.net/linhuanmars/article/details/21428647
      */
     public ArrayList<Integer> preorderTraversalC(TreeNode root) {
         ArrayList<Integer> res = new ArrayList<Integer>();
