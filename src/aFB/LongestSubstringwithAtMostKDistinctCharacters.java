@@ -27,5 +27,5 @@ public class LongestSubstringwithAtMostKDistinctCharacters {
         }
         return res;
     }
-    
+
 }
