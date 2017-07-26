@@ -14,12 +14,8 @@ public class ContainsDuplicate2 {
         int[] num = {1, 3, 7, 5, 8};
         int[] num2 = {1, 3, 7, 3, 8};
         System.out.println(containsNearbyDuplicatea(num, 3));
-        System.out.println(containsNearbyDuplicate(num, 3));
-        System.out.println(containsNearbyDuplicateB(num, 3));
         System.out.println(containsNearbyDuplicateC(num, 3));
         System.out.println(containsNearbyDuplicatea(num2, 3));
-        System.out.println(containsNearbyDuplicate(num2, 3));
-        System.out.println(containsNearbyDuplicateB(num2, 3));
         System.out.println(containsNearbyDuplicateC(num2, 3));
     }
 
@@ -51,46 +47,6 @@ public class ContainsDuplicate2 {
             map.put(nums[i], i);
         }
         return false;
-    }
-
-    public static boolean containsNearbyDuplicate(int[] nums, int k) {
-        if (k <= 0)
-            return false;
-        Map<Integer, List<Integer>> pairs = new HashMap<Integer, List<Integer>>();
-        for (int i = 0; i < nums.length; i++) {
-            List<Integer> l = pairs.get(nums[i]);
-            if (l == null) {
-                l = new ArrayList<Integer>();
-                pairs.put(nums[i], l);
-            } else {
-                for (int j : l) {
-                    if (i - j <= k) {
-                        return true;
-                    }
-                }
-            }
-            l.add(i);
-        }
-        return false;
-    }
-
-    public static boolean containsNearbyDuplicateB(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int min = Integer.MAX_VALUE;
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                int preIndex = map.get(nums[i]);
-                int gap = i - preIndex;
-                min = Math.min(min, gap);
-            }
-            map.put(nums[i], i);
-        }
-
-        if (min <= k) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }

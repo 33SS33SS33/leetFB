@@ -9,11 +9,11 @@ package easy;
 class ClimbingStairs {
     public static void main(String[] args) {
         System.out.println(climbStairs(44));
-        System.out.println(climbStairsB(44));
         System.out.println(climbStairsC(44));
     }
 
     // bottom-up approach 最好的
+    // https://discuss.leetcode.com/topic/5371/basically-it-s-a-fibonacci/5
     public static int climbStairsC(int n) {
         if (n < 0)
             return -1;
@@ -43,26 +43,6 @@ class ClimbingStairs {
             last = now;
         }
         return now;
-    }
-
-    /**
-     * Top-down approach with memory function
-     */
-    public static int climbStairsB(int n) {
-        int[] cache = new int[n + 1];
-        return helper(n, cache);
-    }
-
-    public static int helper(int n, int[] cache) {
-        if (n < 0)
-            return -1;
-        if (n == 0 || n == 1)
-            return 1;
-        cache[0] = 1;
-        cache[1] = 1;
-        if (cache[n] == 0)
-            cache[n] = helper(n - 1, cache) + helper(n - 2, cache);
-        return cache[n];
     }
 
 }
