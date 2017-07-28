@@ -49,7 +49,8 @@ public class WordSearchII {
 
     public void dfs(char[][] board, int i, int j, TrieNode p, List<String> res) {
         char c = board[i][j];
-        if (c == '#' || p.next[c - 'a'] == null) return;
+        if (c == '#' || p.next[c - 'a'] == null)
+            return;
         p = p.next[c - 'a'];
         if (p.word != null) {   // found one
             res.add(p.word);
@@ -63,6 +64,7 @@ public class WordSearchII {
         board[i][j] = c;
     }
 
+    // 怎么建立字典树
     public TrieNode buildTrie(String[] words) {
         TrieNode root = new TrieNode();
         for (String w : words) {

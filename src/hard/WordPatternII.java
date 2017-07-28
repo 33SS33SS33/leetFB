@@ -21,16 +21,41 @@ import java.util.Set;
  */
 public class WordPatternII {
     public static void main(String[] args) {
-        String S = "abab";
-        String T = "redblueredblue";
-        System.out.println(new WordPatternII().wordPatternMatch(S, T));
+        System.out.println(new WordPatternII().wordPatternMatch("abab", "redblueredblue"));
+        System.out.println(new WordPatternII().wordPatternMatchb("abab", "redblueredblue"));
         System.out.println(new WordPatternII().wordPatternMatch("aaaa", "asdasdasdasd"));
+        System.out.println(new WordPatternII().wordPatternMatchb("aaaa", "asdasdasdasd"));
         System.out.println(new WordPatternII().wordPatternMatch("aabb", "xyzabcxzyabc"));
+        System.out.println(new WordPatternII().wordPatternMatchb("aabb", "xyzabcxzyabc"));
     }
 
-    /**
-     * 最好的
-     */
+    Map<Character, String> map = new HashMap();
+    Set<String> set = new HashSet();
+
+    public boolean wordPatternMatchb(String pattern, String str) {
+        if (pattern.isEmpty())
+            return str.isEmpty();
+        if (map.containsKey(pattern.charAt(0))) {
+            String value = map.get(pattern.charAt(0));
+            if (str.length() < value.length() || !str.substring(0, value.length()).equals(value))
+                return false;
+            if (wordPatternMatch(pattern.substring(1), str.substring(value.length())))
+                return true;
+        } else {
+            for (int i = 1; i <= str.length(); i++) {
+                if (set.contains(str.substring(0, i)))
+                    continue;
+                map.put(pattern.charAt(0), str.substring(0, i));
+                set.add(str.substring(0, i));
+                if (wordPatternMatch(pattern.substring(1), str.substring(i)))
+                    return true;
+                set.remove(str.substring(0, i));
+                map.remove(pattern.charAt(0));
+            }
+        }
+        return false;
+    }
+
     public boolean wordPatternMatch(String pattern, String str) {
         Map<Character, String> map = new HashMap<>();
         Set<String> set = new HashSet<>();
@@ -69,33 +94,6 @@ public class WordPatternII {
             // backtracking
             map.remove(c);
             set.remove(p);
-        }
-        return false;
-    }
-
-    Map<Character, String> map = new HashMap();
-    Set<String> set = new HashSet();
-
-    public boolean wordPatternMatchb(String pattern, String str) {
-        if (pattern.isEmpty())
-            return str.isEmpty();
-        if (map.containsKey(pattern.charAt(0))) {
-            String value = map.get(pattern.charAt(0));
-            if (str.length() < value.length() || !str.substring(0, value.length()).equals(value))
-                return false;
-            if (wordPatternMatch(pattern.substring(1), str.substring(value.length())))
-                return true;
-        } else {
-            for (int i = 1; i <= str.length(); i++) {
-                if (set.contains(str.substring(0, i)))
-                    continue;
-                map.put(pattern.charAt(0), str.substring(0, i));
-                set.add(str.substring(0, i));
-                if (wordPatternMatch(pattern.substring(1), str.substring(i)))
-                    return true;
-                set.remove(str.substring(0, i));
-                map.remove(pattern.charAt(0));
-            }
         }
         return false;
     }
