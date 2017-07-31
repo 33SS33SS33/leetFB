@@ -19,7 +19,6 @@ import java.util.TreeSet;
  * What if there are lots of merges and the number of disjoint intervals are small compared to the data stream's size?
  */
 public class DataStreamasDisjointIntervals {
-
     /**
      * Initialize your data structure here.
      */

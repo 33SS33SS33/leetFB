@@ -20,7 +20,7 @@ public class WordBreak2 {
         System.out.println(wordBreakC(s, dict).toString());
     }
 
-    //最好的 20170727 流利英语说
+    //最好的 20170727 英语流利说
     public static ArrayList<String> wordBreakC(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)

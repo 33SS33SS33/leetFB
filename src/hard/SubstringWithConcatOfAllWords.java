@@ -36,7 +36,7 @@ class SubstringWithConcatOfAllWords {
         for (String w : L)
             map.put(w, map.containsKey(w) ? map.get(w) + 1 : 1);
         for (int i = 0; i <= S.length() - len * L.length; i++) {
-            Map<String, Integer> copy = new HashMap<String, Integer>(map);
+            Map<String, Integer> copy = new HashMap<String, Integer>(map); //重要!!!!
             for (int j = 0; j < L.length; j++) { // check if match
                 String str = S.substring(i + j * len, i + j * len + len); // next word
                 if (copy.containsKey(str)) { // is in remaining words

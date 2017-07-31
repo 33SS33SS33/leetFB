@@ -10,8 +10,6 @@ public class LongestSubstringContainsKUniqChar {
     public static void main(String[] args) {
         LongestSubstringContainsKUniqChar m = new LongestSubstringContainsKUniqChar();
         System.out.println(m.maxSubString2UniqueCharsB("abcbbbbcccbdddadacb"));
-
-        /**-------错的-------*/
         System.out.println(m.maxSubStringKUniqueCharsA("bbbbb", 2));
         System.out.println(m.maxSubStringKUniqueCharsB("bbbbb", 2));
         System.out.println(m.maxSubStringKUniqueCharsA("fdjskajfhhh", 2));

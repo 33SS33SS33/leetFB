@@ -18,10 +18,7 @@ class BestTimeStock3 {
         BestTimeStock3 b = new BestTimeStock3();
         int[] prices = {6, 1, 3, 2, 4, 7, 6, 10, 15};
         int[] prices2 = {1, 4, 5, 7, 6, 3, 2, 9};
-        System.out.println(b.maxProfita(prices));
-        System.out.println(b.maxProfit(prices));
         System.out.println(b.maxProfitC(prices));
-        System.out.println(b.maxProfita(prices2));
     }
 
     /**
@@ -55,54 +52,6 @@ class BestTimeStock3 {
             }
         }
         return global[2];
-    }
-
-    /**
-     * The thinking is simple and is inspired by the best solution from Single Number II (I
-     * read through the discussion after I use DP). Assume we only have 0 money at first; 4
-     * Variables to maintain some interested 'ceilings' so far: The maximum of if we've just
-     * buy 1st stock, if we've just sold 1nd stock, if we've just buy 2nd stock, if we've just
-     * sold 2nd stock. Very simple code too and work well. I have to say the logic is simple
-     * than those in Single Number II.
-     */
-    public int maxProfita(int[] prices) {
-        int hold1 = Integer.MIN_VALUE, hold2 = Integer.MIN_VALUE;
-        int release1 = 0, release2 = 0;
-        for (int i : prices) { // Assume we only have 0money at first
-            release2 = Math.max(release2, hold2 + i); // The maximum if we've just sold 2 nd stock so far.
-            hold2 = Math.max(hold2, release1 - i); // The maximum if we've just buy 2 nd stock so far.
-            release1 = Math.max(release1, hold1 + i); // The maximum if we've just sold 1 nd stock so far.
-            hold1 = Math.max(hold1, -i); // The maximum if we've just buy 1 st stock so far.
-        }
-        return release2; ///Since release1 is initiated as 0, so release2 will always higher than release1.
-    }
-
-    /**
-     * Goes forward to build single transaction max profit
-     * Then goes backward to build max since day i profit
-     * Find the max of the sum of these two
-     */
-    public int maxProfit(int[] prices) {
-        int maxProfit = 0;
-        if (prices == null || prices.length < 2)
-            return maxProfit;
-        int len = prices.length;
-        int[] maxBy = new int[len];
-        int[] maxSince = new int[len];
-        int valley = prices[0];
-        int peak = prices[len - 1];
-        for (int i = 1; i < len; i++) {
-            valley = Math.min(valley, prices[i]);
-            maxBy[i] = Math.max(maxBy[i - 1], prices[i] - valley);
-        }
-        /*update maxProfit while build maxSince*/
-        for (int i = len - 2; i >= 0; i--) {
-            peak = Math.max(peak, prices[i]);
-            maxSince[i] = Math.max(maxSince[i + 1], peak - prices[i]);
-            maxProfit = Math.max(maxProfit, maxBy[i] + maxSince[i]);
-            // find i such that maxBy[i]+maxSince[i+1] is the max two-transaction profit, no overlap
-        }
-        return maxProfit;
     }
 
 }

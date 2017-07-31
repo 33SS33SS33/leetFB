@@ -9,7 +9,6 @@ import java.util.Set;
  * Created by shanshan on 17/2/17.
  */
 public class InsertDeleteGetRandomO1Dup {
-
     public class RandomizedCollection {
         ArrayList<Integer> nums;
         HashMap<Integer, Set<Integer>> locs;
