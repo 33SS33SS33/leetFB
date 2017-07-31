@@ -17,7 +17,6 @@ class BestTimeStock3 {
     public static void main(String[] args) {
         BestTimeStock3 b = new BestTimeStock3();
         int[] prices = {6, 1, 3, 2, 4, 7, 6, 10, 15};
-        int[] prices2 = {1, 4, 5, 7, 6, 3, 2, 9};
         System.out.println(b.maxProfitC(prices));
     }
 
