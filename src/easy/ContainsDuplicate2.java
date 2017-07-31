@@ -14,9 +14,7 @@ public class ContainsDuplicate2 {
         int[] num = {1, 3, 7, 5, 8};
         int[] num2 = {1, 3, 7, 3, 8};
         System.out.println(containsNearbyDuplicatea(num, 3));
-        System.out.println(containsNearbyDuplicateC(num, 3));
         System.out.println(containsNearbyDuplicatea(num2, 3));
-        System.out.println(containsNearbyDuplicateC(num2, 3));
     }
 
     /**
@@ -29,22 +27,6 @@ public class ContainsDuplicate2 {
                 set.remove(nums[i - k - 1]);
             if (!set.add(nums[i]))
                 return true;
-        }
-        return false;
-    }
-
-    /**
-     * -------better----
-     */
-    public static boolean containsNearbyDuplicateC(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                int pre = map.get(nums[i]);
-                if (i - pre <= k)
-                    return true;
-            }
-            map.put(nums[i], i);
         }
         return false;
     }

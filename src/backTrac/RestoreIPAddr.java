@@ -9,7 +9,6 @@ import java.util.*;
  * Given "25525511135",
  * return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
  * Tags: Backtracking, String
- * <p/>
  * 用DFS
  * 递归的将数字串分成四个部分，每个部分满足0<=p<=255。要注意一些边界case，
  * 比如010是没有意思的，“0.10.010.1”。
@@ -18,16 +17,9 @@ class RestoreIPAddr {
     public static void main(String[] args) {
         List<String> r1 = restoreIPAddressesA("25525511135");
         List<String> r2 = restoreIPAddressesA("010010");
+
         System.out.println(r1.toString());
         System.out.println(r2.toString());
-
-        List<String> r3 = restoreIPAddressesB("25525511135");
-        List<String> r4 = restoreIPAddressesB("010010");
-        System.out.println(r3.toString());
-        System.out.println(r4.toString());
-
-        System.out.println(restoreIpAddresses("25525511135").toString());
-        System.out.println(restoreIpAddresses("010010").toString());
     }
 
     /**
@@ -74,78 +66,4 @@ class RestoreIPAddr {
         return true;
     }
 
-    public static List<String> restoreIpAddresses(String s) {
-        List<String> res = new ArrayList<String>();
-        int len = s.length();
-        for (int i = 1; i < 4 && i < len - 2; i++) {
-            for (int j = i + 1; j < i + 4 && j < len - 1; j++) {
-                for (int k = j + 1; k < j + 4 && k < len; k++) {
-                    String s1 = s.substring(0, i), s2 = s.substring(i, j), s3 = s
-                            .substring(j, k), s4 = s.substring(k, len);
-                    if (isValida(s1) && isValida(s2) && isValida(s3) && isValida(s4)) {
-                        res.add(s1 + "." + s2 + "." + s3 + "." + s4);
-                    }
-                }
-            }
-        }
-        return res;
-    }
-
-    public static boolean isValida(String s) {
-        if (s.length() > 3 || s.length() == 0 || (s.charAt(0) == '0' && s.length() > 1) ||
-                Integer.parseInt(s) > 255)
-            return false;
-        return true;
-    }
-
-    /**
-     * creek This is a typical search problem and it can be solved by using DFS.
-     */
-    public static List<String> restoreIPAddressesB(String s) {
-        ArrayList<ArrayList<String>> result = new ArrayList<ArrayList<String>>();
-        ArrayList<String> t = new ArrayList<String>();
-        dfs(result, s, 0, t);
-        ArrayList<String> finalResult = new ArrayList<String>();
-        for (ArrayList<String> l : result) {
-            StringBuilder sb = new StringBuilder();
-            for (String str : l) {
-                sb.append(str + ".");
-            }
-            sb.setLength(sb.length() - 1);
-            finalResult.add(sb.toString());
-        }
-        return finalResult;
-    }
-
-    public static void dfs(ArrayList<ArrayList<String>> result, String s, int start,
-                           ArrayList<String> t) {
-        //if already get 4 numbers, but s is not consumed, return
-        if (t.size() >= 4 && start != s.length())
-            return;
-        //make sure t's size + remaining string's length >=4
-        if ((t.size() + s.length() - start + 1) < 4)
-            return;
-        //t's size is 4 and no remaining part that is not consumed.
-        if (t.size() == 4 && start == s.length()) {
-            ArrayList<String> temp = new ArrayList<String>(t);
-            result.add(temp);
-            return;
-        }
-        for (int i = 1; i <= 3; i++) {
-            //make sure the index is within the boundary
-            if (start + i > s.length())
-                break;
-            String sub = s.substring(start, start + i);
-            //handle case like 001. i.e., if length > 1 and first char is 0, ignore the case.
-            if (i > 1 && s.charAt(start) == '0') {
-                break;
-            }
-            //make sure each number <= 255
-            if (Integer.valueOf(sub) > 255)
-                break;
-            t.add(sub);
-            dfs(result, s, start + i, t);
-            t.remove(t.size() - 1);
-        }
-    }
 }

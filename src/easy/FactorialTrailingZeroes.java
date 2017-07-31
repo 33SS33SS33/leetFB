@@ -16,7 +16,7 @@ package easy;
  */
 class FactorialTrailingZeroes {
     public static void main(String[] args) {
-//        System.out.println(trailingZeroes(1025));
+        System.out.println(trailingZeroes(1025));
         System.out.println(trailingZeroesD(1025));
     }
 
@@ -33,9 +33,9 @@ class FactorialTrailingZeroes {
         return count;
     }
 
-/*    *//**
+    /**
      * O(log5-n)
-     *//*
+     */
     public static int trailingZeroes(int n) {
         int r = 0;
         while (n > 0) {
@@ -43,6 +43,6 @@ class FactorialTrailingZeroes {
             r += n; // add # of 5 in n
         }
         return r;
-    }*/
+    }
 
 }

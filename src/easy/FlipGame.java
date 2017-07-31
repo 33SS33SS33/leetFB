@@ -21,20 +21,12 @@ import java.util.List;
 //注意一下要先检查 只有当连续两个+的时候再翻转
 public class FlipGame {
     public static void main(String[] args) {
-        System.out.println(generatePossibleNextMovesa("++++"));
         System.out.println(generatePossibleNextMoves("++++"));
     }
 
     /**
      * 最好的
      */
-    public static List<String> generatePossibleNextMovesa(String s) {
-        List list = new ArrayList();
-        for (int i = -1; (i = s.indexOf("++", i + 1)) >= 0; )
-            list.add(s.substring(0, i) + "--" + s.substring(i + 2));
-        return list;
-    }
-
     public static List<String> generatePossibleNextMoves(String s) {
         List<String> list = new ArrayList<String>();
         for (int i = 1; i < s.length(); i++) {

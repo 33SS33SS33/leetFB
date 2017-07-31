@@ -16,16 +16,8 @@ class JumpGame {
         int[] B = {2, 3, 1, 1, 4};
         int[] C = {0};
         int[] D = {2, 5, 0, 0};
-        System.out.println(j.canJump(A));
-        System.out.println(j.canJumpB(A));
         System.out.println(j.canJumpC(A));
         System.out.println(j.canJumpa(A));
-        System.out.println(j.canJump(B));
-        System.out.println(j.canJumpB(B));
-        System.out.println(j.canJump(C));
-        System.out.println(j.canJumpB(C));
-        System.out.println(j.canJump(D));
-        System.out.println(j.canJumpB(D));
         System.out.println(j.canJumpC(D));
         System.out.println(j.canJumpa(D));
     }
@@ -34,6 +26,8 @@ class JumpGame {
      * 最好的
      */
     public boolean canJumpa(int[] A) {
+        if (A == null || A.length == 0)
+            return false;
         int max = 0;
         for (int i = 0; i < A.length; i++) {
             if (i > max) {
@@ -45,32 +39,11 @@ class JumpGame {
     }
 
     /**
-     * Dynamic Programming
-     * Keep track of the maximum of jumps we left
-     * Initialized as A[0]
-     * Traverse from second to second last
-     * Reduce 1 every time we jump
-     * maxJump should be max of maxJump - 1 and A[i]
-     * if maxJump reduces to zero, we are not able to reach anymore
-     */
-    public boolean canJump(int[] A) {
-        if (A == null || A.length == 0)
-            return false;
-        if (A.length == 1)
-            return true; // already reach last index
-        if (A[0] == 0)
-            return false; // note its important cause we start from 1
-        int maxJump = A[0];
-        for (int i = 1; i < A.length - 1; i++) {
-            maxJump = Math.max(maxJump - 1, A[i]);
-            if (maxJump == 0)
-                return false;
-        }
-        return true;
-    }
-
-    /**
      * 时间复杂度是O(n)，而空间上是O(1)
+     * The key to solve this problem is to find:
+     * 1) when the current position can not reach next position (return false) ,
+     * and 2) when the maximum index can reach the end (return true).
+     * The largest index that can be reached is: i + A[i].
      */
     public boolean canJumpC(int[] A) {
         if (A == null || A.length == 0)
@@ -82,30 +55,6 @@ class JumpGame {
         if (reach < A.length - 1)
             return false;
         return true;
-    }
-
-    /**
-     * creek
-     * The key to solve this problem is to find:
-     * 1) when the current position can not reach next position (return false) ,
-     * and 2) when the maximum index can reach the end (return true).
-     * The largest index that can be reached is: i + A[i].
-     */
-    public boolean canJumpB(int[] A) {
-        if (A.length <= 1)
-            return true;
-        int max = A[0]; //max stands for the largest index that can be reached.
-        for (int i = 0; i < A.length; i++) {
-            //if not enough to go to next
-            if (max <= i && A[i] == 0)
-                return false;
-            if (i + A[i] > max) {  //update max
-                max = i + A[i];
-            }
-            if (max >= A.length - 1)  //max is enough to reach the end
-                return true;
-        }
-        return false;
     }
 
 }

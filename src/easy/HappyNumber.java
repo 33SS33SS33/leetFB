@@ -14,13 +14,12 @@ import java.util.Set;
  */
 public class HappyNumber {
     public static void main(String[] args) {
-        System.out.println(new HappyNumber().isHappya(32));
-        System.out.println(new HappyNumber().isHappyb(32));
-        System.out.println(new HappyNumber().isHappyA(32));
-        System.out.println(new HappyNumber().isHappyB(32));
+        System.out.println(isHappya(32));
+        System.out.println(isHappyb(32));
+        System.out.println(isHappyA(32));
     }
 
-    public boolean isHappya(int n) {
+    public static boolean isHappya(int n) {
         int x = n;
         int y = n;
         while (x > 1) {
@@ -36,7 +35,7 @@ public class HappyNumber {
         return true;
     }
 
-    public int cal(int n) {
+    public static int cal(int n) {
         int x = n;
         int s = 0;
         while (x > 0) {
@@ -51,7 +50,7 @@ public class HappyNumber {
      * occurred. Once the current sum cannot be added to set, return false; once the
      * current sum equals 1, return true;
      */
-    public boolean isHappyb(int n) {
+    public static boolean isHappyb(int n) {
         Set<Integer> inLoop = new HashSet<Integer>();
         int squareSum, remain;
         while (inLoop.add(n)) {
@@ -69,7 +68,7 @@ public class HappyNumber {
         return false;
     }
 
-    public boolean isHappyA(int n) {
+    public static boolean isHappyA(int n) {
         Set<Integer> s = new HashSet<Integer>();
         for (; ; ) {
             n = trans(n);
@@ -81,7 +80,7 @@ public class HappyNumber {
         }
     }
 
-    int trans(int n) {
+    static int trans(int n) {
         int s = 0;
         do {
             int t = n % 10;
@@ -89,38 +88,6 @@ public class HappyNumber {
             n /= 10;
         } while (n > 0);
         return s;
-    }
-
-    public boolean isHappyB(int n) {
-        HashSet<Integer> set = new HashSet<Integer>();
-        while (!set.contains(n)) {
-            set.add(n);
-            n = sum(getDigits(n));
-            if (n == 1)
-                return true;
-        }
-        return false;
-    }
-
-    public int sum(int[] arr) {
-        int sum = 0;
-        for (int i : arr) {
-            sum = sum + i * i;
-        }
-        return sum;
-    }
-
-    public int[] getDigits(int n) {
-        String s = String.valueOf(n);
-        int[] result = new int[s.length()];
-        int i = 0;
-
-        while (n > 0) {
-            int m = n % 10;
-            result[i++] = m;
-            n = n / 10;
-        }
-        return result;
     }
 
 }

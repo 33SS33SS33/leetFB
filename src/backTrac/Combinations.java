@@ -1,6 +1,5 @@
 package backTrac;
 
-import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -18,18 +17,9 @@ import java.util.ArrayList;
  * ]
  * Tags: Backtracking
  */
+
 class Combinations {
     public static void main(String[] args) {
-        List<List<Integer>> lists = combineA(4, 2);
-        for (List<Integer> l : lists) {
-            System.out.print(l.toString());
-        }
-        System.out.println();
-        List<List<Integer>> lists2 = new Combinations().combineA(4, 2);
-        for (List<Integer> l : lists2) {
-            System.out.print(l.toString());
-        }
-        System.out.println();
         ArrayList<ArrayList<Integer>> lists3 = combineB(4, 2);
         for (ArrayList<Integer> l : lists3) {
             System.out.print(l.toString());
@@ -37,7 +27,7 @@ class Combinations {
     }
 
     /**
-     * * 最好的
+     * 最好的
      * creek DFS
      */
     public static ArrayList<ArrayList<Integer>> combineB(int n, int k) {
@@ -58,28 +48,6 @@ class Combinations {
             item.add(i);
             dfs(n, k, i + 1, item, res);
             item.remove(item.size() - 1); //
-        }
-    }
-
-    /**
-     * Ascending order, track start  DFS
-     */
-    public static List<List<Integer>> combineA(int n, int k) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        combine(n, k, 1, new ArrayList<Integer>(), res); // note that start is 1
-        return res;
-    }
-
-    public static void combine(int n, int k, int start, List<Integer> comb,
-                               List<List<Integer>> result) {
-        if (k == 0) { // is a solution
-            result.add(comb);
-            return;
-        }
-        for (int i = start; i <= n; i++) { // note that from start to n, <=
-            List<Integer> copy = new ArrayList<Integer>(comb);
-            copy.add(i); // don't forget to add i to copy
-            combine(n, k - 1, i + 1, copy, result); // choose k-1 from i+1 to n
         }
     }
 

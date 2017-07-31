@@ -25,12 +25,8 @@ class CombinationSum2 {
     public static void main(String[] args) {
         int[] candidates = {10, 1, 2, 7, 6, 1, 5};
         int tar = 8;
-        List<List<Integer>> solution = new CombinationSum2().combinationSum2a(candidates, tar);
-        for (List<Integer> l : solution)
-            System.out.println(l.toString());
 
-        List<List<Integer>> solution2 = new CombinationSum2()
-                .combinationSum2aa(candidates, tar);
+        List<List<Integer>> solution2 = new CombinationSum2().combinationSum2aa(candidates, tar);
         for (List<Integer> l : solution2)
             System.out.println(l.toString());
     }
@@ -53,30 +49,6 @@ class CombinationSum2 {
                 backtrack(list, tempList, nums, remain - nums[i], i + 1);
                 tempList.remove(tempList.size() - 1);
             }
-        }
-    }
-
-    public List<List<Integer>> combinationSum2a(int[] cand, int target) {
-        Arrays.sort(cand);
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        List<Integer> path = new ArrayList<Integer>();
-        dfs_com(cand, 0, target, path, res);
-        return res;
-    }
-
-    void dfs_com(int[] cand, int cur, int target, List<Integer> path, List<List<Integer>> res) {
-        if (target == 0) {
-            res.add(new ArrayList(path));
-            return;
-        }
-        if (target < 0)
-            return;
-        for (int i = cur; i < cand.length; i++) {
-            if (i > cur && cand[i] == cand[i - 1])
-                continue;
-            path.add(path.size(), cand[i]);
-            dfs_com(cand, i + 1, target - cand[i], path, res);
-            path.remove(path.size() - 1);
         }
     }
 

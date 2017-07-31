@@ -1,6 +1,8 @@
 package backTrac;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given a set of candidate numbers (C) and a target number (T), find all
@@ -39,77 +41,14 @@ class CombinationSum {
     }
 
     private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
-        if (remain < 0) return;
-        else if (remain == 0) list.add(new ArrayList<>(tempList));
-        else {
-            for (int i = start; i < nums.length; i++) {
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
-                tempList.remove(tempList.size() - 1);
-            }
-        }
-    }
-
-    /**
-     * Bakctracking 回溯
-     * Sort the array
-     * [2, 2, 3]
-     * [7]
-     */
-    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (candidates == null || candidates.length == 0)
-            return res;
-        Arrays.sort(candidates);
-        helper(candidates, target, 0, new ArrayList<Integer>(), res);
-        return res;
-    }
-
-    private static void helper(int[] candidates, int target, int pos, List<Integer> comb, List<List<Integer>> res) {
-        if (target == 0) {
-            res.add(new ArrayList<Integer>(comb)); // dereference
+        if (remain == 0) {
+            list.add(new ArrayList<>(tempList));
             return;
         }
-        for (int i = pos; i < candidates.length; i++) {
-            int newTarget = target - candidates[i];
-            if (newTarget >= 0) {
-                comb.add(candidates[i]);
-                helper(candidates, newTarget, i, comb, res); // note i
-                comb.remove(comb.size() - 1);
-            } else
-                break; // too big
+        for (int i = start; i < nums.length; i++) {
+            tempList.add(nums[i]);
+            backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+            tempList.remove(tempList.size() - 1);
         }
     }
-
-    /**
-     * Sort the candidates and we choose from small to large recursively, every time we add
-     * a candidate to our possible sub result, we subtract the target to a new smaller one.
-     */
-    public List<List<Integer>> combinationSumB(int[] candidates, int target) {
-        List<List<Integer>> ret = new LinkedList<List<Integer>>();
-        Arrays.sort(candidates); // sort the candidates
-        // collect possible candidates from small to large to eliminate duplicates,
-        recurse(new ArrayList<Integer>(), target, candidates, 0, ret);
-        return ret;
-    }
-
-    // the index here means we are allowed to choose candidates from that index
-    private void recurse(List<Integer> list, int target, int[] candidates, int index,
-                         List<List<Integer>> ret) {
-        if (target == 0) {
-            ret.add(list);
-            return;
-        }
-        for (int i = index; i < candidates.length; i++) {
-            int newTarget = target - candidates[i];
-            if (newTarget >= 0) {
-                List<Integer> copy = new ArrayList<Integer>(list);
-                copy.add(candidates[i]);
-                recurse(copy, newTarget, candidates, i, ret);
-            } else {
-                break;
-            }
-        }
-    }
-
 }
