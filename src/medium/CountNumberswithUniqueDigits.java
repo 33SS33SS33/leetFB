@@ -2,7 +2,6 @@ package medium;
 
 /**
  * Created by shanshan on 16/6/18.
- * <p>
  * Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x < 10n.
  * Example:
  * Given n = 2, return 91. (The answer should be the total numbers
@@ -50,8 +49,8 @@ public class CountNumberswithUniqueDigits {
     }
 
     public static int countNumbersWithUniqueDigits(int n) {
-        if (n == 0) return 1;
-
+        if (n == 0)
+            return 1;
         int res = 10;
         int uniqueDigits = 9;
         int availableNumber = 9;
@@ -62,4 +61,5 @@ public class CountNumberswithUniqueDigits {
         }
         return res;
     }
+
 }
