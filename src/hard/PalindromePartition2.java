@@ -15,13 +15,6 @@ import java.util.*;
  */
 class PalindromePartition2 {
     public static void main(String[] args) {
-        /*test palindrome*/
-        System.out.println(isPalindrome("a"));
-        System.out.println(isPalindrome("aa"));
-        System.out.println(isPalindrome("aaa"));
-        System.out.println(isPalindrome("aab"));
-        System.out.println(isPalindrome("aabb"));
-        System.out.println(isPalindrome("abba"));
         /*test minCut*/
         System.out.println(minCutC("a"));
         System.out.println(minCutC("aa"));
@@ -33,7 +26,7 @@ class PalindromePartition2 {
     }
 
     /**
-     * Backtracking, generate all cuts
+     * Backtracking, generate all cuts 最好的
      */
     public static int minCutC(String s) {
         Set<String> palin = new HashSet<String>();

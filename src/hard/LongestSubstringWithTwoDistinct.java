@@ -1,7 +1,5 @@
 package hard;
 
-import java.util.HashMap;
-
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28.
  * Longest Substring with At Most Two Distinct Characters

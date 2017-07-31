@@ -14,7 +14,6 @@ import java.util.*;
  * 2, [[1,0],[0,1]]
  * There are a total of 2 courses to take. To take course 1 you should have finished course 0,
  * and to take course 0 you should also have finished course 1. So it is impossible.
- * <p/>
  * 这题需要用到拓扑排序
  * 可以用改进的DFS 每次dfs另外传入一个变量 来记录当前的路径 当某个点发现自己已经在路径上了 就说明有环 就返回False
  * 这里要注意 要在递归退出来之后 再将当前的点标记为searched 要不就无法前进到有环的那个点
@@ -163,54 +162,4 @@ public class CourseSchedule {
         return true;
     }
 
-    /*static class Vertex {
-        int id;
-        Vertex(int id){
-            this.id = id;
-        }
-
-        Set<Integer> in  = new HashSet<Integer>();
-        Set<Integer> out = new HashSet<Integer>();
-
-        boolean isSink(){
-            return out.isEmpty();
-        }
-    }
-
-    Vertex safe(Vertex[] G, int id){
-        if(G[id] == null){
-            G[id] = new Vertex(id);
-        }
-
-        return G[id];
-    }
-
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-
-        Vertex[] G = new Vertex[numCourses];
-
-        for(int[] p : prerequisites){
-            safe(G, p[0]).out.add(p[1]);
-            safe(G, p[1]).in.add(p[0]);
-        }
-
-        Set<Vertex> S = Arrays.stream(G)
-                .filter(v -> v != null)
-                .collect(Collectors.toSet());
-        loop:
-        while(!S.isEmpty()){
-            for(Vertex v : S){
-                if(v.isSink()){
-                    S.remove(v);
-
-                    for(int i : v.in){
-                        G[i].out.remove(v.id);
-                    }
-                    continue loop;
-                }
-            }
-            return false;
-        }
-        return true;
-    }*/
 }

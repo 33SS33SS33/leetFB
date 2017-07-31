@@ -1,6 +1,5 @@
 package hard;
 
-
 /**
  * Follow up for "Find Minimum in Rotated Sorted Array":
  * What if duplicates are allowed?
@@ -27,6 +26,8 @@ class FindMininRotatedSortedArr2 {
      * 最好的
      */
     public int findMinA(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
         int l = 0, r = nums.length - 1;
         while (l < r) {
             int mid = (l + r) / 2;

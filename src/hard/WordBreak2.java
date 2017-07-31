@@ -17,53 +17,10 @@ public class WordBreak2 {
     public static void main(String[] args) {
         String s = "catsanddog";
         Set<String> dict = new HashSet<String>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
-        System.out.println(wordBreak(s, dict).toString());
         System.out.println(wordBreakC(s, dict).toString());
     }
 
-    /**
-     * Memory function
-     * Store how a word can be decomposed
-     * DP, Backtracking
-     * Store successful decomposition in a map
-     * Get prefix
-     * If not in dictionary, just ignore
-     * If in dictionary, check current position
-     * If reaches the end, add prefix to a solution
-     * If within length do the following:
-     * Check whether the rest of the string is already decomposed
-     * If not, backtracking the rest of the string
-     * If yes, get the result from memory function
-     * If there is an result, add each word to current solution with front in
-     */
-    static Map<String, List<String>> res = new HashMap<String, List<String>>();
-
-    public static List<String> wordBreak(String s, Set<String> dict) {
-        List<String> words = new ArrayList<String>();
-        if (s == null || s.length() == 0)
-            return words;
-        int len = s.length();
-        for (int i = 1; i <= len; i++) {
-            String pref = s.substring(0, i);
-            if (dict.contains(pref)) {
-                if (i == len)
-                    words.add(pref); // reach the end
-                else {
-                    String remain = s.substring(i, len); // remaining string
-                    // avoid backtracking if a decomposition is already there
-                    List<String> remainDecomp = res.containsKey(remain) ? res.get(remain) : wordBreak(remain, dict);
-                    if (remainDecomp != null) {
-                        for (String w : remainDecomp)
-                            words.add(pref + " " + w);
-                        res.put(remain, remainDecomp); // add to cache
-                    }
-                }
-            }
-        }
-        return words;
-    }
-
-    //最好的
+    //最好的 20170727 英语流利说
     public static ArrayList<String> wordBreakC(String s, Set<String> dict) {
         ArrayList<String> res = new ArrayList<String>();
         if (s == null || s.length() == 0)

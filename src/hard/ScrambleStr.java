@@ -54,7 +54,7 @@ class ScrambleStr {
     }
 
     /**
-     * 最好的
+     * 最好的 170307爱奇艺遇到
      * separate s1 into two parts, namely --s11--, --------s12--------
      * separate s2 into two parts, namely --s21--, --------s22--------, and
      * test the corresponding part (s11 and s21 && s12 and s22) with isScramble.
