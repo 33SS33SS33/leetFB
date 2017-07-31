@@ -17,7 +17,7 @@ package hard;
  * "k表示left和right之间的跨度  这个跨度是越来越大的
  * left和right是当前跨度下的 左右边界
  * dp[l][r]表示扎破(l, r)范围内所有气球获得的最大硬币数，不含边界；
- * i就是枚举当前left到right得范围内  扎破第i个气球的收益"
+ * i就是枚举当前left到right得范围内，扎破第i个气球的收益"
  */
 public class BurstBalloons {
     public static void main(String[] args) {

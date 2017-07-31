@@ -1,6 +1,5 @@
 package hard;
 
-import java.util.Arrays;
 
 /**
  * Follow up for "Find Minimum in Rotated Sorted Array":
