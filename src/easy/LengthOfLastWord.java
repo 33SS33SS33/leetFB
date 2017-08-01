@@ -18,17 +18,9 @@ class LengthOfLastWord {
         String c = "           ";
         String d = "a";
         System.out.println(lengthOfLastWord(a));
-        System.out.println(lengthOfLastWordB(a));
-        System.out.println(lengthOfLastWordC(a));
         System.out.println(lengthOfLastWord(b));
-        System.out.println(lengthOfLastWordB(b));
-        System.out.println(lengthOfLastWordC(b));
         System.out.println(lengthOfLastWord(c));
-        System.out.println(lengthOfLastWordB(c));
-        System.out.println(lengthOfLastWordC(c));
         System.out.println(lengthOfLastWord(d));
-        System.out.println(lengthOfLastWordB(d));
-        System.out.println(lengthOfLastWordC(d));
     }
 
     /**
@@ -49,39 +41,6 @@ class LengthOfLastWord {
                 return count;
         }
         return count;
-    }
-
-    // mine, trim and check from back
-    public static int lengthOfLastWordB(String s) {
-        s = s.trim(); // remove front and trailing spaces
-        char space = ' ';
-        if (s.indexOf(space) == -1)
-            return s.length(); // dont have a space
-        int len = s.length();
-        for (int i = len - 1; i >= 0; i--) { // traverse backwards
-            if (s.charAt(i) == ' ' && i != len - 1) { // is space and not last one
-                return len - 1 - i;
-            }
-        }
-        return 0;
-    }
-
-    public static int lengthOfLastWordC(String s) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
-        if (s == null)
-            return 0;
-        char[] chars = s.toCharArray();
-        int upper = chars.length - 1;
-        while (upper >= 0 && chars[upper] == ' ')
-            upper--;
-        int len = 0;
-        for (int i = 0; i <= upper; i++) {
-            if (chars[i] == ' ')
-                len = 0;
-            else
-                len++;
-        }
-        return len;
     }
 
 }

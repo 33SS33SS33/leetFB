@@ -16,12 +16,10 @@ public class PalindromePermutation {
         String l = "code";
         String m = "carerac";
         System.out.println(p.canPermutePalindromea(k));
-        System.out.println(p.canPermutePalindromea2(k));
-        System.out.println(p.canPermutePalindrome(k));
     }
 
     public boolean canPermutePalindromea(String s) {
-        Set<Character> set = new HashSet<Character>();
+        Set<Character> set = new HashSet<>();
         for (int i = 0; i < s.length(); ++i) {
             if (!set.contains(s.charAt(i)))
                 set.add(s.charAt(i));
@@ -29,35 +27,6 @@ public class PalindromePermutation {
                 set.remove(s.charAt(i));
         }
         return set.size() == 0 || set.size() == 1;
-    }
-
-    public boolean canPermutePalindromea2(String s) {
-        BitSet bs = new BitSet();
-        for (byte b : s.getBytes())
-            bs.flip(b);
-        return bs.cardinality() < 2;
-    }
-
-    public boolean canPermutePalindrome(String s) {
-        Map<Character, Integer> m = new HashMap<Character, Integer>();
-        for (char c : s.toCharArray()) {
-            Integer i = m.get(c);
-            if (i == null) {
-                m.put(c, 1);
-            } else {
-                m.put(c, i + 1);
-            }
-        }
-        int single = 0;
-        for (int v : m.values()) {
-            if (v % 2 == 1) {
-                single++;
-            }
-            if (single > 1) {
-                return false;
-            }
-        }
-        return true;
     }
 
 }

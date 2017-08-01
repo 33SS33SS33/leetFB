@@ -13,9 +13,6 @@ class NumberOfBits {
         int n = 111;
         System.out.println(nob.hammingWeighta(n));
         System.out.println(nob.hammingWeight(n));
-        System.out.println(nob.hammingWeightB(n));
-        System.out.println(nob.hammingWeightC(n));
-        System.out.println(nob.hammingWeightD(n));
     }
 
     public static int hammingWeighta(int n) {
@@ -39,44 +36,6 @@ class NumberOfBits {
             n &= n - 1;
         }
         return res;
-    }
-
-    /**
-     * Most straight forward solution
-     * Iterate 32 times to check each digit in n
-     */
-    public int hammingWeightB(int n) {
-        int res = 0;
-        for (int i = 0; i < 32; i++) // no need to iterate 32 times
-            if ((n >>> i & 0x1) == 1)
-                res++;
-        return res;
-    }
-
-    /**
-     * Recursive
-     * If n is 0 or 1, return n
-     * If not, return n & 1 + hammingWeightC(n >>> 1)
-     */
-    public int hammingWeightC(int n) {
-        return n == 0 || n == 1 ? n : (n & 1) + hammingWeightC(n >>> 1);
-    }
-
-    /**
-     * creek-----
-     */
-    public int hammingWeightD(int n) {
-        int count = 0;
-        for (int i = 1; i < 33; i++) {
-            if (getBit(n, i) == true) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public boolean getBit(int n, int i) {
-        return (n & (1 << i)) != 0;
     }
 
 }

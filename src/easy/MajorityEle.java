@@ -15,7 +15,6 @@ class MajorityEle {
         int[] num = {1, 2, 1, 3, 6, 1, 4, 1, 1};
         System.out.println(new MajorityEle().majorityElement(num));
         System.out.println(new MajorityEle().majorityElementB(num));
-        System.out.println(new MajorityEle().majorityElementC(num));
     }
 
     /**
@@ -50,31 +49,6 @@ class MajorityEle {
         }
         Arrays.sort(num);
         return num[num.length / 2];
-    }
-
-    /**
-     * creek Naive
-     * sort the array first, which takes time of nlog(n).
-     * Then scan once to find the longest consecutive substrings.
-     */
-    public int majorityElementC(int[] num) {
-        if (num.length == 1) {
-            return num[0];
-        }
-        Arrays.sort(num);
-        int prev = num[0];
-        int count = 1;
-        for (int i = 1; i < num.length; i++) {
-            if (num[i] == prev) {
-                count++;
-                if (count > num.length / 2)
-                    return num[i];
-            } else {
-                count = 1;
-                prev = num[i];
-            }
-        }
-        return 0;
     }
 
 }
