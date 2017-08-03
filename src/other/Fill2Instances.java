@@ -1,5 +1,7 @@
 package other;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 /**
  * Given a number n, create an array of size 2n such that the array contains 2
  * instances of every number from 1 to n, and the number of elements between
@@ -10,7 +12,13 @@ package other;
 class Fill2Instances {
     public static void main(String[] args) {
         Fill2Instances f = new Fill2Instances();
-        f.fill(7);
+        Boolean n= null;
+        int t=0;
+        if(n!=null && n){
+             t =1;
+        }
+        System.out.print(t);
+//        f.fill(7);
     }
 
     public void fill(int n) {
