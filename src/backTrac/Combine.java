@@ -21,8 +21,7 @@ public class Combine {
         return res;
     }
 
-    private void helper(int n, int k, int start, ArrayList<Integer> item,
-                        ArrayList<ArrayList<Integer>> res) {
+    private void helper(int n, int k, int start, ArrayList<Integer> item, ArrayList<ArrayList<Integer>> res) {
         if (item.size() == k) {
             res.add(new ArrayList<Integer>(item));
             return;

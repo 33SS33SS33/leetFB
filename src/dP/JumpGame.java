@@ -17,25 +17,9 @@ class JumpGame {
         int[] C = {0};
         int[] D = {2, 5, 0, 0};
         System.out.println(j.canJumpC(A));
-        System.out.println(j.canJumpa(A));
-        System.out.println(j.canJumpC(D));
+        System.out.println(j.canJumpa(B));
+        System.out.println(j.canJumpC(C));
         System.out.println(j.canJumpa(D));
-    }
-
-    /**
-     * 最好的
-     */
-    public boolean canJumpa(int[] A) {
-        if (A == null || A.length == 0)
-            return false;
-        int max = 0;
-        for (int i = 0; i < A.length; i++) {
-            if (i > max) {
-                return false;
-            }
-            max = Math.max(A[i] + i, max);
-        }
-        return true;
     }
 
     /**
@@ -57,4 +41,20 @@ class JumpGame {
         return true;
     }
 
+
+    /**
+     * 最好的
+     */
+    public boolean canJumpa(int[] A) {
+        if (A == null || A.length == 0)
+            return false;
+        int max = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (i > max) {    //?????
+                return false;
+            }
+            max = Math.max(A[i] + i, max);
+        }
+        return true;
+    }
 }
