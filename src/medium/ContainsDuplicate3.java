@@ -1,6 +1,9 @@
 package medium;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -21,29 +24,8 @@ public class ContainsDuplicate3 {
     public static void main(String[] args) {
         int[] num = {1, 8, 7, 5, 8};
         System.out.println(containsNearbyAlmostDuplicatea(num, 3, 2));
-        System.out.println(containsNearbyAlmostDuplicate(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicateB(num, 3, 2));
         System.out.println(containsNearbyAlmostDuplicateC(num, 3, 2));
-    }
-
-    public static boolean containsNearbyAlmostDuplicatea(int[] nums, int k, int t) {
-        if (k < 1 || t < 0)
-            return false;
-        Map<Long, Long> map = new HashMap<Long, Long>();
-        for (int i = 0; i < nums.length; i++) {
-            long remappedNum = (long) nums[i] - Integer.MIN_VALUE;
-            long bucket = remappedNum / ((long) t + 1);
-            if (map.containsKey(bucket) || (map.containsKey(bucket - 1)
-                    && remappedNum - map.get(bucket - 1) <= t) || (map.containsKey(bucket + 1)
-                    && map.get(bucket + 1) - remappedNum <= t))
-                return true;
-            if (map.entrySet().size() >= k) {
-                long lastBucket = ((long) nums[i - k] - Integer.MIN_VALUE) / ((long) t + 1);
-                map.remove(lastBucket);
-            }
-            map.put(bucket, remappedNum);
-        }
-        return false;
     }
 
     /**
@@ -67,6 +49,26 @@ public class ContainsDuplicate3 {
         return false;
     }
 
+    public static boolean containsNearbyAlmostDuplicatea(int[] nums, int k, int t) {
+        if (k < 1 || t < 0)
+            return false;
+        Map<Long, Long> map = new HashMap<Long, Long>();
+        for (int i = 0; i < nums.length; i++) {
+            long remappedNum = (long) nums[i] - Integer.MIN_VALUE;
+            long bucket = remappedNum / ((long) t + 1);
+            if (map.containsKey(bucket) || (map.containsKey(bucket - 1)
+                    && remappedNum - map.get(bucket - 1) <= t) || (map.containsKey(bucket + 1)
+                    && map.get(bucket + 1) - remappedNum <= t))
+                return true;
+            if (map.entrySet().size() >= k) {
+                long lastBucket = ((long) nums[i - k] - Integer.MIN_VALUE) / ((long) t + 1);
+                map.remove(lastBucket);
+            }
+            map.put(bucket, remappedNum);
+        }
+        return false;
+    }
+
     public static boolean containsNearbyAlmostDuplicateB(int[] nums, int k, int t) {
         if (k < 1 || t < 0)
             return false;
@@ -81,68 +83,6 @@ public class ContainsDuplicate3 {
                 set.remove(nums[i - k]);
         }
         return false;
-    }
-
-    public static boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        if (k <= 0)
-            return false;
-        if (nums.length <= 1)
-            return false;
-        Tree tree = new Tree();
-        tree.add(nums[0]);
-        int p = 0;
-        for (int i = 1; i < nums.length; i++) {
-            tree.add(nums[i]);
-            if (tree.nearSub(nums[i]) <= t) {
-                return true;
-            }
-            if (tree.size > k) {
-                tree.remove(nums[p++]);
-            }
-        }
-        return false;
-    }
-
-    static class Tree {
-        TreeMap<Integer, Integer> tree = new TreeMap<Integer, Integer>();
-        int size = 0;
-
-        void add(Integer n) {
-            Integer v = tree.get(n);
-            if (v == null) {
-                v = 0;
-            }
-            tree.put(n, v + 1);
-            size++;
-        }
-
-        void remove(Integer n) {
-            Integer v = tree.get(n);
-            v--;
-            if (v == 0) {
-                tree.remove(n);
-            } else {
-                tree.put(n, v);
-            }
-            size--;
-        }
-
-        // fuck overflow
-        long nearSub(Integer n) {
-            Integer v = tree.get(n);
-            if (v >= 2)
-                return 0;
-            long min = Long.MAX_VALUE;
-            Integer h = tree.higherKey(n);
-            if (h != null) {
-                min = h - n;
-            }
-            Integer l = tree.lowerKey(n);
-            if (l != null) {
-                min = Math.min(min, (long) n - l);
-            }
-            return min;
-        }
     }
 
 }

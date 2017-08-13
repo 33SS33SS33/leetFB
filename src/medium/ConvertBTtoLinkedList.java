@@ -57,26 +57,18 @@ public class ConvertBTtoLinkedList {
         return node;
     }
 
-    // The main function that first calls bintree2listUtil(), then follows step 3
-    //  of the above algorithm
-
     Node bintree2list(Node node) {
         // Base case
         if (node == null) {
             return node;
         }
-        // Convert to DLL using bintree2listUtil()
         node = bintree2listUtil(node);
-        // bintree2listUtil() returns root node of the converted
-        // DLL.  We need pointer to the leftmost node which is
-        // head of the constructed DLL, so move to the leftmost node
         while (node.left != null) {
             node = node.left;
         }
         return node;
     }
 
-    /* Function to print nodes in a given doubly linked list */
     void printList(Node node) {
         while (node != null) {
             System.out.print(node.data + " ");
@@ -84,8 +76,6 @@ public class ConvertBTtoLinkedList {
         }
     }
 
-    // Java program to convert binary tree to double linked list
-    // A binary tree node
     static class Node {
         int data;
         Node left, right;
