@@ -33,7 +33,6 @@ class PathSum {
         n2.right = n5;
         System.out.println(new PathSum().hasPathSumA(root, 7));
         System.out.println(new PathSum().hasPathSumB(root, 7));
-        System.out.println(new PathSum().hasPathSumC(root, 7));
         System.out.println(new PathSum().hasPathSumA(root, 10));
         System.out.println(new PathSum().hasPathSumB(root, 10));
         System.out.println(new PathSum().hasPathSumA(root, 4));
@@ -55,19 +54,6 @@ class PathSum {
         return hasPathSumA(root.left, sum - root.val) || hasPathSumA(root.right, sum - root.val);
     }
 
-    /**
-     * Substract root value from sum every time
-     * Return leaf node with sum == 0
-     * Or result in left subtree or right subtree
-     */
-    public boolean hasPathSumC(TreeNode root, int sum) {
-        if (root == null)
-            return false; // root == null
-        sum -= root.val; // update sum
-        // leaf? sum == 0? left subtree? right subtree?
-        return root.left == null && root.right == null && sum == 0 || hasPathSumC(root.left, sum)
-                || hasPathSumC(root.right, sum);
-    }
 
     /**
      * creek---

@@ -70,7 +70,7 @@ class PathSum2 {
     }
 
     /**
-     * creek-----
+     * creek
      * 这里的时间复杂度仍然只是一次遍历O(n)，而空间复杂度则取决于满足条件的路径和的数量（假设是k条），则空间是O(klogn)。
      * http://blog.csdn.net/linhuanmars/article/details/23655413
      */

@@ -25,8 +25,6 @@ public class InvertBinaryTree {
         TreeNode res = new InvertBinaryTree().invertTree(root);
 //        System.out.println(new InvertBinaryTree().levelOrder(res));
 
-        TreeNode res2 = new InvertBinaryTree().invertTreeA(root);
-//        System.out.println(new InvertBinaryTree().levelOrder(res2));
     }
 
     /**
@@ -65,26 +63,6 @@ public class InvertBinaryTree {
             }
         }
         return root;
-    }
-
-    /**
-     * creek Recursive
-     */
-    public TreeNode invertTreeA(TreeNode root) {
-        if (root != null) {
-            helper(root);
-        }
-        return root;
-    }
-
-    public void helper(TreeNode p) {
-        TreeNode temp = p.left;
-        p.left = p.right;
-        p.right = temp;
-        if (p.left != null)
-            helper(p.left);
-        if (p.right != null)
-            helper(p.right);
     }
 
     public static class TreeNode {
