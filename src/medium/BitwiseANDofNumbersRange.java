@@ -9,27 +9,8 @@ package medium;
  */
 public class BitwiseANDofNumbersRange {
     public static void main(String[] args) {
-        System.out.println(rangeBitwiseAnda(5, 7));
-        System.out.println(rangeBitwiseAnd(5, 7));
         System.out.println(rangeBitwiseAndB(5, 7));
-        System.out.println(rangeBitwiseAnd(2, 3));
         System.out.print(rangeBitwiseAndB(2, 3));
-    }
-
-    /**
-     * 最好的
-     */
-    public static int rangeBitwiseAnda(int m, int n) {
-        if (m == 0) {
-            return 0;
-        }
-        int moveFactor = 1;
-        while (m != n) {
-            m >>= 1;
-            n >>= 1;
-            moveFactor <<= 1;
-        }
-        return m * moveFactor;
     }
 
     /**
@@ -40,27 +21,6 @@ public class BitwiseANDofNumbersRange {
             n = n & n - 1;
         }
         return m & n;
-    }
-
-    static final int SIZE = Integer.SIZE;
-    static final long[] POW = new long[SIZE + 1];
-
-    static {
-        for (int i = 0; i < SIZE; i++) {
-            POW[i] = (long) Math.pow(2, i);
-        }
-    }
-
-    public static int rangeBitwiseAnd(int m, int n) {
-        for (int i = SIZE; i > 0; i--) {
-            if (POW[i - 1] <= m && m < POW[i]) {
-                if (POW[i - 1] <= n && n < POW[i]) {
-                    long p = POW[i - 1];
-                    return (int) p | rangeBitwiseAnd((int) (m & (p - 1)), (int) (n & (p - 1)));
-                }
-            }
-        }
-        return 0;
     }
 
 }

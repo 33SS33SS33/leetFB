@@ -7,6 +7,7 @@ package medium;
  * 那么它是个palindrome。求实现返回最大的chunk 数量。
  * 比如aaaaaa可以是(aaa)(aaa), 但是最大chunk数量应该是(a)(a)(a)(a)(a)(a)为6
  */
+
 public class ChunkedPalindrome {
     public static void main(String[] args) {
         System.out.println(countChunk("aaaaaa"));
