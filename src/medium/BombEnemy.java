@@ -14,6 +14,7 @@ package medium;
  * 0 E 0 0
  * return 3. (Placing a bomb at (1,1) kills 3 enemies)
  */
+
 public class BombEnemy {
     public int maxKilledEnemies(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
