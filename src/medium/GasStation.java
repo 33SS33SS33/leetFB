@@ -23,8 +23,6 @@ class GasStation {
         int[] gas = {2, 4, 1, 6};
         int[] cost = {1, 4, 1, 5};
         System.out.println(canCompleteCircuit(gas, cost));
-        System.out.println(canCompleteCircuitB(gas, cost));
-        System.out.println(canCompleteCircuitC(gas, cost));
     }
 
     /**
@@ -48,51 +46,6 @@ class GasStation {
             }
         }
         return previous + restGas >= 0 ? start : -1;
-    }
-
-    public static int canCompleteCircuitB(int[] gas, int[] cost) {
-        int start = 0;
-        int from_start = 0;
-        int total = 0;
-        for (int i = 0; i < gas.length; i++) {
-            int left = gas[i] - cost[i];
-            total += left;
-            from_start += left;
-            if (from_start < 0) {
-                from_start = 0;
-                start = i + 1; // restart from next station
-            }
-        }
-        if (total >= 0) {
-            return start;
-        }
-        return -1;
-    }
-
-    /**
-     * creek
-     */
-    public static int canCompleteCircuitC(int[] gas, int[] cost) {
-        int sumRemaining = 0; // track current remaining
-        int total = 0; // track total remaining
-        int start = 0;
-        for (int i = 0; i < gas.length; i++) {
-            int remaining = gas[i] - cost[i];
-            //if sum remaining of (i-1) >= 0, continue
-            if (sumRemaining >= 0) {
-                sumRemaining += remaining;
-                //otherwise, reset start index to be current
-            } else {
-                sumRemaining = remaining;
-                start = i;
-            }
-            total += remaining;
-        }
-        if (total >= 0) {
-            return start;
-        } else {
-            return -1;
-        }
     }
 
 }

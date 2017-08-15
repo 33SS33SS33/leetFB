@@ -19,13 +19,13 @@ public class HouseRobber2 {
         int[] nums = {2, 4, 1, 6};
         System.out.println(roba(nums));
         System.out.println(robA(nums));
-        System.out.println(robB(nums));
     }
 
+    //https://discuss.leetcode.com/topic/14375/simple-ac-solution-in-java-in-o-n-with-explanation
     public static int roba(int[] nums) {
         if (nums.length == 1)
             return nums[0];
-        return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1));
+        return Math.max(roba(nums, 0, nums.length - 2), roba(nums, 1, nums.length - 1));
     }
 
     private static int roba(int[] num, int lo, int hi) {
@@ -58,40 +58,6 @@ public class HouseRobber2 {
             P[i] = Math.max(num[st + i] + P[i - 2], P[i - 1]);
         }
         return P[len - 1];
-    }
-
-    /**
-     * creek
-     * There are two cases here
-     * 1) 1st element is included and last is not included
-     * 2) 1st is not included and last is included.
-     * Therefore, we can use the similar dynamic programming approach to scan the array twice and get the larger value.
-     */
-    public static int robB(int[] nums) {
-        if (nums == null || nums.length == 0)
-            return 0;
-        int n = nums.length;
-        if (n == 1) {
-            return nums[0];
-        }
-        if (n == 2) {
-            return Math.max(nums[1], nums[0]);
-        }
-        //include 1st element, and not last element
-        int[] dp = new int[n + 1];
-        dp[0] = 0;
-        dp[1] = nums[0];
-        for (int i = 2; i < n; i++) {
-            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i - 1]);
-        }
-        //not include frist element, and include last element
-        int[] dr = new int[n + 1];
-        dr[0] = 0;
-        dr[1] = nums[1];
-        for (int i = 2; i < n; i++) {
-            dr[i] = Math.max(dr[i - 1], dr[i - 2] + nums[i]);
-        }
-        return Math.max(dp[n - 1], dr[n - 1]);
     }
 
 }

@@ -27,7 +27,6 @@ public class GeneralizedAbbreviation {
     public static List<String> generateAbbreviations(String word) {
         List<String> ret = new ArrayList<String>();
         backtrack(ret, word, 0, "", 0);
-
         return ret;
     }
 
