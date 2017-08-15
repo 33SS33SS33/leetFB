@@ -14,11 +14,11 @@ import java.util.HashSet;
  * Could you do better than O(n2)?
  */
 public class LineReflection {
+
     public boolean isReflected(int[][] points) {
         HashSet<Integer> pointSet = new HashSet<>();
         int sum;
         int maxX, minX;
-
         minX = Integer.MAX_VALUE;
         maxX = Integer.MIN_VALUE;
         for (int[] point : points) {
@@ -26,7 +26,6 @@ public class LineReflection {
             minX = Math.min(minX, point[0]);
             pointSet.add(Arrays.hashCode(point));
         }
-
         sum = maxX + minX;
         for (int[] point : points) {
             if (!pointSet.contains(Arrays.hashCode(new int[]{sum - point[0], point[1]}))) {

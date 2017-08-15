@@ -18,7 +18,6 @@ public class HouseRobber2 {
     public static void main(String[] args) {
         int[] nums = {2, 4, 1, 6};
         System.out.println(roba(nums));
-        System.out.println(robA(nums));
     }
 
     //https://discuss.leetcode.com/topic/14375/simple-ac-solution-in-java-in-o-n-with-explanation
@@ -36,28 +35,6 @@ public class HouseRobber2 {
             exclude = Math.max(e, i);
         }
         return Math.max(include, exclude);
-    }
-
-    public static int robA(int[] nums) {
-        if (nums.length == 0)
-            return 0;
-        if (nums.length == 1)
-            return nums[0];
-        return Math.max(rob(nums, 0, nums.length - 1), rob(nums, 1, nums.length - 1));
-    }
-
-    static int rob(int[] num, int st, int len) {
-        if (len == 0)
-            return 0;
-        if (len == 1)
-            return num[st + 0];
-        int[] P = new int[len];
-        P[0] = num[st + 0];
-        P[1] = Math.max(num[st + 0], num[st + 1]);
-        for (int i = 2; i < len; i++) {
-            P[i] = Math.max(num[st + i] + P[i - 2], P[i - 1]);
-        }
-        return P[len - 1];
     }
 
 }
