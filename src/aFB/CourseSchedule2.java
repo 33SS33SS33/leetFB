@@ -27,10 +27,15 @@ import java.util.*;
 public class CourseSchedule2 {
     public static void main(String[] args) {
         int[][] prerequisites = {{1, 0}};
-        int[][] prerequisites2 = {{1, 0}, {0, 1}};
+        int[][] prerequisites2 = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
         int[] res = new CourseSchedule2().findOrder(2, prerequisites);
         for (int i : res) {
-            System.out.println(i);
+            System.out.print(i+",");
+        }
+        System.out.println();
+        int[] res2 = new CourseSchedule2().findOrderB(4, prerequisites2);
+        for (int i : res2) {
+            System.out.print(i+",");
         }
     }
 
@@ -38,7 +43,7 @@ public class CourseSchedule2 {
      * BFS This solution uses breath-first search and it is easy to understand.
      * http://www.programcreek.com/2014/05/leetcode-course-schedule-java/
      */
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
+    public static int[] findOrder(int numCourses, int[][] prerequisites) {
         if (prerequisites == null) {
             throw new IllegalArgumentException("illegal prerequisites array");
         }

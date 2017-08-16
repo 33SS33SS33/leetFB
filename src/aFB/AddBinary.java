@@ -15,7 +15,6 @@ class AddBinary {
         String a = "11";
         String b = "1";
         System.out.println(addBinary(a, b));
-        System.out.println(addBinaryb(a, b));
     }
 
     //最好的
@@ -35,31 +34,6 @@ class AddBinary {
         }
         if (carry != 0) sb.append(carry);
         return sb.reverse().toString();
-    }
-
-    /**
-     * Traverse the longest binary backwards
-     * Use + to insert to front, turn digit sum to int and restore to binary
-     */
-    public static String addBinaryb(String a, String b) {
-        if (a == null || a.length() == 0)
-            return b;
-        if (b == null || b.length() == 0)
-            return a;
-        int m = a.length();
-        int n = b.length();
-        int carry = 0;
-        String res = "";
-        int i = 0;
-        while (i < m || i < n) {
-            int p = i < m ? a.charAt(m - 1 - i) - '0' : 0;
-            int q = i < n ? b.charAt(n - 1 - i) - '0' : 0;
-            int temp = p + q + carry;
-            carry = temp / 2;
-            res = temp % 2 + res;
-            i++;
-        }
-        return carry == 0 ? res : "1" + res;
     }
 
 }
