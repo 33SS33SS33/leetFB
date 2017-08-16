@@ -20,10 +20,8 @@ class ValidPalindrome {
         System.out.println(isPalindromea(""));
         System.out.println(isPalindromeA(""));
         System.out.println(isPalindromeB(""));
-        System.out.println(isPalindromeC(""));
         System.out.println(isPalindromea("A man, a plan, a canal: Panama"));
         System.out.println(isPalindromeA("A man, a plan, a canal: Panama"));
-        System.out.println(isPalindromeC("A man, a plan, a canal: Panama"));
         System.out.println(isPalindromeB("A man, a plan, a canal: Panama"));
     }
 
@@ -100,34 +98,6 @@ class ValidPalindrome {
             if (copy.charAt(i) != copy.charAt(length - (i + 1))) {
                 return false;
             }
-        }
-        return true;
-    }
-
-    /**
-     * ----Stack------
-     */
-    public static boolean isPalindromeC(String s) {
-        s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        int len = s.length();
-        if (len < 2)
-            return true;
-        Stack<Character> stack = new Stack<Character>();
-        int index = 0;
-        while (index < len / 2) {
-            stack.push(s.charAt(index));
-            index++;
-        }
-        if (len % 2 == 1)
-            index++;
-        while (index < len) {
-            if (stack.empty())
-                return false;
-            char temp = stack.pop();
-            if (s.charAt(index) != temp)
-                return false;
-            else
-                index++;
         }
         return true;
     }

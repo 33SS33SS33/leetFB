@@ -43,7 +43,7 @@ class WordBreak {
         int len = s.length();
         boolean[] can = new boolean[len + 1];  //???
         can[0] = true;
-        for (int i = 1; i <= len; i++) {
+        for (int i = 1; i <= len; i++) { //注意范围
             for (int j = 0; j < i; j++) {
                 if (can[j] && dict.contains(s.substring(j, i))) {
                     can[i] = true;
