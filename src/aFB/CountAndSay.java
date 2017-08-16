@@ -14,34 +14,10 @@ package aFB;
 class CountAndSay {
     public static void main(String[] args) {
         System.out.println(countAndSay(1));
-        System.out.println(countAndSayB(1));
         System.out.println(countAndSay(2));
         System.out.println(countAndSay(3));
         System.out.println(countAndSay(4));
         System.out.println(countAndSaya(5));
-    }
-
-    //????
-    public static String countAndSaya(int n) {
-        StringBuilder curr = new StringBuilder("1");
-        StringBuilder prev;
-        int count;
-        char say;
-        for (int i = 1; i < n; i++) {
-            prev = curr;
-            curr = new StringBuilder();
-            count = 1;
-            say = prev.charAt(0);
-            for (int j = 1, len = prev.length(); j < len; j++) {
-                if (prev.charAt(j) != say) {
-                    curr.append(count).append(say);
-                    count = 1;
-                    say = prev.charAt(j);
-                } else count++;
-            }
-            curr.append(count).append(say);
-        }
-        return curr.toString();
     }
 
     /**
@@ -66,37 +42,27 @@ class CountAndSay {
         return res;
     }
 
-    /**
-     * Bottom-up approach
-     */
-    public static String countAndSayB(int n) {
-        if (n <= 0)
-            return "";
-        if (n == 1)
-            return "1";
-        int i = 2;
-        String res = "1";
-        while (i <= n) {
-            String curRes = "";
-            int count = 1;
-            char prevNum = res.charAt(0);
-            for (int j = 1; j < res.length(); j++) {
-                char curNum = res.charAt(j);
-                if (prevNum == curNum) {
-                    count++;
-                } else {
-                    curRes += count; // update current result
-                    curRes += prevNum;
-                    count = 1; // reset count
-                }
-                prevNum = curNum;
+    //????
+    public static String countAndSaya(int n) {
+        StringBuilder curr = new StringBuilder("1");
+        StringBuilder prev;
+        int count;
+        char say;
+        for (int i = 1; i < n; i++) {
+            prev = curr;
+            curr = new StringBuilder();
+            count = 1;
+            say = prev.charAt(0);
+            for (int j = 1, len = prev.length(); j < len; j++) {
+                if (prev.charAt(j) != say) {
+                    curr.append(count).append(say);
+                    count = 1;
+                    say = prev.charAt(j);
+                } else count++;
             }
-            curRes += count; // update last loop
-            curRes += prevNum;
-            res = curRes; // build next count
-            i++;
+            curr.append(count).append(say);
         }
-        return res;
+        return curr.toString();
     }
 
 }

@@ -25,7 +25,6 @@ public class BinaryTreePaths {
         System.out.println(new BinaryTreePaths().binaryTreePathsB(head).toString());
     }
 
-
     public List<String> binaryTreePathsB(TreeNode root) {
         List<String> res = new ArrayList<String>();
         StringBuilder sb = new StringBuilder();
