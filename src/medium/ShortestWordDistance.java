@@ -23,16 +23,14 @@ public class ShortestWordDistance {
         String[] words = {"practice", "makes", "perfect", "coding", "makes"};
         String word1 = "coding";
         String word2 = "practice";
-        int res = new ShortestWordDistance().shortestDistance(words, word1, word2);
-        int res2 = new ShortestWordDistance().shortestDistanceb(words, word1, word2);
-        System.out.println(res);
-        System.out.println(res2);
+        System.out.println(shortestDistance(words, word1, word2));
+        System.out.println(shortestDistanceb(words, word1, word2));
     }
 
     /**
      * 最好的
      */
-    public int shortestDistance(String[] words, String word1, String word2) {
+    public static int shortestDistance(String[] words, String word1, String word2) {
         int len = words.length;
         int i1 = -1;
         int i2 = -1;
@@ -50,7 +48,7 @@ public class ShortestWordDistance {
     }
 
     //错的
-    public int shortestDistanceb(String[] words, String word1, String word2) {
+    public static int shortestDistanceb(String[] words, String word1, String word2) {
         int index = -1, minDistance = Integer.MAX_VALUE;
         for (int i = 0; i < words.length; i++) {
             if (words[i].equals(word1) || words[i].equals(word2)) {

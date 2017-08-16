@@ -20,25 +20,6 @@ class WiggleSort {
     }
 
     /**
-     * 最好的
-     */
-    public void wiggleSorta(int[] nums) {
-        for (int i = 0; i < nums.length; i++)
-            if (i % 2 == 1) {
-                if (nums[i - 1] > nums[i])
-                    swap(nums, i);
-            } else if (i != 0 && nums[i - 1] < nums[i])
-                swap(nums, i);
-    }
-
-    public void swap(int[] nums, int i) {
-        int tmp = nums[i];
-        nums[i] = nums[i - 1];
-        nums[i - 1] = tmp;
-
-    }
-
-    /**
      * Swap neighbors
      * A0 >= A1 <= A2 >= A3 .... .... An.
      */
