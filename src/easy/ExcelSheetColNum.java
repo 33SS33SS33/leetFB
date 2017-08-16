@@ -48,7 +48,7 @@ class ExcelSheetColNum {
         int t = 0;
         while (i >= 0) {
             char curr = s.charAt(i);
-            result = result + (int) Math.pow(26, t) * (curr - 'A' + 1);
+            result = result + (int) Math.pow(26, t) * (curr - 'A' + 1); //pow
             t++;
             i--;
         }
