@@ -28,6 +28,8 @@ public class RemoveInvalidParentheses {
     //最好的
     public static List<String> removeInvalidParentheses2(String s) {
         List<String> ans = new ArrayList<>();
+        if (s == null || s.length() == 0)
+            return ans;
         remove(s, ans, 0, 0, new char[]{'(', ')'});
         return ans;
     }

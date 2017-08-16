@@ -13,14 +13,12 @@ class MultiplyStrings {
         String num2 = "4";
         System.out.println(multiply1(num1, num2));
         System.out.println(multiplya(num1, num2));
-        System.out.println(multiplyB(num1, num2));
-        System.out.println(multiplyC(num1, num2));
     }
 
     /**
      * 最好的
+     * https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
      */
-    //https://leetcode.com/discuss/71593/easiest-java-solution-with-graph-explanation
     public static String multiply1(String num1, String num2) {
         int m = num1.length(), n = num2.length();
         int[] pos = new int[m + n];
@@ -63,62 +61,6 @@ class MultiplyStrings {
         while (sb.length() != 0 && sb.charAt(0) == '0')
             sb.deleteCharAt(0);
         return sb.length() == 0 ? "0" : sb.toString();
-    }
-
-    /**
-     * creek 类似上面
-     * The key to solve this problem is multiplying each digit of the numbers
-     * at the corresponding positions and get the sum values at each position.
-     * That is how we do multiplication manually.
-     */
-    public static String multiplyB(String num1, String num2) {
-        String n1 = new StringBuilder(num1).reverse().toString();
-        String n2 = new StringBuilder(num2).reverse().toString();
-        int[] d = new int[num1.length() + num2.length()];
-        //multiply each digit and sum at the corresponding positions
-        for (int i = 0; i < n1.length(); i++) {
-            for (int j = 0; j < n2.length(); j++) {
-                d[i + j] += (n1.charAt(i) - '0') * (n2.charAt(j) - '0');
-            }
-        }
-        StringBuilder sb = new StringBuilder();
-        //calculate each digit
-        for (int i = 0; i < d.length; i++) {
-            int mod = d[i] % 10;
-            int carry = d[i] / 10;
-            if (i + 1 < d.length) {
-                d[i + 1] += carry;
-            }
-            sb.insert(0, mod);
-        }
-        //remove front 0's
-        while (sb.charAt(0) == '0' && sb.length() > 1) {
-            sb.deleteCharAt(0);
-        }
-        return sb.toString();
-    }
-
-    // 不懂啊这个 http://blog.csdn.net/linhuanmars/article/details/20967763
-    public static String multiplyC(String num1, String num2) {
-        if (num1 == null || num2 == null || num1.length() == 0 || num2.length() == 0)
-            return "";
-        if (num1.charAt(0) == '0')
-            return "0";
-        if (num2.charAt(0) == '0')
-            return "0";
-        StringBuilder res = new StringBuilder();
-        int num = 0;
-        for (int i = num1.length() + num2.length(); i > 0; i--) {
-            for (int j = Math.min(i - 1, num1.length()); j > 0; j--) {
-                if (i - j <= num2.length()) {
-                    num += (int) (num1.charAt(j - 1) - '0') * (int) (num2.charAt(i - 1 - j) - '0');
-                }
-            }
-            if (i != 1 || num > 0)
-                res.append(num % 10);
-            num = num / 10;
-        }
-        return res.reverse().toString();
     }
 
 }

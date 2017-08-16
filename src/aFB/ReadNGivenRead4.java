@@ -55,30 +55,6 @@ class ReadNGivenRead4 {
         return readBytes;
     }
 
-    /**
-     * Call only 1 time
-     * Can reach n or end of file
-     * if read4 returns size smaller than 4, it means end of file
-     * the # of bytes read is the minimum of n - readBytes and size of read4
-     * Copy things in read4 buffer to output buffer
-     * Update readBytes
-     */
-    public static int read(char[] buf, int n) {
-        char[] buffer = new char[4];
-        int readBytes = 0;
-        boolean eof = false; // flag
-        while (!eof && readBytes < n) {
-            int size = read4(buffer); // read4 is given
-            if (size < 4)
-                eof = true; // file end
-            int bytes = Math.min(n - readBytes, size); // reach n or end of file
-            // src, src pos, dest, dest pos, length
-            System.arraycopy(buffer, 0, buf, readBytes, bytes); // copy to 
-            readBytes += bytes;
-        }
-        return readBytes; // can be n or smaller
-    }
-
     public static int read4(char[] buffer) {
         return 1;
     }

@@ -16,12 +16,6 @@ public class ProductofArrayExceptSelf {
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
-        System.out.println();
-        int[] res2 = s.productExceptSelfB(A);
-        for (int i = 0; i < res2.length; i++) {
-            System.out.print(i == res2.length - 1 ? res2[i] : res2[i] + ", ");
-        }
-        System.out.println();
     }
 
     // Space is O(1) 最好的
@@ -38,30 +32,6 @@ public class ProductofArrayExceptSelf {
             right *= nums[i];
         }
         return res;
-    }
-
-    /**
-     * creek  空间复杂度高
-     */
-    public int[] productExceptSelfB(int[] nums) {
-        int[] result = new int[nums.length];
-        int[] t1 = new int[nums.length];
-        int[] t2 = new int[nums.length];
-        t1[0] = 1;
-        t2[nums.length - 1] = 1;
-        //scan from left to right
-        for (int i = 0; i < nums.length - 1; i++) {
-            t1[i + 1] = nums[i] * t1[i];
-        }
-        //scan from right to left
-        for (int i = nums.length - 1; i > 0; i--) {
-            t2[i - 1] = t2[i] * nums[i];
-        }
-        //multiply
-        for (int i = 0; i < nums.length; i++) {
-            result[i] = t1[i] * t2[i];
-        }
-        return result;
     }
 
 }

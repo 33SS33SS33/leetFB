@@ -40,9 +40,11 @@ class MinWindowSubstring {
         int[] sTable = new int[256];
         int repeat = 0;
         while (i < s.length()) {
-            if (sTable[s.charAt(i++)]++ > 0) repeat++;   //total number of repeat
+            if (sTable[s.charAt(i++)]++ > 0)
+                repeat++;   //total number of repeat
             while (repeat > 0) {
-                if (sTable[s.charAt(head++)]-- > 1) repeat--;
+                if (sTable[s.charAt(head++)]-- > 1)
+                    repeat--;
             }
             len = Math.max(len, i - head);
         }
