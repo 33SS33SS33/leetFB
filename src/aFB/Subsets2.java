@@ -32,11 +32,6 @@ class Subsets2 {
         for (List<Integer> l : res) {
             System.out.println(l.toString());
         }
-        System.out.print("------------------");
-        List<List<Integer>> res2 = subsetsWithDupb(num);
-        for (List<Integer> l2 : res2) {
-            System.out.println(l2.toString());
-        }
     }
 
     /**
@@ -66,22 +61,5 @@ class Subsets2 {
             subsetsHelper(res, list, num, i + 1);
             list.remove(list.size() - 1);
         }
-    }
-
-    //不好懂。。
-    public static List<List<Integer>> subsetsWithDupb(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> ans = new ArrayList();
-        ans.add(new ArrayList()); // add []
-        for (int i = 0, prev = 0; i < nums.length; i++) {
-            int size = ans.size();
-            for (int j = (i == 0 || nums[i] != nums[i - 1]) ? 0 : prev; j < size; j++) {
-                List<Integer> cur = new ArrayList(ans.get(j));
-                cur.add(nums[i]);
-                ans.add(cur);
-            }
-            prev = size;
-        }
-        return ans;
     }
 }

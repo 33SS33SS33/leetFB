@@ -22,7 +22,7 @@ class TwoSum {
         int[] numbers = {4, 2, 7}; // 6 = 2+4
         int target = 6;
         int[] res = t.twoSum(numbers, target);
-        int[] res1 = t.twoSumB(numbers, target);
+        int[] res1 = t.twoSumD(numbers, target);
         for (int i = 0; i < res.length; i++) {
             System.out.print(i == res.length - 1 ? res[i] : res[i] + ", ");
         }
@@ -56,27 +56,6 @@ class TwoSum {
     }
 
     /**
-     * creek  Time complexity of this solution is O(n)
-     */
-    public int[] twoSumB(int[] numbers, int target) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        int[] result = new int[2];
-        if(numbers==null || numbers.length<2)
-            return null;
-        for (int i = 0; i < numbers.length; i++) {
-            if (map.containsKey(numbers[i])) {
-                int index = map.get(numbers[i]);
-                result[0] = index + 1;
-                result[1] = i + 1;
-                break;
-            } else {
-                map.put(target - numbers[i], i);
-            }
-        }
-        return result;
-    }
-
-    /**
      * 在这里，输出结果改成了满足相加等于target的两个数，而不是他们的index。
      * 该算法的时间复杂度是O(nlogn+n)=O(nlogn)，空间复杂度取决于排序算法
      */
@@ -100,4 +79,5 @@ class TwoSum {
         }
         return null;
     }
+
 }

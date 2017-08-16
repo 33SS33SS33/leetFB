@@ -17,6 +17,7 @@ class ReadNGivenRead4 {
         char[] buf = {'s', 'e', 't', 's', 'e', 't'};
         int n = 3;
         System.out.println(reada(buf, n));
+        System.out.println(readb(buf, n));
     }
 
     //最好的

@@ -35,9 +35,9 @@ class Subsets {
             System.out.println(l.toString());
         }
     }
+
 //所有backtrack
 // https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
-
     /**
      * 最好的
      * Remember the start position and do backtracking
@@ -96,83 +96,4 @@ class Subsets {
         return res;
     }
 
-    /**
-     * Recursive down to two branches.
-     */
-    public static List<List<Integer>> subsetsA(int[] s) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        Arrays.sort(s);
-        subsetsA(s, 0, new ArrayList<Integer>(), res);
-        return res;
-    }
-
-    public static void subsetsA(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
-        if (start == s.length) {
-            result.add(set);
-            return;
-        }
-        List<Integer> copy = new ArrayList<Integer>(set);
-        subsetsA(s, start + 1, set, result); // without
-        copy.add(s[start]);
-        subsetsA(s, start + 1, copy, result); // with
-    }
-
-    /**
-     * 递归 时间和空间都是取决于结果的数量，也就是O(2^n)
-     */
-    public static ArrayList<ArrayList<Integer>> subsets1(int[] num) {
-        if (num == null)
-            return null;
-        Arrays.sort(num);
-        return helper(num, num.length - 1);
-    }
-
-    private static ArrayList<ArrayList<Integer>> helper(int[] num, int index) {
-        if (index == -1) {
-            ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-            ArrayList<Integer> elem = new ArrayList<Integer>();
-            res.add(elem);
-            return res;
-        }
-        ArrayList<ArrayList<Integer>> res = helper(num, index - 1);
-        int size = res.size();
-        for (int i = 0; i < size; i++) {
-            ArrayList<Integer> elem = new ArrayList<Integer>(res.get(i));
-            elem.add(num[index]);
-            res.add(elem);
-        }
-        return res;
-    }
-
-    /**
-     * creek
-     * Given a set S of n distinct integers, there is a relation between Sn and Sn-1.
-     * The subset of Sn-1 is the union of {subset of Sn-1} and {each element in Sn-1 + one more element}.
-     * Therefore, a Java solution can be quickly formalized.
-     */
-    public static ArrayList<ArrayList<Integer>> subsets3(int[] S) {
-        if (S == null)
-            return null;
-        Arrays.sort(S);
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
-        for (int i = 0; i < S.length; i++) {
-            ArrayList<ArrayList<Integer>> temp = new ArrayList<ArrayList<Integer>>();
-            //get sets that are already in result
-            for (ArrayList<Integer> a : result) {
-                temp.add(new ArrayList<Integer>(a));
-            }
-            //add S[i] to existing sets
-            for (ArrayList<Integer> a : temp) {
-                a.add(S[i]);
-            }
-            //add S[i] only as a set
-            ArrayList<Integer> single = new ArrayList<Integer>();
-            single.add(S[i]);
-            temp.add(single);
-            result.addAll(temp);
-        }
-        //add empty set
-        result.add(new ArrayList<Integer>());
-        return result;
-    }
 }

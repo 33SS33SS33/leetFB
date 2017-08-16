@@ -40,6 +40,7 @@ class NQueens {
     //最好的
     public static List<String[]> solveNQueensa(int n) {
         List<String[]> res = new ArrayList<>();
+        if (n <= 0) return res;
         helper(0, new boolean[n], new boolean[2 * n], new boolean[2 * n], new String[n], res);
         return res;
     }
