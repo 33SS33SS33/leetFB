@@ -18,7 +18,7 @@ class MergeKSortedList {
         List<ListNode> lists = new ArrayList<ListNode>();
         lists.add(head1);
         lists.add(head2);
-        ListNode res = new MergeKSortedList().mergeKLists(lists);
+        ListNode res = new MergeKSortedList().mergeKSortedLista(lists);
 
         while (res != null) {
             System.out.print(res.val + ",");
@@ -34,7 +34,7 @@ class MergeKSortedList {
      * 空间复杂度是堆的大小，即为O(k)。
      * //http://blog.csdn.net/linhuanmars/article/details/19899259
      */
-    public ListNode mergeKLists(List<ListNode> lists) {
+    public ListNode mergeKSortedLista(List<ListNode> lists) {
         if (lists == null || lists.size() == 0)
             return null;
         // Build priority queue
@@ -63,7 +63,7 @@ class MergeKSortedList {
      * 第二种
      * Divide and conquer  merge two halves, divide to merge two lists
      */
-    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+    public ListNode mergeKSortedListb(ArrayList<ListNode> lists) {
         if (lists == null || lists.size() == 0)
             return null;
         return helper(lists, 0, lists.size() - 1);

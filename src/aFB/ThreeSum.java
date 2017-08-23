@@ -22,7 +22,7 @@ import java.util.List;
 class ThreeSum {
     public static void main(String[] args) {
         int[] s = {-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> res1 = threeSuma(s);
+        List<List<Integer>> res1 = threeSum(s);
         System.out.println(res1.toString());
     }
 
@@ -34,7 +34,7 @@ class ThreeSum {
      * Use 2 more pointers from both start(i + 1) and end to find target
      * http://blog.csdn.net/linhuanmars/article/details/19711651
      */
-    public static List<List<Integer>> threeSuma(int[] nums) {
+    public static List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         if (nums == null || nums.length < 3)
             return result;

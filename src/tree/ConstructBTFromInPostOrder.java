@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Given inorder and postorder traversal of a tree, construct the binary tree.
  * Note:
- * You may assume that duplicates do not exist in the tree.
+ * You may assume that duplicates do not wordSearchb in the tree.
  * Tags: Tree, Array, DFS
  * 跟上面题思路差不多
  * 只是后序的话  确定根是从后往前走  最后的元素是根 倒数第二个就是右子树的根

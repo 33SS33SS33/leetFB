@@ -23,21 +23,21 @@ public class ClosestBinarySearchTreeValue {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new ClosestBinarySearchTreeValue().closestValuea(root, 7));
-        System.out.println(new ClosestBinarySearchTreeValue().closestValuea2(root, 7));
+        System.out.println(closestBinarySearchTreeValuea(root, 7));
+        System.out.println(closestBinarySearchTreeValueb(root, 7));
     }
 
     //最好的
-    public int closestValuea(TreeNode root, double target) {
+    public static int closestBinarySearchTreeValuea(TreeNode root, double target) {
         int a = root.val;
         TreeNode kid = target < a ? root.left : root.right;
         if (kid == null)
             return a;
-        int b = closestValuea(kid, target);
+        int b = closestBinarySearchTreeValuea(kid, target);
         return Math.abs(a - target) < Math.abs(b - target) ? a : b;
     }
 
-    public static int closestValuea2(TreeNode root, double target) {
+    public static int closestBinarySearchTreeValueb(TreeNode root, double target) {
         int ret = root.val;
         while (root != null) {
             if (Math.abs(target - root.val) < Math.abs(target - ret)) {

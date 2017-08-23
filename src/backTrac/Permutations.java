@@ -11,13 +11,15 @@ import java.util.*;
  */
 class Permutations {
     public static void main(String[] args) {
-        System.out.println(permutea(new int[]{1, 3, 2}));
+        System.out.println(permutations(new int[]{1, 3, 2}));
     }
 
     /**
      * 最好的
+     * [1,2,3] have the following permutations:
+     * [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
      */
-    public static List<List<Integer>> permutea(int[] nums) {
+    public static List<List<Integer>> permutations(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         backtrack(list, new ArrayList<>(), nums);
         return list;

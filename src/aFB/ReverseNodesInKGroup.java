@@ -17,7 +17,7 @@ class ReverseNodesInKGroup {
     public static void main(String[] args) {
         ReverseNodesInKGroup r = new ReverseNodesInKGroup();
         ListNode head = buildList();
-        ListNode r2 = r.reverseKGroupA(head, 3);
+        ListNode r2 = r.reverseNodesInKGroupa(head, 3);
         while (r2 != null) {
             System.out.print(r2.next == null ? r2.val : r2.val + "->");
             r2 = r2.next;
@@ -27,7 +27,7 @@ class ReverseNodesInKGroup {
     /**
      * 最好的 尾插法
      */
-    public ListNode reverseKGroupA(ListNode head, int k) {
+    public ListNode reverseNodesInKGroupa(ListNode head, int k) {
         ListNode curr = head;
         int count = 0;
         while (curr != null && count != k) { // find the k+1 node
@@ -35,7 +35,7 @@ class ReverseNodesInKGroup {
             count++;
         }
         if (count == k) { // if k+1 node is found
-            curr = reverseKGroupA(curr, k); // reverse list with k+1 node as head
+            curr = reverseNodesInKGroupa(curr, k); // reverse list with k+1 node as head
             // head - head-pointer to direct part,
             // curr - head-pointer to reversed part;
             while (count-- > 0) { // reverse current k-group:
@@ -56,7 +56,7 @@ class ReverseNodesInKGroup {
      * Stop when the next of current node is next group's head
      * Go ahead move pre and cur, and reverse the next group
      */
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode reverseNodesInKGroupb(ListNode head, int k) {
         if (head == null || head.next == null || k < 0)
             return head;
         if (k == 0 || k == 1)

@@ -16,7 +16,7 @@ import java.util.Set;
  * 那么
  * possible[i] = true      if  S[0,i]在dictionary里面
  * = true      if   possible[k] == true 并且 S[k+1,j]在dictionary里面， 0<k<i
- * = false      if    no such k exist.
+ * = false      if    no such k wordSearchb.
  * possible[0] = True 因为是空字符串
  * 大循环就是逐渐增加子串的长度  直到长度等于字符串
  * 小循环就是看看当前子串是否可能被segment

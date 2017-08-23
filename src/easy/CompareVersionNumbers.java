@@ -14,19 +14,18 @@ package easy;
  * Tags: String
  * 就是用.来切分 切了之后挨个比较 可能有一个字符串会溢出 就自动给个0
  */
-class CompareVersionNums {
+class CompareVersionNumbers {
     public static void main(String[] args) {
         String v1 = "001.3.3.7.000";
         String v2 = "1.3.3.7";
-        System.out.println(compareVersion(v1, v2));
-        System.out.println(compareVersionB(v1, v2));
+        System.out.println(compareVersionNumbers(v1, v2));
     }
 
     /**
      * Compare each level and compare the rest 最好的
      * Note the input can be complex than the example, more dots, more zeros
      */
-    static int compareVersion(String version1, String version2) {
+    static int compareVersionNumbers(String version1, String version2) {
         if (version1 == null && version2 == null)
             return 0; // same
         if (version1 == null || version2 == null)
@@ -42,34 +41,6 @@ class CompareVersionNums {
             else if (a > b)
                 return 1;
             i++; // update i
-        }
-        return 0;
-    }
-
-    /**
-     * creek------
-     */
-    public static int compareVersionB(String version1, String version2) {
-        String[] arr1 = version1.split("\\.");
-        String[] arr2 = version2.split("\\.");
-        int i = 0;
-        while (i < arr1.length || i < arr2.length) {
-            if (i < arr1.length && i < arr2.length) {
-                if (Integer.parseInt(arr1[i]) < Integer.parseInt(arr2[i])) {
-                    return -1;
-                } else if (Integer.parseInt(arr1[i]) > Integer.parseInt(arr2[i])) {
-                    return 1;
-                }
-            } else if (i < arr1.length) {
-                if (Integer.parseInt(arr1[i]) != 0) {
-                    return 1;
-                }
-            } else if (i < arr2.length) {
-                if (Integer.parseInt(arr2[i]) != 0) {
-                    return -1;
-                }
-            }
-            i++;
         }
         return 0;
     }

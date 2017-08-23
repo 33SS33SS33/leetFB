@@ -11,17 +11,14 @@ class LongestPalindromicSubstring {
         LongestPalindromicSubstring l = new LongestPalindromicSubstring();
         String s = "qabbaee";
         System.out.println(l.longestPalindrome(s));
-        System.out.println(l.longestPalindromeB(s));
         System.out.println(l.longestPalindromeC(s));
         System.out.println(l.longestPalindromeD(s));
-        System.out.println(l.longestPalindrome2(s));
     }
 
     /**
      * Manacher's Algorithm, O(n) Time.
      * S = “abba” => T = “#a#b#b#a#”.
      */
-
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0)
             return "";
@@ -115,54 +112,12 @@ class LongestPalindromicSubstring {
     }
 
     /**
-     * Manacher's Algorithm, O(n) Time.
-     * S = “abba” => T = “^#a#b#b#a#$”.
-     * http://www.felix021.com/blog/read.php?2040
-     * http://leetcode.com/2011/11/longest-palindromic-substring-part-ii.html
+     * 而第二种方法是用动态规划，思路比较复杂一些，但是实现代码会比较简短。
+     * 基本思路是外层循环i从后往前扫，内层循环j从i当前字符扫到结尾处。
+     * 过程中使用的历史信息是从i+1到n之间的任意子串是否是回文已经被记录下来，所以不用重新判断，
+     * 只需要比较一下头尾字符即可。这种方法使用两层循环，时间复杂度是O(n^2)。
+     * 而空间上因为需要记录任意子串是否为回文，需要O(n^2)的空间
      */
-    public String longestPalindromeB(String s) {
-        String t = preProcess(s);
-        int n = t.length();
-        int[] p = new int[n];
-        int range = 0, center = 0;
-        for (int i = 1; i < n - 1; i++) {
-            int mirror = 2 * center - i; // mirror of i to center
-            p[i] = range > i ? Math.min(range - i, p[mirror]) : 0;
-            while (t.charAt(i + 1 + p[i]) == t.charAt(i - 1 - p[i]))
-                p[i]++;
-            if (i + p[i] > range) {
-                center = i;
-                range = i + p[i];
-            }
-        }
-        int maxLen = 0;
-        int centerIdx = 0;
-        for (int i = 1; i < n - 1; i++) {
-            if (p[i] > maxLen) {
-                maxLen = p[i];
-                centerIdx = i;
-            }
-        }
-        return s.substring((centerIdx - 1 - maxLen) / 2, (centerIdx - 1 + maxLen) / 2);
-    }
-
-    private String preProcess(String s) {
-        int n = s.length();
-        if (n == 0)
-            return "^$";
-        String res = "^";
-        for (int i = 0; i < n; i++) {
-            res += "#" + s.substring(i, i + 1);
-        }
-        res += "#$";
-        return res;
-    }
-
-    /*而第二种方法是用动态规划，思路比较复杂一些，但是实现代码会比较简短。
-    基本思路是外层循环i从后往前扫，内层循环j从i当前字符扫到结尾处。
-    过程中使用的历史信息是从i+1到n之间的任意子串是否是回文已经被记录下来，所以不用重新判断，
-    只需要比较一下头尾字符即可。这种方法使用两层循环，时间复杂度是O(n^2)。
-    而空间上因为需要记录任意子串是否为回文，需要O(n^2)的空间*/
     public String longestPalindromeD(String s) {
         if (s == null || s.length() == 0)
             return "";
@@ -183,40 +138,5 @@ class LongestPalindromicSubstring {
         return res;
     }
 
-    /**
-     * DP Time O(n^2) Space O(n^2)
-     */
-    public static String longestPalindrome2(String s) {
-        if (s == null)
-            return null;
-        if (s.length() <= 1)
-            return s;
-        int maxLen = 0;
-        String longestStr = null;
-        int length = s.length();
-        int[][] table = new int[length][length];
-        for (int i = 0; i < length; i++) {
-            table[i][i] = 1;
-        }
-        for (int i = 0; i <= length - 2; i++) {
-            if (s.charAt(i) == s.charAt(i + 1)) {
-                table[i][i + 1] = 1;
-                longestStr = s.substring(i, i + 2);
-            }
-        }
-        for (int l = 3; l <= length; l++) {
-            for (int i = 0; i <= length - l; i++) {
-                int j = i + l - 1;
-                if (s.charAt(i) == s.charAt(j)) {
-                    table[i][j] = table[i + 1][j - 1];
-                    if (table[i][j] == 1 && l > maxLen)
-                        longestStr = s.substring(i, j + 1);
-                } else {
-                    table[i][j] = 0;
-                }
-            }
-        }
-        return longestStr;
-    }
 
 }

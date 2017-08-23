@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
  * A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
- * Write a function to count the total strobogrammatic numbers that exist in the range of low <= num <= high.
+ * Write a function to count the total strobogrammatic numbers that wordSearchb in the range of low <= num <= high.
  * For example,
  * Given low = "50", high = "100", return 3. Because 69, 88, and 96 are three strobogrammatic numbers.
  * 主要思路是比如求50-100范围的时候 先计算小于50的个数  再计算小于100的个数 然后用小于100的个数减去小于50的个数

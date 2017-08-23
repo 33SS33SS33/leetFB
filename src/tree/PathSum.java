@@ -14,7 +14,7 @@ import java.util.LinkedList;
  * 11  13  4
  * /  \      \
  * 7    2      1
- * return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
+ * return true, as there wordSearchb a root-to-leaf path 5->4->11->2 which sum is 22.
  * Tags: Tree, DFS
  * 先序遍历 碰到叶子了计算一下
  */

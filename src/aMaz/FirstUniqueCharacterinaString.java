@@ -5,10 +5,10 @@ package aMaz;
  */
 public class FirstUniqueCharacterinaString {
     public static void main(String[] args) {
-        System.out.println(firstUniqChar("eewd"));
+        System.out.println(firstUniqueCharacterinaString("eewd"));
     }
 
-    public static int firstUniqChar(String s) {
+    public static int firstUniqueCharacterinaString(String s) {
         int freq[] = new int[26];
         for (int i = 0; i < s.length(); i++)
             freq[s.charAt(i) - 'a']++;

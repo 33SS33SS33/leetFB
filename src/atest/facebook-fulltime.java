@@ -1930,7 +1930,7 @@ word searchinRotatedSortedArrayb 1:
 public class Solution {
     private static int[] X = {0, 0, 1, -1};
     private static int[] Y = {1, -1, 0, 0};    
-    public boolean exist(char[][] board, String word) {
+    public boolean wordSearchb(char[][] board, String word) {
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[0].length; col++) {
                 if (board[row][col] == word.charAt(0)) {
@@ -2569,7 +2569,7 @@ class Valid {
 http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=199232&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 
 public class Solution {
-    public ListNode mergeKLists(ListNode[] lists) {
+    public ListNode mergeKSortedListb(ListNode[] lists) {
         if (lists.length == 0) {
             return null;
         }

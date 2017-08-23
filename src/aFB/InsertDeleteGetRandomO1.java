@@ -13,7 +13,7 @@ import java.util.HashMap;
  * RandomizedSet randomSet = new RandomizedSet();
  * // Inserts 1 to the set. Returns true as 1 was inserted successfully.
  * randomSet.insert(1);
- * // Returns false as 2 does not exist in the set.
+ * // Returns false as 2 does not wordSearchb in the set.
  * randomSet.remove(2);
  * // Inserts 2 to the set, returns true. Set now contains [1,2].
  * randomSet.insert(2);
