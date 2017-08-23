@@ -48,10 +48,10 @@ class SymmetricTree {
         root2.right = n22;
         n21.right = n23;
         n22.right = n24;
-        System.out.println(new SymmetricTree().isSymmetric(root1));
-        System.out.println(new SymmetricTree().isSymmetricRec(root1));
-        System.out.println(new SymmetricTree().isSymmetric(root2));
-        System.out.println(new SymmetricTree().isSymmetricRec(root2));
+        System.out.println(new SymmetricTree().symmetricTreeb(root1));
+        System.out.println(new SymmetricTree().symmetricTreea(root1));
+        System.out.println(new SymmetricTree().symmetricTreeb(root2));
+        System.out.println(new SymmetricTree().symmetricTreea(root2));
     }
 
     /**
@@ -60,7 +60,7 @@ class SymmetricTree {
      * Recursive, pre-order traversal
      * Check two symmetric nodes a time
      */
-    private boolean isSymmetricRec(TreeNode root) {
+    private boolean symmetricTreea(TreeNode root) {
         if (root == null)
             return true;
         return helper(root.left, root.right);
@@ -79,7 +79,7 @@ class SymmetricTree {
      * Then pop and compare
      * http://blog.csdn.net/linhuanmars/article/details/23072829
      */
-    private boolean isSymmetric(TreeNode root) {
+    private boolean symmetricTreeb(TreeNode root) {
         if (root == null)
             return true;
         Stack<TreeNode> s = new Stack<TreeNode>();

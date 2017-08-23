@@ -30,7 +30,7 @@ class BTInOrder {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new BTInOrder().inorderTraversa(root));
+        System.out.println(new BTInOrder().bTInOrdera(root));
         System.out.println(new BTInOrder().inorderTraversb(root));
         System.out.println(new BTInOrder().inorderTraversc(root));
     }
@@ -39,7 +39,7 @@ class BTInOrder {
      * The recursive solution is trivial. 递归法
      * 算法的时间复杂度是O(n), 而空间复杂度则是递归栈的大小，即O(logn)
      */
-    public List<Integer> inorderTraversa(TreeNode root) {
+    public List<Integer> bTInOrdera(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         if (root != null) {
             helper(root, result);
