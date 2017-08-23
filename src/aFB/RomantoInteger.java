@@ -11,11 +11,11 @@ import java.util.Map;
 class RomantoInteger {
     public static void main(String[] args) {
         String s = "X";
-        System.out.println(new RomantoInteger().romanToInt(s));
+        System.out.println(new RomantoInteger().romantoInteger(s));
     }
 
     //
-    public int romanToInt(String s) {
+    public int romantoInteger(String s) {
         if (s == null || s.length() == 0)
             return 0;
         Map<Character, Integer> m = new HashMap<Character, Integer>();

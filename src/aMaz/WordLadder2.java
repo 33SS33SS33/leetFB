@@ -55,7 +55,7 @@ class WordLadder2 {
             ladder.put(string, Integer.MAX_VALUE);
         ladder.put(start, 0);
         dict.add(end);
-        //BFS: Dijisktra search
+        //BFS: Dijisktra searchinRotatedSortedArrayb
         while (!queue.isEmpty()) {
             String word = queue.poll();
             int step = ladder.get(word) + 1;//'step' indicates how many steps are needed to travel to one word.

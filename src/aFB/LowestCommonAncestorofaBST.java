@@ -17,15 +17,15 @@ public class LowestCommonAncestorofaBST {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestor(root, n3, n4).val);
-        System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorB(root, n3, n4).val);
+        System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorBST(root, n3, n4).val);
+        System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorBSTB(root, n3, n4).val);
     }
 
     //迭代
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestorBST(TreeNode root, TreeNode p, TreeNode q) {
         // make sure p < q
         if (p.val > q.val)
-            return lowestCommonAncestor(root, q, p);
+            return lowestCommonAncestorBST(root, q, p);
         // find p <= root <= q
         while (!(p.val <= root.val && root.val <= q.val)) {
             root = root.val > q.val ? root.left : root.right;
@@ -38,16 +38,16 @@ public class LowestCommonAncestorofaBST {
      * This problem can be solved by using BST property
      * i.e., left < parent < right for each node. There are 3 cases to handle.
      */
-    public TreeNode lowestCommonAncestorB(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestorBSTB(TreeNode root, TreeNode p, TreeNode q) {
         if (p.val > q.val)
-            return lowestCommonAncestor(root, q, p);
+            return lowestCommonAncestorBSTB(root, q, p);
         TreeNode m = root;
         if (m.val > p.val && m.val < q.val) {
             return m;
         } else if (m.val > p.val && m.val > q.val) {
-            return lowestCommonAncestor(root.left, p, q);
+            return lowestCommonAncestorBSTB(root.left, p, q);
         } else if (m.val < p.val && m.val < q.val) {
-            return lowestCommonAncestor(root.right, p, q);
+            return lowestCommonAncestorBSTB(root.right, p, q);
         }
         return root;
     }

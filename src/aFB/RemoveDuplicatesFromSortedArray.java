@@ -1,7 +1,5 @@
 package aFB;
 
-import java.util.Arrays;
-
 /**
  * Given a <strong>sorted</strong> array, remove the duplicates in place such
  * that each element appear only once and return the new length.
@@ -17,14 +15,14 @@ class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray r = new RemoveDuplicatesFromSortedArray();
         int[] B = {1, 1, 2, 2, 3};
-        System.out.println(r.removeDupStandard(B));
+        System.out.println(r.removeDuplicatesFromSortedArray(B));
     }
 
     /**
      * 最好的~~~~
      * Use count to remember current position
      */
-    public int removeDupStandard(int[] A) {
+    public int removeDuplicatesFromSortedArray(int[] A) {
         int count = 0;
         int len = A.length;
         for (int i = 0; i < len; i++) {

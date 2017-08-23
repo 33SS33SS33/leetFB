@@ -35,12 +35,14 @@ class PopulatingNextRight {
         TreeLinkNode root2 = buildTree();
         TreeLinkNode root3 = buildTree();
         PopulatingNextRight r = new PopulatingNextRight();
-        r.connect(root2);
-        r.connectA(root);
-        r.connectB(root2);
+        r.PopulatingNextRight(root2);
+        r.PopulatingNextRightb(root);
+        r.PopulatingNextRightc(root2);
     }
 
-    public void connect(TreeLinkNode root) {
+    public void PopulatingNextRight(TreeLinkNode root) {
+        if (root == null)
+            return;
         TreeLinkNode level_start = root;
         while (level_start != null) {
             TreeLinkNode cur = level_start;
@@ -59,7 +61,7 @@ class PopulatingNextRight {
      * Iterative
      * Store node in previous line
      */
-    public void connectA(TreeLinkNode root) {
+    public void PopulatingNextRightb(TreeLinkNode root) {
         if (root == null)
             return;
         TreeLinkNode pre = root;
@@ -67,8 +69,8 @@ class PopulatingNextRight {
         while (pre.left != null) { // no more level if left child is null
             cur = pre;
             while (cur != null) { // work on next level
-                cur.left.next = cur.right; // connect left and right
-                // connect right child with next node's left child
+                cur.left.next = cur.right; // PopulatingNextRight left and right
+                // PopulatingNextRight right child with next node's left child
                 if (cur.next != null)
                     cur.right.next = cur.next.left;
                 cur = cur.next; // move current to next node
@@ -80,7 +82,7 @@ class PopulatingNextRight {
     /**
      * creek---
      */
-    public void connectB(TreeLinkNode root) {
+    public void PopulatingNextRightc(TreeLinkNode root) {
         if (root == null)
             return;
         TreeLinkNode lastHead = root;//prevous level's head

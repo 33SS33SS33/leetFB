@@ -7,15 +7,15 @@ package easy;
  * 00000000000000000000000000001011, so the function should return 3.
  * Tags: Bit Manipulation
  */
-class NumberOfBits {
+class NumberOf1Bits {
     public static void main(String[] args) {
-        NumberOfBits nob = new NumberOfBits();
+        NumberOf1Bits nob = new NumberOf1Bits();
         int n = 111;
-        System.out.println(nob.hammingWeighta(n));
-        System.out.println(nob.hammingWeight(n));
+        System.out.println(nob.numberOf1Bits(n));
+        System.out.println(nob.numberOf1Bitsb(n));
     }
 
-    public static int hammingWeighta(int n) {
+    public static int numberOf1Bits(int n) {
         int ones = 0;
         while (n != 0) {
             ones = ones + (n & 1);
@@ -29,7 +29,7 @@ class NumberOfBits {
      * "n &= n - 1" is used to delete the right "1" of n
      * Stop when all 1s are deleted and n is zero
      */
-    public int hammingWeight(int n) {
+    public int numberOf1Bitsb(int n) {
         int res = 0;
         while (n != 0) {
             res++;

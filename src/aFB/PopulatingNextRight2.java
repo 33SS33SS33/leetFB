@@ -36,7 +36,7 @@ class PopulatingNextRight2 {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();
         PopulatingNextRight2 r = new PopulatingNextRight2();
-        r.connect(root);
+        r.populatingNextRight2(root);
     }
 
     /**
@@ -44,7 +44,7 @@ class PopulatingNextRight2 {
      * Store previous node
      * Do level order traversal with a pointer
      */
-    public void connect(TreeLinkNode root) {
+    public void populatingNextRight2(TreeLinkNode root) {
         if (root == null)
             return;
         TreeLinkNode cur = root;  // current node of current level
@@ -78,7 +78,7 @@ class PopulatingNextRight2 {
     /**
      * The idea is simple: level-order traversal.
      */
-    public void connectb(TreeLinkNode root) {
+    public void populatingNextRight2b(TreeLinkNode root) {
         while (root != null) {
             TreeLinkNode tempChild = new TreeLinkNode(0);
             TreeLinkNode currentChild = tempChild;

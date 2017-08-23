@@ -20,7 +20,7 @@ public class AddTwoNumbersII {
     public static void main(String[] args) {
     }
 
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
         Stack<Integer> s1 = new Stack<Integer>();
         Stack<Integer> s2 = new Stack<Integer>();
         while (l1 != null) {

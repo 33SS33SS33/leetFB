@@ -11,17 +11,17 @@ import java.util.Stack;
 class ValidParenthese {
     public static void main(String[] args) {
         ValidParenthese v = new ValidParenthese();
-        System.out.println(v.isValidB("()"));
-        System.out.println(v.isValidB("()[]{}"));
-        System.out.println(v.isValidB("([)]"));
-        System.out.println(v.isValidB("[({(())}[()])]"));
-        System.out.println(v.isValidB("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
+        System.out.println(v.validParenthese("()"));
+        System.out.println(v.validParenthese("()[]{}"));
+        System.out.println(v.validParenthese("([)]"));
+        System.out.println(v.validParenthese("[({(())}[()])]"));
+        System.out.println(v.validParenthese("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
     }
 
     /**
      * creek!!  最好的
      */
-    public static boolean isValidB(String s) {
+    public static boolean validParenthese(String s) {
         HashMap<Character, Character> map = new HashMap<Character, Character>();
         map.put('(', ')');
         map.put('[', ']');

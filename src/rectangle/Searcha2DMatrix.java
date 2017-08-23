@@ -28,7 +28,7 @@ class Searcha2DMatrix {
 
     /**
      * 先用行进行二分搜索 确定行之后对列进行二分搜索
-     * Binary search to locate row, then binary search in a row
+     * Binary searchinRotatedSortedArrayb to locate row, then binary searchinRotatedSortedArrayb in a row
      * O(logm + logn)  空间上只需两个辅助变量，因而是O(1)
      * http://blog.csdn.net/linhuanmars/article/details/24216235
      */

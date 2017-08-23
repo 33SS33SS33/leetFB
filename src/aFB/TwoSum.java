@@ -47,7 +47,7 @@ class TwoSum {
         }
         for (int i = 0; i < numbers.length; i++) {
             int newTarget = target - numbers[i];
-            // O(1) search
+            // O(1) searchinRotatedSortedArrayb
             if (map.containsKey(newTarget) && i != map.get(newTarget)) { // can't be same indices
                 return new int[]{i + 1, map.get(newTarget) + 1};
             }

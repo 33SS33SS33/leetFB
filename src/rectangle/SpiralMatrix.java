@@ -18,8 +18,8 @@ import java.util.*;
 class SpiralMatrix {
     public static void main(String[] args) {
         int[][] matrix = new int[][]{{1, 2, 3, 7}, {4, 5, 6, 9}, {7, 8, 9, 1}};
-        List<Integer> res3 = spiralOrderA(matrix);
-        List<Integer> res4 = spiralOrder(matrix);
+        List<Integer> res3 = SpiralMatrixA(matrix);
+        List<Integer> res4 = SpiralMatrixB(matrix);
         System.out.println(res3.toString());
         System.out.println(res4.toString());
     }
@@ -27,7 +27,7 @@ class SpiralMatrix {
     /**
      * 最好理解的
      */
-    public static List<Integer> spiralOrderA(int[][] matrix) {
+    public static List<Integer> SpiralMatrixA(int[][] matrix) {
         List<Integer> elements = new ArrayList<Integer>();
         if (matrix.length == 0)
             return elements;
@@ -58,7 +58,7 @@ class SpiralMatrix {
         return elements;
     }
 
-    public static List<Integer> spiralOrder(int[][] matrix) {
+    public static List<Integer> SpiralMatrixB(int[][] matrix) {
         List<Integer> res = new ArrayList<Integer>();
         if (matrix.length == 0) {
             return res;

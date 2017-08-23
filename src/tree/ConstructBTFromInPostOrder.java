@@ -15,7 +15,7 @@ class ConstructBTFromInPostOrder {
     public static void main(String[] args) {
         int[] inorder = {4, 2, 5, 1, 3, 6};
         int[] postorder = {4, 5, 2, 6, 3, 1};
-        TreeNode root = new ConstructBTFromInPostOrder().buildTree(inorder, postorder);
+        TreeNode root = new ConstructBTFromInPostOrder().constructBTFromInPostOrderb(inorder, postorder);
     }
 
     /**
@@ -24,7 +24,7 @@ class ConstructBTFromInPostOrder {
      * right sub-tree and do recursion. Use a HashMap to record the index of root in the
      * inorder array 复杂度和空间复杂度也还是O(n)
      */
-    public TreeNode buildTreeB(int[] inorder, int[] postorder) {
+    public TreeNode constructBTFromInPostOrdera(int[] inorder, int[] postorder) {
         if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0) {
             return null;
         }
@@ -53,13 +53,13 @@ class ConstructBTFromInPostOrder {
      * For left subtree, ps = ps, pe = ps - is - 1 + pos(offset, including root)
      * For right subtree, ps = pe - ie + pos, pe = pe - 1(without root)
      */
-    public TreeNode buildTree(int[] inorder, int[] postorder) {
+    public TreeNode constructBTFromInPostOrderb(int[] inorder, int[] postorder) {
         if (inorder == null || postorder == null || inorder.length == 0 || postorder.length == 0)
             return null;
-        return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
+        return constructBTFromInPostOrderb(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
     }
 
-    public TreeNode buildTree(int[] inorder, int[] postorder, int is, int ie, int ps, int pe) {
+    public TreeNode constructBTFromInPostOrderb(int[] inorder, int[] postorder, int is, int ie, int ps, int pe) {
         if (ps > pe)
             return null;
         TreeNode root = new TreeNode(postorder[pe]);
@@ -69,8 +69,8 @@ class ConstructBTFromInPostOrder {
                 break;
         }
         // Note how to calcuclate the start and end indices for post array
-        root.left = buildTree(inorder, postorder, is, pos - 1, ps, ps - is - 1 + pos);
-        root.right = buildTree(inorder, postorder, pos + 1, ie, pe - ie + pos, pe - 1);
+        root.left = constructBTFromInPostOrderb(inorder, postorder, is, pos - 1, ps, ps - is - 1 + pos);
+        root.right = constructBTFromInPostOrderb(inorder, postorder, pos + 1, ie, pe - ie + pos, pe - 1);
         return root;
     }
 

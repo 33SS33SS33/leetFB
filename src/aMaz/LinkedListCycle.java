@@ -9,14 +9,14 @@ package aMaz;
 class LinkedListCycle {
     public static void main(String[] args) {
         ListNode head = buildList();
-        System.out.print(hasCycle(head));
+        System.out.print(linkedListCycle(head));
     }
 
     /**
      * Runnner's technique 最好的
      * Check the next and next next of faster node is slower node or not.
      */
-    public static boolean hasCycle(ListNode head) {
+    public static boolean linkedListCycle(ListNode head) {
         if (head == null || head.next == null)
             return false;
         ListNode fast = head;

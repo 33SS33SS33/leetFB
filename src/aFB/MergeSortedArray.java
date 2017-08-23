@@ -13,7 +13,7 @@ class MergeSortedArray {
     public static void main(String[] args) {
         int A[] = new int[7];
         int B[] = {1, 3, 9};
-        new MergeSortedArray().mergea(A, 4, B, 3);
+        new MergeSortedArray().MergeSortedArray(A, 4, B, 3);
 
         for (int i : A) {
             System.out.print(i);
@@ -21,7 +21,7 @@ class MergeSortedArray {
     }
 
     //最好的 算法的时间复杂度是O(m+n),m和n分别是两个数组的长度，空间复杂度是O(1)
-    public void mergea(int A[], int m, int B[], int n) {
+    public void MergeSortedArray(int A[], int m, int B[], int n) {
         if (A == null || B == null)
             return;
         int i = m - 1, j = n - 1, k = m + n - 1;

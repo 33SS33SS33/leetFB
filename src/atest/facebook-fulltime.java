@@ -1922,11 +1922,11 @@ class LongestPathInBT {
 }
 
 
-28. word search
+28. word searchinRotatedSortedArrayb
 面试官一开始怕太难了 就说允许重复使用character 写出来之后 再让我写不允许重复使用的情况
 http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=199572&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 'Time complexity: O(n^2*len)--len is the average length of the words, Space complexity: O(len)'
-word search 1:
+word searchinRotatedSortedArrayb 1:
 public class Solution {
     private static int[] X = {0, 0, 1, -1};
     private static int[] Y = {1, -1, 0, 0};    
@@ -1964,11 +1964,11 @@ public class Solution {
     }
 }
 
-word search 2:
+word searchinRotatedSortedArrayb 2:
 // Use trie tree to store the words in the dictionary
 // So we dont have to look into the array to find the character match any words
 // We only need to look into the trieNode root to see children[ch - 'a'] == null
-// if not, then we can start search
+// if not, then we can start searchinRotatedSortedArrayb
 'Time complexity: O(n^2*len), space complexity:O(len*k) there are k words in the arrays'
 public class Solution {
     private static final int[] X = {0, 0, 1, -1};
@@ -2083,7 +2083,7 @@ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190436&extra=page%3
 // Else check parent, if it is null, return null --because this is the root and it is the last node in inorder
 // if not, if node.parent.left = node (node is the left child of its parent), return parent
 // if node.parent.right = node(node is the right child of its parent), go up and 
-// search ancester if any ancester is the left child of its parent, return parent
+// searchinRotatedSortedArrayb ancester if any ancester is the left child of its parent, return parent
 // else return null
 'Time complexity:O(1) in average, worst O(h), space complexity: O(1)' (BT Inorder parent)
 class BTInroder {
@@ -2508,7 +2508,7 @@ public void moveZeroes(int[] nums) {
 }
 
 
-Valid BST (valid binary search tree) 
+Valid BST (valid binary searchinRotatedSortedArrayb tree)
 // Use inorder traverse the tree,
 // if this.val <= previous.val, invalid
 class Valid {
@@ -2765,16 +2765,16 @@ class Interval {
 
 
 46.
-	LC search in rotated array, 写了两个binary search的版本，面试官提醒可以一个binary search搞定，然后没时间改了
+	LC searchinRotatedSortedArrayb in rotated array, 写了两个binary search的版本，面试官提醒可以一个binary search搞定，然后没时间改了
 
 # Search in rotated array 
-// one binary search
-// every time we doing binary search, we should make a judgement that
+// one binary searchinRotatedSortedArrayb
+// every time we doing binary searchinRotatedSortedArrayb, we should make a judgement that
 // which sorted part the nums[mid] belongs to
 // Then find that if target in this range, if yes, goes in to this range
 // else goes to another half
 
-public int search(int[] nums, int target) {
+public int searchinRotatedSortedArrayb(int[] nums, int target) {
     int start = 0;
     int end = nums.length - 1;
     while (start <= end) {
@@ -2954,19 +2954,19 @@ class hasCommonSubstring {
 http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=176941&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 
 #LCA BST lowest common Ancester binary Search Tree
-public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+public TreeNode lowestCommonAncestorBST(TreeNode root, TreeNode p, TreeNode q) {
     if (root.val > Math.max(p.val, q.val)) {
-        return lowestCommonAncestor(root.left, p, q);
+        return lowestCommonAncestorBST(root.left, p, q);
     }
     else if (root.val < Math.min(p.val, q.val)) {
-        return lowestCommonAncestor(root.right, p, q);
+        return lowestCommonAncestorBST(root.right, p, q);
     }
     return root;
 }
 
 
 51. 
-Phone: Leetcode原题。 Add and search word和Minimum window substring
+Phone: Leetcode原题。 Add and searchinRotatedSortedArrayb word和Minimum window substring
 Onsite:
 1 二叉树转化成环状Doubly LinkedList
 2 颜色排序(LC75)
@@ -2977,9 +2977,9 @@ Onsite:
 FB很多Behavior，大家多准备most interesting project还有teamwork experience之类的
 http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=191198&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 
-#Add and search word
+#Add and searchinRotatedSortedArrayb word
 // Use trie tree to do this
-'Time complexity: Add - O(len(word)) search: O(len(word)), space complexity: O(number of words * averageLen(word))'
+'Time complexity: Add - O(len(word)) searchinRotatedSortedArrayb: O(len(word)), space complexity: O(number of words * averageLen(word))'
 public class WordDictionary {
     TrieNode root;
     public WordDictionary() {
@@ -3001,7 +3001,7 @@ public class WordDictionary {
 
     // Returns if the word is in the data structure. A word could
     // contain the dot character '.' to represent any one letter.
-    public boolean search(String word) {
+    public boolean searchinRotatedSortedArrayb(String word) {
         return helper(word, root);        
     }
     
@@ -3635,7 +3635,7 @@ public String simplifyPath(String path) {
 69. 字母和数字的转换 A = 1 B = 2 AA = 27 基本是26进制的转换， 他要我写了两个边的转换。 我写出来了不过最后我用的是
 (char)('a'-1+i) 的方式来转换字母的，不过我用的是i%26，也就是z的时候会变成(char)(-1)。
 #letter to number, excel
-public int titleToNumber(String s) {
+public int ExcelSheetColNum(String s) {
     int result = 0;
     for (char letter : s.toCharArray()) {
         result = result * 26 + letter - 'A' + 1;

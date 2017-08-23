@@ -56,12 +56,12 @@ class SearchForARange {
     }
 
     /**
-     * Suppose we have a binary search helper method
+     * Suppose we have a binary searchinRotatedSortedArrayb helper method
      * With array, start index, end index, and target as arguments
-     * We can first search for the target in the whole array
-     * If found, then search for its starting position
-     * Then search for its ending position
-     * Update range with search result and return
+     * We can first searchinRotatedSortedArrayb for the target in the whole array
+     * If found, then searchinRotatedSortedArrayb for its starting position
+     * Then searchinRotatedSortedArrayb for its ending position
+     * Update range with searchinRotatedSortedArrayb result and return
      */
     public int[] searchRange(int[] A, int target) {
         int[] range = {-1, -1};

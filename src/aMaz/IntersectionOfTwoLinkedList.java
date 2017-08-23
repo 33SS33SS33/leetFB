@@ -24,12 +24,12 @@ package aMaz;
  * 比如A长度是5 B长度是6 当A走到头的时候B还差一个 所以当B到头的是
  * 另一个B刚走了一个 然后另一个是从A开始 这样两个就是同步的了
  */
-class IntersectionOfLinkedList {
+class IntersectionOfTwoLinkedList {
 
     /**
      * 最好的
      */
-    public ListNode IntersectionOfLinkedList(ListNode headA, ListNode headB) {
+    public ListNode intersectionOfTwoLinkedList(ListNode headA, ListNode headB) {
         if (null == headA || null == headB)
             return null;
         ListNode curA = headA, curB = headB;
@@ -40,7 +40,7 @@ class IntersectionOfLinkedList {
         return curA;
     }
 
-    public ListNode IntersectionOfLinkedListb(ListNode headA, ListNode headB) {
+    public ListNode intersectionOfTwoLinkedListb(ListNode headA, ListNode headB) {
         int lenA = length(headA), lenB = length(headB);
         // move headA and headB to the same start point
         while (lenA > lenB) {

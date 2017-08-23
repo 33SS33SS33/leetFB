@@ -9,7 +9,7 @@ public class MergeTwoSortedLists {
     public static void main(String[] args) {
         ListNode head1 = buildList();
         ListNode head2 = buildList2();
-        ListNode res = new MergeTwoSortedLists().mergeTwoListsRec(head1, head2);
+        ListNode res = new MergeTwoSortedLists().mergeTwoSortedLists(head1, head2);
 
         while (res.next != null) {
             System.out.print(res.val + ",");
@@ -22,17 +22,17 @@ public class MergeTwoSortedLists {
      * Recursive
      * the order of l1, l2 doesn't matter
      */
-    public ListNode mergeTwoListsRec(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoSortedLists(ListNode l1, ListNode l2) {
         if (l1 == null)
             return l2;
         if (l2 == null)
             return l1;
         // next node should be the result of comparison
         if (l1.val < l2.val) {
-            l1.next = mergeTwoListsRec(l1.next, l2); // notice l1.next
+            l1.next = mergeTwoSortedLists(l1.next, l2); // notice l1.next
             return l1;
         } else {
-            l2.next = mergeTwoListsRec(l1, l2.next); // notice l2.next
+            l2.next = mergeTwoSortedLists(l1, l2.next); // notice l2.next
             return l2;
         }
     }
@@ -42,7 +42,7 @@ public class MergeTwoSortedLists {
      * iterasive
      * 算法时间复杂度是O(m+n),m和n分别是两条链表的长度，空间复杂度是O(1)
      */
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoSortedListsb(ListNode l1, ListNode l2) {
         ListNode helper = new ListNode(0);
         ListNode pre = helper;
         helper.next = l1;

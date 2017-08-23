@@ -17,16 +17,18 @@ package easy;
  */
 class ExcelSheetColNum {
     public static void main(String[] args) {
-        System.out.println(titleToNumber("AAA"));
-        System.out.println(titleToNumberB("AAA"));
+        System.out.println(ExcelSheetColNum("AAA"));
+        System.out.println(ExcelSheetColNumB("AAA"));
     }
 
     /**
      * Go through the title
+     * AA -> 27
+     * AB -> 28
      * Map A ~ Z to 1 ~ 26
      * next result = current res * 26 + number of current letter
      */
-    public static int titleToNumber(String s) {
+    public static int ExcelSheetColNum(String s) {
         if (s == null || s.length() == 0)
             return 0;
         int res = 0;
@@ -39,7 +41,7 @@ class ExcelSheetColNum {
     /**
      * creek
      */
-    public static int titleToNumberB(String s) {
+    public static int ExcelSheetColNumB(String s) {
         if (s == null || s.length() == 0) {
             throw new IllegalArgumentException("Input is not valid!");
         }

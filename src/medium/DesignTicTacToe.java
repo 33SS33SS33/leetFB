@@ -24,7 +24,6 @@ public class DesignTicTacToe {
 
     /**
      * Player {player} makes a move at ({row}, {col}).
-     *
      * @param row    The row of the board.
      * @param col    The column of the board.
      * @param player The player, can be either 1 or 2.

@@ -59,7 +59,7 @@ class WordSearch {
         if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(n))
             return false;
         board[i][j] = '#'; // mark
-        // search 4 connectivity
+        // searchinRotatedSortedArrayb 4 connectivity
         boolean res = dfs(board, i - 1, j, word, n + 1) || dfs(board, i + 1, j, word, n + 1)
                 || dfs(board, i, j - 1, word, n + 1) || dfs(board, i, j + 1, word, n + 1);
         board[i][j] = word.charAt(n);// reset mark

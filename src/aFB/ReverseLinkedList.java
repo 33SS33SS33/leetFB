@@ -19,28 +19,12 @@ class ReverseLinkedList {
         n3.next = n4;
         n4.next = n5;
         ReverseLinkedList r = new ReverseLinkedList();
-        Node reversed = r.reverseListb(n1);
+        Node reversed = r.reverseLinkedListA(n1);
         Node cur = reversed;
         while (cur != null) {
             System.out.print(cur.next != null ? cur.val + "->" : cur.val);
             cur = cur.next;
         }
-    }
-
-    /**
-     * 递归
-     */
-    //https://discuss.leetcode.com/topic/13268/in-place-iterative-and-recursive-java-solution
-    public Node reverseListb(Node head) {
-        return reverseListInt(head, null);
-    }
-
-    public Node reverseListInt(Node head, Node newHead) {
-        if (head == null)
-            return newHead;
-        Node next = head.next;
-        head.next = newHead;
-        return reverseListInt(next, head);
     }
 
     /**
@@ -51,10 +35,10 @@ class ReverseLinkedList {
      * Link rest to first
      * Fix head pointer
      */
-    Node reverseListA(Node head) {
+    Node reverseLinkedListA(Node head) {
         if (head == null || head.next == null)
             return head;
-        Node temp = reverseListA(head.next);
+        Node temp = reverseLinkedListA(head.next);
         head.next.next = head;
         head.next = null;
         return temp;
@@ -63,7 +47,7 @@ class ReverseLinkedList {
     /**
      * 迭代
      */
-    public Node reverseLista(Node head) {
+    public Node reverseLinkedLista(Node head) {
         Node newHead = null;
         while (head != null) {
             Node next = head.next;

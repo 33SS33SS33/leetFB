@@ -25,7 +25,7 @@ class ExcelSheetColTitle {
 
     /**
      * 最好的
-     * creek
+     * creek 1 -> A  28 -> AB
      * The key is n--. The minimum in 26-bit number is mapped to 1, not 0.
      */
     public static String excelSheetColTitle(int n) {

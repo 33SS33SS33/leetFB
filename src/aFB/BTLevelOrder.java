@@ -27,7 +27,7 @@ import java.util.Queue;
 class BTLevelOrder {
     public static void main(String[] args) {
         TreeNode root = buildTree();
-        System.out.println(new BTLevelOrder().levelOrder(root));
+        System.out.println(new BTLevelOrder().bTLevelOrder(root));
     }
 
     /**
@@ -35,7 +35,7 @@ class BTLevelOrder {
      * Get size of the queue each time
      * Iterate that many times to build current level
      */
-    private List<List<Integer>> levelOrder(TreeNode root) {
+    private List<List<Integer>> bTLevelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (root == null)
             return res;

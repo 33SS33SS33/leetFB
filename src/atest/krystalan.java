@@ -46,7 +46,7 @@ public class krystalan {
 
      一个用bst编辑的字典，上面有各种product name and category. 求找到一种具体产品的时间复杂度
 
-     there is a search method called binary search method, it makes full use of the ordered relationship between elements,
+     there is a searchinRotatedSortedArrayb method called binary searchinRotatedSortedArrayb method, it makes full use of the ordered relationship between elements,
      n elements can be divided into two roughly equal parts, compare the middle element with the one want to find,
      decide to do binary search in left part or right part,  in the worst case with O (log n)
 

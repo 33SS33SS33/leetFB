@@ -16,13 +16,13 @@ public class NumberofIslands {
     public static void main(String[] args) {
         char[][] grid = {{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'},
                 {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}};
-        System.out.println(new NumberofIslands().numIslands(grid));
+        System.out.println(new NumberofIslands().NumberofIslands(grid));
     }
 
     /**
      * creek-----最好的
      */
-    public int numIslands(char[][] grid) {
+    public int NumberofIslands(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0)
             return 0;
         int count = 0;
@@ -39,7 +39,8 @@ public class NumberofIslands {
 
     public void merge(char[][] grid, int i, int j) {
         //validity checking
-        if (i < 0 || j < 0 || i > grid.length - 1 || j > grid[0].length - 1 || grid[i][j] != '1')
+        if (i < 0 || j < 0 || i > grid.length - 1
+                || j > grid[0].length - 1 || grid[i][j] != '1')
             return;
         //set visited cell to '0'
         grid[i][j] = '0';

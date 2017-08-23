@@ -16,7 +16,6 @@ package medium;
 public class MissingNumber {
     public static void main(String[] args) {
         int[] A = {1, 2, 0};
-        System.out.println(new MissingNumber().missingNumber1(A));
         System.out.println(new MissingNumber().missingNumber2(A));
         System.out.println(new MissingNumber().missingNumber3(A));
     }
@@ -44,16 +43,5 @@ public class MissingNumber {
         return res;
     }
 
-    /**
-     * Math   不好
-     * Considering that the n numbers are distinct, we can get the sum of the array
-     * Then substract it from the sum of 0 ~ n
-     */
-    public int missingNumber1(int[] nums) {
-        int res = nums.length * (nums.length + 1) / 2; // may overflow
-        for (int n : nums)
-            res -= n;
-        return res;
-    }
 
 }

@@ -15,7 +15,7 @@ import java.util.*;
 class CopyListWithRandomP {
     public static void main(String[] args) {
         RandomListNode node = buildList();
-        RandomListNode res = new CopyListWithRandomP().copyRandomListA(node);
+        RandomListNode res = new CopyListWithRandomP().CopyListWithRandom(node);
         while (res != null) {
             System.out.print(res.label + ",");
             if (res.random != null) {
@@ -29,7 +29,7 @@ class CopyListWithRandomP {
      * Use a hashmap to store map between original node and copy node 递归 最好的 第一解法
      * Get copy node from map
      */
-    public RandomListNode copyRandomListA(RandomListNode head) {
+    public RandomListNode CopyListWithRandom(RandomListNode head) {
         Map<RandomListNode, RandomListNode> map = new HashMap<RandomListNode, RandomListNode>();
         return helper(head, map);
     }

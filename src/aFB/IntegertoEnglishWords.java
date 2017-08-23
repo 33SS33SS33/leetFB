@@ -13,10 +13,10 @@ package aFB;
  */
 public class IntegertoEnglishWords {
     public static void main(String[] args) {
-        System.out.println(new IntegertoEnglishWords().numberToWords(76));
-        System.out.println(new IntegertoEnglishWords().numberToWords(123));
-        System.out.println(new IntegertoEnglishWords().numberToWords(12345));
-        System.out.println(new IntegertoEnglishWords().numberToWords(1234567));
+        System.out.println(new IntegertoEnglishWords().IntegertoEnglishWords(76));
+        System.out.println(new IntegertoEnglishWords().IntegertoEnglishWords(123));
+        System.out.println(new IntegertoEnglishWords().IntegertoEnglishWords(12345));
+        System.out.println(new IntegertoEnglishWords().IntegertoEnglishWords(1234567));
     }
 
     private final String[] LESS_THAN_20 = {"", "One", "Two", "Three", "Four", "Five", "Six",
@@ -26,7 +26,7 @@ public class IntegertoEnglishWords {
             "Sixty", "Seventy", "Eighty", "Ninety"};
     private final String[] THOUSANDS = {"", "Thousand", "Million", "Billion"};
 
-    public String numberToWords(int num) {
+    public String IntegertoEnglishWords(int num) {
         if (num == 0)
             return "Zero";
         int i = 0;

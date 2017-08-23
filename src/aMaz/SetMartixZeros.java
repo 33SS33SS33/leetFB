@@ -8,7 +8,7 @@ class SetMartixZeros {
     public static void main(String[] args) {
         int[][] matrix = new int[][]{{1, 2, 0}, {4, 3, 2}, {1, 0, 5}};
         SetMartixZeros a = new SetMartixZeros();
-        a.setZeros(matrix);
+        a.setMartixZeros(matrix);
         for (int[] i : matrix) {
             for (int j : i) {
                 System.out.print(j);
@@ -26,7 +26,7 @@ class SetMartixZeros {
      * 一次对矩阵进行实际的置0操作，所以总的时间复杂度是O(m*n)。
      * http://blog.csdn.net/linhuanmars/article/details/24066199
      */
-    public static void setZeros(int[][] matrix) {
+    public static void setMartixZeros(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return;
         int row = matrix.length;

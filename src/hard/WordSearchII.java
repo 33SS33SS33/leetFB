@@ -1,9 +1,7 @@
 package hard;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
@@ -29,14 +27,14 @@ public class WordSearchII {
                 {'i', 'f', 'l', 'v'}};
 
         String[] words = {"oath", "pea", "eat", "rain"};
-        System.out.println(new WordSearchII().findWords(board, words));
+        System.out.println(new WordSearchII().wordSearchII(board, words));
         //        System.out.println(exist2(board, word));
     }
 
     /**
      * 最好的 Backtracking + Trie     没看懂
      */
-    public List<String> findWords(char[][] board, String[] words) {
+    public List<String> wordSearchII(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
         TrieNode root = buildTrie(words);
         for (int i = 0; i < board.length; i++) {

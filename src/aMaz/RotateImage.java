@@ -10,7 +10,7 @@ package aMaz;
 class RotateImage {
     public static void main(String[] args) {
         int[][] matrix = {{1, 2}, {4, 3}};
-        new RotateImage().rotate(matrix);
+        new RotateImage().rotateImage(matrix);
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 System.out.print(matrix[i][j] + " ");
@@ -26,7 +26,7 @@ class RotateImage {
      * Do level by level, each level edge by edge
      * In-place solutions overwrites original matrix  matrix[i][j] = matrix[n-1-j][i]"
      */
-    public void rotate(int[][] matrix) {
+    public void rotateImage(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return;
         int n = matrix.length;

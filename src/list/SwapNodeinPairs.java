@@ -12,21 +12,21 @@ class SwapNodeinPairs {
     public static void main(String[] args) {
         SwapNodeinPairs r = new SwapNodeinPairs();
         ListNode head = buildList();
-        ListNode r2 = r.swapPairs(head);
+        ListNode r2 = r.swapNodeinPairs(head);
         while (r2.next != null) {
             System.out.print(r2.next == null ? r2.val : r2.val + "->");
             r2 = r2.next;
         }
         System.out.println();
         ListNode head2 = buildList();
-        ListNode r3 = r.swapPairsB(head2);
+        ListNode r3 = r.swapNodeinPairsb(head2);
         while (r3.next != null) {
             System.out.print(r3.next == null ? r3.val : r3.val + "->");
             r3 = r3.next;
         }
         System.out.println();
         ListNode head3 = buildList();
-        ListNode r4 = r.swapPairsC(head3);
+        ListNode r4 = r.swapNodeinPairsc(head3);
         while (r4.next != null) {
             System.out.print(r4.next == null ? r4.val : r4.val + "->");
             r4 = r4.next;
@@ -36,11 +36,11 @@ class SwapNodeinPairs {
     /**
      * 最好的 递归
      */
-    public ListNode swapPairs(ListNode head) {
+    public ListNode swapNodeinPairs(ListNode head) {
         if ((head == null) || (head.next == null))
             return head;
         ListNode n = head.next;
-        head.next = swapPairs(head.next.next);
+        head.next = swapNodeinPairs(head.next.next);
         n.next = head;
         return n;
     }
@@ -49,7 +49,7 @@ class SwapNodeinPairs {
      * create a node at before the head
      * swap two next nodes on the node before them
      */
-    public ListNode swapPairsA(ListNode head) {
+    public ListNode swapNodeinPairsa(ListNode head) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode cur = dummy;
@@ -66,7 +66,7 @@ class SwapNodeinPairs {
         return next2; // return latter node 
     }
 
-    public ListNode swapPairsB(ListNode head) {
+    public ListNode swapNodeinPairsb(ListNode head) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode p = head;
@@ -85,7 +85,7 @@ class SwapNodeinPairs {
     /**
      * -----creek---
      */
-    public ListNode swapPairsC(ListNode head) {
+    public ListNode swapNodeinPairsc(ListNode head) {
         if (head == null || head.next == null)
             return head;
         ListNode h = new ListNode(0);

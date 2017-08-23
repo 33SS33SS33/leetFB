@@ -34,8 +34,8 @@ class DungeonGame {
     public static void main(String[] args) {
         int[][] dungeon = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
         int[][] dungeon2 = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
-        System.out.println(new DungeonGame().calculateMinimumHP(dungeon));
-        System.out.println(new DungeonGame().calculateMinimumHPa(dungeon));
+        System.out.println(new DungeonGame().dungeonGamea(dungeon));
+        System.out.println(new DungeonGame().dungeonGameb(dungeon2));
     }
 
     /**
@@ -43,7 +43,7 @@ class DungeonGame {
      * Build from bottom right to get minimum from i, j to the end
      * Instead of build from top-left, because it's hard to get correct relation
      */
-    public int calculateMinimumHP(int[][] dungeon) {
+    public int dungeonGamea(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
             return 0;
         int m = dungeon.length - 1;
@@ -61,7 +61,7 @@ class DungeonGame {
         return dungeon[0][0];
     }
 
-    public int calculateMinimumHPa(int[][] dungeon) {
+    public int dungeonGameb(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
             return 0;
         int m = dungeon.length;

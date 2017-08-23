@@ -2,7 +2,7 @@ package aFB;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- * Given a binary tree (not a binary search tree) and two values say n1 and n2,
+ * Given a binary tree (not a binary searchinRotatedSortedArrayb tree) and two values say n1 and n2,
  * write a program to find the least common ancestor.
  * Allow a node to be a descendant of itself
  * Tags: Tree
@@ -28,7 +28,7 @@ class LowestCommonAncestor {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new LowestCommonAncestor().findLca(root, 4, 5).val);
+        System.out.println(new LowestCommonAncestor().LowestCommonAncestorBT(root, 4, 5).val);
     }
 
     /**
@@ -40,13 +40,13 @@ class LowestCommonAncestor {
      * return root
      * If one is not null, return that one
      */
-    public TreeNode findLca(TreeNode root, int n1, int n2) {
+    public TreeNode LowestCommonAncestorBT(TreeNode root, int n1, int n2) {
         if (root == null)
             return null;
         if (root.val == n1 || root.val == n2)
             return root;
-        TreeNode leftLca = findLca(root.left, n1, n2);
-        TreeNode rightLca = findLca(root.right, n1, n2);
+        TreeNode leftLca = LowestCommonAncestorBT(root.left, n1, n2);
+        TreeNode rightLca = LowestCommonAncestorBT(root.right, n1, n2);
         if (leftLca != null && rightLca != null)
             return root;
         return leftLca != null ? leftLca : rightLca;

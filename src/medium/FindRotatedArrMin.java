@@ -14,12 +14,12 @@ package medium;
 class FindRotatedArrMin {
     public static void main(String[] args) {
         int[] num = {3, 4, 5, 6, 1, 2};
-        System.out.println(findMin(num));
+        System.out.println(findRotatedArrMin(num));
         System.out.println(findMinB(num));
         System.out.println(findMinC(num));
     }
 
-    static int findMin(int[] num) {
+    static int findRotatedArrMin(int[] num) {
         int l = 0;
         int r = num.length - 1;
         if (num.length == 1 || num[l] < num[r])
@@ -40,10 +40,10 @@ class FindRotatedArrMin {
      * Define a helper function, otherwise, we will need to use Arrays.copyOfRange() function, which may be expensive for large arrays.
      */
     public static int findMinB(int[] num) {
-        return findMin(num, 0, num.length - 1);
+        return findRotatedArrMin(num, 0, num.length - 1);
     }
 
-    public static int findMin(int[] num, int left, int right) {
+    public static int findRotatedArrMin(int[] num, int left, int right) {
         if (left == right)
             return num[left];
         if ((right - left) == 1)
@@ -54,10 +54,10 @@ class FindRotatedArrMin {
             return num[left];
             // go right side
         } else if (num[middle] > num[left]) {
-            return findMin(num, middle, right);
+            return findRotatedArrMin(num, middle, right);
             // go left side
         } else {
-            return findMin(num, left, middle);
+            return findRotatedArrMin(num, left, middle);
         }
     }
 

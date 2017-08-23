@@ -33,8 +33,8 @@ public class ImplementTriePrefixTree {
         return node != null && node.isEnd();
     }
 
-    // search a prefix or whole key in trie and
-    // returns the node where search ends
+    // searchinRotatedSortedArrayb a prefix or whole key in trie and
+    // returns the node where searchinRotatedSortedArrayb ends
     private TrieNode searchPrefix(String word) {
         TrieNode node = root;
         for (int i = 0; i < word.length(); i++) {
