@@ -17,7 +17,7 @@ import java.util.Stack;
  * Note: Recursive solution is trivial, could you do it iteratively?
  * Tags: Tree, HashTable, Stack
  */
-class BTInOrder {
+class BTInOrderTraversal {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
@@ -30,16 +30,16 @@ class BTInOrder {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new BTInOrder().bTInOrdera(root));
-        System.out.println(new BTInOrder().inorderTraversb(root));
-        System.out.println(new BTInOrder().inorderTraversc(root));
+        System.out.println(new BTInOrderTraversal().bTInOrderTraversal(root));
+        System.out.println(new BTInOrderTraversal().btinorderTraversalb(root));
+        System.out.println(new BTInOrderTraversal().inorderTraversc(root));
     }
 
     /**
      * The recursive solution is trivial. 递归法
      * 算法的时间复杂度是O(n), 而空间复杂度则是递归栈的大小，即O(logn)
      */
-    public List<Integer> bTInOrdera(TreeNode root) {
+    public List<Integer> bTInOrderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         if (root != null) {
             helper(root, result);
@@ -63,7 +63,7 @@ class BTInOrder {
      * Pop the node from stack, add its value, and try to go right
      * Stop if stack is empty or node is null
      */
-    public static List<Integer> inorderTraversb(TreeNode root) {
+    public static List<Integer> btinorderTraversalb(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
         Stack<TreeNode> s = new Stack<TreeNode>();
         while (!s.isEmpty() || root != null) {

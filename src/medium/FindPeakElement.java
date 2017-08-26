@@ -19,7 +19,6 @@ class FindPeakElement {
         int[] num = {1, 2, 3, 1, 4};
         System.out.println(new FindPeakElement().findPeakElementa(num));
         System.out.println(new FindPeakElement().findPeakElement(num));
-        System.out.println(new FindPeakElement().findPeakElementB(num));
         System.out.println(new FindPeakElement().findPeakElementC(num));
     }
 
@@ -71,27 +70,6 @@ class FindPeakElement {
                 left = mid + 1;
         }
         return left;
-    }
-
-    /**
-     * creek--
-     */
-    public int findPeakElementB(int[] num) {
-        int max = num[0];
-        int index = 0;
-        for (int i = 1; i <= num.length - 2; i++) {
-            int prev = num[i - 1];
-            int curr = num[i];
-            int next = num[i + 1];
-            if (curr > prev && curr > next && curr > max) {
-                index = i;
-                max = curr;
-            }
-        }
-        if (num[num.length - 1] > max) {
-            return num.length - 1;
-        }
-        return index;
     }
 
     /**

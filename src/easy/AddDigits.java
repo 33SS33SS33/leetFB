@@ -18,4 +18,5 @@ public class AddDigits {
     public static int addDigits(int num) {
         return num - (num - 1) / 9 * 9;
     }
+
 }
