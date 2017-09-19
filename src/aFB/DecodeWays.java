@@ -17,15 +17,14 @@ package aFB;
 class DecodeWays {
     public static void main(String[] args) {
         DecodeWays d = new DecodeWays();
-        System.out.println(d.numDecodingsa("12"));
-        System.out.println(d.numDecodings("12"));
-        System.out.println(d.numDecodingsOptimal("12"));
-        System.out.println(d.numDecodingsC("12"));
+        System.out.println(d.decodeWaysa("12"));
+        System.out.println(d.decodeWaysb("12"));
+        System.out.println(d.decodeWaysc("12"));
     }
 
     //http://blog.csdn.net/linhuanmars/article/details/24570759
     //最好的  不懂。。。
-    public int numDecodingsa(String s) {
+    public int decodeWaysa(String s) {
         int n = s.length();
         if (n == 0)
             return 0;
@@ -44,7 +43,7 @@ class DecodeWays {
      * Optimal, DP 一维动归
      * Reduce space to O(1)
      */
-    public int numDecodingsOptimal(String s) {
+    public int decodeWaysb(String s) {
         if (s == null || s.length() == 0)
             return 0;
         int len = s.length();
@@ -64,7 +63,7 @@ class DecodeWays {
      * Time O(n), Space O(n) 二维动归
      * note that there can be zeros in s
      */
-    public static int numDecodings(String s) {
+    public static int decodeWaysc(String s) {
         if (s == null || s.length() == 0)
             return 0;
         int len = s.length();
@@ -78,37 +77,6 @@ class DecodeWays {
             ways[i] = (code1 != 0 ? ways[i - 1] : 0) + (code2 <= 26 && code2 > 9 ? ways[i - 2] : 0);
         }
         return ways[len];
-    }
-
-    /**
-     * creek-----
-     */
-    public int numDecodingsC(String s) {
-        if (s == null || s.length() == 0 || s.equals("0"))
-            return 0;
-        int[] t = new int[s.length() + 1];
-        t[0] = 1;
-        //if(s.charAt(0)!='0')
-        if (isValid(s.substring(0, 1)))
-            t[1] = 1;
-        else
-            t[1] = 0;
-        for (int i = 2; i <= s.length(); i++) {
-            if (isValid(s.substring(i - 1, i))) {
-                t[i] += t[i - 1];
-            }
-            if (isValid(s.substring(i - 2, i))) {
-                t[i] += t[i - 2];
-            }
-        }
-        return t[s.length()];
-    }
-
-    public boolean isValid(String s) {
-        if (s.charAt(0) == '0')
-            return false;
-        int value = Integer.parseInt(s);
-        return value >= 1 && value <= 26;
     }
 
 }
