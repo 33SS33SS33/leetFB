@@ -64,14 +64,11 @@ public class cutTree {
             int tH = map[end[0]][end[1]];
             map[end[0]][end[1]] = 1;
             res = shortestBFS(map, start, end);
-
             if (res == -1) {
                 return -1;
             }
             sum += (res + tH);
-
             start = end;
-
         }
         return sum;
     }
@@ -99,14 +96,10 @@ public class cutTree {
                     q.offer(new int[]{x, y});
                 }
             }
-
-
         }
         return path[dest[0]][dest[1]] == 0 ?
                 -1 : path[dest[0]][dest[1]];
-
     }
-
 
     public static int shortpath(int[][] maze, int[] start, int[] dest) {
         int[][] distance = new int[maze.length][maze[0].length];
@@ -136,4 +129,5 @@ public class cutTree {
         }
         return distance[dest[0]][dest[1]] == Integer.MAX_VALUE ? -1 : distance[dest[0]][dest[1]];
     }
+    
 }
