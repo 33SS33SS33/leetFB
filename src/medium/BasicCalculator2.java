@@ -1,7 +1,5 @@
 package medium;
 
-import java.util.LinkedList;
-import java.util.Scanner;
 import java.util.Stack;
 
 /**
@@ -13,16 +11,17 @@ import java.util.Stack;
  */
 public class BasicCalculator2 {
 
+    //170824 microsoft
     public int calculatea(String s) {
         int len;
         if (s == null || (len = s.length()) == 0)
             return 0;
         Stack<Integer> stack = new Stack<Integer>();
         int num = 0;
-        char sign = '+';
+        char sign = '+';//重要
         for (int i = 0; i < len; i++) {
             if (Character.isDigit(s.charAt(i))) {
-                num = num * 10 + s.charAt(i) - '0';
+                num = num * 10 + s.charAt(i) - '0';//重要
             }
             if ((!Character.isDigit(s.charAt(i)) && ' ' != s.charAt(i)) || i == len - 1) {
                 if (sign == '-') {
