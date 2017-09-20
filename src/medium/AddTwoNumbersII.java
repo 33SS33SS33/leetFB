@@ -45,7 +45,6 @@ public class AddTwoNumbersII {
         return list.val == 0 ? list.next : list;
     }
 
-
     public static class ListNode {
         int val;
         ListNode next;
