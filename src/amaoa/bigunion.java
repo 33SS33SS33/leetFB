@@ -45,9 +45,7 @@ public class bigunion {
                 return set2.size() - set1.size();
             }
         });
-
         for (String curr : map.keySet()) {
-
             boolean exist = false;
             for (Set<String> se : pq) {
                 if (se.contains(curr)) {
@@ -73,11 +71,10 @@ public class bigunion {
                     }
                 }
                 pq.add(set);
-
             }
-
         }
 //    	String[] re = (String[]) pq.poll().toArray();
         return pq.poll();
     }
+
 }

@@ -27,7 +27,6 @@ public class validParentheses {
                     mystack.pop();
                 }
             }
-
         }
         if (mystack.empty() == true) {
             return true;

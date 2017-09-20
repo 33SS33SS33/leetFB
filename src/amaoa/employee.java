@@ -3,6 +3,10 @@ package amaoa;
 import java.util.*;
 
 public class employee {
+    public static void main(String[] args) {
+
+    }
+
     public static class Employee {
         int id;
         List<Employee> reports = new ArrayList<Employee>();
@@ -23,11 +27,6 @@ public class employee {
             return reports;
         }
     }
-
-    public static void main(String[] args) {
-
-    }
-
 
     public static Employee comManager(Employee ceo, Employee emp1, Employee emp2) {
         Stack<Employee> e1 = new Stack<Employee>();
@@ -53,7 +52,6 @@ public class employee {
 
         }
         return null;
-
     }
 
     public static void moveUp(Stack<Employee> stack, int steps) {
@@ -73,12 +71,10 @@ public class employee {
             if (result == true) {
                 return true;
             }
-
         }
         stack.pop();
         return false;
     }
-
 
     //************************************************************Tree**************************************
     public static Employee comManagerTree(Employee ceo, Employee emp1, Employee emp2) {
@@ -105,6 +101,6 @@ public class employee {
             return emp2;
         }
         return null;
-
     }
+
 }

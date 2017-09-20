@@ -27,7 +27,6 @@ public class movies {
         for (Movie M : movie.getSimilarMovies()) {
             if (!queue.contains(M)) {
                 queue.offer(M);
-
                 bfsSearchMovies(M, queue);
             }
         }

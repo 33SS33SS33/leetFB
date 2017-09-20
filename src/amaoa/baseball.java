@@ -15,31 +15,31 @@ public class baseball {
             return 0;
         }
         int sum = 0;
-        Stack<Integer> mystack = new Stack<Integer>();
-        mystack.push(0);
-        mystack.push(0);
+        Stack<Integer> helpStack = new Stack<Integer>();
+        helpStack.push(0);
+        helpStack.push(0);
         for (int i = 0; i < input.size(); i++) {
             int current = 0;
-            int size = mystack.size();
+            int size = helpStack.size();
             String buff = input.get(i);
             if (buff == "Z") {
-                current = mystack.pop();
+                current = helpStack.pop();
                 sum -= current;
             } else if (buff == "+") {
-                current = mystack.get(size - 1) + mystack.get(size - 2);
+                current = helpStack.get(size - 1) + helpStack.get(size - 2);
                 sum += current;
-                mystack.push(current);
+                helpStack.push(current);
             } else if (buff == "X") {
-                current = mystack.get(size - 1) * 2;
+                current = helpStack.get(size - 1) * 2;
                 sum += current;
-                mystack.push(current);
+                helpStack.push(current);
             } else {
                 current = Integer.parseInt(buff);
-                mystack.push(current);
+                helpStack.push(current);
                 sum += current;
             }
-            if (mystack.size() < 2) {
-                mystack.push(0);
+            if (helpStack.size() < 2) {
+                helpStack.push(0);
             }
         }
         return sum;

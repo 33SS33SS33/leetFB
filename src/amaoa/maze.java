@@ -63,8 +63,7 @@ public class maze {
                 }
             }
         }
-        return path[dest[0]][dest[1]] == 0 ?
-                -1 : path[dest[0]][dest[1]];
+        return path[dest[0]][dest[1]] == 0 ? -1 : path[dest[0]][dest[1]];
     }
 
 }

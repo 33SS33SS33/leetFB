@@ -15,7 +15,6 @@ public class findallanagrams {
         if (s == null || s.length() == 0 || p == null || p.length() == 0) {
             return result;
         }
-
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         for (int i = 0; i < p.length(); i++) {
             if (map.containsKey(p.charAt(i)) != true) {
@@ -48,4 +47,5 @@ public class findallanagrams {
         }
         return result;
     }
+
 }
