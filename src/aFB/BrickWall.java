@@ -37,7 +37,8 @@ public class BrickWall {
 
     //????
     public static int brickWall(List<List<Integer>> wall) {
-        if (wall.size() == 0) return 0;
+        if (wall.size() == 0)
+            return 0;
         int count = 0;
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (List<Integer> list : wall) {

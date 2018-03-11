@@ -65,5 +65,4 @@ public class BestMeetingPoint {
         }
         return ret;
     }
-
 }

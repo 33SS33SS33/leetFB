@@ -18,7 +18,7 @@ public class warehouse {
     }
 
     public static List<List<Integer>> topK(List<List<Integer>> input, int n, int m) {
-        PriorityQueue<List<Integer>> pq = new PriorityQueue<List<Integer>>(n,
+        PriorityQueue<List<Integer>> pq = new PriorityQueue<>(n,
                 new Comparator<List<Integer>>() {
                     public int compare(List<Integer> e1, List<Integer> e2) {
                         return e1.get(0) * e1.get(0) + e1.get(1) * e1.get(1) - e2.get(0) * e2.get(0) - e2.get(1) * e2.get(1);
