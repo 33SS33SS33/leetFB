@@ -44,7 +44,6 @@ public class Automator {
         for (int i = 0; i < remainingMoves.size(); i++) {
             Location loc = remainingMoves.get(i);
             boolean success = lastPlayer.playPiece(loc.getRow(), loc.getCol());
-
             if (success) {
                 remainingMoves.remove(new Location(loc.getRow(), loc.getCol()));
                 return true;

@@ -9,10 +9,6 @@ public class Location {
         col = c;
     }
 
-    public boolean isSameAs(int r, int c) {
-        return row == r && col == c;
-    }
-
     public int getRow() {
         return row;
     }
