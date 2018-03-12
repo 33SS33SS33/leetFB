@@ -46,6 +46,7 @@ public class Automator {
             boolean success = lastPlayer.playPiece(loc.getRow(), loc.getCol());
 
             if (success) {
+                remainingMoves.remove(new Location(loc.getRow(), loc.getCol()));
                 return true;
             }
         }
@@ -53,7 +54,7 @@ public class Automator {
     }
 
     public boolean isOver() {
-        if (players[0].getScore() == 0 || players[1].getScore() == 0) {
+        if (remainingMoves.size() == 0) {
             return true;
         }
         return false;
