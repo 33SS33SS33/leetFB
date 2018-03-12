@@ -49,7 +49,7 @@ public class Micro {
      73	    Set Matrix Zeroes	34.0%	Medium
      297	Serialize and Deserialize Binary Tree	28.8%	Hard
      208	Implement Trie (Prefix Tree)	25.4%	Medium
-     174	Dungeon Game	21.5%	Hard
+     174	Dungeon OthelloGame	21.5%	Hard
      153	Find Minimum in Rotated Sorted Array	37.0%	Medium
      103	Binary Tree Zigzag Level Order Traversal	29.5%	Medium
      102	Binary Tree Level Order Traversal	33.8%	Easy
@@ -86,7 +86,7 @@ public class Micro {
      300	Longest Increasing Subsequence	35.2%	Medium
      213	House Robber II	31.5%	Medium
      114	Flatten Binary Tree to Linked List	31.7%	Medium
-     55	    Jump Game	28.6%	Medium
+     55	    Jump OthelloGame	28.6%	Medium
 
      Send Feedback*/
 }

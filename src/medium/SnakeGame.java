@@ -71,7 +71,7 @@ public class SnakeGame {
      *
      * @param direction - 'U' = Up, 'L' = Left, 'R' = Right, 'D' = Down
      * @return The game's score after the move. Return -1 if game over.
-     * Game over when snake crosses the screen boundary or bites its body.
+     * OthelloGame over when snake crosses the screen boundary or bites its body.
      */
     public int move(String direction) {
         //if(len>=food.length) return len;

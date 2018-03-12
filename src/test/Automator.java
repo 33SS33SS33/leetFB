@@ -2,9 +2,6 @@ package test;
 
 import java.util.ArrayList;
 
-/**
- * Created by shanshan on 3/11/18.
- */
 public class Automator {
     private Player[] players;
     private Player lastPlayer = null;
@@ -41,24 +38,9 @@ public class Automator {
         }
     }
 
-    public void removeLocation(int r, int c) {
-        for (int i = 0; i < remainingMoves.size(); i++) {
-            Location loc = remainingMoves.get(i);
-            if (loc.isSameAs(r, c)) {
-                remainingMoves.remove(i);
-            }
-        }
-    }
-
-    public Location getLocation(int index) {
-        return remainingMoves.get(index);
-    }
-
     public boolean playRandom() {
-        Board board = Game.getInstance().getBoard();
         shuffle();
         lastPlayer = lastPlayer == players[0] ? players[1] : players[0];
-        String color = lastPlayer.getColor().toString();
         for (int i = 0; i < remainingMoves.size(); i++) {
             Location loc = remainingMoves.get(i);
             boolean success = lastPlayer.playPiece(loc.getRow(), loc.getCol());

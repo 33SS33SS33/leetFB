@@ -13,7 +13,7 @@ public class firstSS {
  *
  * 128	Longest Consecutive Sequence
  *
- * 289	Game of Life
+ * 289	OthelloGame of Life
  *
  *229	Majority Element II
  *
@@ -29,7 +29,7 @@ public class firstSS {
  *
  *123	Best Time to Buy and Sell Stock III
  *
- *55	Jump Game
+ *55	Jump OthelloGame
  *
  *448	Find All Numbers Disappeared in an Array
  *
@@ -37,7 +37,7 @@ public class firstSS {
  *
  *	119	Pascal's Triangle II
  *
- * 45	Jump Game II
+ * 45	Jump OthelloGame II
  *
  * 	80	Remove Duplicates from Sorted Array II
  *

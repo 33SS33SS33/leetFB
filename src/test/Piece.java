@@ -1,22 +1,20 @@
 package test;
 
-import test.Color;
-
 public class Piece {
-    private Color color;
+    private PieceColor pieceColor;
 
-    public Piece(Color c) {
-        color = c;
+    public Piece(PieceColor c) {
+        pieceColor = c;
     }
 
     public void flip() {
-        if (color == Color.Black) {
-            color = Color.White;
+        if (pieceColor == PieceColor.Black) {
+            pieceColor = PieceColor.White;
         } else
-            color = Color.Black;
+            pieceColor = PieceColor.Black;
     }
 
-    public Color getColor() {
-        return color;
+    public PieceColor getPieceColor() {
+        return pieceColor;
     }
 }
