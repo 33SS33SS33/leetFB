@@ -3,8 +3,8 @@ package test;
 public class OthelloGame {
     private Player[] players;
     private Board board;
-    private final int ROWS = 8;
-    private final int COLS = 8;
+    private final int ROWS = 10;
+    private final int COLS = 10;
     private static OthelloGame instance;
 
     private OthelloGame() {
