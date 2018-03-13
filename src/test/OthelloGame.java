@@ -2,10 +2,10 @@ package test;
 
 public class OthelloGame {
     private Player[] players;
-    private static OthelloGame instance;
     private Board board;
-    private final int ROWS = 10;
-    private final int COLS = 10;
+    private final int ROWS = 8;
+    private final int COLS = 8;
+    private static OthelloGame instance;
 
     private OthelloGame() {
         board = new Board(ROWS, COLS);

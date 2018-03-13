@@ -2,13 +2,13 @@ package test;
 
 import java.util.ArrayList;
 
-public class Automator {
+public class AutoPlay {
     private Player[] players;
     private Player lastPlayer = null;
+    private static AutoPlay instance;
     public ArrayList<Location> remainingMoves = new ArrayList<>();
-    private static Automator instance;
 
-    private Automator() {
+    private AutoPlay() {
         for (int i = 1; i < 9; i++) {
             for (int j = 1; j < 9; j++) {
                 Location loc = new Location(i, j);
@@ -17,9 +17,9 @@ public class Automator {
         }
     }
 
-    public static Automator getInstance() {
+    public static AutoPlay getInstance() {
         if (instance == null)
-            instance = new Automator();
+            instance = new AutoPlay();
         return instance;
     }
 
