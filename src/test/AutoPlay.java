@@ -45,15 +45,14 @@ public class AutoPlay {
             Location loc = remainingMoves.get(i);
             boolean success = lastPlayer.playPiece(loc.getRow(), loc.getCol());
             if (success) {
-                remainingMoves.remove(new Location(loc.getRow(), loc.getCol()));
                 return true;
             }
         }
         return false;
     }
 
-    public boolean isOver() {
-        if (remainingMoves.size() == 0) {
+    public boolean isOver(){
+        if (players[0].getScore() == 0 || players[1].getScore() == 0){
             return true;
         }
         return false;

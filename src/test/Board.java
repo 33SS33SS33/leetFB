@@ -107,5 +107,14 @@ public class Board {
         left, right, up, down
     }
 
+    public boolean isFull() {
+        for (int i = 1; i < 9; i++) {
+            for (int j = 1; j < 9; j++) {
+                if (!(board[i][j].getPieceType().equals("X") || board[i][j].getPieceType().equals("O")))
+                    return false;
+            }
+        }
+        return true;
+    }
 }
 
