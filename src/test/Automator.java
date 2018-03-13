@@ -66,4 +66,22 @@ public class Automator {
     public static int randomInt(int n) {
         return (int) (Math.random() * n);
     }
+
+    private class Location {
+        private int row;
+        private int col;
+
+        public Location(int r, int c) {
+            row = r;
+            col = c;
+        }
+
+        public int getRow() {
+            return row;
+        }
+
+        public int getCol() {
+            return col;
+        }
+    }
 }

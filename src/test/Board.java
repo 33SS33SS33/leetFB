@@ -9,7 +9,6 @@ public class Board {
         board = new Piece[rows][cols];
     }
 
-    //initialize center O and X pieces
     public void init() {
         int middleRow = board.length / 2;
         int middleCol = board[middleRow].length / 2;
@@ -85,7 +84,7 @@ public class Board {
             return XPieceNum;
     }
 
-    public class Piece {
+    private class Piece {
         private PieceType pieceType;
 
         public Piece(PieceType c) {
