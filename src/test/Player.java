@@ -1,21 +1,17 @@
 package test;
 
 public class Player {
-    private PieceColor pieceColor;
+    private PieceType pieceType;
 
-    public Player(PieceColor c) {
-        pieceColor = c;
-    }
-
-    public PieceColor getPieceColor() {
-        return pieceColor;
+    public Player(PieceType c) {
+        pieceType = c;
     }
 
     public int getScore() {
-        return OthelloGame.getInstance().getBoard().getScoreForColor(pieceColor);
+        return OthelloGame.getInstance().getBoard().getScoreForColor(pieceType);
     }
 
     public boolean playPiece(int row, int col) {
-        return OthelloGame.getInstance().getBoard().placePiece(row, col, pieceColor);
+        return OthelloGame.getInstance().getBoard().placePiece(row, col, pieceType);
     }
 }
