@@ -8,15 +8,6 @@ public class AutoPlay {
     private static AutoPlay instance;
     public ArrayList<Location> remainingMoves = new ArrayList<>();
 
-    private AutoPlay() {
-        for (int i = 1; i < 9; i++) {
-            for (int j = 1; j < 9; j++) {
-                Location loc = new Location(i, j);
-                remainingMoves.add(loc);
-            }
-        }
-    }
-
     public static AutoPlay getInstance() {
         if (instance == null)
             instance = new AutoPlay();
@@ -28,7 +19,16 @@ public class AutoPlay {
         lastPlayer = ps[1];
     }
 
-    public void shuffle() {
+    private AutoPlay() {
+        for (int i = 1; i < 9; i++) {
+            for (int j = 1; j < 9; j++) {
+                Location loc = new Location(i, j);
+                remainingMoves.add(loc);
+            }
+        }
+    }
+
+    public void change() {
         for (int i = 0; i < remainingMoves.size(); i++) {
             int t = randomIntInRange(i, remainingMoves.size() - 1);
             Location other = remainingMoves.get(t);
@@ -39,7 +39,7 @@ public class AutoPlay {
     }
 
     public boolean playRandom() {
-        shuffle();
+        change();
         lastPlayer = lastPlayer == players[0] ? players[1] : players[0];
         for (int i = 0; i < remainingMoves.size(); i++) {
             Location loc = remainingMoves.get(i);

@@ -12,10 +12,10 @@ public class Board {
     public void init() {
         int middleRow = board.length / 2;
         int middleCol = board[middleRow].length / 2;
-        board[middleRow][middleCol] = new Piece(PieceType.X);
-        board[middleRow + 1][middleCol] = new Piece(PieceType.O);
-        board[middleRow + 1][middleCol + 1] = new Piece(PieceType.X);
-        board[middleRow][middleCol + 1] = new Piece(PieceType.O);
+        board[middleRow][middleCol] = new Piece(PieceType.O);
+        board[middleRow + 1][middleCol] = new Piece(PieceType.X);
+        board[middleRow + 1][middleCol + 1] = new Piece(PieceType.O);
+        board[middleRow][middleCol + 1] = new Piece(PieceType.X);
         OPieceNum = 2;
         XPieceNum = 2;
     }
