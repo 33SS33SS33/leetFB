@@ -8,7 +8,7 @@ package other;
 class MergeSort {
     public static void main(String[] args) {
         MergeSort m = new MergeSort();
-        int[] A = { 1, 4, 2, 8, 5 };
+        int[] A = {1, 4, 2, 8, 5};
         for (int n : A)
             System.out.print(n + ",");
         System.out.println();

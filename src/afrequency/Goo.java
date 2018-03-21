@@ -24,7 +24,7 @@ public class Goo {
      155	Min Stack	23.3%	Easy
      42	    Trapping Rain Water	33.0%	Hard
      10	    Regular Expression Matching	22.4%	Hard
-     289	Game of Life	35.1%	Medium
+     289	OthelloGame of Life	35.1%	Medium
      295	Find Median from Data Stream	22.3%	Hard
      212	Word Search II	20.3%	Hard
      139	Word Break	26.0%	Medium
@@ -80,7 +80,7 @@ public class Goo {
      361	Bomb Enemy 	33.4%	Medium
      351	Android Unlock Patterns 	35.4%	Medium
      336	Palindrome Pairs	20.9%	Hard
-     294	Flip Game II 	42.3%	Medium
+     294	Flip OthelloGame II 	42.3%	Medium
      249	Group Shifted Strings 	33.0%	Easy
      368	Largest Divisible Subset	29.7%	Medium
      348	Design Tic-Tac-Toe 	43.1%	Medium
@@ -96,12 +96,12 @@ public class Goo {
      358	Rearrange String k Distance Apart 	27.4%	Hard
      357	Count Numbers with Unique Digits	42.7%	Medium
      354	Russian Doll Envelopes	28.2%	Hard
-     353	Design Snake Game 	22.2%	Medium
+     353	Design Snake OthelloGame 	22.2%	Medium
      326	Power of Three	37.8%	Easy
      316	Remove Duplicate Letters	26.1%	Hard
      313	Super Ugly Number	35.5%	Medium
      309	Best Time to Buy and Sell Stock with Cooldown	37.7%	Medium
-     293	Flip Game 	50.8%	Easy
+     293	Flip OthelloGame 	50.8%	Easy
      370	Range Addition 	49.8%	Medium
      363	Max Sum of Rectangle No Larger Than K	28.5%	Hard
      360	Sort Transformed Array 	39.7%	Medium

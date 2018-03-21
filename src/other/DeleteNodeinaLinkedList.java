@@ -25,14 +25,14 @@ class DeleteNodeinaLinkedList {
     }
 
     public void deleteNode(Node node) {
-        if(node != null && node.next != null) {
+        if (node != null && node.next != null) {
             node.val = node.next.val;
             node.next = node.next.next;
         }
     }
 
     class Node {
-        int  val;
+        int val;
         Node next;
     }
 

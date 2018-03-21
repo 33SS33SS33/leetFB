@@ -1,27 +1,17 @@
 package test;
 
-import test.Color;
-import test.Game;
-
-/**
- * Created by shanshan on 3/11/18.
- */
 public class Player {
-    private Color color;
+    private PieceType pieceType;
 
-    public Player(Color c) {
-        color = c;
-    }
-
-    public Color getColor() {
-        return color;
+    public Player(PieceType c) {
+        pieceType = c;
     }
 
     public int getScore() {
-        return Game.getInstance().getBoard().getScoreForColor(color);
+        return OthelloGame.getInstance().getBoard().getScoreForColor(pieceType);
     }
 
     public boolean playPiece(int row, int col) {
-        return Game.getInstance().getBoard().placePiece(row, col, color);
+        return OthelloGame.getInstance().getBoard().placePiece(row, col, pieceType);
     }
 }

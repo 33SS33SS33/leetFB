@@ -9,7 +9,7 @@ package other;
 class PancakeSorting {
     public static void main(String[] args) {
         PancakeSorting p = new PancakeSorting();
-        int[] A = { 23, 10, 20, 11, 12, 6, 7 };
+        int[] A = {23, 10, 20, 11, 12, 6, 7};
         p.pancakeSort(A);
         for (int n : A)
             System.out.print(n + ", ");

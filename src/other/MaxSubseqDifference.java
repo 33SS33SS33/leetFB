@@ -8,7 +8,7 @@ package other;
  */
 class MaxSubseqDifference {
     public static void main(String[] args) {
-        int[] A = { -6, -1, -4, -8, -4, -6, -1, -9, -1, -9 };
+        int[] A = {-6, -1, -4, -8, -4, -6, -1, -9, -1, -9};
         MaxSubseqDifference m = new MaxSubseqDifference();
         System.out.println(m.findMaxDiff(A));
     }
@@ -47,7 +47,7 @@ class MaxSubseqDifference {
             }
         }
 
-        return new int[] { begin, end };
+        return new int[]{begin, end};
     }
 
     /**
@@ -72,7 +72,7 @@ class MaxSubseqDifference {
                 end = i;
             }
         }
-        return new int[] { begin, end };
+        return new int[]{begin, end};
     }
 
     int printArr(int[] A, int start, int end) {

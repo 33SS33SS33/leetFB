@@ -25,7 +25,8 @@ class Dijkstra {
             cost = c;
         }
 
-        @Override public int compareTo(Path rhs) {
+        @Override
+        public int compareTo(Path rhs) {
             double otherCost = rhs.cost;
             return cost < otherCost ? -1 : cost > otherCost ? 1 : 0;
         }
@@ -64,9 +65,9 @@ class Dijkstra {
     }
 
     class Vertex {
-        int        visited;
-        Vertex     prev;
-        double     dist;
+        int visited;
+        Vertex prev;
+        double dist;
         List<Edge> adj;
     }
 

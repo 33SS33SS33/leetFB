@@ -33,7 +33,7 @@ class WordSearch {
      * Use boolean array to remember whether a word is used
      * Traverse each position and do DFS
      * 总的时间复杂度最坏是O(m^2*n^2)
-     *
+     * <p>
      * solution2
      * 这道题很容易感觉出来是图的题目，其实本质上还是做深度优先搜索。基本思路就是从某一个元素出发，
      * 往上下左右深度搜索是否有相等于word的字符串。这里注意每次从一个元素出发时要重置访问标记
@@ -101,5 +101,5 @@ class WordSearch {
         board[y][x] ^= 256;
         return exist;
     }
-    
+
 }

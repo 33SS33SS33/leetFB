@@ -7,8 +7,8 @@ public class test {
     public static void main(String[] args) {
         int cityLength = 5;
         int cityWidth = 7;
-        int[] lockerXCoordinates = new int[] { 2, 4 };
-        int[] lockerYCoordinates = new int[] { 3, 7 };
+        int[] lockerXCoordinates = new int[]{2, 4};
+        int[] lockerYCoordinates = new int[]{3, 7};
         int[][] result = getLockerDistanceGrid(cityLength, cityWidth, lockerXCoordinates,
                 lockerYCoordinates);
         for (int i = 0; i < cityWidth; i++) {
@@ -20,7 +20,7 @@ public class test {
     }
 
     static int[][] getLockerDistanceGrid(int cityWidth, int cityLength, int[] lockerXCoordinates,
-            int[] lockerYCoordinates) {
+                                         int[] lockerYCoordinates) {
         int[][] result = new int[cityLength][];
         for (int i = 0; i < cityLength; i++) {
             result[i] = new int[cityWidth];
@@ -80,7 +80,8 @@ public class test {
         List<Map.Entry<String, Integer>> result = new ArrayList<Map.Entry<String, Integer>>(
                 courseInfo.entrySet());
         Collections.sort(result, new Comparator<Map.Entry<String, Integer>>() {
-            @Override public int compare(Map.Entry o1, Map.Entry o2) {
+            @Override
+            public int compare(Map.Entry o1, Map.Entry o2) {
                 return (Integer) o2.getValue() - (Integer) o1.getValue();
             }
         });

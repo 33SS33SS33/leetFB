@@ -41,7 +41,7 @@ class LetterCombinationsOfPhoneNum {
 
     public List<String> letterCombinationsA(String digits) {
         List<String> res = new ArrayList<String>();
-        if (digits == null|| digits.length() == 0)
+        if (digits == null || digits.length() == 0)
             return res;
         helper(digits, 0, "", res);
         return res;

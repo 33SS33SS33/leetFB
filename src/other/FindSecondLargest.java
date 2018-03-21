@@ -9,7 +9,7 @@ package other;
  */
 class FindSecondLargest {
     public static void main(String[] args) {
-        int[] array = { 5, 2, 3, 4 };
+        int[] array = {5, 2, 3, 4};
         System.out.print(secondLargest(array));
     }
 

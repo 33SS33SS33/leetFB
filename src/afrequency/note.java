@@ -75,10 +75,10 @@ public class note {
 
      Design an online multiplayer card game
      Reference:
-     How to Create an Asynchronous Multiplayer Game
-     How to Create an Asynchronous Multiplayer Game Part 2: Saving the Game State to Online Database
-     How to Create an Asynchronous Multiplayer Game Part 3: Loading Games from the Database
-     How to Create an Asynchronous Multiplayer Game Part 4: Matchmaking
+     How to Create an Asynchronous Multiplayer OthelloGame
+     How to Create an Asynchronous Multiplayer OthelloGame Part 2: Saving the OthelloGame State to Online Database
+     How to Create an Asynchronous Multiplayer OthelloGame Part 3: Loading Games from the Database
+     How to Create an Asynchronous Multiplayer OthelloGame Part 4: Matchmaking
      Real Time Multiplayer in HTML5
 
      Design a graph search function

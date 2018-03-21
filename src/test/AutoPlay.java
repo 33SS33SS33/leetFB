@@ -2,27 +2,15 @@ package test;
 
 import java.util.ArrayList;
 
-/**
- * Created by shanshan on 3/11/18.
- */
-public class Automator {
+public class AutoPlay {
     private Player[] players;
     private Player lastPlayer = null;
+    private static AutoPlay instance;
     public ArrayList<Location> remainingMoves = new ArrayList<>();
-    private static Automator instance;
 
-    private Automator() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                Location loc = new Location(i, j);
-                remainingMoves.add(loc);
-            }
-        }
-    }
-
-    public static Automator getInstance() {
+    public static AutoPlay getInstance() {
         if (instance == null)
-            instance = new Automator();
+            instance = new AutoPlay();
         return instance;
     }
 
@@ -31,7 +19,16 @@ public class Automator {
         lastPlayer = ps[1];
     }
 
-    public void shuffle() {
+    private AutoPlay() {
+        for (int i = 1; i < 9; i++) {
+            for (int j = 1; j < 9; j++) {
+                Location loc = new Location(i, j);
+                remainingMoves.add(loc);
+            }
+        }
+    }
+
+    public void change() {
         for (int i = 0; i < remainingMoves.size(); i++) {
             int t = randomIntInRange(i, remainingMoves.size() - 1);
             Location other = remainingMoves.get(t);
@@ -41,28 +38,12 @@ public class Automator {
         }
     }
 
-    public void removeLocation(int r, int c) {
-        for (int i = 0; i < remainingMoves.size(); i++) {
-            Location loc = remainingMoves.get(i);
-            if (loc.isSameAs(r, c)) {
-                remainingMoves.remove(i);
-            }
-        }
-    }
-
-    public Location getLocation(int index) {
-        return remainingMoves.get(index);
-    }
-
     public boolean playRandom() {
-        Board board = Game.getInstance().getBoard();
-        shuffle();
+        change();
         lastPlayer = lastPlayer == players[0] ? players[1] : players[0];
-        String color = lastPlayer.getColor().toString();
         for (int i = 0; i < remainingMoves.size(); i++) {
             Location loc = remainingMoves.get(i);
             boolean success = lastPlayer.playPiece(loc.getRow(), loc.getCol());
-
             if (success) {
                 return true;
             }
@@ -83,5 +64,23 @@ public class Automator {
 
     public static int randomInt(int n) {
         return (int) (Math.random() * n);
+    }
+
+    private class Location {
+        private int row;
+        private int col;
+
+        public Location(int r, int c) {
+            row = r;
+            col = c;
+        }
+
+        public int getRow() {
+            return row;
+        }
+
+        public int getCol() {
+            return col;
+        }
     }
 }

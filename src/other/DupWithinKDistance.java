@@ -21,7 +21,7 @@ import java.util.*;
  */
 class DupWithinKDistance {
     public static void main(String[] args) {
-        int arr[] = { 10, 5, 3, 4, 3, 5, 6 };
+        int arr[] = {10, 5, 3, 4, 3, 5, 6};
         System.out.println(checkDuplicatesWithinK(arr, 3));
     }
 
