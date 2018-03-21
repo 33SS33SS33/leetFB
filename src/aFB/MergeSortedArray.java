@@ -13,7 +13,7 @@ class MergeSortedArray {
     public static void main(String[] args) {
         int A[] = new int[7];
         int B[] = {1, 3, 9};
-        new MergeSortedArray().MergeSortedArray(A, 4, B, 3);
+         merge(A, 4, B, 3);
 
         for (int i : A) {
             System.out.print(i);
@@ -31,4 +31,26 @@ class MergeSortedArray {
             A[k--] = B[j--];
     }
 
+
+    public static int[] merge(int[] A, int m, int[] B, int n){
+        int[] res =new int[m+n];
+        if(A==null||B==null)
+            return res;
+        int i=m-1,j=n-1,k=m+n-1;
+        while(i>-1&&j>-1){
+            A[k--]=A[i]>B[j]?A[i--]:B[j--];
+        }
+        while(j>-1){
+            A[k--]=B[j--];
+        }
+        return A;
+    }
+/*
+    public void static main(String[] args){
+        int[] A={1,3,7};
+        int[] B={2,4,9,11};
+        int m=3, n=4;
+        int[] res=merge(A,m,B,n);
+
+    }*/
 }
