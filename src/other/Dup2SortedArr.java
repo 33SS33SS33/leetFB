@@ -8,8 +8,8 @@ import java.util.*;
  */
 class Dup2SortedArr {
     public static void main(String[] args) {
-        int[] A = { 1, 2, 3, 4, 5, 6 };
-        int[] B = { 3, 4, 5, 6, 7, 8 };
+        int[] A = {1, 2, 3, 4, 5, 6};
+        int[] B = {3, 4, 5, 6, 7, 8};
         Dup2SortedArr d = new Dup2SortedArr();
         System.out.println(d.duplicates(A, B));
     }

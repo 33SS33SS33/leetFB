@@ -7,7 +7,7 @@ package other;
  */
 class MaxSubseqDifferenceNoOverlap {
     public static void main(String[] args) {
-        int[] A = { -6, -1, -4, -8, -4, -6, -1, -9, -1, -9 };
+        int[] A = {-6, -1, -4, -8, -4, -6, -1, -9, -1, -9};
         MaxSubseqDifferenceNoOverlap m = new MaxSubseqDifferenceNoOverlap();
         System.out.println(m.MaxSubseqDifferenceNoOverlap(A));
     }
@@ -68,7 +68,7 @@ class MaxSubseqDifferenceNoOverlap {
                 end = i;
             }
         }
-        return new int[] { begin, end };
+        return new int[]{begin, end};
     }
 
     /**
@@ -93,7 +93,7 @@ class MaxSubseqDifferenceNoOverlap {
                 end = i;
             }
         }
-        return new int[] { begin, end };
+        return new int[]{begin, end};
     }
 
     private int sum(int[] A, int[] range) {

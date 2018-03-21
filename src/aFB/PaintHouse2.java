@@ -19,7 +19,7 @@ package aFB;
  */
 public class PaintHouse2 {
     public static void main(String[] args) {
-        int[][] costs = {{1,2,3}, {2,1,2}, {1,2,3}};
+        int[][] costs = {{1, 2, 3}, {2, 1, 2}, {1, 2, 3}};
         System.out.println(new PaintHouse2().minCostIIa(costs));
         System.out.print(new PaintHouse2().minCostII(costs));
     }

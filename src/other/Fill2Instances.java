@@ -12,10 +12,10 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 class Fill2Instances {
     public static void main(String[] args) {
         Fill2Instances f = new Fill2Instances();
-        Boolean n= null;
-        int t=0;
-        if(n!=null && n){
-             t =1;
+        Boolean n = null;
+        int t = 0;
+        if (n != null && n) {
+            t = 1;
         }
         System.out.print(t);
 //        f.fill(7);

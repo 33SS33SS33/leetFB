@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class FindAllNumbersDisappearedinanArray {
     public static void main(String[] args) {
-        int[] num = {4,3,2,7,8,2,3,1};
+        int[] num = {4, 3, 2, 7, 8, 2, 3, 1};
         System.out.println(findDisappearedNumbers(num));
     }
 

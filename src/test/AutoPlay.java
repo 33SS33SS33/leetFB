@@ -51,8 +51,8 @@ public class AutoPlay {
         return false;
     }
 
-    public boolean isOver(){
-        if (players[0].getScore() == 0 || players[1].getScore() == 0){
+    public boolean isOver() {
+        if (players[0].getScore() == 0 || players[1].getScore() == 0) {
             return true;
         }
         return false;

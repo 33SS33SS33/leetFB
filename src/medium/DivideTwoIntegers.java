@@ -14,6 +14,7 @@ class DivideTwoIntegers {
     }
 
     //http://blog.csdn.net/linhuanmars/article/details/20024907
+
     /**
      * Take care of special cases, 0, +1, -1
      * dividend = a0 * 1 * divisor + a1 * 2 * divisor + a2 * 2^2 * divisor...

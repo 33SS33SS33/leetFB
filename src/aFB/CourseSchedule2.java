@@ -30,12 +30,12 @@ public class CourseSchedule2 {
         int[][] prerequisites2 = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
         int[] res = new CourseSchedule2().findOrder(2, prerequisites);
         for (int i : res) {
-            System.out.print(i+",");
+            System.out.print(i + ",");
         }
         System.out.println();
         int[] res2 = new CourseSchedule2().findOrderB(4, prerequisites2);
         for (int i : res2) {
-            System.out.print(i+",");
+            System.out.print(i + ",");
         }
     }
 

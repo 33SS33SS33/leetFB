@@ -28,7 +28,7 @@ public class NumberofDigitOne {
      * "3141", i.e., 3142 times. Each of those times is a streak, though. Because it's the
      * hundreds-digit, each streak is 100 long. So (a / 10 + 1) * 100 times, the
      * hundreds-digit is 1.
-     *
+     * <p>
      * Consider the thousands-digit, i.e., when m=1000. Then a=3141 and b=592. The
      * thousands-digit is 1 for prefixes "" to "314", so 315 times. And each time is a streak of
      * 1000 numbers. However, since the thousands-digit is a 1, the very last streak isn't

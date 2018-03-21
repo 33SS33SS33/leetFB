@@ -1379,11 +1379,2578 @@ can buy k times
 '''
  */
 /**
- * dp[i, j] represents the max profit up until prices[j] using at most i transactions. 
+ * dp[i, j] represents the max profit up until prices[j] using at most i transactions.
  * dp[i, j] = max(dp[i, j-1], prices[j] - prices[jj] + dp[i-1, jj]) { jj in range of [0, j-1] }
- *          = max(dp[i, j-1], prices[j] + max(dp[i-1, jj] - prices[jj]))
+ * = max(dp[i, j-1], prices[j] + max(dp[i-1, jj] - prices[jj]))
  * dp[0, j] = 0; 0 transactions makes 0 profit
  * dp[i, 0] = 0; if there is only one price data point you can't make any transaction.
+ *
+ * @return whether we have a next smallest number  @return the next smallest number 63. 有一个数组，里面有0和非0元素，要求把所有非0元素移动到数组的前端，并返回非0元素的个数，非零元素顺序随意。非零元素之后数组有什么我们不关心。要求最小化写入次数。
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192313&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * #Move zero no order(Zeros no order)
+ * // Use two pointer, left always find 0, right always find non-zero
+ * // then make input[left] = input[right]
+ * // After left and rigt meet.
+ * // If input[left] == 0, which means input[left - 1] is the last non-zero number, return left
+ * // If input[left] != 0, and if left == right, which means input[left] is the last non-zero number
+ * // because left and right meet by a change, so return left + 1
+ * // Else left > right, which mean they just make a change which makes left > right. So
+ * // input[left - 1] is last non-zero number, return left
+ * public int moveZeroNoOrder(int[] input) {
+ * int left= 0;
+ * int right = input.length - 1;
+ * while (left < right) {
+ * while (left < right && input[left] != 0) {
+ * left++;
+ * }
+ * while (left < right && input[right] == 0) {
+ * right--;
+ * }
+ * if (left != right) {
+ * input[left] = input[right];
+ * left++;
+ * right--;
+ * }
+ * }
+ * if (input[left] == 0 || left > right) {
+ * return left;
+ * }
+ * return left + 1;
+ * }
+ * <p>
+ * 64. Word break by DP
+ * <p>
+ * // helper[i] means that we can break the string.substring(0, j) exclusive j
+ * 'Time complexity: O(n^2), space complexity: O(n)'
+ * public boolean wordBreak(String s, Set<String> wordDict) {
+ * boolean[] helper = new boolean[s.length() + 1];
+ * helper[0] = true;
+ * for (int i = 1; i <= s.length(); i++) {
+ * for (int j = i - 1; j >= 0; j--) {
+ * if (helper[j] && wordDict.contains(s.substring(j, i))) {
+ * helper[i] = true;
+ * break;
+ * }
+ * }
+ * }
+ * return helper[s.length()];
+ * }
+ * <p>
+ * Output only one result
+ * // Use DFS
+ * 'Time complexity: O(2^(n/k))'
+ * class WordBreak {
+ * public String wordBreak(Set<String> dict, String input) {
+ * List<String> path = new ArrayList<>();
+ * helper(path, dict, input, 0);
+ * StringBuilder result = new StringBuilder();
+ * for (String word : path) {
+ * result.append(word + " ");
+ * }
+ * result.deleteCharAt(result.length() - 1);
+ * return result.toString();
+ * }
+ * <p>
+ * private boolean helper(List<String> path, Set<String> dict, String input, int index) {
+ * if (index == input.length()) {
+ * return true;
+ * }
+ * for (int i = index; i < input.length(); i++) {
+ * String word = input.substring(index, i + 1);
+ * if (dict.contains(word)) {
+ * path.add(word);
+ * if (helper(path, dict, input, i + 1)) {
+ * return true;
+ * }
+ * path.remove(path.size() - 1);
+ * }
+ * }
+ * return false;
+ * }
+ * }
+ * <p>
+ * 66. 2Sum
+ * class TwoSum {
+ * public List<List<Integer>> twoSumIndex(int[] input, int target) {
+ * List<List<Integer>> result = new ArrayList<>();
+ * HashMap<Integer, List<Integer>> valueToIndex = new HashMap<>();
+ * Set<List<Integer>> visited = new HashSet<>();
+ * for (int i = 0; i < input.length; i++) {
+ * if (!valueToIndex.containsKey(input[i])) {
+ * valueToIndex.put(input[i], new ArrayList<Integer>());
+ * }
+ * valueToIndex.get(input[i]).add(i);
+ * }
+ * for (int i = 0; i < input.length; i++) {
+ * if (valueToIndex.containsKey(target - input[i])) {
+ * for (int index : valueToIndex.get(target - input[i])) {
+ * if (index > i) {
+ * List<Integer> pair = new ArrayList<>(Arrays.asList(i, index));
+ * if (!visited.contains(pair)) {
+ * visited.add(pair);
+ * result.add(pair);
+ * }
+ * }
+ * }
+ * }
+ * }
+ * return result;
+ * }
+ * public List<List<Integer>> twoSumValue(int[] input, int target) {
+ * List<List<Integer>> result = new ArrayList<>();
+ * HashMap<Integer, List<Integer>> valueToIndex = new HashMap<>();
+ * Set<List<Integer>> visited = new HashSet<>();
+ * for (int i = 0; i < input.length; i++) {
+ * if (!valueToIndex.containsKey(input[i])) {
+ * valueToIndex.put(input[i], new ArrayList<Integer>());
+ * }
+ * valueToIndex.get(input[i]).add(i);
+ * }
+ * for (int i = 0; i < input.length; i++) {
+ * if (valueToIndex.containsKey(target - input[i])) {
+ * int idx = -1;
+ * for (int index : valueToIndex.get(target - input[i])) {
+ * if (index != i) {
+ * idx = index;
+ * break;
+ * }
+ * }
+ * if (idx != -1) {
+ * List<Integer> pair = new ArrayList<>(Arrays.asList(input[i], input[idx]));
+ * Collections.sort(pair);
+ * if (!visited.contains(pair)) {
+ * result.add(pair);
+ * visited.add(pair);
+ * }
+ * }
+ * <p>
+ * }
+ * }
+ * return result;
+ * }
+ * public List<List<Integer>> twoSumSort(int[] input, int target) {
+ * List<List<Integer>> result = new ArrayList<>();
+ * Arrays.sort(input);
+ * int left = 0;
+ * int right = input.length - 1;
+ * while (left < right) {
+ * if (input[left] + input[right] > target) {
+ * right--;
+ * }
+ * else if (input[left] + input[right] < target) {
+ * left++;
+ * }
+ * else {
+ * result.add(new ArrayList<Integer>(Arrays.asList(input[left], input[right])));
+ * left++;
+ * right--;
+ * while (left < input.length && input[left] == input[left - 1]) {
+ * left++;
+ * }
+ * while (right >= 0 && input[right] == input[right + 1]) {
+ * right--;
+ * }
+ * }
+ * }
+ * return result;
+ * }
+ * }
+ * <p>
+ * <p>
+ * 68.
+ * LC138 Copy linked list with random pointers. 要求优化到不用extra space。. from: 1point3acres.com/bbs
+ * LC75 Sort colors, Group contact
+ * Behavioral + LC71 Simplify path这题要问清楚要做什么.
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192116&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * #copy linked List with random pointer
+ * public RandomListNode copyRandomList(RandomListNode head) {
+ * RandomListNode mover = head;
+ * while (mover != null) {
+ * RandomListNode copy = new RandomListNode(mover.label);
+ * RandomListNode next = mover.next;
+ * mover.next = copy;
+ * copy.next = next;
+ * mover = copy.next;
+ * }
+ * RandomListNode fakeHead = new RandomListNode(0);
+ * RandomListNode copyMover = fakeHead;
+ * mover = head;
+ * while (mover != null) {
+ * if (mover.random != null) {
+ * mover.next.random = mover.random.next;
+ * }
+ * mover = mover.next.next;
+ * }
+ * mover = head;
+ * while (mover != null) {
+ * copyMover.next = mover.next;
+ * mover.next = mover.next.next;
+ * mover = mover.next;
+ * copyMover = copyMover.next;
+ * }
+ * return fakeHead.next;
+ * }
+ * <p>
+ * #Simplify path
+ * public String simplifyPath(String path) {
+ * Stack<String> validPath = new Stack<>();
+ * Set<String> special = new HashSet<>(Arrays.asList("..", ".", ""));
+ * String[] directories = path.split("/");
+ * for (String directory : directories) {
+ * if (directory.equals("..") && !validPath.isEmpty()) {
+ * validPath.pop();
+ * }
+ * else if (!special.contains(directory)) {
+ * validPath.push(directory);
+ * }
+ * }
+ * StringBuilder result = new StringBuilder();
+ * while (!validPath.isEmpty()) {
+ * result.insert(0, "/" + validPath.pop());
+ * }
+ * if (result.length() == 0) {
+ * return "/";
+ * }
+ * return result.toString();
+ * }
+ * <p>
+ * <p>
+ * 69. 字母和数字的转换 A = 1 B = 2 AA = 27 基本是26进制的转换， 他要我写了两个边的转换。 我写出来了不过最后我用的是
+ * (char)('a'-1+i) 的方式来转换字母的，不过我用的是i%26，也就是z的时候会变成(char)(-1)。
+ * #letter to number, excel
+ * public int ExcelSheetColNum(String s) {
+ * int result = 0;
+ * for (char letter : s.toCharArray()) {
+ * result = result * 26 + letter - 'A' + 1;
+ * }
+ * return result;
+ * }
+ * <p>
+ * public String convertToTitle(int n) {
+ * StringBuilder result = new StringBuilder();
+ * while (n > 0) {
+ * char letter = (char)((n - 1) % 26 + 'A');
+ * result.append(letter);
+ * n = (n - 1) / 26;
+ * }
+ * return result.reverse().toString();
+ * }
+ * <p>
+ * <p>
+ * 70.
+ * 找小偷问题，有n个房间，其中一个房间有小偷。早上我们可以打开一个房间的门看小偷在不在里面，晚
+ * 上小偷会向左边或者右边的房间走。现在给你一个开门的sequence，你输出这个sequence能不能保证找到小偷。 鏉ユ簮涓€浜�.涓夊垎鍦拌鍧�.
+ * 比如：如果只有三个房间那么如果打开房间的sequence是{1，1}那么一定会找到小偷。因为如果小偷在中间那么第一天就会被找到，. visit 1point3acres.com for more.
+ * 如果小偷在两边那么第二天一定回来到中间也会被找到。房间数为n，sequence长度为k. 鍥磋鎴戜滑@1point 3 acres
+ * 跟着我开始brute force假设小偷在某个房间然后dfs所有路径，大概是O（n*n^k）。 考官说好，如果考虑cut branch呢？跟着我就说可以
+ * 拿一个n*k的matrix跟着根据sequence来cut branch，reduce到O（n*n*k）。他说有没有可能同时从所有房间开始呢？我说可以跟着直接
+ * 在那个n*kmatrix上做一个类似dp的东西。跟着reduce 到 O（n*k）。他说有没有可能把space reduce呢？我说可以我只要O（n）的space
+ * 跟着他就让我再写一个叫nextRow的function来实现O（n）space。 我觉得这题我基本是答得非常漂亮的而且思路很清晰，考官也很开心。
+ * <p>
+ * class FindTheaf {
+ * public boolean findTheaf(int rooms, int[] strategy) {
+ * boolean[] found = new boolean[rooms];
+ * found[strategy[0]] = true;
+ * for (int day = 1; day < strategy.length; day++) {
+ * boolean[] lastDay = Arrays.copyOf(found, rooms);
+ * for (int room = 0; room < rooms; room++) {
+ * if (room == 0) {
+ * found[room] = lastDay[room + 1];
+ * }
+ * else if (room == rooms - 1) {
+ * found[room] = lastDay[room - 1];
+ * }
+ * else {
+ * found[room] = lastDay[room - 1] || lastDay[room + 1];
+ * }
+ * }
+ * found[strategy[day]] = true;
+ * }
+ * boolean result = true;
+ * for (int i = 0; i < rooms; i++) {
+ * result = result && found[i];
+ * }
+ * return result;
+ * }
+ * }
+ * <p>
+ * <p>
+ * 71. word ladder变型，叫我随便找一个可以的path出来，基本我写的每一步她都要我说这样写的理由，跟着做笔记。我用dfs+hashset写完之后，
+ * 被她发现了一个bug，就是在找到path之后我没有完全return导致答案没有了最后一个word，跟着我马上改了。之后她问我能不能cut branch
+ * 我看不出来。。。。她提示其实放进hashset的可以不再remove，因为如果走过一个word发现这个word不行那么以后就没有必要再走这个word了。
+ * 跟着问我如果word可以从abc变道abcd 就是变一个或者加一个letter我应该怎么改。我就说加点东西就好，跟着就写出来了。跟着这轮就大概没了。
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=109284&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * class WordLadder {
+ * public List<String> findLadder(String start, String end, Set<String> dict) {
+ * Queue<String> explore = new LinkedList<>();
+ * HashMap<String, String> path = new HashMap<>();
+ * List<String> result = new ArrayList<>();
+ * explore.offer(start);
+ * path.put(start, "");
+ * boolean found = false;
+ * while (!explore.isEmpty() && !found) {
+ * String word = explore.poll();
+ * for (int i = 0; i < word.length(); i++) {
+ * for (char k = 'a'; k <= 'z'; k++) {
+ * if (word.charAt(i) == k) {
+ * continue;
+ * }
+ * String newWord = word.substring(0, i) + k + word.substring(i + 1);
+ * if (newWord.equals(end)) {
+ * path.put(end, word);
+ * found = true;
+ * break;
+ * }
+ * if (dict.contains(newWord) && !path.containsKey(newWord)) {
+ * path.put(newWord, word);
+ * explore.offer(newWord);
+ * }
+ * }
+ * }
+ * }
+ * if (!path.containsKey(end)) {
+ * return result;
+ * }
+ * String mover = end;
+ * while (!path.get(mover).equals("")) {
+ * result.add(0, mover);
+ * mover = path.get(mover);
+ * }
+ * result.add(0, start);
+ * return result;
+ * }
+ * }
+ * <p>
+ * 72. 自然string comparator。不知道的搜下。就是string 比较的时候考虑里面数字的大小，比如 abc9 < abc123 abc > ab9  因为char比digit重要。
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=179527&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * class CompareString implements Comparator<String> {
+ * @Override public int compare(String str1, String str2) {
+ * int index1 = 0;
+ * int index2 = 0;
+ * while (index1 < str1.length() && index2 < str2.length()) {
+ * char letter1 = str1.charAt(index1);
+ * char letter2 = str2.charAt(index2);
+ * if (letter1 == letter2 &&  !Character.isDigit(letter2)) { // both are char and equals
+ * index1++;
+ * index2++;
+ * }
+ * else if (Character.isDigit(letter1) && Character.isDigit(letter2)){ //both are number
+ * int number1 = 0;
+ * int number2 = 0;
+ * while (index1 < str1.length() && Character.isDigit(str1.charAt(index1))) {
+ * number1 = number1 * 10 + str1.charAt(index1) - '0';
+ * index1++;
+ * }
+ * while (index2 < str2.length() && Character.isDigit(str2.charAt(index2))) {
+ * number2 = number2 * 10 + str2.charAt(index2) - '0';
+ * index2++;
+ * }
+ * if (number1 > number2) {
+ * return 1;
+ * }
+ * else if (number1 < number2) {
+ * return -1;
+ * }
+ * }
+ * else { // not equals or one is number
+ * if (Character.isDigit(letter2)) {
+ * return 1;
+ * }
+ * else if (Character.isDigit(letter1)) {
+ * return -1;
+ * }
+ * if (letter1 > letter2) {
+ * return 1;
+ * }
+ * return -1;
+ * }
+ * }
+ * if (index1 == str1.length() && index2 == str2.length()) { //check all the char already
+ * return 0;
+ * }
+ * else if (index1 < str1.length()) {
+ * return 1;
+ * }
+ * return -1;
+ * }
+ * }
+ * <p>
+ * <p>
+ * 74. 第一题lc弱智题，合并两个有序数组，很简单，lz第一次店面写代码，有点紧张，居然用了接近14分钟才写完。面试官看了会儿，说looks good，时间复杂度也没问，就直接出下一题。
+ * <p>
+ * 75. merge K sort array
+ * <p>
+ * 76. 因为他问第三题的时候只是嘴上说如果给的不是lists，而是每个list的iterator，how do you modify your code?
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190561&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * #Merge Lists
+ * class Merge {
+ * public List<Integer> mergeTwoList(List<Integer> list1, List<Integer> list2) {
+ * List<Integer> result = new ArrayList<>();
+ * int index1 = 0;
+ * int index2 = 0;
+ * while (index1 < list1.size() && index2 < list2.size()) {
+ * int number1 = list1.get(index1);
+ * int number2 = list2.get(index2);
+ * if (number1 <= number2) {
+ * result.add(number1);
+ * index1++;
+ * }
+ * else {
+ * result.add(number2);
+ * index2++;
+ * }
+ * }
+ * while (index1 < list1.size()) {
+ * result.add(list1.get(index1++));
+ * }
+ * while (index2 < list2.size()) {
+ * result.add(list2.get(index2++));
+ * }
+ * return result;
+ * }
+ * <p>
+ * public List<Integer> mergeKList(List<List<Integer>> input) {
+ * PriorityQueue<Number> minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
+ * @Override public int compare(Number num1, Number num2) {
+ * return num1.value - num2.value;
+ * }
+ * });
+ * List<Integer> result = new ArrayList<>();
+ * for (int i = 0; i < input.size(); i++) {
+ * if (input.get(i).size() == 0) {
+ * continue;
+ * }
+ * minNumber.add(new Number(input.get(i).get(0), 0, i));
+ * }
+ * while (!minNumber.isEmpty()) {
+ * Number min = minNumber.poll();
+ * result.add(min.value);
+ * if (min.index < input.get(min.listIndex).size() - 1) {
+ * minNumber.add(new Number(input.get(min.listIndex).get(min.index + 1), min.index + 1, min.listIndex));
+ * }
+ * }
+ * return result;
+ * <p>
+ * }
+ * <p>
+ * class Number {
+ * int value;
+ * int index;
+ * int listIndex;
+ * public Number(int value, int index, int listIndex) {
+ * this.value = value;
+ * this.index = index;
+ * this.listIndex = listIndex;
+ * }
+ * }
+ * <p>
+ * public List<Integer> mergeKListWithIterator(List<Iterator<Integer>> input) {
+ * PriorityQueue<Number> minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
+ * @Override public int compare(Number num1, Number num2) {
+ * return num1.value - num2.value;
+ * }
+ * });
+ * List<Integer> result = new ArrayList<>();
+ * for (int i = 0; i < input.size(); i++) {
+ * if (input.get(i).hasNext()) {
+ * minNumber.add(new Number(input.get(i).next(), 0, i));
+ * }
+ * }
+ * while (!minNumber.isEmpty()) {
+ * Number min = minNumber.poll();
+ * if (input.get(min.listIndex).hasNext()) {
+ * minNumber.add(new Number(input.get(min.listIndex).next(), 0, min.listIndex));
+ * }
+ * result.add(min.value);
+ * }
+ * return result;
+ * }
+ * }
+ * <p>
+ * 86. Given k sorted lists of O(n) integers each, implement an iterator that will yield all elements in sorted order。
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190778&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * class MergeToIterator implements Iterator<Integer>{
+ * PriorityQueue<Number> minNumber;
+ * List<List<Integer>> lists;
+ * public MergeToIterator(List<List<Integer>> input) {
+ * this.minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
+ * @Override public int compare(Number num1, Number num2) {
+ * return num1.value - num2.value;
+ * }
+ * });
+ * this.lists = input;
+ * for (int i = 0; i < input.size(); i++) {
+ * if (input.get(i).size() == 0) {
+ * continue;
+ * }
+ * minNumber.add(new Number(input.get(i).get(0), 0, i));
+ * }
+ * }
+ * @Override public boolean hasNext() {
+ * return !minNumber.isEmpty();
+ * }
+ * @Override public Integer next() {
+ * Number min = minNumber.poll();
+ * if (lists.get(min.listIndex).size() - 1 > min.index) {
+ * minNumber.add(new Number(lists.get(min.listIndex).get(min.index + 1), min.index + 1, min.listIndex));
+ * }
+ * return min.value;
+ * }
+ * <p>
+ * class Number {
+ * int value;
+ * int index;
+ * int listIndex;
+ * public Number(int value, int index, int listIndex) {
+ * this.value = value;
+ * this.index = index;
+ * this.listIndex = listIndex;
+ * }
+ * }
+ * }
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * 77. 1. behavior question。 最后问了道dot product的老题
+ * 2. given a list of words, find whether a given target word exists. Should support “.” which matches any character. Follow up: support “*” which matchs 0 or more characters. 1point3acres.com/bbs
+ * 3. a. Minimum Size Subarray Sum
+ * b. Check whether a string is Palindrom
+ * c. 忘了。。。
+ * 4. Design autocomplete in a search engine.
+ * 5. behavior question. 最后的coding是给一个数组和一个数N， 随机返回该数组中任意一个不大于N的数。
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194306&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * Wildcard
+ * class WildCard {
+ * public boolean compare(String input, String pattern) { //only has '.'
+ * int poiIn = 0;
+ * int poiP = 0;
+ * while (poiIn < input.length() && poiP < pattern.length()) {
+ * char letter1 = input.charAt(poiIn);
+ * char letter2 = pattern.charAt(poiP);
+ * if (letter1 == letter2 || letter2 == '.') {
+ * poiIn++;
+ * poiP++;
+ * }
+ * else {
+ * return false;
+ * }
+ * }
+ * return poiIn == input.length() && poiP == pattern.length();
+ * }
+ * <p>
+ * public boolean wildCard(String input, String pattern) { // has '.' and '*'
+ * int poiIn = 0;
+ * int poiP = 0;
+ * int lastIn = -1;
+ * int lastP = -1;
+ * while (poiIn < input.length()) {
+ * if (poiP < pattern.length() && (input.charAt(poiIn) == pattern.charAt(poiP) || pattern.charAt(poiP) == '.')) {
+ * poiP++;
+ * poiIn++;
+ * }
+ * else if (poiP < pattern.length() && pattern.charAt(poiP) == '*') {
+ * lastP = poiP + 1;
+ * poiP++;
+ * lastIn = poiIn;
+ * }
+ * else if (lastP != -1) {
+ * lastIn++;
+ * poiIn = lastIn;
+ * poiP = lastP;
+ * }
+ * else {
+ * return false;
+ * }
+ * }
+ * while (poiP < pattern.length() && pattern.charAt(poiP) == '*') {
+ * poiP++;
+ * }
+ * return poiP == pattern.length();
+ * }
+ * }
+ * <p>
+ * #minimum size of subarray //only positive number
+ * public int minSubArrayLen(int s, int[] nums) {
+ * int minLen = Integer.MAX_VALUE;
+ * int fast = 0;
+ * int slow = 0;
+ * int sum = 0;
+ * while (fast < nums.length) {
+ * sum += nums[fast];
+ * while (sum >= s) {
+ * minLen = Math.min(minLen, fast - slow + 1);
+ * sum -= nums[slow];
+ * slow++;
+ * }
+ * fast++;
+ * }
+ * return minLen == Integer.MAX_VALUE ? 0 : minLen;
+ * }
+ * <p>
+ * extends to 2d and find if rectangle sum = k
+ * class FindSubRect {
+ * public boolean find(int[][] matrix, int target) {
+ * for (int right = 0; right < matrix[0].length; right++) {
+ * int[] rowSum = new int[matrix.length];
+ * for (int left = right; left >= 0; left--) {
+ * Set<Integer> sum = new HashSet<>();
+ * int curSum = 0;
+ * sum.add(0);
+ * for (int row = 0; row < matrix.length; row++) {
+ * rowSum[row] += matrix[row][left];
+ * curSum += rowSum[row];
+ * if (sum.contains(curSum - target)) {
+ * return true;
+ * }
+ * sum.add(curSum);
+ * }
+ * }
+ * }
+ * return false;
+ * }
+ * }
+ * <p>
+ * <p>
+ * #Maximum size of subarray
+ * // [1, -1, 5, -2, 3] => sum [1, 0, 5, 3, 6]
+ * // Note k = Sum1 - Sum2, which is a subarray
+ * // use hashmap record the sum to index, every time we meet a sum, if sum - k appears in the hashmap
+ * // then there is a subarray sum equals to k. find the length
+ * // if this sum is already in the hashmap, skip it. otherwise put in
+ * // because we always use the index most left, so if a some sum comes later, we dont put it in hashmap
+ * public int maxSubArrayLen(int[] nums, int k) {
+ * int maxLen = 0;
+ * HashMap<Integer, Integer> sumToIndex = new HashMap<>();
+ * sumToIndex.put(0, -1);
+ * int sum = 0;
+ * for (int i = 0; i < nums.length; i++) {
+ * sum += nums[i];
+ * if (sumToIndex.containsKey(sum - k)) {
+ * maxLen = Math.max(maxLen, i - sumToIndex.get(sum - k));
+ * }
+ * if (!sumToIndex.containsKey(sum)) {
+ * sumToIndex.put(sum, i);
+ * }
+ * }
+ * return maxLen;
+ * }
+ * <p>
+ * <p>
+ * 79.
+ * 这个题想不起来具体的例子了，大概是A和B分别代表两个不同的字符串。字符串由A,a,B,b组成。给定一个初始字符串（也是由A,a,B,b组成），遍历这个初始字符串，如果遇到A或B，就用相应的字符串替代，这样就得到一个新字符串，然后对新字符串做替换操作。问替代n次后第k项是什么字母。题目不难，但是不断要求优化，比如新字符串只需要保持size k。这个字符串具体例子很巧妙但记不起来了，会形成一个repreated pattern，最后经面试官提示可以用binary search优化。这个面试官非常nice，好像是个东南亚裔的，基本上一步步给提示。
+ * <p>
+ * class Replace {
+ * public char replace(String A, String B, String input, int n, int k) {
+ * HashMap<String, Integer> strToIndex = new HashMap<>();
+ * List<String> path = new ArrayList<>();
+ * if (input.length() >= k + 1) {
+ * input = input.substring(0, k + 1);
+ * }
+ * strToIndex.put(input, 0);
+ * path.add(input);
+ * String last = input;
+ * int count = 0;
+ * int circle = 0;
+ * while (count < n && circle == 0) {
+ * count++;
+ * StringBuilder curStr = new StringBuilder();
+ * for (char letter : last.toCharArray()) {
+ * if (letter == 'A') {
+ * curStr.append(A);
+ * }
+ * else if (letter == 'B') {
+ * curStr.append(B);
+ * }
+ * else {
+ * curStr.append(letter);
+ * }
+ * if (curStr.length() >= k + 1) {
+ * curStr = curStr.delete(k + 1, curStr.length());
+ * break;
+ * }
+ * }
+ * last = curStr.toString();
+ * if (strToIndex.containsKey(last)) {
+ * circle = count - strToIndex.get(last);
+ * }
+ * else {
+ * strToIndex.put(last, count);
+ * path.add(last);
+ * }
+ * }
+ * if (count == n) {
+ * return last.charAt(k);
+ * }
+ * int nonCircle = path.size() - circle - 1;
+ * int index = (n - nonCircle) % circle + nonCircle;
+ * System.out.println(path);
+ * if (index == nonCircle) {
+ * return path.get(path.size() - 1).charAt(k);
+ * }
+ * else {
+ * return path.get(index).charAt(k);
+ * }
+ * }
+ * }
+ * <p>
+ * <p>
+ * 设计News feed system， backend的设计或者api设计两者选一。选了backend，虽然能准备的都准备了，但总感觉答的有点乱？大致讲了push/pull model, data怎么存，算算data量，怎么shard, 会问得很细，比如consistent hashing具体算法是怎么实现的，这个没有答上来。
+ * <p>
+ * Binary Tree convert to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
+ * <p>
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194987&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * <p>
+ * 82.
+ * (1) Contact group, 输入是这样的:数字是用户，字母是邮箱，有很多人有多个邮箱，找出相同的用户
+ * 1- {x,y,z},
+ * 2-{x} . more info on 1point3acres.com
+ * 3-{a,b}. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+ * 4-{y, z}
+ * 5-{b}
+ * 6-{m}
+ * 7-{t,b}
+ * <p>
+ * 这样输出就是 [1,2,4] [3,5,7], [6] 这三组。.
+ * 可以用UnionFind或者Connected Components的方法做，
+ * <p>
+ * #Contact group
+ * // Use a hashmap to map the email to person called emailToPerson.
+ * // Use another hashmap to map the person to root, called personToRoot
+ * // the root is a person in this group, everyone in this group will map to this root
+ * // root will map to root itself
+ * // So we traverse through the input,
+ * // When we meet a person, we check the hashmap emailToPerson
+ * // if it does not contains this email, then we map this email to this person
+ * // if it does, which means this email maps to other people. lets call him A
+ * // So we go to check personToRoot, if A maps to another root,
+ * // which means the person we meet should also maps to this root
+ * // then we check aother mails of this person, if other mail maps to another person B
+ * // this person should also maps to B's root, which means A's root should also be B's root,
+ * // So we change A's root's root to B's root(Other people in A's group still point to A's root, but A's root point to B's root)
+ * // For example, 1 - {x, y, z} 2 - {a, b}, 3 - {x} 4 - {x, a}
+ * // first we map x -> 1, y -> 1, z -> 1 and 1 - > 1
+ * // we meet 2, then map a -> 2, b -> 2, and 2 -> 2
+ * // Then meet 3, find out that x -> 1, so 3 -> 1
+ * // Then meet 4, find out that x -> 1, so 4 -> 1
+ * // and find out that a -> 2, so  4's root 1's root should be 2,
+ * // that is 1 -> 2
+ * // in the end we have 1 -> 2, 2 -> 2, 3 -> 1, 4 -> 2
+ * // So the gourp is [1, 2, 3, 4]
+ * 'Time complexity: O(nklgn) - n person and k emails in average,
+ * findRoot, act like find node in a tree - O(lgn)
+ * Space complexity: O(nk)'
+ * <p>
+ * class Contact {
+ * public List<List<Integer>> contactGroup(HashMap<Integer, String[]> contact) {
+ * HashMap<String, Integer> emailToPerson = new HashMap<>();
+ * HashMap<Integer, Integer> personToRoot = new HashMap<>();
+ * for (int person : contact.keySet()) {
+ * personToRoot.put(person, person);
+ * int curRoot = person;
+ * for (String email : contact.get(person)) {
+ * if (!emailToPerson.containsKey(email)) {
+ * emailToPerson.put(email, person);
+ * continue;
+ * }
+ * int newRoot = emailToPerson.get(email);
+ * newRoot = findRoot(personToRoot, newRoot);
+ * if (newRoot != curRoot) {
+ * personToRoot.put(curRoot, newRoot);
+ * curRoot = newRoot;
+ * }
+ * }
+ * }
+ * HashMap<Integer, List<Integer>> groups = new HashMap<>();
+ * List<List<Integer>> result = new ArrayList<>();
+ * for (int person : personToRoot.keySet()) {
+ * int root = findRoot(personToRoot, person);
+ * if (!groups.containsKey(root)) {
+ * groups.put(root, new ArrayList<Integer>());
+ * }
+ * groups.get(root).add(person);
+ * }
+ * for (int group : groups.keySet()) {
+ * result.add(groups.get(group));
+ * }
+ * return result;
+ * }
+ * private int findRoot(HashMap<Integer, Integer> personToRoot, int root) {
+ * while (personToRoot.get(root) != root) {
+ * root = personToRoot.get(root);
+ * }
+ * return root;
+ * }
+ * }
+ * <p>
+ * <p>
+ * （2） Behaviour Questions.
+ * light coding写了Clone Graph
+ * （3） 单链表反转
+ * 大数相乘，写了brute force，跑test case花了太久时间，没来的及写优化，简单聊了聊Divide Conquer的办法
+ * <p>
+ * （4）TinyURL，这个题准备到了，后来HR说这一轮答的最惨，MB被烙印黑惨了
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192328&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * 83. first bad version 以及变种。 变种是如果不知道一共有多少版本的情况下应该怎么找。
+ * <p>
+ * <p>
+ * // Unknow numbr of version
+ * <p>
+ * public int badVersion {
+ * int prev = 0;
+ * int cur = 0;
+ * while (isBadVersioin(cur)) {
+ * prev = cur;
+ * cur = cur * cur;
+ * }
+ * int start = prev;
+ * int end = cur;
+ * while (start + 1 < end) {
+ * int mid = start + (end - start) / 2;
+ * if (isBadVersioin(mid)) {
+ * end = mid;
+ * }
+ * else {
+ * start = mid;
+ * }
+ * }
+ * if (isBadVersioin(start)) {
+ * return start;
+ * }
+ * return end;
+ * }
+ * <p>
+ * 84. Min Queue, 跟Min Stack类似， 实现一个Queue， 然后O（1）复杂度获得这个Queue里最小的元素。
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=193703&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * #Min Queue
+ * //Use queue to save the minimum number
+ * // Every time add a new number, traverse the queue, remove the number
+ * // bigger than it, so in the deque there will leave the numbers that smaller than it
+ * // add this number to the end of the deque
+ * // by doing this, the minimum number will always at the head of the deque
+ * 'Time complexity of offer : O(len), space complexity: O(n)'
+ * <p>
+ * class MinQueue {
+ * private Queue<Integer> queue = new LinkedList<>();
+ * private Deque<Integer> min = new ArrayDeque<>();
+ * public void offer(int val) {
+ * while (!min.isEmpty() && min.peekLast() > val) {
+ * min.pollLast();
+ * }
+ * queue.offer(val);
+ * min.offer(val);
+ * }
+ * public int poll() {
+ * int result = queue.poll();
+ * if (result == min.peek()) {
+ * min.poll();
+ * }
+ * return result;
+ * }
+ * public int getMin() {
+ * return min.peek();
+ * }
+ * }
+ * <p>
+ * 85. Tri-node的题
+ * 求String B是不是String A的substring
+ * 找sorted array中的某个数，用divide & conquer做
+ * 一道多个pc之间发送和请求数据的设计题.
+ * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=193545&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ * <p>
+ * <p>
+ * <p>
+ * 87. 第一题：
+ * <p>
+ * 3
+ * /
+ * 1
+ * \
+ * 2
+ * 一棵树，返回一个list的头结点：
+ * 1《——》2《——》3（一三相连）
+ * 意思是返回一个递增list，1的right是2，left是3， 2的left是1，right是3,3的left是2，right是 1.
+ * 我用inorder获得递增序列然后设置left与right的node。返回1这个结点。. from: 1point3acres.com/bbs
+ * follow up如何不先获得序列，直接在traverse的时候获得结果。follow up没回答出来。
+ * <p>
+ * Tree To Double linked list:
+ * <p>
+ * class TreeToDoubleLinkedList {
+ * public DoubleLinkedList toDoubleLinkedList(TreeNode root) {
+ * if (root == null) {
+ * return null;
+ * }
+ * Stack<TreeNode> inorder = new Stack<>();
+ * DoubleLinkedList fakeHead = new DoubleLinkedList(0);
+ * DoubleLinkedList previous = fakeHead;
+ * toLeft(inorder, root);
+ * while (!inorder.isEmpty()) {
+ * TreeNode node = inorder.pop();
+ * DoubleLinkedList curNode = new DoubleLinkedList(node.val);
+ * curNode.pre = previous;
+ * previous.next = curNode;
+ * previous = curNode;
+ * if (node.right != null) {
+ * toLeft(inorder, node.right);
+ * }
+ * }
+ * DoubleLinkedList head = fakeHead.next;
+ * head.pre = previous;
+ * previous.next = head;
+ * return head;
+ * }
+ * <p>
+ * private void toLeft(Stack<TreeNode> inorder, TreeNode root) {
+ * while (root != null) {
+ * inorder.push(root);
+ * root = root.left;
+ * }
+ * }
+ * }
+ * <p>
+ * class DoubleLinkedList {
+ * DoubleLinkedList pre;
+ * DoubleLinkedList next;
+ * int val;
+ * public DoubleLinkedList(int val) {
+ * this.val = val;
+ * }
+ * }
+ * <p>
+ * #add operation
+ * class AddOperator {
+ * public List<String> addOperator(String number) {
+ * List<String> result = new ArrayList<>();
+ * helper(result, 0, "", number);
+ * return result;
+ * }
+ * <p>
+ * private void helper(List<String> result, int pos, String path, String number) {
+ * if (pos == number.length()) {
+ * if (path.charAt(0) == '+') {
+ * result.add(path.substring(1));
+ * }
+ * else {
+ * result.add(path);
+ * }
+ * return;
+ * }
+ * for (int i = pos; i < number.length(); i++) {
+ * if (i != pos && number.charAt(pos) == '0') {
+ * return;
+ * }
+ * String num = number.substring(pos, i + 1);
+ * helper(result, i + 1, path + "+" + num, number);
+ * helper(result, i + 1, path + "-" + num, number);
+ * }
+ * }
+ * }
+ * <p>
+ * class MaxNumberStream {
+ * private int cap;
+ * Deque<Integer> deque;
+ * Queue<Integer> queue;
+ * public MaxNumberStream(int k) {
+ * this.cap = k;
+ * this.deque = new ArrayDeque<>();
+ * this.queue = new LinkedList<>();
+ * }
+ * public void add(int x) {
+ * while (queue.size() >= cap) {
+ * int temp = queue.poll();
+ * if (temp == deque.peek()) {
+ * deque.poll();
+ * }
+ * }
+ * while (!deque.isEmpty() && deque.peekLast() < x) {
+ * deque.pollLast();
+ * }
+ * queue.offer(x);
+ * deque.offer(x);
+ * }
+ * <p>
+ * public int getMax() {
+ * if (!deque.isEmpty()) {
+ * return deque.peek();
+ * }
+ * return -1;
+ * }
+ * }
+ * <p>
+ * # 给定一个array 返回一个partition point可以返回该index左边的和和右边的和一样，没有就返回-1
+ * 往右扫一遍求所有的和,再往左扫,求当前扫过的和,二者相减得左边的和.
+ * <p>
+ * class PartitionSum {
+ * public int findPivot(int[] input) {
+ * int sum = 0;
+ * for (int number : input) {
+ * sum += number;
+ * }
+ * int rightSum = 0;
+ * for (int i = input.length - 1; i >= 0; i--) {
+ * sum -= input[i];
+ * rightSum += input[i];
+ * if (rightSum == sum) {
+ * return i;
+ * }
+ * }
+ * return -1;
+ * }
+ * }
+ * <p>
+ * # Sudoku Solver
+ * <p>
+ * <p>
+ * <p>
+ * # 给两个file，分别存有key和value，目标就是把相同的key合并在一起输出，比如file1里面有 ben 2， file2里有 ben SB，那就合并成ben 2 SB, 两个file很大，不许用Map
+ * 个人觉得第一题的应该是：如果关键字已经排序，就用two pointers搞定；如果关键字是乱序的，那么如果为了节省空间而不允许用hashmap的话，则自己定义一个Trie，
+ * Trie的节点存三个值：子节点集合（长度为26的指针数组）、是否为单词结尾的标志位、关键字对应的值。其中关键字对应的值只有在该节点为单词结尾的时候有效。
+ * 把第一个文件中的关键字全部加入到Trie中，再把第二个文件中的单词拿到Trie中查找就好了。Trie比hashmap更省空间是因为，Trie合并了大量前缀相同的条目，hashmap做不到这点。
+ * <p>
+ * <p>
+ * #check if a binary tree is mirrored
+ * <p>
+ * //Recursive way
+ * private boolean helper(TreeNode left, TreeNode right) {
+ * if ((left == null && right != null) || (left != null && right == null)) {
+ * return false;
+ * }
+ * if (left == null && right == null) {
+ * return true;
+ * }
+ * if (left.val != right.val) {
+ * return false;
+ * }
+ * boolean subResult = helper(left.right, right.left) && helper(left.left, right.right);
+ * return subResult;
+ * }
+ * <p>
+ * //iterative way
+ * public boolean isSymmetric(TreeNode root) {
+ * if (root == null) {
+ * return true;
+ * }
+ * Stack<TreeNode> left = new Stack<>();
+ * Stack<TreeNode> right = new Stack<>();
+ * left.push(root.left);
+ * right.push(root.right);
+ * while(!left.isEmpty() && !right.isEmpty()) {
+ * TreeNode leftTemp = left.pop();
+ * TreeNode rightTemp = right.pop();
+ * if (leftTemp == null ^ rightTemp == null
+ * || (leftTemp != null && rightTemp != null && leftTemp.val != rightTemp.val)) {
+ * return false;
+ * }
+ * if (leftTemp == null && rightTemp == null) {
+ * continue;
+ * }
+ * left.push(leftTemp.left);
+ * right.push(rightTemp.right);
+ * left.push(leftTemp.right);
+ * right.push(rightTemp.left);
+ * }
+ * return true;
+ * }
+ * #
+ * <p>
+ * Binary Tree求and操作。(BST and)例如：
+ * *                    *
+ * /   \              /   \                /    \
+ * 1    *   and    *     0  =              *      0
+ * /  \          / \                 /  \.
+ * 0   1        1   0              1   0
+ * Follow up: deepCopy(tree)
+ * Follow up2: 如何合并结果中出现的情况？.
+ * <p>
+ * /   \    =>      0
+ * 0    0
+ * <p>
+ * <p>
+ * class TreeAnd {
+ * public TreeNode and(TreeNode root1, TreeNode root2) {
+ * if (isLeaf(root1) && !isLeaf(root2)) {
+ * return handleAnd(root1, root2);
+ * }
+ * if (isLeaf(root2) && !isLeaf(root1)) {
+ * return handleAnd(root2, root1);
+ * }
+ * if (isLeaf(root2) && isLeaf(root1)) {
+ * if (root2.val == 0 || root1.val == 0) {
+ * return new TreeNode(0);
+ * }
+ * return new TreeNode(1);
+ * }
+ * TreeNode root = new TreeNode(2);
+ * root.left = and(root1.left, root2.left);
+ * root.right = and(root1.right, root2.right);
+ * return root;
+ * }
+ * <p>
+ * private TreeNode copyTree(TreeNode root) {
+ * if (root == null) {
+ * return null;
+ * }
+ * TreeNode copyRoot = new TreeNode(root.val);
+ * copyRoot.left = copyTree(root.left);
+ * copyRoot.right = copyTree(root.right);
+ * return copyRoot;
+ * }
+ * <p>
+ * private TreeNode handleAnd(TreeNode leaf, TreeNode root) {
+ * if (leaf.val == 0) {
+ * return new TreeNode(0);
+ * }
+ * return copyTree(root);
+ * }
+ * <p>
+ * private boolean isLeaf(TreeNode node) {
+ * return node.left == null && node.right == null;
+ * }
+ * }
+ * <p>
+ * <p>
+ * 输入：一个文件夹
+ * 输出：文件夹下面的所有相同文件对
+ * // MD5 hash
+ * 例子：
+ * 给你一个文件夹路径，/foo/bar，要求找出这个文件夹下面的所有相同的文件，比如a和c是相同的，d和e是相同的，就输出(a, c)，(d, e)。
+ * <p>
+ * 我看到路径还以为是Simplify Path呢！心中一阵窃喜，结果怎么发现后面的没见过！好吧，先通过dfs获取所有的文件，然后计算MD5，然后比较是不是一样。
+ * . more info on 1point3acres.com
+ * follow up1，要是MD5不够强壮怎么办？答：上另一个hash啊！比完一个，再比另一个，两个都一样才认为一样。然后又写了一遍……小哥说能提升么？我说可以啊！第二个hash可以在真正需要的时候再计算，不用每个文件都计算两个hash存起来。然后又写了一遍……
+ * <p>
+ * follow up2，以上代码里最花时间的是哪部分？答：dfs。小哥说再想想，要是文件都是video呢？我醒悟了，说是计算hash的部分。小哥问，怎么提升呢？我想了一会儿说，我们不用给每个文件计算hash 啊！先用size比嘛！绝大部分的文件size都是不一样的嘛。小哥说好，你能把你算法再实现一次吗？…………………………
+ * <p>
+ * <p>
+ * 第二道题是 给个Tree 不一定是平衡的， 要求 把所有路径排序后  按字符串那样的比较大小方法 找出最小的路径  时间要求线性的。 比如
+ * 5
+ * /     \
+ * 10      3
+ * /   \   /
+ * 1    7  8
+ * 路径有  5 10 1 ； 5 10 7 ； 5 3 8
+ * 排序后  1 5 10 ； 5 7 10 ； 3 5 8；
+ * 所以按字符串类型排序 为  1 5 10 < 3 5 8 < 5 7 10；
+ * <p>
+ * class FindSmallPath {
+ * public List<Integer> find(TreeNode root) {
+ * Result result = helper(root);
+ * return result.path;
+ * }
+ * <p>
+ * private Result helper(TreeNode root) {
+ * if (root == null) {
+ * Result result = new Result();
+ * result.path.add(Integer.MAX_VALUE);
+ * return result;
+ * }
+ * if (root.left == null && root.right == null) {
+ * Result result = new Result();
+ * result.min = root.val;
+ * result.path.add(root.val);
+ * return result;
+ * }
+ * Result left = helper(root.left);
+ * Result right = helper(root.right);
+ * Result result = new Result();
+ * result.path.add(root.val);
+ * if (left.min > right.min) {
+ * result.path.addAll(right.path);
+ * }
+ * else {
+ * result.path.addAll(left.path);
+ * }
+ * result.min = Math.min(root.val, Math.min(left.min, right.min));
+ * return result;
+ * }
+ * class Result {
+ * public int min = Integer.MAX_VALUE;
+ * public List<Integer> path = new ArrayList<>();
+ * public Result() {
+ * }
+ * }
+ * }
+ * <p>
+ * <p>
+ * #Paint House
+ * paint house大变种. n houses, k colors. neighboring houses cannot be painted with the same color.
+ * NOTICE: neighboring relationship is given by adjacent list which means a house may have multiple neighbors.
+ * class PaintHouseGraph {
+ * public int paint(int[] cost, HashMap<Integer, List<Integer>> houses) {
+ * List<Set<Integer>> groups = new ArrayList<>();
+ * Set<Integer> group = new HashSet<>();
+ * for (int house : houses.keySet()) {
+ * group.add(house);
+ * }
+ * while (group.size() != 0) {
+ * Iterator<Integer> iter = group.iterator();
+ * Set<Integer> next = new HashSet<>();
+ * while (iter.hasNext()) {
+ * int house = iter.next();
+ * if (next.contains(house)) {
+ * iter.remove();
+ * continue;
+ * }
+ * for (int neighbor : houses.get(house)) {
+ * if (!group.contains(neighbor)) {
+ * continue;
+ * }
+ * next.add(neighbor);
+ * }
+ * }
+ * groups.add(group);
+ * group = next;
+ * }
+ * Collections.sort(groups, new Comparator<Set<Integer>>() {
+ * @Override public int compare(Set<Integer> set1, Set<Integer> set2) {
+ * return set2.size() - set1.size();
+ * }
+ * });
+ * int totalCost = 0;
+ * int index = 0;
+ * for (Set<Integer> set : groups) {
+ * totalCost += set.size() * cost[index++];
+ * }
+ * return totalCost;
+ * }
+ * }
+ * <p>
+ * <p>
+ * 逆序输出一个单链表，要求空间复杂度为O(lgn)，不能修改链表结构（也就是不可以reverse链表，然后再reverse回去）
+ * 最后做的大概就是每次走到终点，递归右半段，然后再递归左半段，最后给他画颗递归树证明下复杂度就行了，他也认可了。
+ * 不过看起来这个做法相对奇葩一点，他看我画的还想了一会，似乎这不是他原来设想的方案吧，但也确实没毛病。
+ * 'Time complexity: O(nlgn) space complexity: O(lgn)'
+ * class ReversePrint {
+ * public void print(ListNode head) {
+ * ListNode mover = head;
+ * int length = 0;
+ * while (mover != null) {
+ * mover = mover.next;
+ * length++;
+ * }
+ * helper(head, length);
+ * }
+ * <p>
+ * private void helper(ListNode head, int length) {
+ * if (head == null) {
+ * return;
+ * }
+ * if (length == 1) {
+ * System.out.println(head.val);
+ * return;
+ * }
+ * int count = 0;
+ * ListNode mover = head;
+ * while (count < length / 2) {
+ * mover = mover.next;
+ * count++;
+ * }
+ * helper(mover, length - length / 2);
+ * helper(head, length / 2);
+ * }
+ * }
+ * <p>
+ * 第二题有点像有序双链表合并，不过给的是两个iterator，让实现一个类，生成下一个.
+ * class SortedIterator{
+ * public SortedIterator(Iterator a, Iterator b);
+ * public boolean hasNext();
+ * public int next();
+ * }
+ * <p>
+ * <p>
+ * class SortedIterator {
+ * private Pair pairA;
+ * private Pair pairB;
+ * public SortedIterator(Iterator<Integer> a, Iterator<Integer> b) {
+ * if (a.hasNext()) {
+ * pairA = new Pair(a.next(), a);
+ * }
+ * else {
+ * pairA = new Pair(null, a);
+ * }
+ * if (b.hasNext()) {
+ * pairB = new Pair(b.next(), b);
+ * }
+ * else {
+ * pairB = new Pair(null, b);
+ * }
+ * }
+ * public boolean hasNext() {
+ * return pairA.value != null || pairB.value != null;
+ * }
+ * <p>
+ * public int next() {
+ * if (pairA.value == null) {
+ * return helper(pairB);
+ * }
+ * else if (pairB.value == null) {
+ * return helper(pairA);
+ * }
+ * Integer result = null;
+ * if (pairA.value > pairB.value) {
+ * result = helper(pairB);
+ * }
+ * else {
+ * result = helper(pairA);
+ * }
+ * return result;
+ * }
+ * <p>
+ * private Integer helper(Pair pair) {
+ * int result = pair.value;
+ * if (pair.iterator.hasNext()) {
+ * pair.value = pair.iterator.next();
+ * }
+ * else {
+ * pair.value = null;
+ * }
+ * return result;
+ * }
+ * <p>
+ * private class Pair {
+ * public Integer value;
+ * public Iterator<Integer> iterator;
+ * public Pair(Integer val, Iterator<Integer> iterator) {
+ * this.value = val;
+ * this.iterator = iterator;
+ * }
+ * }
+ * }
+ * <p>
+ * 可以随便交易很多次，可以同时买很多股票，但是一旦卖就要把手里的股票全部卖了，问怎样最大化收益。比如[1, 2,3], 前2天都买，第三天全部卖，收益就是(3-1)+(3-2).
+ * stock sell all
+ * public int maxProfit(int[] prices) {
+ * int max = 0;
+ * int profit = 0;
+ * for (int i = prices.length - 1; i >= 0; i--) {
+ * if (max > prices[i]) {
+ * profit += max - prices[i];
+ * System.out.println(profit);
+ * }
+ * else {
+ * max = prices[i];
+ * }
+ * }
+ * return profit;
+ * }
+ * <p>
+ * 给一个l*w的矩阵，要随机取k个点。一个披着easy题的，蓄水池抽样。到最后也没解释清蓄水池原理。
+ * 大叔深深怀疑我的概率问题（其实我也怀疑），给我张白纸就好了- -
+ * // Use reversior smaple to do this.
+ * // Use a array to store the points we fetch out
+ * // For the first k points in matrix, put into array,
+ * // For the k + 1 ~ end points,
+ * // we creat a random number j which range [0, index]
+ * // if this j is smaller than k, then we chooes this point instead the points[j]
+ * // Prove the possibility:
+ * // For points index after k, if we eventually choose this point, which means after this point,
+ * // No point can replace this point in the points array, the random number can be any number but not this point's index
+ * // which means their possibility is (index - 1 / index)
+ * // So the posibility is: (k / index) * (index / index + 1) * (index + 1 / index + 2)....*(n - 1 / n) = (k / n)
+ * // For points index smaller k, if we eventually choose this point,
+ * // no points can replace it, so the possibility is (k / k + 1) * (k + 1 / k + 2) * ......* (n - 1 / n) = (k / n)
+ * class Sample {
+ * public void sample(int[][] input, int k) {
+ * Point[] points = new Point[k];
+ * Random rand = new Random();
+ * int width = input[0].length;
+ * int height = input.length;
+ * int index = 0;
+ * while (index < width * height && index < k) {
+ * points[index] = new Point(index / width, index % width);
+ * input[index / width][index & width] = 1;
+ * index++;
+ * }
+ * if (index < k) {
+ * return;
+ * }
+ * index = k;
+ * while (index < width * height) {
+ * int newIndex = rand.nextInt(index);
+ * if (newIndex < k) {
+ * input[points[newIndex].x][points[newIndex].y] = 0;
+ * int row = index / width;
+ * int col = index % width;
+ * input[row][col] = 1;
+ * points[newIndex] = new Point(row, col);
+ * }
+ * index++;
+ * }
+ * }
+ * }
+ * <p>
+ * <p>
+ * 就是lc next permutation的反着来的previous permutation，做法一样
+ * // The idea is that find the last two adjacent number that the first one is beigger than the second one
+ * // Then the question come to that find the previous permutation of the nums[first-end]
+ * // Then sequence after second must be acending, so the previous permutation must comes from
+ * // the number that is samller than the nums[first] at the position first with a decending sequence after it
+ * // Exp: 5, 4, 1, 2, 3 previous -> 5, 3, 4, 2, 1
+ * // the num[first] = 4, nums[second] = 1, nums[smaller] = 3
+ * class PreviousPermutation {
+ * public int[] previous(int[] input) {
+ * if (input.length <= 1) {
+ * return input;
+ * }
+ * int first = 0;
+ * int second = 0;
+ * for (int i = input.length - 1; i >= 1; i--) {
+ * if (input[i] < input[i - 1]) {
+ * first = i - 1;
+ * second = i;
+ * break;
+ * }
+ * }
+ * int smaller = 0;
+ * for (int i = input.length - 1; i >= second; i--) {
+ * if (input[i] < input[first]) {
+ * smaller = i;
+ * break;
+ * }
+ * }
+ * swap(input, first, smaller);
+ * reverse(input, second, input.length - 1);
+ * return input;
+ * }
+ * private void swap(int[] input, int index1, int index2) {
+ * int temp = input[index1];
+ * input[index1] = input[index2];
+ * input[index2] = temp;
+ * }
+ * private void reverse(int[] input, int start, int end) {
+ * while (start <= end) {
+ * swap(input, start++, end--);
+ * }
+ * }
+ * }
+ * <p>
+ * longest palindrome
+ * <p>
+ * 两个词的最短距离变体，follow up词很多怎么省空间
+ * <p>
+ * 一个矩阵斜着走的list例子如下：
+ * 123
+ * 456
+ * 789
+ * 输出：{1}{42}{753}{86}{9}
+ * <p>
+ * class WalkMatrix {
+ * public void print(int[][] matrix) {
+ * int height = matrix.length;
+ * for (int i = 0; i < matrix.length; i++) {
+ * helper(i, 0, matrix);
+ * }
+ * for (int i = 1; i < matrix[0].length; i++) {
+ * helper(height - 1, i, matrix);
+ * }
+ * }
+ * <p>
+ * private void helper(int row, int col, int[][] matrix) {
+ * while (row >= 0 && col < matrix[0].length) {
+ * System.out.printf("%d ", matrix[row--][col++]);
+ * }
+ * System.out.println();
+ * }
+ * }
+ * <p>
+ * <p>
+ * <p>
+ * Find path from one node to another node in a binary tree
+ * node has parent pointer
+ * <p>
+ * class PathToNode {
+ * public List<Integer> findPath(TreeNodeWithParent node1, TreeNodeWithParent node2) {
+ * List<Integer> result = new ArrayList<>();
+ * List<Integer> left = new ArrayList<>();
+ * List<Integer> right = new ArrayList<>();
+ * if (node1 == null || node2 == null) {
+ * return result;
+ * }
+ * TreeNodeWithParent mover1 = node1;
+ * TreeNodeWithParent mover2 = node2;
+ * int len1 = findLength(mover1);
+ * int len2 = findLength(mover2);
+ * while (len1 > len2) {
+ * left.add(mover1.val);
+ * mover1 = mover1.parent;
+ * len1--;
+ * }
+ * while (len2 > len1) {
+ * right.add(mover2.val);
+ * mover2 = mover2.parent;
+ * len2--;
+ * }
+ * while (mover1 != mover2) {
+ * left.add(mover1.val);
+ * right.add(mover2.val);
+ * mover1 = mover1.parent;
+ * mover2 = mover2.parent;
+ * }
+ * left.add(mover1.val);
+ * result.addAll(left);
+ * for (int i = right.size() - 1; i >= 0; i--) {
+ * result.add(right.get(i));
+ * }
+ * return result;
+ * }
+ * <p>
+ * private int findLength(TreeNodeWithParent node) {
+ * int len = 0;
+ * while (node != null) {
+ * node = node.parent;
+ * len++;
+ * }
+ * return len;
+ * }
+ * }
+ * <p>
+ * interval [startTime, stoptime)   ----integral  time stamps. more info on 1point3acres.com
+ * 给这样的一串区间 I1, I2......In
+ * 找出 一个 time stamp  出现在interval的次数最多。
+ * startTime <= t< stopTime 代表这个数在区间里面出现过。
+ * <p>
+ * example：  [1,3),  [2, 7),   [4,  8),   [5, 9)
+ * 5和6各出现了三次， 所以答案返回5，6。
+ * <p>
+ * class MaxOverpal {
+ * public List<Integer> findMaxOverLapTime (Interval[] intervals) {
+ * List<Integer> result = new ArrayList<>();
+ * if (intervals.length == 0) {
+ * return result;
+ * }
+ * List<Point> points = new ArrayList<>();
+ * for (Interval interval : intervals) {
+ * points.add(new Point(interval.start, true));
+ * points.add(new Point(interval.end, false));
+ * }
+ * Collections.sort(points, new Comparator<Point>() {
+ * @Override public int compare(Point p1, Point p2) {
+ * if (p1.time == p2.time) {
+ * return p1.isStart ? 1 : 0;
+ * }
+ * return p1.time - p2.time;
+ * }
+ * });
+ * int max = 0;
+ * int number = 0;
+ * int start = 0;
+ * int end = 0;
+ * for (Point point : points) {
+ * if (point.isStart) {
+ * number++;
+ * if (number > max) {
+ * max = number;
+ * start = point.time;
+ * end = point.time;
+ * }
+ * }
+ * else {
+ * if (number == max) {
+ * end = point.time;
+ * }
+ * number--;
+ * }
+ * }
+ * for (int i = start; i < end; i++) {
+ * result.add(i);
+ * }
+ * return result;
+ * }
+ * <p>
+ * private class Point {
+ * public int time;
+ * public boolean isStart;
+ * public Point(int time, boolean isStart) {
+ * this.time = time;
+ * this.isStart = isStart;
+ * }
+ * }
+ * }
+ * <p>
+ * Remove comments
+ * <p>
+ * class RemoveComment {
+ * public String remove(String code) {
+ * StringBuilder result = new StringBuilder();
+ * boolean singleLine = false;
+ * boolean multiLine = false;
+ * for (int i = 0; i < code.length(); i++) {
+ * if (singleLine && code.charAt(i) == '\n') {
+ * singleLine = false;
+ * }
+ * else if (multiLine && code.charAt(i) == '*' && code.charAt(i + 1) == '/') {
+ * multiLine = false;
+ * i++;
+ * }
+ * else if (multiLine || singleLine) {
+ * continue;
+ * }
+ * else if (code.charAt(i) == '/' && code.charAt(i + 1) == '/') {
+ * singleLine = true;
+ * i++;
+ * }
+ * else if (code.charAt(i) == '/' && code.charAt(i + 1) == '*') {
+ * multiLine = true;
+ * i++;
+ * }
+ * else {
+ * result.append(code.charAt(i));
+ * }
+ * }
+ * return result.toString();
+ * }
+ * }
+ * <p>
+ * keyValueStore 有四个method，add(key, value), remove(key), get(key), lastestKey() implement keyValueStore
+ * 前三个就和hashmap一样，最后一个返回最近访问的key
+ * <p>
+ * class KeyValueStore {
+ * private HashMap<Integer, DoubleLinkList> keyToNode;
+ * private DoubleLinkList head;
+ * private DoubleLinkList tail;
+ * public KeyValueStore() {
+ * this.keyToNode = new HashMap<>();
+ * this.head = new DoubleLinkList(0, 0);
+ * this.tail = new DoubleLinkList(0, 0);
+ * this.head.next = tail;
+ * this.tail.prev = head;
+ * }
+ * <p>
+ * public void add(int key, int value) {
+ * if (keyToNode.containsKey(key)) {
+ * DoubleLinkList node = keyToNode.get(key);
+ * node.value = value;
+ * deleteNode(node);
+ * addToHead(node);
+ * }
+ * else {
+ * DoubleLinkList node = new DoubleLinkList(key, value);
+ * keyToNode.put(key, node);
+ * addToHead(node);
+ * }
+ * }
+ * <p>
+ * public boolean remove(int key) {
+ * if (!keyToNode.containsKey(key)) {
+ * return false;
+ * }
+ * DoubleLinkList node = keyToNode.get(key);
+ * keyToNode.remove(key);
+ * deleteNode(node);
+ * return true;
+ * }
+ * <p>
+ * public Integer get(int key) {
+ * if (!keyToNode.containsKey(key)) {
+ * return null;
+ * }
+ * DoubleLinkList node = keyToNode.get(key);
+ * deleteNode(node);
+ * addToHead(node);
+ * return node.value;
+ * }
+ * <p>
+ * public Integer latestKey() {
+ * if (head.next != tail) {
+ * return head.next.value;
+ * }
+ * return null;
+ * }
+ * <p>
+ * private void addToHead(DoubleLinkList node) {
+ * node.next = head.next;
+ * head.next.prev = node;
+ * head.next = node;
+ * node.prev = head;
+ * }
+ * <p>
+ * private void deleteNode(DoubleLinkList node) {
+ * node.next.prev = node.prev;
+ * node.prev.next = node.next;
+ * node.next = null;
+ * node.prev = null;
+ * }
+ * <p>
+ * class DoubleLinkList {
+ * public int key;
+ * public int value;
+ * public DoubleLinkList next;
+ * public DoubleLinkList prev;
+ * public DoubleLinkList(int key, int value) {
+ * this.key = key;
+ * this.value = value;
+ * this.next = null;
+ * this.prev = null;
+ * }
+ * }
+ * }
+ * <p>
+ * <p>
+ * 这个稍微难， 说有一堆task，每个有不同时间完成， 然后有一堆worker， 说如何分配 task to worker，完成时间最短， task是独立的。. 涓€浜�-涓夊垎-鍦帮紝鐙鍙戝竷
+ * 看起来像背包， DP
+ * task：  2，2，3，7， 1
+ * worker： 2
+ * <p>
+ * 解（2，2，3） （1， 7）
+ * <p>
+ * <p>
+ * <p>
+ * Island Shape
+ * class IslandShape {
+ * private static int[] X = {0, 0, 1, -1};
+ * private static int[] Y = {1, -1, 0, 0};
+ * public int uniqueShape(int[][] matrix) {
+ * Set<Long> shapes = new HashSet<>();
+ * for (int row = 0; row < matrix.length; row++) {
+ * for (int col = 0; col < matrix[0].length; col++) {
+ * if (matrix[row][col] == 1) {
+ * Long shape = explore(matrix, row, col);
+ * if (!shapes.contains(shape)) {
+ * shapes.add(shape);
+ * }
+ * }
+ * }
+ * }
+ * return shapes.size();
+ * }
+ * <p>
+ * private long explore(int[][] matrix, int row, int col) {
+ * long shape = 0;
+ * Queue<int[]> queue = new LinkedList<>();
+ * queue.offer(new int[]{row, col});
+ * matrix[row][col] = 2;
+ * while (!queue.isEmpty()) {
+ * int[] point = queue.poll();
+ * for (int k = 0; k < 4; k++) {
+ * int[] next = new int[]{point[0] + X[k], point[1] + Y[k]};
+ * if (next[0] < 0 || next[0] >= matrix.length || next[1] < 0 || next[1] >= matrix[0].length
+ * || matrix[next[0]][next[1]] != 1) {
+ * continue;
+ * }
+ * shape = shape * 10 + k;
+ * queue.offer(next);
+ * matrix[next[0]][next[1]] = 2;
+ * }
+ * }
+ * return shape;
+ * }
+ * }
+ * <p>
+ * <p>
+ * 几何算法问题。如果给你一堆的矩形， 求重合矩形重合最多的坐标位置。我上过一个算法课，大概思路就是做一个二维的meeting room II.
+ * <p>
+ * class Overlap {
+ * public Square findMostOverlap (Square[] squares) {
+ * HashMap<Integer, List<Pair>> indexToLine = new HashMap<>();
+ * for (Square square : squares) {
+ * if (!indexToLine.containsKey(square.x0)) {
+ * indexToLine.put(square.x0, new ArrayList<Pair>());
+ * }
+ * indexToLine.get(square.x0).add(new Pair(square.y0, true, true));
+ * indexToLine.get(square.x0).add(new Pair(square.y1, false, true));
+ * if (!indexToLine.containsKey(square.x1)) {
+ * indexToLine.put(square.x1, new ArrayList<Pair>());
+ * }
+ * indexToLine.get(square.x1).add(new Pair(square.y0, true, false));
+ * indexToLine.get(square.x1).add(new Pair(square.y1, false, false));
+ * }
+ * for (Square square : squares) {
+ * for (int index  = square.x0 + 1; index < square.x1; index++) {
+ * if (indexToLine.containsKey(index)) {
+ * indexToLine.get(index).add(new Pair(square.y0, true, null));
+ * indexToLine.get(index).add(new Pair(square.y1, false, null));
+ * }
+ * }
+ * }
+ * for (int index : indexToLine.keySet()) {
+ * Collections.sort(indexToLine.get(index), new Comparator<Pair>() {
+ * @Override public int compare(Pair p1, Pair p2) {
+ * if (p1.index == p2.index) {
+ * if (p2.isUp) {
+ * return -1;
+ * }
+ * else if (p1.isUp) {
+ * return 1;
+ * }
+ * return 0;
+ * }
+ * return p2.index - p1.index;
+ * }
+ * });
+ * }
+ * <p>
+ * Square overlap = new Square(0, 0, 0, 0);
+ * int maxOverlap = 0;
+ * for (int index : indexToLine.keySet()) {
+ * List<Pair> line = indexToLine.get(index);
+ * int right = 0;
+ * int left = 0;
+ * for (Pair pair : line) {
+ * if (pair.isUp) {
+ * if (pair.isLeft == null || (pair.isLeft != null && pair.isLeft)) {
+ * right++;
+ * if (right > maxOverlap) {
+ * overlap.x0 = index;
+ * overlap.y0 = pair.index;
+ * maxOverlap = right;
+ * }
+ * }
+ * if (pair.isLeft == null || (pair.isLeft != null && !pair.isLeft)) {
+ * left++;
+ * }
+ * }
+ * else {
+ * if (pair.isLeft == null || (pair.isLeft != null && !pair.isLeft)) {
+ * if (left == maxOverlap) {
+ * overlap.x1 = index;
+ * overlap.y1 = pair.index;
+ * }
+ * left--;
+ * }
+ * if (pair.isLeft == null || (pair.isLeft != null && pair.isLeft)) {
+ * right--;
+ * }
+ * }
+ * }
+ * }
+ * return overlap;
+ * }
+ * class Pair {
+ * public Boolean isUp;
+ * public Boolean isLeft;
+ * public int index;
+ * public Pair(int index, Boolean isUp, Boolean isLeft) {
+ * this.index = index;
+ * this.isUp= isUp;
+ * this.isLeft = isLeft;
+ * }
+ * @Override public String toString() {
+ * return "index: " + Integer.toString(index) + ", isUp: " + isUp + ", isLeft: " + isLeft + "\n";
+ * }
+ * }
+ * }
+ * class Square {
+ * int x0;
+ * int x1;
+ * int y0;
+ * int y1;
+ * public Square (int x0, int x1, int y0, int y1) {
+ * this.x0 = x0;
+ * this.x1 = x1;
+ * this.y0 = y0;
+ * this.y1 = y1;
+ * }
+ * @Override public String toString() {
+ * return "x0: " + Integer.toString(x0) + "\n" +
+ * "y0: " + Integer.toString(y0) + "\n" +
+ * "x1: " + Integer.toString(x1) + "\n" +
+ * "y1: " + Integer.toString(y1) + "\n";
+ * }
+ * }
+ * <p>
+ * <p>
+ * input是一个array，要求生成一个树，有以下三个属性
+ * 1）二叉树
+ * 2）Min Heap，表示node的每个子节点的值都大于或者等于这个node的值
+ * 3）做inorder traversal的时候要保持array的顺序
+ * <p>
+ * 举个例子input是 5, 2, 10, 7
+ * 2
+ * / \
+ * 5   7
+ * /
+ * 10
+ * <p>
+ * follow up 是一个addNode的函数，输入是root node，还有个int value，保持原有的属性，返回root
+ * // Find the smallest value in the array and make it as root
+ * // left part as left branch, right part as right brandh
+ * 'Time complexity: O(nlgn), Space complexity: O(lgn)'
+ * class BuildMinHeap {
+ * public TreeNode build(int[] input) {
+ * return helper(input, 0, input.length - 1);
+ * }
+ * <p>
+ * public TreeNode helper(int[] input, int start, int end) {
+ * if (start > end) {
+ * return null;
+ * }
+ * int index = -1;
+ * int val = Integer.MAX_VALUE;
+ * for (int i = start; i <= end; i++) {
+ * if (input[i] <= val) {
+ * index = i;
+ * val = input[i];
+ * }
+ * }
+ * TreeNode root = new TreeNode(val);
+ * root.left = helper(input, start, index - 1);
+ * root.right = helper(input, index + 1, end);
+ * return root;
+ * }
+ * // check the root's value, if it is bigger than input
+ * // we should input it as current node's parent
+ * // to maintain the inorder traverse order, the current node
+ * // should be the left child of input node
+ * // else go into the right child
+ * 'Time complexity: O(lgn)'
+ * public TreeNode addOne(TreeNode root, int value) {
+ * TreeNode mover = root;
+ * TreeNode prev = null;
+ * while (true) {
+ * if (value > mover.val) {
+ * if (mover.right == null) {
+ * TreeNode node = new TreeNode(value);
+ * mover.right = node;
+ * break;
+ * }
+ * prev = mover;
+ * mover = mover.right;
+ * }
+ * else {
+ * TreeNode node = new TreeNode(value);
+ * if (prev != null) {
+ * prev.right = node;
+ * }
+ * else {
+ * root = node;
+ * }
+ * node.left = mover;
+ * break;
+ * }
+ * }
+ * return root;
+ * }
+ * }
+ * <p>
+ * <p>
+ * Stock with charge/fee:
+ * // maintain a veriable which is the profit we make
+ * // when the prices is continuously acending,
+ * // when today's prices is lower than yesterday,
+ * // which means we finish one transaction,
+ * // calculate the final profit with charge, if > 0 add to result
+ * public int maxProfitWithCharge(int[] prices, int charge) {
+ * int profit = 0;
+ * int localProfit = 0;
+ * boolean yesterdaySold = false;
+ * for (int i = 1; i < prices.length; i++) {
+ * if (prices[i] > prices[i - 1]) {
+ * localProfit += prices[i] - prices[i - 1];
+ * if (!yesterdaySold) {
+ * localProfit -= charge;
+ * }
+ * yesterdaySold = true;
+ * }
+ * else if (yesterdaySold) {
+ * profit += localProfit > 0 ? localProfit : 0;
+ * localProfit = 0;
+ * yesterdaySold = false;
+ * }
+ * }
+ * if (localProfit > 0) {
+ * profit += localProfit;
+ * }
+ * return profit;
+ * }
+ * <p>
+ * <p>
+ * find if a tree is subtree of another:
+ * <p>
+ * 'Time complexity: O(nk) -k nodes in subtree'
+ * <p>
+ * class FindSubTree {
+ * public boolean isValid(TreeNode root, TreeNode node) {
+ * if (root == null && node == null) {
+ * return true;
+ * }
+ * boolean result = false;
+ * if (root != null && node != null) {
+ * if (root.val == node.val) {
+ * result = helper(root, node);
+ * }
+ * if (!result) {
+ * result = isValid(root.right, node);
+ * }
+ * if (!result) {
+ * result = isValid(root.left, node);
+ * }
+ * }
+ * return result;
+ * }
+ * <p>
+ * private boolean helper(TreeNode root, TreeNode node) {
+ * if (root == null && node == null) {
+ * return true;
+ * }
+ * if ((root == null && node != null) || (root != null && node == null)) {
+ * return false;
+ * }
+ * if (root.val == node.val) {
+ * return helper(root.right, node.right) && helper(root.left, node.left);
+ * }
+ * return false;
+ * }
+ * }
+ * <p>
+ * write/lock
+ * <p>
+ * <p>
+ * 1. remove duplicate characters in a string. ex "abcba", return "c".
+ * <p>
+ * class RemoveDuplicate {
+ * public String remove(String input) {
+ * HashMap<Character, Integer> charToIndex = new HashMap<>();
+ * Character[] result = new Character[input.length()];
+ * for (int i = 0; i < input.length(); i++) {
+ * char letter = input.charAt(i);
+ * if (charToIndex.containsKey(letter)) {
+ * int index = charToIndex.get(letter);
+ * if (index >= 0) {
+ * result[index] = null;
+ * charToIndex.put(letter, -1);
+ * }
+ * }
+ * else {
+ * result[i] = letter;
+ * charToIndex.put(letter, i);
+ * }
+ * }
+ * StringBuilder output = new StringBuilder();
+ * for (Character letter : result) {
+ * if (letter != null) {
+ * output.append(letter);
+ * }
+ * }
+ * return output.toString();
+ * }
+ * }
+ * <p>
+ * <p>
+ * 2. 在一个post里面找出所有的name分别出现的位置, post会很长。 unordered_map<string, vector<int>>   findPosition (vector<string> names, string post) {}. names如果很多很多怎么办。
+ * <p>
+ * // Use TrieTree,
+ * // word.length = k, post.length = n
+ * 'Time complexity: O(nk), space complexity: total number of the node in trie tree'
+ * <p>
+ * class FindIndex {
+ * TrieNode root = new TrieNode();
+ * public HashMap<String, List<Integer>> find(List<String> input, String post) {
+ * HashMap<String, List<Integer>> result = new HashMap<>();
+ * if (input.size() == 0) {
+ * return result;
+ * }
+ * for (String word : input) {
+ * insert(word);
+ * }
+ * for (int i = 0; i < post.length(); i++) {
+ * if (i == 3) {
+ * System.out.print("s");
+ * }
+ * List<String> words = search(post, i);
+ * for (String word : words) {
+ * if (!result.containsKey(word)) {
+ * result.put(word, new ArrayList<>());
+ * }
+ * result.get(word).add(i);
+ * }
+ * }
+ * return result;
+ * }
+ * <p>
+ * private void insert(String word) {
+ * TrieNode mover = root;
+ * for (char letter : word.toCharArray()) {
+ * if (mover.children[letter - 'a'] == null) {
+ * mover.children[letter - 'a'] = new TrieNode();
+ * }
+ * mover = mover.children[letter - 'a'];
+ * }
+ * mover.isEnd = true;
+ * }
+ * private List<String> search(String post, int index) {
+ * List<String> result = new ArrayList<>();
+ * StringBuilder word = new StringBuilder();
+ * TrieNode mover = root;
+ * while (index < post.length()) {
+ * if (mover.isEnd) {
+ * result.add(word.toString());
+ * }
+ * char letter = post.charAt(index);
+ * if (mover.children[letter - 'a'] == null) {
+ * return result;
+ * }
+ * mover = mover.children[letter - 'a'];
+ * word.append(letter);
+ * index++;
+ * }
+ * if (mover.isEnd) {
+ * result.add(word.toString());
+ * }
+ * return result;
+ * }
+ * }
+ * <p>
+ * 矩阵中大小为m的正方形覆盖范围最大值不超过k的值。记得刷过相似的，动态规划，每个cell记一下左上方的所有和，简单解决。
+ * class MaxSumOfSquareNoLargerThanK {
+ * public int sum(int[][] matrix, int m, int k) {
+ * if (m > matrix.length || m > matrix[0].length) {
+ * return 0;
+ * }
+ * int maxSum = 0;
+ * int[][] sum = new int[matrix.length][matrix[0].length];
+ * for (int col = 0; col < matrix[0].length; col++) {
+ * int rectSum = 0;
+ * for (int row = 0; row < m; row++) {
+ * rectSum += matrix[row][col];
+ * }
+ * sum[0][col] = rectSum;
+ * for (int row = 1; row < matrix.length - m + 1; row++) {
+ * rectSum += matrix[row + m - 1][col] - matrix[row - 1][col];
+ * sum[row][col] = rectSum;
+ * }
+ * }
+ * for (int row = 0; row < matrix.length - m + 1; row++) {
+ * int squareSum = 0;
+ * for (int col = 0; col < m; col++) {
+ * squareSum += sum[row][col];
+ * }
+ * if (squareSum < k) {
+ * maxSum = Math.max(squareSum, maxSum);
+ * }
+ * for (int col = 1; col < matrix[0].length - m + 1; col++) {
+ * squareSum += sum[row][col + m - 1] - sum[row][col - 1];
+ * if (squareSum < k) {
+ * maxSum = Math.max(squareSum, maxSum);
+ * }
+ * }
+ * }
+ * return maxSum;
+ * }
+ * }
+ * //--------------------------------------------------------------------------------------------//
+ * //--------------------------------------------------------------------------------------------//
+ * //--------------------------------------------------------------------------------------------//
+ * // every cell store the sum of the sub-matrix from 0,0 to this cell.
+ * // then we can get the sum of square on O(1)
+ * public int findSum(int[][] matrix, int m, int k) {
+ * if (m > matrix.length || m > matrix[0].length) {
+ * return 0;
+ * }
+ * int maxSum = 0;
+ * int[][] sum = new int[matrix.length][matrix[0].length];
+ * buildSum(sum, matrix);
+ * for (int row = m - 1; row < matrix.length; row++) {
+ * for (int col = m - 1; col < matrix[0].length; col++) {
+ * int curSum = getSum(sum, row - m + 1, col - m + 1, row, col);
+ * if (curSum < k) {
+ * maxSum = Math.max(maxSum, curSum);
+ * }
+ * }
+ * }
+ * return maxSum;
+ * }
+ * <p>
+ * public boolean findSquareEqualsK(int[][] matrix, int k) {
+ * int[][] sum = new int[matrix.length][matrix[0].length];
+ * buildSum(sum , matrix);
+ * for (int row = 0; row < matrix.length; row++) {
+ * for (int col = 0; col < matrix[0].length; col++) {
+ * int maxLen = Math.min(row, col);
+ * if (search(maxLen, sum, row, col, k)) {
+ * return true;
+ * }
+ * }
+ * }
+ * return false;
+ * }
+ * <p>
+ * private boolean search(int maxLen, int[][] sum, int row, int col, int k) {
+ * int start = 0;
+ * int end = maxLen;
+ * while (start + 1 < end) {
+ * int mid = start + (end - start) / 2;
+ * int curSum = getSum(sum, row - mid, col - mid, row, col);
+ * if (curSum >= k) {
+ * end = mid;
+ * }
+ * else {
+ * start = mid;
+ * }
+ * }
+ * if (getSum(sum, row - end, col - end, row, col) == k ||
+ * getSum(sum, row - start, col - end, row, col) == k) {
+ * return true;
+ * }
+ * return false;
+ * }
+ * <p>
+ * private int getSum(int[][] sum, int row1, int col1, int row2, int col2) {
+ * if (row1 == 0 && col1 == 0) {
+ * return sum[row2][col2];
+ * }
+ * else if (row1 == 0) {
+ * return sum[row2][col2] - sum[row2][col1 - 1];
+ * }
+ * else if (col1 == 0) {
+ * return sum[row2][col2] - sum[row1 - 1][col2];
+ * }
+ * else {
+ * return sum[row2][col2] - sum[row1 - 1][col2] - sum[row2][col1 - 1] + sum[row1 - 1][col1 - 1];
+ * }
+ * }
+ * <p>
+ * //--------------------------------------------------------------------------------------------//
+ * //--------------------------------------------------------------------------------------------//
+ * <p>
+ * <p>
+ * Find least number of intervals from A that can fully cover B
+ * For example:
+ * Given A=[[0,3],[3,4],[4,6],[2,7]] B=[0,6] return 2 since we can use [0,3] [2,7] to cover the B
+ * Given A=[[0,3],[4,7]] B=[0,6] return 0 since we cannot find any interval combination from A to cover the B
+ * <p>
+ * // make sure every time we choose one interval we cover more time
+ * // every time we chooes one, make the start time as its end time
+ * // Always choose the interval that whose end time is the biggest
+ * // and start time is smaller or equal to current start time
+ * // util we got the end time bigger than input.end
+ * <p>
+ * 'time complexity: O(nlgn)'
+ * <p>
+ * class MinimumCoverInterval {
+ * public int findCover(Interval[] intervals, Interval interval) {
+ * Arrays.sort(intervals, new Comparator<Interval>() {
+ * @Override public int compare(Interval inter1, Interval inter2) {
+ * if (inter1.start == inter2.start) {
+ * return inter1.end - inter2.end;
+ * }
+ * return inter1.start - inter2.start;
+ * }
+ * });
+ * int count = 0;
+ * int start = interval.start;
+ * int end = -1;
+ * int index = 0;
+ * while (index < intervals.length && end < interval.end) {
+ * if (intervals[index].end <= start) {
+ * index++;
+ * continue;
+ * }
+ * if (intervals[index].start > start) {
+ * break;
+ * }
+ * while (index < intervals.length && end < interval.end && intervals[index].start <= start) {
+ * end = Math.max(intervals[index].end, end);
+ * index++;
+ * }
+ * if (start != end) {
+ * count++;
+ * start = end;
+ * }
+ * }
+ * if (end < interval.end) {
+ * return 0;
+ * }
+ * return count;
+ * }
+ * }
+ * <p>
+ * find all equivalent pairs
+ * Given an array A of integers, find the index of values that satisfy A + B =C + D, where A,B,C & D are integers values in the array. Find all combinations of quadruples.
+ * <p>
+ * 'Time complexity: O(n^2)'
+ * <p>
+ * <p>
+ * class FindPair {
+ * public List<List<int[]>> find(int[] input) {
+ * HashMap<Integer, Indexs> sumToPair = new HashMap<>();
+ * for (int i = 0; i < input.length - 1; i++) {
+ * for (int j = i + 1; j < input.length; j++) {
+ * int sum = input[i] + input[j];
+ * if (!sumToPair.containsKey(sum)) {
+ * sumToPair.put(sum, new Indexs());
+ * }
+ * int[] newPair = new int[]{i, j};
+ * Set<Integer> index = sumToPair.get(sum).index;
+ * if (!index.contains(i) && !index.contains(j)) {
+ * sumToPair.get(sum).pairs.add(newPair);
+ * sumToPair.get(sum).index.add(i);
+ * sumToPair.get(sum).index.add(j);
+ * }
+ * }
+ * }
+ * List<List<int[]>> result = new ArrayList<>();
+ * for (int sum : sumToPair.keySet()) {
+ * List<int[]> pairs = sumToPair.get(sum).pairs;
+ * if (pairs.size() >= 2) {
+ * List<int[]> list = new ArrayList<>();
+ * for (int i = 0; i < pairs.size() - 1; i++) {
+ * for (int j = i + 1; j < pairs.size(); j++) {
+ * int[] pair1 = pairs.get(i);
+ * int[] pair2 = pairs.get(j);
+ * list.add(new int[]{input[pair1[0]], input[pair1[1]]});
+ * list.add(new int[]{input[pair2[0]], input[pair2[1]]});
+ * }
+ * }
+ * if (list.size() != 0) {
+ * result.add(list);
+ * }
+ * }
+ * }
+ * return result;
+ * }
+ * class Indexs{
+ * public List<int[]> pairs = new ArrayList<>();
+ * public Set<Integer> index = new HashSet<>();
+ * public Indexs() {
+ * <p>
+ * }
+ * }
+ * }
+ * <p>
+ * input could include ":(" frown or ":)" smileys
+ * check if the input is parenthese balance
+ * class CheckBalanced {
+ * public boolean check(String message) {
+ * int closeParenth = 0;
+ * int openParenth = 0;
+ * int smileys = 0;
+ * int frowns = 0;
+ * boolean isPotentialEmotion = false;
+ * for (char letter : message.toCharArray()) {
+ * if (letter == '(') {
+ * if (isPotentialEmotion) {
+ * frowns++;
+ * }
+ * openParenth++;
+ * }
+ * else if (letter == ')') {
+ * if (isPotentialEmotion) {
+ * smileys++;
+ * }
+ * closeParenth++;
+ * }
+ * if (closeParenth > openParenth) {
+ * if (closeParenth - smileys > openParenth) {
+ * return false;
+ * }
+ * closeParenth = openParenth;
+ * smileys = smileys - (closeParenth - openParenth);
+ * }
+ * if (letter == ':') {
+ * isPotentialEmotion = true;
+ * }
+ * else {
+ * isPotentialEmotion = false;
+ * }
+ * }
+ * if (openParenth - frowns > closeParenth) {
+ * return false;
+ * }
+ * return true;
+ * }
+ * }
+ * <p>
+ * find 2nd mutal friend
+ * <p>
+ * class MutalFriend {
+ * public List<GraphNode> findMutalFriends(GraphNode me) {
+ * Queue<GraphNode> explore = new LinkedList<>();
+ * Set<GraphNode> friends = new HashSet<>();
+ * HashMap<GraphNode, Integer> mutalToCount = new HashMap<>();
+ * int level = 0;
+ * explore.offer(me);
+ * friends.add(me);
+ * while (!explore.isEmpty() && level <= 2) {
+ * level++;
+ * int size = explore.size();
+ * for (int i = 0; i < size; i++) {
+ * GraphNode node = explore.poll();
+ * for (GraphNode friend : node.friend) {
+ * if (level == 1) {
+ * friends.add(node);
+ * explore.offer(node);
+ * continue;
+ * }
+ * if (friends.contains(friend)) {
+ * continue;
+ * }
+ * if (!mutalToCount.containsKey(friend)) {
+ * mutalToCount.put(friend, 1);
+ * }
+ * else {
+ * mutalToCount.put(friend, mutalToCount.get(friend) + 1);
+ * }
+ * }
+ * <p>
+ * }
+ * }
+ * List<GraphNode> result = new ArrayList<>();
+ * for (GraphNode node : mutalToCount.keySet()) {
+ * result.add(node);
+ * }
+ * Collections.sort(result, new NodeComparator(mutalToCount));
+ * return result;
+ * }
+ * class NodeComparator implements Comparator<GraphNode> {
+ * private HashMap<GraphNode, Integer> map;
+ * public NodeComparator(HashMap<GraphNode, Integer> map) {
+ * this.map = map;
+ * }
+ * @Override public int compare(GraphNode node1, GraphNode node2) {
+ * return map.get(node2) - map.get(node1);
+ * }
+ * }
+ * }
+ * <p>
+ * class GraphNode {
+ * String name;
+ * List<GraphNode> friend;
+ * public GraphNode(String name) {
+ * this.name = name;
+ * this.friend = new ArrayList<>();
+ * }
+ * }
+ * <p>
+ * <p>
+ * Serialize and deserialized Tree into LinkedList
+ * class CodeTree {
+ * public ListNodeStr serialized(TreeNode root) {
+ * ListNodeStr head = helper(root).head;
+ * return head;
+ * }
+ * <p>
+ * private Pair helper(TreeNode root) {
+ * if (root == null) {
+ * ListNodeStr node = new ListNodeStr("#");
+ * return new Pair(node, node);
+ * }
+ * ListNodeStr head = new ListNodeStr(Integer.toString(root.val));
+ * ListNodeStr tail = head;
+ * <p>
+ * Pair left = helper(root.left);
+ * tail.next = left.head;
+ * tail = left.tail;
+ * <p>
+ * Pair right = helper(root.right);
+ * tail.next = right.head;
+ * tail = right.tail;
+ * <p>
+ * return new Pair(head, tail);
+ * }
+ * <p>
+ * private ListNodeStr mover;
+ * public TreeNode deserialized(ListNodeStr head) {
+ * ListNodeStr fakeHead = new ListNodeStr("");
+ * fakeHead.next = head;
+ * mover = fakeHead;
+ * return helper();
+ * }
+ * private TreeNode helper() {
+ * mover = mover.next;
+ * if (mover.val.equals("#")) {
+ * return null;
+ * }
+ * TreeNode root = new TreeNode(Integer.parseInt(mover.val));
+ * root.left = helper();
+ * root.right = helper();
+ * return root;
+ * }
+ * <p>
+ * class Pair {
+ * ListNodeStr head;
+ * ListNodeStr tail;
+ * public Pair(ListNodeStr h, ListNodeStr t) {
+ * this.head = h;
+ * this.tail = t;
+ * }
+ * }
+ * <p>
+ * }
+ * class ListNodeStr {
+ * public String val;
+ * public ListNodeStr next;
+ * public ListNodeStr(String val) {
+ * this.val = val;
+ * }
+ * }
+ * <p>
+ * <p>
+ * '######################################################################'
+ * '######################################################################'
+ * '##########################---BEHAVIOR QUESTION----####################'
+ * '######################################################################'
+ * <p>
+ * '#Tell me about urself'
+ * <p>
+ * My name is Heng Wu. Comes from New York University.
+ * <p>
+ * '#Why facebook'
+ * <p>
+ * <p>
+ * <p>
+ * '#How do you see yourself in the five years'
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * #What do u expect to earn from company:
+ * <p>
+ * <p>
+ * #What would u do if u have different opinion with ur colleague:
+ * <p>
+ * <p>
+ * <p>
+ * ＃What is your most challenging project:
+ * <p>
+ * <p>
+ * <p>
+ * ＃Describe a situation where you exceeded expectations/did more than required
+ * <p>
+ * <p>
+ * <p>
+ * #Which team of product u wanna go?
+ * <p>
+ * <p>
+ * #Have u ever had a impossible prject which has a every short deadline?
+ * <p>
+ * <p>
+ * #Have u ever do sth creative?
+ * <p>
+ * <p>
+ * #Have u ever simplify something?
+ * Same as my intern project
+ * <p>
+ * #What are ur weakness? How do u improve that?
+ * <p>
+ * <p>
+ * <p>
+ * #What feature of facebook do u like?
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * My Question:
+ * 1. Have you ever use those algorithm or complex data structure like heap, treeSet in real work?
+ * <p>
+ * 2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your work progress?
+ * <p>
+ * 3. What is your favorite part of the fb as an engineer?
+ * <p>
+ * 4. How often do people move around between teams?
+ * <p>
+ * 5. How quickly does the company move on ideas.
  *//*
 
     if (k == 0 || prices.length <= 1) {
@@ -3401,2603 +5968,2590 @@ class NumberOfOneBits {
 }
 */
 /**63. 有一个数组，里面有0和非0元素，要求把所有非0元素移动到数组的前端，并返回非0元素的个数，非零元素顺序随意。非零元素之后数组有什么我们不关心。要求最小化写入次数。
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192313&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192313&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 
-#Move zero no order(Zeros no order)
-// Use two pointer, left always find 0, right always find non-zero
-// then make input[left] = input[right]
-// After left and rigt meet.
-// If input[left] == 0, which means input[left - 1] is the last non-zero number, return left
-// If input[left] != 0, and if left == right, which means input[left] is the last non-zero number
-// because left and right meet by a change, so return left + 1
-// Else left > right, which mean they just make a change which makes left > right. So 
-// input[left - 1] is last non-zero number, return left 
-public int moveZeroNoOrder(int[] input) {
-    int left= 0;
-    int right = input.length - 1;
-    while (left < right) {
-        while (left < right && input[left] != 0) {
-            left++;
-        }
-        while (left < right && input[right] == 0) {
-            right--;
-        }
-        if (left != right) {
-            input[left] = input[right];
-            left++;
-            right--;
-        }
-    }
-    if (input[left] == 0 || left > right) {
-        return left;
-    }
-    return left + 1;
-}
+ #Move zero no order(Zeros no order)
+ // Use two pointer, left always find 0, right always find non-zero
+ // then make input[left] = input[right]
+ // After left and rigt meet.
+ // If input[left] == 0, which means input[left - 1] is the last non-zero number, return left
+ // If input[left] != 0, and if left == right, which means input[left] is the last non-zero number
+ // because left and right meet by a change, so return left + 1
+ // Else left > right, which mean they just make a change which makes left > right. So
+ // input[left - 1] is last non-zero number, return left
+ public int moveZeroNoOrder(int[] input) {
+ int left= 0;
+ int right = input.length - 1;
+ while (left < right) {
+ while (left < right && input[left] != 0) {
+ left++;
+ }
+ while (left < right && input[right] == 0) {
+ right--;
+ }
+ if (left != right) {
+ input[left] = input[right];
+ left++;
+ right--;
+ }
+ }
+ if (input[left] == 0 || left > right) {
+ return left;
+ }
+ return left + 1;
+ }
 
-64. Word break by DP
+ 64. Word break by DP
 
-// helper[i] means that we can break the string.substring(0, j) exclusive j
-'Time complexity: O(n^2), space complexity: O(n)'
-public boolean wordBreak(String s, Set<String> wordDict) {
-    boolean[] helper = new boolean[s.length() + 1];
-    helper[0] = true;
-    for (int i = 1; i <= s.length(); i++) {
-        for (int j = i - 1; j >= 0; j--) {
-            if (helper[j] && wordDict.contains(s.substring(j, i))) {
-                helper[i] = true;
-                break;
-            }
-        }
-    }
-    return helper[s.length()];
-}
+ // helper[i] means that we can break the string.substring(0, j) exclusive j
+ 'Time complexity: O(n^2), space complexity: O(n)'
+ public boolean wordBreak(String s, Set<String> wordDict) {
+ boolean[] helper = new boolean[s.length() + 1];
+ helper[0] = true;
+ for (int i = 1; i <= s.length(); i++) {
+ for (int j = i - 1; j >= 0; j--) {
+ if (helper[j] && wordDict.contains(s.substring(j, i))) {
+ helper[i] = true;
+ break;
+ }
+ }
+ }
+ return helper[s.length()];
+ }
 
-Output only one result
-// Use DFS
-'Time complexity: O(2^(n/k))'
-class WordBreak {
-    public String wordBreak(Set<String> dict, String input) {
-        List<String> path = new ArrayList<>();
-        helper(path, dict, input, 0);
-        StringBuilder result = new StringBuilder();
-        for (String word : path) {
-            result.append(word + " ");
-        }
-        result.deleteCharAt(result.length() - 1);
-        return result.toString();
-    }
+ Output only one result
+ // Use DFS
+ 'Time complexity: O(2^(n/k))'
+ class WordBreak {
+ public String wordBreak(Set<String> dict, String input) {
+ List<String> path = new ArrayList<>();
+ helper(path, dict, input, 0);
+ StringBuilder result = new StringBuilder();
+ for (String word : path) {
+ result.append(word + " ");
+ }
+ result.deleteCharAt(result.length() - 1);
+ return result.toString();
+ }
 
-    private boolean helper(List<String> path, Set<String> dict, String input, int index) {
-        if (index == input.length()) {
-            return true;
-        }
-        for (int i = index; i < input.length(); i++) {
-            String word = input.substring(index, i + 1);
-            if (dict.contains(word)) {
-                path.add(word);
-                if (helper(path, dict, input, i + 1)) {
-                    return true;
-                }
-                path.remove(path.size() - 1);
-            }
-        }
-        return false;
-    }
-}
+ private boolean helper(List<String> path, Set<String> dict, String input, int index) {
+ if (index == input.length()) {
+ return true;
+ }
+ for (int i = index; i < input.length(); i++) {
+ String word = input.substring(index, i + 1);
+ if (dict.contains(word)) {
+ path.add(word);
+ if (helper(path, dict, input, i + 1)) {
+ return true;
+ }
+ path.remove(path.size() - 1);
+ }
+ }
+ return false;
+ }
+ }
 
-66. 2Sum
-class TwoSum {
-    public List<List<Integer>> twoSumIndex(int[] input, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        HashMap<Integer, List<Integer>> valueToIndex = new HashMap<>();
-        Set<List<Integer>> visited = new HashSet<>();
-        for (int i = 0; i < input.length; i++) {
-            if (!valueToIndex.containsKey(input[i])) {
-                valueToIndex.put(input[i], new ArrayList<Integer>());
-            }
-            valueToIndex.get(input[i]).add(i);
-        }
-        for (int i = 0; i < input.length; i++) {
-            if (valueToIndex.containsKey(target - input[i])) {
-                for (int index : valueToIndex.get(target - input[i])) {
-                    if (index > i) {
-                        List<Integer> pair = new ArrayList<>(Arrays.asList(i, index));
-                        if (!visited.contains(pair)) {
-                            visited.add(pair);
-                            result.add(pair);
-                        }
-                    }
-                }
-            }
-        }
-        return result;
-    }
-    public List<List<Integer>> twoSumValue(int[] input, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        HashMap<Integer, List<Integer>> valueToIndex = new HashMap<>();
-        Set<List<Integer>> visited = new HashSet<>();
-        for (int i = 0; i < input.length; i++) {
-            if (!valueToIndex.containsKey(input[i])) {
-                valueToIndex.put(input[i], new ArrayList<Integer>());
-            }
-            valueToIndex.get(input[i]).add(i);
-        }
-        for (int i = 0; i < input.length; i++) {
-            if (valueToIndex.containsKey(target - input[i])) {
-                int idx = -1;
-                for (int index : valueToIndex.get(target - input[i])) {
-                    if (index != i) {
-                        idx = index;
-                        break;
-                    }
-                }
-                if (idx != -1) {
-                    List<Integer> pair = new ArrayList<>(Arrays.asList(input[i], input[idx]));
-                    Collections.sort(pair);
-                    if (!visited.contains(pair)) {
-                        result.add(pair);
-                        visited.add(pair);
-                    }
-                }
+ 66. 2Sum
+ class TwoSum {
+ public List<List<Integer>> twoSumIndex(int[] input, int target) {
+ List<List<Integer>> result = new ArrayList<>();
+ HashMap<Integer, List<Integer>> valueToIndex = new HashMap<>();
+ Set<List<Integer>> visited = new HashSet<>();
+ for (int i = 0; i < input.length; i++) {
+ if (!valueToIndex.containsKey(input[i])) {
+ valueToIndex.put(input[i], new ArrayList<Integer>());
+ }
+ valueToIndex.get(input[i]).add(i);
+ }
+ for (int i = 0; i < input.length; i++) {
+ if (valueToIndex.containsKey(target - input[i])) {
+ for (int index : valueToIndex.get(target - input[i])) {
+ if (index > i) {
+ List<Integer> pair = new ArrayList<>(Arrays.asList(i, index));
+ if (!visited.contains(pair)) {
+ visited.add(pair);
+ result.add(pair);
+ }
+ }
+ }
+ }
+ }
+ return result;
+ }
+ public List<List<Integer>> twoSumValue(int[] input, int target) {
+ List<List<Integer>> result = new ArrayList<>();
+ HashMap<Integer, List<Integer>> valueToIndex = new HashMap<>();
+ Set<List<Integer>> visited = new HashSet<>();
+ for (int i = 0; i < input.length; i++) {
+ if (!valueToIndex.containsKey(input[i])) {
+ valueToIndex.put(input[i], new ArrayList<Integer>());
+ }
+ valueToIndex.get(input[i]).add(i);
+ }
+ for (int i = 0; i < input.length; i++) {
+ if (valueToIndex.containsKey(target - input[i])) {
+ int idx = -1;
+ for (int index : valueToIndex.get(target - input[i])) {
+ if (index != i) {
+ idx = index;
+ break;
+ }
+ }
+ if (idx != -1) {
+ List<Integer> pair = new ArrayList<>(Arrays.asList(input[i], input[idx]));
+ Collections.sort(pair);
+ if (!visited.contains(pair)) {
+ result.add(pair);
+ visited.add(pair);
+ }
+ }
 
-            }
-        }
-        return result;
-    }
-    public List<List<Integer>> twoSumSort(int[] input, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(input);
-        int left = 0;
-        int right = input.length - 1;
-        while (left < right) {
-            if (input[left] + input[right] > target) {
-                right--;
-            }
-            else if (input[left] + input[right] < target) {
-                left++;
-            }
-            else {
-                result.add(new ArrayList<Integer>(Arrays.asList(input[left], input[right])));
-                left++;
-                right--;
-                while (left < input.length && input[left] == input[left - 1]) {
-                    left++;
-                }
-                while (right >= 0 && input[right] == input[right + 1]) {
-                    right--;
-                }
-            }
-        }
-        return result;
-    }
-}
+ }
+ }
+ return result;
+ }
+ public List<List<Integer>> twoSumSort(int[] input, int target) {
+ List<List<Integer>> result = new ArrayList<>();
+ Arrays.sort(input);
+ int left = 0;
+ int right = input.length - 1;
+ while (left < right) {
+ if (input[left] + input[right] > target) {
+ right--;
+ }
+ else if (input[left] + input[right] < target) {
+ left++;
+ }
+ else {
+ result.add(new ArrayList<Integer>(Arrays.asList(input[left], input[right])));
+ left++;
+ right--;
+ while (left < input.length && input[left] == input[left - 1]) {
+ left++;
+ }
+ while (right >= 0 && input[right] == input[right + 1]) {
+ right--;
+ }
+ }
+ }
+ return result;
+ }
+ }
 
 
-68. 
+ 68.
  LC138 Copy linked list with random pointers. 要求优化到不用extra space。. from: 1point3acres.com/bbs 
  LC75 Sort colors, Group contact
  Behavioral + LC71 Simplify path这题要问清楚要做什么.
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192116&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192116&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 
-#copy linked List with random pointer
-public RandomListNode copyRandomList(RandomListNode head) {
-    RandomListNode mover = head;
-    while (mover != null) {
-        RandomListNode copy = new RandomListNode(mover.label);
-        RandomListNode next = mover.next;
-        mover.next = copy;
-        copy.next = next;
-        mover = copy.next;
-    }
-    RandomListNode fakeHead = new RandomListNode(0);
-    RandomListNode copyMover = fakeHead;
-    mover = head;
-    while (mover != null) {
-        if (mover.random != null) {
-            mover.next.random = mover.random.next;
-        }
-        mover = mover.next.next;
-    }
-    mover = head;
-    while (mover != null) {
-        copyMover.next = mover.next;
-        mover.next = mover.next.next;
-        mover = mover.next;
-        copyMover = copyMover.next;
-    }
-    return fakeHead.next;
+ #copy linked List with random pointer
+ public RandomListNode copyRandomList(RandomListNode head) {
+ RandomListNode mover = head;
+ while (mover != null) {
+ RandomListNode copy = new RandomListNode(mover.label);
+ RandomListNode next = mover.next;
+ mover.next = copy;
+ copy.next = next;
+ mover = copy.next;
+ }
+ RandomListNode fakeHead = new RandomListNode(0);
+ RandomListNode copyMover = fakeHead;
+ mover = head;
+ while (mover != null) {
+ if (mover.random != null) {
+ mover.next.random = mover.random.next;
+ }
+ mover = mover.next.next;
+ }
+ mover = head;
+ while (mover != null) {
+ copyMover.next = mover.next;
+ mover.next = mover.next.next;
+ mover = mover.next;
+ copyMover = copyMover.next;
+ }
+ return fakeHead.next;
+ }
+
+ #Simplify path
+ public String simplifyPath(String path) {
+ Stack<String> validPath = new Stack<>();
+ Set<String> special = new HashSet<>(Arrays.asList("..", ".", ""));
+ String[] directories = path.split("/");
+ for (String directory : directories) {
+ if (directory.equals("..") && !validPath.isEmpty()) {
+ validPath.pop();
+ }
+ else if (!special.contains(directory)) {
+ validPath.push(directory);
+ }
+ }
+ StringBuilder result = new StringBuilder();
+ while (!validPath.isEmpty()) {
+ result.insert(0, "/" + validPath.pop());
+ }
+ if (result.length() == 0) {
+ return "/";
+ }
+ return result.toString();
+ }
+
+
+ 69. 字母和数字的转换 A = 1 B = 2 AA = 27 基本是26进制的转换， 他要我写了两个边的转换。 我写出来了不过最后我用的是
+ (char)('a'-1+i) 的方式来转换字母的，不过我用的是i%26，也就是z的时候会变成(char)(-1)。
+ #letter to number, excel
+ public int ExcelSheetColNum(String s) {
+ int result = 0;
+ for (char letter : s.toCharArray()) {
+ result = result * 26 + letter - 'A' + 1;
+ }
+ return result;
+ }
+
+ public String convertToTitle(int n) {
+ StringBuilder result = new StringBuilder();
+ while (n > 0) {
+ char letter = (char)((n - 1) % 26 + 'A');
+ result.append(letter);
+ n = (n - 1) / 26;
+ }
+ return result.reverse().toString();
+ }
+
+
+ 70.
+ 找小偷问题，有n个房间，其中一个房间有小偷。早上我们可以打开一个房间的门看小偷在不在里面，晚
+ 上小偷会向左边或者右边的房间走。现在给你一个开门的sequence，你输出这个sequence能不能保证找到小偷。 鏉ユ簮涓€浜�.涓夊垎鍦拌鍧�.
+ 比如：如果只有三个房间那么如果打开房间的sequence是{1，1}那么一定会找到小偷。因为如果小偷在中间那么第一天就会被找到，. visit 1point3acres.com for more.
+ 如果小偷在两边那么第二天一定回来到中间也会被找到。房间数为n，sequence长度为k. 鍥磋鎴戜滑@1point 3 acres
+ 跟着我开始brute force假设小偷在某个房间然后dfs所有路径，大概是O（n*n^k）。 考官说好，如果考虑cut branch呢？跟着我就说可以
+ 拿一个n*k的matrix跟着根据sequence来cut branch，reduce到O（n*n*k）。他说有没有可能同时从所有房间开始呢？我说可以跟着直接
+ 在那个n*kmatrix上做一个类似dp的东西。跟着reduce 到 O（n*k）。他说有没有可能把space reduce呢？我说可以我只要O（n）的space
+ 跟着他就让我再写一个叫nextRow的function来实现O（n）space。 我觉得这题我基本是答得非常漂亮的而且思路很清晰，考官也很开心。
+
+ class FindTheaf {
+ public boolean findTheaf(int rooms, int[] strategy) {
+ boolean[] found = new boolean[rooms];
+ found[strategy[0]] = true;
+ for (int day = 1; day < strategy.length; day++) {
+ boolean[] lastDay = Arrays.copyOf(found, rooms);
+ for (int room = 0; room < rooms; room++) {
+ if (room == 0) {
+ found[room] = lastDay[room + 1];
+ }
+ else if (room == rooms - 1) {
+ found[room] = lastDay[room - 1];
+ }
+ else {
+ found[room] = lastDay[room - 1] || lastDay[room + 1];
+ }
+ }
+ found[strategy[day]] = true;
+ }
+ boolean result = true;
+ for (int i = 0; i < rooms; i++) {
+ result = result && found[i];
+ }
+ return result;
+ }
+ }
+
+
+ 71. word ladder变型，叫我随便找一个可以的path出来，基本我写的每一步她都要我说这样写的理由，跟着做笔记。我用dfs+hashset写完之后，
+ 被她发现了一个bug，就是在找到path之后我没有完全return导致答案没有了最后一个word，跟着我马上改了。之后她问我能不能cut branch
+ 我看不出来。。。。她提示其实放进hashset的可以不再remove，因为如果走过一个word发现这个word不行那么以后就没有必要再走这个word了。
+ 跟着问我如果word可以从abc变道abcd 就是变一个或者加一个letter我应该怎么改。我就说加点东西就好，跟着就写出来了。跟着这轮就大概没了。
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=109284&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+ class WordLadder {
+ public List<String> findLadder(String start, String end, Set<String> dict) {
+ Queue<String> explore = new LinkedList<>();
+ HashMap<String, String> path = new HashMap<>();
+ List<String> result = new ArrayList<>();
+ explore.offer(start);
+ path.put(start, "");
+ boolean found = false;
+ while (!explore.isEmpty() && !found) {
+ String word = explore.poll();
+ for (int i = 0; i < word.length(); i++) {
+ for (char k = 'a'; k <= 'z'; k++) {
+ if (word.charAt(i) == k) {
+ continue;
+ }
+ String newWord = word.substring(0, i) + k + word.substring(i + 1);
+ if (newWord.equals(end)) {
+ path.put(end, word);
+ found = true;
+ break;
+ }
+ if (dict.contains(newWord) && !path.containsKey(newWord)) {
+ path.put(newWord, word);
+ explore.offer(newWord);
+ }
+ }
+ }
+ }
+ if (!path.containsKey(end)) {
+ return result;
+ }
+ String mover = end;
+ while (!path.get(mover).equals("")) {
+ result.add(0, mover);
+ mover = path.get(mover);
+ }
+ result.add(0, start);
+ return result;
+ }
+ }
+
+ 72. 自然string comparator。不知道的搜下。就是string 比较的时候考虑里面数字的大小，比如 abc9 < abc123 abc > ab9  因为char比digit重要。
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=179527&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+ class CompareString implements Comparator<String> {
+@Override public int compare(String str1, String str2) {
+int index1 = 0;
+int index2 = 0;
+while (index1 < str1.length() && index2 < str2.length()) {
+char letter1 = str1.charAt(index1);
+char letter2 = str2.charAt(index2);
+if (letter1 == letter2 &&  !Character.isDigit(letter2)) { // both are char and equals
+index1++;
+index2++;
 }
-
-#Simplify path
-public String simplifyPath(String path) {
-   Stack<String> validPath = new Stack<>();
-   Set<String> special = new HashSet<>(Arrays.asList("..", ".", ""));
-   String[] directories = path.split("/");
-   for (String directory : directories) {
-       if (directory.equals("..") && !validPath.isEmpty()) {
-           validPath.pop();
-       }
-       else if (!special.contains(directory)) {
-           validPath.push(directory);
-       }
-   }
-   StringBuilder result = new StringBuilder();
-   while (!validPath.isEmpty()) {
-       result.insert(0, "/" + validPath.pop());
-   }
-   if (result.length() == 0) {
-       return "/";
-   }
-   return result.toString();
+else if (Character.isDigit(letter1) && Character.isDigit(letter2)){ //both are number
+int number1 = 0;
+int number2 = 0;
+while (index1 < str1.length() && Character.isDigit(str1.charAt(index1))) {
+number1 = number1 * 10 + str1.charAt(index1) - '0';
+index1++;
 }
-
-
-69. 字母和数字的转换 A = 1 B = 2 AA = 27 基本是26进制的转换， 他要我写了两个边的转换。 我写出来了不过最后我用的是
-(char)('a'-1+i) 的方式来转换字母的，不过我用的是i%26，也就是z的时候会变成(char)(-1)。
-#letter to number, excel
-public int ExcelSheetColNum(String s) {
-    int result = 0;
-    for (char letter : s.toCharArray()) {
-        result = result * 26 + letter - 'A' + 1;
-    }
-    return result;
+while (index2 < str2.length() && Character.isDigit(str2.charAt(index2))) {
+number2 = number2 * 10 + str2.charAt(index2) - '0';
+index2++;
 }
-
-public String convertToTitle(int n) {
-    StringBuilder result = new StringBuilder();
-    while (n > 0) {
-        char letter = (char)((n - 1) % 26 + 'A');
-        result.append(letter);
-        n = (n - 1) / 26;
-    }
-    return result.reverse().toString();
+if (number1 > number2) {
+return 1;
 }
-
-
-70. 
-找小偷问题，有n个房间，其中一个房间有小偷。早上我们可以打开一个房间的门看小偷在不在里面，晚
-上小偷会向左边或者右边的房间走。现在给你一个开门的sequence，你输出这个sequence能不能保证找到小偷。 鏉ユ簮涓€浜�.涓夊垎鍦拌鍧�. 
-比如：如果只有三个房间那么如果打开房间的sequence是{1，1}那么一定会找到小偷。因为如果小偷在中间那么第一天就会被找到，. visit 1point3acres.com for more.
-如果小偷在两边那么第二天一定回来到中间也会被找到。房间数为n，sequence长度为k. 鍥磋鎴戜滑@1point 3 acres
-跟着我开始brute force假设小偷在某个房间然后dfs所有路径，大概是O（n*n^k）。 考官说好，如果考虑cut branch呢？跟着我就说可以
-拿一个n*k的matrix跟着根据sequence来cut branch，reduce到O（n*n*k）。他说有没有可能同时从所有房间开始呢？我说可以跟着直接
-在那个n*kmatrix上做一个类似dp的东西。跟着reduce 到 O（n*k）。他说有没有可能把space reduce呢？我说可以我只要O（n）的space
-跟着他就让我再写一个叫nextRow的function来实现O（n）space。 我觉得这题我基本是答得非常漂亮的而且思路很清晰，考官也很开心。
-
-class FindTheaf {
-    public boolean findTheaf(int rooms, int[] strategy) {
-        boolean[] found = new boolean[rooms];
-        found[strategy[0]] = true;
-        for (int day = 1; day < strategy.length; day++) {
-            boolean[] lastDay = Arrays.copyOf(found, rooms);
-            for (int room = 0; room < rooms; room++) {
-                if (room == 0) {
-                    found[room] = lastDay[room + 1];
-                }
-                else if (room == rooms - 1) {
-                    found[room] = lastDay[room - 1];
-                }
-                else {
-                    found[room] = lastDay[room - 1] || lastDay[room + 1];
-                }
-            }
-            found[strategy[day]] = true;
-        }
-        boolean result = true;
-        for (int i = 0; i < rooms; i++) {
-            result = result && found[i];
-        }
-        return result;
-    }
+else if (number1 < number2) {
+return -1;
 }
-
-
-71. word ladder变型，叫我随便找一个可以的path出来，基本我写的每一步她都要我说这样写的理由，跟着做笔记。我用dfs+hashset写完之后，
-被她发现了一个bug，就是在找到path之后我没有完全return导致答案没有了最后一个word，跟着我马上改了。之后她问我能不能cut branch
-我看不出来。。。。她提示其实放进hashset的可以不再remove，因为如果走过一个word发现这个word不行那么以后就没有必要再走这个word了。
-跟着问我如果word可以从abc变道abcd 就是变一个或者加一个letter我应该怎么改。我就说加点东西就好，跟着就写出来了。跟着这轮就大概没了。
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=109284&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-
-class WordLadder {
-    public List<String> findLadder(String start, String end, Set<String> dict) {
-        Queue<String> explore = new LinkedList<>();
-        HashMap<String, String> path = new HashMap<>();
-        List<String> result = new ArrayList<>();
-        explore.offer(start);
-        path.put(start, "");
-        boolean found = false;
-        while (!explore.isEmpty() && !found) {
-            String word = explore.poll();
-            for (int i = 0; i < word.length(); i++) {
-                for (char k = 'a'; k <= 'z'; k++) {
-                    if (word.charAt(i) == k) {
-                        continue;
-                    }
-                    String newWord = word.substring(0, i) + k + word.substring(i + 1);
-                    if (newWord.equals(end)) {
-                        path.put(end, word);
-                        found = true;
-                        break;
-                    }
-                    if (dict.contains(newWord) && !path.containsKey(newWord)) {
-                        path.put(newWord, word);
-                        explore.offer(newWord);
-                    }
-                }
-            }
-        }
-        if (!path.containsKey(end)) {
-            return result;
-        }
-        String mover = end;
-        while (!path.get(mover).equals("")) {
-            result.add(0, mover);
-            mover = path.get(mover);
-        }
-        result.add(0, start);
-        return result;
-    }
 }
-
-72. 自然string comparator。不知道的搜下。就是string 比较的时候考虑里面数字的大小，比如 abc9 < abc123 abc > ab9  因为char比digit重要。
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=179527&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-
-class CompareString implements Comparator<String> {
-    @Override
-    public int compare(String str1, String str2) {
-        int index1 = 0;
-        int index2 = 0;
-        while (index1 < str1.length() && index2 < str2.length()) {
-            char letter1 = str1.charAt(index1);
-            char letter2 = str2.charAt(index2);
-            if (letter1 == letter2 &&  !Character.isDigit(letter2)) { // both are char and equals
-                index1++;
-                index2++;
-            }
-            else if (Character.isDigit(letter1) && Character.isDigit(letter2)){ //both are number
-                int number1 = 0;
-                int number2 = 0;
-                while (index1 < str1.length() && Character.isDigit(str1.charAt(index1))) {
-                    number1 = number1 * 10 + str1.charAt(index1) - '0';
-                    index1++;
-                }
-                while (index2 < str2.length() && Character.isDigit(str2.charAt(index2))) {
-                    number2 = number2 * 10 + str2.charAt(index2) - '0';
-                    index2++;
-                }
-                if (number1 > number2) {
-                    return 1;
-                }
-                else if (number1 < number2) {
-                    return -1;
-                }
-            }
-            else { // not equals or one is number
-                if (Character.isDigit(letter2)) {
-                    return 1;
-                }
-                else if (Character.isDigit(letter1)) {
-                    return -1;
-                }
-                if (letter1 > letter2) {
-                    return 1;
-                }
-                return -1;
-            }
-        }
-        if (index1 == str1.length() && index2 == str2.length()) { //check all the char already
-            return 0;
-        }
-        else if (index1 < str1.length()) {
-            return 1;
-        }
-        return -1;
-    }
+else { // not equals or one is number
+if (Character.isDigit(letter2)) {
+return 1;
 }
-
-
-74. 第一题lc弱智题，合并两个有序数组，很简单，lz第一次店面写代码，有点紧张，居然用了接近14分钟才写完。面试官看了会儿，说looks good，时间复杂度也没问，就直接出下一题。
-
-75. merge K sort array
-
-76. 因为他问第三题的时候只是嘴上说如果给的不是lists，而是每个list的iterator，how do you modify your code? 
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190561&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-#Merge Lists
-class Merge {
-    public List<Integer> mergeTwoList(List<Integer> list1, List<Integer> list2) {
-        List<Integer> result = new ArrayList<>();
-        int index1 = 0;
-        int index2 = 0;
-        while (index1 < list1.size() && index2 < list2.size()) {
-            int number1 = list1.get(index1);
-            int number2 = list2.get(index2);
-            if (number1 <= number2) {
-                result.add(number1);
-                index1++;
-            }
-            else {
-                result.add(number2);
-                index2++;
-            }
-        }
-        while (index1 < list1.size()) {
-            result.add(list1.get(index1++));
-        }
-        while (index2 < list2.size()) {
-            result.add(list2.get(index2++));
-        }
-        return result;
-    }
-
-    public List<Integer> mergeKList(List<List<Integer>> input) {
-        PriorityQueue<Number> minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
-            @Override
-            public int compare(Number num1, Number num2) {
-                return num1.value - num2.value;
-            }
-        });
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < input.size(); i++) {
-            if (input.get(i).size() == 0) {
-                continue;
-            }
-            minNumber.add(new Number(input.get(i).get(0), 0, i));
-        }
-        while (!minNumber.isEmpty()) {
-            Number min = minNumber.poll();
-            result.add(min.value);
-            if (min.index < input.get(min.listIndex).size() - 1) {
-                minNumber.add(new Number(input.get(min.listIndex).get(min.index + 1), min.index + 1, min.listIndex));
-            }
-        }
-        return result;
-
-    }
-
-    class Number {
-        int value;
-        int index;
-        int listIndex;
-        public Number(int value, int index, int listIndex) {
-            this.value = value;
-            this.index = index;
-            this.listIndex = listIndex;
-        }
-    }
-
-    public List<Integer> mergeKListWithIterator(List<Iterator<Integer>> input) {
-        PriorityQueue<Number> minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
-            @Override
-            public int compare(Number num1, Number num2) {
-                return num1.value - num2.value;
-            }
-        });
-        List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < input.size(); i++) {
-            if (input.get(i).hasNext()) {
-                minNumber.add(new Number(input.get(i).next(), 0, i));
-            }
-        }
-        while (!minNumber.isEmpty()) {
-            Number min = minNumber.poll();
-            if (input.get(min.listIndex).hasNext()) {
-                minNumber.add(new Number(input.get(min.listIndex).next(), 0, min.listIndex));
-            }
-            result.add(min.value);
-        }
-        return result;
-    }
+else if (Character.isDigit(letter1)) {
+return -1;
 }
-
-86. Given k sorted lists of O(n) integers each, implement an iterator that will yield all elements in sorted order。
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190778&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-
-class MergeToIterator implements Iterator<Integer>{
-    PriorityQueue<Number> minNumber;
-    List<List<Integer>> lists;
-    public MergeToIterator(List<List<Integer>> input) {
-        this.minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
-            @Override
-            public int compare(Number num1, Number num2) {
-                return num1.value - num2.value;
-            }
-        });
-        this.lists = input;
-        for (int i = 0; i < input.size(); i++) {
-            if (input.get(i).size() == 0) {
-                continue;
-            }
-            minNumber.add(new Number(input.get(i).get(0), 0, i));
-        }
-    }
-
-    @Override
-    public boolean hasNext() {
-        return !minNumber.isEmpty();
-    }
-
-    @Override
-    public Integer next() {
-        Number min = minNumber.poll();
-        if (lists.get(min.listIndex).size() - 1 > min.index) {
-            minNumber.add(new Number(lists.get(min.listIndex).get(min.index + 1), min.index + 1, min.listIndex));
-        }
-        return min.value;
-    }
-
-    class Number {
-        int value;
-        int index;
-        int listIndex;
-        public Number(int value, int index, int listIndex) {
-            this.value = value;
-            this.index = index;
-            this.listIndex = listIndex;
-        }
-    }
+if (letter1 > letter2) {
+return 1;
+}
+return -1;
+}
+}
+if (index1 == str1.length() && index2 == str2.length()) { //check all the char already
+return 0;
+}
+else if (index1 < str1.length()) {
+return 1;
+}
+return -1;
+}
 }
 
 
+ 74. 第一题lc弱智题，合并两个有序数组，很简单，lz第一次店面写代码，有点紧张，居然用了接近14分钟才写完。面试官看了会儿，说looks good，时间复杂度也没问，就直接出下一题。
 
+ 75. merge K sort array
 
-77. 1. behavior question。 最后问了道dot product的老题
-	2. given a list of words, find whether a given target word exists. Should support “.” which matches any character. Follow up: support “*” which matchs 0 or more characters. 1point3acres.com/bbs
-	3. a. Minimum Size Subarray Sum
-    b. Check whether a string is Palindrom 
-    c. 忘了。。。
-	4. Design autocomplete in a search engine. 
-	5. behavior question. 最后的coding是给一个数组和一个数N， 随机返回该数组中任意一个不大于N的数。
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194306&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ 76. 因为他问第三题的时候只是嘴上说如果给的不是lists，而是每个list的iterator，how do you modify your code?
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190561&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ #Merge Lists
+ class Merge {
+ public List<Integer> mergeTwoList(List<Integer> list1, List<Integer> list2) {
+ List<Integer> result = new ArrayList<>();
+ int index1 = 0;
+ int index2 = 0;
+ while (index1 < list1.size() && index2 < list2.size()) {
+ int number1 = list1.get(index1);
+ int number2 = list2.get(index2);
+ if (number1 <= number2) {
+ result.add(number1);
+ index1++;
+ }
+ else {
+ result.add(number2);
+ index2++;
+ }
+ }
+ while (index1 < list1.size()) {
+ result.add(list1.get(index1++));
+ }
+ while (index2 < list2.size()) {
+ result.add(list2.get(index2++));
+ }
+ return result;
+ }
 
-Wildcard
-class WildCard {
-    public boolean compare(String input, String pattern) { //only has '.'
-        int poiIn = 0;
-        int poiP = 0;
-        while (poiIn < input.length() && poiP < pattern.length()) {
-            char letter1 = input.charAt(poiIn);
-            char letter2 = pattern.charAt(poiP);
-            if (letter1 == letter2 || letter2 == '.') {
-                poiIn++;
-                poiP++;
-            }
-            else {
-                return false;
-            }
-        }
-        return poiIn == input.length() && poiP == pattern.length();
-    }
-
-    public boolean wildCard(String input, String pattern) { // has '.' and '*'
-        int poiIn = 0;
-        int poiP = 0;
-        int lastIn = -1;
-        int lastP = -1;
-        while (poiIn < input.length()) {
-            if (poiP < pattern.length() && (input.charAt(poiIn) == pattern.charAt(poiP) || pattern.charAt(poiP) == '.')) {
-                poiP++;
-                poiIn++;
-            }
-            else if (poiP < pattern.length() && pattern.charAt(poiP) == '*') {
-                lastP = poiP + 1;
-                poiP++;
-                lastIn = poiIn;
-            }
-            else if (lastP != -1) {
-                lastIn++;
-                poiIn = lastIn;
-                poiP = lastP;
-            }
-            else {
-                return false;
-            }
-        }
-        while (poiP < pattern.length() && pattern.charAt(poiP) == '*') {
-            poiP++;
-        }
-        return poiP == pattern.length();
-    }
+ public List<Integer> mergeKList(List<List<Integer>> input) {
+ PriorityQueue<Number> minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
+@Override public int compare(Number num1, Number num2) {
+return num1.value - num2.value;
 }
+});
+ List<Integer> result = new ArrayList<>();
+ for (int i = 0; i < input.size(); i++) {
+ if (input.get(i).size() == 0) {
+ continue;
+ }
+ minNumber.add(new Number(input.get(i).get(0), 0, i));
+ }
+ while (!minNumber.isEmpty()) {
+ Number min = minNumber.poll();
+ result.add(min.value);
+ if (min.index < input.get(min.listIndex).size() - 1) {
+ minNumber.add(new Number(input.get(min.listIndex).get(min.index + 1), min.index + 1, min.listIndex));
+ }
+ }
+ return result;
 
-#minimum size of subarray //only positive number
-public int minSubArrayLen(int s, int[] nums) {
-    int minLen = Integer.MAX_VALUE;
-    int fast = 0;
-    int slow = 0;
-    int sum = 0;
-    while (fast < nums.length) {
-        sum += nums[fast];
-        while (sum >= s) {
-            minLen = Math.min(minLen, fast - slow + 1);
-            sum -= nums[slow];
-            slow++;
-        }
-        fast++;
-    }
-    return minLen == Integer.MAX_VALUE ? 0 : minLen;
+ }
+
+ class Number {
+ int value;
+ int index;
+ int listIndex;
+ public Number(int value, int index, int listIndex) {
+ this.value = value;
+ this.index = index;
+ this.listIndex = listIndex;
+ }
+ }
+
+ public List<Integer> mergeKListWithIterator(List<Iterator<Integer>> input) {
+ PriorityQueue<Number> minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
+@Override public int compare(Number num1, Number num2) {
+return num1.value - num2.value;
 }
+});
+ List<Integer> result = new ArrayList<>();
+ for (int i = 0; i < input.size(); i++) {
+ if (input.get(i).hasNext()) {
+ minNumber.add(new Number(input.get(i).next(), 0, i));
+ }
+ }
+ while (!minNumber.isEmpty()) {
+ Number min = minNumber.poll();
+ if (input.get(min.listIndex).hasNext()) {
+ minNumber.add(new Number(input.get(min.listIndex).next(), 0, min.listIndex));
+ }
+ result.add(min.value);
+ }
+ return result;
+ }
+ }
 
-extends to 2d and find if rectangle sum = k
-class FindSubRect {
-    public boolean find(int[][] matrix, int target) {
-        for (int right = 0; right < matrix[0].length; right++) {
-            int[] rowSum = new int[matrix.length];
-            for (int left = right; left >= 0; left--) {
-                Set<Integer> sum = new HashSet<>();
-                int curSum = 0;
-                sum.add(0);
-                for (int row = 0; row < matrix.length; row++) {
-                    rowSum[row] += matrix[row][left];
-                    curSum += rowSum[row];
-                    if (sum.contains(curSum - target)) {
-                        return true;
-                    }
-                    sum.add(curSum);
-                }
-            }
-        }
-        return false;
-    }
+ 86. Given k sorted lists of O(n) integers each, implement an iterator that will yield all elements in sorted order。
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=190778&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+ class MergeToIterator implements Iterator<Integer>{
+ PriorityQueue<Number> minNumber;
+ List<List<Integer>> lists;
+ public MergeToIterator(List<List<Integer>> input) {
+ this.minNumber = new PriorityQueue<>(input.size(), new Comparator<Number>() {
+@Override public int compare(Number num1, Number num2) {
+return num1.value - num2.value;
 }
+});
+ this.lists = input;
+ for (int i = 0; i < input.size(); i++) {
+ if (input.get(i).size() == 0) {
+ continue;
+ }
+ minNumber.add(new Number(input.get(i).get(0), 0, i));
+ }
+ }
+
+ @Override public boolean hasNext() {
+ return !minNumber.isEmpty();
+ }
+
+ @Override public Integer next() {
+ Number min = minNumber.poll();
+ if (lists.get(min.listIndex).size() - 1 > min.index) {
+ minNumber.add(new Number(lists.get(min.listIndex).get(min.index + 1), min.index + 1, min.listIndex));
+ }
+ return min.value;
+ }
+
+ class Number {
+ int value;
+ int index;
+ int listIndex;
+ public Number(int value, int index, int listIndex) {
+ this.value = value;
+ this.index = index;
+ this.listIndex = listIndex;
+ }
+ }
+ }
 
 
-#Maximum size of subarray
-// [1, -1, 5, -2, 3] => sum [1, 0, 5, 3, 6]
-// Note k = Sum1 - Sum2, which is a subarray
-// use hashmap record the sum to index, every time we meet a sum, if sum - k appears in the hashmap
-// then there is a subarray sum equals to k. find the length
-// if this sum is already in the hashmap, skip it. otherwise put in
-// because we always use the index most left, so if a some sum comes later, we dont put it in hashmap
-public int maxSubArrayLen(int[] nums, int k) {
-    int maxLen = 0;
-    HashMap<Integer, Integer> sumToIndex = new HashMap<>();
-    sumToIndex.put(0, -1);
-    int sum = 0;
-    for (int i = 0; i < nums.length; i++) {
-        sum += nums[i];
-        if (sumToIndex.containsKey(sum - k)) {
-            maxLen = Math.max(maxLen, i - sumToIndex.get(sum - k));
-        }
-        if (!sumToIndex.containsKey(sum)) {
-            sumToIndex.put(sum, i);
-        }
-    }
-    return maxLen;
-}
 
 
-79. 
-这个题想不起来具体的例子了，大概是A和B分别代表两个不同的字符串。字符串由A,a,B,b组成。给定一个初始字符串（也是由A,a,B,b组成），遍历这个初始字符串，如果遇到A或B，就用相应的字符串替代，这样就得到一个新字符串，然后对新字符串做替换操作。问替代n次后第k项是什么字母。题目不难，但是不断要求优化，比如新字符串只需要保持size k。这个字符串具体例子很巧妙但记不起来了，会形成一个repreated pattern，最后经面试官提示可以用binary search优化。这个面试官非常nice，好像是个东南亚裔的，基本上一步步给提示。
+ 77. 1. behavior question。 最后问了道dot product的老题
+ 2. given a list of words, find whether a given target word exists. Should support “.” which matches any character. Follow up: support “*” which matchs 0 or more characters. 1point3acres.com/bbs
+ 3. a. Minimum Size Subarray Sum
+ b. Check whether a string is Palindrom
+ c. 忘了。。。
+ 4. Design autocomplete in a search engine.
+ 5. behavior question. 最后的coding是给一个数组和一个数N， 随机返回该数组中任意一个不大于N的数。
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194306&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 
-class Replace {
-    public char replace(String A, String B, String input, int n, int k) {
-        HashMap<String, Integer> strToIndex = new HashMap<>();
-        List<String> path = new ArrayList<>();
-        if (input.length() >= k + 1) {
-            input = input.substring(0, k + 1);
-        }
-        strToIndex.put(input, 0);
-        path.add(input);
-        String last = input;
-        int count = 0;
-        int circle = 0;
-        while (count < n && circle == 0) {
-            count++;
-            StringBuilder curStr = new StringBuilder();
-            for (char letter : last.toCharArray()) {
-                if (letter == 'A') {
-                    curStr.append(A);
-                }
-                else if (letter == 'B') {
-                    curStr.append(B);
-                }
-                else {
-                    curStr.append(letter);
-                }
-                if (curStr.length() >= k + 1) {
-                    curStr = curStr.delete(k + 1, curStr.length());
-                    break;
-                }
-            }
-            last = curStr.toString();
-            if (strToIndex.containsKey(last)) {
-                circle = count - strToIndex.get(last);
-            }
-            else {
-                strToIndex.put(last, count);
-                path.add(last);
-            }
-        }
-        if (count == n) {
-            return last.charAt(k);
-        }
-        int nonCircle = path.size() - circle - 1;
-        int index = (n - nonCircle) % circle + nonCircle;
-        System.out.println(path);
-        if (index == nonCircle) {
-            return path.get(path.size() - 1).charAt(k);
-        }
-        else {
-            return path.get(index).charAt(k);
-        }
-    }
-}
+ Wildcard
+ class WildCard {
+ public boolean compare(String input, String pattern) { //only has '.'
+ int poiIn = 0;
+ int poiP = 0;
+ while (poiIn < input.length() && poiP < pattern.length()) {
+ char letter1 = input.charAt(poiIn);
+ char letter2 = pattern.charAt(poiP);
+ if (letter1 == letter2 || letter2 == '.') {
+ poiIn++;
+ poiP++;
+ }
+ else {
+ return false;
+ }
+ }
+ return poiIn == input.length() && poiP == pattern.length();
+ }
+
+ public boolean wildCard(String input, String pattern) { // has '.' and '*'
+ int poiIn = 0;
+ int poiP = 0;
+ int lastIn = -1;
+ int lastP = -1;
+ while (poiIn < input.length()) {
+ if (poiP < pattern.length() && (input.charAt(poiIn) == pattern.charAt(poiP) || pattern.charAt(poiP) == '.')) {
+ poiP++;
+ poiIn++;
+ }
+ else if (poiP < pattern.length() && pattern.charAt(poiP) == '*') {
+ lastP = poiP + 1;
+ poiP++;
+ lastIn = poiIn;
+ }
+ else if (lastP != -1) {
+ lastIn++;
+ poiIn = lastIn;
+ poiP = lastP;
+ }
+ else {
+ return false;
+ }
+ }
+ while (poiP < pattern.length() && pattern.charAt(poiP) == '*') {
+ poiP++;
+ }
+ return poiP == pattern.length();
+ }
+ }
+
+ #minimum size of subarray //only positive number
+ public int minSubArrayLen(int s, int[] nums) {
+ int minLen = Integer.MAX_VALUE;
+ int fast = 0;
+ int slow = 0;
+ int sum = 0;
+ while (fast < nums.length) {
+ sum += nums[fast];
+ while (sum >= s) {
+ minLen = Math.min(minLen, fast - slow + 1);
+ sum -= nums[slow];
+ slow++;
+ }
+ fast++;
+ }
+ return minLen == Integer.MAX_VALUE ? 0 : minLen;
+ }
+
+ extends to 2d and find if rectangle sum = k
+ class FindSubRect {
+ public boolean find(int[][] matrix, int target) {
+ for (int right = 0; right < matrix[0].length; right++) {
+ int[] rowSum = new int[matrix.length];
+ for (int left = right; left >= 0; left--) {
+ Set<Integer> sum = new HashSet<>();
+ int curSum = 0;
+ sum.add(0);
+ for (int row = 0; row < matrix.length; row++) {
+ rowSum[row] += matrix[row][left];
+ curSum += rowSum[row];
+ if (sum.contains(curSum - target)) {
+ return true;
+ }
+ sum.add(curSum);
+ }
+ }
+ }
+ return false;
+ }
+ }
 
 
-设计News feed system， backend的设计或者api设计两者选一。选了backend，虽然能准备的都准备了，但总感觉答的有点乱？大致讲了push/pull model, data怎么存，算算data量，怎么shard, 会问得很细，比如consistent hashing具体算法是怎么实现的，这个没有答上来。
+ #Maximum size of subarray
+ // [1, -1, 5, -2, 3] => sum [1, 0, 5, 3, 6]
+ // Note k = Sum1 - Sum2, which is a subarray
+ // use hashmap record the sum to index, every time we meet a sum, if sum - k appears in the hashmap
+ // then there is a subarray sum equals to k. find the length
+ // if this sum is already in the hashmap, skip it. otherwise put in
+ // because we always use the index most left, so if a some sum comes later, we dont put it in hashmap
+ public int maxSubArrayLen(int[] nums, int k) {
+ int maxLen = 0;
+ HashMap<Integer, Integer> sumToIndex = new HashMap<>();
+ sumToIndex.put(0, -1);
+ int sum = 0;
+ for (int i = 0; i < nums.length; i++) {
+ sum += nums[i];
+ if (sumToIndex.containsKey(sum - k)) {
+ maxLen = Math.max(maxLen, i - sumToIndex.get(sum - k));
+ }
+ if (!sumToIndex.containsKey(sum)) {
+ sumToIndex.put(sum, i);
+ }
+ }
+ return maxLen;
+ }
 
-Binary Tree convert to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
 
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194987&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+ 79.
+ 这个题想不起来具体的例子了，大概是A和B分别代表两个不同的字符串。字符串由A,a,B,b组成。给定一个初始字符串（也是由A,a,B,b组成），遍历这个初始字符串，如果遇到A或B，就用相应的字符串替代，这样就得到一个新字符串，然后对新字符串做替换操作。问替代n次后第k项是什么字母。题目不难，但是不断要求优化，比如新字符串只需要保持size k。这个字符串具体例子很巧妙但记不起来了，会形成一个repreated pattern，最后经面试官提示可以用binary search优化。这个面试官非常nice，好像是个东南亚裔的，基本上一步步给提示。
+
+ class Replace {
+ public char replace(String A, String B, String input, int n, int k) {
+ HashMap<String, Integer> strToIndex = new HashMap<>();
+ List<String> path = new ArrayList<>();
+ if (input.length() >= k + 1) {
+ input = input.substring(0, k + 1);
+ }
+ strToIndex.put(input, 0);
+ path.add(input);
+ String last = input;
+ int count = 0;
+ int circle = 0;
+ while (count < n && circle == 0) {
+ count++;
+ StringBuilder curStr = new StringBuilder();
+ for (char letter : last.toCharArray()) {
+ if (letter == 'A') {
+ curStr.append(A);
+ }
+ else if (letter == 'B') {
+ curStr.append(B);
+ }
+ else {
+ curStr.append(letter);
+ }
+ if (curStr.length() >= k + 1) {
+ curStr = curStr.delete(k + 1, curStr.length());
+ break;
+ }
+ }
+ last = curStr.toString();
+ if (strToIndex.containsKey(last)) {
+ circle = count - strToIndex.get(last);
+ }
+ else {
+ strToIndex.put(last, count);
+ path.add(last);
+ }
+ }
+ if (count == n) {
+ return last.charAt(k);
+ }
+ int nonCircle = path.size() - circle - 1;
+ int index = (n - nonCircle) % circle + nonCircle;
+ System.out.println(path);
+ if (index == nonCircle) {
+ return path.get(path.size() - 1).charAt(k);
+ }
+ else {
+ return path.get(index).charAt(k);
+ }
+ }
+ }
 
 
-82. 
-(1) Contact group, 输入是这样的:数字是用户，字母是邮箱，有很多人有多个邮箱，找出相同的用户
-  1- {x,y,z},  
-  2-{x} . more info on 1point3acres.com
-  3-{a,b}. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
-  4-{y, z}
-  5-{b}
-  6-{m}
-  7-{t,b}
+ 设计News feed system， backend的设计或者api设计两者选一。选了backend，虽然能准备的都准备了，但总感觉答的有点乱？大致讲了push/pull model, data怎么存，算算data量，怎么shard, 会问得很细，比如consistent hashing具体算法是怎么实现的，这个没有答上来。
 
-这样输出就是 [1,2,4] [3,5,7], [6] 这三组。. 
-可以用UnionFind或者Connected Components的方法做，
+ Binary Tree convert to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
 
-#Contact group
-// Use a hashmap to map the email to person called emailToPerson.
-// Use another hashmap to map the person to root, called personToRoot
-// the root is a person in this group, everyone in this group will map to this root
-// root will map to root itself
-// So we traverse through the input,
-// When we meet a person, we check the hashmap emailToPerson
-// if it does not contains this email, then we map this email to this person
-// if it does, which means this email maps to other people. lets call him A
-// So we go to check personToRoot, if A maps to another root,
-// which means the person we meet should also maps to this root
-// then we check aother mails of this person, if other mail maps to another person B
-// this person should also maps to B's root, which means A's root should also be B's root,
-// So we change A's root's root to B's root(Other people in A's group still point to A's root, but A's root point to B's root)
-// For example, 1 - {x, y, z} 2 - {a, b}, 3 - {x} 4 - {x, a}
-// first we map x -> 1, y -> 1, z -> 1 and 1 - > 1
-// we meet 2, then map a -> 2, b -> 2, and 2 -> 2
-// Then meet 3, find out that x -> 1, so 3 -> 1
-// Then meet 4, find out that x -> 1, so 4 -> 1
-// and find out that a -> 2, so  4's root 1's root should be 2,
-// that is 1 -> 2
-// in the end we have 1 -> 2, 2 -> 2, 3 -> 1, 4 -> 2
-// So the gourp is [1, 2, 3, 4]
-'Time complexity: O(nklgn) - n person and k emails in average, 
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194987&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+
+ 82.
+ (1) Contact group, 输入是这样的:数字是用户，字母是邮箱，有很多人有多个邮箱，找出相同的用户
+ 1- {x,y,z},
+ 2-{x} . more info on 1point3acres.com
+ 3-{a,b}. 鐣欏鐢宠璁哄潧-涓€浜╀笁鍒嗗湴
+ 4-{y, z}
+ 5-{b}
+ 6-{m}
+ 7-{t,b}
+
+ 这样输出就是 [1,2,4] [3,5,7], [6] 这三组。.
+ 可以用UnionFind或者Connected Components的方法做，
+
+ #Contact group
+ // Use a hashmap to map the email to person called emailToPerson.
+ // Use another hashmap to map the person to root, called personToRoot
+ // the root is a person in this group, everyone in this group will map to this root
+ // root will map to root itself
+ // So we traverse through the input,
+ // When we meet a person, we check the hashmap emailToPerson
+ // if it does not contains this email, then we map this email to this person
+ // if it does, which means this email maps to other people. lets call him A
+ // So we go to check personToRoot, if A maps to another root,
+ // which means the person we meet should also maps to this root
+ // then we check aother mails of this person, if other mail maps to another person B
+ // this person should also maps to B's root, which means A's root should also be B's root,
+ // So we change A's root's root to B's root(Other people in A's group still point to A's root, but A's root point to B's root)
+ // For example, 1 - {x, y, z} 2 - {a, b}, 3 - {x} 4 - {x, a}
+ // first we map x -> 1, y -> 1, z -> 1 and 1 - > 1
+ // we meet 2, then map a -> 2, b -> 2, and 2 -> 2
+ // Then meet 3, find out that x -> 1, so 3 -> 1
+ // Then meet 4, find out that x -> 1, so 4 -> 1
+ // and find out that a -> 2, so  4's root 1's root should be 2,
+ // that is 1 -> 2
+ // in the end we have 1 -> 2, 2 -> 2, 3 -> 1, 4 -> 2
+ // So the gourp is [1, 2, 3, 4]
+ 'Time complexity: O(nklgn) - n person and k emails in average,
  findRoot, act like find node in a tree - O(lgn)
  Space complexity: O(nk)'
 
-class Contact {
-    public List<List<Integer>> contactGroup(HashMap<Integer, String[]> contact) {
-        HashMap<String, Integer> emailToPerson = new HashMap<>();
-        HashMap<Integer, Integer> personToRoot = new HashMap<>();
-        for (int person : contact.keySet()) {
-            personToRoot.put(person, person);
-            int curRoot = person;
-            for (String email : contact.get(person)) {
-                if (!emailToPerson.containsKey(email)) {
-                    emailToPerson.put(email, person);
-                    continue;
-                }
-                int newRoot = emailToPerson.get(email);
-                newRoot = findRoot(personToRoot, newRoot);
-                if (newRoot != curRoot) {
-                    personToRoot.put(curRoot, newRoot);
-                    curRoot = newRoot;
-                }
-            }
-        }
-        HashMap<Integer, List<Integer>> groups = new HashMap<>();
-        List<List<Integer>> result = new ArrayList<>();
-        for (int person : personToRoot.keySet()) {
-            int root = findRoot(personToRoot, person);
-            if (!groups.containsKey(root)) {
-                groups.put(root, new ArrayList<Integer>());
-            }
-            groups.get(root).add(person);
-        }
-        for (int group : groups.keySet()) {
-            result.add(groups.get(group));
-        }
-        return result;
-    }
-    private int findRoot(HashMap<Integer, Integer> personToRoot, int root) {
-        while (personToRoot.get(root) != root) {
-            root = personToRoot.get(root);
-        }
-        return root;
-    }
-}
-
-
-（2） Behaviour Questions. 
-light coding写了Clone Graph
-（3） 单链表反转
-大数相乘，写了brute force，跑test case花了太久时间，没来的及写优化，简单聊了聊Divide Conquer的办法
-
-（4）TinyURL，这个题准备到了，后来HR说这一轮答的最惨，MB被烙印黑惨了
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192328&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-
-
-
-
-83. first bad version 以及变种。 变种是如果不知道一共有多少版本的情况下应该怎么找。
-
-
-// Unknow numbr of version
-
-public int badVersion {
-    int prev = 0;
-    int cur = 0;
-    while (isBadVersioin(cur)) {
-        prev = cur;
-        cur = cur * cur;
-    }
-    int start = prev;
-    int end = cur;
-    while (start + 1 < end) {
-        int mid = start + (end - start) / 2;
-        if (isBadVersioin(mid)) {
-            end = mid;
-        }
-        else {
-            start = mid;
-        }
-    }
-    if (isBadVersioin(start)) {
-        return start;
-    }
-    return end;
-}
-
-84. Min Queue, 跟Min Stack类似， 实现一个Queue， 然后O（1）复杂度获得这个Queue里最小的元素。
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=193703&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-
-#Min Queue
-//Use queue to save the minimum number
-// Every time add a new number, traverse the queue, remove the number 
-// bigger than it, so in the deque there will leave the numbers that smaller than it
-// add this number to the end of the deque
-// by doing this, the minimum number will always at the head of the deque
-'Time complexity of offer : O(len), space complexity: O(n)'
-
-class MinQueue {
-    private Queue<Integer> queue = new LinkedList<>();
-    private Deque<Integer> min = new ArrayDeque<>();
-    public void offer(int val) {
-        while (!min.isEmpty() && min.peekLast() > val) {
-            min.pollLast();
-        }
-        queue.offer(val);
-        min.offer(val);
-    }
-    public int poll() {
-        int result = queue.poll();
-        if (result == min.peek()) {
-            min.poll();
-        }
-        return result;
-    }
-    public int getMin() {
-        return min.peek();
-    }
-}
-
-85. Tri-node的题
-求String B是不是String A的substring
-找sorted array中的某个数，用divide & conquer做
-一道多个pc之间发送和请求数据的设计题. 
-http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=193545&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
-
-
-
-87. 第一题：
-
-     3
-   /
-1         
-   \ 
-    2
-一棵树，返回一个list的头结点：
-1《——》2《——》3（一三相连）
-意思是返回一个递增list，1的right是2，left是3， 2的left是1，right是3,3的left是2，right是 1.
-我用inorder获得递增序列然后设置left与right的node。返回1这个结点。. from: 1point3acres.com/bbs 
-follow up如何不先获得序列，直接在traverse的时候获得结果。follow up没回答出来。
-
-Tree To Double linked list:
-
-class TreeToDoubleLinkedList {
-    public DoubleLinkedList toDoubleLinkedList(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-        Stack<TreeNode> inorder = new Stack<>();
-        DoubleLinkedList fakeHead = new DoubleLinkedList(0);
-        DoubleLinkedList previous = fakeHead;
-        toLeft(inorder, root);
-        while (!inorder.isEmpty()) {
-            TreeNode node = inorder.pop();
-            DoubleLinkedList curNode = new DoubleLinkedList(node.val);
-            curNode.pre = previous;
-            previous.next = curNode;
-            previous = curNode;
-            if (node.right != null) {
-                toLeft(inorder, node.right);
-            }
-        }
-        DoubleLinkedList head = fakeHead.next;
-        head.pre = previous;
-        previous.next = head;
-        return head;
-    }
-
-    private void toLeft(Stack<TreeNode> inorder, TreeNode root) {
-        while (root != null) {
-            inorder.push(root);
-            root = root.left;
-        }
-    }
-}
-
-class DoubleLinkedList {
-    DoubleLinkedList pre;
-    DoubleLinkedList next;
-    int val;
-    public DoubleLinkedList(int val) {
-        this.val = val;
-    }
-}
-
-#add operation
-class AddOperator {
-    public List<String> addOperator(String number) {
-        List<String> result = new ArrayList<>();
-        helper(result, 0, "", number);
-        return result;
-    }
-
-    private void helper(List<String> result, int pos, String path, String number) {
-        if (pos == number.length()) {
-            if (path.charAt(0) == '+') {
-                result.add(path.substring(1));
-            }
-            else {
-                result.add(path);
-            }
-            return;
-        }
-        for (int i = pos; i < number.length(); i++) {
-            if (i != pos && number.charAt(pos) == '0') {
-                return;
-            }
-            String num = number.substring(pos, i + 1);
-            helper(result, i + 1, path + "+" + num, number);
-            helper(result, i + 1, path + "-" + num, number);
-        }
-    }
-}
-
-class MaxNumberStream {
-    private int cap;
-    Deque<Integer> deque;
-    Queue<Integer> queue;
-    public MaxNumberStream(int k) {
-        this.cap = k;
-        this.deque = new ArrayDeque<>();
-        this.queue = new LinkedList<>();
-    }
-    public void add(int x) {
-        while (queue.size() >= cap) {
-            int temp = queue.poll();
-            if (temp == deque.peek()) {
-                deque.poll();
-            }
-        }
-        while (!deque.isEmpty() && deque.peekLast() < x) {
-            deque.pollLast();
-        }
-        queue.offer(x);
-        deque.offer(x);
-    }
-
-    public int getMax() {
-        if (!deque.isEmpty()) {
-            return deque.peek();
-        }
-        return -1;
-    }
-}
-
-# 给定一个array 返回一个partition point可以返回该index左边的和和右边的和一样，没有就返回-1
-往右扫一遍求所有的和,再往左扫,求当前扫过的和,二者相减得左边的和.
-
-class PartitionSum {
-    public int findPivot(int[] input) {
-        int sum = 0;
-        for (int number : input) {
-            sum += number;
-        }
-        int rightSum = 0;
-        for (int i = input.length - 1; i >= 0; i--) {
-            sum -= input[i];
-            rightSum += input[i];
-            if (rightSum == sum) {
-                return i;
-            }
-        }
-        return -1;
-    }
-}
-
-# Sudoku Solver
-
-
-
-# 给两个file，分别存有key和value，目标就是把相同的key合并在一起输出，比如file1里面有 ben 2， file2里有 ben SB，那就合并成ben 2 SB, 两个file很大，不许用Map
-个人觉得第一题的应该是：如果关键字已经排序，就用two pointers搞定；如果关键字是乱序的，那么如果为了节省空间而不允许用hashmap的话，则自己定义一个Trie，
-Trie的节点存三个值：子节点集合（长度为26的指针数组）、是否为单词结尾的标志位、关键字对应的值。其中关键字对应的值只有在该节点为单词结尾的时候有效。
-把第一个文件中的关键字全部加入到Trie中，再把第二个文件中的单词拿到Trie中查找就好了。Trie比hashmap更省空间是因为，Trie合并了大量前缀相同的条目，hashmap做不到这点。
-
-
-#check if a binary tree is mirrored
-
-//Recursive way
-private boolean helper(TreeNode left, TreeNode right) {
-    if ((left == null && right != null) || (left != null && right == null)) {
-        return false;
-    }
-    if (left == null && right == null) {
-        return true;
-    }
-    if (left.val != right.val) {
-        return false;
-    }
-    boolean subResult = helper(left.right, right.left) && helper(left.left, right.right);
-    return subResult;
-}
-
-//iterative way
-public boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        Stack<TreeNode> left = new Stack<>();
-        Stack<TreeNode> right = new Stack<>();
-        left.push(root.left);
-        right.push(root.right);
-        while(!left.isEmpty() && !right.isEmpty()) {
-            TreeNode leftTemp = left.pop();
-            TreeNode rightTemp = right.pop();
-            if (leftTemp == null ^ rightTemp == null 
-            || (leftTemp != null && rightTemp != null && leftTemp.val != rightTemp.val)) {
-                return false;
-            }
-            if (leftTemp == null && rightTemp == null) {
-                continue;
-            }
-            left.push(leftTemp.left);
-            right.push(rightTemp.right);
-            left.push(leftTemp.right);
-            right.push(rightTemp.left);
-        }
-        return true;
-    }
-#
-
-Binary Tree求and操作。(BST and)例如：
-        *                  *                    *
-      /   \              /   \                /    \
-     1    *   and    *     0  =              *      0
-         /  \          / \                 /  \.
-        0   1        1   0              1   0
-     Follow up: deepCopy(tree)
-     Follow up2: 如何合并结果中出现的情况？. 
-          * 
-        /   \    =>      0
-       0    0
-
-
-class TreeAnd {
-    public TreeNode and(TreeNode root1, TreeNode root2) {
-        if (isLeaf(root1) && !isLeaf(root2)) {
-            return handleAnd(root1, root2);
-        }
-        if (isLeaf(root2) && !isLeaf(root1)) {
-            return handleAnd(root2, root1);
-        }
-        if (isLeaf(root2) && isLeaf(root1)) {
-            if (root2.val == 0 || root1.val == 0) {
-                return new TreeNode(0);
-            }
-            return new TreeNode(1);
-        }
-        TreeNode root = new TreeNode(2);
-        root.left = and(root1.left, root2.left);
-        root.right = and(root1.right, root2.right);
-        return root;
-    }
-
-    private TreeNode copyTree(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-        TreeNode copyRoot = new TreeNode(root.val);
-        copyRoot.left = copyTree(root.left);
-        copyRoot.right = copyTree(root.right);
-        return copyRoot;
-    }
-
-    private TreeNode handleAnd(TreeNode leaf, TreeNode root) {
-        if (leaf.val == 0) {
-            return new TreeNode(0);
-        }
-        return copyTree(root);
-    }
-
-    private boolean isLeaf(TreeNode node) {
-        return node.left == null && node.right == null;
-    }
-}
-
-
-输入：一个文件夹
-输出：文件夹下面的所有相同文件对
-// MD5 hash
-例子：
-给你一个文件夹路径，/foo/bar，要求找出这个文件夹下面的所有相同的文件，比如a和c是相同的，d和e是相同的，就输出(a, c)，(d, e)。
-
-我看到路径还以为是Simplify Path呢！心中一阵窃喜，结果怎么发现后面的没见过！好吧，先通过dfs获取所有的文件，然后计算MD5，然后比较是不是一样。
-. more info on 1point3acres.com
-follow up1，要是MD5不够强壮怎么办？答：上另一个hash啊！比完一个，再比另一个，两个都一样才认为一样。然后又写了一遍……小哥说能提升么？我说可以啊！第二个hash可以在真正需要的时候再计算，不用每个文件都计算两个hash存起来。然后又写了一遍……
-
-follow up2，以上代码里最花时间的是哪部分？答：dfs。小哥说再想想，要是文件都是video呢？我醒悟了，说是计算hash的部分。小哥问，怎么提升呢？我想了一会儿说，我们不用给每个文件计算hash 啊！先用size比嘛！绝大部分的文件size都是不一样的嘛。小哥说好，你能把你算法再实现一次吗？…………………………
-
-
-第二道题是 给个Tree 不一定是平衡的， 要求 把所有路径排序后  按字符串那样的比较大小方法 找出最小的路径  时间要求线性的。 比如  
-          5
-       /     \
-    10      3
-   /   \   /
-1    7  8
-路径有  5 10 1 ； 5 10 7 ； 5 3 8
-排序后  1 5 10 ； 5 7 10 ； 3 5 8；
-所以按字符串类型排序 为  1 5 10 < 3 5 8 < 5 7 10；
-
-class FindSmallPath {
-    public List<Integer> find(TreeNode root) {
-        Result result = helper(root);
-        return result.path;
-    }
-
-    private Result helper(TreeNode root) {
-        if (root == null) {
-            Result result = new Result();
-            result.path.add(Integer.MAX_VALUE);
-            return result;
-        }
-        if (root.left == null && root.right == null) {
-            Result result = new Result();
-            result.min = root.val;
-            result.path.add(root.val);
-            return result;
-        }
-        Result left = helper(root.left);
-        Result right = helper(root.right);
-        Result result = new Result();
-        result.path.add(root.val);
-        if (left.min > right.min) {
-            result.path.addAll(right.path);
-        }
-        else {
-            result.path.addAll(left.path);
-        }
-        result.min = Math.min(root.val, Math.min(left.min, right.min));
-        return result;
-    }
-    class Result {
-        public int min = Integer.MAX_VALUE;
-        public List<Integer> path = new ArrayList<>();
-        public Result() {
-        }
-    }
-}
-
-
-#Paint House
-paint house大变种. n houses, k colors. neighboring houses cannot be painted with the same color.
-NOTICE: neighboring relationship is given by adjacent list which means a house may have multiple neighbors.
-class PaintHouseGraph {
-    public int paint(int[] cost, HashMap<Integer, List<Integer>> houses) {
-        List<Set<Integer>> groups = new ArrayList<>();
-        Set<Integer> group = new HashSet<>();
-        for (int house : houses.keySet()) {
-            group.add(house);
-        }
-        while (group.size() != 0) {
-            Iterator<Integer> iter = group.iterator();
-            Set<Integer> next = new HashSet<>();
-            while (iter.hasNext()) {
-                int house = iter.next();
-                if (next.contains(house)) {
-                    iter.remove();
-                    continue;
-                }
-                for (int neighbor : houses.get(house)) {
-                    if (!group.contains(neighbor)) {
-                        continue;
-                    }
-                    next.add(neighbor);
-                }
-            }
-            groups.add(group);
-            group = next;
-        }
-        Collections.sort(groups, new Comparator<Set<Integer>>() {
-            @Override
-            public int compare(Set<Integer> set1, Set<Integer> set2) {
-                return set2.size() - set1.size();
-            }
-        });
-        int totalCost = 0;
-        int index = 0;
-        for (Set<Integer> set : groups) {
-            totalCost += set.size() * cost[index++];
-        }
-        return totalCost;
-    }
-}
-
-
-逆序输出一个单链表，要求空间复杂度为O(lgn)，不能修改链表结构（也就是不可以reverse链表，然后再reverse回去）
-最后做的大概就是每次走到终点，递归右半段，然后再递归左半段，最后给他画颗递归树证明下复杂度就行了，他也认可了。
-不过看起来这个做法相对奇葩一点，他看我画的还想了一会，似乎这不是他原来设想的方案吧，但也确实没毛病。
-'Time complexity: O(nlgn) space complexity: O(lgn)'
-class ReversePrint {
-    public void print(ListNode head) {
-        ListNode mover = head;
-        int length = 0;
-        while (mover != null) {
-            mover = mover.next;
-            length++;
-        }
-        helper(head, length);
-    }
-
-    private void helper(ListNode head, int length) {
-        if (head == null) {
-            return;
-        }
-        if (length == 1) {
-            System.out.println(head.val);
-            return;
-        }
-        int count = 0;
-        ListNode mover = head;
-        while (count < length / 2) {
-            mover = mover.next;
-            count++;
-        }
-        helper(mover, length - length / 2);
-        helper(head, length / 2);
-    }
-}
-
-第二题有点像有序双链表合并，不过给的是两个iterator，让实现一个类，生成下一个.
-class SortedIterator{
-    public SortedIterator(Iterator a, Iterator b);
-    public boolean hasNext();
-    public int next();
-}
-
-
-class SortedIterator {
-    private Pair pairA;
-    private Pair pairB;
-    public SortedIterator(Iterator<Integer> a, Iterator<Integer> b) {
-        if (a.hasNext()) {
-            pairA = new Pair(a.next(), a);
-        }
-        else {
-            pairA = new Pair(null, a);
-        }
-        if (b.hasNext()) {
-            pairB = new Pair(b.next(), b);
-        }
-        else {
-            pairB = new Pair(null, b);
-        }
-    }
-    public boolean hasNext() {
-        return pairA.value != null || pairB.value != null;
-    }
-
-    public int next() {
-        if (pairA.value == null) {
-            return helper(pairB);
-        }
-        else if (pairB.value == null) {
-            return helper(pairA);
-        }
-        Integer result = null;
-        if (pairA.value > pairB.value) {
-            result = helper(pairB);
-        }
-        else {
-            result = helper(pairA);
-        }
-        return result;
-    }
-
-    private Integer helper(Pair pair) {
-        int result = pair.value;
-        if (pair.iterator.hasNext()) {
-            pair.value = pair.iterator.next();
-        }
-        else {
-            pair.value = null;
-        }
-        return result;
-    }
-
-    private class Pair {
-        public Integer value;
-        public Iterator<Integer> iterator;
-        public Pair(Integer val, Iterator<Integer> iterator) {
-            this.value = val;
-            this.iterator = iterator;
-        }
-    }
-}
-
-可以随便交易很多次，可以同时买很多股票，但是一旦卖就要把手里的股票全部卖了，问怎样最大化收益。比如[1, 2,3], 前2天都买，第三天全部卖，收益就是(3-1)+(3-2).
-stock sell all
-public int maxProfit(int[] prices) {
-    int max = 0;
-    int profit = 0;
-    for (int i = prices.length - 1; i >= 0; i--) {
-        if (max > prices[i]) {
-            profit += max - prices[i];
-            System.out.println(profit);
-        }
-        else {
-            max = prices[i];
-        }
-    }
-    return profit;
-}
-
-给一个l*w的矩阵，要随机取k个点。一个披着easy题的，蓄水池抽样。到最后也没解释清蓄水池原理。
-大叔深深怀疑我的概率问题（其实我也怀疑），给我张白纸就好了- -
-// Use reversior smaple to do this.
-// Use a array to store the points we fetch out
-// For the first k points in matrix, put into array,
-// For the k + 1 ~ end points, 
-// we creat a random number j which range [0, index]
-// if this j is smaller than k, then we chooes this point instead the points[j]
-// Prove the possibility: 
-// For points index after k, if we eventually choose this point, which means after this point, 
-// No point can replace this point in the points array, the random number can be any number but not this point's index
-// which means their possibility is (index - 1 / index)
-// So the posibility is: (k / index) * (index / index + 1) * (index + 1 / index + 2)....*(n - 1 / n) = (k / n)
-// For points index smaller k, if we eventually choose this point, 
-// no points can replace it, so the possibility is (k / k + 1) * (k + 1 / k + 2) * ......* (n - 1 / n) = (k / n)
-class Sample {
-    public void sample(int[][] input, int k) {
-        Point[] points = new Point[k];
-        Random rand = new Random();
-        int width = input[0].length;
-        int height = input.length;
-        int index = 0;
-        while (index < width * height && index < k) {
-            points[index] = new Point(index / width, index % width);
-            input[index / width][index & width] = 1;
-            index++;
-        }
-        if (index < k) {
-            return;
-        }
-        index = k;
-        while (index < width * height) {
-            int newIndex = rand.nextInt(index);
-            if (newIndex < k) {
-                input[points[newIndex].x][points[newIndex].y] = 0;
-                int row = index / width;
-                int col = index % width;
-                input[row][col] = 1;
-                points[newIndex] = new Point(row, col);
-            }
-            index++;
-        }
-    }
-}
-
-
-就是lc next permutation的反着来的previous permutation，做法一样
-// The idea is that find the last two adjacent number that the first one is beigger than the second one
-// Then the question come to that find the previous permutation of the nums[first-end]
-// Then sequence after second must be acending, so the previous permutation must comes from 
-// the number that is samller than the nums[first] at the position first with a decending sequence after it
-// Exp: 5, 4, 1, 2, 3 previous -> 5, 3, 4, 2, 1 
-// the num[first] = 4, nums[second] = 1, nums[smaller] = 3 
-class PreviousPermutation {
-    public int[] previous(int[] input) {
-        if (input.length <= 1) {
-            return input;
-        }
-        int first = 0;
-        int second = 0;
-        for (int i = input.length - 1; i >= 1; i--) {
-            if (input[i] < input[i - 1]) {
-                first = i - 1;
-                second = i;
-                break;
-            }
-        }
-        int smaller = 0;
-        for (int i = input.length - 1; i >= second; i--) {
-            if (input[i] < input[first]) {
-                smaller = i;
-                break;
-            }
-        }
-        swap(input, first, smaller);
-        reverse(input, second, input.length - 1);
-        return input;
-    }
-    private void swap(int[] input, int index1, int index2) {
-        int temp = input[index1];
-        input[index1] = input[index2];
-        input[index2] = temp;
-    }
-    private void reverse(int[] input, int start, int end) {
-        while (start <= end) {
-            swap(input, start++, end--);
-        }
-    }
-}
-
-longest palindrome
-
-两个词的最短距离变体，follow up词很多怎么省空间
-
-一个矩阵斜着走的list例子如下：
-123
-456
-789
-输出：{1}{42}{753}{86}{9}
-
-class WalkMatrix {
-    public void print(int[][] matrix) {
-        int height = matrix.length;
-        for (int i = 0; i < matrix.length; i++) {
-            helper(i, 0, matrix);
-        }
-        for (int i = 1; i < matrix[0].length; i++) {
-            helper(height - 1, i, matrix);
-        }
-    }
-
-    private void helper(int row, int col, int[][] matrix) {
-        while (row >= 0 && col < matrix[0].length) {
-            System.out.printf("%d ", matrix[row--][col++]);
-        }
-        System.out.println();
-    }
-}
-
-
-
-Find path from one node to another node in a binary tree
-node has parent pointer
-
-class PathToNode {
-    public List<Integer> findPath(TreeNodeWithParent node1, TreeNodeWithParent node2) {
-        List<Integer> result = new ArrayList<>();
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
-        if (node1 == null || node2 == null) {
-            return result;
-        }
-        TreeNodeWithParent mover1 = node1;
-        TreeNodeWithParent mover2 = node2;
-        int len1 = findLength(mover1);
-        int len2 = findLength(mover2);
-        while (len1 > len2) {
-            left.add(mover1.val);
-            mover1 = mover1.parent;
-            len1--;
-        }
-        while (len2 > len1) {
-            right.add(mover2.val);
-            mover2 = mover2.parent;
-            len2--;
-        }
-        while (mover1 != mover2) {
-            left.add(mover1.val);
-            right.add(mover2.val);
-            mover1 = mover1.parent;
-            mover2 = mover2.parent;
-        }
-        left.add(mover1.val);
-        result.addAll(left);
-        for (int i = right.size() - 1; i >= 0; i--) {
-            result.add(right.get(i));
-        }
-        return result;
-    }
-
-    private int findLength(TreeNodeWithParent node) {
-        int len = 0;
-        while (node != null) {
-            node = node.parent;
-            len++;
-        }
-        return len;
-    }
-}
-
-interval [startTime, stoptime)   ----integral  time stamps. more info on 1point3acres.com
-给这样的一串区间 I1, I2......In  
-找出 一个 time stamp  出现在interval的次数最多。
-startTime <= t< stopTime 代表这个数在区间里面出现过。
-
-example：  [1,3),  [2, 7),   [4,  8),   [5, 9)
-5和6各出现了三次， 所以答案返回5，6。
-
-class MaxOverpal {
-    public List<Integer> findMaxOverLapTime (Interval[] intervals) {
-        List<Integer> result = new ArrayList<>();
-        if (intervals.length == 0) {
-            return result;
-        }
-        List<Point> points = new ArrayList<>();
-        for (Interval interval : intervals) {
-            points.add(new Point(interval.start, true));
-            points.add(new Point(interval.end, false));
-        }
-        Collections.sort(points, new Comparator<Point>() {
-            @Override
-            public int compare(Point p1, Point p2) {
-                if (p1.time == p2.time) {
-                    return p1.isStart ? 1 : 0;
-                }
-                return p1.time - p2.time;
-            }
-        });
-        int max = 0;
-        int number = 0;
-        int start = 0;
-        int end = 0;
-        for (Point point : points) {
-            if (point.isStart) {
-                number++;
-                if (number > max) {
-                    max = number;
-                    start = point.time;
-                    end = point.time;
-                }
-            }
-            else {
-                if (number == max) {
-                    end = point.time;
-                }
-                number--;
-            }
-        }
-        for (int i = start; i < end; i++) {
-            result.add(i);
-        }
-        return result;
-    }
-
-    private class Point {
-        public int time;
-        public boolean isStart;
-        public Point(int time, boolean isStart) {
-            this.time = time;
-            this.isStart = isStart;
-        }
-    }
-}
-
-Remove comments
-
-class RemoveComment {
-    public String remove(String code) {
-        StringBuilder result = new StringBuilder();
-        boolean singleLine = false;
-        boolean multiLine = false;
-        for (int i = 0; i < code.length(); i++) {
-            if (singleLine && code.charAt(i) == '\n') {
-                singleLine = false;
-            }
-            else if (multiLine && code.charAt(i) == '*' && code.charAt(i + 1) == '/') {
-                multiLine = false;
-                i++;
-            }
-            else if (multiLine || singleLine) {
-                continue;
-            }
-            else if (code.charAt(i) == '/' && code.charAt(i + 1) == '/') {
-                singleLine = true;
-                i++;
-            }
-            else if (code.charAt(i) == '/' && code.charAt(i + 1) == '*') {
-                multiLine = true;
-                i++;
-            }
-            else {
-                result.append(code.charAt(i));
-            }
-        }
-        return result.toString();
-    }
-}
+ class Contact {
+ public List<List<Integer>> contactGroup(HashMap<Integer, String[]> contact) {
+ HashMap<String, Integer> emailToPerson = new HashMap<>();
+ HashMap<Integer, Integer> personToRoot = new HashMap<>();
+ for (int person : contact.keySet()) {
+ personToRoot.put(person, person);
+ int curRoot = person;
+ for (String email : contact.get(person)) {
+ if (!emailToPerson.containsKey(email)) {
+ emailToPerson.put(email, person);
+ continue;
+ }
+ int newRoot = emailToPerson.get(email);
+ newRoot = findRoot(personToRoot, newRoot);
+ if (newRoot != curRoot) {
+ personToRoot.put(curRoot, newRoot);
+ curRoot = newRoot;
+ }
+ }
+ }
+ HashMap<Integer, List<Integer>> groups = new HashMap<>();
+ List<List<Integer>> result = new ArrayList<>();
+ for (int person : personToRoot.keySet()) {
+ int root = findRoot(personToRoot, person);
+ if (!groups.containsKey(root)) {
+ groups.put(root, new ArrayList<Integer>());
+ }
+ groups.get(root).add(person);
+ }
+ for (int group : groups.keySet()) {
+ result.add(groups.get(group));
+ }
+ return result;
+ }
+ private int findRoot(HashMap<Integer, Integer> personToRoot, int root) {
+ while (personToRoot.get(root) != root) {
+ root = personToRoot.get(root);
+ }
+ return root;
+ }
+ }
+
+
+ （2） Behaviour Questions.
+ light coding写了Clone Graph
+ （3） 单链表反转
+ 大数相乘，写了brute force，跑test case花了太久时间，没来的及写优化，简单聊了聊Divide Conquer的办法
+
+ （4）TinyURL，这个题准备到了，后来HR说这一轮答的最惨，MB被烙印黑惨了
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=192328&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+
+
+
+ 83. first bad version 以及变种。 变种是如果不知道一共有多少版本的情况下应该怎么找。
+
+
+ // Unknow numbr of version
+
+ public int badVersion {
+ int prev = 0;
+ int cur = 0;
+ while (isBadVersioin(cur)) {
+ prev = cur;
+ cur = cur * cur;
+ }
+ int start = prev;
+ int end = cur;
+ while (start + 1 < end) {
+ int mid = start + (end - start) / 2;
+ if (isBadVersioin(mid)) {
+ end = mid;
+ }
+ else {
+ start = mid;
+ }
+ }
+ if (isBadVersioin(start)) {
+ return start;
+ }
+ return end;
+ }
+
+ 84. Min Queue, 跟Min Stack类似， 实现一个Queue， 然后O（1）复杂度获得这个Queue里最小的元素。
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=193703&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+ #Min Queue
+ //Use queue to save the minimum number
+ // Every time add a new number, traverse the queue, remove the number
+ // bigger than it, so in the deque there will leave the numbers that smaller than it
+ // add this number to the end of the deque
+ // by doing this, the minimum number will always at the head of the deque
+ 'Time complexity of offer : O(len), space complexity: O(n)'
+
+ class MinQueue {
+ private Queue<Integer> queue = new LinkedList<>();
+ private Deque<Integer> min = new ArrayDeque<>();
+ public void offer(int val) {
+ while (!min.isEmpty() && min.peekLast() > val) {
+ min.pollLast();
+ }
+ queue.offer(val);
+ min.offer(val);
+ }
+ public int poll() {
+ int result = queue.poll();
+ if (result == min.peek()) {
+ min.poll();
+ }
+ return result;
+ }
+ public int getMin() {
+ return min.peek();
+ }
+ }
+
+ 85. Tri-node的题
+ 求String B是不是String A的substring
+ 找sorted array中的某个数，用divide & conquer做
+ 一道多个pc之间发送和请求数据的设计题.
+ http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=193545&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
+
+
+
+ 87. 第一题：
+
+ 3
+ /
+ 1
+ \
+ 2
+ 一棵树，返回一个list的头结点：
+ 1《——》2《——》3（一三相连）
+ 意思是返回一个递增list，1的right是2，left是3， 2的left是1，right是3,3的left是2，right是 1.
+ 我用inorder获得递增序列然后设置left与right的node。返回1这个结点。. from: 1point3acres.com/bbs
+ follow up如何不先获得序列，直接在traverse的时候获得结果。follow up没回答出来。
+
+ Tree To Double linked list:
+
+ class TreeToDoubleLinkedList {
+ public DoubleLinkedList toDoubleLinkedList(TreeNode root) {
+ if (root == null) {
+ return null;
+ }
+ Stack<TreeNode> inorder = new Stack<>();
+ DoubleLinkedList fakeHead = new DoubleLinkedList(0);
+ DoubleLinkedList previous = fakeHead;
+ toLeft(inorder, root);
+ while (!inorder.isEmpty()) {
+ TreeNode node = inorder.pop();
+ DoubleLinkedList curNode = new DoubleLinkedList(node.val);
+ curNode.pre = previous;
+ previous.next = curNode;
+ previous = curNode;
+ if (node.right != null) {
+ toLeft(inorder, node.right);
+ }
+ }
+ DoubleLinkedList head = fakeHead.next;
+ head.pre = previous;
+ previous.next = head;
+ return head;
+ }
+
+ private void toLeft(Stack<TreeNode> inorder, TreeNode root) {
+ while (root != null) {
+ inorder.push(root);
+ root = root.left;
+ }
+ }
+ }
+
+ class DoubleLinkedList {
+ DoubleLinkedList pre;
+ DoubleLinkedList next;
+ int val;
+ public DoubleLinkedList(int val) {
+ this.val = val;
+ }
+ }
+
+ #add operation
+ class AddOperator {
+ public List<String> addOperator(String number) {
+ List<String> result = new ArrayList<>();
+ helper(result, 0, "", number);
+ return result;
+ }
+
+ private void helper(List<String> result, int pos, String path, String number) {
+ if (pos == number.length()) {
+ if (path.charAt(0) == '+') {
+ result.add(path.substring(1));
+ }
+ else {
+ result.add(path);
+ }
+ return;
+ }
+ for (int i = pos; i < number.length(); i++) {
+ if (i != pos && number.charAt(pos) == '0') {
+ return;
+ }
+ String num = number.substring(pos, i + 1);
+ helper(result, i + 1, path + "+" + num, number);
+ helper(result, i + 1, path + "-" + num, number);
+ }
+ }
+ }
+
+ class MaxNumberStream {
+ private int cap;
+ Deque<Integer> deque;
+ Queue<Integer> queue;
+ public MaxNumberStream(int k) {
+ this.cap = k;
+ this.deque = new ArrayDeque<>();
+ this.queue = new LinkedList<>();
+ }
+ public void add(int x) {
+ while (queue.size() >= cap) {
+ int temp = queue.poll();
+ if (temp == deque.peek()) {
+ deque.poll();
+ }
+ }
+ while (!deque.isEmpty() && deque.peekLast() < x) {
+ deque.pollLast();
+ }
+ queue.offer(x);
+ deque.offer(x);
+ }
+
+ public int getMax() {
+ if (!deque.isEmpty()) {
+ return deque.peek();
+ }
+ return -1;
+ }
+ }
+
+ # 给定一个array 返回一个partition point可以返回该index左边的和和右边的和一样，没有就返回-1
+ 往右扫一遍求所有的和,再往左扫,求当前扫过的和,二者相减得左边的和.
+
+ class PartitionSum {
+ public int findPivot(int[] input) {
+ int sum = 0;
+ for (int number : input) {
+ sum += number;
+ }
+ int rightSum = 0;
+ for (int i = input.length - 1; i >= 0; i--) {
+ sum -= input[i];
+ rightSum += input[i];
+ if (rightSum == sum) {
+ return i;
+ }
+ }
+ return -1;
+ }
+ }
+
+ # Sudoku Solver
+
+
+
+ # 给两个file，分别存有key和value，目标就是把相同的key合并在一起输出，比如file1里面有 ben 2， file2里有 ben SB，那就合并成ben 2 SB, 两个file很大，不许用Map
+ 个人觉得第一题的应该是：如果关键字已经排序，就用two pointers搞定；如果关键字是乱序的，那么如果为了节省空间而不允许用hashmap的话，则自己定义一个Trie，
+ Trie的节点存三个值：子节点集合（长度为26的指针数组）、是否为单词结尾的标志位、关键字对应的值。其中关键字对应的值只有在该节点为单词结尾的时候有效。
+ 把第一个文件中的关键字全部加入到Trie中，再把第二个文件中的单词拿到Trie中查找就好了。Trie比hashmap更省空间是因为，Trie合并了大量前缀相同的条目，hashmap做不到这点。
+
+
+ #check if a binary tree is mirrored
+
+ //Recursive way
+ private boolean helper(TreeNode left, TreeNode right) {
+ if ((left == null && right != null) || (left != null && right == null)) {
+ return false;
+ }
+ if (left == null && right == null) {
+ return true;
+ }
+ if (left.val != right.val) {
+ return false;
+ }
+ boolean subResult = helper(left.right, right.left) && helper(left.left, right.right);
+ return subResult;
+ }
+
+ //iterative way
+ public boolean isSymmetric(TreeNode root) {
+ if (root == null) {
+ return true;
+ }
+ Stack<TreeNode> left = new Stack<>();
+ Stack<TreeNode> right = new Stack<>();
+ left.push(root.left);
+ right.push(root.right);
+ while(!left.isEmpty() && !right.isEmpty()) {
+ TreeNode leftTemp = left.pop();
+ TreeNode rightTemp = right.pop();
+ if (leftTemp == null ^ rightTemp == null
+ || (leftTemp != null && rightTemp != null && leftTemp.val != rightTemp.val)) {
+ return false;
+ }
+ if (leftTemp == null && rightTemp == null) {
+ continue;
+ }
+ left.push(leftTemp.left);
+ right.push(rightTemp.right);
+ left.push(leftTemp.right);
+ right.push(rightTemp.left);
+ }
+ return true;
+ }
+ #
+
+ Binary Tree求and操作。(BST and)例如：
+  *                  *                    *
+ /   \              /   \                /    \
+ 1    *   and    *     0  =              *      0
+ /  \          / \                 /  \.
+ 0   1        1   0              1   0
+ Follow up: deepCopy(tree)
+ Follow up2: 如何合并结果中出现的情况？.
+  *
+ /   \    =>      0
+ 0    0
+
+
+ class TreeAnd {
+ public TreeNode and(TreeNode root1, TreeNode root2) {
+ if (isLeaf(root1) && !isLeaf(root2)) {
+ return handleAnd(root1, root2);
+ }
+ if (isLeaf(root2) && !isLeaf(root1)) {
+ return handleAnd(root2, root1);
+ }
+ if (isLeaf(root2) && isLeaf(root1)) {
+ if (root2.val == 0 || root1.val == 0) {
+ return new TreeNode(0);
+ }
+ return new TreeNode(1);
+ }
+ TreeNode root = new TreeNode(2);
+ root.left = and(root1.left, root2.left);
+ root.right = and(root1.right, root2.right);
+ return root;
+ }
+
+ private TreeNode copyTree(TreeNode root) {
+ if (root == null) {
+ return null;
+ }
+ TreeNode copyRoot = new TreeNode(root.val);
+ copyRoot.left = copyTree(root.left);
+ copyRoot.right = copyTree(root.right);
+ return copyRoot;
+ }
+
+ private TreeNode handleAnd(TreeNode leaf, TreeNode root) {
+ if (leaf.val == 0) {
+ return new TreeNode(0);
+ }
+ return copyTree(root);
+ }
+
+ private boolean isLeaf(TreeNode node) {
+ return node.left == null && node.right == null;
+ }
+ }
+
+
+ 输入：一个文件夹
+ 输出：文件夹下面的所有相同文件对
+ // MD5 hash
+ 例子：
+ 给你一个文件夹路径，/foo/bar，要求找出这个文件夹下面的所有相同的文件，比如a和c是相同的，d和e是相同的，就输出(a, c)，(d, e)。
+
+ 我看到路径还以为是Simplify Path呢！心中一阵窃喜，结果怎么发现后面的没见过！好吧，先通过dfs获取所有的文件，然后计算MD5，然后比较是不是一样。
+ . more info on 1point3acres.com
+ follow up1，要是MD5不够强壮怎么办？答：上另一个hash啊！比完一个，再比另一个，两个都一样才认为一样。然后又写了一遍……小哥说能提升么？我说可以啊！第二个hash可以在真正需要的时候再计算，不用每个文件都计算两个hash存起来。然后又写了一遍……
+
+ follow up2，以上代码里最花时间的是哪部分？答：dfs。小哥说再想想，要是文件都是video呢？我醒悟了，说是计算hash的部分。小哥问，怎么提升呢？我想了一会儿说，我们不用给每个文件计算hash 啊！先用size比嘛！绝大部分的文件size都是不一样的嘛。小哥说好，你能把你算法再实现一次吗？…………………………
+
+
+ 第二道题是 给个Tree 不一定是平衡的， 要求 把所有路径排序后  按字符串那样的比较大小方法 找出最小的路径  时间要求线性的。 比如
+ 5
+ /     \
+ 10      3
+ /   \   /
+ 1    7  8
+ 路径有  5 10 1 ； 5 10 7 ； 5 3 8
+ 排序后  1 5 10 ； 5 7 10 ； 3 5 8；
+ 所以按字符串类型排序 为  1 5 10 < 3 5 8 < 5 7 10；
+
+ class FindSmallPath {
+ public List<Integer> find(TreeNode root) {
+ Result result = helper(root);
+ return result.path;
+ }
+
+ private Result helper(TreeNode root) {
+ if (root == null) {
+ Result result = new Result();
+ result.path.add(Integer.MAX_VALUE);
+ return result;
+ }
+ if (root.left == null && root.right == null) {
+ Result result = new Result();
+ result.min = root.val;
+ result.path.add(root.val);
+ return result;
+ }
+ Result left = helper(root.left);
+ Result right = helper(root.right);
+ Result result = new Result();
+ result.path.add(root.val);
+ if (left.min > right.min) {
+ result.path.addAll(right.path);
+ }
+ else {
+ result.path.addAll(left.path);
+ }
+ result.min = Math.min(root.val, Math.min(left.min, right.min));
+ return result;
+ }
+ class Result {
+ public int min = Integer.MAX_VALUE;
+ public List<Integer> path = new ArrayList<>();
+ public Result() {
+ }
+ }
+ }
+
+
+ #Paint House
+ paint house大变种. n houses, k colors. neighboring houses cannot be painted with the same color.
+ NOTICE: neighboring relationship is given by adjacent list which means a house may have multiple neighbors.
+ class PaintHouseGraph {
+ public int paint(int[] cost, HashMap<Integer, List<Integer>> houses) {
+ List<Set<Integer>> groups = new ArrayList<>();
+ Set<Integer> group = new HashSet<>();
+ for (int house : houses.keySet()) {
+ group.add(house);
+ }
+ while (group.size() != 0) {
+ Iterator<Integer> iter = group.iterator();
+ Set<Integer> next = new HashSet<>();
+ while (iter.hasNext()) {
+ int house = iter.next();
+ if (next.contains(house)) {
+ iter.remove();
+ continue;
+ }
+ for (int neighbor : houses.get(house)) {
+ if (!group.contains(neighbor)) {
+ continue;
+ }
+ next.add(neighbor);
+ }
+ }
+ groups.add(group);
+ group = next;
+ }
+ Collections.sort(groups, new Comparator<Set<Integer>>() {
+ @Override public int compare(Set<Integer> set1, Set<Integer> set2) {
+ return set2.size() - set1.size();
+ }
+ });
+ int totalCost = 0;
+ int index = 0;
+ for (Set<Integer> set : groups) {
+ totalCost += set.size() * cost[index++];
+ }
+ return totalCost;
+ }
+ }
+
+
+ 逆序输出一个单链表，要求空间复杂度为O(lgn)，不能修改链表结构（也就是不可以reverse链表，然后再reverse回去）
+ 最后做的大概就是每次走到终点，递归右半段，然后再递归左半段，最后给他画颗递归树证明下复杂度就行了，他也认可了。
+ 不过看起来这个做法相对奇葩一点，他看我画的还想了一会，似乎这不是他原来设想的方案吧，但也确实没毛病。
+ 'Time complexity: O(nlgn) space complexity: O(lgn)'
+ class ReversePrint {
+ public void print(ListNode head) {
+ ListNode mover = head;
+ int length = 0;
+ while (mover != null) {
+ mover = mover.next;
+ length++;
+ }
+ helper(head, length);
+ }
+
+ private void helper(ListNode head, int length) {
+ if (head == null) {
+ return;
+ }
+ if (length == 1) {
+ System.out.println(head.val);
+ return;
+ }
+ int count = 0;
+ ListNode mover = head;
+ while (count < length / 2) {
+ mover = mover.next;
+ count++;
+ }
+ helper(mover, length - length / 2);
+ helper(head, length / 2);
+ }
+ }
+
+ 第二题有点像有序双链表合并，不过给的是两个iterator，让实现一个类，生成下一个.
+ class SortedIterator{
+ public SortedIterator(Iterator a, Iterator b);
+ public boolean hasNext();
+ public int next();
+ }
+
+
+ class SortedIterator {
+ private Pair pairA;
+ private Pair pairB;
+ public SortedIterator(Iterator<Integer> a, Iterator<Integer> b) {
+ if (a.hasNext()) {
+ pairA = new Pair(a.next(), a);
+ }
+ else {
+ pairA = new Pair(null, a);
+ }
+ if (b.hasNext()) {
+ pairB = new Pair(b.next(), b);
+ }
+ else {
+ pairB = new Pair(null, b);
+ }
+ }
+ public boolean hasNext() {
+ return pairA.value != null || pairB.value != null;
+ }
+
+ public int next() {
+ if (pairA.value == null) {
+ return helper(pairB);
+ }
+ else if (pairB.value == null) {
+ return helper(pairA);
+ }
+ Integer result = null;
+ if (pairA.value > pairB.value) {
+ result = helper(pairB);
+ }
+ else {
+ result = helper(pairA);
+ }
+ return result;
+ }
+
+ private Integer helper(Pair pair) {
+ int result = pair.value;
+ if (pair.iterator.hasNext()) {
+ pair.value = pair.iterator.next();
+ }
+ else {
+ pair.value = null;
+ }
+ return result;
+ }
+
+ private class Pair {
+ public Integer value;
+ public Iterator<Integer> iterator;
+ public Pair(Integer val, Iterator<Integer> iterator) {
+ this.value = val;
+ this.iterator = iterator;
+ }
+ }
+ }
+
+ 可以随便交易很多次，可以同时买很多股票，但是一旦卖就要把手里的股票全部卖了，问怎样最大化收益。比如[1, 2,3], 前2天都买，第三天全部卖，收益就是(3-1)+(3-2).
+ stock sell all
+ public int maxProfit(int[] prices) {
+ int max = 0;
+ int profit = 0;
+ for (int i = prices.length - 1; i >= 0; i--) {
+ if (max > prices[i]) {
+ profit += max - prices[i];
+ System.out.println(profit);
+ }
+ else {
+ max = prices[i];
+ }
+ }
+ return profit;
+ }
+
+ 给一个l*w的矩阵，要随机取k个点。一个披着easy题的，蓄水池抽样。到最后也没解释清蓄水池原理。
+ 大叔深深怀疑我的概率问题（其实我也怀疑），给我张白纸就好了- -
+ // Use reversior smaple to do this.
+ // Use a array to store the points we fetch out
+ // For the first k points in matrix, put into array,
+ // For the k + 1 ~ end points,
+ // we creat a random number j which range [0, index]
+ // if this j is smaller than k, then we chooes this point instead the points[j]
+ // Prove the possibility:
+ // For points index after k, if we eventually choose this point, which means after this point,
+ // No point can replace this point in the points array, the random number can be any number but not this point's index
+ // which means their possibility is (index - 1 / index)
+ // So the posibility is: (k / index) * (index / index + 1) * (index + 1 / index + 2)....*(n - 1 / n) = (k / n)
+ // For points index smaller k, if we eventually choose this point,
+ // no points can replace it, so the possibility is (k / k + 1) * (k + 1 / k + 2) * ......* (n - 1 / n) = (k / n)
+ class Sample {
+ public void sample(int[][] input, int k) {
+ Point[] points = new Point[k];
+ Random rand = new Random();
+ int width = input[0].length;
+ int height = input.length;
+ int index = 0;
+ while (index < width * height && index < k) {
+ points[index] = new Point(index / width, index % width);
+ input[index / width][index & width] = 1;
+ index++;
+ }
+ if (index < k) {
+ return;
+ }
+ index = k;
+ while (index < width * height) {
+ int newIndex = rand.nextInt(index);
+ if (newIndex < k) {
+ input[points[newIndex].x][points[newIndex].y] = 0;
+ int row = index / width;
+ int col = index % width;
+ input[row][col] = 1;
+ points[newIndex] = new Point(row, col);
+ }
+ index++;
+ }
+ }
+ }
+
+
+ 就是lc next permutation的反着来的previous permutation，做法一样
+ // The idea is that find the last two adjacent number that the first one is beigger than the second one
+ // Then the question come to that find the previous permutation of the nums[first-end]
+ // Then sequence after second must be acending, so the previous permutation must comes from
+ // the number that is samller than the nums[first] at the position first with a decending sequence after it
+ // Exp: 5, 4, 1, 2, 3 previous -> 5, 3, 4, 2, 1
+ // the num[first] = 4, nums[second] = 1, nums[smaller] = 3
+ class PreviousPermutation {
+ public int[] previous(int[] input) {
+ if (input.length <= 1) {
+ return input;
+ }
+ int first = 0;
+ int second = 0;
+ for (int i = input.length - 1; i >= 1; i--) {
+ if (input[i] < input[i - 1]) {
+ first = i - 1;
+ second = i;
+ break;
+ }
+ }
+ int smaller = 0;
+ for (int i = input.length - 1; i >= second; i--) {
+ if (input[i] < input[first]) {
+ smaller = i;
+ break;
+ }
+ }
+ swap(input, first, smaller);
+ reverse(input, second, input.length - 1);
+ return input;
+ }
+ private void swap(int[] input, int index1, int index2) {
+ int temp = input[index1];
+ input[index1] = input[index2];
+ input[index2] = temp;
+ }
+ private void reverse(int[] input, int start, int end) {
+ while (start <= end) {
+ swap(input, start++, end--);
+ }
+ }
+ }
+
+ longest palindrome
+
+ 两个词的最短距离变体，follow up词很多怎么省空间
+
+ 一个矩阵斜着走的list例子如下：
+ 123
+ 456
+ 789
+ 输出：{1}{42}{753}{86}{9}
+
+ class WalkMatrix {
+ public void print(int[][] matrix) {
+ int height = matrix.length;
+ for (int i = 0; i < matrix.length; i++) {
+ helper(i, 0, matrix);
+ }
+ for (int i = 1; i < matrix[0].length; i++) {
+ helper(height - 1, i, matrix);
+ }
+ }
+
+ private void helper(int row, int col, int[][] matrix) {
+ while (row >= 0 && col < matrix[0].length) {
+ System.out.printf("%d ", matrix[row--][col++]);
+ }
+ System.out.println();
+ }
+ }
+
+
+
+ Find path from one node to another node in a binary tree
+ node has parent pointer
+
+ class PathToNode {
+ public List<Integer> findPath(TreeNodeWithParent node1, TreeNodeWithParent node2) {
+ List<Integer> result = new ArrayList<>();
+ List<Integer> left = new ArrayList<>();
+ List<Integer> right = new ArrayList<>();
+ if (node1 == null || node2 == null) {
+ return result;
+ }
+ TreeNodeWithParent mover1 = node1;
+ TreeNodeWithParent mover2 = node2;
+ int len1 = findLength(mover1);
+ int len2 = findLength(mover2);
+ while (len1 > len2) {
+ left.add(mover1.val);
+ mover1 = mover1.parent;
+ len1--;
+ }
+ while (len2 > len1) {
+ right.add(mover2.val);
+ mover2 = mover2.parent;
+ len2--;
+ }
+ while (mover1 != mover2) {
+ left.add(mover1.val);
+ right.add(mover2.val);
+ mover1 = mover1.parent;
+ mover2 = mover2.parent;
+ }
+ left.add(mover1.val);
+ result.addAll(left);
+ for (int i = right.size() - 1; i >= 0; i--) {
+ result.add(right.get(i));
+ }
+ return result;
+ }
+
+ private int findLength(TreeNodeWithParent node) {
+ int len = 0;
+ while (node != null) {
+ node = node.parent;
+ len++;
+ }
+ return len;
+ }
+ }
+
+ interval [startTime, stoptime)   ----integral  time stamps. more info on 1point3acres.com
+ 给这样的一串区间 I1, I2......In
+ 找出 一个 time stamp  出现在interval的次数最多。
+ startTime <= t< stopTime 代表这个数在区间里面出现过。
+
+ example：  [1,3),  [2, 7),   [4,  8),   [5, 9)
+ 5和6各出现了三次， 所以答案返回5，6。
+
+ class MaxOverpal {
+ public List<Integer> findMaxOverLapTime (Interval[] intervals) {
+ List<Integer> result = new ArrayList<>();
+ if (intervals.length == 0) {
+ return result;
+ }
+ List<Point> points = new ArrayList<>();
+ for (Interval interval : intervals) {
+ points.add(new Point(interval.start, true));
+ points.add(new Point(interval.end, false));
+ }
+ Collections.sort(points, new Comparator<Point>() {
+ @Override public int compare(Point p1, Point p2) {
+ if (p1.time == p2.time) {
+ return p1.isStart ? 1 : 0;
+ }
+ return p1.time - p2.time;
+ }
+ });
+ int max = 0;
+ int number = 0;
+ int start = 0;
+ int end = 0;
+ for (Point point : points) {
+ if (point.isStart) {
+ number++;
+ if (number > max) {
+ max = number;
+ start = point.time;
+ end = point.time;
+ }
+ }
+ else {
+ if (number == max) {
+ end = point.time;
+ }
+ number--;
+ }
+ }
+ for (int i = start; i < end; i++) {
+ result.add(i);
+ }
+ return result;
+ }
+
+ private class Point {
+ public int time;
+ public boolean isStart;
+ public Point(int time, boolean isStart) {
+ this.time = time;
+ this.isStart = isStart;
+ }
+ }
+ }
+
+ Remove comments
+
+ class RemoveComment {
+ public String remove(String code) {
+ StringBuilder result = new StringBuilder();
+ boolean singleLine = false;
+ boolean multiLine = false;
+ for (int i = 0; i < code.length(); i++) {
+ if (singleLine && code.charAt(i) == '\n') {
+ singleLine = false;
+ }
+ else if (multiLine && code.charAt(i) == '*' && code.charAt(i + 1) == '/') {
+ multiLine = false;
+ i++;
+ }
+ else if (multiLine || singleLine) {
+ continue;
+ }
+ else if (code.charAt(i) == '/' && code.charAt(i + 1) == '/') {
+ singleLine = true;
+ i++;
+ }
+ else if (code.charAt(i) == '/' && code.charAt(i + 1) == '*') {
+ multiLine = true;
+ i++;
+ }
+ else {
+ result.append(code.charAt(i));
+ }
+ }
+ return result.toString();
+ }
+ }
 
  keyValueStore 有四个method，add(key, value), remove(key), get(key), lastestKey() implement keyValueStore
-前三个就和hashmap一样，最后一个返回最近访问的key
-
-class KeyValueStore {
-    private HashMap<Integer, DoubleLinkList> keyToNode;
-    private DoubleLinkList head;
-    private DoubleLinkList tail;
-    public KeyValueStore() {
-        this.keyToNode = new HashMap<>();
-        this.head = new DoubleLinkList(0, 0);
-        this.tail = new DoubleLinkList(0, 0);
-        this.head.next = tail;
-        this.tail.prev = head;
-    }
-
-    public void add(int key, int value) {
-        if (keyToNode.containsKey(key)) {
-            DoubleLinkList node = keyToNode.get(key);
-            node.value = value;
-            deleteNode(node);
-            addToHead(node);
-        }
-        else {
-            DoubleLinkList node = new DoubleLinkList(key, value);
-            keyToNode.put(key, node);
-            addToHead(node);
-        }
-    }
-
-    public boolean remove(int key) {
-        if (!keyToNode.containsKey(key)) {
-            return false;
-        }
-        DoubleLinkList node = keyToNode.get(key);
-        keyToNode.remove(key);
-        deleteNode(node);
-        return true;
-    }
-
-    public Integer get(int key) {
-        if (!keyToNode.containsKey(key)) {
-            return null;
-        }
-        DoubleLinkList node = keyToNode.get(key);
-        deleteNode(node);
-        addToHead(node);
-        return node.value;
-    }
-
-    public Integer latestKey() {
-        if (head.next != tail) {
-            return head.next.value;
-        }
-        return null;
-    }
-
-    private void addToHead(DoubleLinkList node) {
-        node.next = head.next;
-        head.next.prev = node;
-        head.next = node;
-        node.prev = head;
-    }
-
-    private void deleteNode(DoubleLinkList node) {
-        node.next.prev = node.prev;
-        node.prev.next = node.next;
-        node.next = null;
-        node.prev = null;
-    }
-
-    class DoubleLinkList {
-        public int key;
-        public int value;
-        public DoubleLinkList next;
-        public DoubleLinkList prev;
-        public DoubleLinkList(int key, int value) {
-            this.key = key;
-            this.value = value;
-            this.next = null;
-            this.prev = null;
-        }
-    }
-}
-
-
-这个稍微难， 说有一堆task，每个有不同时间完成， 然后有一堆worker， 说如何分配 task to worker，完成时间最短， task是独立的。. 涓€浜�-涓夊垎-鍦帮紝鐙鍙戝竷
-看起来像背包， DP 
-task：  2，2，3，7， 1
-worker： 2
-
-解（2，2，3） （1， 7）
-
-
-
-Island Shape
-class IslandShape {
-    private static int[] X = {0, 0, 1, -1};
-    private static int[] Y = {1, -1, 0, 0};
-    public int uniqueShape(int[][] matrix) {
-        Set<Long> shapes = new HashSet<>();
-        for (int row = 0; row < matrix.length; row++) {
-            for (int col = 0; col < matrix[0].length; col++) {
-                if (matrix[row][col] == 1) {
-                    Long shape = explore(matrix, row, col);
-                    if (!shapes.contains(shape)) {
-                        shapes.add(shape);
-                    }
-                }
-            }
-        }
-        return shapes.size();
-    }
-
-    private long explore(int[][] matrix, int row, int col) {
-        long shape = 0;
-        Queue<int[]> queue = new LinkedList<>();
-        queue.offer(new int[]{row, col});
-        matrix[row][col] = 2;
-        while (!queue.isEmpty()) {
-            int[] point = queue.poll();
-            for (int k = 0; k < 4; k++) {
-                int[] next = new int[]{point[0] + X[k], point[1] + Y[k]};
-                if (next[0] < 0 || next[0] >= matrix.length || next[1] < 0 || next[1] >= matrix[0].length
-                        || matrix[next[0]][next[1]] != 1) {
-                    continue;
-                }
-                shape = shape * 10 + k;
-                queue.offer(next);
-                matrix[next[0]][next[1]] = 2;
-            }
-        }
-        return shape;
-    }
-}
-
-
-几何算法问题。如果给你一堆的矩形， 求重合矩形重合最多的坐标位置。我上过一个算法课，大概思路就是做一个二维的meeting room II.
-
-class Overlap {
-    public Square findMostOverlap (Square[] squares) {
-        HashMap<Integer, List<Pair>> indexToLine = new HashMap<>();
-        for (Square square : squares) {
-            if (!indexToLine.containsKey(square.x0)) {
-                indexToLine.put(square.x0, new ArrayList<Pair>());
-            }
-            indexToLine.get(square.x0).add(new Pair(square.y0, true, true));
-            indexToLine.get(square.x0).add(new Pair(square.y1, false, true));
-            if (!indexToLine.containsKey(square.x1)) {
-                indexToLine.put(square.x1, new ArrayList<Pair>());
-            }
-            indexToLine.get(square.x1).add(new Pair(square.y0, true, false));
-            indexToLine.get(square.x1).add(new Pair(square.y1, false, false));
-        }
-        for (Square square : squares) {
-            for (int index  = square.x0 + 1; index < square.x1; index++) {
-                if (indexToLine.containsKey(index)) {
-                    indexToLine.get(index).add(new Pair(square.y0, true, null));
-                    indexToLine.get(index).add(new Pair(square.y1, false, null));
-                }
-            }
-        }
-        for (int index : indexToLine.keySet()) {
-            Collections.sort(indexToLine.get(index), new Comparator<Pair>() {
-                @Override
-                public int compare(Pair p1, Pair p2) {
-                    if (p1.index == p2.index) {
-                        if (p2.isUp) {
-                            return -1;
-                        }
-                        else if (p1.isUp) {
-                            return 1;
-                        }
-                        return 0;
-                    }
-                    return p2.index - p1.index;
-                }
-            });
-        }
-
-        Square overlap = new Square(0, 0, 0, 0);
-        int maxOverlap = 0;
-        for (int index : indexToLine.keySet()) {
-            List<Pair> line = indexToLine.get(index);
-            int right = 0;
-            int left = 0;
-            for (Pair pair : line) {
-                if (pair.isUp) {
-                    if (pair.isLeft == null || (pair.isLeft != null && pair.isLeft)) {
-                        right++;
-                        if (right > maxOverlap) {
-                            overlap.x0 = index;
-                            overlap.y0 = pair.index;
-                            maxOverlap = right;
-                        }
-                    }
-                    if (pair.isLeft == null || (pair.isLeft != null && !pair.isLeft)) {
-                        left++;
-                    }
-                }
-                else {
-                    if (pair.isLeft == null || (pair.isLeft != null && !pair.isLeft)) {
-                        if (left == maxOverlap) {
-                            overlap.x1 = index;
-                            overlap.y1 = pair.index;
-                        }
-                        left--;
-                    }
-                    if (pair.isLeft == null || (pair.isLeft != null && pair.isLeft)) {
-                        right--;
-                    }
-                }
-            }
-        }
-        return overlap;
-    }
-    class Pair {
-        public Boolean isUp;
-        public Boolean isLeft;
-        public int index;
-        public Pair(int index, Boolean isUp, Boolean isLeft) {
-            this.index = index;
-            this.isUp= isUp;
-            this.isLeft = isLeft;
-        }
-
-        @Override
-        public String toString() {
-            return "index: " + Integer.toString(index) + ", isUp: " + isUp + ", isLeft: " + isLeft + "\n";
-        }
-    }
-}
-class Square {
-    int x0;
-    int x1;
-    int y0;
-    int y1;
-    public Square (int x0, int x1, int y0, int y1) {
-        this.x0 = x0;
-        this.x1 = x1;
-        this.y0 = y0;
-        this.y1 = y1;
-    }
-    @Override
-    public String toString() {
-        return "x0: " + Integer.toString(x0) + "\n" +
-                "y0: " + Integer.toString(y0) + "\n" +
-                "x1: " + Integer.toString(x1) + "\n" +
-                "y1: " + Integer.toString(y1) + "\n";
-    }
-}
-
-
-input是一个array，要求生成一个树，有以下三个属性
-1）二叉树
-2）Min Heap，表示node的每个子节点的值都大于或者等于这个node的值
-3）做inorder traversal的时候要保持array的顺序
-
-举个例子input是 5, 2, 10, 7
-       2
-      / \
-    5   7
-        /
-        10
-
-follow up 是一个addNode的函数，输入是root node，还有个int value，保持原有的属性，返回root
-// Find the smallest value in the array and make it as root
-// left part as left branch, right part as right brandh
-'Time complexity: O(nlgn), Space complexity: O(lgn)'
-class BuildMinHeap {
-    public TreeNode build(int[] input) {
-        return helper(input, 0, input.length - 1);
-    }
-
-    public TreeNode helper(int[] input, int start, int end) {
-        if (start > end) {
-            return null;
-        }
-        int index = -1;
-        int val = Integer.MAX_VALUE;
-        for (int i = start; i <= end; i++) {
-            if (input[i] <= val) {
-                index = i;
-                val = input[i];
-            }
-        }
-        TreeNode root = new TreeNode(val);
-        root.left = helper(input, start, index - 1);
-        root.right = helper(input, index + 1, end);
-        return root;
-    }
-    // check the root's value, if it is bigger than input
-    // we should input it as current node's parent 
-    // to maintain the inorder traverse order, the current node
-    // should be the left child of input node
-    // else go into the right child
-    'Time complexity: O(lgn)'
-    public TreeNode addOne(TreeNode root, int value) {
-        TreeNode mover = root;
-        TreeNode prev = null;
-        while (true) {
-            if (value > mover.val) {
-                if (mover.right == null) {
-                    TreeNode node = new TreeNode(value);
-                    mover.right = node;
-                    break;
-                }
-                prev = mover;
-                mover = mover.right;
-            }
-            else {
-                TreeNode node = new TreeNode(value);
-                if (prev != null) {
-                    prev.right = node;
-                }
-                else {
-                    root = node;
-                }
-                node.left = mover;
-                break;
-            }
-        }
-        return root;
-    }
-}
-
-
-Stock with charge/fee:
-// maintain a veriable which is the profit we make 
-// when the prices is continuously acending,
-// when today's prices is lower than yesterday,
-// which means we finish one transaction, 
-// calculate the final profit with charge, if > 0 add to result
-public int maxProfitWithCharge(int[] prices, int charge) {
-    int profit = 0;
-    int localProfit = 0;
-    boolean yesterdaySold = false;
-    for (int i = 1; i < prices.length; i++) {
-        if (prices[i] > prices[i - 1]) {
-            localProfit += prices[i] - prices[i - 1];
-            if (!yesterdaySold) {
-                localProfit -= charge;
-            }
-            yesterdaySold = true;
-        }
-        else if (yesterdaySold) {
-            profit += localProfit > 0 ? localProfit : 0;
-            localProfit = 0;
-            yesterdaySold = false;
-        }
-    }
-    if (localProfit > 0) {
-        profit += localProfit;
-    }
-    return profit;
-}
-
-
-find if a tree is subtree of another:
-
-'Time complexity: O(nk) -k nodes in subtree'
-
-class FindSubTree {
-    public boolean isValid(TreeNode root, TreeNode node) {
-        if (root == null && node == null) {
-            return true;
-        }
-        boolean result = false;
-        if (root != null && node != null) {
-            if (root.val == node.val) {
-                result = helper(root, node);
-            }
-            if (!result) {
-                result = isValid(root.right, node);
-            }
-            if (!result) {
-                result = isValid(root.left, node);
-            }
-        }
-        return result;
-    }
-
-    private boolean helper(TreeNode root, TreeNode node) {
-        if (root == null && node == null) {
-            return true;
-        }
-        if ((root == null && node != null) || (root != null && node == null)) {
-            return false;
-        }
-        if (root.val == node.val) {
-            return helper(root.right, node.right) && helper(root.left, node.left);
-        }
-        return false;
-    }
-}
-
-write/lock
-
-
-1. remove duplicate characters in a string. ex "abcba", return "c". 
-
-class RemoveDuplicate {
-    public String remove(String input) {
-        HashMap<Character, Integer> charToIndex = new HashMap<>();
-        Character[] result = new Character[input.length()];
-        for (int i = 0; i < input.length(); i++) {
-            char letter = input.charAt(i);
-            if (charToIndex.containsKey(letter)) {
-                int index = charToIndex.get(letter);
-                if (index >= 0) {
-                    result[index] = null;
-                    charToIndex.put(letter, -1);
-                }
-            }
-            else {
-                result[i] = letter;
-                charToIndex.put(letter, i);
-            }
-        }
-        StringBuilder output = new StringBuilder();
-        for (Character letter : result) {
-            if (letter != null) {
-                output.append(letter);
-            }
-        }
-        return output.toString();
-    }
-}
-
-
-2. 在一个post里面找出所有的name分别出现的位置, post会很长。 unordered_map<string, vector<int>>   findPosition (vector<string> names, string post) {}. names如果很多很多怎么办。
-
-// Use TrieTree, 
-// word.length = k, post.length = n
-'Time complexity: O(nk), space complexity: total number of the node in trie tree'
-
-class FindIndex {
-    TrieNode root = new TrieNode();
-    public HashMap<String, List<Integer>> find(List<String> input, String post) {
-        HashMap<String, List<Integer>> result = new HashMap<>();
-        if (input.size() == 0) {
-            return result;
-        }
-        for (String word : input) {
-            insert(word);
-        }
-        for (int i = 0; i < post.length(); i++) {
-            if (i == 3) {
-                System.out.print("s");
-            }
-            List<String> words = search(post, i);
-            for (String word : words) {
-                if (!result.containsKey(word)) {
-                    result.put(word, new ArrayList<>());
-                }
-                result.get(word).add(i);
-            }
-        }
-        return result;
-    }
-
-    private void insert(String word) {
-        TrieNode mover = root;
-        for (char letter : word.toCharArray()) {
-            if (mover.children[letter - 'a'] == null) {
-                mover.children[letter - 'a'] = new TrieNode();
-            }
-            mover = mover.children[letter - 'a'];
-        }
-        mover.isEnd = true;
-    }
-    private List<String> search(String post, int index) {
-        List<String> result = new ArrayList<>();
-        StringBuilder word = new StringBuilder();
-        TrieNode mover = root;
-        while (index < post.length()) {
-            if (mover.isEnd) {
-                result.add(word.toString());
-            }
-            char letter = post.charAt(index);
-            if (mover.children[letter - 'a'] == null) {
-                return result;
-            }
-            mover = mover.children[letter - 'a'];
-            word.append(letter);
-            index++;
-        }
-        if (mover.isEnd) {
-            result.add(word.toString());
-        }
-        return result;
-    }
-}
-
-矩阵中大小为m的正方形覆盖范围最大值不超过k的值。记得刷过相似的，动态规划，每个cell记一下左上方的所有和，简单解决。
-class MaxSumOfSquareNoLargerThanK {
-    public int sum(int[][] matrix, int m, int k) {
-        if (m > matrix.length || m > matrix[0].length) {
-            return 0;
-        }
-        int maxSum = 0;
-        int[][] sum = new int[matrix.length][matrix[0].length];
-        for (int col = 0; col < matrix[0].length; col++) {
-            int rectSum = 0;
-            for (int row = 0; row < m; row++) {
-                rectSum += matrix[row][col];
-            }
-            sum[0][col] = rectSum;
-            for (int row = 1; row < matrix.length - m + 1; row++) {
-                rectSum += matrix[row + m - 1][col] - matrix[row - 1][col];
-                sum[row][col] = rectSum;
-            }
-        }
-        for (int row = 0; row < matrix.length - m + 1; row++) {
-            int squareSum = 0;
-            for (int col = 0; col < m; col++) {
-                squareSum += sum[row][col];
-            }
-            if (squareSum < k) {
-                maxSum = Math.max(squareSum, maxSum);
-            }
-            for (int col = 1; col < matrix[0].length - m + 1; col++) {
-                squareSum += sum[row][col + m - 1] - sum[row][col - 1];
-                if (squareSum < k) {
-                    maxSum = Math.max(squareSum, maxSum);
-                }
-            }
-        }
-        return maxSum;
-    }
-}
-//--------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------//
-// every cell store the sum of the sub-matrix from 0,0 to this cell.
-// then we can get the sum of square on O(1)
-public int findSum(int[][] matrix, int m, int k) {
-    if (m > matrix.length || m > matrix[0].length) {
-        return 0;
-    }
-    int maxSum = 0;
-    int[][] sum = new int[matrix.length][matrix[0].length];
-    buildSum(sum, matrix);
-    for (int row = m - 1; row < matrix.length; row++) {
-        for (int col = m - 1; col < matrix[0].length; col++) {
-            int curSum = getSum(sum, row - m + 1, col - m + 1, row, col);
-            if (curSum < k) {
-                maxSum = Math.max(maxSum, curSum);
-            }
-        }
-    }
-    return maxSum;
-}
-
-public boolean findSquareEqualsK(int[][] matrix, int k) {
-    int[][] sum = new int[matrix.length][matrix[0].length];
-    buildSum(sum , matrix);
-    for (int row = 0; row < matrix.length; row++) {
-        for (int col = 0; col < matrix[0].length; col++) {
-            int maxLen = Math.min(row, col);
-            if (search(maxLen, sum, row, col, k)) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-private boolean search(int maxLen, int[][] sum, int row, int col, int k) {
-    int start = 0;
-    int end = maxLen;
-    while (start + 1 < end) {
-        int mid = start + (end - start) / 2;
-        int curSum = getSum(sum, row - mid, col - mid, row, col);
-        if (curSum >= k) {
-            end = mid;
-        }
-        else {
-            start = mid;
-        }
-    }
-    if (getSum(sum, row - end, col - end, row, col) == k ||
-            getSum(sum, row - start, col - end, row, col) == k) {
-        return true;
-    }
-    return false;
-}
-
-private int getSum(int[][] sum, int row1, int col1, int row2, int col2) {
-    if (row1 == 0 && col1 == 0) {
-        return sum[row2][col2];
-    }
-    else if (row1 == 0) {
-        return sum[row2][col2] - sum[row2][col1 - 1];
-    }
-    else if (col1 == 0) {
-        return sum[row2][col2] - sum[row1 - 1][col2];
-    }
-    else {
-        return sum[row2][col2] - sum[row1 - 1][col2] - sum[row2][col1 - 1] + sum[row1 - 1][col1 - 1];
-    }
-}   
-
-//--------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------//
-
-
-Find least number of intervals from A that can fully cover B
-For example:
-Given A=[[0,3],[3,4],[4,6],[2,7]] B=[0,6] return 2 since we can use [0,3] [2,7] to cover the B
-Given A=[[0,3],[4,7]] B=[0,6] return 0 since we cannot find any interval combination from A to cover the B
-
-// make sure every time we choose one interval we cover more time
-// every time we chooes one, make the start time as its end time
-// Always choose the interval that whose end time is the biggest
-// and start time is smaller or equal to current start time
-// util we got the end time bigger than input.end
-
-'time complexity: O(nlgn)'
-
-class MinimumCoverInterval {
-    public int findCover(Interval[] intervals, Interval interval) {
-        Arrays.sort(intervals, new Comparator<Interval>() {
-            @Override
-            public int compare(Interval inter1, Interval inter2) {
-                if (inter1.start == inter2.start) {
-                    return inter1.end - inter2.end;
-                }
-                return inter1.start - inter2.start;
-            }
-        });
-        int count = 0;
-        int start = interval.start;
-        int end = -1;
-        int index = 0;
-        while (index < intervals.length && end < interval.end) {
-            if (intervals[index].end <= start) {
-                index++;
-                continue;
-            }
-            if (intervals[index].start > start) {
-                break;
-            }
-            while (index < intervals.length && end < interval.end && intervals[index].start <= start) {
-                end = Math.max(intervals[index].end, end);
-                index++;
-            }
-            if (start != end) {
-                count++;
-                start = end;
-            }
-        }
-        if (end < interval.end) {
-            return 0;
-        }
-        return count;
-    }
-}
-
-find all equivalent pairs
-Given an array A of integers, find the index of values that satisfy A + B =C + D, where A,B,C & D are integers values in the array. Find all combinations of quadruples.
-
-'Time complexity: O(n^2)'
-
-
-class FindPair {
-    public List<List<int[]>> find(int[] input) {
-        HashMap<Integer, Indexs> sumToPair = new HashMap<>();
-        for (int i = 0; i < input.length - 1; i++) {
-            for (int j = i + 1; j < input.length; j++) {
-                int sum = input[i] + input[j];
-                if (!sumToPair.containsKey(sum)) {
-                    sumToPair.put(sum, new Indexs());
-                }
-                int[] newPair = new int[]{i, j};
-                Set<Integer> index = sumToPair.get(sum).index;
-                if (!index.contains(i) && !index.contains(j)) {
-                    sumToPair.get(sum).pairs.add(newPair);
-                    sumToPair.get(sum).index.add(i);
-                    sumToPair.get(sum).index.add(j);
-                }
-            }
-        }
-        List<List<int[]>> result = new ArrayList<>();
-        for (int sum : sumToPair.keySet()) {
-            List<int[]> pairs = sumToPair.get(sum).pairs;
-            if (pairs.size() >= 2) {
-                List<int[]> list = new ArrayList<>();
-                for (int i = 0; i < pairs.size() - 1; i++) {
-                    for (int j = i + 1; j < pairs.size(); j++) {
-                        int[] pair1 = pairs.get(i);
-                        int[] pair2 = pairs.get(j);
-                        list.add(new int[]{input[pair1[0]], input[pair1[1]]});
-                        list.add(new int[]{input[pair2[0]], input[pair2[1]]});
-                    }
-                }
-                if (list.size() != 0) {
-                    result.add(list);
-                }
-            }
-        }
-        return result;
-    }
-    class Indexs{
-        public List<int[]> pairs = new ArrayList<>();
-        public Set<Integer> index = new HashSet<>();
-        public Indexs() {
-
-        }
-    }
-}
-
-input could include ":(" frown or ":)" smileys
-check if the input is parenthese balance
-class CheckBalanced {
-    public boolean check(String message) {
-        int closeParenth = 0;
-        int openParenth = 0;
-        int smileys = 0;
-        int frowns = 0;
-        boolean isPotentialEmotion = false;
-        for (char letter : message.toCharArray()) {
-            if (letter == '(') {
-                if (isPotentialEmotion) {
-                    frowns++;
-                }
-                openParenth++;
-            }
-            else if (letter == ')') {
-                if (isPotentialEmotion) {
-                    smileys++;
-                }
-                closeParenth++;
-            }
-            if (closeParenth > openParenth) {
-                if (closeParenth - smileys > openParenth) {
-                    return false;
-                }
-                closeParenth = openParenth;
-                smileys = smileys - (closeParenth - openParenth);
-            }
-            if (letter == ':') {
-                isPotentialEmotion = true;
-            }
-            else {
-                isPotentialEmotion = false;
-            }
-        }
-        if (openParenth - frowns > closeParenth) {
-            return false;
-        }
-        return true;
-    }
-}
-
-find 2nd mutal friend
-
-class MutalFriend {
-    public List<GraphNode> findMutalFriends(GraphNode me) {
-        Queue<GraphNode> explore = new LinkedList<>();
-        Set<GraphNode> friends = new HashSet<>();
-        HashMap<GraphNode, Integer> mutalToCount = new HashMap<>();
-        int level = 0;
-        explore.offer(me);
-        friends.add(me);
-        while (!explore.isEmpty() && level <= 2) {
-            level++;
-            int size = explore.size();
-            for (int i = 0; i < size; i++) {
-                GraphNode node = explore.poll();
-                for (GraphNode friend : node.friend) {
-                    if (level == 1) {
-                        friends.add(node);
-                        explore.offer(node);
-                        continue;
-                    }
-                    if (friends.contains(friend)) {
-                        continue;
-                    }
-                    if (!mutalToCount.containsKey(friend)) {
-                        mutalToCount.put(friend, 1);
-                    }
-                    else {
-                        mutalToCount.put(friend, mutalToCount.get(friend) + 1);
-                    }
-                }
-
-            }
-        }
-        List<GraphNode> result = new ArrayList<>();
-        for (GraphNode node : mutalToCount.keySet()) {
-            result.add(node);
-        }
-        Collections.sort(result, new NodeComparator(mutalToCount));
-        return result;
-    }
-    class NodeComparator implements Comparator<GraphNode> {
-        private HashMap<GraphNode, Integer> map;
-        public NodeComparator(HashMap<GraphNode, Integer> map) {
-            this.map = map;
-        }
-        @Override
-        public int compare(GraphNode node1, GraphNode node2) {
-            return map.get(node2) - map.get(node1);
-        }
-    }
-}
-
-class GraphNode {
-    String name;
-    List<GraphNode> friend;
-    public GraphNode(String name) {
-        this.name = name;
-        this.friend = new ArrayList<>();
-    }
-}
-
-
-Serialize and deserialized Tree into LinkedList
-class CodeTree {
-    public ListNodeStr serialized(TreeNode root) {
-        ListNodeStr head = helper(root).head;
-        return head;
-    }
-
-    private Pair helper(TreeNode root) {
-        if (root == null) {
-            ListNodeStr node = new ListNodeStr("#");
-            return new Pair(node, node);
-        }
-        ListNodeStr head = new ListNodeStr(Integer.toString(root.val));
-        ListNodeStr tail = head;
-
-        Pair left = helper(root.left);
-        tail.next = left.head;
-        tail = left.tail;
-
-        Pair right = helper(root.right);
-        tail.next = right.head;
-        tail = right.tail;
-
-        return new Pair(head, tail);
-    }
-
-    private ListNodeStr mover;
-    public TreeNode deserialized(ListNodeStr head) {
-        ListNodeStr fakeHead = new ListNodeStr("");
-        fakeHead.next = head;
-        mover = fakeHead;
-        return helper();
-    }
-    private TreeNode helper() {
-        mover = mover.next;
-        if (mover.val.equals("#")) {
-            return null;
-        }
-        TreeNode root = new TreeNode(Integer.parseInt(mover.val));
-        root.left = helper();
-        root.right = helper();
-        return root;
-    }
-
-    class Pair {
-        ListNodeStr head;
-        ListNodeStr tail;
-        public Pair(ListNodeStr h, ListNodeStr t) {
-            this.head = h;
-            this.tail = t;
-        }
-    }
-
-}
-class ListNodeStr {
-    public String val;
-    public ListNodeStr next;
-    public ListNodeStr(String val) {
-        this.val = val;
-    }
-}
-
-
-'######################################################################'
-'######################################################################'
-'##########################---BEHAVIOR QUESTION----####################'
-'######################################################################'
-
-'#Tell me about urself'
-
-My name is Heng Wu. Comes from New York University. 
-
-'#Why facebook'
-
-
-
-'#How do you see yourself in the five years'
-
-
-
-
-#What do u expect to earn from company:
-
-
-#What would u do if u have different opinion with ur colleague:
-
-
-
-＃What is your most challenging project:
-
-
-
-＃Describe a situation where you exceeded expectations/did more than required
-
-
-
-#Which team of product u wanna go?
-
-
-#Have u ever had a impossible prject which has a every short deadline?
-
-
-#Have u ever do sth creative?
-
-
-#Have u ever simplify something?
-Same as my intern project
-
-#What are ur weakness? How do u improve that?
-
-
-
-#What feature of facebook do u like?
-
-
-
-
-My Question:
-1. Have you ever use those algorithm or complex data structure like heap, treeSet in real work?
-
-2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your work progress?
-
-3. What is your favorite part of the fb as an engineer?
-
-4. How often do people move around between teams?
-
-5. How quickly does the company move on ideas.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
+ 前三个就和hashmap一样，最后一个返回最近访问的key
+
+ class KeyValueStore {
+ private HashMap<Integer, DoubleLinkList> keyToNode;
+ private DoubleLinkList head;
+ private DoubleLinkList tail;
+ public KeyValueStore() {
+ this.keyToNode = new HashMap<>();
+ this.head = new DoubleLinkList(0, 0);
+ this.tail = new DoubleLinkList(0, 0);
+ this.head.next = tail;
+ this.tail.prev = head;
+ }
+
+ public void add(int key, int value) {
+ if (keyToNode.containsKey(key)) {
+ DoubleLinkList node = keyToNode.get(key);
+ node.value = value;
+ deleteNode(node);
+ addToHead(node);
+ }
+ else {
+ DoubleLinkList node = new DoubleLinkList(key, value);
+ keyToNode.put(key, node);
+ addToHead(node);
+ }
+ }
+
+ public boolean remove(int key) {
+ if (!keyToNode.containsKey(key)) {
+ return false;
+ }
+ DoubleLinkList node = keyToNode.get(key);
+ keyToNode.remove(key);
+ deleteNode(node);
+ return true;
+ }
+
+ public Integer get(int key) {
+ if (!keyToNode.containsKey(key)) {
+ return null;
+ }
+ DoubleLinkList node = keyToNode.get(key);
+ deleteNode(node);
+ addToHead(node);
+ return node.value;
+ }
+
+ public Integer latestKey() {
+ if (head.next != tail) {
+ return head.next.value;
+ }
+ return null;
+ }
+
+ private void addToHead(DoubleLinkList node) {
+ node.next = head.next;
+ head.next.prev = node;
+ head.next = node;
+ node.prev = head;
+ }
+
+ private void deleteNode(DoubleLinkList node) {
+ node.next.prev = node.prev;
+ node.prev.next = node.next;
+ node.next = null;
+ node.prev = null;
+ }
+
+ class DoubleLinkList {
+ public int key;
+ public int value;
+ public DoubleLinkList next;
+ public DoubleLinkList prev;
+ public DoubleLinkList(int key, int value) {
+ this.key = key;
+ this.value = value;
+ this.next = null;
+ this.prev = null;
+ }
+ }
+ }
+
+
+ 这个稍微难， 说有一堆task，每个有不同时间完成， 然后有一堆worker， 说如何分配 task to worker，完成时间最短， task是独立的。. 涓€浜�-涓夊垎-鍦帮紝鐙鍙戝竷
+ 看起来像背包， DP
+ task：  2，2，3，7， 1
+ worker： 2
+
+ 解（2，2，3） （1， 7）
+
+
+
+ Island Shape
+ class IslandShape {
+ private static int[] X = {0, 0, 1, -1};
+ private static int[] Y = {1, -1, 0, 0};
+ public int uniqueShape(int[][] matrix) {
+ Set<Long> shapes = new HashSet<>();
+ for (int row = 0; row < matrix.length; row++) {
+ for (int col = 0; col < matrix[0].length; col++) {
+ if (matrix[row][col] == 1) {
+ Long shape = explore(matrix, row, col);
+ if (!shapes.contains(shape)) {
+ shapes.add(shape);
+ }
+ }
+ }
+ }
+ return shapes.size();
+ }
+
+ private long explore(int[][] matrix, int row, int col) {
+ long shape = 0;
+ Queue<int[]> queue = new LinkedList<>();
+ queue.offer(new int[]{row, col});
+ matrix[row][col] = 2;
+ while (!queue.isEmpty()) {
+ int[] point = queue.poll();
+ for (int k = 0; k < 4; k++) {
+ int[] next = new int[]{point[0] + X[k], point[1] + Y[k]};
+ if (next[0] < 0 || next[0] >= matrix.length || next[1] < 0 || next[1] >= matrix[0].length
+ || matrix[next[0]][next[1]] != 1) {
+ continue;
+ }
+ shape = shape * 10 + k;
+ queue.offer(next);
+ matrix[next[0]][next[1]] = 2;
+ }
+ }
+ return shape;
+ }
+ }
+
+
+ 几何算法问题。如果给你一堆的矩形， 求重合矩形重合最多的坐标位置。我上过一个算法课，大概思路就是做一个二维的meeting room II.
+
+ class Overlap {
+ public Square findMostOverlap (Square[] squares) {
+ HashMap<Integer, List<Pair>> indexToLine = new HashMap<>();
+ for (Square square : squares) {
+ if (!indexToLine.containsKey(square.x0)) {
+ indexToLine.put(square.x0, new ArrayList<Pair>());
+ }
+ indexToLine.get(square.x0).add(new Pair(square.y0, true, true));
+ indexToLine.get(square.x0).add(new Pair(square.y1, false, true));
+ if (!indexToLine.containsKey(square.x1)) {
+ indexToLine.put(square.x1, new ArrayList<Pair>());
+ }
+ indexToLine.get(square.x1).add(new Pair(square.y0, true, false));
+ indexToLine.get(square.x1).add(new Pair(square.y1, false, false));
+ }
+ for (Square square : squares) {
+ for (int index  = square.x0 + 1; index < square.x1; index++) {
+ if (indexToLine.containsKey(index)) {
+ indexToLine.get(index).add(new Pair(square.y0, true, null));
+ indexToLine.get(index).add(new Pair(square.y1, false, null));
+ }
+ }
+ }
+ for (int index : indexToLine.keySet()) {
+ Collections.sort(indexToLine.get(index), new Comparator<Pair>() {
+ @Override public int compare(Pair p1, Pair p2) {
+ if (p1.index == p2.index) {
+ if (p2.isUp) {
+ return -1;
+ }
+ else if (p1.isUp) {
+ return 1;
+ }
+ return 0;
+ }
+ return p2.index - p1.index;
+ }
+ });
+ }
+
+ Square overlap = new Square(0, 0, 0, 0);
+ int maxOverlap = 0;
+ for (int index : indexToLine.keySet()) {
+ List<Pair> line = indexToLine.get(index);
+ int right = 0;
+ int left = 0;
+ for (Pair pair : line) {
+ if (pair.isUp) {
+ if (pair.isLeft == null || (pair.isLeft != null && pair.isLeft)) {
+ right++;
+ if (right > maxOverlap) {
+ overlap.x0 = index;
+ overlap.y0 = pair.index;
+ maxOverlap = right;
+ }
+ }
+ if (pair.isLeft == null || (pair.isLeft != null && !pair.isLeft)) {
+ left++;
+ }
+ }
+ else {
+ if (pair.isLeft == null || (pair.isLeft != null && !pair.isLeft)) {
+ if (left == maxOverlap) {
+ overlap.x1 = index;
+ overlap.y1 = pair.index;
+ }
+ left--;
+ }
+ if (pair.isLeft == null || (pair.isLeft != null && pair.isLeft)) {
+ right--;
+ }
+ }
+ }
+ }
+ return overlap;
+ }
+ class Pair {
+ public Boolean isUp;
+ public Boolean isLeft;
+ public int index;
+ public Pair(int index, Boolean isUp, Boolean isLeft) {
+ this.index = index;
+ this.isUp= isUp;
+ this.isLeft = isLeft;
+ }
+
+ @Override public String toString() {
+ return "index: " + Integer.toString(index) + ", isUp: " + isUp + ", isLeft: " + isLeft + "\n";
+ }
+ }
+ }
+ class Square {
+ int x0;
+ int x1;
+ int y0;
+ int y1;
+ public Square (int x0, int x1, int y0, int y1) {
+ this.x0 = x0;
+ this.x1 = x1;
+ this.y0 = y0;
+ this.y1 = y1;
+ }
+ @Override public String toString() {
+ return "x0: " + Integer.toString(x0) + "\n" +
+ "y0: " + Integer.toString(y0) + "\n" +
+ "x1: " + Integer.toString(x1) + "\n" +
+ "y1: " + Integer.toString(y1) + "\n";
+ }
+ }
+
+
+ input是一个array，要求生成一个树，有以下三个属性
+ 1）二叉树
+ 2）Min Heap，表示node的每个子节点的值都大于或者等于这个node的值
+ 3）做inorder traversal的时候要保持array的顺序
+
+ 举个例子input是 5, 2, 10, 7
+ 2
+ / \
+ 5   7
+ /
+ 10
+
+ follow up 是一个addNode的函数，输入是root node，还有个int value，保持原有的属性，返回root
+ // Find the smallest value in the array and make it as root
+ // left part as left branch, right part as right brandh
+ 'Time complexity: O(nlgn), Space complexity: O(lgn)'
+ class BuildMinHeap {
+ public TreeNode build(int[] input) {
+ return helper(input, 0, input.length - 1);
+ }
+
+ public TreeNode helper(int[] input, int start, int end) {
+ if (start > end) {
+ return null;
+ }
+ int index = -1;
+ int val = Integer.MAX_VALUE;
+ for (int i = start; i <= end; i++) {
+ if (input[i] <= val) {
+ index = i;
+ val = input[i];
+ }
+ }
+ TreeNode root = new TreeNode(val);
+ root.left = helper(input, start, index - 1);
+ root.right = helper(input, index + 1, end);
+ return root;
+ }
+ // check the root's value, if it is bigger than input
+ // we should input it as current node's parent
+ // to maintain the inorder traverse order, the current node
+ // should be the left child of input node
+ // else go into the right child
+ 'Time complexity: O(lgn)'
+ public TreeNode addOne(TreeNode root, int value) {
+ TreeNode mover = root;
+ TreeNode prev = null;
+ while (true) {
+ if (value > mover.val) {
+ if (mover.right == null) {
+ TreeNode node = new TreeNode(value);
+ mover.right = node;
+ break;
+ }
+ prev = mover;
+ mover = mover.right;
+ }
+ else {
+ TreeNode node = new TreeNode(value);
+ if (prev != null) {
+ prev.right = node;
+ }
+ else {
+ root = node;
+ }
+ node.left = mover;
+ break;
+ }
+ }
+ return root;
+ }
+ }
+
+
+ Stock with charge/fee:
+ // maintain a veriable which is the profit we make
+ // when the prices is continuously acending,
+ // when today's prices is lower than yesterday,
+ // which means we finish one transaction,
+ // calculate the final profit with charge, if > 0 add to result
+ public int maxProfitWithCharge(int[] prices, int charge) {
+ int profit = 0;
+ int localProfit = 0;
+ boolean yesterdaySold = false;
+ for (int i = 1; i < prices.length; i++) {
+ if (prices[i] > prices[i - 1]) {
+ localProfit += prices[i] - prices[i - 1];
+ if (!yesterdaySold) {
+ localProfit -= charge;
+ }
+ yesterdaySold = true;
+ }
+ else if (yesterdaySold) {
+ profit += localProfit > 0 ? localProfit : 0;
+ localProfit = 0;
+ yesterdaySold = false;
+ }
+ }
+ if (localProfit > 0) {
+ profit += localProfit;
+ }
+ return profit;
+ }
+
+
+ find if a tree is subtree of another:
+
+ 'Time complexity: O(nk) -k nodes in subtree'
+
+ class FindSubTree {
+ public boolean isValid(TreeNode root, TreeNode node) {
+ if (root == null && node == null) {
+ return true;
+ }
+ boolean result = false;
+ if (root != null && node != null) {
+ if (root.val == node.val) {
+ result = helper(root, node);
+ }
+ if (!result) {
+ result = isValid(root.right, node);
+ }
+ if (!result) {
+ result = isValid(root.left, node);
+ }
+ }
+ return result;
+ }
+
+ private boolean helper(TreeNode root, TreeNode node) {
+ if (root == null && node == null) {
+ return true;
+ }
+ if ((root == null && node != null) || (root != null && node == null)) {
+ return false;
+ }
+ if (root.val == node.val) {
+ return helper(root.right, node.right) && helper(root.left, node.left);
+ }
+ return false;
+ }
+ }
+
+ write/lock
+
+
+ 1. remove duplicate characters in a string. ex "abcba", return "c".
+
+ class RemoveDuplicate {
+ public String remove(String input) {
+ HashMap<Character, Integer> charToIndex = new HashMap<>();
+ Character[] result = new Character[input.length()];
+ for (int i = 0; i < input.length(); i++) {
+ char letter = input.charAt(i);
+ if (charToIndex.containsKey(letter)) {
+ int index = charToIndex.get(letter);
+ if (index >= 0) {
+ result[index] = null;
+ charToIndex.put(letter, -1);
+ }
+ }
+ else {
+ result[i] = letter;
+ charToIndex.put(letter, i);
+ }
+ }
+ StringBuilder output = new StringBuilder();
+ for (Character letter : result) {
+ if (letter != null) {
+ output.append(letter);
+ }
+ }
+ return output.toString();
+ }
+ }
+
+
+ 2. 在一个post里面找出所有的name分别出现的位置, post会很长。 unordered_map<string, vector<int>>   findPosition (vector<string> names, string post) {}. names如果很多很多怎么办。
+
+ // Use TrieTree,
+ // word.length = k, post.length = n
+ 'Time complexity: O(nk), space complexity: total number of the node in trie tree'
+
+ class FindIndex {
+ TrieNode root = new TrieNode();
+ public HashMap<String, List<Integer>> find(List<String> input, String post) {
+ HashMap<String, List<Integer>> result = new HashMap<>();
+ if (input.size() == 0) {
+ return result;
+ }
+ for (String word : input) {
+ insert(word);
+ }
+ for (int i = 0; i < post.length(); i++) {
+ if (i == 3) {
+ System.out.print("s");
+ }
+ List<String> words = search(post, i);
+ for (String word : words) {
+ if (!result.containsKey(word)) {
+ result.put(word, new ArrayList<>());
+ }
+ result.get(word).add(i);
+ }
+ }
+ return result;
+ }
+
+ private void insert(String word) {
+ TrieNode mover = root;
+ for (char letter : word.toCharArray()) {
+ if (mover.children[letter - 'a'] == null) {
+ mover.children[letter - 'a'] = new TrieNode();
+ }
+ mover = mover.children[letter - 'a'];
+ }
+ mover.isEnd = true;
+ }
+ private List<String> search(String post, int index) {
+ List<String> result = new ArrayList<>();
+ StringBuilder word = new StringBuilder();
+ TrieNode mover = root;
+ while (index < post.length()) {
+ if (mover.isEnd) {
+ result.add(word.toString());
+ }
+ char letter = post.charAt(index);
+ if (mover.children[letter - 'a'] == null) {
+ return result;
+ }
+ mover = mover.children[letter - 'a'];
+ word.append(letter);
+ index++;
+ }
+ if (mover.isEnd) {
+ result.add(word.toString());
+ }
+ return result;
+ }
+ }
+
+ 矩阵中大小为m的正方形覆盖范围最大值不超过k的值。记得刷过相似的，动态规划，每个cell记一下左上方的所有和，简单解决。
+ class MaxSumOfSquareNoLargerThanK {
+ public int sum(int[][] matrix, int m, int k) {
+ if (m > matrix.length || m > matrix[0].length) {
+ return 0;
+ }
+ int maxSum = 0;
+ int[][] sum = new int[matrix.length][matrix[0].length];
+ for (int col = 0; col < matrix[0].length; col++) {
+ int rectSum = 0;
+ for (int row = 0; row < m; row++) {
+ rectSum += matrix[row][col];
+ }
+ sum[0][col] = rectSum;
+ for (int row = 1; row < matrix.length - m + 1; row++) {
+ rectSum += matrix[row + m - 1][col] - matrix[row - 1][col];
+ sum[row][col] = rectSum;
+ }
+ }
+ for (int row = 0; row < matrix.length - m + 1; row++) {
+ int squareSum = 0;
+ for (int col = 0; col < m; col++) {
+ squareSum += sum[row][col];
+ }
+ if (squareSum < k) {
+ maxSum = Math.max(squareSum, maxSum);
+ }
+ for (int col = 1; col < matrix[0].length - m + 1; col++) {
+ squareSum += sum[row][col + m - 1] - sum[row][col - 1];
+ if (squareSum < k) {
+ maxSum = Math.max(squareSum, maxSum);
+ }
+ }
+ }
+ return maxSum;
+ }
+ }
+ //--------------------------------------------------------------------------------------------//
+ //--------------------------------------------------------------------------------------------//
+ //--------------------------------------------------------------------------------------------//
+ // every cell store the sum of the sub-matrix from 0,0 to this cell.
+ // then we can get the sum of square on O(1)
+ public int findSum(int[][] matrix, int m, int k) {
+ if (m > matrix.length || m > matrix[0].length) {
+ return 0;
+ }
+ int maxSum = 0;
+ int[][] sum = new int[matrix.length][matrix[0].length];
+ buildSum(sum, matrix);
+ for (int row = m - 1; row < matrix.length; row++) {
+ for (int col = m - 1; col < matrix[0].length; col++) {
+ int curSum = getSum(sum, row - m + 1, col - m + 1, row, col);
+ if (curSum < k) {
+ maxSum = Math.max(maxSum, curSum);
+ }
+ }
+ }
+ return maxSum;
+ }
+
+ public boolean findSquareEqualsK(int[][] matrix, int k) {
+ int[][] sum = new int[matrix.length][matrix[0].length];
+ buildSum(sum , matrix);
+ for (int row = 0; row < matrix.length; row++) {
+ for (int col = 0; col < matrix[0].length; col++) {
+ int maxLen = Math.min(row, col);
+ if (search(maxLen, sum, row, col, k)) {
+ return true;
+ }
+ }
+ }
+ return false;
+ }
+
+ private boolean search(int maxLen, int[][] sum, int row, int col, int k) {
+ int start = 0;
+ int end = maxLen;
+ while (start + 1 < end) {
+ int mid = start + (end - start) / 2;
+ int curSum = getSum(sum, row - mid, col - mid, row, col);
+ if (curSum >= k) {
+ end = mid;
+ }
+ else {
+ start = mid;
+ }
+ }
+ if (getSum(sum, row - end, col - end, row, col) == k ||
+ getSum(sum, row - start, col - end, row, col) == k) {
+ return true;
+ }
+ return false;
+ }
+
+ private int getSum(int[][] sum, int row1, int col1, int row2, int col2) {
+ if (row1 == 0 && col1 == 0) {
+ return sum[row2][col2];
+ }
+ else if (row1 == 0) {
+ return sum[row2][col2] - sum[row2][col1 - 1];
+ }
+ else if (col1 == 0) {
+ return sum[row2][col2] - sum[row1 - 1][col2];
+ }
+ else {
+ return sum[row2][col2] - sum[row1 - 1][col2] - sum[row2][col1 - 1] + sum[row1 - 1][col1 - 1];
+ }
+ }
+
+ //--------------------------------------------------------------------------------------------//
+ //--------------------------------------------------------------------------------------------//
+
+
+ Find least number of intervals from A that can fully cover B
+ For example:
+ Given A=[[0,3],[3,4],[4,6],[2,7]] B=[0,6] return 2 since we can use [0,3] [2,7] to cover the B
+ Given A=[[0,3],[4,7]] B=[0,6] return 0 since we cannot find any interval combination from A to cover the B
+
+ // make sure every time we choose one interval we cover more time
+ // every time we chooes one, make the start time as its end time
+ // Always choose the interval that whose end time is the biggest
+ // and start time is smaller or equal to current start time
+ // util we got the end time bigger than input.end
+
+ 'time complexity: O(nlgn)'
+
+ class MinimumCoverInterval {
+ public int findCover(Interval[] intervals, Interval interval) {
+ Arrays.sort(intervals, new Comparator<Interval>() {
+ @Override public int compare(Interval inter1, Interval inter2) {
+ if (inter1.start == inter2.start) {
+ return inter1.end - inter2.end;
+ }
+ return inter1.start - inter2.start;
+ }
+ });
+ int count = 0;
+ int start = interval.start;
+ int end = -1;
+ int index = 0;
+ while (index < intervals.length && end < interval.end) {
+ if (intervals[index].end <= start) {
+ index++;
+ continue;
+ }
+ if (intervals[index].start > start) {
+ break;
+ }
+ while (index < intervals.length && end < interval.end && intervals[index].start <= start) {
+ end = Math.max(intervals[index].end, end);
+ index++;
+ }
+ if (start != end) {
+ count++;
+ start = end;
+ }
+ }
+ if (end < interval.end) {
+ return 0;
+ }
+ return count;
+ }
+ }
+
+ find all equivalent pairs
+ Given an array A of integers, find the index of values that satisfy A + B =C + D, where A,B,C & D are integers values in the array. Find all combinations of quadruples.
+
+ 'Time complexity: O(n^2)'
+
+
+ class FindPair {
+ public List<List<int[]>> find(int[] input) {
+ HashMap<Integer, Indexs> sumToPair = new HashMap<>();
+ for (int i = 0; i < input.length - 1; i++) {
+ for (int j = i + 1; j < input.length; j++) {
+ int sum = input[i] + input[j];
+ if (!sumToPair.containsKey(sum)) {
+ sumToPair.put(sum, new Indexs());
+ }
+ int[] newPair = new int[]{i, j};
+ Set<Integer> index = sumToPair.get(sum).index;
+ if (!index.contains(i) && !index.contains(j)) {
+ sumToPair.get(sum).pairs.add(newPair);
+ sumToPair.get(sum).index.add(i);
+ sumToPair.get(sum).index.add(j);
+ }
+ }
+ }
+ List<List<int[]>> result = new ArrayList<>();
+ for (int sum : sumToPair.keySet()) {
+ List<int[]> pairs = sumToPair.get(sum).pairs;
+ if (pairs.size() >= 2) {
+ List<int[]> list = new ArrayList<>();
+ for (int i = 0; i < pairs.size() - 1; i++) {
+ for (int j = i + 1; j < pairs.size(); j++) {
+ int[] pair1 = pairs.get(i);
+ int[] pair2 = pairs.get(j);
+ list.add(new int[]{input[pair1[0]], input[pair1[1]]});
+ list.add(new int[]{input[pair2[0]], input[pair2[1]]});
+ }
+ }
+ if (list.size() != 0) {
+ result.add(list);
+ }
+ }
+ }
+ return result;
+ }
+ class Indexs{
+ public List<int[]> pairs = new ArrayList<>();
+ public Set<Integer> index = new HashSet<>();
+ public Indexs() {
+
+ }
+ }
+ }
+
+ input could include ":(" frown or ":)" smileys
+ check if the input is parenthese balance
+ class CheckBalanced {
+ public boolean check(String message) {
+ int closeParenth = 0;
+ int openParenth = 0;
+ int smileys = 0;
+ int frowns = 0;
+ boolean isPotentialEmotion = false;
+ for (char letter : message.toCharArray()) {
+ if (letter == '(') {
+ if (isPotentialEmotion) {
+ frowns++;
+ }
+ openParenth++;
+ }
+ else if (letter == ')') {
+ if (isPotentialEmotion) {
+ smileys++;
+ }
+ closeParenth++;
+ }
+ if (closeParenth > openParenth) {
+ if (closeParenth - smileys > openParenth) {
+ return false;
+ }
+ closeParenth = openParenth;
+ smileys = smileys - (closeParenth - openParenth);
+ }
+ if (letter == ':') {
+ isPotentialEmotion = true;
+ }
+ else {
+ isPotentialEmotion = false;
+ }
+ }
+ if (openParenth - frowns > closeParenth) {
+ return false;
+ }
+ return true;
+ }
+ }
+
+ find 2nd mutal friend
+
+ class MutalFriend {
+ public List<GraphNode> findMutalFriends(GraphNode me) {
+ Queue<GraphNode> explore = new LinkedList<>();
+ Set<GraphNode> friends = new HashSet<>();
+ HashMap<GraphNode, Integer> mutalToCount = new HashMap<>();
+ int level = 0;
+ explore.offer(me);
+ friends.add(me);
+ while (!explore.isEmpty() && level <= 2) {
+ level++;
+ int size = explore.size();
+ for (int i = 0; i < size; i++) {
+ GraphNode node = explore.poll();
+ for (GraphNode friend : node.friend) {
+ if (level == 1) {
+ friends.add(node);
+ explore.offer(node);
+ continue;
+ }
+ if (friends.contains(friend)) {
+ continue;
+ }
+ if (!mutalToCount.containsKey(friend)) {
+ mutalToCount.put(friend, 1);
+ }
+ else {
+ mutalToCount.put(friend, mutalToCount.get(friend) + 1);
+ }
+ }
+
+ }
+ }
+ List<GraphNode> result = new ArrayList<>();
+ for (GraphNode node : mutalToCount.keySet()) {
+ result.add(node);
+ }
+ Collections.sort(result, new NodeComparator(mutalToCount));
+ return result;
+ }
+ class NodeComparator implements Comparator<GraphNode> {
+ private HashMap<GraphNode, Integer> map;
+ public NodeComparator(HashMap<GraphNode, Integer> map) {
+ this.map = map;
+ }
+ @Override public int compare(GraphNode node1, GraphNode node2) {
+ return map.get(node2) - map.get(node1);
+ }
+ }
+ }
+
+ class GraphNode {
+ String name;
+ List<GraphNode> friend;
+ public GraphNode(String name) {
+ this.name = name;
+ this.friend = new ArrayList<>();
+ }
+ }
+
+
+ Serialize and deserialized Tree into LinkedList
+ class CodeTree {
+ public ListNodeStr serialized(TreeNode root) {
+ ListNodeStr head = helper(root).head;
+ return head;
+ }
+
+ private Pair helper(TreeNode root) {
+ if (root == null) {
+ ListNodeStr node = new ListNodeStr("#");
+ return new Pair(node, node);
+ }
+ ListNodeStr head = new ListNodeStr(Integer.toString(root.val));
+ ListNodeStr tail = head;
+
+ Pair left = helper(root.left);
+ tail.next = left.head;
+ tail = left.tail;
+
+ Pair right = helper(root.right);
+ tail.next = right.head;
+ tail = right.tail;
+
+ return new Pair(head, tail);
+ }
+
+ private ListNodeStr mover;
+ public TreeNode deserialized(ListNodeStr head) {
+ ListNodeStr fakeHead = new ListNodeStr("");
+ fakeHead.next = head;
+ mover = fakeHead;
+ return helper();
+ }
+ private TreeNode helper() {
+ mover = mover.next;
+ if (mover.val.equals("#")) {
+ return null;
+ }
+ TreeNode root = new TreeNode(Integer.parseInt(mover.val));
+ root.left = helper();
+ root.right = helper();
+ return root;
+ }
+
+ class Pair {
+ ListNodeStr head;
+ ListNodeStr tail;
+ public Pair(ListNodeStr h, ListNodeStr t) {
+ this.head = h;
+ this.tail = t;
+ }
+ }
+
+ }
+ class ListNodeStr {
+ public String val;
+ public ListNodeStr next;
+ public ListNodeStr(String val) {
+ this.val = val;
+ }
+ }
+
+
+ '######################################################################'
+ '######################################################################'
+ '##########################---BEHAVIOR QUESTION----####################'
+ '######################################################################'
+
+ '#Tell me about urself'
+
+ My name is Heng Wu. Comes from New York University.
+
+ '#Why facebook'
+
+
+
+ '#How do you see yourself in the five years'
+
+
+
+
+ #What do u expect to earn from company:
+
+
+ #What would u do if u have different opinion with ur colleague:
+
+
+
+ ＃What is your most challenging project:
+
+
+
+ ＃Describe a situation where you exceeded expectations/did more than required
+
+
+
+ #Which team of product u wanna go?
+
+
+ #Have u ever had a impossible prject which has a every short deadline?
+
+
+ #Have u ever do sth creative?
+
+
+ #Have u ever simplify something?
+ Same as my intern project
+
+ #What are ur weakness? How do u improve that?
+
+
+
+ #What feature of facebook do u like?
+
+
+
+
+ My Question:
+ 1. Have you ever use those algorithm or complex data structure like heap, treeSet in real work?
+
+ 2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your work progress?
+
+ 3. What is your favorite part of the fb as an engineer?
+
+ 4. How often do people move around between teams?
+
+ 5. How quickly does the company move on ideas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */

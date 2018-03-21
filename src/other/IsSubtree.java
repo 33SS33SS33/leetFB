@@ -43,7 +43,7 @@ class IsSubtree {
     }
 
     class Node {
-        int  value;
+        int value;
         Node left;
         Node right;
 

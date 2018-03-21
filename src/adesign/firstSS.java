@@ -6,7 +6,7 @@ package adesign;
 public class firstSS {
 
 
-   // 算法课程   http://algs4.cs.princeton.edu/40graphs/
+    // 算法课程   http://algs4.cs.princeton.edu/40graphs/
 /**
  *
  * 287. Find the Duplicate Number

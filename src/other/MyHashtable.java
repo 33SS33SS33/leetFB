@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class MyHashtable {
     LinkedList<Node>[] array;
-    int                size;
+    int size;
 
     class Node {
         String key;
