@@ -37,11 +37,6 @@ class SortColors {
             System.out.print(i);
         }
         System.out.println();
-        s.sortColorsB(A3);
-        for (int i : A3) {
-            System.out.print(i);
-        }
-        System.out.println();
         s.sortColors(A4);
         for (int i : A4) {
             System.out.print(i);
@@ -120,28 +115,4 @@ class SortColors {
             }
         }
     }
-
-    /**
-     * creek 计数排序----
-     */
-    public void sortColorsB(int[] nums) {
-        if (nums == null || nums.length < 2) {
-            return;
-        }
-        int[] countArray = new int[3];
-        for (int i = 0; i < nums.length; i++) {
-            countArray[nums[i]]++;
-        }
-        for (int i = 1; i <= 2; i++) {
-            countArray[i] = countArray[i - 1] + countArray[i];
-        }
-        int[] sorted = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            int index = countArray[nums[i]] - 1;
-            countArray[nums[i]] = countArray[nums[i]] - 1;
-            sorted[index] = nums[i];
-        }
-        System.arraycopy(sorted, 0, nums, 0, nums.length);
-    }
-
 }
