@@ -19,15 +19,15 @@ public class MinimumSizeSubarraySum {
         int[] nums = {2, 3, 1, 2, 4, 3};
 
         System.out.println(v.minSubArrayLen(s, nums));
-        System.out.println(v.solveN(s, nums));
-        System.out.println(v.solveNLogN(s, nums));
+        System.out.println(v.MinimumSizeSubarraySum(s, nums));
+        System.out.println(v.MinimumSizeSubarraySumNLogN(s, nums));
     }
 
 
     /**
      * 最好的
      */
-    private int solveN(int s, int[] nums) {
+    private int MinimumSizeSubarraySum(int s, int[] nums) {
         int start = 0, end = 0, sum = 0, minLen = Integer.MAX_VALUE;
         while (end < nums.length) {
             while (end < nums.length && sum < s)
@@ -42,7 +42,7 @@ public class MinimumSizeSubarraySum {
         return minLen == Integer.MAX_VALUE ? 0 : minLen;
     }
 
-    private int solveNLogN(int s, int[] nums) {
+    private int MinimumSizeSubarraySumNLogN(int s, int[] nums) {
         int[] sums = new int[nums.length + 1];
         for (int i = 1; i < sums.length; i++)
             sums[i] = sums[i - 1] + nums[i - 1];
