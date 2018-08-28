@@ -32,10 +32,10 @@ class TwoSum {
     /**
      * One-pass Hash Table 最好的
      * Complexity Analysis:
-     * Time complexity : O(n)O(n). We traverse the list containing nn elements only once.
+     * Time complexity : O(n). We traverse the list containing n elements only once.
      * Each look up in the table costs only O(1)O(1) time.
      * <p>
-     * Space complexity : O(n)O(n). The extra space required depends on the number of items stored in the hash table,
+     * Space complexity :O(n). The extra space required depends on the number of items stored in the hash table,
      * which stores at most nn elements.
      */
     public int[] twoSumA(int[] nums, int target) {

@@ -50,7 +50,6 @@ public class NumberofDistinctIslands {
     int[][] grid;
     boolean[][] seen;
     Set<Integer> shape;
-
     public void explore(int r, int c, int r0, int c0) {
         if (0 <= r && r < grid.length && 0 <= c && c < grid[0].length &&
                 grid[r][c] == 1 && !seen[r][c]) {
@@ -62,7 +61,6 @@ public class NumberofDistinctIslands {
             explore(r, c - 1, r0, c0);
         }
     }
-
     public int numDistinctIslands(int[][] grid) {
         this.grid = grid;
         seen = new boolean[grid.length][grid[0].length];
@@ -77,7 +75,6 @@ public class NumberofDistinctIslands {
                 }
             }
         }
-
         return shapes.size();
     }
 }

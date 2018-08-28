@@ -56,7 +56,6 @@ public class MergeTwoSortedLists {
                 l1 = l1.next;
             }
             pre = pre.next;
-
         }
         if (l2 != null) {
             pre.next = l2;
@@ -90,5 +89,4 @@ public class MergeTwoSortedLists {
             this.val = value;
         }
     }
-
 }

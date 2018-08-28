@@ -137,6 +137,4 @@ class LongestPalindromicSubstring {
         }
         return res;
     }
-
-
 }

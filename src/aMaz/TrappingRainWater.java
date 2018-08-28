@@ -3,7 +3,7 @@ package aMaz;
 /**
  * HARD
  * Given n non-negative integers representing an elevation map where the width
- * of each bar is 1, compute how much water it is able to trap after raining.
+ * of each bar is 1, compute how much water it is able to trapRainWater after raining.
  * For example,
  * Given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], return 6.
  * Tags: Array, Stack, Two pointers
@@ -19,8 +19,8 @@ class TrappingRainWater {
         int[] A = {10, 2, 20};
         int[] B = {5, 4, 3, 2, 8};
         TrappingRainWater m = new TrappingRainWater();
-        System.out.println(m.trap(A));
-        System.out.println(m.trap(B));
+        System.out.println(m.trapRainWater(A));
+        System.out.println(m.trapRainWater(B));
     }
 
     /**
@@ -31,7 +31,7 @@ class TrappingRainWater {
      * Keep track of the maximum height from both forward directions backward 最好的
      * directions, call them leftmax and rightmax
      */
-    public int trap(int[] A) {
+    public int trapRainWater(int[] A) {
         int a = 0;
         int b = A.length - 1;
         int max = 0;
