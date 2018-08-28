@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -7,12 +7,35 @@ import java.util.Set;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/8.
- * Given:
+ * Given two words (beginWord and endWord), and a dictionary's word list,
+ * find the length of shortest transformation sequence from beginWord to endWord, such that:
+ * Only one letter can be changed at a time.
+ * Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+ * <p>
+ * Note:
+ * Return 0 if there is no such transformation sequence.
+ * All words have the same length.
+ * All words contain only lowercase alphabetic characters.
+ * You may assume no duplicates in the word list.
+ * You may assume beginWord and endWord are non-empty and are not the same.
+ * <p>
+ * Example 1:
+ * Input:
+ * beginWord = "hit",
+ * endWord = "cog",
+ * wordList = ["hot","dot","dog","lot","log","cog"]
+ * Output: 5
+ * Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+ * return its length 5.
+ * <p>
+ * Example 2:
+ * Input:
  * beginWord = "hit"
  * endWord = "cog"
  * wordList = ["hot","dot","dog","lot","log"]
- * As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
- * return its length 5.
+ * Output: 0
+ * Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
+ * <p>
  * 这道题很重要
  * 使用了双向BFS 即先从起点向下搜索一层  然后再从终点向上搜索一层 然后直到两个相遇 这里的一层就是指所有那些和上一层的单词只差一个字母的单词
  * 答案的代码写的非常好

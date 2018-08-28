@@ -5,7 +5,10 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/19.
+ * Created by GAOSHANSHAN835 on 2016/1/19.HARD
+ * Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right.
+ * You can only see the k numbers in the window.
+ * Each time the sliding window moves right by one position. Return the max sliding window.
  * For example,
  * Given nums = [1,3,-1,-3,5,3,6,7], and k = 3.
  * Window position                Max
@@ -17,6 +20,7 @@ import java.util.LinkedList;
  * 1  3  -1  -3 [5  3  6] 7       6
  * 1  3  -1  -3  5 [3  6  7]      7
  * Therefore, return the max sliding window as [3,3,5,5,6,7].
+ * Could you solve it in linear time?
  * 遍历数组nums，使用双端队列deque维护滑动窗口内有可能成为最大值元素的数组下标
  * 由于数组中的每一个元素至多只会入队、出队一次，因此均摊时间复杂度为O(n)
  * 记当前下标为i，则滑动窗口的有效下标范围为[i - (k - 1), i]
@@ -39,6 +43,7 @@ public class SlidingWindowMaximum {
         }
     }
 
+    //best
     public static int[] maxSlidingWindowa(int[] a, int k) {
         if (a == null || k <= 0) {
             return new int[0];

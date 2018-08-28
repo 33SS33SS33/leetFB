@@ -1,9 +1,9 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/5/7.
+ * Created by GAOSHANSHAN835 on 2016/5/7. HARD
  * There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you.
  * You receive a list of words from the dictionary,
  * where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.
@@ -17,8 +17,17 @@ import java.util.*;
  * "rftt"
  * ]
  * The correct order is: "wertf".
+ * <p>
+ * Example 2:
+ * Input:
+ * [
+ * "z",
+ * "x"
+ * ]
+ * Output: "zx"
  * Note:
  * You may assume all letters are in lowercase.
+ * You may assume that if a is a prefix of b, then a must appear before b in the given dictionary.
  * If the order is invalid, return an empty string.
  * There may be multiple valid order of letters, return any one of them is fine.
  * 这道题分两步  第一步是通过字典里的单词建成有向图, 这道题的真正意思是 每一个word都是一个单词

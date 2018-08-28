@@ -1,19 +1,16 @@
-package aFB;
+package aMaz;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Given an array of integers, find two numbers such that they add up to a
- * specific target number.
- * The function twoSum should return indices of the two numbers such that they
- * add up to the target, where index1 must be less than index2. Please note
- * that your returned answers (both index1 and index2) are not zero-based.
- * You may assume that each input would have <strong>exactly one</strong>
- * solution.
- * Input: numbers={2, 7, 11, 15}, target=9
- * Output: index1=1, index2=2
+ * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+ * You may assume that each input would have exactly one solution, and you may not use the same element twice.
+ * Example:
+ * Given nums = [2, 7, 11, 15], target = 9,
+ * Because nums[0] + nums[1] = 2 + 7 = 9,
+ * return [0, 1].
  * Tags: Array, HashTable
  */
 class TwoSum {
@@ -32,7 +29,26 @@ class TwoSum {
         }
     }
 
-    //http://blog.csdn.net/linhuanmars/article/details/19711387
+    /**
+     * One-pass Hash Table 最好的
+     * Complexity Analysis:
+     * Time complexity : O(n)O(n). We traverse the list containing nn elements only once.
+     * Each look up in the table costs only O(1)O(1) time.
+     * <p>
+     * Space complexity : O(n)O(n). The extra space required depends on the number of items stored in the hash table,
+     * which stores at most nn elements.
+     */
+    public int[] twoSumA(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[]{map.get(complement), i};
+            }
+            map.put(nums[i], i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
 
     /**
      * 在LeetCode原题中是假设结果有且仅有一个的，一般来说面试时会要求出所有的结果，

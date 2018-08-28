@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
@@ -15,7 +15,7 @@ package aFB;
  * 右边还有迭代的解法
  * 未实现
  */
-class LowestCommonAncestor {
+class LowestCommonAncestorofABinaryTree {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);
@@ -28,28 +28,14 @@ class LowestCommonAncestor {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new LowestCommonAncestor().LowestCommonAncestorBT(root, 4, 5).val);
+        System.out.println(new LowestCommonAncestorofABinaryTree().lowestCommonAncestor(root, n1, n4).val);
     }
 
-    /**
-     * 递归法 最好的
-     * If root is null, just return null
-     * If root's value matches with n1 or n2, return root
-     * If not, find lca recursively in both left and right subtrees
-     * If both are not null, one value in left and the other in right,
-     * return root
-     * If one is not null, return that one
-     */
-    public TreeNode LowestCommonAncestorBT(TreeNode root, int n1, int n2) {
-        if (root == null)
-            return null;
-        if (root.val == n1 || root.val == n2)
-            return root;
-        TreeNode leftLca = LowestCommonAncestorBT(root.left, n1, n2);
-        TreeNode rightLca = LowestCommonAncestorBT(root.right, n1, n2);
-        if (leftLca != null && rightLca != null)
-            return root;
-        return leftLca != null ? leftLca : rightLca;
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        return left == null ? right : right == null ? left : root;
     }
 
     static class TreeNode {

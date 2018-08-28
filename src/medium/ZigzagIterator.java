@@ -8,7 +8,6 @@ import java.util.List;
  */
 //和之前有道题类似  使用队列就行 每次弹出来 再插入进去 需要总结一下各个数据结构的用法 重要
 public class ZigzagIterator {
-
     private Iterator<Integer> i, j, tmp;
 
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {

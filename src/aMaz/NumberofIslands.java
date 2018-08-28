@@ -1,7 +1,14 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/29.
+ * Input:
+ * 11110
+ * 11010
+ * 11000
+ * 00000
+ * Output: 1
+ * <p>
  * 11000
  * 11000
  * 00100

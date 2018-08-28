@@ -24,11 +24,15 @@ public class Searcha2DMatrixII {
                 {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}};
         Searcha2DMatrixII s = new Searcha2DMatrixII();
         System.out.println(s.searchMatrixA(matrix, 5));
-        System.out.println(s.searchMatrixB(matrix, 5));
     }
 
     /**
      * 最好的
+     * Search Space Reduction
+     * Because the rows and columns of the matrix are sorted (from left-to-right and top-to-bottom, respectively), we can prune O(m) or O(n) elements when looking at any particular value.
+     * <p>
+     * Time complexity : O(n+m)
+     * Space complexity : O(1)
      */
     public boolean searchMatrixA(int[][] matrix, int target) {
         if (matrix == null || matrix.length < 1 || matrix[0].length < 1) {
@@ -48,28 +52,5 @@ public class Searcha2DMatrixII {
         return false;
     }
 
-    public boolean searchMatrixB(int[][] matrix, int target) {
-        return searchMatrix(matrix, 0, 0, matrix.length, matrix[0].length, target);
-    }
-
-    boolean searchMatrix(int[][] matrix, int stX, int stY, int edX, int edY, int target) {
-        if (stX >= edX || stY >= edY)
-            return false;
-        int max = matrix[edX - 1][edY - 1];
-        int min = matrix[stX][stY];
-        // min <= target <= max
-        if (min <= target && target <= max) {
-            int mdX = (stX + edX) / 2;
-            int mdY = (stY + edY) / 2;
-            if (matrix[mdX][mdY] == target) {
-                return true;
-            }
-            return searchMatrix(matrix, stX, stY, mdX, mdY, target) ||
-                    searchMatrix(matrix, stX, mdY, mdX, edY, target) ||
-                    searchMatrix(matrix, mdX, stY, edX, mdY, target) ||
-                    searchMatrix(matrix, mdX, mdY, edX, edY, target);
-        }
-        return false;
-    }
 
 }

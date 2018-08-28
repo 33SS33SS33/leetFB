@@ -4,18 +4,17 @@ import java.util.*;
 
 /**
  * A linked list is given such that each node contains an additional random
- * pointer which could point to any node in the list or null.
- * Return a deep copy of the list.
+ * pointer which could point to any node in the list or null.Return a deep copy of the list.
  * Tags: Hashtable, Linkedlist
  * 难点在于如何知道一个点是不是在之前就已经被copy 比如先通过随机的指针建立了节点3
  * 当通过next访问到3的时候如何知道3是之前创建过的
  * 只需要用一个hashtable跟踪一下就知道了
  * 右边的解法用了defaultdict 十分简单 重要
  */
-class CopyListWithRandomP {
+class CopyListWithRandomPointer {
     public static void main(String[] args) {
         RandomListNode node = buildList();
-        RandomListNode res = new CopyListWithRandomP().CopyListWithRandom(node);
+        RandomListNode res = new CopyListWithRandomPointer().CopyListWithRandom(node);
         while (res != null) {
             System.out.print(res.label + ",");
             if (res.random != null) {

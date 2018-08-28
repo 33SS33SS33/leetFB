@@ -26,7 +26,7 @@ class BinaryTreeMaximumPathSum {
     }
 
     /**
-     * 最好的
+     * * The path may start and end at any node in the tree.
      * A path from start to end, goes up on the tree for 0 or more steps, then goes
      * down for 0 or more steps. Once it goes down, it can't go up. Each path has a
      * highest node, which is also the lowest common ancestor of all other nodes on the path.

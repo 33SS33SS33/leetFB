@@ -1,9 +1,10 @@
-package aFB;
+package aMaz;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * HARD
  * Design and implement a data structure for Least Recently Used (LRU) cache.
  * It should support the following operations: get and set.
  * get(key) - Get the value (will always be positive) of the key if the key

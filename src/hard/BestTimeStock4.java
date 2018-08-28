@@ -18,7 +18,7 @@ class BestTimeStock4 {
     }
 
     /**
-     * creek 1D DP
+     * You may complete at most k transactions.
      */
     public int maxProfitA(int k, int[] prices) {
         if (prices == null || prices.length < 2 || k <= 0)

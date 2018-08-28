@@ -1,10 +1,11 @@
-package hard;
+package aMaz;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
  * Created by shanshan on 16/5/9.
+ * HARD
  * "Median is the middle value in an ordered integer list. If the size of the list is even,
  * there is no middle value. So the median is the mean of the two middle value.
  * Examples:
@@ -13,6 +14,7 @@ import java.util.Queue;
  * Design a data structure that supports the following two operations:
  * void addNum(int num) - Add a integer number from the data stream to the data structure.
  * double findMedian() - Return the median of all elements so far."
+ * <p>
  * "设计题 重要  一个heap不行可以用两个heap
  * 一个heap存当前数组比较小那一半的数 另一个heap存当前数组比较大那一半的数
  * 最关键的是addnumber时候的操作 每次都要均衡两个数组 让两个数组的数量和顺序都均衡 用到了pushpop
@@ -25,7 +27,8 @@ import java.util.Queue;
 
 public class FindMedianfromDataStream {
     /**
-     * 最好的
+     * 最好的 Two Heaps! or Self-balancing Binary Search Trees
+     * https://leetcode.com/problems/find-median-from-data-stream/solution/
      */
     private Queue<Long> small = new PriorityQueue(), large = new PriorityQueue();
 
