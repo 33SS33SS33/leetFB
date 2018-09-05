@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
@@ -7,8 +7,8 @@ import java.util.*;
  * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei),
  * find the minimum number of conference rooms required.
  * For example,
- * Given [[0, 30],[5, 10],[15, 20]],
- * return 2.
+ * Given [[0, 30],[5, 10],[15, 20]], return 2.
+ * Input: [[7,10],[2,4]] Output: 1
  * 最多需要多少房子
  * 一个数组是start排序 一个数组是end 排序  然后就按照最基本的逻辑开房间的逻辑即可
  * 就是在开房间之前检查有几个房间已经end了 end了 就是avail +1 然后用一间房 就avail-1
@@ -40,21 +40,12 @@ public class MeetingRooms2 {
     public static int minMeetingRooms1(Interval[] intervals) {
         if (intervals == null || intervals.length == 0)
             return 0;
-        Arrays.sort(intervals, new Comparator<Interval>() {
-            public int compare(Interval a, Interval b) {
-                return a.start - b.start;
-            }
-        });
-        PriorityQueue<Interval> heap = new PriorityQueue<Interval>(intervals.length, new Comparator<Interval>() {
-            public int compare(Interval a, Interval b) {
-                return a.end - b.end;
-            }
-        });
+        Arrays.sort(intervals, (a, b) -> a.start - b.start);
+        PriorityQueue<Interval> heap = new PriorityQueue<>(intervals.length, (a, b) -> a.end - b.end);
         heap.offer(intervals[0]);
         for (int i = 1; i < intervals.length; i++) {
             Interval interval = heap.poll();
             if (intervals[i].start >= interval.end) {
-
                 interval.end = intervals[i].end;
             } else {
                 heap.offer(intervals[i]);

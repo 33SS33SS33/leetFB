@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 /**
  * Created by shanshan on 16/6/17.
