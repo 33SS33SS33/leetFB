@@ -26,8 +26,8 @@ class TrappingRainWater {
     /**
      * https://leetcode.com/problems/trapping-rain-water/solution/
      * Using 2 pointers
-     * Time complexity: O(n)O(n). Single iteration of O(n)O(n).
-     * Space complexity: O(1)O(1) extra space. Only constant space required for \text{left}left, \text{right}right, left_max and right_max.
+     * Time complexity: O(n). Single iteration of O(n)O(n).
+     * Space complexity: O(1) extra space. Only constant space required for left, right, left_max and right_max.
      * Keep track of the maximum height from both forward directions backward 最好的
      * directions, call them leftmax and rightmax
      */
