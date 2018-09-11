@@ -12,10 +12,12 @@ public class PowerofTwo {
         System.out.print(isPowerOfTwoB(5));
     }
 
+    //TODO
     public static boolean isPowerOfTwoa(int n) {
         return n > 0 && Integer.bitCount(n) == 1;
     }
 
+    //recursion
     public static boolean isPowerOfTwo(int n) {
         if (n == 0)
             return false;
@@ -26,9 +28,7 @@ public class PowerofTwo {
         return isPowerOfTwo(n / 2);
     }
 
-    /**
-     * creek---
-     */
+    //loop
     public static boolean isPowerOfTwoB(int n) {
         if (n <= 0)
             return false;

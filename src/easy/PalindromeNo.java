@@ -21,44 +21,13 @@ package easy;
 
 class PalindromeNo {
     public static void main(String[] args) {
-        System.out.println(isPalindrome(1));
         System.out.println(isPalindromeB(1));
-        System.out.println(isPalindrome(12));
         System.out.println(isPalindromeB(12));
-        System.out.println(isPalindrome(32123));
         System.out.println(isPalindromeB(32123));
-        System.out.println(isPalindrome(321123));
         System.out.println(isPalindromeB(321123));
-        System.out.println(isPalindrome(-1));
         System.out.println(isPalindromeB(-1));
-        System.out.println(isPalindrome(1234567));
         System.out.println(isPalindromeB(1234567));
-        System.out.println(isPalindrome(1000000021));
         System.out.println(isPalindromeB(1000000021));
-    }
-
-    /**
-     * 一位一位比较
-     * Clarify whether negative nums are palindrom first
-     * Compare each digit
-     * http://blog.csdn.net/linhuanmars/article/details/21145231
-     */
-    public static boolean isPalindrome(int num) {
-        if (num < 0)
-            return false;
-        /*find the most significant digit*/
-        int div = 1;
-        while (num / div >= 10)
-            div *= 10; // two digits
-        while (num != 0) { // stop till num is 0, all digits compared
-            int l = num / div; // left digit
-            int r = num % 10; // right digit
-            if (l != r)
-                return false; // compare
-            num = (num % div) / 10; // remove first and last digit
-            div /= 100; // div should be smaller
-        }
-        return true;
     }
 
     public static boolean isPalindromeB(int x) {
@@ -71,5 +40,4 @@ class PalindromeNo {
         }
         return (x == rev || x == rev / 10);
     }
-
 }

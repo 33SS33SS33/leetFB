@@ -26,7 +26,6 @@ public class ReverseVowelsofaString {
             while (start < end && !vowels.contains(chars[start] + "")) {
                 start++;
             }
-
             while (start < end && !vowels.contains(chars[end] + "")) {
                 end--;
             }
@@ -38,5 +37,4 @@ public class ReverseVowelsofaString {
         }
         return new String(chars);
     }
-
 }

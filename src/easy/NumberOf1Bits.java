@@ -11,17 +11,7 @@ class NumberOf1Bits {
     public static void main(String[] args) {
         NumberOf1Bits nob = new NumberOf1Bits();
         int n = 111;
-        System.out.println(nob.numberOf1Bits(n));
         System.out.println(nob.numberOf1Bitsb(n));
-    }
-
-    public static int numberOf1Bits(int n) {
-        int ones = 0;
-        while (n != 0) {
-            ones = ones + (n & 1);
-            n = n >>> 1;
-        }
-        return ones;
     }
 
     /**

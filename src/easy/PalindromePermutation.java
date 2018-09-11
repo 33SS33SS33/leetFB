@@ -28,5 +28,4 @@ public class PalindromePermutation {
         }
         return set.size() == 0 || set.size() == 1;
     }
-
 }
