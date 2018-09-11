@@ -18,7 +18,6 @@ package easy;
 class ExcelSheetColNum {
     public static void main(String[] args) {
         System.out.println(ExcelSheetColNum("AAA"));
-        System.out.println(ExcelSheetColNumB("AAA"));
     }
 
     /**
@@ -33,28 +32,9 @@ class ExcelSheetColNum {
             return 0;
         int res = 0;
         for (int i = 0; i < s.length(); i++) {
-            res = res * 26 + (s.charAt(i) - '@');
+            res = res * 26 + (s.charAt(i) - 'A' + 1);
         }
         return res;
-    }
-
-    /**
-     * creek
-     */
-    public static int ExcelSheetColNumB(String s) {
-        if (s == null || s.length() == 0) {
-            throw new IllegalArgumentException("Input is not valid!");
-        }
-        int result = 0;
-        int i = s.length() - 1;
-        int t = 0;
-        while (i >= 0) {
-            char curr = s.charAt(i);
-            result = result + (int) Math.pow(26, t) * (curr - 'A' + 1); //pow
-            t++;
-            i--;
-        }
-        return result;
     }
 
 }

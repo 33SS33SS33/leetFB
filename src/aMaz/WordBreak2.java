@@ -7,7 +7,6 @@ import java.util.*;
  * Given a string s and a dictionary of words dict, add spaces in s to
  * construct a sentence where each word is a valid dictionary word.
  * Return all such possible sentences.
- * <p>
  * Note:
  * The same word in the dictionary may be reused multiple times in the segmentation.
  * You may assume the dictionary does not contain duplicate words

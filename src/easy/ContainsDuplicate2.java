@@ -1,6 +1,7 @@
 package easy;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -19,6 +20,10 @@ public class ContainsDuplicate2 {
 
     /**
      * 最好的
+     * It iterates over the array using a sliding window. The front of the window is at i, the rear of the window is k steps back.
+     * The elements within that window are maintained using a Set. While adding new element to the set, if add() returns false,
+     * it means the element already exists in the set. At that point, we return true. If the control reaches out of for loop,
+     * it means that inner return true never executed, meaning no such duplicate element was found.
      */
     public static boolean containsNearbyDuplicatea(int[] nums, int k) {
         Set<Integer> set = new HashSet<Integer>();

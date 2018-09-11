@@ -7,6 +7,13 @@ package easy;
  * security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
  * Given a list of non-negative integers representing the amount of money of each house,
  * determine the maximum amount of money you can rob tonight without alerting the police.
+ * Input: [1,2,3,1]  Output: 4
+ * Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+ * Total amount you can rob = 1 + 3 = 4.
+ * <p>
+ * Input: [2,7,9,3,1]  Output: 12
+ * Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
+ * Total amount you can rob = 2 + 9 + 1 = 12.
  * dp[i] = max(dp[i-2]+nums[i], dp[i-1])
  * 注意一下初始化条件 dp[0], dp[1] = nums[0], max(nums[0], nums[1])
  */
@@ -18,6 +25,26 @@ public class HouseRobber {
         System.out.println(new HouseRobber().rob(num));
         System.out.println(new HouseRobber().robA(num));
         System.out.println(new HouseRobber().robB(num));
+    }
+
+    /**
+     * creek We can use two variables, even and odd, to track the maximum value so far as iterating the array
+     */
+    public int robB(int[] num) {
+        if (num == null || num.length == 0)
+            return 0;
+        int even = 0;
+        int odd = 0;
+        for (int i = 0; i < num.length; i++) {
+            if (i % 2 == 0) {
+                even += num[i];
+                even = even > odd ? even : odd;
+            } else {
+                odd += num[i];
+                odd = even > odd ? even : odd;
+            }
+        }
+        return even > odd ? even : odd;
     }
 
     /**
@@ -76,25 +103,4 @@ public class HouseRobber {
         }
         return dp[n];
     }
-
-    /**
-     * creek We can use two variables, even and odd, to track the maximum value so far as iterating the array
-     */
-    public int robB(int[] num) {
-        if (num == null || num.length == 0)
-            return 0;
-        int even = 0;
-        int odd = 0;
-        for (int i = 0; i < num.length; i++) {
-            if (i % 2 == 0) {
-                even += num[i];
-                even = even > odd ? even : odd;
-            } else {
-                odd += num[i];
-                odd = even > odd ? even : odd;
-            }
-        }
-        return even > odd ? even : odd;
-    }
-
 }

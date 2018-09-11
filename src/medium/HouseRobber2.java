@@ -36,5 +36,4 @@ public class HouseRobber2 {
         }
         return Math.max(include, exclude);
     }
-
 }
