@@ -19,7 +19,7 @@ import java.util.Map;
  * 当x1 = x2，y1!=y2时，为垂直连线。计算斜率时分母为0会出错。
  * 当x1 = x2，y1 = y2时，两点重合。则(x2, y2)和所有(x1, y1)的连线共线。
  */
-class MaxPoints {
+class MaxPointsonALine {
     public static void main(String[] args) {
 
     }
