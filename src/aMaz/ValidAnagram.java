@@ -19,8 +19,8 @@ public class ValidAnagram {
         ValidAnagram r = new ValidAnagram();
         String a = "anagram";
         String b = "nagaram";
-        System.out.println(r.isAnagrama(a, b));
         System.out.println(r.isAnagram(a, b));
+        // System.out.println(r.isAnagram(a, b));
     }
 
     /**
@@ -29,7 +29,7 @@ public class ValidAnagram {
      * So if they are anagrams, all buckets should remain with initial value which is zero.
      * So just checking that and return
      */
-    public boolean isAnagrama(String s, String t) {
+    public boolean isAnagram(String s, String t) {
         int[] alphabet = new int[26];
         for (int i = 0; i < s.length(); i++)
             alphabet[s.charAt(i) - 'a']++;
@@ -41,12 +41,12 @@ public class ValidAnagram {
         return true;
     }
 
-    public boolean isAnagram(String s, String t) {
+/*    public boolean isAnagram(String s, String t) {
         char[] S = s.toCharArray();
         char[] T = t.toCharArray();
         Arrays.sort(S);
         Arrays.sort(T);
         return Arrays.equals(S, T);
-    }
+    }*/
 
 }

@@ -28,13 +28,35 @@ public class WordBreak2 {
         String s2 = "catsandog";
         Set<String> dict = new HashSet<>(Arrays.asList("cat", "cats", "and", "sand", "dog"));
         Set<String> dict2 = new HashSet<>(Arrays.asList("cats", "dog", "sand", "and", "cat"));
-        System.out.println(new WordBreak2().wordBreakA(s1, dict).toString());
-        System.out.println(wordBreakC(s1, dict).toString());
-        System.out.println(new WordBreak2().wordBreakA(s2, dict2).toString());
-        System.out.println(wordBreakC(s2, dict2).toString());
+//        System.out.println(new WordBreak2().wordBreakA(s1, dict).toString());
+        System.out.println(wordBreak(s1, dict).toString());
+//        System.out.println(new WordBreak2().wordBreakA(s2, dict2).toString());
+        System.out.println(wordBreak(s2, dict2).toString());
     }
 
     //最好的 20170727 英语流利说
+    public static ArrayList<String> wordBreak(String s, Set<String> dict) {
+        ArrayList<String> res = new ArrayList<String>();
+        if (s == null || s.length() == 0)
+            return res;
+        helper(s, dict, 0, "", res);
+        return res;
+    }
+
+    private static void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res) {
+        if (start >= s.length()) {
+            res.add(item);
+            return;
+        }
+        StringBuilder str = new StringBuilder();
+        for (int i = start; i < s.length(); i++) {
+            str.append(s.charAt(i));
+            if (dict.contains(str.toString())) {
+                String newItem = item.length() > 0 ? (item + " " + str.toString()) : str.toString();
+                helper(s, dict, i + 1, newItem, res);
+            }
+        }
+    }
 
     /**
      * Recursion with memoization
@@ -49,7 +71,7 @@ public class WordBreak2 {
      *  Time complexity : O(n^3) Size of recursion tree can go up to n^2  The creation of list takes n time.
      * Space complexity : O(n^3) The depth of the recursion tree can go up to nn and each activation record can contains a string list of size nn
      */
-    public List<String> wordBreakA(String s, Set<String> wordDict) {
+/*    public List<String> wordBreakA(String s, Set<String> wordDict) {
         return word_Break(s, wordDict, 0);
     }
 
@@ -73,29 +95,6 @@ public class WordBreak2 {
         }
         map.put(start, res);
         return res;
-    }
-
-    public static ArrayList<String> wordBreakC(String s, Set<String> dict) {
-        ArrayList<String> res = new ArrayList<String>();
-        if (s == null || s.length() == 0)
-            return res;
-        helper(s, dict, 0, "", res);
-        return res;
-    }
-
-    private static void helper(String s, Set<String> dict, int start, String item, ArrayList<String> res) {
-        if (start >= s.length()) {
-            res.add(item);
-            return;
-        }
-        StringBuilder str = new StringBuilder();
-        for (int i = start; i < s.length(); i++) {
-            str.append(s.charAt(i));
-            if (dict.contains(str.toString())) {
-                String newItem = item.length() > 0 ? (item + " " + str.toString()) : str.toString();
-                helper(s, dict, i + 1, newItem, res);
-            }
-        }
-    }
+    }*/
 
 }

@@ -27,7 +27,7 @@ public class MeetingRooms {
         if (intervals == null)
             return false;
         // Sort the intervals by start time
-        Arrays.sort(intervals, (a, b) -> a.start - b.start);
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));
         for (int i = 1; i < intervals.length; i++)
             if (intervals[i].start < intervals[i - 1].end)
                 return false;

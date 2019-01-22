@@ -19,6 +19,11 @@ import java.util.Set;
  * Output: "ball"
  */
 public class MostCommonWord {
+    public static void main(String[] args) {
+        String paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
+        String[] banned = new String[] { "hit" };
+        System.out.println(new MostCommonWord().mostCommonWord(paragraph, banned));
+    }
 
     public String mostCommonWord(String paragraph, String[] banned) {
         Set<String> set = new HashSet<>();
@@ -29,7 +34,8 @@ public class MostCommonWord {
         int count = 0;
         for (String s : paragraph.replaceAll("[^a-zA-Z ]", "").toLowerCase().split(" ")) {
             s = s.trim();
-            if (s.length() == 0 || set.contains(s)) continue;
+            if (s.length() == 0 || set.contains(s))
+                continue;
             map.put(s, map.getOrDefault(s, 0) + 1);
             if (count < map.get(s)) {
                 count = map.get(s);

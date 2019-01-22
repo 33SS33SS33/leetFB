@@ -14,7 +14,6 @@ public class IsIsomorphic {
         String t = "bar";
         System.out.println(new IsIsomorphic().isIsomorphica(s, t));
         System.out.println(new IsIsomorphic().isIsomorphicA(s, t));
-        System.out.println(new IsIsomorphic().isIsomorphicB(s, t));
         System.out.println();
     }
 
@@ -49,10 +48,12 @@ public class IsIsomorphic {
             Character c = getKey(map, c2);
             if (c != null && c != c1) {
                 return false;
-            } else if (map.containsKey(c1)) {
+            }
+            else if (map.containsKey(c1)) {
                 if (c2 != map.get(c1))
                     return false;
-            } else {
+            }
+            else {
                 map.put(c1, c2);
             }
         }
@@ -68,28 +69,4 @@ public class IsIsomorphic {
         }
         return null;
     }
-
-    public boolean isIsomorphicB(String s, String t) {
-        char[] S = s.toCharArray();
-        char[] T = t.toCharArray();
-        if (S.length != T.length)
-            return false;
-        return isIsomorphic(S, T) && isIsomorphic(T, S);
-    }
-
-    boolean isIsomorphic(char[] S, char[] T) {
-        char[] MAP = new char[256];
-        for (int i = 0; i < S.length; i++) {
-            if (MAP[(int) S[i]] == 0) {
-                // not mapped
-                MAP[(int) S[i]] = T[i];
-            } else {
-                if (MAP[(int) S[i]] != T[i]) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
 }

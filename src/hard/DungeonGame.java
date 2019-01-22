@@ -32,16 +32,30 @@ package hard;
  */
 class DungeonGame {
     public static void main(String[] args) {
-        int[][] dungeon = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
-        int[][] dungeon2 = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
+        int[][] dungeon = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
+        int[][] dungeon2 = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
         System.out.println(new DungeonGame().dungeonGamea(dungeon));
-        System.out.println(new DungeonGame().dungeonGameb(dungeon2));
     }
 
     /**
      * Build a table for the minimum hp needed to get to the bottom right
      * Build from bottom right to get minimum from i, j to the end
      * Instead of build from top-left, because it's hard to get correct relation
+     */
+    /**
+     * Why “from the bottom right corner to left top”?
+     * It depends on the way you formulate the problem. If you define a value
+     * in DP table d[i][j] as 'the minimum hp required to REACH (i, j) from (0,
+     * 0)", then the final answer should be d[nrows-1][ncols-1], and you need
+     * to start filling from the top left;
+     * However, in the reference answer provided with the question, dp[i][j] is
+     * defined as 'the minimum hp required to REACH (nrows-1, ncols-1) from (i,
+     * j)'. Here dp[0][0] is the final answer so we must fill from (nrows-1,
+     * ncols-1). For many other problems such as 'Minimum Path Sum', both
+     * formulation would work.
+     * However, in this problem, the former formulation will lead us to
+     * trouble, because it is very hard, if not impossible, to get d[i][j]
+     * based on d[i-1][j] and d[i][j-1].
      */
     public int dungeonGamea(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
@@ -60,42 +74,11 @@ class DungeonGame {
         }
         return dungeon[0][0];
     }
-
-    public int dungeonGameb(int[][] dungeon) {
-        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0)
-            return 0;
-        int m = dungeon.length;
-        int n = dungeon[0].length;
-        int[][] health = new int[m][n];
-        health[m - 1][n - 1] = Math.max(1 - dungeon[m - 1][n - 1], 1);
-        for (int i = m - 2; i >= 0; i--) {
-            health[i][n - 1] = Math.max(health[i + 1][n - 1] - dungeon[i][n - 1], 1);
-        }
-        for (int j = n - 2; j >= 0; j--) {
-            health[m - 1][j] = Math.max(health[m - 1][j + 1] - dungeon[m - 1][j], 1);
-        }
-        for (int i = m - 2; i >= 0; i--) {
-            for (int j = n - 2; j >= 0; j--) {
-                int down = Math.max(health[i + 1][j] - dungeon[i][j], 1);
-                int right = Math.max(health[i][j + 1] - dungeon[i][j], 1);
-                health[i][j] = Math.min(right, down);
-            }
-        }
-        return health[0][0];
-    }
     /**
-     * Why “from the bottom right corner to left top”?
-     * It depends on the way you formulate the problem. If you define a value
-     * in DP table d[i][j] as 'the minimum hp required to REACH (i, j) from (0,
-     * 0)", then the final answer should be d[nrows-1][ncols-1], and you need
-     * to start filling from the top left; 
-     * However, in the reference answer provided with the question, dp[i][j] is 
-     * defined as 'the minimum hp required to REACH (nrows-1, ncols-1) from (i,
-     * j)'. Here dp[0][0] is the final answer so we must fill from (nrows-1, 
-     * ncols-1). For many other problems such as 'Minimum Path Sum', both 
-     * formulation would work. 
-     * However, in this problem, the former formulation will lead us to 
-     * trouble, because it is very hard, if not impossible, to get d[i][j] 
-     * based on d[i-1][j] and d[i][j-1].
+     * int down = Math.max(health[i + 1][j] - dungeon[i][j], 1);
+     int right = Math.max(health[i][j + 1] - dungeon[i][j], 1);
+     health[i][j] = Math.min(right, down);
      */
+
+
 }

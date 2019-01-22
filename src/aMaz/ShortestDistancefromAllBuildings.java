@@ -55,7 +55,7 @@ public class ShortestDistancefromAllBuildings {
             for (int j = 0; j < col; j++) {
                 if (grid[i][j] == 1) {
                     buildingNum++;
-                    Queue<int[]> myQueue = new LinkedList<int[]>();
+                    Queue<int[]> myQueue = new LinkedList<>();
                     myQueue.offer(new int[]{i, j});
 
                     boolean[][] isVisited = new boolean[row][col];

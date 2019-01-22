@@ -11,7 +11,6 @@ import java.util.Set;
  * find the length of shortest transformation sequence from beginWord to endWord, such that:
  * Only one letter can be changed at a time.
  * Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
- * <p>
  * Note:
  * Return 0 if there is no such transformation sequence.
  * All words have the same length.
@@ -35,7 +34,6 @@ import java.util.Set;
  * wordList = ["hot","dot","dog","lot","log"]
  * Output: 0
  * Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
- * <p>
  * 这道题很重要
  * 使用了双向BFS 即先从起点向下搜索一层  然后再从终点向上搜索一层 然后直到两个相遇 这里的一层就是指所有那些和上一层的单词只差一个字母的单词
  * 答案的代码写的非常好
@@ -47,17 +45,17 @@ public class WordLadder {
     public static void main(String[] args) {
         String start = "hit";
         String end = "cog";
-        String[] arr = {"hot", "dot", "dog", "lot", "log"};
+        String[] arr = { "hot", "dot", "dog", "lot", "log" };
         HashSet<String> dict = new HashSet<String>(Arrays.asList(arr));
         System.out.println(new WordLadder().ladderLength(start, end, dict));
-        System.out.println(new WordLadder().ladderLengthB(start, end, dict));
+        System.out.println(new WordLadder().ladderLength(start, end, dict));
     }
 
     /**
      * creek 最好的
      */
-    public int ladderLengthB(String beginWord, String endWord, Set<String> wordDict) {
-        LinkedList<WordNode> queue = new LinkedList<WordNode>();
+    public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
+        LinkedList<WordNode> queue = new LinkedList<>();
         queue.add(new WordNode(beginWord, 1));
         wordDict.add(endWord);
         while (!queue.isEmpty()) {
@@ -85,6 +83,15 @@ public class WordLadder {
         return 0;
     }
 
+    class WordNode {
+        String word;
+        int    numSteps;
+
+        public WordNode(String word, int numSteps) {
+            this.word = word;
+            this.numSteps = numSteps;
+        }
+    }
     /**
      * 我们先给题目进行图的映射，顶点则是每个字符串，然后两个字符串如果相差一个字符则我们进行连边。
      * 接下来看看这个方法的优势，注意到我们的字符集只有小写字母，而且字符串长度固定，假设是L。
@@ -96,7 +103,7 @@ public class WordLadder {
      * 空间上需要存储访问情况，也是O(min(26^L, size(dict))
      * http://blog.csdn.net/linhuanmars/article/details/23029973
      */
-    public int ladderLength(String start, String end, HashSet<String> dict) {
+/*    public int ladderLength(String start, String end, HashSet<String> dict) {
         if (start == null || end == null || start.length() == 0 || end.length() == 0
                 || start.length() != end.length())
             return 0;
@@ -131,16 +138,6 @@ public class WordLadder {
             }
         }
         return 0;
-    }
+    }*/
 
-
-    class WordNode {
-        String word;
-        int numSteps;
-
-        public WordNode(String word, int numSteps) {
-            this.word = word;
-            this.numSteps = numSteps;
-        }
-    }
 }

@@ -72,8 +72,6 @@ class FindPeakElement {
         return left;
     }
 
-    /**
-     */
     public int findPeakElementC(int[] num) {
         return findPeakElement(num, 0, num.length);
     }

@@ -34,7 +34,7 @@ public class FindMedianfromDataStream {
 
     public void addNum(int num) {
         large.add((long) num);
-        small.add(-large.poll());
+        small.add(-large.poll()); //TODO
         if (large.size() < small.size())
             large.add(-small.poll());
     }

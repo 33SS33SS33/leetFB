@@ -11,10 +11,10 @@ import java.util.*;
  */
 class LongestSubstringWithoutRepeating {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("abcabcbb"));
-        System.out.println(lengthOfLongestSubstringB("abcabcbb"));
-        System.out.println(lengthOfLongestSubstringB("bbbbb"));
-        System.out.println(lengthOfLongestSubstringB("fdjskajfhh"));
+        System.out.println(LongestSubstringWithoutRepeating("abcabcbb"));
+        System.out.println(LongestSubstringWthoutRepeatingB("abcabcbb"));
+        System.out.println(LongestSubstringWthoutRepeatingB("bbbbb"));
+        System.out.println(LongestSubstringWthoutRepeatingB("fdjskajfhh"));
         System.out.println(lengthOfLongestSubstringe("fdjskajfhh"));
     }
 
@@ -32,7 +32,7 @@ class LongestSubstringWithoutRepeating {
      * then move the left pointer to the right of the same character last found.
      * Note that the two pointers can only move forward.
      */
-    public static int lengthOfLongestSubstring(String s) {
+    public static int LongestSubstringWithoutRepeating(String s) {
         if (s.length() == 0)
             return 0;
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -47,7 +47,7 @@ class LongestSubstringWithoutRepeating {
         return max;
     }
 
-    public static int lengthOfLongestSubstringB(String s) {
+    public static int LongestSubstringWthoutRepeatingB(String s) {
         if (s == null || s.length() == 0)
             return 0;
         Map<Character, Integer> map = new HashMap<Character, Integer>();

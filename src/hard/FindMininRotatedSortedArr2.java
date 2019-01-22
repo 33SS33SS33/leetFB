@@ -43,7 +43,7 @@ class FindMininRotatedSortedArr2 {
     }
 
     /**
-     * Skip all the indentical elements on the left in each search
+     * Skip all the identical elements on the left in each search
      */
     public int findMin(int[] num) {
         if (num == null || num.length == 0)

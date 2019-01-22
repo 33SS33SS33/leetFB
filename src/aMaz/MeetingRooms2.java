@@ -40,8 +40,8 @@ public class MeetingRooms2 {
     public static int minMeetingRooms1(Interval[] intervals) {
         if (intervals == null || intervals.length == 0)
             return 0;
-        Arrays.sort(intervals, (a, b) -> a.start - b.start);
-        PriorityQueue<Interval> heap = new PriorityQueue<>(intervals.length, (a, b) -> a.end - b.end);
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));
+        PriorityQueue<Interval> heap = new PriorityQueue<>(intervals.length, Comparator.comparingInt(a -> a.end));
         heap.offer(intervals[0]);
         for (int i = 1; i < intervals.length; i++) {
             Interval interval = heap.poll();

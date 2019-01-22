@@ -39,7 +39,6 @@ public class DesignSearchAutocompleteSystem {
     TrieNode root;
     String prefix;
 
-
     public DesignSearchAutocompleteSystem(String[] sentences, int[] times) {
         root = new TrieNode();
         prefix = "";

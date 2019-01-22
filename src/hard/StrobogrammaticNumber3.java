@@ -1,9 +1,5 @@
 package hard;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
  * A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
