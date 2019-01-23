@@ -2,7 +2,6 @@ package aMaz;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.HARD
@@ -33,17 +32,22 @@ public class SlidingWindowMaximum {
     public static void main(String[] args) {
         int[] A = {1, 3, -1, -3, 5, 3, 6, 7};
         int[] res1 = maxSlidingWindowa(A, 3);
-        int[] res = maxSlidingWindow(A, 3);
+//        int[] res = maxSlidingWindow(A, 3);
         for (int i : res1) {
             System.out.print(i + " ");
         }
         System.out.println();
-        for (int i : res) {
-            System.out.print(i + " ");
-        }
     }
 
-    //best
+    /**
+     * best
+     * We scan the array from 0 to n-1, keep "promising" elements in the deque. The algorithm is amortized O(n) as each element is put and polled once.
+     * At each i, we keep "promising" elements, which are potentially max number in window [i-(k-1),i] or any subsequent window. This means
+     * If an element in the deque and it is out of i-(k-1), we discard them. We just need to poll from the head, as we are using a deque and elements are ordered as the sequence in the array
+     * Now only those elements within [i-(k-1),i] are in the deque. We then discard elements smaller than a[i] from the tail. This is because if a[x] <a[i] and x<i,
+     * then a[x] has no chance to be the "max" in [i-(k-1),i], or any other subsequent window: a[i] would always be a better candidate.
+     * As a result elements in the deque are ordered in both sequence in array and their value. At each step the head of the deque is the max element in [i-(k-1),i]
+     */
     public static int[] maxSlidingWindowa(int[] a, int k) {
         if (a == null || k <= 0) {
             return new int[0];
@@ -52,7 +56,7 @@ public class SlidingWindowMaximum {
         int[] r = new int[n - k + 1];
         int ri = 0;
         // store index
-        Deque<Integer> q = new ArrayDeque<Integer>();
+        Deque<Integer> q = new ArrayDeque<>();
         for (int i = 0; i < a.length; i++) {
             // remove numbers out of range k
             while (!q.isEmpty() && q.peek() < i - k + 1) {
@@ -70,7 +74,7 @@ public class SlidingWindowMaximum {
         }
         return r;
     }
-
+/*
     public static int[] maxSlidingWindow(int[] nums, int k) {
         int[] T = new int[Math.min(nums.length - k + 1, nums.length)];
         SlidingMaxQueue Q = new SlidingMaxQueue(nums, k);
@@ -109,6 +113,6 @@ public class SlidingWindowMaximum {
             }
             queue.add(i);
         }
-    }
+    }*/
 
 }

@@ -10,43 +10,7 @@ class LongestPalindromicSubstring {
     public static void main(String[] args) {
         LongestPalindromicSubstring l = new LongestPalindromicSubstring();
         String s = "qabbaee";
-        System.out.println(l.longestPalindrome(s));
         System.out.println(l.longestPalindromeC(s));
-        System.out.println(l.longestPalindromeD(s));
-    }
-
-    /**
-     * Manacher's Algorithm, O(n) Time.
-     * S = “abba” => T = “#a#b#b#a#”.
-     */
-    public String longestPalindrome(String s) {
-        if (s == null || s.length() == 0)
-            return "";
-        int len = s.length();
-        int max = 0; // max length
-        String res = "";
-        for (int i = 1; i <= 2 * len - 1; i++) { // skip two #s
-            int count = 1;
-            while (i - count >= 0 && i + count <= 2 * len && get(s, i - count) == get(s, i + count))
-                count++;
-            count--; // there will be one extra count for the outbound #
-            if (count > max) { // update max and result when longer is found
-                res = s.substring((i - count) / 2, (i + count) / 2);
-                max = count;
-            }
-        }
-        return res;
-    }
-
-    /**
-     * Insert char to the original input string If the index is even, return # If the index is odd,
-     * return char in the original string
-     */
-    private char get(String s, int i) {
-        if (i % 2 == 0)
-            return '#';
-        else
-            return s.charAt(i / 2);
     }
 
     /**
@@ -86,9 +50,44 @@ class LongestPalindromicSubstring {
     }
 
     /**
+     * Manacher's Algorithm, O(n) Time.
+     * S = “abba” => T = “#a#b#b#a#”.
+     */
+/*    public String longestPalindrome(String s) {
+        if (s == null || s.length() == 0)
+            return "";
+        int len = s.length();
+        int max = 0; // max length
+        String res = "";
+        for (int i = 1; i <= 2 * len - 1; i++) { // skip two #s
+            int count = 1;
+            while (i - count >= 0 && i + count <= 2 * len && get(s, i - count) == get(s, i + count))
+                count++;
+            count--; // there will be one extra count for the outbound #
+            if (count > max) { // update max and result when longer is found
+                res = s.substring((i - count) / 2, (i + count) / 2);
+                max = count;
+            }
+        }
+        return res;
+    }*/
+
+    /**
+     * Insert char to the original input string If the index is even, return # If the index is odd,
+     * return char in the original string
+     */
+    private char get(String s, int i) {
+        if (i % 2 == 0)
+            return '#';
+        else
+            return s.charAt(i / 2);
+    }
+
+
+    /**
      * O(n2) runtime, O(1) space – Simpler solution:
      */
-    public String longestPalindromeC2(String s) {
+/*    public String longestPalindromeC2(String s) {
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
             int len1 = expandAroundCenter2(s, i, i);
@@ -109,7 +108,7 @@ class LongestPalindromicSubstring {
             R++;
         }
         return R - L - 1;
-    }
+    }*/
 
     /**
      * 而第二种方法是用动态规划，思路比较复杂一些，但是实现代码会比较简短。
@@ -118,7 +117,7 @@ class LongestPalindromicSubstring {
      * 只需要比较一下头尾字符即可。这种方法使用两层循环，时间复杂度是O(n^2)。
      * 而空间上因为需要记录任意子串是否为回文，需要O(n^2)的空间
      */
-    public String longestPalindromeD(String s) {
+/*    public String longestPalindromeD(String s) {
         if (s == null || s.length() == 0)
             return "";
         boolean[][] palin = new boolean[s.length()][s.length()];
@@ -136,5 +135,5 @@ class LongestPalindromicSubstring {
             }
         }
         return res;
-    }
+    }*/
 }

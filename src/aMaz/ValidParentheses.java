@@ -1,8 +1,8 @@
-package amaoa;
+package aMaz;
 
 import java.util.*;
 
-public class validParentheses {
+public class ValidParentheses {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String s = in.next();

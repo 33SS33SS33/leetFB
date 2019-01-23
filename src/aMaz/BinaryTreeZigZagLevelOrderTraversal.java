@@ -1,4 +1,4 @@
-package tree;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -30,11 +30,39 @@ import java.util.Queue;
  * 每次先遍历栈里的元素 这样就得到当前层的答案 再把下一层的入栈
  */
 
-class BinaryTreeZigZag {
+class BinaryTreeZigZagLevelOrderTraversal {
     public static void main(String[] args) {
         TreeNode head = buildTree();
-        System.out.println(new BinaryTreeZigZag().zigzagLevelOrdera(head).toString());
-        System.out.println(new BinaryTreeZigZag().zigzagLevelOrder(head).toString());
+        System.out.println(new BinaryTreeZigZagLevelOrderTraversal().zigzagLevelOrdera(head).toString());
+        System.out.println(new BinaryTreeZigZagLevelOrderTraversal().zigzagLevelOrder(head).toString());
+    }
+
+    /**
+     * 最好的
+     * O(n) solution by using LinkedList along with ArrayList.
+     * So insertion in the inner list and outer list are both O(1).
+     * Using DFS and creating new lists when needed.
+     */
+    public List<List<Integer>> zigzagLevelOrdera(TreeNode root) {
+        List<List<Integer>> sol = new ArrayList<List<Integer>>();
+        travel(root, sol, 0);
+        return sol;
+    }
+
+    private void travel(TreeNode curr, List<List<Integer>> sol, int level) {
+        if (curr == null)
+            return;
+        if (sol.size() <= level) {
+            List<Integer> newLevel = new LinkedList<Integer>();
+            sol.add(newLevel);
+        }
+        List<Integer> collection = sol.get(level);
+        if (level % 2 == 0)
+            collection.add(curr.val);
+        else
+            collection.add(0, curr.val);
+        travel(curr.left, sol, level + 1);
+        travel(curr.right, sol, level + 1);
     }
 
     /**
@@ -68,34 +96,6 @@ class BinaryTreeZigZag {
             res.add(curLevel);
         }
         return res;
-    }
-
-    /**
-     * 最好的
-     * O(n) solution by using LinkedList along with ArrayList.
-     * So insertion in the inner list and outer list are both O(1).
-     * Using DFS and creating new lists when needed.
-     */
-    public List<List<Integer>> zigzagLevelOrdera(TreeNode root) {
-        List<List<Integer>> sol = new ArrayList<List<Integer>>();
-        travel(root, sol, 0);
-        return sol;
-    }
-
-    private void travel(TreeNode curr, List<List<Integer>> sol, int level) {
-        if (curr == null)
-            return;
-        if (sol.size() <= level) {
-            List<Integer> newLevel = new LinkedList<Integer>();
-            sol.add(newLevel);
-        }
-        List<Integer> collection = sol.get(level);
-        if (level % 2 == 0)
-            collection.add(curr.val);
-        else
-            collection.add(0, curr.val);
-        travel(curr.left, sol, level + 1);
-        travel(curr.right, sol, level + 1);
     }
 
 

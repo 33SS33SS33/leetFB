@@ -65,6 +65,7 @@ class MergeKSortedLists {
      * 第二种
      * Divide and conquer  merge two halves, divide to merge two lists
      */
+/*
     public ListNode mergeKSortedListb(ArrayList<ListNode> lists) {
         if (lists == null || lists.size() == 0)
             return null;
@@ -98,6 +99,7 @@ class MergeKSortedLists {
             cur.next = l2;
         return dummy.next;
     }
+*/
 
     static ListNode buildList() {
         ListNode node0 = new ListNode(1);

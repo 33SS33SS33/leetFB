@@ -9,13 +9,13 @@ import java.util.*;
  * substring is "b", with the length of 1.
  * Tags: Hashtable, Two pointers, String
  */
-class LongestSubstringWithoutRepeating {
+class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
-        System.out.println(LongestSubstringWithoutRepeating("abcabcbb"));
-        System.out.println(LongestSubstringWthoutRepeatingB("abcabcbb"));
-        System.out.println(LongestSubstringWthoutRepeatingB("bbbbb"));
-        System.out.println(LongestSubstringWthoutRepeatingB("fdjskajfhh"));
-        System.out.println(lengthOfLongestSubstringe("fdjskajfhh"));
+        System.out.println(LongestSubstringWithoutRepeatingCharacters("abcabcbb"));
+/*        System.out.println(LongestSubstringWthoutRepeatingCharactersB("abcabcbb"));
+        System.out.println(LongestSubstringWthoutRepeatingCharactersB("bbbbb"));
+        System.out.println(LongestSubstringWthoutRepeatingCharactersB("fdjskajfhh"));
+        System.out.println(lengthOfLongestSubstringe("fdjskajfhh"));*/
     }
 
     /**
@@ -25,14 +25,14 @@ class LongestSubstringWithoutRepeating {
      * Update start point
      * Update max
      * Put current char in map
-     * he basic idea is, keep a hashmap which stores the characters in string as keys and their positions as values,
+     * the basic idea is, keep a hashmap which stores the characters in string as keys and their positions as values,
      * and keep two pointers which define the max substring. move the right pointer to scan through the string ,
      * and meanwhile update the hashmap.
      * If the character is already in the hashmap,
      * then move the left pointer to the right of the same character last found.
      * Note that the two pointers can only move forward.
      */
-    public static int LongestSubstringWithoutRepeating(String s) {
+    public static int LongestSubstringWithoutRepeatingCharacters(String s) {
         if (s.length() == 0)
             return 0;
         HashMap<Character, Integer> map = new HashMap<Character, Integer>();
@@ -47,7 +47,7 @@ class LongestSubstringWithoutRepeating {
         return max;
     }
 
-    public static int LongestSubstringWthoutRepeatingB(String s) {
+/*    public static int LongestSubstringWthoutRepeatingCharactersB(String s) {
         if (s == null || s.length() == 0)
             return 0;
         Map<Character, Integer> map = new HashMap<Character, Integer>();
@@ -55,17 +55,17 @@ class LongestSubstringWithoutRepeating {
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            /*start point can be recent dup's next char or last start*/
+            *//*start point can be recent dup's next char or last start*//*
             start = Math.max(start, (map.containsKey(c)) ? map.get(c) + 1 : 0);
-            /*if current str len is bigger then update*/
+            *//*if current str len is bigger then update*//*
             max = Math.max(max, i - start + 1);
-            /*add char to map with index*/
+            *//*add char to map with index*//*
             map.put(c, i);
         }
         return max;
-    }
+    }*/
 
-    public static int lengthOfLongestSubstringe(String s) {
+/*    public static int lengthOfLongestSubstringe(String s) {
         boolean[] exist = new boolean[256];
         int i = 0, maxLen = 0;
         for (int j = 0; j < s.length(); j++) {
@@ -77,6 +77,6 @@ class LongestSubstringWithoutRepeating {
             maxLen = Math.max(j - i + 1, maxLen);
         }
         return maxLen;
-    }
+    }*/
 
 }

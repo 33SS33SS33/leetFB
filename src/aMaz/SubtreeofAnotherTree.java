@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by krystal on 5/15/17.

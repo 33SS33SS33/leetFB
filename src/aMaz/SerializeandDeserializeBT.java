@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.Arrays;
 import java.util.Deque;

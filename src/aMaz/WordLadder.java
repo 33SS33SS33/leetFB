@@ -45,14 +45,52 @@ public class WordLadder {
     public static void main(String[] args) {
         String start = "hit";
         String end = "cog";
-        String[] arr = { "hot", "dot", "dog", "lot", "log" };
+        String[] arr = {"hot", "dot", "dog", "lot", "log"};
         HashSet<String> dict = new HashSet<String>(Arrays.asList(arr));
-        System.out.println(new WordLadder().ladderLength(start, end, dict));
+        System.out.println(new WordLadder().ladderLength1(start, end, dict));
         System.out.println(new WordLadder().ladderLength(start, end, dict));
     }
 
+    public int ladderLength1(String beginWord, String endWord, Set<String> wordList) {
+        Set<String> beginSet = new HashSet<>(), endSet = new HashSet<>();
+        int len = 1;
+        HashSet<String> visited = new HashSet<>();
+        beginSet.add(beginWord);
+        endSet.add(endWord);
+
+        while (!beginSet.isEmpty() && !endSet.isEmpty()) {
+            if (beginSet.size() > endSet.size()) {
+                Set<String> set = beginSet;
+                beginSet = endSet;
+                endSet = set;
+            }
+            Set<String> temp = new HashSet<>();
+            for (String word : beginSet) {
+                char[] chs = word.toCharArray();
+                for (int i = 0; i < chs.length; i++) {
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        char old = chs[i];
+                        chs[i] = c;
+                        String target = String.valueOf(chs);
+                        if (endSet.contains(target)) {
+                            return len + 1;
+                        }
+                        if (!visited.contains(target) && wordList.contains(target)) {
+                            temp.add(target);
+                            visited.add(target);
+                        }
+                        chs[i] = old;
+                    }
+                }
+            }
+            beginSet = temp;
+            len++;
+        }
+        return 0;
+    }
+
     /**
-     * creek 最好的
+     * creek
      */
     public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
         LinkedList<WordNode> queue = new LinkedList<>();
@@ -85,7 +123,7 @@ public class WordLadder {
 
     class WordNode {
         String word;
-        int    numSteps;
+        int numSteps;
 
         public WordNode(String word, int numSteps) {
             this.word = word;
