@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -24,10 +24,10 @@ import java.util.Set;
 class WordBreak {
     public static void main(String[] args) {
         String s = "leetcode";
-        String[] words = {"leet", "code",};
-        Set<String> dict = new HashSet<String>(Arrays.asList(words));
+        String[] words = { "leet", "code", };
+        Set<String> dict = new HashSet<>(Arrays.asList(words));
         System.out.println(new WordBreak().wordBreak(s, dict));
-        System.out.println(new WordBreak().wordBreakB(s, dict));
+        //        System.out.println(new WordBreak().wordBreakB(s, dict));
     }
 
     /**
@@ -57,7 +57,7 @@ class WordBreak {
     /**
      * backtracking, TLE 不好
      */
-    public static boolean wordBreakB(String s, Set<String> dict) {
+/*    public static boolean wordBreakB(String s, Set<String> dict) {
         if (s == null || dict == null)
             return false;
         if (s.equals("") || dict.contains(s))
@@ -71,6 +71,6 @@ class WordBreak {
             }
         }
         return false;
-    }
+    }*/
 
 }

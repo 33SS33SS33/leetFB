@@ -1,4 +1,4 @@
-package easy;
+package aMaz;
 
 /**
  * Compare two version numbers version1 and version1.

@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -24,10 +24,10 @@ import java.util.Queue;
  * Tags: Tree, BFS
  * 使用BFS 注意BFS判断一下level是不是为空
  */
-class BTLevelOrder {
+class BinaryTreeLevelOrderTraversal {
     public static void main(String[] args) {
         TreeNode root = buildTree();
-        System.out.println(new BTLevelOrder().bTLevelOrder(root));
+        System.out.println(new BinaryTreeLevelOrderTraversal().binaryTreeLevelOrderTraversal(root));
     }
 
     /**
@@ -35,16 +35,16 @@ class BTLevelOrder {
      * Get size of the queue each time
      * Iterate that many times to build current level
      */
-    private List<List<Integer>> bTLevelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+    private List<List<Integer>> binaryTreeLevelOrderTraversal(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
         if (root == null)
             return res;
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
+            List<Integer> curLevel = new ArrayList<>();
+            int levelNum = queue.size();
+            for (int i = 0; i < levelNum; i++) {
                 TreeNode n = queue.poll();
                 curLevel.add(n.val);
                 if (n.left != null)
@@ -73,7 +73,7 @@ class BTLevelOrder {
     }
 
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
 

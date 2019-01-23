@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.HashMap;
 
@@ -20,39 +20,19 @@ import java.util.HashMap;
  * 但是移动的过程中每次都要计算一遍 end-start 这样才能的出来ABC
  * 还有别的解法 未实现
  */
-class MinWindowSubstring {
+//HARD TODO
+class MinimumWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
         String T = "ABC";
-        String res = minWindowB(S, T);
         String res2 = minWindow2(S, T);
-        System.out.println(res);
         System.out.println(res2);
-    }
-
-    //make the template more applicable for Longest Substring Without Repeating Character
-    public int lengthOfLongestSubstringa(String s) {
-        if (s == null || s.length() == 0) {
-            return 0;
-        }
-        int len = 0;
-        int head = 0, i = 0;
-        int[] sTable = new int[256];
-        int repeat = 0;
-        while (i < s.length()) {
-            if (sTable[s.charAt(i++)]++ > 0)
-                repeat++;   //total number of repeat
-            while (repeat > 0) {
-                if (sTable[s.charAt(head++)]-- > 1)
-                    repeat--;
-            }
-            len = Math.max(len, i - head);
-        }
-        return len;
+        //        String res = minWindowB(S, T);
+        //        System.out.println(res);
     }
 
     public static String minWindow2(String s, String t) {
-        HashMap<Character, Integer> map = new HashMap();
+        HashMap<Character, Integer> map = new HashMap<>();
         for (char c : s.toCharArray())
             map.put(c, 0);
         for (char c : t.toCharArray()) {
@@ -83,6 +63,27 @@ class MinWindowSubstring {
         return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
     }
 
+    //make the template more applicable for Longest Substring Without Repeating Character
+    public int lengthOfLongestSubstringa(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int len = 0;
+        int head = 0, i = 0;
+        int[] sTable = new int[256];
+        int repeat = 0;
+        while (i < s.length()) {
+            if (sTable[s.charAt(i++)]++ > 0)
+                repeat++;   //total number of repeat
+            while (repeat > 0) {
+                if (sTable[s.charAt(head++)]-- > 1)
+                    repeat--;
+            }
+            len = Math.max(len, i - head);
+        }
+        return len;
+    }
+
     /**
      * creek----
      * Use two maps to store count of characters
@@ -97,7 +98,7 @@ class MinWindowSubstring {
      * Update count in window as well
      * Compare with minLength and update result as well
      */
-    public static String minWindowB(String s, String t) {
+/*    public static String minWindowB(String s, String t) {
         if (t.length() > s.length())
             return "";
         String result = "";
@@ -118,7 +119,8 @@ class MinWindowSubstring {
                         count++;
                     }
                     map.put(c, map.get(c) + 1);
-                } else {
+                }
+                else {
                     map.put(c, 1);
                     count++;
                 }
@@ -138,7 +140,6 @@ class MinWindowSubstring {
             }
         }
         return result;
-    }
-
+    }*/
 
 }

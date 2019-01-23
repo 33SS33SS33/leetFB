@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +14,14 @@ import java.util.Map;
  * You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
  * Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
  */
-public class TopKFrequentElements {
+public class TopKFrequentElements_BucketSort {
+    public static void main(String[] args) {
+        int[] m = { 1, 1, 1, 2, 2, 3 };
+        System.out.println(new TopKFrequentElements_BucketSort().topKFrequent(m, 2));
+    }
 
     public List<Integer> topKFrequent(int[] nums, int k) {
-        List<Integer>[] bucket = new List[nums.length + 1];
+        List[] bucket = new List[nums.length + 1];
         Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
         for (int n : nums) {
             frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);

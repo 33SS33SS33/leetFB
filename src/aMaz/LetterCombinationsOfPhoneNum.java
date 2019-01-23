@@ -1,7 +1,6 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,7 +23,6 @@ class LetterCombinationsOfPhoneNum {
     }
 
     /**
-     * *
      * Backtracking to generate all combinations
      */
     private static final String[] LETTERS = {"",     // 0

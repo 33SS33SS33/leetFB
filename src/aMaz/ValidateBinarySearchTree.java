@@ -1,7 +1,8 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Given a binary tree, determine if it is a valid binary searchinRotatedSortedArrayb tree (BST).
@@ -15,31 +16,36 @@ import java.util.List;
  * 如果访问了右节点  则当前点得值是右节点的最小值
  * 然后递归更新最大最小值即可
  */
-class ValidateBST {
+class ValidateBinarySearchTree {
     public static void main(String[] args) {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);
-        ValidateBST v = new ValidateBST();
-        System.out.println(v.isValidBSTa(r));
+        ValidateBinarySearchTree v = new ValidateBinarySearchTree();
+        System.out.println(v.isValidBSTA(r));
         System.out.println(v.isValidBST(r));
         System.out.println(v.isValidBSTB(r));
         System.out.println(v.isValidBSTC(r));
         System.out.println(v.isValidBSTD(r));
     }
 
-    public boolean isValidBSTa(TreeNode root) {
-        ArrayList<Integer> pre = new ArrayList<Integer>();
-        pre.add(null);
-        return helper(root, pre);
-    }
-
-    private boolean helper(TreeNode root, ArrayList<Integer> pre) {
+    //best TODO
+    //https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
+    public boolean isValidBSTA(TreeNode root) {
         if (root == null)
             return true;
-        boolean left = helper(root.left, pre);
-        if (pre.get(0) != null && root.val <= pre.get(0))
-            return false;
-        pre.set(0, root.val);
-        return left && helper(root.right, pre);
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode pre = null;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (pre != null && root.val <= pre.val)
+                return false;
+            pre = root;
+            root = root.right;
+        }
+        return true;
     }
 
     /**
@@ -127,25 +133,12 @@ class ValidateBST {
 
     // add range of current value and do recursive check
     public boolean isValidBSTB(TreeNode root, int min, int max) {
-        return root == null || root.val > min && root.val < max
-                && isValidBSTB(root.left, min, root.val)
+        return root == null || root.val > min && root.val < max && isValidBSTB(root.left, min, root.val)
                 && isValidBSTB(root.right, root.val, max);
     }
 
-    class BNode {
-        TreeNode n;
-        double left;
-        double right;
-
-        public BNode(TreeNode n, double left, double right) {
-            this.n = n;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
 

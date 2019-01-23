@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
@@ -23,11 +23,7 @@ class MergeIntervals {
         intervals.add(interval1);
         intervals.add(interval2);
         intervals.add(interval3);
-        ArrayList<Interval> intervals2 = new ArrayList<Interval>();
-        intervals2.add(interval1);
-        intervals2.add(interval2);
-        intervals2.add(interval3);
-        List<Interval> res = new MergeIntervals().MergeIntervalsA(intervals);
+        List<Interval> res = new MergeIntervals().MergeIntervals(intervals);
         System.out.print(res.toString());
     }
 
@@ -40,15 +36,11 @@ class MergeIntervals {
      * Remove last interval and add new interval with updated end value
      * Which is the bigger of last.end and i.end
      */
-    public List<Interval> MergeIntervalsA(List<Interval> intervals) {
-        List<Interval> res = new ArrayList<Interval>();
+    public List<Interval> MergeIntervals(List<Interval> intervals) {
+        List<Interval> res = new ArrayList<>();
         if (intervals == null || intervals.size() == 0)
             return res;
-        Collections.sort(intervals, new Comparator<Interval>() {
-            public int compare(Interval i1, Interval i2) {
-                return i1.start - i2.start;
-            }
-        });
+        Collections.sort(intervals, Comparator.comparingInt(i2 -> i2.start));
         for (Interval i : intervals) {
             if (res.isEmpty())
                 res.add(i); // first interval

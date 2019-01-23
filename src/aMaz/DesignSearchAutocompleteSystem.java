@@ -3,7 +3,7 @@ package aMaz;
 import java.util.*;
 
 /**
- * Created by shanshan on 8/28/18.
+ * Created by shanshan on 8/28/18. HARD  TODO
  * Design a search autocomplete system for a search engine. Users may input a sentence (at least one word and end with a special character '#').
  * For each character they type except '#', you need to return the top 3 historical hot sentences that have prefix the same as the part of sentence already typed.
  * Here are the specific rules:

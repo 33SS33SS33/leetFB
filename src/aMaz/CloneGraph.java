@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ class CloneGraph {
      */
     public HashMap<Integer, UndirectedGraphNode> map = new HashMap();
 
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+    public UndirectedGraphNode cloneGraphA(UndirectedGraphNode node) {
         if (node == null)
             return null;
         if (map.containsKey(node.label))
@@ -48,7 +48,7 @@ class CloneGraph {
         UndirectedGraphNode cloned = new UndirectedGraphNode(node.label);
         map.put(cloned.label, cloned);
         for (UndirectedGraphNode neighbor : node.neighbors) {
-            cloned.neighbors.add(cloneGraph(neighbor));
+            cloned.neighbors.add(cloneGraphA(neighbor));
         }
         return cloned;
     }
@@ -74,7 +74,8 @@ class CloneGraph {
                     map.put(aNeighbor, copy);
                     map.get(curr).neighbors.add(copy);
                     queue.add(aNeighbor);
-                } else {
+                }
+                else {
                     map.get(curr).neighbors.add(map.get(aNeighbor));
                 }
             }
@@ -120,8 +121,7 @@ class CloneGraph {
         return copy;
     }
 
-    private void helper(UndirectedGraphNode node,
-                        HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
+    private void helper(UndirectedGraphNode node, HashMap<UndirectedGraphNode, UndirectedGraphNode> map) {
         for (int i = 0; i < node.neighbors.size(); i++) {
             UndirectedGraphNode cur = node.neighbors.get(i);
             if (!map.containsKey(cur)) {
@@ -134,7 +134,7 @@ class CloneGraph {
     }
 
     class UndirectedGraphNode {
-        int label;
+        int                       label;
         List<UndirectedGraphNode> neighbors;
 
         UndirectedGraphNode(int x) {

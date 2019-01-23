@@ -18,7 +18,7 @@ package medium;
 class SumRootToLeafNo {
     public static void main(String[] args) {
         TreeNode head = buildTree();
-        System.out.println(new SumRootToLeafNo().sumNumbersC2(head));
+        System.out.println(new SumRootToLeafNo().sumNumbers(head));
     }
 
     /**
@@ -29,7 +29,7 @@ class SumRootToLeafNo {
      * 算法的本质是一次先序遍历，所以时间是O(n)，空间是栈大小，O(logn)。
      * http://blog.csdn.net/linhuanmars/article/details/22913699
      */
-    public int sumNumbersC2(TreeNode root) {
+    public int sumNumbers(TreeNode root) {
         return helper2(root, 0);
     }
 

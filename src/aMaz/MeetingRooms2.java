@@ -15,15 +15,13 @@ import java.util.*;
  * 如果没有房间avail 那就说明要开新房间 那就res +1
  * 还可以用堆来做 未实现
  */
-
-//P705
 public class MeetingRooms2 {
     public static void main(String[] args) {
         Interval inter1 = new Interval(1, 4);
         Interval inter2 = new Interval(2, 6);
         Interval inter3 = new Interval(4, 6);
         Interval[] intervals = {inter1, inter2, inter3};
-        System.out.println(minMeetingRooms1(intervals));
+        System.out.println(meetingRooms2a(intervals));
     }
 
     /**
@@ -37,7 +35,7 @@ public class MeetingRooms2 {
      * otherwise, this meeting needs a new room
      * don't forget to put the meeting room back
      */
-    public static int minMeetingRooms1(Interval[] intervals) {
+    public static int meetingRooms2a(Interval[] intervals) {
         if (intervals == null || intervals.length == 0)
             return 0;
         Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));
@@ -55,6 +53,7 @@ public class MeetingRooms2 {
         return heap.size();
     }
 
+/*
     public int minMeetingRooms(Interval[] intervals) {
         //        Arrays.sort(intervals, (a, b) -> a.start - b.start);
         RoomAllocator ra = new RoomAllocator();
@@ -78,11 +77,11 @@ public class MeetingRooms2 {
             }
             rooms.add(room);
         }
-
         void freeBefore(int time) {
             currentTime = time;
         }
     }
+*/
 
     public static class Interval {
         int start;

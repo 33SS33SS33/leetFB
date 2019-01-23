@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,7 +45,8 @@ public class InsertDeleteGetRandomO1 {
          */
         public boolean insert(int val) {
             boolean contain = locs.containsKey(val);
-            if (contain) return false;
+            if (contain)
+                return false;
             locs.put(val, nums.size());
             nums.add(val);
             return true;
@@ -56,7 +57,8 @@ public class InsertDeleteGetRandomO1 {
          */
         public boolean remove(int val) {
             boolean contain = locs.containsKey(val);
-            if (!contain) return false;
+            if (!contain)
+                return false;
             int loc = locs.get(val);
             if (loc < nums.size() - 1) { // not the last one than swap the last one with this val
                 int lastone = nums.get(nums.size() - 1);
