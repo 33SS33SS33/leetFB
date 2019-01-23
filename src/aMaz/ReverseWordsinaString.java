@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 /**
  * Given an input string, reverse the string word by word.

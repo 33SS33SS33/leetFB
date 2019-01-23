@@ -17,45 +17,11 @@ import java.util.*;
  */
 class SpiralMatrix {
     public static void main(String[] args) {
-        int[][] matrix = new int[][]{{1, 2, 3, 7}, {4, 5, 6, 9}, {7, 8, 9, 1}};
+        int[][] matrix = new int[][] { { 1, 2, 3, 7 }, { 4, 5, 6, 9 }, { 7, 8, 9, 1 } };
         List<Integer> res3 = SpiralMatrixA(matrix);
         List<Integer> res4 = SpiralMatrixB(matrix);
         System.out.println(res3.toString());
         System.out.println(res4.toString());
-    }
-
-    /**
-     * 最好理解的
-     */
-    public static List<Integer> SpiralMatrixA(int[][] matrix) {
-        List<Integer> elements = new ArrayList<Integer>();
-        if (matrix.length == 0)
-            return elements;
-        int m = matrix.length, n = matrix[0].length;
-        int row = 0, col = -1;
-        while (true) {
-            for (int i = 0; i < n; i++) {
-                elements.add(matrix[row][++col]);
-            }
-            if (--m == 0)
-                break;
-            for (int i = 0; i < m; i++) {
-                elements.add(matrix[++row][col]);
-            }
-            if (--n == 0)
-                break;
-            for (int i = 0; i < n; i++) {
-                elements.add(matrix[row][--col]);
-            }
-            if (--m == 0)
-                break;
-            for (int i = 0; i < m; i++) {
-                elements.add(matrix[--row][col]);
-            }
-            if (--n == 0)
-                break;
-        }
-        return elements;
     }
 
     public static List<Integer> SpiralMatrixB(int[][] matrix) {
@@ -94,6 +60,40 @@ class SpiralMatrix {
             colBegin++;
         }
         return res;
+    }
+
+    /**
+     * 最好理解的
+     */
+    public static List<Integer> SpiralMatrixA(int[][] matrix) {
+        List<Integer> elements = new ArrayList<Integer>();
+        if (matrix.length == 0)
+            return elements;
+        int m = matrix.length, n = matrix[0].length;
+        int row = 0, col = -1;
+        while (true) {
+            for (int i = 0; i < n; i++) {
+                elements.add(matrix[row][++col]);
+            }
+            if (--m == 0)
+                break;
+            for (int i = 0; i < m; i++) {
+                elements.add(matrix[++row][col]);
+            }
+            if (--n == 0)
+                break;
+            for (int i = 0; i < n; i++) {
+                elements.add(matrix[row][--col]);
+            }
+            if (--m == 0)
+                break;
+            for (int i = 0; i < m; i++) {
+                elements.add(matrix[--row][col]);
+            }
+            if (--n == 0)
+                break;
+        }
+        return elements;
     }
 
 }

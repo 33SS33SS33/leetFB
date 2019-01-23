@@ -14,24 +14,26 @@ package dP;
  */
 class UniquePaths {
     public static void main(String[] args) {
-        System.out.println(uniquePathsMath(10, 20));
+        System.out.println(uniquePaths(10, 20));
         System.out.println(uniquePathsDP(10, 20));
+        System.out.println(uniquePathsMath(10, 20));
     }
 
-    /**
-     * Math, Combination
-     * Equivalent to choose n-1 to go down from m - 1 + n - 1
-     * other steps will go right
-     */
-    public static int uniquePathsMath(int m, int n) {
-        int k = m > n ? n : m;
-        int N = m + n - 2;
-        double res = 1; // note that res can overflow
-        for (int i = 1; i < k; i++) {
-            res *= N--;
-            res /= i;
+    //complexity O(n*m)
+    public static int uniquePaths(int m, int n) {
+        Integer[][] map = new Integer[m][n];
+        for (int i = 0; i < m; i++) {
+            map[i][0] = 1;
         }
-        return (int) res; // convert to int
+        for (int j = 0; j < n; j++) {
+            map[0][j] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                map[i][j] = map[i - 1][j] + map[i][j - 1];
+            }
+        }
+        return map[m - 1][n - 1];
     }
 
     /**
@@ -50,6 +52,22 @@ class UniquePaths {
         if (paths[m][n] == 0)
             paths[m][n] = uniquePathsDP(m - 1, n) + uniquePathsDP(m, n - 1);
         return paths[m][n];
+    }
+
+    /**
+     * Math, Combination
+     * Equivalent to choose n-1 to go down from m - 1 + n - 1
+     * other steps will go right
+     */
+    public static int uniquePathsMath(int m, int n) {
+        int k = m > n ? n : m;
+        int N = m + n - 2;
+        double res = 1; // note that res can overflow
+        for (int i = 1; i < k; i++) {
+            res *= N--;
+            res /= i;
+        }
+        return (int) res; // convert to int
     }
 
 }
