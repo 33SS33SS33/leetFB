@@ -1,4 +1,4 @@
-package rectangle;
+package aMaz;
 
 import java.util.*;
 
@@ -24,7 +24,7 @@ class SpiralMatrix {
         System.out.println(res4.toString());
     }
 
-    public static List<Integer> SpiralMatrixB(int[][] matrix) {
+    public static List<Integer> SpiralMatrixA(int[][] matrix) {
         List<Integer> res = new ArrayList<Integer>();
         if (matrix.length == 0) {
             return res;
@@ -65,7 +65,7 @@ class SpiralMatrix {
     /**
      * 最好理解的
      */
-    public static List<Integer> SpiralMatrixA(int[][] matrix) {
+    public static List<Integer> SpiralMatrixB(int[][] matrix) {
         List<Integer> elements = new ArrayList<Integer>();
         if (matrix.length == 0)
             return elements;

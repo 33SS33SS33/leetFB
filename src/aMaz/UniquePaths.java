@@ -1,4 +1,4 @@
-package dP;
+package aMaz;
 
 /**
  * A robot is located at the top-left corner of a m x n grid (marked 'Start' in
@@ -16,7 +16,7 @@ class UniquePaths {
     public static void main(String[] args) {
         System.out.println(uniquePaths(10, 20));
         System.out.println(uniquePathsDP(10, 20));
-        System.out.println(uniquePathsMath(10, 20));
+//        System.out.println(uniquePathsMath(10, 20));
     }
 
     //complexity O(n*m)
@@ -59,7 +59,7 @@ class UniquePaths {
      * Equivalent to choose n-1 to go down from m - 1 + n - 1
      * other steps will go right
      */
-    public static int uniquePathsMath(int m, int n) {
+/*    public static int uniquePathsMath(int m, int n) {
         int k = m > n ? n : m;
         int N = m + n - 2;
         double res = 1; // note that res can overflow
@@ -68,6 +68,6 @@ class UniquePaths {
             res /= i;
         }
         return (int) res; // convert to int
-    }
+    }*/
 
 }

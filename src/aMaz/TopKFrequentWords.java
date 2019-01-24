@@ -14,6 +14,11 @@ import java.util.*;
  * Note that "i" comes before "love" due to a lower alphabetical order.
  */
 public class TopKFrequentWords {
+    public static void main(String[] args) {
+        String[] words = { "i", "love", "leetcode", "i", "love", "coding" };
+        System.out.print(new TopKFrequentWords().topKFrequent(words, 2));
+    }
+
     /**
      * The idea is to keep a count of each word in a HashMap and then insert in a Priority Queue.
      * While inserting in pq, if the count of two words is same then insert based on string compare of the keys.

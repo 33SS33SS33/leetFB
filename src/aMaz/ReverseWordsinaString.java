@@ -5,14 +5,10 @@ package aMaz;
  * For example,
  * Given s = "the sky is blue",
  * return "blue is sky the".
- * Clarification:
- * What constitutes a word?
- * A sequence of non-space characters constitutes a word.
- * Could the input string contain leading or trailing spaces?
- * Yes. However, your reversed string should not contain leading or trailing
- * spaces.
- * How about multiple spaces between two words?
- * Reduce them to a single space in the reversed string.
+ * Note:
+ * A word is defined as a sequence of non-space characters.
+ * Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.
+ * You need to reduce multiple spaces between two words to a single space in the reversed string.
  * Tags: String
  * split用来分割 返回的是分割之后的list 默认是用空格
  * join用来连接 join最前的字符表示用什么字符连接 
