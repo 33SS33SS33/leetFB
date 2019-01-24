@@ -21,7 +21,7 @@ public class records {
 
      20160507
      MeetingRooms2
-     MaxSquare
+     MaximalSquare
      IntegertoEnglishWords
      ImplementTriePrefixTree
      HIndex

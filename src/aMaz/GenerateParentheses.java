@@ -1,4 +1,4 @@
-package backTrac;
+package aMaz;
 
 import java.util.*;
 
@@ -9,16 +9,18 @@ import java.util.*;
  * "((()))", "(()())", "(())()", "()(())", "()()()"
  * Tags: Backtracking. String
  */
-class GenerateParen {
+class GenerateParentheses {
     public static void main(String[] args) {
         System.out.println(generateParenthesisa(3));
     }
 
     /**
-     * 最好的
+     * The idea here is to only add '(' and ')' that we know will guarantee us a solution (instead of adding 1 too many close).
+     * Once we add a '(' we will then discard it and try a ')'
+     * which can only close a valid '('. Each of these steps are recursively called.
      */
     public static List<String> generateParenthesisa(int n) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         backtrack(list, "", 0, 0, n);
         return list;
     }

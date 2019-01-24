@@ -7,6 +7,8 @@ package aMaz;
  * 一个节点只代表一个字母 一个根可以有26个孩子
  * 标准答案
  */
+
+//https://leetcode.com/problems/implement-trie-prefix-tree/discuss/58832/AC-JAVA-solution-simple-using-single-array
 public class ImplementTriePrefixTree {
     private TrieNode root;
 
@@ -41,7 +43,8 @@ public class ImplementTriePrefixTree {
             char curLetter = word.charAt(i);
             if (node.containsKey(curLetter)) {
                 node = node.get(curLetter);
-            } else {
+            }
+            else {
                 return null;
             }
         }

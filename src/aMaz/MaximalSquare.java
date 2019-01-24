@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -15,12 +15,12 @@ package aFB;
  * 如果当前点为0  则dp[x][y]就是0  肯定没有以0 为右下角元素的全1正方形
  * 右边是另一种解法 未实现
  */
-public class MaxSquare {
+public class MaximalSquare {
     public static void main(String[] args) {
-        MaxSquare s = new MaxSquare();
+        MaximalSquare s = new MaximalSquare();
         char[][] matrix = {{'0', '0', '1', '1'}, {'0', '0', '1', '1'},
                 {'1', '1', '1', '1'}};
-        System.out.println(s.maximalSquareA(matrix));
+        System.out.println(s.maximalSquare(matrix));
     }
 
     /**
@@ -35,7 +35,7 @@ public class MaxSquare {
     // if you mention in your explanation that b[i][j]
     // represent the edge length of the largest square ENDING at position (i, j), it would be much clearer.
     //https://discuss.leetcode.com/topic/20801/extremely-simple-java-solution
-    public int maximalSquareA(char[][] a) {
+    public int maximalSquare(char[][] a) {
         if (a.length == 0)
             return 0;
         int m = a.length, n = a[0].length, result = 0;

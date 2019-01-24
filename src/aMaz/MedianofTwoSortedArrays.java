@@ -1,16 +1,29 @@
-package hard;
+package aMaz;
 
 /**
- * There are two sorted arrays A and B of size m and n respectively. Find the
+ * There are two sorted arrays A and B of size m and n respectively. Find the HARD
  * median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+ * You may assume nums1 and nums2 cannot be both empty.
+ * Example 1:
+ * nums1 = [1, 3]
+ * nums2 = [2]
+ * The median is 2.0
+ * <p>
+ * Example 2:
+ * nums1 = [1, 2]
+ * nums2 = [3, 4]
+ * The median is (2 + 3)/2 = 2.5
  * Tags: Divide and Conquer, Array, Binary Search
  */
-class MedianOfTwoSortedArrs {
+class MedianofTwoSortedArrays {
     public static void main(String[] args) {
-        MedianOfTwoSortedArrs m = new MedianOfTwoSortedArrs();
-        int[] A = {1, 2, 3, 4, 5};
-        int[] B = {2, 4, 5, 6, 7};
-        System.out.println(m.findMedianSortedArrays(A, B));
+        MedianofTwoSortedArrays m = new MedianofTwoSortedArrays();
+        int[] A1 = { 1, 2 };
+        int[] A = { 1, 2, 3, 4, 5 };
+        int[] B1 = {3, 4 };
+        int[] B = { 2, 4, 5, 6, 7 };
+        System.out.println(m.medianofTwoSortedArrays(A, B));
+        System.out.println(m.medianofTwoSortedArrays(A1, B1));
     }
 
     /**
@@ -34,11 +47,11 @@ class MedianOfTwoSortedArrs {
      * If total # of items is even, get the min of A[l] and B[k-l+1], b
      * Return the average of a and b
      */
-    public double findMedianSortedArrays(int[] A, int[] B) {
+    public double medianofTwoSortedArrays(int[] A, int[] B) {
         int n = A.length;
         int m = B.length;
         if (n > m)
-            return findMedianSortedArrays(B, A); // shorter array first
+            return medianofTwoSortedArrays(B, A); // shorter array first
         int k = (n + m - 1) / 2; // mid position
         int l = 0, r = Math.min(k, n); // r is n, NOT n-1, this is important!!
         // find A[l] > B[k - l]

@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -27,7 +27,8 @@ public class LowestCommonAncestorofaBST {
         if (p.val > q.val)
             return lowestCommonAncestorBST(root, q, p);
         // find p <= root <= q
-        while (!(p.val <= root.val && root.val <= q.val)) {
+        while ((root.val - p.val) * (root.val - q.val) > 0) {
+            //        while (!(p.val <= root.val && root.val <= q.val)) {
             root = root.val > q.val ? root.left : root.right;
         }
         return root;
@@ -44,16 +45,18 @@ public class LowestCommonAncestorofaBST {
         TreeNode m = root;
         if (m.val > p.val && m.val < q.val) {
             return m;
-        } else if (m.val > p.val && m.val > q.val) {
+        }
+        else if (m.val > p.val && m.val > q.val) {
             return lowestCommonAncestorBSTB(root.left, p, q);
-        } else if (m.val < p.val && m.val < q.val) {
+        }
+        else if (m.val < p.val && m.val < q.val) {
             return lowestCommonAncestorBSTB(root.right, p, q);
         }
         return root;
     }
 
     public static class TreeNode {
-        int val;
+        int      val;
         TreeNode left;
         TreeNode right;
 

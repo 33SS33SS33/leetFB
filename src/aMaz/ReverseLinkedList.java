@@ -1,10 +1,12 @@
-package aFB;
+package aMaz;
 
 /**
- * Write a function to reverse a linked list
- * Tags: LinkedList
- * 递归的方法应该看一看
- * 都写了
+ * Reverse a singly linked list. easy
+ * Example:
+ * Input: 1->2->3->4->5->NULL
+ * Output: 5->4->3->2->1->NULL
+ * Follow up:
+ * A linked list can be reversed either iteratively or recursively. Could you implement both?
  */
 
 class ReverseLinkedList {
@@ -28,6 +30,20 @@ class ReverseLinkedList {
     }
 
     /**
+     * 迭代
+     */
+    public Node reverseLinkedLista(Node head) {
+        Node newHead = null;
+        while (head != null) {
+            Node next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next;
+        }
+        return newHead;
+    }
+
+    /**
      * 递归
      * Recursive
      * Divide the list in 2 parts - first node and rest of the linked list
@@ -44,22 +60,22 @@ class ReverseLinkedList {
         return temp;
     }
 
-    /**
-     * 迭代
-     */
-    public Node reverseLinkedLista(Node head) {
-        Node newHead = null;
-        while (head != null) {
-            Node next = head.next;
-            head.next = newHead;
-            newHead = head;
-            head = next;
-        }
-        return newHead;
+    // 递归
+/*    public Node reverseList(Node head) {
+    *//* recursive solution *//*
+        return reverseListInt(head, null);
     }
 
+    private Node reverseListInt(Node head, Node newHead) {
+        if (head == null)
+            return newHead;
+        Node next = head.next;
+        head.next = newHead;
+        return reverseListInt(next, head);
+    }*/
+
     static class Node {
-        int val;
+        int  val;
         Node next;
 
         Node(int val) {

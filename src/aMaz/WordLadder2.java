@@ -3,7 +3,7 @@ package aMaz;
 import java.util.*;
 
 /**
- * Given two words (start and end), and a dictionary, find all shortest
+ * Given two words (start and end), and a dictionary, find all shortest  HARD
  * transformation sequence(s) from start to end, such that:
  * Only one letter can be changed at a time
  * Each intermediate word must wordSearchb in the dictionary
