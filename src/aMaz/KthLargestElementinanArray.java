@@ -1,6 +1,5 @@
-package aFB;
+package aMaz;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -24,25 +23,16 @@ class KthLargestElementinanArray {
     public static void main(String[] args) {
         KthLargestElementinanArray K = new KthLargestElementinanArray();
         int[] A = {1, 23, 12, 9, 30, 2, 50};
-        System.out.println(K.findKthLargest1(A, 3));
-        System.out.println(K.findKthLargesta(A, 3));
-        System.out.println(K.findKthLargest(A, 3));
-        System.out.println(K.findKthLargestc(A, 3));
+        System.out.println(K.kthLargestElementinanArray(A, 3));
+//        System.out.println(K.kthLargestElementinanArray2(A, 3));
     }
 
     //多种解法
     //https://discuss.leetcode.com/topic/14597/solution-explained/2
-    //O(N lg N) running time + O(1) memory
-    public int findKthLargest1(int[] nums, int k) {
-        final int N = nums.length;
-        Arrays.sort(nums);
-        return nums[N - k];
-    }
-
     /**
      * O(N lg K) running time + O(K) memory
      */
-    public int findKthLargesta(int[] nums, int k) {
+    public int kthLargestElementinanArray(int[] nums, int k) {
         final PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
         for (int val : nums) {
             pq.offer(val);
@@ -57,7 +47,7 @@ class KthLargestElementinanArray {
      * Priority Queue
      * O(n) + k * O(logn)
      */
-    public int findKthLargest(int[] A, int k) {
+/*    public int kthLargestElementinanArray2(int[] A, int k) {
         if (k <= 0 || k > A.length)
             return -1;
         Queue<Integer> q = new PriorityQueue<Integer>(A.length, Collections.reverseOrder());
@@ -67,49 +57,5 @@ class KthLargestElementinanArray {
         for (int i = 0; i < k; i++)
             res = q.poll();
         return res;
-    }
-
-    //O(N) best case / O(N^2) worst case running time + O(1) memory
-    public int findKthLargestc(int[] nums, int k) {
-        k = nums.length - k;
-        int lo = 0;
-        int hi = nums.length - 1;
-        while (lo < hi) {
-            final int j = partition(nums, lo, hi);
-            if (j < k) {
-                lo = j + 1;
-            } else if (j > k) {
-                hi = j - 1;
-            } else {
-                break;
-            }
-        }
-        return nums[k];
-    }
-
-    private int partition(int[] a, int lo, int hi) {
-        int i = lo;
-        int j = hi + 1;
-        while (true) {
-            while (i < hi && less(a[++i], a[lo])) ;
-            while (j > lo && less(a[lo], a[--j])) ;
-            if (i >= j) {
-                break;
-            }
-            exch(a, i, j);
-        }
-        exch(a, lo, j);
-        return j;
-    }
-
-    private void exch(int[] a, int i, int j) {
-        final int tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-
-    private boolean less(int v, int w) {
-        return v < w;
-    }
-
+    }*/
 }

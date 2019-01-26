@@ -1,9 +1,24 @@
-package hard;
+package aMaz;
 
 import java.util.Stack;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Created by GAOSHANSHAN835 on 2016/1/18. HARD
+ * Implement a basic calculator to evaluate a simple expression string.
+ * The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
+ * Example 1:
+ * Input: "1 + 1"
+ * Output: 2
+ * Example 2:
+ * Input: " 2-1 + 2 "
+ * Output: 3
+ * Example 3:
+ * Input: "(1+(4+5+2)-3)+(6+8)"
+ * Output: 23
+ * Note:
+ * You may assume that the given expression is always valid.
+ * Do not use the eval built-in library function.
+ * <p>
  * 可以把所有都看成加法只是加正数还是加负数
  * 所以有一个sign来记录标志位
  * 如果碰见括号 就先把之前的结果还有sign保存进栈 然后括号结束在拿出来计算
@@ -17,8 +32,8 @@ import java.util.Stack;
 public class BasicCalculator {
 
     //https://discuss.leetcode.com/topic/15816/iterative-java-solution-with-stack/2
-    public int calculatea(String s) {
-        Stack<Integer> stack = new Stack<Integer>();
+    public int basicCalculator(String s) {
+        Stack<Integer> stack = new Stack<>();
         int result = 0;
         int number = 0;
         int sign = 1;

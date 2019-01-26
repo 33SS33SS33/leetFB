@@ -1,7 +1,7 @@
-package hard;
+package aMaz;
 
 /**
- * Say you have an array for which the ith element is the price of a given stock on day i.
+ * Say you have an array for which the ith element is the price of a given stock on day i. HARD
  * Design an algorithm to find the maximum profit. You may complete at most
  * <strong>two</strong> transactions.
  * You may not engage in multiple transactions at the same time (ie, you must
@@ -12,11 +12,11 @@ package hard;
  * right= [8, 7, 7, 7, 7, 7, 7, 0]
  * The maximum profit = 13
  */
-class BestTimeStock3 {
+class BestTimetoBuyandSellStock3 {
     public static void main(String[] args) {
-        BestTimeStock3 b = new BestTimeStock3();
+        BestTimetoBuyandSellStock3 b = new BestTimetoBuyandSellStock3();
         int[] prices = {6, 1, 3, 2, 4, 7, 6, 10, 15};
-        System.out.println(b.maxProfitC(prices));
+        System.out.println(b.bestTimetoBuyandSellStock3(prices));
     }
 
     /**
@@ -38,7 +38,7 @@ class BestTimeStock3 {
      * 空间上只需要维护当天数据皆可以，所以是O(k)，当k=2，则是O(1)。
      * http://blog.csdn.net/linhuanmars/article/details/23236995
      */
-    public int maxProfitC(int[] prices) {
+    public int bestTimetoBuyandSellStock3(int[] prices) {
         if (prices == null || prices.length == 0)
             return 0;
         int[] local = new int[3];

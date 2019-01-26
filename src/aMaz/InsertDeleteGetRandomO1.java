@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by shanshan on 17/2/17.
+ * Created by shanshan on 17/2/17. HARD
  * Design a data structure that supports all following operations in average O(1) time.
  * insert(val): Inserts an item val to the set if not already present.
  * remove(val): Removes an item val from the set if present.

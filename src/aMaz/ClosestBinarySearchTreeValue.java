@@ -1,11 +1,18 @@
-package tree;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * ""Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
+ * Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
  * Note:
  * Given target value is a floating point.
  * You are guaranteed to have only one unique value in the BST that is closest to the target."
+ * Input: root = [4,2,5,1,3], target = 3.714286
+ * 4
+ * / \
+ * 2   5
+ * / \
+ * 1   3
+ * Output: 4
  * 就是小了就往右走 大了就往左走
  * 每次都计算一下最小值即可
  * "
@@ -27,16 +34,6 @@ public class ClosestBinarySearchTreeValue {
         System.out.println(closestBinarySearchTreeValueb(root, 7));
     }
 
-    //最好的
-    public static int closestBinarySearchTreeValuea(TreeNode root, double target) {
-        int a = root.val;
-        TreeNode kid = target < a ? root.left : root.right;
-        if (kid == null)
-            return a;
-        int b = closestBinarySearchTreeValuea(kid, target);
-        return Math.abs(a - target) < Math.abs(b - target) ? a : b;
-    }
-
     public static int closestBinarySearchTreeValueb(TreeNode root, double target) {
         int ret = root.val;
         while (root != null) {
@@ -47,6 +44,16 @@ public class ClosestBinarySearchTreeValue {
         }
         return ret;
     }
+
+    public static int closestBinarySearchTreeValuea(TreeNode root, double target) {
+        int a = root.val;
+        TreeNode kid = target < a ? root.left : root.right;
+        if (kid == null)
+            return a;
+        int b = closestBinarySearchTreeValuea(kid, target);
+        return Math.abs(a - target) < Math.abs(b - target) ? a : b;
+    }
+
 
     static class TreeNode {
         int val;

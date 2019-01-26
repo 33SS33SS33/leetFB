@@ -1,9 +1,6 @@
 package aMaz;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by shanshan on 8/27/18.
@@ -12,6 +9,21 @@ import java.util.Map;
  * Two trees are duplicate if they have the same structure with same node values.
  */
 public class FindDuplicateSubtrees {
+
+    //https://leetcode.com/problems/find-duplicate-subtrees/discuss/106011/Java-Concise-Postorder-Traversal-Solution
+    public List<TreeNode> findDuplicateSubtreesa(TreeNode root) {
+        List<TreeNode> res = new LinkedList<>();
+        postorder(root, new HashMap<>(), res);
+        return res;
+    }
+
+    public String postorder(TreeNode cur, Map<String, Integer> map, List<TreeNode> res) {
+        if (cur == null) return "#";
+        String serial = cur.val + "," + postorder(cur.left, map, res) + "," + postorder(cur.right, map, res);//??
+        if (map.getOrDefault(serial, 0) == 1) res.add(cur);
+        map.put(serial, map.getOrDefault(serial, 0) + 1);
+        return serial;
+    }
 
     /**
      * Time Complexity: O(N)O(N), where NN is the number of nodes in the tree. We visit each node once.

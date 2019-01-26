@@ -1,9 +1,9 @@
-package hard;
+package aMaz;
 
 import java.util.*;
 
 /**
- * Given n non-negative integers representing the histogram's bar height where
+ * Given n non-negative integers representing the histogram's bar height where HARD
  * the width of each bar is 1, find the area of largest rectangle in the histogram.
  * Above is a histogram where width of each bar is 1, given height =[2,1,5,6,2,3].
  * The largest rectangle is shown in the shaded area, which has area = 10 unit.
@@ -21,14 +21,14 @@ import java.util.*;
  * 那么 就计算栈顶的元素的面积 这个元素的面积  左边界就是它自己  右边界就是这个小于它的元素
  * 然后弹出  然后如果栈顶的还是大 那么继续计算  因为存的是索引  所以宽度计算都是正确的
  */
-class LargestRectangleInHist {
+class LargestRectangleInHistogram {
     public static void main(String[] args) {
         int[] height = {2, 1, 5, 6, 2, 3};
-        System.out.println(largestRectangleAreaa(height));
-        System.out.println(largestRectangleArea(height));
+        System.out.println(largestRectangleInHistogram(height));
+        System.out.println(largestRectangleInHistogramb(height));
     }
 
-    public static int largestRectangleAreaa(int[] height) {
+    public static int largestRectangleInHistogram(int[] height) {
         int len = height.length;
         Stack<Integer> s = new Stack<Integer>();
         int maxArea = 0;
@@ -50,7 +50,7 @@ class LargestRectangleInHist {
      * Stack for indices
      * add a zero height into the group
      */
-    public static int largestRectangleArea(int[] height) {
+    public static int largestRectangleInHistogramb(int[] height) {
         if (height == null || height.length == 0)
             return 0;
         height = Arrays.copyOf(height, height.length + 1); // add a zero

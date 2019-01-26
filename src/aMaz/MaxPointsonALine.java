@@ -1,10 +1,10 @@
-package hard;
+package aMaz;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
+ * Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. HARD
  * LinkedIn Apple Twitter
  * Tags:Hash Table Math
  * 解这个平面几何题有3个要点：
@@ -24,7 +24,7 @@ class MaxPointsonALine {
 
     }
 
-    public int maxPoints(Point[] points) {
+    public int maxPointsonALine(Point[] points) {
         if (points == null)
             return 0;
         if (points.length <= 2)

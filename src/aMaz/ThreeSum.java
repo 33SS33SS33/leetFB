@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.Arrays;

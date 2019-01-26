@@ -1,6 +1,4 @@
-package aFB;
-
-import java.util.*;
+package aMaz;
 
 /**
  * Created by krystal on 5/8/17.
@@ -14,8 +12,8 @@ import java.util.*;
  * By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
  */
 //https://discuss.leetcode.com/category/425/flatten-nested-list-iterator
-/*
-public class FlattenNestedListIterator implements Iterator<Integer> {
+public class FlattenNestedListIterator {
+  /* public class FlattenNestedListIterator implements Iterator<Integer> {
     Deque<NestedInteger> s;
 
     public FlattenNestedListIterator(List<NestedInteger> nestedList) {
@@ -38,6 +36,6 @@ public class FlattenNestedListIterator implements Iterator<Integer> {
 
     public static class NestedInteger {
 
-    }
+    }*/
 }
-*/
+

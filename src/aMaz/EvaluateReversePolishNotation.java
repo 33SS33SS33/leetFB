@@ -1,11 +1,14 @@
-package medium;
+package aMaz;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * Evaluate the value of an arithmetic expression in Reverse Polish Notation.
- * Valid operators are +, -, *, /. Each operand may be an integer or another
- * expression.
+ * Valid operators are +, -, *, /. Each operand may be an integer or another expression.
+ * Note:
+ * Division between two integers should truncate toward zero.
+ * The given RPN expression is always valid.
+ * That means the expression would always evaluate to a result and there won't be any divide by zero operation.
  * Some examples:
  * ["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9
  * ["4", "13", "5", "/", "+"] -> (4 + (13 / 5)) -> 6
@@ -14,21 +17,21 @@ import java.util.*;
  * 用字典表示了各种符号的操作 很巧妙
  * 对于除法的计算 要注意python会对1/-100这种除法返回-1 只有用1/int(float(-100))这样才行
  */
-class EvaluateReversePolish {
+class EvaluateReversePolishNotation {
     public static void main(String[] args) {
         String[] tokens = {"2", "1", "+", "3", "*"};
         // String[] tokens = {"4", "13", "5", "/", "+"};
         //        String[] tokens = { "3", "-4", "+" };
-        System.out.println(evalRPNa(tokens));
-        System.out.println(evalRPNB(tokens));
+        System.out.println(evaluateReversePolishNotation(tokens));
+//        System.out.println(evaluateReversePolishNotationb(tokens));
     }
 
     /**
      * 最好的
      */
-    public static int evalRPNa(String[] tokens) {
+    public static int evaluateReversePolishNotation(String[] tokens) {
         int a, b;
-        Stack<Integer> S = new Stack<Integer>();
+        Stack<Integer> S = new Stack<>();
         for (String s : tokens) {
             if (s.equals("+")) {
                 S.add(S.pop() + S.pop());
@@ -52,10 +55,10 @@ class EvaluateReversePolish {
     /**
      * use switch statement
      */
-    public static int evalRPNB(String[] tokens) {
+/*    public static int evaluateReversePolishNotationb(String[] tokens) {
         int returnValue = 0;
-        String operators = "+-*/";
-        Stack<String> stack = new Stack<String>();
+        String operators = "+-*//*";
+        Stack<String> stack = new Stack<>();
         for (String t : tokens) {
             if (!operators.contains(t)) {
                 stack.push(t);
@@ -81,6 +84,6 @@ class EvaluateReversePolish {
         }
         returnValue = Integer.valueOf(stack.pop());
         return returnValue;
-    }
+    }*/
 
 }

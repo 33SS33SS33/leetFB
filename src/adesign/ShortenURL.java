@@ -11,5 +11,5 @@ public class ShortenURL {
      * (3) Convert integer ID to short string with encode(), e.g. 273984 to f5a4
      * (4) Use the short string (e.g. f4a4) in your sharable URLs
      * (5) When receiving a request for a short string (e.g. 20a8),
-     * decode the string to an integer ID with decode() (6) Look up URL in database for given ID. For conversion*/
+     * decodeTinyURL the string to an integer ID with decodeTinyURL() (6) Look up URL in database for given ID. For conversion*/
 }

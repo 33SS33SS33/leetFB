@@ -2025,7 +2025,7 @@ can buy k times
  * // then there is a subarray sum equals to k. find the length
  * // if this sum is already in the hashmap, skip it. otherwise put in
  * // because we always use the index most left, so if a some sum comes later, we dont put it in hashmap
- * public int maxSubArrayLen(int[] nums, int k) {
+ * public int maximumSizeSubarraySumEqualsk(int[] nums, int k) {
  * int maxLen = 0;
  * HashMap<Integer, Integer> sumToIndex = new HashMap<>();
  * sumToIndex.put(0, -1);
@@ -6609,7 +6609,7 @@ return num1.value - num2.value;
  // then there is a subarray sum equals to k. find the length
  // if this sum is already in the hashmap, skip it. otherwise put in
  // because we always use the index most left, so if a some sum comes later, we dont put it in hashmap
- public int maxSubArrayLen(int[] nums, int k) {
+ public int maximumSizeSubarraySumEqualsk(int[] nums, int k) {
  int maxLen = 0;
  HashMap<Integer, Integer> sumToIndex = new HashMap<>();
  sumToIndex.put(0, -1);

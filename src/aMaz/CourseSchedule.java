@@ -1,6 +1,7 @@
-package medium;
+package aMaz;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -33,15 +34,15 @@ public class CourseSchedule {
     public static void main(String[] args) {
         int[][] prerequisites = {{1, 0}};
         int[][] prerequisites2 = {{1, 0}, {0, 1}};
-
-        System.out.println(new CourseSchedule().canFinisha(2, prerequisites));
-        System.out.println(new CourseSchedule().canFinisha(2, prerequisites2));
+        int numCourses = 2;
+        System.out.println(new CourseSchedule().courseSchedule(numCourses, prerequisites));
+        System.out.println(new CourseSchedule().courseSchedule(numCourses, prerequisites2));
     }
 
     /**
      * 最好的 BFS Topological sort
      */
-    public boolean canFinisha(int numCourses, int[][] prerequisites) {
+    public boolean courseSchedule(int numCourses, int[][] prerequisites) {
         int[][] matrix = new int[numCourses][numCourses]; // i -> j
         int[] indegree = new int[numCourses];
         for (int i = 0; i < prerequisites.length; i++) {
@@ -52,7 +53,7 @@ public class CourseSchedule {
             matrix[pre][ready] = 1;
         }
         int count = 0;
-        Queue<Integer> queue = new LinkedList();
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < indegree.length; i++) {
             if (indegree[i] == 0)
                 queue.offer(i);

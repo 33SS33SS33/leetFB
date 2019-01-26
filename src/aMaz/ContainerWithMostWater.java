@@ -16,8 +16,8 @@ class ContainerWithMostWater {
     public static void main(String[] args) {
         int[] height = { 2, 4, 3, 2, 7 };
         int[] height2 = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
-        System.out.println(new ContainerWithMostWater().maxAreaA(height));
-        System.out.println(new ContainerWithMostWater().maxAreaA(height2));
+        System.out.println(new ContainerWithMostWater().containerWithMostWater(height));
+        System.out.println(new ContainerWithMostWater().containerWithMostWater(height2));
     }
 
     /**
@@ -28,7 +28,7 @@ class ContainerWithMostWater {
      * Stop when two pointers meet, cause one line can form a container
      * Different from block
      */
-    public int maxAreaA(int[] height) {
+    public int containerWithMostWater(int[] height) {
         if (height == null || height.length < 2) {
             return 0;
         }

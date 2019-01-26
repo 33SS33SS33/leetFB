@@ -1,7 +1,7 @@
-package aFB;
+package aMaz;
 
 /**
- * Given a linked list, reverse the nodes of a linked list k at a time and
+ * Given a linked list, reverse the nodes of a linked list k at a time and HARD
  * return its modified list.
  * If the number of nodes is not a multiple of k then left-out nodes in the end
  * should remain as it is.

@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.HashMap;
 import java.util.Stack;
@@ -8,20 +8,20 @@ import java.util.Stack;
  * The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
  * Tags: Stack, String
  */
-class ValidParenthese {
+class ValidParenthesis {
     public static void main(String[] args) {
-        ValidParenthese v = new ValidParenthese();
-        System.out.println(v.validParenthese("()"));
-        System.out.println(v.validParenthese("()[]{}"));
-        System.out.println(v.validParenthese("([)]"));
-        System.out.println(v.validParenthese("[({(())}[()])]"));
-        System.out.println(v.validParenthese("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
+        ValidParenthesis v = new ValidParenthesis();
+        System.out.println(v.validParenthesisString("()"));
+        System.out.println(v.validParenthesisString("()[]{}"));
+        System.out.println(v.validParenthesisString("([)]"));
+        System.out.println(v.validParenthesisString("[({(())}[()])]"));
+        System.out.println(v.validParenthesisString("a[a(a{a(a(.)a)a}x[a(a)v]w)q]z"));
     }
 
     /**
      * creek!!  最好的
      */
-    public static boolean validParenthese(String s) {
+    public static boolean validParenthesisString(String s) {
         HashMap<Character, Character> map = new HashMap<Character, Character>();
         map.put('(', ')');
         map.put('[', ']');

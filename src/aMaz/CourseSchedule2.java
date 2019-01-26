@@ -1,9 +1,9 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Created by GAOSHANSHAN835 on 2016/1/18. median
  * 和上道题基本类似
  * 只是这道题是要输出访问顺序 所以在访问的时候用list把节点记下来就行了
  * 注意一下当prerequisties为空的时候的情况  这个时候 就应该返回所有的course number 因为没有前置 所以也没有顺序

@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.HashMap;
 
@@ -18,15 +18,15 @@ import java.util.HashMap;
  * 然后查一下有没有当前这个和-k存储在于哈希表内 若有就计算一下
  * 注意一下哈希表最开始存的0 是考虑了如果当前的和直接等于k的情况"
  */
-public class MaxSizeSubarraySumEqualsk {
+public class MaximumSizeSubarraySumEqualsk {
     public static void main(String[] args) {
         int[] num = {1, -1, 5, -2, 3};
-        System.out.println(new MaxSizeSubarraySumEqualsk().maxSubArrayLen(num, 3));
+        System.out.println(new MaximumSizeSubarraySumEqualsk().maximumSizeSubarraySumEqualsk(num, 3));
     }
 
     //最好的
     //https://discuss.leetcode.com/topic/33259/o-n-super-clean-9-line-java-solution-with-hashmap
-    public int maxSubArrayLen(int[] nums, int k) {
+    public int maximumSizeSubarraySumEqualsk(int[] nums, int k) {
         int sum = 0, max = 0;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {

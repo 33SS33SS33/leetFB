@@ -21,11 +21,11 @@ public class ReverseWordsinaStringII {
     public static void main(String[] args) {
         String s1 = "the sky is blue";
         char[] c1 = s1.toCharArray();
-        new ReverseWordsinaStringII().reverseWords(c1);
+        new ReverseWordsinaStringII().reverseWordsinaString2(c1);
         System.out.println(c1);
     }
 
-    public void reverseWords(char[] s) {
+    public void reverseWordsinaString2(char[] s) {
         // Three step to reverse
         // 1, reverse the whole sentence
         reverse(s, 0, s.length - 1);

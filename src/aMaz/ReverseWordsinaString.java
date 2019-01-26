@@ -20,12 +20,34 @@ package aMaz;
 
 class ReverseWordsinaString {
     public static void main(String[] args) {
-        String given = "the sky is blue";
+        String given = "the sky is   blue";
         String given2 = "    a    b";
         String given3 = "the sky is blue";
-        System.out.println(new ReverseWordsinaString().reverseWords(given));
-        System.out.println(new ReverseWordsinaString().reverseWordsB(given2));
-        System.out.println(new ReverseWordsinaString().reverseWordsB(given3));
+        System.out.println(new ReverseWordsinaString().reverseWordsinaString(given2));
+        System.out.println(new ReverseWordsinaString().reverseWordsinaString(given3));
+//        System.out.println(new ReverseWordsinaString().reverseWordsinaString2(given));
+    }
+
+    /**
+     * Trim input string
+     * Split it with a space
+     * Traversal backwards
+     * Trim result to remove last space
+     */
+    public String reverseWordsinaString(String s) {
+        if (s == null || s.length() == 0)
+            return "";
+        s = s.trim();
+        StringBuilder res = new StringBuilder();
+        String[] words = s.split(" ");
+        for (int i = words.length - 1; i >= 0; i--) {
+            if (!words[i].equals("")) {
+                res.append(words[i]);
+                if (i != 0)
+                    res.append(" ");
+            }
+        }
+        return res.toString(); // remove last space
     }
 
     /**
@@ -33,7 +55,7 @@ class ReverseWordsinaString {
      * If not, get the word and insert to the front of result
      * note that result may not contain spaces before or after
      */
-    public String reverseWords(String s) {
+/*    public String reverseWordsinaString2(String s) {
         if (s == null || s.length() == 0)
             return "";
         String res = "";
@@ -57,28 +79,7 @@ class ReverseWordsinaString {
             }
         }
         return res;
-    }
+    }*/
 
-    /**
-     * Trim input string
-     * Split it with a space
-     * Traversal backwards
-     * Trim result to remove last space
-     */
-    public String reverseWordsB(String s) {
-        if (s == null || s.length() == 0)
-            return "";
-        s = s.trim();
-        StringBuilder res = new StringBuilder();
-        String[] words = s.split(" ");
-        for (int i = words.length - 1; i >= 0; i--) {
-            if (!words[i].equals("")) {
-                res.append(words[i]);
-                if (i != 0)
-                    res.append(" ");
-            }
-        }
-        return res.toString(); // remove last space
-    }
 
 }

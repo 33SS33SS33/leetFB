@@ -1,7 +1,7 @@
-package hard;
+package aMaz;
 
 /**
- * Given a binary tree, find the maximum path sum.
+ * Given a binary tree, find the maximum path sum. HARD
  * The path may start and end at any node in the tree.
  * For example:
  * Given the below binary tree,
