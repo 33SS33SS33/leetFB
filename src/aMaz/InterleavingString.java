@@ -1,11 +1,9 @@
-package hard;
+package aMaz;
 
 /**
- * Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
+ * Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2. HARD
  * For example,
- * Given:
- * s1 = "aabcc",
- * s2 = "dbbca",
+ * s1 = "aabcc", s2 = "dbbca",
  * When s3 = "aadbbcbcac", return true.
  * When s3 = "aadbbbaccc", return false.
  * Tags: DP, String
@@ -15,14 +13,14 @@ package hard;
  * (dp[i][j-1] and s2[j-1] == s3[i+j-1])
  * dp[i][j] 表示的是当前长度为i的s1和长度为j的s2能否是长度为i+j的s3的穿插
  */
-class InterleavingStr {
+class InterleavingString {
     public static void main(String[] args) {
         String s1 = "aabcc";
         String s2 = "dbbca";
         String s3 = "aadbbcbcac";
         //        String s3 = "aadbbbaccc";
-        System.out.println(isInterleavea(s1, s2, s3));
-        System.out.println(isInterleaveC(s1, s2, s3));
+        System.out.println(interleavingString(s1, s2, s3));
+//        System.out.println(interleavingStringb(s1, s2, s3));
     }
 
     /**
@@ -35,7 +33,7 @@ class InterleavingStr {
      * 4. dp[i][j] = (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j- 1))||(dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1))
      * final result should dp[a][b]
      */
-    public static boolean isInterleavea(String s1, String s2, String s3) {
+    public static boolean interleavingString(String s1, String s2, String s3) {
         if (s1 == null || s2 == null || s3 == null)
             return false;
         if ((s1.length() + s2.length()) != s3.length())
@@ -60,7 +58,7 @@ class InterleavingStr {
     /**
      * better
      */
-    public static boolean isInterleaveC(String s1, String s2, String s3) {
+/*    public static boolean interleavingStringb(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length())
             return false;
         String minWord = s1.length() > s2.length() ? s2 : s1;
@@ -78,6 +76,6 @@ class InterleavingStr {
             }
         }
         return res[minWord.length()];
-    }
+    }*/
 
 }

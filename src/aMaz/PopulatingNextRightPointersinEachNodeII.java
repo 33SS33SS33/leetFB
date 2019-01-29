@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 /**
  * Follow up for problem "Populating Next Right Pointers in Each Node".
@@ -32,11 +32,11 @@ package aFB;
  * root表示上层的节点  cur表示下次被连接的节点
  * 所以每次root往下层移动的时候 cur.next就是下次的起点
  */
-class PopulatingNextRight2 {
+class PopulatingNextRightPointersinEachNodeII {
     public static void main(String[] args) {
         TreeLinkNode root = buildTree();
-        PopulatingNextRight2 r = new PopulatingNextRight2();
-        r.populatingNextRight2(root);
+        PopulatingNextRightPointersinEachNodeII r = new PopulatingNextRightPointersinEachNodeII();
+        r.populatingNextRightPointersinEachNodeII(root);
     }
 
     /**
@@ -44,7 +44,7 @@ class PopulatingNextRight2 {
      * Store previous node
      * Do level order traversal with a pointer
      */
-    public void populatingNextRight2(TreeLinkNode root) {
+    public void populatingNextRightPointersinEachNodeII(TreeLinkNode root) {
         if (root == null)
             return;
         TreeLinkNode cur = root;  // current node of current level
@@ -78,7 +78,7 @@ class PopulatingNextRight2 {
     /**
      * The idea is simple: level-order traversal.
      */
-    public void populatingNextRight2b(TreeLinkNode root) {
+    public void populatingNextRightPointersinEachNodeIIb(TreeLinkNode root) {
         while (root != null) {
             TreeLinkNode tempChild = new TreeLinkNode(0);
             TreeLinkNode currentChild = tempChild;

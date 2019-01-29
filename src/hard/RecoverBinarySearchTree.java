@@ -3,7 +3,7 @@ package hard;
 import java.util.ArrayList;
 
 /**
- * Two elements of a binary search tree (BST) are swapped by mistake.
+ * Two elements of a binary search tree (BST) are swapped by mistake. HARD
  * Recover the tree without changing its structure.
  * Note:
  * A solution using O(n) space is pretty straight forward. Could you devise a
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * 1,5,3,4,2 或者 2,1,3,4,5
  * 这道题还有o(1)的解法 需要用的moris 遍历  未实现
  */
-class RecoverBST {
+class RecoverBinarySearchTree {
     public static void main(String[] args) {
 
     }
@@ -31,7 +31,7 @@ class RecoverBST {
      * 算法只需要一次中序遍历，所以时间复杂度是O(n)，空间是栈大小O(logn)
      * http://blog.csdn.net/linhuanmars/article/details/24566995
      */
-    public void recoverTreeB(TreeNode root) {
+    public void recoverBinarySearchTree(TreeNode root) {
         if (root == null)
             return;
         ArrayList<TreeNode> pre = new ArrayList<TreeNode>();

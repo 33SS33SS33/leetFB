@@ -1,11 +1,11 @@
-package hard;
+package aMaz;
 
 import static java.lang.Math.max;
 
 /**
- * Given an array of non-negative integers, you are initially positioned at the
+ * Given an array of non-negative integers, you are initially positioned at the HARD
  * first index of the array.
- * Each element in the array represents your maximum jump length at that position.
+ * Each element in the array represents your maximum jumpGame2 length at that position.
  * Your goal is to reach the last index in the minimum number of jumps.
  * For example:
  * Given array A = [2,3,1,1,4]
@@ -16,8 +16,8 @@ import static java.lang.Math.max;
 class JumpGame2 {
     public static void main(String[] args) {
         int[] A = {2, 3, 1, 1, 4};
-        System.out.println(new JumpGame2().jump(A));
-        System.out.println(new JumpGame2().jumpC(A));
+        System.out.println(new JumpGame2().jumpGame2(A));
+        System.out.println(new JumpGame2().jumpGame2b(A));
     }
 
     /**
@@ -29,7 +29,7 @@ class JumpGame2 {
      * Return if last is already bigger than or equal to the length
      * Use cur to store how far we can reach for the next step
      */
-    public int jump(int[] A) {
+    public int jumpGame2(int[] A) {
         if (A == null || A.length == 0)
             return 0;
         int lastReach = 0;
@@ -50,7 +50,7 @@ class JumpGame2 {
     /**
      * DP
      */
-    public int jumpC(int[] A) {
+    public int jumpGame2b(int[] A) {
         int[] steps = new int[A.length];
         steps[0] = 0;
         for (int i = 1; i < A.length; i++) {

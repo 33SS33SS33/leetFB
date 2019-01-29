@@ -1,4 +1,4 @@
-package list;
+package aMaz;
 
 /**
  * Given a linked list, swap every two adjacent nodes and return its head.
@@ -8,39 +8,39 @@ package list;
  * in the list, only nodes itself can be changed.
  * Tags: Linkedlist
  */
-class SwapNodeinPairs {
+class SwapNodesinPairs {
     public static void main(String[] args) {
-        SwapNodeinPairs r = new SwapNodeinPairs();
+        SwapNodesinPairs r = new SwapNodesinPairs();
         ListNode head = buildList();
-        ListNode r2 = r.swapNodeinPairs(head);
+        ListNode r2 = r.swapNodesinPairs(head);
         while (r2.next != null) {
             System.out.print(r2.next == null ? r2.val : r2.val + "->");
             r2 = r2.next;
         }
         System.out.println();
         ListNode head2 = buildList();
-        ListNode r3 = r.swapNodeinPairsb(head2);
+        ListNode r3 = r.swapNodeinPairsa(head2);
         while (r3.next != null) {
             System.out.print(r3.next == null ? r3.val : r3.val + "->");
             r3 = r3.next;
         }
-        System.out.println();
+/*        System.out.println();
         ListNode head3 = buildList();
         ListNode r4 = r.swapNodeinPairsc(head3);
         while (r4.next != null) {
             System.out.print(r4.next == null ? r4.val : r4.val + "->");
             r4 = r4.next;
-        }
+        }*/
     }
 
     /**
-     * 最好的 递归
+     * 递归
      */
-    public ListNode swapNodeinPairs(ListNode head) {
+    public ListNode swapNodesinPairs(ListNode head) {
         if ((head == null) || (head.next == null))
             return head;
         ListNode n = head.next;
-        head.next = swapNodeinPairs(head.next.next);
+        head.next = swapNodesinPairs(head.next.next);
         n.next = head;
         return n;
     }
@@ -66,7 +66,7 @@ class SwapNodeinPairs {
         return next2; // return latter node 
     }
 
-    public ListNode swapNodeinPairsb(ListNode head) {
+/*    public ListNode swapNodeinPairsb(ListNode head) {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode p = head;
@@ -80,12 +80,12 @@ class SwapNodeinPairs {
             p = r;
         }
         return dummy.next;
-    }
+    }*/
 
     /**
      * -----creek---
      */
-    public ListNode swapNodeinPairsc(ListNode head) {
+/*    public ListNode swapNodeinPairsc(ListNode head) {
         if (head == null || head.next == null)
             return head;
         ListNode h = new ListNode(0);
@@ -103,7 +103,7 @@ class SwapNodeinPairs {
             p.next = t2;
         }
         return h.next;
-    }
+    }*/
 
     static ListNode buildList() {
         ListNode node0 = new ListNode(0);

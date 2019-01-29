@@ -11,15 +11,38 @@ package medium;
  * 如果中点元素比最后的小 则说明后面是正确的 那最小值就在前面
  * 这里注意 最小值在前面的时候 end要设置为midpoint 因为midpoint本身就可能是最小值
  */
-class FindRotatedArrMin {
+class FindMinimuminRotatedSortedArray {
     public static void main(String[] args) {
         int[] num = {3, 4, 5, 6, 1, 2};
-        System.out.println(findRotatedArrMin(num));
+        System.out.println(findMin(num));
+        System.out.println(findMinimuminRotatedSortedArray(num));
         System.out.println(findMinB(num));
         System.out.println(findMinC(num));
     }
 
-    static int findRotatedArrMin(int[] num) {
+    public static int findMin(int[] num) {
+        if (num == null || num.length == 0) {
+            return 0;
+        }
+        if (num.length == 1) {
+            return num[0];
+        }
+        int start = 0, end = num.length - 1;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (mid > 0 && num[mid] < num[mid - 1]) {
+                return num[mid];
+            }
+            if (num[start] <= num[mid] && num[mid] > num[end]) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+        return num[start];
+    }
+
+    static int findMinimuminRotatedSortedArray(int[] num) {
         int l = 0;
         int r = num.length - 1;
         if (num.length == 1 || num[l] < num[r])
@@ -40,10 +63,10 @@ class FindRotatedArrMin {
      * Define a helper function, otherwise, we will need to use Arrays.copyOfRange() function, which may be expensive for large arrays.
      */
     public static int findMinB(int[] num) {
-        return findRotatedArrMin(num, 0, num.length - 1);
+        return findMinimuminRotatedSortedArray(num, 0, num.length - 1);
     }
 
-    public static int findRotatedArrMin(int[] num, int left, int right) {
+    public static int findMinimuminRotatedSortedArray(int[] num, int left, int right) {
         if (left == right)
             return num[left];
         if ((right - left) == 1)
@@ -54,10 +77,10 @@ class FindRotatedArrMin {
             return num[left];
             // go right side
         } else if (num[middle] > num[left]) {
-            return findRotatedArrMin(num, middle, right);
+            return findMinimuminRotatedSortedArray(num, middle, right);
             // go left side
         } else {
-            return findRotatedArrMin(num, left, middle);
+            return findMinimuminRotatedSortedArray(num, left, middle);
         }
     }
 

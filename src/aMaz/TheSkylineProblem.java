@@ -1,9 +1,9 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/19.
+ * Created by GAOSHANSHAN835 on 2016/1/19. HARD
  * 分别将每个线段的左边节点与右边节点存到新的vector height中，根据x坐标值排序，然后遍历求拐点。
  * 求拐点的时候用一个最大化heap来保存当前的楼顶高度，遇到左边节点，就在heap中插入高度信息，
  * 遇到右边节点就从heap中删除高度。分别用pre与cur来表示之前的高度与当前的高度，当cur != pre的时候说明出现了拐点。
