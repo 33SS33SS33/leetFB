@@ -1,4 +1,4 @@
-package tree;
+package aMaz;
 
 import java.util.*;
 
@@ -8,12 +8,12 @@ import java.util.*;
  * You may assume that duplicates do not wordSearchb in the tree.
  * Tags: Tree, Array, DFS
  */
-class ConstructBTPreInOrder {
+class ConstructBinaryTreefromPreorderandInorderTraversal {
     public static void main(String[] args) {
         int[] preorder = {1, 2, 4, 5, 3, 6};
         int[] inorder = {4, 2, 5, 1, 3, 6};
-        TreeNode root = new ConstructBTPreInOrder().buildTreeA(preorder, inorder);
-        TreeNode root2 = new ConstructBTPreInOrder().buildTreeB(preorder, inorder);
+        TreeNode root2 = new ConstructBinaryTreefromPreorderandInorderTraversal().buildTreeB(preorder, inorder);
+//        TreeNode root = new ConstructBinaryTreefromPreorderandInorderTraversal().buildTreeA(preorder, inorder);
     }
 
     /**
@@ -48,7 +48,7 @@ class ConstructBTPreInOrder {
      * Then find range for left subtree and right subtree
      * Recurse down to build subtrees and connect to root
      */
-    public TreeNode buildTreeA(int[] preorder, int[] inorder) {
+/*    public TreeNode buildTreeA(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null)
             return null;
         return buildTree(preorder, inorder, 0, preorder.length - 1, 0, inorder.length - 1);
@@ -66,7 +66,7 @@ class ConstructBTPreInOrder {
         root.left = buildTree(preorder, inorder, ps + 1, ps - is + pos, is, pos - 1); // left subtree
         root.right = buildTree(preorder, inorder, ps - is + pos + 1, pe, pos + 1, ie); // right subtree
         return root;
-    }
+    }*/
 
     public class TreeNode {
         int val;

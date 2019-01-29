@@ -31,5 +31,6 @@ package aMaz;
  * A will have length at most 20000.
  * A[i] will be in the range [0, A.length].
  */
+//https://leetcode.com/problems/smallest-rotation-with-highest-score/discuss/118725/C%2B%2BJavaPython-Solution-with-Explanation
 public class SmallestRotationwithHighestScore {
 }
