@@ -6,7 +6,7 @@ package dP;
  * sell one share of the stock multiple times) with the following restrictions:
  * You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
  * After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day) Example:
- * prices = [1, 2, 3, 0, 2] maxProfit = 3 transactions = [buy, sell, cooldown, buy, sell]
+ * prices = [1, 2, 3, 0, 2] bestTimetoBuyandSellStockII = 3 transactions = [buy, sell, cooldown, buy, sell]
  * Tags: Dynamic Programming
  * Similar Problems: (M) Best Time to Buy and Sell Stock, (M) Best Time to Buy and Sell Stock II
  * "这题的思路看右边的链接就行 十分清楚

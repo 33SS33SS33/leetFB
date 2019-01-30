@@ -19,41 +19,32 @@ import java.util.Stack;
  * 未实现
  */
 class BSTIterator {
-    public static void main(String[] args) {
+    Stack<TreeNode> stack = null;
+    TreeNode current = null;
 
-    }
-
-    Stack<TreeNode> s;
-
-    /**
-     * Push all left child, and left child's left child and on and on to stack
-     */
     public BSTIterator(TreeNode root) {
-        s = new Stack<TreeNode>();
-        pushAll(root); // push the whole left subtree
+        current = root;
+        stack = new Stack<>();
     }
 
     /**
      * @return whether we have a next smallest number
      */
     public boolean hasNext() {
-        return !s.isEmpty();
+        return !stack.isEmpty() || current != null;
     }
 
     /**
-     * @return the next smallest number s
+     * @return the next smallest number
      */
     public int next() {
-        TreeNode n = s.pop();
-        pushAll(n.right); // put left subtree of right child
-        return n.val;
-    }
-
-    void pushAll(TreeNode root) {
-        while (root != null) {
-            s.push(root);
-            root = root.left;
+        while (current != null) {
+            stack.push(current);
+            current = current.left;
         }
+        TreeNode t = stack.pop();
+        current = t.right;
+        return t.val;
     }
 
     class TreeNode {

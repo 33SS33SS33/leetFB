@@ -40,7 +40,7 @@ class IntersectionOfTwoLinkedList {
         return curA;
     }
 
-    public ListNode intersectionOfTwoLinkedListb(ListNode headA, ListNode headB) {
+  /*  public ListNode intersectionOfTwoLinkedListb(ListNode headA, ListNode headB) {
         int lenA = length(headA), lenB = length(headB);
         // move headA and headB to the same start point
         while (lenA > lenB) {
@@ -68,7 +68,7 @@ class IntersectionOfTwoLinkedList {
             n = n.next;
         }
         return length;
-    }
+    }*/
 
     public static class ListNode {
         int val;

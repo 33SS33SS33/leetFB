@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 /**
  * Implement next permutation, which rearranges numbers into the
@@ -30,10 +30,8 @@ class NextPermutation {
     }
 
     /**
-     * O(n) Time
-     * Move pointer to second last element of ascending order
-     * From that index, find the farthest element that is bigger
-     * Swap these two elements
+     * O(n) Time Move pointer to second last element of ascending order
+     * From that index, find the farthest element that is bigger Swap these two elements
      * Reverse the order from the next index
      */
     public static void nextPermutation(int[] num) {

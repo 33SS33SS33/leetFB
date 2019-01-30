@@ -2731,7 +2731,7 @@ can buy k times
  * <p>
  * 可以随便交易很多次，可以同时买很多股票，但是一旦卖就要把手里的股票全部卖了，问怎样最大化收益。比如[1, 2,3], 前2天都买，第三天全部卖，收益就是(3-1)+(3-2).
  * stock sell all
- * public int maxProfit(int[] prices) {
+ * public int bestTimetoBuyandSellStockII(int[] prices) {
  * int max = 0;
  * int profit = 0;
  * for (int i = prices.length - 1; i >= 0; i--) {
@@ -3975,7 +3975,7 @@ can buy k times
 }
 
 best time to buy stock with cool down:
-public int maxProfit(int[] prices) {
+public int bestTimetoBuyandSellStockII(int[] prices) {
     if (prices.length == 0) {
         return 0;
     }
@@ -3996,7 +3996,7 @@ public int maxProfit(int[] prices) {
     
 }
 //--------------------------------------------------------------------//
-public int maxProfit(int[] prices) {
+public int bestTimetoBuyandSellStockII(int[] prices) {
     int sell = 0, prev_sell = 0, buy = Integer.MIN_VALUE, prev_buy;
     for (int price : prices) {
         prev_buy = buy;
@@ -7315,7 +7315,7 @@ return num1.value - num2.value;
 
  可以随便交易很多次，可以同时买很多股票，但是一旦卖就要把手里的股票全部卖了，问怎样最大化收益。比如[1, 2,3], 前2天都买，第三天全部卖，收益就是(3-1)+(3-2).
  stock sell all
- public int maxProfit(int[] prices) {
+ public int bestTimetoBuyandSellStockII(int[] prices) {
  int max = 0;
  int profit = 0;
  for (int i = prices.length - 1; i >= 0; i--) {

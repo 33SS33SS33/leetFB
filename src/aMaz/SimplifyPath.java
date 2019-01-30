@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.*;
 
@@ -17,16 +17,16 @@ import java.util.*;
  */
 class SimplifyPath {
     public static void main(String[] args) {
-        System.out.println(simplifyPatha("/home/"));
-        System.out.println(simplifyPatha("/a/./b/../../c/"));
-        System.out.println(simplifyPatha("/../"));
-        System.out.println(simplifyPatha("/home//foo/"));
+        System.out.println(simplifyPath("/home/"));
+        System.out.println(simplifyPath("/a/./b/../../c/"));
+        System.out.println(simplifyPath("/../"));
+        System.out.println(simplifyPath("/home//foo/"));
         System.out.println(
-                simplifyPatha("/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
+                simplifyPath("/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"));
     }
 
     //最好的
-    public static String simplifyPatha(String path) {
+    public static String simplifyPath(String path) {
         Deque<String> stack = new LinkedList<String>();
         Set<String> skip = new HashSet<String>(Arrays.asList("..", ".", ""));
         for (String dir : path.split("/")) {

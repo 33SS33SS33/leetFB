@@ -21,7 +21,6 @@ import java.util.Set;
  * 00001
  * 11011
  * Given the above grid map, return 3.
- * <p>
  * Notice that:
  * 11
  * 1
@@ -32,49 +31,34 @@ import java.util.Set;
  * Note: The length of each dimension in the given grid does not exceed 50.
  */
 public class NumberofDistinctIslands {
-
-    /**
-     * #1: Hash By Local Coordinates
-     * Intuition and Algorithm
-     * At the beginning, we need to find every island, which we can do using a straightforward depth-first search.
-     * The hard part is deciding whether two islands are the same.
-     * Since two islands are the same if one can be translated to match another, let's translate every island so the top-left corner is (0, 0)
-     * For example,
-     * if an island is made from squares [(2, 3), (2, 4), (3, 4)], we can think of this shape as [(0, 0), (0, 1), (1, 1)] when anchored at the top-left corner.
-     * <p>
-     * From there, we only need to check how many unique shapes there ignoring permutations (so [(0, 0), (0, 1)] is the same as [(0, 1), (1, 0)]).
-     * We use sets directly as we have showcased below, but we could have also sorted each list and put those sorted lists in our set structure shapes.
-     * In the Java solution, we converted our tuples (r - r0, c - c0) to integers. We multiplied the number of rows by 2 * grid[0].
-     * length instead of grid[0].length because our local row-coordinate could be negative.
-     */
-    int[][] grid;
-    boolean[][] seen;
-    Set<Integer> shape;
-    public void explore(int r, int c, int r0, int c0) {
-        if (0 <= r && r < grid.length && 0 <= c && c < grid[0].length &&
-                grid[r][c] == 1 && !seen[r][c]) {
-            seen[r][c] = true;
-            shape.add((r - r0) * 2 * grid[0].length + (c - c0));
-            explore(r + 1, c, r0, c0);
-            explore(r - 1, c, r0, c0);
-            explore(r, c + 1, r0, c0);
-            explore(r, c - 1, r0, c0);
-        }
+    public static void main(String[] args) {
+        int[][] num = {{1, 1, 0, 1, 1}, {1, 0, 0, 0, 0}, {0, 0, 0, 0, 1}, {1, 1, 0, 1, 1}};
+        System.out.println(numDistinctIslands(num));
     }
-    public int numDistinctIslands(int[][] grid) {
-        this.grid = grid;
-        seen = new boolean[grid.length][grid[0].length];
-        Set shapes = new HashSet<HashSet<Integer>>();
 
-        for (int r = 0; r < grid.length; r++) {
-            for (int c = 0; c < grid[0].length; c++) {
-                shape = new HashSet<Integer>();
-                explore(r, c, r, c);
-                if (!shape.isEmpty()) {
-                    shapes.add(shape);
+    public static int numDistinctIslands(int[][] grid) {
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] != 0) {
+                    StringBuilder sb = new StringBuilder();
+                    dfs(grid, i, j, sb, "o"); // origin
+                    set.add(sb.toString());
                 }
             }
         }
-        return shapes.size();
+        return set.size();
+    }
+
+    private static void dfs(int[][] grid, int i, int j, StringBuilder sb, String dir) {
+        if (i < 0 || i == grid.length || j < 0 || j == grid[i].length
+                || grid[i][j] == 0) return;
+        sb.append(dir);
+        grid[i][j] = 0;
+        dfs(grid, i - 1, j, sb, "u");
+        dfs(grid, i + 1, j, sb, "d");
+        dfs(grid, i, j - 1, sb, "l");
+        dfs(grid, i, j + 1, sb, "r");
+        sb.append("b"); // back
     }
 }

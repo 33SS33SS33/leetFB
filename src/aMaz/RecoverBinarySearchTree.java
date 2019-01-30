@@ -1,4 +1,4 @@
-package hard;
+package aMaz;
 
 import java.util.ArrayList;
 
@@ -34,9 +34,9 @@ class RecoverBinarySearchTree {
     public void recoverBinarySearchTree(TreeNode root) {
         if (root == null)
             return;
-        ArrayList<TreeNode> pre = new ArrayList<TreeNode>();
+        ArrayList<TreeNode> pre = new ArrayList<>();
         pre.add(null);
-        ArrayList<TreeNode> res = new ArrayList<TreeNode>();
+        ArrayList<TreeNode> res = new ArrayList<>();
         helper(root, pre, res);
         if (res.size() > 0) {
             int temp = res.get(0).val;

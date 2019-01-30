@@ -11,23 +11,22 @@ import java.util.List;
  * 小循环是访问当前这一层的所有节点 然后压人下一层所有的节点
  * BFS可以一个用while 一个用for 重要
  */
-public class BTRightSideView {
+public class BinaryTreeRightSideView {
     public static void main(String[] args) {
         TreeNode root = buildTree();
-        System.out.println(new BTRightSideView().rightSideViewA(root));
-        System.out.println(new BTRightSideView().rightSideViewC(root));
-        System.out.println(new BTRightSideView().rightSideViewB(root));
+//        System.out.println(new BinaryTreeRightSideView().binaryTreeRightSideViewb(root));
+        System.out.println(new BinaryTreeRightSideView().binaryTreeRightSideView(root));
+        System.out.println(new BinaryTreeRightSideView().binaryTreeRightSideViewc(root));
     }
 
     /**
      * elegant-- 最好的
      */
-    public List<Integer> rightSideViewC(TreeNode root) {
-        List<Integer> result = new ArrayList<Integer>();
+    public List<Integer> binaryTreeRightSideView(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
         rightView(root, result, 0);
         return result;
     }
-
     public void rightView(TreeNode curr, List<Integer> result, int currDepth) {
         if (curr == null) {
             return;
@@ -39,25 +38,8 @@ public class BTRightSideView {
         rightView(curr.left, result, currDepth + 1);
     }
 
-    /**
-     * 看懂了
-     */
-    public List<Integer> rightSideViewA(TreeNode root) {
-        if (root == null)
-            return new ArrayList<Integer>();
-        List<Integer> rt = new ArrayList<Integer>();
-        rt.add(root.val);
-        List<Integer> left = rightSideViewA(root.left);
-        List<Integer> right = rightSideViewA(root.right);
-        rt.addAll(right);
-        if (left.size() > right.size()) {
-            rt.addAll(left.subList(right.size(), left.size()));
-        }
-        return rt;
-    }
-
-    public List<Integer> rightSideViewB(TreeNode root) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+    public List<Integer> binaryTreeRightSideViewc(TreeNode root) {
+        ArrayList<Integer> result = new ArrayList<>();
         if (root == null)
             return result;
         LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
@@ -84,6 +66,22 @@ public class BTRightSideView {
         return result;
     }
 
+    /**
+     * 看懂了
+     */
+/*    public List<Integer> binaryTreeRightSideViewb(TreeNode root) {
+        if (root == null)
+            return new ArrayList<>();
+        List<Integer> rt = new ArrayList<>();
+        rt.add(root.val);
+        List<Integer> left = binaryTreeRightSideViewb(root.left);
+        List<Integer> right = binaryTreeRightSideViewb(root.right);
+        rt.addAll(right);
+        if (left.size() > right.size()) {
+            rt.addAll(left.subList(right.size(), left.size()));
+        }
+        return rt;
+    }*/
     static TreeNode buildTree() {
         TreeNode root = new TreeNode(1);
         TreeNode n1 = new TreeNode(2);

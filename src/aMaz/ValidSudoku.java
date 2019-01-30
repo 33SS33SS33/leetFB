@@ -1,14 +1,19 @@
-package easy;
+package aMaz;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
- * The Sudoku board could be partially filled, where empty cells are filled
- * with the character '.'.
+ * Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+ * Each row must contain the digits 1-9 without repetition.
+ * Each column must contain the digits 1-9 without repetition.
+ * Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+ * The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
  * Note:
- * A valid Sudoku board (partially filled) is not necessarily solvable. Only
- * the filled cells need to be validated.
+ * A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+ * Only the filled cells need to be validated according to the mentioned rules.
+ * The given board contain only digits 1-9 and the character '.'.
+ * The given board size is always 9x9.
  * Tags: Hashtable
  */
 class ValidSudoku {
@@ -27,18 +32,29 @@ class ValidSudoku {
             }
         }
         v.printBoard(board);
-        System.out.println(v.isValidSudoku(board));
-        System.out.println(v.isValidSudokuB(board));
-        System.out.println(v.isValidSudokuC(board));
+        System.out.println(v.isValidSudoku1(board));
     }
 
+    public boolean isValidSudoku1(char[][] board) {
+        Set seen = new HashSet();
+        for (int i=0; i<9; ++i) {
+            for (int j=0; j<9; ++j) {
+                if (board[i][j] != '.') {
+                    String b = "(" + board[i][j] + ")";
+                    if (!seen.add(b + i) || !seen.add(j + b) || !seen.add(i/3 + b + j/3))
+                        return false;
+                }
+            }
+        }
+        return true;
+    }
     /**
      * creek 最好的
      * 对于每一行，每一列，每个九宫格进行验证，总共需要27次验证，每次看九个元素。
      * 所以时间复杂度就是O(3*n^2), n=9
      * http://blog.csdn.net/linhuanmars/article/details/20748171
      */
-    public boolean isValidSudokuC(char[][] board) {
+/*    public boolean isValidSudokuC(char[][] board) {
         if (board == null || board.length != 9 || board[0].length != 9)
             return false;
         // check each column
@@ -80,7 +96,7 @@ class ValidSudoku {
             }
         }
         return true;
-    }
+    }*/
 
     /**
      * Each time send the coordinates to check if the board is partially valid.
@@ -112,73 +128,6 @@ class ValidSudoku {
         }
         return true;
     }
-
-    /**
-     * Use three arrays of integers to do masking
-     */
-    public boolean isValidSudoku(char[][] board) {
-        int[] row = new int[9];
-        int[] col = new int[9];
-        int[] sqr = new int[9];
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (board[i][j] != '.') {
-                    int num = board[i][j] - '0';
-                    if ((row[i] & 1 << num) > 0)
-                        return false; // already in row
-                    else
-                        row[i] |= 1 << num;
-                    if ((col[j] & 1 << num) > 0)
-                        return false;// already in col
-                    else
-                        col[j] |= 1 << num;
-                    int sqrIdx = (i - i % 3) + j / 3; // note the square idx
-                    if ((sqr[sqrIdx] & 1 << num) > 0)
-                        return false; // already
-                    else
-                        sqr[sqrIdx] |= 1 << num;
-                }
-            }
-        }
-        return true;
-    }
-
-    /**
-     * hashtable, index as key, mask as value
-     */
-    public boolean isValidSudokuB(char[][] board) {
-        Map<Integer, Integer> row = new HashMap<Integer, Integer>();
-        Map<Integer, Integer> col = new HashMap<Integer, Integer>();
-        Map<Integer, Integer> sqr = new HashMap<Integer, Integer>();
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j] != '.') {
-                    int num = board[i][j] - '0';
-                    int rowMask = row.containsKey(i) ? row.get(i) : 0;
-                    if ((rowMask & 1 << num) > 0) {
-                        return false;
-                    } else {
-                        row.put(i, rowMask | 1 << num);
-                    }
-                    int colMask = col.containsKey(j) ? col.get(j) : 0;
-                    if ((colMask & 1 << num) > 0) {
-                        return false;
-                    } else {
-                        col.put(j, colMask | 1 << num);
-                    }
-                    int sqrIdx = (i - i % 3) + j / 3;
-                    int sqrMask = sqr.containsKey(sqrIdx) ? sqr.get(sqrIdx) : 0;
-                    if ((sqrMask & 1 << num) > 0) {
-                        return false;
-                    } else {
-                        sqr.put(sqrIdx, sqrMask | 1 << num);
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
 
     private void printBoard(char[][] board) {
         for (int i = 0; i < board.length; i++) {
