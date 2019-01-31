@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,22 +36,41 @@ class Subsets {
         }
     }
 
-//所有backtrack
-// https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
+    //所有backtrack
+    // https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
 
     /**
-     * 最好的
+     * 非递归  更好理解
+     */
+    public static List<List<Integer>> subsets2(int[] S) {
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(new ArrayList<>());
+        if (S == null || S.length == 0)
+            return res;
+        Arrays.sort(S);
+        for (int i = 0; i < S.length; i++) {
+            int size = res.size();
+            for (int j = 0; j < size; j++) {
+                ArrayList<Integer> item = new ArrayList<>(res.get(j));
+                item.add(S[i]);
+                res.add(item);
+            }
+        }
+        return res;
+    }
+
+    /**
      * Remember the start position and do backtracking
      */
     public static List<List<Integer>> subsetsB(int[] s) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<List<Integer>> res = new ArrayList<>();
         Arrays.sort(s);
-        subsetsB(s, 0, new ArrayList<Integer>(), res);
+        subsetsB(s, 0, new ArrayList<>(), res);
         return res;
     }
 
     public static void subsetsB(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
-        result.add(new ArrayList<Integer>(set));
+        result.add(new ArrayList<>(set));
         for (int i = start; i < s.length; i++) {
             set.add(s[i]); // with i
             subsetsB(s, i + 1, set, result); // DFS
@@ -64,9 +83,9 @@ class Subsets {
     public List<List<Integer>> subsets(int[] S) {
         Arrays.sort(S);
         int totalNumber = 1 << S.length;
-        List<List<Integer>> collection = new ArrayList<List<Integer>>(totalNumber);
+        List<List<Integer>> collection = new ArrayList<>(totalNumber);
         for (int i = 0; i < totalNumber; i++) {
-            List<Integer> set = new LinkedList<Integer>();
+            List<Integer> set = new LinkedList<>();
             for (int j = 0; j < S.length; j++) {
                 if ((i & (1 << j)) != 0) {
                     set.add(S[j]);
@@ -77,24 +96,5 @@ class Subsets {
         return collection;
     }
 
-    /**
-     * 非递归  更好理解
-     */
-    public static List<List<Integer>> subsets2(int[] S) {
-        List<List<Integer>> res = new ArrayList<>();
-        res.add(new ArrayList<Integer>());
-        if (S == null || S.length == 0)
-            return res;
-        Arrays.sort(S);
-        for (int i = 0; i < S.length; i++) {
-            int size = res.size();
-            for (int j = 0; j < size; j++) {
-                ArrayList<Integer> item = new ArrayList<Integer>(res.get(j));
-                item.add(S[i]);
-                res.add(item);
-            }
-        }
-        return res;
-    }
 
 }

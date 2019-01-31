@@ -1,11 +1,10 @@
-package aFB;
+package aMaz;
 
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /**
- * Given an unsorted array of integers, find the length of the longest
+ * Given an unsorted array of integers, find the length of the longest HARD
  * consecutive elements sequence.
  * For example,
  * Given [100, 4, 200, 1, 3, 2],
@@ -25,13 +24,12 @@ import java.util.Set;
  * number of elements in the consecutive starting with this element.
  * If count is more than current res, then updateres.
  */
-class LongestConsecutiveSeq {
+class LongestConsecutiveSequence {
     public static void main(String[] args) {
-        LongestConsecutiveSeq l = new LongestConsecutiveSeq();
+        LongestConsecutiveSequence l = new LongestConsecutiveSequence();
         int[] a = {100, 4, 200, 1, 3, 2};
-        System.out.println(l.longestConsecutivea(a));
+        System.out.println(l.longestConsecutiveSequence(a));
     }
-
 
     /**
      * 最好的
@@ -43,7 +41,7 @@ class LongestConsecutiveSeq {
      * 最后比较当前串是不是比当前最大串要长，是则更新。如此继续直到集合为空。如果我们用HashSet来存储数字，则可以认为访问时间是常量的，
      * 那么算法需要一次扫描来建立集合，第二次扫描来找出最长串，所以复杂度是O(2*n)=O(n)，空间复杂度是集合的大小，即O(n)
      */
-    public static int longestConsecutivea(int[] num) {
+    public static int longestConsecutiveSequence(int[] num) {
         if (num == null || num.length == 0) {
             return 0;
         }

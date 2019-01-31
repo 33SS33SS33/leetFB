@@ -1,4 +1,6 @@
-package tree;
+package aMaz;
+
+import java.util.Stack;
 
 /**
  * Given two binary trees, write a function to check if they are equal or not.
@@ -28,7 +30,7 @@ class SameTree {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new SameTree().isSameTree(root1, root2));
+        System.out.println(new SameTree().sameTree(root1, root2));
     }
 
     /**
@@ -36,14 +38,40 @@ class SameTree {
      * If both node's values are the same, left subtrees are same and so right
      * Return true, otherwise return false
      */
-    public boolean isSameTree(TreeNode p, TreeNode q) {
+    public boolean sameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null)
             return true;
         if (p == null || q == null)
             return false;
         if (p.val == q.val)
-            return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+            return sameTree(p.left, q.left) && sameTree(p.right, q.right);
         return false;
+    }
+
+    public boolean sameTreeb(TreeNode p, TreeNode q) {
+        Stack<TreeNode> stackP = new Stack<>();
+        Stack<TreeNode> stackQ = new Stack<>();
+        if (p != null) stackP.push(p);
+        if (q != null) stackQ.push(q);
+        while (!stackP.isEmpty() && !stackQ.isEmpty()) {
+            TreeNode pn = stackP.pop();
+            TreeNode qn = stackQ.pop();
+            if (pn.val != qn.val)
+                return false;
+            if (pn.right != null)
+                stackP.push(pn.right);
+            if (qn.right != null)
+                stackQ.push(qn.right);
+            if (stackP.size() != stackQ.size())
+                return false;
+            if (pn.left != null)
+                stackP.push(pn.left);
+            if (qn.left != null)
+                stackQ.push(qn.left);
+            if (stackP.size() != stackQ.size())
+                return false;
+        }
+        return stackP.size() == stackQ.size();
     }
 
     public static class TreeNode {

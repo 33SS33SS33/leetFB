@@ -1,27 +1,42 @@
-package easy;
-
-import java.util.Arrays;
+package aMaz;
 
 /**
- * Given an array of size n, find the majority element. The majority element is
- * the element that appears more than ⌊ n/2 ⌋ times.
- * You may assume that the array is non-empty and the majority element always
- * wordSearchb in the array.
- * Tags: Divide and Conquer, Array, Bit Manipulation
- * 还是用那个投票算法 好像用bit也能做 未实现 重要
+ * Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+ * You may assume that the array is non-empty and the majority element always exist in the array.
+ * Example 1:
+ * Input: [3,2,3]
+ * Output: 3
+ * Example 2:
+ * Input: [2,2,1,1,1,2,2]
+ * Output: 2
  */
-class MajorityEle {
+class MajorityElement {
     public static void main(String[] args) {
         int[] num = {1, 2, 1, 3, 6, 1, 4, 1, 1};
-        System.out.println(new MajorityEle().majorityElement(num));
-        System.out.println(new MajorityEle().majorityElementB(num));
+        System.out.println(new MajorityElement().majorityElementa(num));
+//        System.out.println(new MajorityElement().majorityElement(num));
+//        System.out.println(new MajorityElement().majorityElementB(num));
+    }
+
+    public int majorityElementa(int[] num) {
+        int major = num[0], count = 1;
+        for (int i = 1; i < num.length; i++) {
+            if (count == 0) {
+                count++;
+                major = num[i];
+            } else if (major == num[i]) {
+                count++;
+            } else count--;
+
+        }
+        return major;
     }
 
     /**
      * Go through the array, assign maj ele if count is 0 最好的
      * Add 1 to count if same element, otherwise minus 1
      */
-    public static int majorityElement(int[] num) {
+/*    public static int majorityElement(int[] num) {
         int maj = num[0];
         for (int count = 0, i = 0; i < num.length && count <= num.length / 2; i++) {
             if (count == 0) {
@@ -31,7 +46,7 @@ class MajorityEle {
                 count = num[i] == maj ? count + 1 : count - 1;
         }
         return maj;
-    }
+    }*/
 
     /**
      * creek
@@ -43,12 +58,12 @@ class MajorityEle {
      * Since the majority always take more than a half space, the middle element is guaranteed to be the majority.
      * Sorting array takes nlog(n). So the time complexity of this solution is nlog(n). Cheers!
      */
-    public int majorityElementB(int[] num) {
+/*    public int majorityElementB(int[] num) {
         if (num.length == 1) {
             return num[0];
         }
         Arrays.sort(num);
         return num[num.length / 2];
-    }
+    }*/
 
 }

@@ -11,7 +11,6 @@ package aMaz;
  * The input string does not contain leading or trailing spaces.
  * The words are always separated by a single space.
  * Follow up: Could you do it in-place without allocating extra space?
- * <p>
  * 输入的字符串不包含前缀或者后缀空格，然后字符串只有以单个空格分隔。
  * 要求不开辟任何其他存储空间，在原先字符串上进行替换。
  * 字符串是按照单个字符存进数组的

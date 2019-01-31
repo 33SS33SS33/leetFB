@@ -1,7 +1,7 @@
-package hard;
+package aMaz;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/5/23.
+ * Created by GAOSHANSHAN835 on 2016/5/23. HARD
  * Given an integer matrix, find the length of the longest increasing path.
  * From each cell, you can either move to four directions: left, right, up or down.
  * You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
@@ -30,6 +30,14 @@ public class LongestIncreasingPathinaMatrix {
         System.out.println(r.longestIncreasingPath(nums));
     }
 
+    /**
+     * https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/78308/15ms-Concise-Java-Solution
+     * Do DFS from every cell
+     * Compare every 4 direction and skip cells that are out of boundary or smaller
+     * Get matrix max from every cell's max
+     * Use matrix[x][y] <= matrix[i][j] so we don't need a visited[m][n] array
+     * The key is to cache the distance because it's highly possible to revisit a cell
+     */
     public static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public int longestIncreasingPath(int[][] matrix) {

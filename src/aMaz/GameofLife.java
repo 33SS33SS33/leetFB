@@ -1,7 +1,7 @@
-package medium;
+package aMaz;
 
 /**
- * Created by shanshan on 16/5/9.
+ * Created by shanshan on 16/5/9. medium
  * "According to the Wikipedia's article: "The OthelloGame of Life, also known simply as Life, is a cellular automaton
  * devised by the British mathematician John Horton Conway in 1970."
  * Given a board with m by n cells, each cell has an initial state live (1) or dead (0).
@@ -11,12 +11,28 @@ package medium;
  * Any live cell with two or three live neighbors lives on to the next generation.
  * Any live cell with more than three live neighbors dies, as if by over-population..
  * Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+ * Example:
+ * Input:
+ * [
+ * [0,1,0],
+ * [0,0,1],
+ * [1,1,1],
+ * [0,0,0]
+ * ]
+ * Output:
+ * [
+ * [0,0,0],
+ * [1,0,1],
+ * [0,1,1],
+ * [0,1,0]
+ * ]
  * Write a function to compute the next state (after one update) of the board given its current state.
  * Follow up:
  * Could you solve it in-place? Remember that the board needs to be updated at the same time:
  * You cannot update some cells first and then use their updated values to update other cells.
  * In this question, we represent the board using a 2D array. In principle, the board is infinite,
  * which would cause problems when the active area encroaches the border of the array. How would you address these problems?"
+ * <p>
  * "注意题目说的是一次性更新 不能更新一个之后 然后再更新周围的
  * 所以使用位操作 大循环是遍历数组内的每一个元素  还有个小循环 就是访问当前元素周围的邻居
  * 然后有一个count变量来记录他周围的邻居（包括他自己）有几个1
@@ -30,8 +46,7 @@ package medium;
  * 最后把数组的元素都往右移动一位即可"
  */
 public class GameofLife {
-
-
+    //https://leetcode.com/problems/game-of-life/discuss/73223/Easiest-JAVA-solution-with-explanation
     public void gameOfLifea(int[][] board) {
         if (board == null || board.length == 0)
             return;

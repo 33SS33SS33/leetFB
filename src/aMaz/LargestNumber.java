@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 import java.util.*;
 
@@ -12,9 +12,9 @@ import java.util.*;
  * 要使用cmp函数来排序 比较规则是x+y 和y+x的大小 而且要倒序
  * 同时要注意[0,0]这种特殊情况
  */
-class LargestNum {
+class LargestNumber {
     public static void main(String[] args) {
-        LargestNum ln = new LargestNum();
+        LargestNumber ln = new LargestNumber();
         int[] num = {3, 30, 34, 5, 9, 0};
         System.out.println(ln.largestNumber(num));
     }
@@ -31,12 +31,7 @@ class LargestNum {
         String[] str = new String[num.length];
         for (int i = 0; i < num.length; i++)
             str[i] = num[i] + "";
-        Comparator<String> comp = new Comparator<String>() {
-            @Override
-            public int compare(String s1, String s2) {
-                return Long.valueOf(s2 + s1).compareTo(Long.valueOf(s1 + s2));
-            }
-        };
+        Comparator<String> comp = (s1, s2) -> Long.valueOf(s2 + s1).compareTo(Long.valueOf(s1 + s2));
         Arrays.sort(str, comp);
         if (str[0].equals("0"))
             return "0"; // deal with 0

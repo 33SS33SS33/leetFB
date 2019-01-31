@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given a set of non-overlapping intervals, insert a new interval into the
+ * Given a set of non-overlapping intervals, insert a new interval into the HARD
  * intervals (merge if necessary).
  * You may assume that the intervals were initially sorted according to their
  * start times.
@@ -31,20 +31,20 @@ class InsertInterval {
         List<Interval> intervals = new LinkedList<Interval>();
         intervals.add(interval1);
         intervals.add(interval2);
-        List<Interval> ress = new InsertInterval().InsertIntervalS(intervals, interval3);
-        List<Interval> res = new InsertInterval().insertA(intervals, interval3);
+        List<Interval> ress = new InsertInterval().insertInterval(intervals, interval3);
+//        List<Interval> res = new InsertInterval().insertA(intervals, interval3);
         System.out.print(ress.toString());
-        System.out.print(res.toString());
+//        System.out.print(res.toString());
     }
 
     /**
      * -!!!!最好的
      */
-    public List<Interval> InsertIntervalS(List<Interval> intervals, Interval newInterval) {
+    public List<Interval> insertInterval(List<Interval> intervals, Interval newInterval) {
         if (intervals == null || newInterval == null) {
             return intervals;
         }
-        ArrayList<Interval> result = new ArrayList<Interval>();
+        ArrayList<Interval> result = new ArrayList<>();
         int insertPos = 0;
         for (Interval interval : intervals) {
             if (interval.end < newInterval.start) {
@@ -67,6 +67,7 @@ class InsertInterval {
      * Go through the list, compare interval's start and end with the last
      * interval of result, they may overlap
      */
+/*
     public List<Interval> insertA(List<Interval> intervals, Interval newInterval) {
         List<Interval> res = new ArrayList<Interval>();
         res.add(newInterval);
@@ -87,6 +88,7 @@ class InsertInterval {
         }
         return res;
     }
+*/
 
 
     public static class Interval {
