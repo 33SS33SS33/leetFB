@@ -1,4 +1,4 @@
-package tree;
+package aMaz;
 
 import java.util.LinkedList;
 
@@ -54,15 +54,11 @@ class PathSum {
         return hasPathSumA(root.left, sum - root.val) || hasPathSumA(root.right, sum - root.val);
     }
 
-
-    /**
-     * creek---
-     */
     public boolean hasPathSumB(TreeNode root, int sum) {
         if (root == null)
             return false;
-        LinkedList<TreeNode> nodes = new LinkedList<TreeNode>();
-        LinkedList<Integer> values = new LinkedList<Integer>();
+        LinkedList<TreeNode> nodes = new LinkedList<>();
+        LinkedList<Integer> values = new LinkedList<>();
         nodes.add(root);
         values.add(root.val);
         while (!nodes.isEmpty()) {

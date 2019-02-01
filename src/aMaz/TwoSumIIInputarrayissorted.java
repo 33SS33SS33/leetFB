@@ -9,7 +9,7 @@ public class TwoSumIIInputarrayissorted {
         TwoSumIIInputarrayissorted t = new TwoSumIIInputarrayissorted();
         int[] numbers = {2, 4, 7}; // 6 = 2+4
         int target = 6;
-        int[] res1 = t.twoSumB(numbers, target);
+        int[] res1 = t.twoSumInputArrayIsSorted(numbers, target);
         for (int i = 0; i < res1.length; i++) {
             System.out.print(i == res1.length - 1 ? res1[i] : res1[i] + ", ");
         }
@@ -18,7 +18,7 @@ public class TwoSumIIInputarrayissorted {
     /**
      * input array is sorted creek!
      */
-    public int[] twoSumB(int[] numbers, int target) {
+    public int[] twoSumInputArrayIsSorted(int[] numbers, int target) {
         if (numbers == null || numbers.length == 0)
             return null;
         int i = 0;

@@ -4,9 +4,10 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/3/4.
+ * Created by GAOSHANSHAN835 on 2016/3/4. HARD TODO
  * creek----This problem can be solved by using a heap. The time is O(nlog(n)).
  */
+
 public class MergeKSortedArray {
     public static void main(String[] args) {
         int[] arr1 = {1, 3, 5, 7};
@@ -19,7 +20,7 @@ public class MergeKSortedArray {
 
     public static int[] mergeKSortedArray(int[][] arr) {
         //PriorityQueue is heap in Java
-        PriorityQueue<ArrayContainer> queue = new PriorityQueue<ArrayContainer>();
+        PriorityQueue<ArrayContainer> queue = new PriorityQueue<>();
         int total = 0;
         //add arrays to heap
         for (int i = 0; i < arr.length; i++) {

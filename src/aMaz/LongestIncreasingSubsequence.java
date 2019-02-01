@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 import java.util.Arrays;
 
@@ -24,8 +24,29 @@ import java.util.Arrays;
  * 最后的返回值则是数组res的长度
  * 这里要注意二分查找的写法  返回的位置应该是插入当前元素到这个元素之前"
  */
+//TODO
 public class LongestIncreasingSubsequence {
+    //https://github.com/bephrem1/backtobackswe/blob/master/Dynamic%20Programming,%20Recursion,%20&%20Backtracking/longestIncreasingSubsequence.java
     public int lengthOfLIS(int[] nums) {
+        if (nums.length == 0) {
+            return 0;
+        }
+        int[] maxLength = new int[nums.length];
+        Arrays.fill(maxLength, 1);
+        int maximumSoFar = 1;
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    maxLength[i] = Math.max(maxLength[i], maxLength[j] + 1);
+                }
+            }
+            maximumSoFar = Math.max(maximumSoFar, maxLength[i]);
+        }
+        return maximumSoFar;
+    }
+
+    //O(nlogn)
+/*    public int longestIncreasingSubsequence(int[] nums) {
         int[] dp = new int[nums.length];
         int len = 0;
         for (int x : nums) {
@@ -37,6 +58,6 @@ public class LongestIncreasingSubsequence {
                 len++;
         }
         return len;
-    }
+    }*/
 
 }

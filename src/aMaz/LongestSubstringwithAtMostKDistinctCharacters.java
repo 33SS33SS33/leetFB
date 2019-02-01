@@ -11,12 +11,12 @@ package aMaz;
 
 public class LongestSubstringwithAtMostKDistinctCharacters {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstringKDistinct("eceba", 2));
-        System.out.println(lengthOfLongestSubstringKDistinct("aa", 1));
+        System.out.println(longestSubstringwithAtMostKDistinctCharacters("eceba", 2));
+        System.out.println(longestSubstringwithAtMostKDistinctCharacters("aa", 1));
     }
 
     //the slide window
-    public static int lengthOfLongestSubstringKDistinct(String s, int k) {
+    public static int longestSubstringwithAtMostKDistinctCharacters(String s, int k) {
         int[] count = new int[256];
         int num = 0, i = 0, res = 0;
         for (int j = 0; j < s.length(); j++) {

@@ -1,4 +1,4 @@
-package easy;
+package aMaz;
 
 /**
  * Created by shanshan on 17/1/26.
