@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 /**
  * "Given a binary tree, find the length of the longest consecutive sequence path.
@@ -10,8 +10,8 @@ package medium;
  * 3
  * / \
  * 2   4
- * \
- * 5
+ *      \
+ *      5
  * Longest consecutive sequence path is 3-4-5, so return 3.
  * 2
  * \
@@ -24,12 +24,12 @@ package medium;
  * "这道题的题意是  要找出来从父亲到孩子方向的最长的递增序列长度(每次递增1)
  * 这道题用dfs来遍历 主要就是dfs的时候 需要一个有一个counter来记录当前的长度 如果断掉了 就把counter置为1重新开始"
  */
-public class BTLongestConsecutiveSequence {
+public class BinaryTreeLongestConsecutiveSequence {
 
-    //best
+    //Just very intuitive depth-first search, send cur node value to the next level and compare it with the next level node.
     private int max = 0;
 
-    public int longestConsecutive(TreeNode root) {
+    public int binaryTreeLongestConsecutiveSequence(TreeNode root) {
         if (root == null)
             return 0;
         helper(root, 0, root.val);

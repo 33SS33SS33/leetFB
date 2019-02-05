@@ -1,7 +1,7 @@
-package hard;
+package aMaz;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/5/11.
+ * Created by GAOSHANSHAN835 on 2016/5/11. HARD
  * "Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums.
  * You are asked to burst all the balloons. If the you burst balloon i you will get nums[left] * nums[i] * nums[right] coins.
  * Here left and right are adjacent indices of i. After the burst, the left and right then becomes adjacent.
@@ -23,9 +23,10 @@ public class BurstBalloons {
     public static void main(String[] args) {
         int[] iNums = {3, 1, 5, 8};
         System.out.println(new BurstBalloons().maxCoinsA(iNums));
-        System.out.println(new BurstBalloons().maxCoinsB(iNums));
+//        System.out.println(new BurstBalloons().maxCoinsB(iNums));
     }
 
+    //TODO
     public int maxCoinsA(int[] iNums) {
         int[] nums = new int[iNums.length + 2];
         int n = 1;
@@ -49,6 +50,7 @@ public class BurstBalloons {
         return ans;
     }
 
+/*
     public int maxCoinsB(int[] iNums) {
         int[] nums = new int[iNums.length + 2];
         int n = 1;
@@ -64,6 +66,6 @@ public class BurstBalloons {
                     dp[left][right] = Math.max(dp[left][right], nums[left] * nums[i] * nums[right] + dp[left][i] + dp[i][right]);
             }
         return dp[0][n - 1];
-    }
+    }*/
 
 }

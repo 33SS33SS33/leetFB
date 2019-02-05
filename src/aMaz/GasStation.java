@@ -1,4 +1,4 @@
-package medium;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
@@ -22,7 +22,7 @@ class GasStation {
     public static void main(String[] args) {
         int[] gas = {2, 4, 1, 6};
         int[] cost = {1, 4, 1, 5};
-        System.out.println(canCompleteCircuit(gas, cost));
+        System.out.println(gasStation(gas, cost));
     }
 
     /**
@@ -33,7 +33,7 @@ class GasStation {
      * If previous + restGas >= 0, which means there is a solution, return start
      * Otherwise can't make the trip, return -1
      */
-    public static int canCompleteCircuit(int[] gas, int[] cost) {
+    public static int gasStation(int[] gas, int[] cost) {
         int restGas = 0; // gas remain for current trip
         int previous = 0; // negative gas for previous trips
         int start = 0; // start index of current trip

@@ -4878,7 +4878,7 @@ class findKthLargest {
         if (right != 0) {
             pivotIndex = rand.nextInt(right) % (right - left + 1) + left;
         }
-        pivotIndex = partition(input, left, right, pivotIndex);
+        pivotIndex = palindromePartition(input, left, right, pivotIndex);
         if (pivotIndex == k) {
             return input[k];
         }
@@ -4890,7 +4890,7 @@ class findKthLargest {
         }
     }
 
-    private int partition(int[] input, int left, int right, int pivotIndex) {
+    private int palindromePartition(int[] input, int left, int right, int pivotIndex) {
         int i = left;
         int j = right;
         int temp = input[pivotIndex];

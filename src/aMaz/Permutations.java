@@ -1,6 +1,7 @@
-package backTrac;
+package aMaz;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Given a collection of numbers, return all possible permutations.
@@ -15,7 +16,7 @@ class Permutations {
     }
 
     /**
-     * 最好的
+     * https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
      * [1,2,3] have the following permutations:
      * [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
      */
@@ -33,7 +34,7 @@ class Permutations {
                 if (tempList.contains(nums[i]))
                     continue; // element already exists, skip
                 tempList.add(nums[i]);
-                backtrack(list, tempList, nums);
+                backtrack(list, tempList, nums);//!!
                 tempList.remove(tempList.size() - 1);
             }
         }

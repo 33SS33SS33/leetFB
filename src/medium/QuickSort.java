@@ -34,7 +34,7 @@ class QuickSort {
 
     /**
      * Choose pivot
-     * Init 2 pointers from both ends to do partition
+     * Init 2 pointers from both ends to do palindromePartition
      * Move left pointer if A[left] is smaller than pivot(skip smaller)
      * Move right pointer if A[right] is bigger than pivot(skip bigger)
      * Check if left <= right, if so, swap left and right, move them

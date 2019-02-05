@@ -1,9 +1,9 @@
-package hard;
+package aMaz;
 
 import java.util.*;
 
 /**
- * Given a string s, partition s such that every substring of the partition is a palindrome.
+ * Given a string s, palindromePartition s such that every substring of the palindromePartition is a palindrome. HARD
  * Return the minimum cuts needed for a palindrome partitioning of s.
  * For example, given s = "aab",
  * Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
@@ -16,20 +16,20 @@ import java.util.*;
 class PalindromePartition2 {
     public static void main(String[] args) {
         /*test minCut*/
-        System.out.println(minCutC("a"));
-        System.out.println(minCutC("aa"));
-        System.out.println(minCutC("aab"));
-        System.out.println(minCutC("aabbcc"));
-        System.out.println(minCutC("aabbccdd"));
-        System.out.println(minCutC("abcdcba"));
-        System.out.println(minCutC("abcd"));
+        System.out.println(palindromePartition2("a"));
+        System.out.println(palindromePartition2("aa"));
+        System.out.println(palindromePartition2("aab"));
+        System.out.println(palindromePartition2("aabbcc"));
+        System.out.println(palindromePartition2("aabbccdd"));
+        System.out.println(palindromePartition2("abcdcba"));
+        System.out.println(palindromePartition2("abcd"));
     }
 
     /**
      * Backtracking, generate all cuts 最好的
      */
-    public static int minCutC(String s) {
-        Set<String> palin = new HashSet<String>();
+    public static int palindromePartition2(String s) {
+        Set<String> palin = new HashSet<>();
         return minCut(s, 0, palin);
     }
 

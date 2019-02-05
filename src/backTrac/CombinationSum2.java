@@ -25,13 +25,12 @@ class CombinationSum2 {
     public static void main(String[] args) {
         int[] candidates = {10, 1, 2, 7, 6, 1, 5};
         int tar = 8;
-
-        List<List<Integer>> solution2 = new CombinationSum2().combinationSum2aa(candidates, tar);
+        List<List<Integer>> solution2 = new CombinationSum2().combinationSum2(candidates, tar);
         for (List<Integer> l : solution2)
             System.out.println(l.toString());
     }
 
-    public List<List<Integer>> combinationSum2aa(int[] nums, int target) {
+    public List<List<Integer>> combinationSum2(int[] nums, int target) {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);
         backtrack(list, new ArrayList<>(), nums, target, 0);

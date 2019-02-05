@@ -1,9 +1,10 @@
-package backTrac;
+package aMaz;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Given a string s, partition s such that every substring of the partition is a palindrome.
+ * Given a string s, palindromePartition s such that every substring of the palindromePartition is a palindrome.
  * Return all possible palindrome partitioning of s.
  * For example, given s = "aab",
  * Return
@@ -21,24 +22,23 @@ import java.util.*;
  */
 class PalindromePartition {
     public static void main(String[] args) {
-        System.out.println(partition("aab"));
+        System.out.println(palindromePartition("aab"));
     }
 
     /**
-     * 最好的
      * Backtracking
      */
-    public static List<List<String>> partition(String s) {
-        List<List<String>> res = new ArrayList<List<String>>();
+    public static List<List<String>> palindromePartition(String s) {
+        List<List<String>> res = new ArrayList<>();
         if (s == null || s.length() == 0)
             return res;
-        partition(s, 0, res, new ArrayList<String>());
+        partition(s, 0, res, new ArrayList<>());
         return res;
     }
 
     public static void partition(String s, int pos, List<List<String>> res, List<String> cut) {
         if (pos == s.length()) { // note the stop condition
-            res.add(new ArrayList<String>(cut)); // dereference
+            res.add(new ArrayList<>(cut)); // dereference
         } else {
             for (int i = pos + 1; i <= s.length(); i++) {// start from 1
                 String prefix = s.substring(pos, i);

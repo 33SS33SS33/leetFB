@@ -12,7 +12,7 @@ import java.util.*;
  */
 class Permutations2 {
     public static void main(String[] args) {
-        List<List<Integer>> res1 = permuteUniquea(new int[]{1, 2, 3});
+        List<List<Integer>> res1 = permutations2(new int[]{1, 2, 3});
         for (List<Integer> l : res1)
             System.out.println(l);
     }
@@ -20,7 +20,7 @@ class Permutations2 {
     /**
      * 最好的
      */
-    public static List<List<Integer>> permuteUniquea(int[] nums) {
+    public static List<List<Integer>> permutations2(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);
         backtrack(list, new ArrayList<>(), nums, new boolean[nums.length]);
