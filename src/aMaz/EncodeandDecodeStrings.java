@@ -30,14 +30,18 @@ import java.util.List;
 public class EncodeandDecodeStrings {
     public static void main(String[] args) {
         EncodeandDecodeStrings d = new EncodeandDecodeStrings();
-        List<String> sList = new ArrayList<String>();
+        List<String> sList = new ArrayList<>();
         sList.add("iiy");
-        System.out.println(d.encode(sList));
-        //        System.out.println(d.decodeTinyURL("iiy").toString());
+        sList.add("krystal");
+        sList.add("happy");
+        String res = d.encodeStrings(sList);
+        List<String> resLis = d.decodeStrings(res);
+        System.out.println(res);
+        System.out.println(resLis);
     }
 
     // Encodes a list of strings to a single string.
-    public String encodea(List<String> strs) {
+    public String encodeStrings(List<String> strs) {
         StringBuilder sb = new StringBuilder();
         for (String s : strs) {
             sb.append(s.length()).append('/').append(s);
@@ -46,7 +50,7 @@ public class EncodeandDecodeStrings {
     }
 
     // Decodes a single string to a list of strings.
-    public List<String> decodea(String s) {
+    public List<String> decodeStrings(String s) {
         List<String> ret = new ArrayList<String>();
         int i = 0;
         while (i < s.length()) {
@@ -58,18 +62,17 @@ public class EncodeandDecodeStrings {
         return ret;
     }
 
-    static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
+   /* static final int MAX_LEN = Integer.toHexString(Integer.MAX_VALUE).length();
     // lazy ... should be byte[]
     static final String NUM_PATTERN = "%0" + MAX_LEN + "x";
-    /*  [count] [str len] [str  ...]             ... [str len][str  ...  ]
+    *//*  [count] [str len] [str  ...]             ... [str len][str  ...  ]
      *  0       L         2L        2L + strlen      nL       (n + 1)L   (n + 1)L + strlen
-     */
+     *//*
 
     // Encodes a list of strings to a single string.
     public String encode(List<String> strs) {
         StringBuilder sb = new StringBuilder();
         sb.append(serializeNumber(strs.size()));
-
         for (String s : strs) {
             sb.append(serializeNumber(s.length()));
             sb.append(s);
@@ -102,6 +105,6 @@ public class EncodeandDecodeStrings {
 
     int deserializeNumber(char[] s, int offset) {
         return Integer.parseInt(new String(s, offset, MAX_LEN), 16);
-    }
+    }*/
 
 }

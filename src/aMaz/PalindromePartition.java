@@ -39,16 +39,17 @@ class PalindromePartition {
     public static void partition(String s, int pos, List<List<String>> res, List<String> cut) {
         if (pos == s.length()) { // note the stop condition
             res.add(new ArrayList<>(cut)); // dereference
-        } else {
-            for (int i = pos + 1; i <= s.length(); i++) {// start from 1
-                String prefix = s.substring(pos, i);
-                if (isPalindrome(prefix)) {
-                    cut.add(prefix);
-                    partition(s, i, res, cut); // update pos with i
-                    cut.remove(cut.size() - 1);
-                }
+            return;
+        }
+        for (int i = pos + 1; i <= s.length(); i++) {// start from 1??
+            String prefix = s.substring(pos, i);
+            if (isPalindrome(prefix)) {
+                cut.add(prefix);
+                partition(s, i, res, cut); // update pos with i
+                cut.remove(cut.size() - 1);
             }
         }
+
     }
 
     private static boolean isPalindrome(String str) {

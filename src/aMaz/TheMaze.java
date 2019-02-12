@@ -23,7 +23,7 @@ import java.util.Queue;
  * Explanation: One possible way is : left -> down -> left -> down -> right -> down -> right.
  */
 public class TheMaze {
-    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+    public boolean theMaze(int[][] maze, int[] start, int[] destination) {
         boolean[][] visited = new boolean[maze.length][maze[0].length];
         int[][] dirs = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
         Queue<int[]> queue = new LinkedList<>();

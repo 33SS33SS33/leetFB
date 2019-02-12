@@ -25,13 +25,14 @@ class MinimumWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
         String T = "ABC";
-        String res2 = minWindow2(S, T);
+        String res2 = minimumWindowSubstring(S, T);
         System.out.println(res2);
         //        String res = minWindowB(S, T);
         //        System.out.println(res);
     }
 
-    public static String minWindow2(String s, String t) {
+    //hard
+    public static String minimumWindowSubstring(String s, String t) {
         HashMap<Character, Integer> map = new HashMap<>();
         for (char c : s.toCharArray())
             map.put(c, 0);

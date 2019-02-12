@@ -1,7 +1,5 @@
 package aMaz;
 
-import java.util.Arrays;
-
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  * Given two strings s and t, write a function to determine if t is an anagram of s.
@@ -19,8 +17,8 @@ public class ValidAnagram {
         ValidAnagram r = new ValidAnagram();
         String a = "anagram";
         String b = "nagaram";
-        System.out.println(r.isAnagram(a, b));
-        // System.out.println(r.isAnagram(a, b));
+        System.out.println(r.validAnagram(a, b));
+        // System.out.println(r.validAnagram(a, b));
     }
 
     /**
@@ -29,7 +27,7 @@ public class ValidAnagram {
      * So if they are anagrams, all buckets should remain with initial value which is zero.
      * So just checking that and return
      */
-    public boolean isAnagram(String s, String t) {
+    public boolean validAnagram(String s, String t) {
         int[] alphabet = new int[26];
         for (int i = 0; i < s.length(); i++)
             alphabet[s.charAt(i) - 'a']++;
@@ -41,7 +39,7 @@ public class ValidAnagram {
         return true;
     }
 
-/*    public boolean isAnagram(String s, String t) {
+/*    public boolean validAnagram(String s, String t) {
         char[] S = s.toCharArray();
         char[] T = t.toCharArray();
         Arrays.sort(S);

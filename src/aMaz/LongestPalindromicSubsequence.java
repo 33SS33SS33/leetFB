@@ -11,6 +11,14 @@ package aMaz;
 
 //https://leetcode.com/problems/longest-palindromic-subsequence/discuss/99101/Straight-forward-Java-DP-solution
 public class LongestPalindromicSubsequence {
+    public static void main(String[] args) {
+        LongestPalindromicSubsequence p = new LongestPalindromicSubsequence();
+        String k = "bbbab";
+        String l = "abccccdd";
+        System.out.println(p.longestPalindromeSubseq(k));
+        System.out.println(p.longestPalindromeSubseq(l));
+    }
+
     public int longestPalindromeSubseq(String s) {
         int[][] dp = new int[s.length()][s.length()];
 

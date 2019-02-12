@@ -4700,7 +4700,7 @@ class TreeNodeWithParent {
 
 33. LeetCode regular expression matching
 
-public boolean isMatch(String s, String p) {
+public boolean wildcardMatchingc(String s, String p) {
     boolean[][] match = new boolean[s.length() + 1][p.length() + 1];
     match[0][0] = true;// If s and p are "", isMathch() returns true;
     for (int i = 0; i <= s.length(); i++) {

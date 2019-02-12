@@ -13,17 +13,33 @@ import java.util.List;
 public class MissingRanges {
     public static void main(String[] args) {
         int[] vals = {0, 1, 3, 50, 75};
+        List<String> res1 = findMissingRanges1(vals, 0, 99);
         List<String> res = findMissingRanges(vals, 0, 99);
-        for (String s : res) {
+        for (String s : res1) {
             System.out.println(s);
         }
     }
+//TODO
+    public static List<String> findMissingRanges1(int[] A, int lower, int upper) {
+        List<String> result = new ArrayList<>();
+        int pre = lower - 1;
+        for (int i = 0; i <= A.length; i++) {
+            int after = i == A.length ? upper + 1 : A[i];
+            if (pre + 2 == after) {
+                result.add(String.valueOf(pre + 1));
+            } else if (pre + 2 < after) {
+                result.add(String.valueOf(pre + 1) + "->" + String.valueOf(after - 1));
+            }
+            pre = after;
+        }
+        return result;
+    }
 
     public static List<String> findMissingRanges(int[] vals, int start, int end) {
-        List<String> ranges = new ArrayList<String>();
+        List<String> ranges = new ArrayList<>();
         int prev = start - 1;
         for (int i = 0; i <= vals.length; i++) {
-            int curr = (i == vals.length) ? end + 1 : vals[i];
+            int curr = (i == vals.length) ? end + 1 : vals[i]; //??
             if (curr - prev >= 2) {
                 ranges.add(getRange(prev + 1, curr - 1));
             }

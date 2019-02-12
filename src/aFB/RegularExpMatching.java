@@ -6,15 +6,15 @@ package aFB;
  * '*' Matches zero or more of the preceding element.
  * The matching should cover the entire input string (not partial).
  * The function prototype should be:
- * bool isMatch(const char *s, const char *p)
+ * bool wildcardMatchingc(const char *s, const char *p)
  * Some examples:
- * isMatch("aa","a") → false
- * isMatch("aa","aa") → true
- * isMatch("aaa","aa") → false
- * isMatch("aa", "a*") → true
- * isMatch("aa", ".*") → true
- * isMatch("ab", ".*") → true
- * isMatch("aab", "c*a*b") → true
+ * wildcardMatchingc("aa","a") → false
+ * wildcardMatchingc("aa","aa") → true
+ * wildcardMatchingc("aaa","aa") → false
+ * wildcardMatchingc("aa", "a*") → true
+ * wildcardMatchingc("aa", ".*") → true
+ * wildcardMatchingc("ab", ".*") → true
+ * wildcardMatchingc("aab", "c*a*b") → true
  * Note:
  * "*" only works on the preceding one element, not the whole string.
  * Tags: DP, Backtracking, String

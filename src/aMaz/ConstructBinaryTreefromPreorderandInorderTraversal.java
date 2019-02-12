@@ -12,7 +12,7 @@ class ConstructBinaryTreefromPreorderandInorderTraversal {
     public static void main(String[] args) {
         int[] preorder = {1, 2, 4, 5, 3, 6};
         int[] inorder = {4, 2, 5, 1, 3, 6};
-        TreeNode root2 = new ConstructBinaryTreefromPreorderandInorderTraversal().buildTreeB(preorder, inorder);
+        TreeNode root2 = new ConstructBinaryTreefromPreorderandInorderTraversal().constructBinaryTreefromPreorderandInorderTraversal(preorder, inorder);
 //        TreeNode root = new ConstructBinaryTreefromPreorderandInorderTraversal().buildTreeA(preorder, inorder);
     }
 
@@ -22,7 +22,7 @@ class ConstructBinaryTreefromPreorderandInorderTraversal {
      * 算法最终相当于一次树的遍历，每个结点只会被访问一次，所以时间复杂度是O(n)。
      * 而空间我们需要建立一个map来存储元素到下标的映射，所以是O(n)。
      */
-    public TreeNode buildTreeB(int[] preorder, int[] inorder) {
+    public TreeNode constructBinaryTreefromPreorderandInorderTraversal(int[] preorder, int[] inorder) {
         if (preorder == null || inorder == null)
             return null;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();

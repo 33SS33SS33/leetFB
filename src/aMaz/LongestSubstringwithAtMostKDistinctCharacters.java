@@ -1,8 +1,7 @@
 package aMaz;
 
 /**
- * HARD
- * Created by shanshan on 16/6/17.
+ * Created by shanshan on 16/6/17. HARD TODO
  * Given a string, find the length of the longest substring T that contains at most k distinct characters.
  * For example, Given s = “eceba” and k = 2, Output: 3  T is "ece" which its length is 3.
  * Input: s = "aa", k = 1 Output: 2  Explanation: T is "aa" which its length is 2.

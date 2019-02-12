@@ -53,7 +53,7 @@ class LongestPalindromicSubstring {
      * Manacher's Algorithm, O(n) Time.
      * S = “abba” => T = “#a#b#b#a#”.
      */
-/*    public String longestPalindrome(String s) {
+/*    public String LongestPalindrome(String s) {
         if (s == null || s.length() == 0)
             return "";
         int len = s.length();
