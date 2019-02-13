@@ -1,7 +1,5 @@
 package aMaz;
 
-import java.util.BitSet;
-
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Count the number of prime numbers less than a non-negative number, n.
@@ -10,28 +8,9 @@ import java.util.BitSet;
 public class CountPrimes {
     public static void main(String[] args) {
         int num = 19;
-        System.out.println(countPrimesa(num));
+//        System.out.println(countPrimesa(num));
         System.out.println(countPrimes(num));
-        System.out.println(countPrimesB(num));
-    }
-
-    public static int countPrimesa(int n) {
-        if (n <= 1) return 0;
-        boolean[] notPrime = new boolean[n];
-        notPrime[0] = true;
-        notPrime[1] = true;
-        for (int i = 2; i < Math.sqrt(n); i++) {
-            if (!notPrime[i]) {
-                for (int j = 2; j * i < n; j++) {
-                    notPrime[i * j] = true;
-                }
-            }
-        }
-        int count = 0;
-        for (int i = 2; i < notPrime.length; i++) {
-            if (!notPrime[i]) count++;
-        }
-        return count;
+//        System.out.println(countPrimesB(num));
     }
 
     public static int countPrimes(int n) {
@@ -50,7 +29,26 @@ public class CountPrimes {
         return count;
     }
 
-    public static int countPrimesB(int n) {
+/*    public static int countPrimesa(int n) {
+        if (n <= 1) return 0;
+        boolean[] notPrime = new boolean[n];
+        notPrime[0] = true;
+        notPrime[1] = true;
+        for (int i = 2; i < Math.sqrt(n); i++) {
+            if (!notPrime[i]) {
+                for (int j = 2; j * i < n; j++) {
+                    notPrime[i * j] = true;
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 2; i < notPrime.length; i++) {
+            if (!notPrime[i]) count++;
+        }
+        return count;
+    }*/
+
+/*    public static int countPrimesB(int n) {
         if (n < 2)
             return 0;
         BitSet b = new BitSet();
@@ -63,6 +61,6 @@ public class CountPrimes {
         }
         b.flip(0, n);
         return b.cardinality();
-    }
+    }*/
 
 }

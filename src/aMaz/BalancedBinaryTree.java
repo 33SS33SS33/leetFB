@@ -1,4 +1,4 @@
-package tree;
+package aMaz;
 
 /**
  * Given a binary tree, determine if it is height-balanced.
@@ -7,24 +7,24 @@ package tree;
  * Tags: Tree, DFS
  * 还是自底向上的得到深度值 然后计算
  */
-class BalancedBT {
+class BalancedBinaryTree {
     public static void main(String[] args) {
-        TreeNode head = new BalancedBT().buildTree();
-        System.out.println(new BalancedBT().isBalancedA(head));
+        TreeNode head = new BalancedBinaryTree().buildTree();
+        System.out.println(new BalancedBinaryTree().balancedBinaryTree(head));
     }
 
     //http://blog.csdn.net/linhuanmars/article/details/23731355
-    public boolean isBalancedA(TreeNode root) {
+    public boolean balancedBinaryTree(TreeNode root) {
         if (root == null)
             return true;
         return Math.abs(height(root.left) - height(root.right)) <= 1 &&
-                isBalancedA(root.left) && isBalancedA(root.right);
+                balancedBinaryTree(root.left) && balancedBinaryTree(root.right);
     }
 
     int height(TreeNode root) {
-        if (root == null)
+        if (root == null) {
             return 0;
-        else
+        } else
             return Math.max(height(root.left), height(root.right)) + 1;
     }
 

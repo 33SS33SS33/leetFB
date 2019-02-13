@@ -2,7 +2,7 @@ package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/29.
- * Given a string S, you are allowed to convert it to a palindrome by adding characters in front of it.
+ * Given a string S, you are allowed to zigZagConversion it to a palindrome by adding characters in front of it.
  * Find and return the shortest palindrome you can find by performing this transformation.
  * For example:
  * Given "aacecaaa", return "aaacecaaa".

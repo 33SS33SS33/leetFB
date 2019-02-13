@@ -1,10 +1,23 @@
-package tree;
+package aMaz;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
+ * Invert a binary tree.
+ Input:
+ 4
+ /   \
+ 2     7
+ / \   / \
+ 1   3 6   9
+ Output:
+ 4
+ /   \
+ 7     2
+ / \   / \
+ 9   6 3   1
  * 用BFS来翻转
  */
 public class InvertBinaryTree {
@@ -22,29 +35,22 @@ public class InvertBinaryTree {
         n1.right = n4;
         n2.left = n5;
         n2.right = n6;
-        TreeNode res = new InvertBinaryTree().invertTree(root);
+        TreeNode res = new InvertBinaryTree().invertBinaryTree(root);
 //        System.out.println(new InvertBinaryTree().levelOrder(res));
 
     }
 
-    /**
-     * 最好的
-     */
-    public TreeNode invertTree(TreeNode root) {
+    public TreeNode invertBinaryTree(TreeNode root) {
         if (root == null)
             return null;
-        TreeNode newLeft = invertTree(root.right);
-        TreeNode newRight = invertTree(root.left);
+        TreeNode newLeft = invertBinaryTree(root.right);
+        TreeNode newRight = invertBinaryTree(root.left);
         root.left = newLeft;
         root.right = newRight;
         return root;
     }
 
-    /**
-     * Finally we can easly convert the above solution to BFS - or so called level order
-     * traversal.
-     */
-    public TreeNode invertTreec(TreeNode root) {
+    public TreeNode invertBinaryTreeb(TreeNode root) {
         if (root == null) {
             return null;
         }

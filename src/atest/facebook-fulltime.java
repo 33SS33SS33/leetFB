@@ -2103,7 +2103,7 @@ can buy k times
  * <p>
  * 设计News feed system， backend的设计或者api设计两者选一。选了backend，虽然能准备的都准备了，但总感觉答的有点乱？大致讲了push/pull model, data怎么存，算算data量，怎么shard, 会问得很细，比如consistent hashing具体算法是怎么实现的，这个没有答上来。
  * <p>
- * Binary Tree convert to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
+ * Binary Tree zigZagConversion to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
  * <p>
  * http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194987&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
  * <p>
@@ -6687,7 +6687,7 @@ return num1.value - num2.value;
 
  设计News feed system， backend的设计或者api设计两者选一。选了backend，虽然能准备的都准备了，但总感觉答的有点乱？大致讲了push/pull model, data怎么存，算算data量，怎么shard, 会问得很细，比如consistent hashing具体算法是怎么实现的，这个没有答上来。
 
- Binary Tree convert to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
+ Binary Tree zigZagConversion to double linked list, 要求最后list首尾相连返回头。应该可以用dfs inorder traversal recursion加上track previous node。
 
  http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=194987&extra=page%3D2%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
 

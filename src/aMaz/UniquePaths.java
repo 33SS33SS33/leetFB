@@ -67,7 +67,7 @@ class UniquePaths {
             res *= N--;
             res /= i;
         }
-        return (int) res; // convert to int
+        return (int) res; // zigZagConversion to int
     }*/
 
 }

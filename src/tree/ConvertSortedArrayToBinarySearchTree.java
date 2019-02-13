@@ -1,15 +1,15 @@
 package tree;
 
 /**
- * Given an array where elements are sorted in ascending order, convert it to a
+ * Given an array where elements are sorted in ascending order, zigZagConversion it to a
  * <strong>height balanced</strong> BST.
  * Tags: Tree, DFS
  * 将数组逐次二分 midpoint就是当前的根 然后左边的数组就是左子树 右边的数组就是右子树
  */
-class ConvertSortedArrToBST {
+class ConvertSortedArrayToBinarySearchTree {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
-        TreeNode root = sortedArrayToBST(arr);
+        TreeNode root = convertSortedArrayToBinarySearchTree(arr);
         System.out.println(root.val);
     }
 
@@ -18,7 +18,7 @@ class ConvertSortedArrToBST {
      * 每层递归函数取中间元素，作为当前根和赋上结点值，然后左右结点接上左右区间的递归函数返回值。
      * 时间复杂度还是一次树遍历O(n)，总的空间复杂度是栈空间O(logn)加上结果的空间O(n)，额外空间是O(logn)，总体是O(n)
      */
-    public static TreeNode sortedArrayToBST(int[] num) {
+    public static TreeNode convertSortedArrayToBinarySearchTree(int[] num) {
         if (num == null || num.length == 0)
             return null;
         return helper(num, 0, num.length - 1);

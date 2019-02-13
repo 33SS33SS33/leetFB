@@ -1,4 +1,4 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/12.
@@ -14,17 +14,14 @@ package aFB;
 public class MoveZeroes {
     public static void main(String[] args) {
         int[] num = {1, 4, 3, 0, 8, 1, 0, 0};
-        new MoveZeroes().moveZeroes1(num);
+        new MoveZeroes().moveZeroes(num);
         for (int i : num) {
             System.out.print(i + ",");
         }
     }
 
-    /**
-     * best 最好的
-     */
     //https://discuss.leetcode.com/topic/24716/simple-o-n-java-solution-using-insert-index/2
-    public void moveZeroes1(int[] nums) {
+    public void moveZeroes(int[] nums) {
         if (nums == null || nums.length == 0)
             return;
         int insertPos = 0;

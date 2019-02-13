@@ -20,7 +20,7 @@ import java.util.List;
  * 但是也会导致并没有对s整体进行判断(因为最大切到倒数第二位)
  * 所以在下面又加了if对整体的s以及长度等于1的s进行判断
  */
-class PalindromePartition {
+class PalindromePartitioning {
     public static void main(String[] args) {
         System.out.println(palindromePartition("aab"));
     }

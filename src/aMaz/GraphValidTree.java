@@ -19,8 +19,8 @@ public class GraphValidTree {
     public static void main(String[] args) {
         int[][] edges = {{0, 1}, {0, 2}, {0, 3}, {1, 4}};
         int[][] edges2 = {{0, 1}, {1, 2}, {2, 3}, {1, 3}, {1, 4}};
-        System.out.println(validTree(5, edges));
-        System.out.println(validTree(5, edges2));
+        System.out.println(graphValidTree(5, edges));
+        System.out.println(graphValidTree(5, edges2));
     }
 
     /**TODO
@@ -28,14 +28,14 @@ public class GraphValidTree {
      */
     //http://www.geeksforgeeks.org/union-find/
     //https://discuss.leetcode.com/topic/21712/ac-java-union-find-solution/6
-    public static boolean validTree(int n, int[][] edges) {
+    public static boolean graphValidTree(int n, int[][] edges) {
         // initialize n isolated islands
         int[] nums = new int[n];
         Arrays.fill(nums, -1);
         // perform union find
         for (int i = 0; i < edges.length; i++) {
-            int x = finda(nums, edges[i][0]);
-            int y = finda(nums, edges[i][1]);
+            int x = find(nums, edges[i][0]);
+            int y = find(nums, edges[i][1]);
             // if two vertices happen to be in the same set then there's a cycle
             if (x == y)
                 return false;
@@ -45,10 +45,10 @@ public class GraphValidTree {
         return edges.length == n - 1;
     }
 
-    static int finda(int nums[], int i) {
+    private static int find(int nums[], int i) {
         if (nums[i] == -1)
             return i;
-        return finda(nums, nums[i]);
+        return find(nums, nums[i]);
     }
 
 }

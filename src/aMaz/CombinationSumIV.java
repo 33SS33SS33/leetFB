@@ -1,10 +1,9 @@
-package aFB;
+package aMaz;
 
 /**
  * Created by krystal on 5/4/17.
  * Given an integer array with all positive numbers and no duplicates,
  * find the number of possible combinations that add up to a positive integer target.
- * Example:
  * nums = [1, 2, 3]
  * target = 4
  * The possible combination ways are:

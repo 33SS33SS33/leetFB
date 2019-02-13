@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * TODO
  * Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
  * Each row must contain the digits 1-9 without repetition.
  * Each column must contain the digits 1-9 without repetition.
@@ -32,22 +33,23 @@ class ValidSudoku {
             }
         }
         v.printBoard(board);
-        System.out.println(v.isValidSudoku1(board));
+        System.out.println(v.validSudoku(board));
     }
 
-    public boolean isValidSudoku1(char[][] board) {
+    public boolean validSudoku(char[][] board) {
         Set seen = new HashSet();
-        for (int i=0; i<9; ++i) {
-            for (int j=0; j<9; ++j) {
+        for (int i = 0; i < 9; ++i) {
+            for (int j = 0; j < 9; ++j) {
                 if (board[i][j] != '.') {
                     String b = "(" + board[i][j] + ")";
-                    if (!seen.add(b + i) || !seen.add(j + b) || !seen.add(i/3 + b + j/3))
+                    if (!seen.add(b + i) || !seen.add(j + b) || !seen.add(i / 3 + b + j / 3))
                         return false;
                 }
             }
         }
         return true;
     }
+
     /**
      * creek 最好的
      * 对于每一行，每一列，每个九宫格进行验证，总共需要27次验证，每次看九个元素。

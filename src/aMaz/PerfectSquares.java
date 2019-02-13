@@ -9,14 +9,13 @@ import java.util.Arrays;
  * 可以用 动态规划 DP 来做
  * 通项公式是 dp[i] = 1 + min (dp[i-j*j] for j*j<=i)
  * 就是看看当前数去掉一个完全平方数 然后找最小值  然后+1(1就是代表这个去掉的完全平方数)
- * python的dp超时了  没修改 未实现
  */
 public class PerfectSquares {
     public static void main(String[] args) {
         PerfectSquares ps = new PerfectSquares();
-        int res = ps.perfectSquaresb(13);
-        System.out.println("res: " + res);
-        res = ps.perfectSquares(13);
+//        int res = ps.perfectSquaresb(13);
+//        System.out.println("res: " + res);
+        int res = ps.perfectSquares(13);
         System.out.println("res: " + res);
     }
 
@@ -36,7 +35,7 @@ public class PerfectSquares {
         return res[n];
     }
 
-    public int perfectSquaresb(int n) {
+/*    public int perfectSquaresb(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
@@ -50,6 +49,6 @@ public class PerfectSquares {
             dp[i] = min;
         }
         return dp[n];
-    }
+    }*/
 
 }

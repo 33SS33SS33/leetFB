@@ -15,11 +15,11 @@ public class LongestPalindromicSubsequence {
         LongestPalindromicSubsequence p = new LongestPalindromicSubsequence();
         String k = "bbbab";
         String l = "abccccdd";
-        System.out.println(p.longestPalindromeSubseq(k));
-        System.out.println(p.longestPalindromeSubseq(l));
+        System.out.println(p.longestPalindromicSubsequence(k));
+        System.out.println(p.longestPalindromicSubsequence(l));
     }
 
-    public int longestPalindromeSubseq(String s) {
+    public int longestPalindromicSubsequence(String s) {
         int[][] dp = new int[s.length()][s.length()];
 
         for (int i = s.length() - 1; i >= 0; i--) {

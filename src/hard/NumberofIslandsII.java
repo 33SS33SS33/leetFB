@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by shanshan on 16/5/9.
+ * Created by shanshan on 16/5/9. HARD TODO
  * "A 2d grid map of m rows and n columns is initially filled with water. We may perform an addLand operation
  * which turns the water at position (row, col) into a land. Given a list of positions to operate,
  * count the number of islands after each addLand operation. An island is surrounded by water and is formed by
@@ -42,9 +42,9 @@ public class NumberofIslandsII {
 
     private int[][] dir = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
-    public List<Integer> numIslands2(int m, int n, int[][] positions) {
+    public List<Integer> numberofIslandsII(int m, int n, int[][] positions) {
         UnionFind2D islands = new UnionFind2D(m, n);
-        List<Integer> ans = new ArrayList<Integer>();
+        List<Integer> ans = new ArrayList<>();
         for (int[] position : positions) {
             int x = position[0], y = position[1];
             int p = islands.add(x, y);

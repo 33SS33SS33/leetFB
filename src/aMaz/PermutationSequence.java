@@ -40,7 +40,7 @@ class PermutationSequence {
     }
 
     public static String permutationSequence(int n, int k) {
-        List<Integer> num = new LinkedList<Integer>();
+        List<Integer> num = new LinkedList<>();
         for (int i = 1; i <= n; i++)
             num.add(i);
         int[] fact = new int[n]; // factorial

@@ -99,7 +99,7 @@ class WildcardMatching {
     /**
      * O(m*n)
      */
-    public boolean wildcardMatchingc(String s, String p) {
+/*    public boolean wildcardMatchingc(String s, String p) {
         if (s == null && p == null)
             return true;
         if (s == null || p == null)
@@ -125,6 +125,6 @@ class WildcardMatching {
             }
         }
         return dp[p.length()][s.length()];
-    }
+    }*/
 
 }

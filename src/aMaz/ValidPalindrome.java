@@ -17,10 +17,10 @@ class ValidPalindrome {
     public static void main(String[] args) {
         System.out.println(validPalindrome(""));
         System.out.println(validPalindromeb(""));
-        System.out.println(validPalindromec(""));
+//        System.out.println(validPalindromec(""));
         System.out.println(validPalindrome("A man, a plan, a canal: Panama"));
         System.out.println(validPalindromeb("A man, a plan, a canal: Panama"));
-        System.out.println(validPalindromec("A man, a plan, a canal: Panama"));
+//        System.out.println(validPalindromec("A man, a plan, a canal: Panama"));
     }
 
     public static boolean validPalindrome(String s) {
@@ -79,10 +79,10 @@ class ValidPalindrome {
     }
 
     /**
-     * Put letters and numbers in a new string and convert to lowercase
+     * Put letters and numbers in a new string and zigZagConversion to lowercase
      * O(2n) Time, O(n) Space
      */
-    public static boolean validPalindromec(String s) {
+ /*   public static boolean validPalindromec(String s) {
         StringBuilder sb = new StringBuilder();
         for (char c : s.toCharArray())
             if (Character.isLetterOrDigit(c))
@@ -95,6 +95,6 @@ class ValidPalindrome {
             }
         }
         return true;
-    }
+    }*/
 
 }

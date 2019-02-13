@@ -42,7 +42,7 @@ public class failExpe3 {
      1. one edit distance
      2. move 0 to right.
      3. max square in matrix
-     4. convert binary tree to double linked list.
+     4. zigZagConversion binary tree to double linked list.
      5. remove miss match paretheis in a string
      6. find a number in a rotated sorted array.
      结果：fail

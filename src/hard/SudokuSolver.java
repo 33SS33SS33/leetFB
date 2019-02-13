@@ -1,7 +1,7 @@
 package hard;
 
 /**
- * Write a program to solve a Sudoku puzzle by filling the empty cells.
+ * Write a program to solve a Sudoku puzzle by filling the empty cells. HARD TODO
  * Empty cells are indicated by the character '.'.
  * You may assume that there will be only one unique solution.
  * Tags: Backtracking, Hash Table
@@ -27,9 +27,6 @@ class SudokuSolver {
         }
     }
 
-    /**
-     * 最好的
-     */
     public void solveSudoku(char[][] board) {
         if (board == null || board.length == 0)
             return;
@@ -57,16 +54,13 @@ class SudokuSolver {
     }
 
     public boolean isValid(char[][] board, int i, int j, char c) {
-        //Check column
-        for (int row = 0; row < 9; row++)
+        for (int row = 0; row < 9; row++)//Check column
             if (board[row][j] == c)
                 return false;
-        //Check row
-        for (int col = 0; col < 9; col++)
+        for (int col = 0; col < 9; col++) //Check row
             if (board[i][col] == c)
                 return false;
-        //Check 3 x 3 block
-        for (int row = (i / 3) * 3; row < (i / 3) * 3 + 3; row++)
+        for (int row = (i / 3) * 3; row < (i / 3) * 3 + 3; row++)//Check 3 x 3 block
             for (int col = (j / 3) * 3; col < (j / 3) * 3 + 3; col++)
                 if (board[row][col] == c)
                     return false;

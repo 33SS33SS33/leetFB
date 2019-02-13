@@ -76,7 +76,7 @@ class DivideTwoIntegers {
         if (divisor == -1)
             return dividend == Integer.MIN_VALUE ? Integer.MAX_VALUE : -dividend;
         final boolean neg = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
-        long ldividend = Math.abs((long) dividend); // convert to abstract long
+        long ldividend = Math.abs((long) dividend); // zigZagConversion to abstract long
         final long ldivisor = Math.abs((long) divisor);
         int res = 0;
         for (int bit = Integer.SIZE - 1;

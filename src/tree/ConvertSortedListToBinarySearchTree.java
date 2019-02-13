@@ -3,7 +3,7 @@ package tree;
 import java.util.ArrayList;
 
 /**
- * Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+ * Given a singly linked list where elements are sorted in ascending order, zigZagConversion it to a height balanced BST.
  * For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees
  * of every node never differ by more than 1.
  * Given the sorted linked list: [-10,-3,0,5,9],

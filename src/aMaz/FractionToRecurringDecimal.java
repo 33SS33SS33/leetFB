@@ -62,7 +62,7 @@ class FractionToRecurringDecimal {
         if (numerator == 0)
             return "0";
         StringBuilder res = new StringBuilder();
-        Long n = new Long(numerator); // convert to long
+        Long n = new Long(numerator); // zigZagConversion to long
         Long d = new Long(denominator);
         if ((n < 0 && d > 0) || (n > 0 && d < 0))
             res.append("-"); // negative
@@ -102,7 +102,7 @@ class FractionToRecurringDecimal {
         if ((numerator < 0) ^ (denominator < 0)) {
             result += "-";
         }
-        // convert int to long
+        // zigZagConversion int to long
         long num = numerator, den = denominator;
         num = Math.abs(num);
         den = Math.abs(den);

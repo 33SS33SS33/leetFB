@@ -52,11 +52,11 @@ class ReverseBits {
      * Cache each byte and its reversed result in a hashmap
      * Check cache for result first instead of computing all
      */
-    private Map<Byte, Integer> cache = new HashMap<Byte, Integer>();
+    private Map<Byte, Integer> cache = new HashMap<>();
 
     public int reverseBitsOpt(int n) {
         byte[] bytes = new byte[4];
-        for (int i = 0; i < 4; i++) // convert int into 4 bytes
+        for (int i = 0; i < 4; i++) // zigZagConversion int into 4 bytes
             bytes[i] = (byte) ((n >>> 8 * i) & 0xFF);
         int res = 0;
         for (int i = 0; i < 4; i++)

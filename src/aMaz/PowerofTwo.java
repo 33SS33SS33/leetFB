@@ -23,11 +23,6 @@ public class PowerofTwo {
         return n > 0 && (n ^ (n & -n)) == 0;
     }
 
-    //TODO
-    public static boolean isPowerOfTwoa(int n) {
-        return n > 0 && Integer.bitCount(n) == 1;
-    }
-
     //recursion
     public static boolean isPowerOfTwo(int n) {
         if (n == 0)
@@ -38,5 +33,11 @@ public class PowerofTwo {
             return false;
         return isPowerOfTwo(n / 2);
     }
+
+    //TODO
+    public static boolean isPowerOfTwoa(int n) {
+        return n > 0 && Integer.bitCount(n) == 1;
+    }
+
 
 }

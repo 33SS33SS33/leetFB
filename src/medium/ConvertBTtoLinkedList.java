@@ -18,7 +18,7 @@ public class ConvertBTtoLinkedList {
 
     static Node root;
 
-    /* This is the core function to convert Tree to list. This function follows
+    /* This is the core function to zigZagConversion Tree to list. This function follows
      steps 1 and 2 of the above algorithm */
     Node bintree2listUtil(Node node) {
         // Base case

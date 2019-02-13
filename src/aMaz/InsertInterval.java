@@ -1,11 +1,11 @@
-package aFB;
+package aMaz;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given a set of non-overlapping intervals, insert a new interval into the HARD
+ * Given a set of non-overlapping intervals, insert a new interval into the HARD TODO
  * intervals (merge if necessary).
  * You may assume that the intervals were initially sorted according to their
  * start times.
@@ -37,9 +37,6 @@ class InsertInterval {
 //        System.out.print(res.toString());
     }
 
-    /**
-     * -!!!!最好的
-     */
     public List<Interval> insertInterval(List<Interval> intervals, Interval newInterval) {
         if (intervals == null || newInterval == null) {
             return intervals;

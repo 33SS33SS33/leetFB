@@ -1,6 +1,6 @@
-package easy;
+package aMaz;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
@@ -29,26 +29,44 @@ class RotateArray {
         RotateArray r = new RotateArray();
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
         int k = 3;
-        r.rotateArraya(nums, k);
+        r.rotateArrayc(nums, k);
         System.out.println(Arrays.toString(nums));
 
         int[] nums1 = {1, 2, 3, 4, 5, 6, 7};
         int k1 = 3;
-        r.rotateArrayb(nums1, k1);
+        r.rotateArrayc(nums1, k1);
         System.out.println(Arrays.toString(nums1));
 
         int[] nums2 = {1, 2, 3, 4, 5, 6, 7};
         int k2 = 3;
-        r.rotate2(nums2, k2);
+        r.rotateArrayc(nums2, k2);
         System.out.println(Arrays.toString(nums2));
 
         int[] nums3 = {1, 2};
         int k3 = 2;
-        r.rotate3(nums3, k3);
+        r.rotateArray(nums3, k3);
         System.out.println(Arrays.toString(nums3));
     }
 
-    public void rotateArraya(int[] nums, int k) {
+    /**
+     * Intermediate Array, Space is O(n) and time is O(n)
+     */
+    public void rotateArray(int[] nums, int k) {
+        if (k > nums.length)
+            k = k % nums.length;
+        int[] result = new int[nums.length];
+        for (int i = 0; i < k; i++) {
+            result[i] = nums[nums.length - k + i];
+        }
+        int j = 0;
+        for (int i = k; i < nums.length; i++) {
+            result[i] = nums[j];
+            j++;
+        }
+        System.arraycopy(result, 0, nums, 0, nums.length);
+    }
+
+/*    public void rotateArrayb(int[] nums, int k) {
         k %= nums.length;
         reverse(nums, 0, nums.length - 1);
         reverse(nums, 0, k - 1);
@@ -63,7 +81,7 @@ class RotateArray {
             start++;
             end--;
         }
-    }
+    }*/
 
     /**
      * O(n) Time, O(1) Space
@@ -77,7 +95,7 @@ class RotateArray {
      * So save the start index of the circle
      * If start from there again, move one step forward
      */
-    public void rotateArrayb(int[] nums, int k) {
+    public void rotateArrayc(int[] nums, int k) {
         if (nums == null || nums.length == 0)
             return;
         if (nums.length == 1 || k == 0 || k == nums.length)
@@ -102,7 +120,7 @@ class RotateArray {
     /**
      * Bubble Rotate  O(1) space, the time is O(n*k)
      */
-    public static void rotate2(int[] arr, int order) {
+/*    public static void rotateArrayd(int[] arr, int order) {
         if (arr == null || order < 0) {
             throw new IllegalArgumentException("Illegal argument!");
         }
@@ -113,24 +131,7 @@ class RotateArray {
                 arr[j - 1] = temp;
             }
         }
-    }
+    }*/
 
-    /**
-     * Intermediate Array, Space is O(n) and time is O(n)
-     */
-    public void rotate3(int[] nums, int k) {
-        if (k > nums.length)
-            k = k % nums.length;
-        int[] result = new int[nums.length];
-        for (int i = 0; i < k; i++) {
-            result[i] = nums[nums.length - k + i];
-        }
-        int j = 0;
-        for (int i = k; i < nums.length; i++) {
-            result[i] = nums[j];
-            j++;
-        }
-        System.arraycopy(result, 0, nums, 0, nums.length);
-    }
 
 }

@@ -66,8 +66,8 @@ class Searcha2DMatrix {
     }
 
     /**
-     * n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
-     * an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
+     * n * m matrix zigZagConversion to an array => matrix[x][y] => a[x * m + y]
+     * an array zigZagConversion to n * m matrix => a[x] =>matrix[x / m][x % m];
      * disadvantage: 1. m * n may overflow 2. / and % are expensive
      */
     public boolean searcha2DMatrixb(int[][] matrix, int target) {

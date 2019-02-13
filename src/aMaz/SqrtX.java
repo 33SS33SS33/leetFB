@@ -1,15 +1,15 @@
-package aFB;
+package aMaz;
 
 /**
- * Implement int sqrt(int x).
+ * Implement int sqrtX(int x).
  * Compute and return the square root of x.
  * Tags: Math, Binary Search
  */
-class Sqrt {
+class SqrtX {
     public static void main(String[] args) {
         int[] nums = {-1, 1, 2, 4, 9, 16, 25};
         for (int i = 0; i < nums.length; i++) {
-            System.out.println(sqrt(nums[i]));
+            System.out.println(sqrtX(nums[i]));
         }
     }
 
@@ -20,7 +20,7 @@ class Sqrt {
      * Perfect square?
      * Note possible overflows when mid * mid or (left + right) / 2.
      */
-    public static int sqrt(int x) {
+    public static int sqrtX(int x) {
         if (x < 0)
             return -1; // if (x <= 0) return x;
         if (x == 0)

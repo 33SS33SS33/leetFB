@@ -30,7 +30,8 @@ import java.util.Stack;
  * Functions could be called recursively, and will always end.
  */
 public class ExclusiveTimeofFunctions {
-    public int[] exclusiveTime(int n, List<String> logs) {
+
+    public int[] exclusiveTimeofFunctions(int n, List<String> logs) {
         int[] res = new int[n];
         Stack<Integer> stack = new Stack<>();
         int prevTime = 0;

@@ -1,4 +1,4 @@
-package easy;
+package aMaz;
 
 /**
  * The string "PAYPALISHIRING" is written in a zigzag pattern on a given number
@@ -10,16 +10,16 @@ package easy;
  * And then read line by line: "PAHNAPLSIIGYIR"
  * Write the code that will take a string and make this conversion given a
  * number of rows:
- * string convert(string text, int nRows);
- * convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
+ * string zigZagConversion(string text, int nRows);
+ * zigZagConversion("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
  * Tags: String
  */
 class ZigZagConversion {
     public static void main(String[] args) {
         String s = "PAYPALISHIRING";
         int nRows = 3;
-        System.out.println(new ZigZagConversion().convert(s, nRows));
-        System.out.println(new ZigZagConversion().convertB(s, nRows));
+        System.out.println(new ZigZagConversion().zigZagConversion(s, nRows));
+//        System.out.println(new ZigZagConversion().zigZagConversionb(s, nRows));
     }
 
     /**
@@ -27,7 +27,7 @@ class ZigZagConversion {
      * Traverse the given string and append characters in correct StringBuffer
      * Append all other rows to first row to get output
      */
-    public String convert(String s, int nRows) {
+    public String zigZagConversion(String s, int nRows) {
         StringBuffer[] sb = new StringBuffer[nRows];
         for (int i = 0; i < sb.length; i++)
             sb[i] = new StringBuffer();
@@ -46,7 +46,7 @@ class ZigZagConversion {
         return sb[0].toString();
     }
 
-    public String convertB(String s, int numRows) {
+ /*   public String zigZagConversionb(String s, int numRows) {
         if (numRows == 1)
             return s;
         StringBuilder sb = new StringBuilder();
@@ -74,6 +74,6 @@ class ZigZagConversion {
             }
         }
         return sb.toString();
-    }
+    }*/
 
 }
