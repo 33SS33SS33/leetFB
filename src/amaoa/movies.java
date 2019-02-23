@@ -2,6 +2,9 @@ package amaoa;
 
 import java.util.*;
 
+/**
+ * 现在要求找到 k个和movie最相似 的movies。
+ */
 public class movies {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -14,6 +17,10 @@ public class movies {
     }
 
     public class Movie {
+        int movieId;
+        float rating;
+        List<Movie> similarMovies;
+
         public List<Movie> getSimilarMovies() {
             return null;
         }
@@ -23,13 +30,45 @@ public class movies {
         }
     }
 
-    private static void bfsSearchMovies(Movie movie, PriorityQueue<Movie> queue) {
-        for (Movie M : movie.getSimilarMovies()) {
-            if (!queue.contains(M)) {
-                queue.offer(M);
-                bfsSearchMovies(M, queue);
+    Comparator<Movie> queueComp = (a, b) -> (a.rating - b.rating > 0 ? 1 : -1);
+
+    public List<Movie> getNearest(Movie movie, int k) {
+        /**
+         A priorityQueue to keep minHeap of top k rating
+         Use DFS level order traverse all nodes
+         */
+        PriorityQueue<Movie> pq = new PriorityQueue<>(k, queueComp);
+        Queue<Movie> queue = new LinkedList<>();
+        HashSet<Movie> hash = new HashSet<>();
+
+        for (Movie indegree : movie.similarMovies) {
+            if (!hash.contains(indegree)) {
+                queue.offer(indegree);
+                hash.add(indegree);
             }
         }
-    }
+        while (!queue.isEmpty()) {
+            Movie oneMovie = queue.poll();
+            if (pq.size() < k) {
+                pq.add(oneMovie);
+            } else {
+                if (pq.peek().rating < oneMovie.rating) {
+                    pq.poll();
+                    pq.offer(oneMovie);
+                }
+            }
+            for (Movie similar : oneMovie.similarMovies) {
+                if (!hash.contains(similar)) {
+                    pq.offer(similar);
+                    hash.add(similar);
+                }
+            }
+        }
+        List<Movie> res = new ArrayList<>();
+        while (!pq.isEmpty()) {
+            res.add(pq.poll());
+        }
 
+        return res;
+    }
 }

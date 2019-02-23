@@ -50,7 +50,7 @@ public class krystalan {
      n elements can be divided into two roughly equal parts, compare the middle element with the one want to find,
      decide to do binary search in left part or right part,  in the worst case with O (log n)
 
-     The most challenging work you've done.
+     The most challenging aawork you've done.
      Just entered the new company, because more and more product line, the function is becoming more and more bloated, difficult to maintain .
      It needs to reconstruct. but there is no corresponding document to record these functions. I have to read through the code to confirm the function of each product.
      So I complete the task by broken it down into many small cycle, each iteration I can consign a version, and test it then do the next cycle.

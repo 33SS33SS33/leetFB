@@ -49,8 +49,8 @@ public class beavior {
      you want to do everything and be involved in everything. However（敲黑板）,
      I've learned that I'm not at my best when I have too many conflicting priorities.
      I've had to cut back on some of the less important extracurricular activities to focus on delivering
-     my academic projects with the highest quality. This prioritization of my work has carried over to my
-     work life with my recent internship. I had several key deliverables that were due the same week,
+     my academic projects with the highest quality. This prioritization of my aawork has carried over to my
+     aawork life with my recent internship. I had several key deliverables that were due the same week,
      so I met with my boss to prioritize the delivery schedule. She helped me focus on both the timing
      and the quality of the delivery. In the end, all three projects were delivered with high quality results.
 

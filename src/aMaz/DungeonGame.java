@@ -52,7 +52,7 @@ class DungeonGame {
      * defined as 'the minimum hp required to REACH (nrows-1, ncols-1) from (i,
      * j)'. Here dp[0][0] is the final answer so we must fill from (nrows-1,
      * ncols-1). For many other problems such as 'Minimum Path Sum', both
-     * formulation would work.
+     * formulation would aawork.
      * However, in this problem, the former formulation will lead us to
      * trouble, because it is very hard, if not impossible, to get d[i][j]
      * based on d[i-1][j] and d[i][j-1].

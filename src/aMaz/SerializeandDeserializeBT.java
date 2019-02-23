@@ -12,7 +12,7 @@ import java.util.LinkedList;
  * so that it can be stored in a file or memory buffer,
  * or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
  * Design an algorithm to serializeBT and deserializeBT a binary tree. There is no restriction on
- * how your serialization/deserialization algorithm should work.
+ * how your serialization/deserialization algorithm should aawork.
  * You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
  * For example, you may serializeBT the following tree
  * 1

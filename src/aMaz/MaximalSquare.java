@@ -28,7 +28,7 @@ public class MaximalSquare {
      * Top, Left, and Top Left decides the size of the square.
      * If all of them are same, then the size of square increases by 1.
      * If they're not same, they can increase by 1 to the minimal square.
-     * If you take an example and work it out,
+     * If you take an example and aawork it out,
      * it'll be much easier to understand when it comes to dynamic programing. :)
      * b[i][j] represent the edge length of the largest square ENDING at position (i, j)
      */

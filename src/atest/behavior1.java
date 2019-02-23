@@ -21,7 +21,7 @@ public class behavior1 {
      I applied a few other companies but don’t go into detail. The fact that you’re seriously looking
      and keeping your options open is what the interviewer is driving at.
      压力下的表现
-     You may work well under pressure,
+     You may aawork well under pressure,
      you may thrive under pressure, and you may actually PREFER working under pressure.
      做好工作的动力
      You want recognition for a job well done. You want to become better at your job.
@@ -44,10 +44,10 @@ public class behavior1 {
      "Actually, I enjoy everything about what I do. I suppose if I had to pick something to give up it would be paperwork.
      I know it's important, and I do it well, but if someone else did if for me, that would be great!
 
-     I prefer to work in teams. I find that better decisions are reached when people work together and share ideas.
-     Of course I'm happy to work alone when required too.
+     I prefer to aawork in teams. I find that better decisions are reached when people aawork together and share ideas.
+     Of course I'm happy to aawork alone when required too.
 
-     I work very well by myself because I'm self motivated, organized and conscientious.
+     I aawork very well by myself because I'm self motivated, organized and conscientious.
      I'm comfortable working in teams though and recognize that this is better in some situations。
      怎样快速获得信任
      That's a good question and I realize it's important to gain credibility quickly. I believe the best way is to show your colleagues that you respect their experience

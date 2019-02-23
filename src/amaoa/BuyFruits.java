@@ -2,7 +2,7 @@ package amaoa;
 
 import java.util.*;
 
-public class fruits {
+public class BuyFruits {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         List<List<String>> fruitlist = new ArrayList<>();
@@ -22,7 +22,7 @@ public class fruits {
         while (x < codeList.size()) {
             y = 0;
             while (y < codeList.get(x).size() && index < shoppingCart.size()) {
-                if (codeList.get(x).get(y) == shoppingCart.get(index) || codeList.get(x).get(y) == "*") {
+                if (Objects.equals(codeList.get(x).get(y), shoppingCart.get(index)) || codeList.get(x).get(y) == "*") {
                     y++;
                     index++;
                 } else {

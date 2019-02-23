@@ -3942,9 +3942,9 @@ can buy k times
  * <p>
  * <p>
  * My Question:
- * 1. Have you ever use those algorithm or complex data structure like heap, treeSet in real work?
+ * 1. Have you ever use those algorithm or complex data structure like heap, treeSet in real aawork?
  * <p>
- * 2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your work progress?
+ * 2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your aawork progress?
  * <p>
  * 3. What is your favorite part of the fb as an engineer?
  * <p>
@@ -4109,7 +4109,7 @@ class PrintByColumn {
 }
 
 
-16. 一个中国人面我的，态度很好，是messenger组的，写了2个题。第一个题其实很简单，check consecutive subarray duplicate numbers, 就是用hashset查重复就可以了，关键是窗口的移动。我写的很差，他让optimize到O（n）, 最后他给了个hint, 当时脑子蒙了，没有想到一个key point, 然后我说might work, 他冷嘲热讽了一句“might ? haha ”，我当时心里就哭了。。。. 1point 3acres 璁哄潧
+16. 一个中国人面我的，态度很好，是messenger组的，写了2个题。第一个题其实很简单，check consecutive subarray duplicate numbers, 就是用hashset查重复就可以了，关键是窗口的移动。我写的很差，他让optimize到O（n）, 最后他给了个hint, 当时脑子蒙了，没有想到一个key point, 然后我说might aawork, 他冷嘲热讽了一句“might ? haha ”，我当时心里就哭了。。。. 1point 3acres 璁哄潧
 第二题很顺利，就是remove invalid（（））【】什么的，leetcode上做过
 大家都在问第一题，大概是这个意思：给一个array, 然后给一个k, 让你check 连续的k个integer是否含有dulplicate, 很简单的，用窗口为K的hashset一直扫一遍就行了，很简单
 http://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=175190&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26searchoption%5B3090%5D%5Bvalue%5D%3D1%26searchoption%5B3090%5D%5Btype%5D%3Dradio%26searchoption%5B3046%5D%5Bvalue%5D%3D2%26searchoption%5B3046%5D%5Btype%5D%3Dradio%26sortid%3D311
@@ -8527,9 +8527,9 @@ return num1.value - num2.value;
 
 
  My Question:
- 1. Have you ever use those algorithm or complex data structure like heap, treeSet in real work?
+ 1. Have you ever use those algorithm or complex data structure like heap, treeSet in real aawork?
 
- 2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your work progress?
+ 2. Do you have standup in the team every day for reporting to other group members what you did yesterday and your aawork progress?
 
  3. What is your favorite part of the fb as an engineer?
 

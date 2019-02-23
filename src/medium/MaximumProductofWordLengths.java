@@ -33,11 +33,7 @@ public class MaximumProductofWordLengths {
 
     public int maxProduct(String[] words) {
         int max = 0;
-        Arrays.sort(words, new Comparator<String>() {
-            public int compare(String a, String b) {
-                return b.length() - a.length();
-            }
-        });
+        Arrays.sort(words, (a, b) -> b.length() - a.length());
         int[] masks = new int[words.length]; // alphabet masks
         for (int i = 0; i < masks.length; i++) {
             for (char c : words[i].toCharArray()) {

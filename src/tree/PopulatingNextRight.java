@@ -68,7 +68,7 @@ class PopulatingNextRight {
         TreeLinkNode cur = null;
         while (pre.left != null) { // no more level if left child is null
             cur = pre;
-            while (cur != null) { // work on next level
+            while (cur != null) { // aawork on next level
                 cur.left.next = cur.right; // PopulatingNextRight left and right
                 // PopulatingNextRight right child with next node's left child
                 if (cur.next != null)

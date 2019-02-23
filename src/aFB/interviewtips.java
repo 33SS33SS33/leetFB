@@ -98,7 +98,7 @@ public class interviewtips {
      Example .鏈枃鍘熷垱鑷�1point3acres璁哄潧
      Task: 2,2,3,7, 1
      Worker: 2.
-     Return 8, because the first worker can work on the first three tasks : 2 + 2 + 3 = 7, and the second worker can work on the last two tasks : 7 + 1 = 8, so the total time to finish all the task is 8.
+     Return 8, because the first worker can aawork on the first three tasks : 2 + 2 + 3 = 7, and the second worker can aawork on the last two tasks : 7 + 1 = 8, so the total time to finish all the task is 8.
      public int getMini(int[] tasks, int k)
 
 

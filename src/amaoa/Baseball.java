@@ -2,7 +2,7 @@ package amaoa;
 
 import java.util.*;
 
-public class baseball {
+public class Baseball {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         List<String> line = new ArrayList<String>();
@@ -15,7 +15,7 @@ public class baseball {
             return 0;
         }
         int sum = 0;
-        Stack<Integer> helpStack = new Stack<Integer>();
+        Stack<Integer> helpStack = new Stack<>();
         helpStack.push(0);
         helpStack.push(0);
         for (int i = 0; i < input.size(); i++) {

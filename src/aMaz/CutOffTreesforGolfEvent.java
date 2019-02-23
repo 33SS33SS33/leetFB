@@ -48,9 +48,7 @@ class CutOffTreesforGolfEvent {
     public int cutOffTree(List<List<Integer>> forest) {
         if (forest == null || forest.size() == 0) return 0;
         int m = forest.size(), n = forest.get(0).size();
-
         PriorityQueue<int[]> pq = new PriorityQueue<>();
-
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (forest.get(i).get(j) > 1) {
@@ -77,13 +75,11 @@ class CutOffTreesforGolfEvent {
         Queue<int[]> queue = new LinkedList<>();
         queue.add(start);
         visited[start[0]][start[1]] = true;
-
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 int[] curr = queue.poll();
                 if (curr[0] == tree[0] && curr[1] == tree[1]) return step;
-
                 for (int[] d : dir) {
                     int nr = curr[0] + d[0];
                     int nc = curr[1] + d[1];
