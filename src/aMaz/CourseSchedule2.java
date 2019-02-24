@@ -62,7 +62,7 @@ public class CourseSchedule2 {
             pCounter[prerequisites[i][0]]++;
         }
         //stores courses that have no prerequisites
-        LinkedList<Integer> queue = new LinkedList<Integer>();
+        LinkedList<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numCourses; i++) {
             if (pCounter[i] == 0) {
                 queue.add(i);

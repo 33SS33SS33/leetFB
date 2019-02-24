@@ -66,6 +66,9 @@ public class Menu {
     }
 
     public static String[][] recommend(String[][] menu, String[][] person) {
+        if (menu == null || person == null) {
+            throw new IllegalArgumentException("illegal maze array");
+        }
         Map<String, Set<String>> menuHash = new HashMap<>();
         for (int i = 0; i < menu.length; i++) {
             if (!menuHash.containsKey(menu[i][1])) {

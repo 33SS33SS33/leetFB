@@ -28,14 +28,19 @@ public class KClosestWarehouse {
         System.out.println(topKClosestPoints(input, n, m));
     }
 
-    public static List<List<Integer>> topKClosestPoints(List<List<Integer>> input, int n, int m) {
-        PriorityQueue<List<Integer>> pq = new PriorityQueue<>(n,
-                (e1, e2) -> e1.get(0) * e1.get(0) + e1.get(1) * e1.get(1) - e2.get(0) * e2.get(0) - e2.get(1) * e2.get(1));
-        for (List<Integer> p : input) {
-            pq.add(p);
-        }
+    public static List<List<Integer>> topKClosestPoints(List<List<Integer>> input, int size, int K) {
+        PriorityQueue<List<Integer>> pq = new PriorityQueue<>(size,
+                (e1, e2) -> {
+                    int diff = e1.get(0) * e1.get(0) + e1.get(1) * e1.get(1) - e2.get(0) * e2.get(0) - e2.get(1) * e2.get(1);
+                    if (diff == 0)
+                        diff = e1.get(0) - e2.get(0);
+                    if (diff == 0)
+                        diff = e1.get(1) - e2.get(1);
+                    return diff;
+                });
+        pq.addAll(input);
         List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < m && i < n; i++) {
+        for (int i = 0; i < K && i < size; i++) {
             result.add(pq.remove());
         }
         return result;
@@ -47,11 +52,26 @@ public class KClosestWarehouse {
      * You may return the answer in any order.  The answer is guaranteed to be unique (except for the order that it is in.)
      * Input: points = [[1,3],[-2,2]], K = 1
      * Output: [[-2,2]]
+     *
+     */
+
+    /**
+     * we can maintain a max-heap with size K. Then for each point, we add it to the heap.
+     * Once the size of the heap is greater than K, we are supposed to extract one from the max heap to ensure the size of the heap is always K.
+     * Thus, the max heap is always maintain top K smallest elements from the first one to crruent one.
+     * Once the size of the heap is over its maximum capacity, it will exclude the maximum element in it
      */
     //the time complexity is O(NlogK),we can maintain a max-heap with size K.
     //the space complexity is O(K)
     public int[][] kClosest(int[][] points, int K) {
-        PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1]);
+        PriorityQueue<int[]> pq = new PriorityQueue<>((p1, p2) -> {
+            int diff = p2[0] * p2[0] + p2[1] * p2[1] - p1[0] * p1[0] - p1[1] * p1[1];
+            if (diff == 0)
+                diff = p2[0] - p1[0];
+            if (diff == 0)
+                diff = p2[1] - p1[1];
+            return diff;
+        });
         for (int[] p : points) {
             pq.offer(p);
             if (pq.size() > K) {

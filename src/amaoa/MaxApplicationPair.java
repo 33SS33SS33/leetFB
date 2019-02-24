@@ -1,10 +1,8 @@
 package amaoa;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by shanshan on 2/21/19.
@@ -22,11 +20,13 @@ public class MaxApplicationPair {
     public static List<List<Integer>> getIdPairsForOptimal(List<List<Integer>> forwardList,
                                                            List<List<Integer>> backwardList, int maxDistance) {
         List<List<Integer>> result = new LinkedList<>();
-        if(forwardList==null||forwardList.size()==0)
-        forwardList = forwardList.stream().sorted((x1, x2) -> Integer.compare(x2.get(1), x1.get(1)))
+        if (forwardList == null || forwardList.size() == 0 || backwardList == null || backwardList.size() == 0)
+            return result;
+/*        forwardList = forwardList.stream().sorted(Comparator.comparingInt(x -> x.get(1)))
                 .collect(Collectors.toList());
         backwardList = backwardList.stream().sorted(Comparator.comparingInt(x -> x.get(1)))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
+
         int maxDist = maxDistance;
         while (true) {
             for (List<Integer> l : forwardList) {
@@ -38,7 +38,6 @@ public class MaxApplicationPair {
                         break;
                     }
                     if (tot == maxDist) {
-                        // print the pair of Id and optimum distance
                         result.add(Arrays.asList(l.get(0), b.get(0), maxDist));
                         break;
                     }
