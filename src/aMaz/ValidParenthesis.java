@@ -22,11 +22,11 @@ class ValidParenthesis {
      * creek!!  最好的
      */
     public static boolean validParenthesisString(String s) {
-        HashMap<Character, Character> map = new HashMap<Character, Character>();
+        HashMap<Character, Character> map = new HashMap<>();
         map.put('(', ')');
         map.put('[', ']');
         map.put('{', '}');
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             char curr = s.charAt(i);
             if (map.keySet().contains(curr)) {

@@ -2,7 +2,7 @@ package aMaz;
 
 /**
  * Created by shanshan on 1/26/19. HARD
- * The Employee table holds all employees. Every employee has an Id, and there is also a column for the department Id.
+ * The CommonManager table holds all employees. Every CommonManager has an Id, and there is also a column for the department Id.
  * +----+-------+--------+--------------+
  * | Id | Name  | Salary | DepartmentId |
  * +----+-------+--------+--------------+
@@ -25,12 +25,12 @@ package aMaz;
  */
 public class DepartmentTopThreeSalaries {
     /**
-     * select d.Name Department, e1.Name Employee, e1.Salary
-     from Employee e1
+     * select d.Name Department, e1.Name CommonManager, e1.Salary
+     from CommonManager e1
      join Department d
      on e1.DepartmentId = d.Id
      where 3 > (select count(distinct(e2.Salary))
-     from Employee e2
+     from CommonManager e2
      where e2.Salary > e1.Salary
      and e1.DepartmentId = e2.DepartmentId);
      */

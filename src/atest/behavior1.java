@@ -9,7 +9,7 @@ public class behavior1 {
      Relevant facts about education, your career and your current life situation are fine.
 
      I'm looking for a new job  because you want to
-     advance your career and get a position that allows you to grow as a person and an employee.
+     advance your career and get a position that allows you to grow as a person and an Employee.
 
      The largest network of e-commerce company in America.
 

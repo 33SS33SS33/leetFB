@@ -15,7 +15,6 @@ public class maze {
         int[] start = {0, 4};
         int[] end = {4, 4};
         System.out.println(shortPath(maze, start, end));
-        System.out.println(shortestBFS(maze, start, end));
     }
 
     public static int shortPath(int[][] maze, int[] start, int[] dest) {
@@ -39,7 +38,6 @@ public class maze {
                     y += dir[1];
                     sum++;
                 }
-
                 if (distance[curr[0]][curr[1]] + sum < distance[x - dir[0]][y - dir[1]]) {
                     distance[x - dir[0]][y - dir[1]] = distance[curr[0]][curr[1]] + sum;
                     q.offer(new int[]{x - dir[0], y - dir[1]});
@@ -50,7 +48,7 @@ public class maze {
     }
 
     //*************BFS *******************************************
-    public static int shortestBFS(int[][] maze, int[] start, int[] dest) {
+ /*   public static int shortestBFS(int[][] maze, int[] start, int[] dest) {
         int m = maze.length, n = maze[0].length;
         int[][] path = new int[m][n];
         int[] dirs = {-1, 0, 1, 0, -1};
@@ -74,6 +72,6 @@ public class maze {
             }
         }
         return path[dest[0]][dest[1]] == 0 ? -1 : path[dest[0]][dest[1]];
-    }
+    }*/
 
 }
