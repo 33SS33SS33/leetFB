@@ -1,8 +1,6 @@
 package amaoa;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by shanshan on 2/21/19.
@@ -13,8 +11,36 @@ public class MaxApplicationPair {
         int size;
     }
 
-    public static void s(Application[] foreground, Application[] background, int capacity) {
+    public static int[] s(Application[] foreground, Application[] background, int capacity) {
+        int[] res = new int[2];
+        if (foreground == null || foreground.length == 0 || background == null || background.length == 0)
+            return res;
+        Arrays.sort(foreground, Comparator.comparingInt(a -> a.size));
+        Arrays.sort(background, Comparator.comparingInt(a -> a.size));
+        int max = capacity;
+        while (true) {
+            for (Application l : foreground) {
+                for (Application b : background) {
+                    int forward = l.size;
+                    int backward = b.size;
+                    int tot = (forward + backward);
+                    if (tot > max) {
+                        break;
+                    }
+                    if (tot == max) {
+                        res[0] = l.id;
+                        res[0] = b.id;
+                        break;
+                    }
 
+                }
+            }
+            if (res.length > 0) {
+                break;
+            }
+            max--;
+        }
+        return res;
     }
 
     public static List<List<Integer>> getIdPairsForOptimal(List<List<Integer>> forwardList,
@@ -26,7 +52,8 @@ public class MaxApplicationPair {
                 .collect(Collectors.toList());
         backwardList = backwardList.stream().sorted(Comparator.comparingInt(x -> x.get(1)))
                 .collect(Collectors.toList());*/
-
+        Collections.sort(forwardList, Comparator.comparing(o -> o.get(1)));
+        Collections.sort(backwardList, Comparator.comparing(o -> o.get(1)));
         int maxDist = maxDistance;
         while (true) {
             for (List<Integer> l : forwardList) {

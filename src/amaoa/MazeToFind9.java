@@ -7,6 +7,35 @@ import java.util.Queue;
  * Created by shanshan on 2/21/19.
  */
 public class MazeToFind9 {
+    private final static int[] dx = {-1, 0, 0, 1};
+    private final static int[] dy = {0, 1, -1, 0};
+
+    public int mazeFind92(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return 0;
+        if (matrix[0][0] == 9)
+            return 1;
+        int m = matrix.length, n = matrix[0].length;
+        Queue<int[]> queue = new LinkedList<int[]>();
+        queue.offer(new int[]{0, 0});
+        matrix[0][0] = 1;
+        while (!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            for (int i = 0; i < 4; i++) {
+                int[] next = {cur[0] + dx[i], cur[1] + dy[i]};
+                if (next[0] >= 0 && next[0] < m && next[1] >= 0 && next[1] < n) {
+                    if (matrix[next[0]][next[1]] == 9)
+                        return 1;
+                    else if (matrix[next[0]][next[1]] == 0) {
+                        queue.offer(next);
+                        matrix[next[0]][next[1]] = 1;
+                    }
+                }
+            }
+        }
+        return 0;
+    }
+
     public boolean mazeFind9(int[][] maze, int x, int y) {
         if (maze == null || maze.length == 0 || maze[0].length == 0) {
             return false;
@@ -38,56 +67,6 @@ public class MazeToFind9 {
         }
         return false;
     }
-
-    private static boolean bfs(int[][] maze, int startx, int starty) {
-        if (maze == null)
-            return false;
-        if (maze.length < 1 || maze[0].length < 1)
-            return false;
-        LinkedList<Point> que = new LinkedList<>();
-        Point p1 = new Point(startx, starty, maze[startx][starty]);
-        que.offer(p1);
-        int width = maze[0].length;
-        int height = maze.length;
-        p1 = que.poll();
-        while (p1.val != 9) {
-            int x = p1.x;
-            int y = p1.y;
-            maze[x][y] = -1;
-            if ((x + 1) < height) {
-                if (maze[x + 1][y] > 0) {
-                    Point p2 = new Point(x + 1, y, maze[x + 1][y]);
-                    que.offer(p2);
-                }
-            }
-            if ((x - 1) >= 0) {
-                if (maze[x - 1][y] > 0) {
-                    Point p2 = new Point(x - 1, y, maze[x - 1][y]);
-                    que.offer(p2);
-                }
-            }
-            if ((y + 1) < width)
-                if (maze[x][(y + 1)] > 0) {
-                    Point p2 = new Point(x, (y + 1), maze[x][(y + 1)]);
-                    que.offer(p2);
-                }
-            if ((y - 1) >= 0)
-                if (maze[x][(y - 1)] > 0) {
-                    Point p2 = new Point(x, (y - 1), maze[x][(y - 1)]);
-                    que.offer(p2);
-                }
-            if (que.isEmpty()) {
-                break;
-            } else
-                p1 = que.poll();
-        }
-        if (p1.val == 9)
-            return true;
-        else
-            return false;
-    }
-
-
     static class Point {
         int x;
         int y;

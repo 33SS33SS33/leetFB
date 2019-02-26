@@ -28,6 +28,7 @@ public class KClosestWarehouse {
         System.out.println(topKClosestPoints(input, n, m));
     }
 
+    //这个size是point的size
     public static List<List<Integer>> topKClosestPoints(List<List<Integer>> input, int size, int K) {
         PriorityQueue<List<Integer>> pq = new PriorityQueue<>(size,
                 (e1, e2) -> {
