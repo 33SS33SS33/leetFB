@@ -14,13 +14,13 @@ package medium;
 class FindMinimuminRotatedSortedArray {
     public static void main(String[] args) {
         int[] num = {3, 4, 5, 6, 1, 2};
-        System.out.println(findMin(num));
-        System.out.println(findMinimuminRotatedSortedArray(num));
+        System.out.println(findMinimuminRotatedSortedArraya(num));
         System.out.println(findMinB(num));
-        System.out.println(findMinC(num));
+//        System.out.println(findMinimuminRotatedSortedArray(num));
+//        System.out.println(findMinC(num));
     }
 
-    public static int findMin(int[] num) {
+    public static int findMinimuminRotatedSortedArraya(int[] num) {
         if (num == null || num.length == 0) {
             return 0;
         }
@@ -40,22 +40,6 @@ class FindMinimuminRotatedSortedArray {
             }
         }
         return num[start];
-    }
-
-    static int findMinimuminRotatedSortedArray(int[] num) {
-        int l = 0;
-        int r = num.length - 1;
-        if (num.length == 1 || num[l] < num[r])
-            return num[0];
-        int mid = 0;
-        while (l < r) {
-            mid = l + (r - l) / 2;
-            if (num[l] < num[mid])
-                l = mid;
-            else
-                r = mid;
-        }
-        return num[l + 1];
     }
 
     /**
@@ -83,8 +67,27 @@ class FindMinimuminRotatedSortedArray {
             return findMinimuminRotatedSortedArray(num, left, middle);
         }
     }
+/*
+    static int findMinimuminRotatedSortedArray(int[] num) {
+        int l = 0;
+        int r = num.length - 1;
+        if (num.length == 1 || num[l] < num[r])
+            return num[0];
+        int mid = 0;
+        while (l < r) {
+            mid = l + (r - l) / 2;
+            if (num[l] < num[mid])
+                l = mid;
+            else
+                r = mid;
+        }
+        return num[l + 1];
+    }
+*/
 
-    public static int findMinC(int[] nums) {
+
+
+/*    public static int findMinC(int[] nums) {
         if (nums.length == 1) {
             return nums[0];
         }
@@ -102,6 +105,6 @@ class FindMinimuminRotatedSortedArray {
             return binarySearch(mid + 1, right, nums);
         } else
             return binarySearch(left, mid - 1, nums);
-    }
+    }*/
 
 }

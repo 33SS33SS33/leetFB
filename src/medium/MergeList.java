@@ -8,15 +8,12 @@ package medium;
  * 而且当分成两部分的时候  slow就是前一部分的末尾 记得用none来结尾 然后下一部分的开始是slow.Next
  * 也需要练习手写最普通的mergesort mergesort有迭代和递归两种 未实现
  */
-class SortList {
+class MergeList {
     public static void main(String[] args) {
 
     }
 
-    /**
-     * 最好的
-     */
-    public ListNode sortLista(ListNode head) {
+    public ListNode mergeList(ListNode head) {
         if (head == null || head.next == null)
             return head;
         ListNode f = head.next.next;
@@ -25,9 +22,9 @@ class SortList {
             p = p.next;
             f = f.next.next;
         }
-        ListNode h2 = sortLista(p.next);
+        ListNode h2 = mergeList(p.next);
         p.next = null;
-        return merge(sortLista(head), h2);
+        return merge(mergeList(head), h2);
     }
 
     public ListNode merge(ListNode h1, ListNode h2) {
@@ -50,9 +47,9 @@ class SortList {
         return hn.next;
     }
 
-    /**
+/*    *//**
      * Get list length and do merge sort
-     */
+     *//*
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null)
             return head;
@@ -68,12 +65,14 @@ class SortList {
         return head;
     }
 
+    */
+
     /**
      * Cut into two halves
      * Sort left half first, move to right half's pre head and sort right
      * Merge two halves
      * Insert node in latter part if its smaller than current node
-     */
+     *//*
     public ListNode mergeSort(ListNode preHead, ListNode head, int len) {
         if (head == null || len <= 1)
             return head;
@@ -111,7 +110,7 @@ class SortList {
             }
         }
         return head;
-    }
+    }*/
 
     class ListNode {
         int val;

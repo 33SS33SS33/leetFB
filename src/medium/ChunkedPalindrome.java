@@ -10,10 +10,10 @@ package medium;
 
 public class ChunkedPalindrome {
     public static void main(String[] args) {
-        System.out.println(countChunk("aaaaaa"));
+        System.out.println(chunkedPalindrome("aaaaaa"));
     }
 
-    public static int countChunk(String str) {
+    public static int chunkedPalindrome(String str) {
         if (str == null || str.length() == 0)
             return 0;
         int sum = 0;

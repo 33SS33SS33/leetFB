@@ -23,7 +23,7 @@ public class PaintHouse {
     public static void main(String[] args) {
         int[][] costs = {{}, {}, {}};
         System.out.print(new PaintHouse().minCosta(costs));
-        System.out.print(new PaintHouse().minCosta2(costs));
+//        System.out.print(new PaintHouse().minCosta2(costs));
         //        System.out.print(new PaintHouse().minCost(costs));
     }
 
@@ -40,7 +40,7 @@ public class PaintHouse {
         return Math.min(Math.min(costs[n][0], costs[n][1]), costs[n][2]);
     }
 
-    public int minCosta2(int[][] costs) {
+/*    public int minCosta2(int[][] costs) {
         if (costs == null || costs.length == 0)
             return 0;
         int[] prevRow = costs[0];
@@ -51,8 +51,9 @@ public class PaintHouse {
             prevRow = currRow;
         }
         return Math.min(prevRow[0], Math.min(prevRow[1], prevRow[2]));
-    }
+    }*/
 
+/*
     static final int RED = 001;
     static final int BLUE = 100;
     static final int GREEN = 011;
@@ -89,5 +90,6 @@ public class PaintHouse {
         }
         return min;
     }
+*/
 
 }

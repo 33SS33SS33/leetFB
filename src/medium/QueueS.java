@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class QueueS<E> {
     public static void main(String[] args) {
-        QueueS<Integer> q = new QueueS<Integer>(Integer.class, 5);
+        QueueS<Integer> q = new QueueS<>(Integer.class, 5);
         q.push(1);
         q.push(2);
         q.push(3);

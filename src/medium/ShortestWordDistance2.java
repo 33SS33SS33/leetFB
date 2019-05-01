@@ -32,22 +32,20 @@ public class ShortestWordDistance2 {
         String[] words = {"practice", "makes", "perfect", "coding", "makes"};
         String word1 = "coding";
         String word2 = "practice";
-        new ShortestWordDistance2().WordDistance(words);
+        new ShortestWordDistance2().shortestWordDistance2(words);
     }
 
-    /**
-     * 最好的
-     */
     private Map<String, List<Integer>> map;
 
-    public void WordDistance(String[] words) {
-        map = new HashMap<String, List<Integer>>();
+    public void shortestWordDistance2(String[] words) {
+        map = new HashMap<>();
         for (int i = 0; i < words.length; i++) {
             String w = words[i];
             if (map.containsKey(w)) {
                 map.get(w).add(i);
             } else {
-                List<Integer> list = new ArrayList<Integer>();
+
+                List<Integer> list = new ArrayList<>();
                 list.add(i);
                 map.put(w, list);
             }

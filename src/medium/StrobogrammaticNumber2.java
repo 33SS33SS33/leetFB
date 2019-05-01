@@ -2,16 +2,11 @@ package medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
- * A strobogrammatic number is a number that looks the same when rotated 180 degrees
- * (looked at upside down).
- * Find all strobogrammatic numbers that are of length = n.
- * For example,
- * Given n = 2, return ["11","69","88","96"].
- * 用dfs就行 分奇数和偶数两种情况 先插入最中间的会比较方便(因为每次插入两边的代码好写)
  */
 public class StrobogrammaticNumber2 {
     public static void main(String[] args) {
@@ -19,19 +14,24 @@ public class StrobogrammaticNumber2 {
     }
 
     /**
-     * 最好的
+     * A strobogrammatic number is a number that looks the same when rotated 180 degrees
+     * (looked at upside down).
+     * Find all strobogrammatic numbers that are of length = n.
+     * For example,
+     * Given n = 2, return ["11","69","88","96"].
+     * 用dfs就行 分奇数和偶数两种情况 先插入最中间的会比较方便(因为每次插入两边的代码好写)
      */
     public List<String> findStrobogrammatic(int n) {
         return helper(n, n);
     }
 
-    List<String> helper(int n, int m) {
+    private List<String> helper(int n, int m) {
         if (n == 0)
-            return new ArrayList<String>(Arrays.asList(""));
+            return new ArrayList<>(Collections.singletonList(""));
         if (n == 1)
-            return new ArrayList<String>(Arrays.asList("0", "1", "8"));
+            return new ArrayList<>(Arrays.asList("0", "1", "8"));
         List<String> list = helper(n - 2, m);
-        List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             String s = list.get(i);
             if (n != m)

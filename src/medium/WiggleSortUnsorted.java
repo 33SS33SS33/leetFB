@@ -11,7 +11,7 @@ package medium;
 class WiggleSortUnsorted {
     public static void main(String[] args) {
         int[] A = {1, 2, 8, 9, 3, 5};
-        new WiggleSortUnsorted().wiggleSort(A);
+        new WiggleSortUnsorted().wiggleSortUnsorted(A);
         for (int i = 0; i < A.length; i++) {
             System.out.print(i == A.length - 1 ? A[i] : A[i] + ", ");
         }
@@ -28,7 +28,7 @@ class WiggleSortUnsorted {
      * If A[n-1] < A[n], thus A[n-2] > A[n-1], A[n-1]=m1, A[n]=m3, A[n+1]=m2
      * So A[n-2] > A[n-1] < A[n] > A[n+1]
      */
-    public void wiggleSort(int[] A) {
+    public void wiggleSortUnsorted(int[] A) {
         if (A == null || A.length == 0)
             return;
         for (int i = 1; i < A.length - 1; i++) {

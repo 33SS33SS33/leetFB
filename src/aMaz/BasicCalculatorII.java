@@ -20,7 +20,7 @@ public class BasicCalculatorII {
         int len;
         if (s == null || (len = s.length()) == 0)
             return 0;
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         int num = 0;
         char sign = '+';//重要
         for (int i = 0; i < len; i++) {

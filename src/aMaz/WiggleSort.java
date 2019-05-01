@@ -2,11 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/6.
- * Given a sorted array, and re-arrange it to wiggle style in one pass.
- * i.e.
- * [1] A0 >= A1 <= A2 >= A3 .... .... An.
- * [2] A0 <= A1 >= A2 <= A3 .... .... An.
- * Tags: Sort, Array
  */
 
 //遍历一遍 当是奇数位的时候 检查一下是不是比之前的大 偶数位的时候检查是不是比之前的小
@@ -20,6 +15,11 @@ class WiggleSort {
     }
 
     /**
+     * Given a sorted array, and re-arrange it to wiggle style in one pass.
+     * i.e.
+     * [1] A0 >= A1 <= A2 >= A3 .... .... An.
+     * [2] A0 <= A1 >= A2 <= A3 .... .... An.
+     * Tags: Sort, Array
      * Swap neighbors
      * A0 >= A1 <= A2 >= A3 .... .... An.
      */

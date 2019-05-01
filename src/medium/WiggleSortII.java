@@ -16,7 +16,7 @@ package medium;
  */
 public class WiggleSortII {
 
-/*    void wiggleSort(vector<int>& nums) {
+/*    void wiggleSortUnsorted(vector<int>& nums) {
         int n = nums.size();
 
         // Find a median.

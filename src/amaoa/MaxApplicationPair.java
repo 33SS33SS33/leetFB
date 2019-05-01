@@ -8,6 +8,7 @@ import java.util.*;
 public class MaxApplicationPair {
     public static void main(String[] args) {
 //        Scanner in = new Scanner(System.in);
+        List<Integer> result =new ArrayList<Integer>();
         List<List<Integer>> forwardList = new ArrayList<>();
         List<Integer> list1 = Arrays.asList(1, 3000);
         List<Integer> list5 = Arrays.asList(9, 3000);

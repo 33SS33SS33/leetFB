@@ -1,15 +1,7 @@
 package medium;
 
-import list.Array;
-
-import java.util.Arrays;
-
 /**
  * Created by shanshan on 16/6/17.
- * Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num
- * calculate the number of 1's in their binary representation and return them as an array.
- * Example:
- * For num = 5 you should return [0,1,1,2,1,2].
  * Follow up:
  * It is very easy to come up with a solution with run time O(n*sizeof(integer)).
  * But can you do it in linear time O(n) /possibly in a single pass?
@@ -19,10 +11,19 @@ import java.util.Arrays;
 
 public class CountingBits {
     public static void main(String[] args) {
-        System.out.println(Arrays.asList(countBits(5)));
+        int[] res = countBits(5);
+        for (int i = 0; i < res.length; i++) {
+
+            System.out.print(res[i] + ",");
+        }
     }
 
-    //错的？？
+    /**
+     * Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num
+     * calculate the number of 1's in their binary representation and return them as an array.
+     * Example:
+     * For num = 5 you should return [0,1,1,2,1,2].
+     */
     public static int[] countBits(int num) {
         int[] f = new int[num + 1];
         for (int i = 1; i <= num; i++)

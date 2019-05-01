@@ -5,16 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * "Given a string s, return all the palindromic permutations (without duplicates) of it.
- * Return an empty list if no palindromic permutation could be form.
- * For example:
- * Given s = ""aabb"", return [""abba"", ""baab""].
- * Given s = ""abc"", return []."
- * "对于回文 只要构造前一半就行
- * 对于奇数的那个字符 只留一个放在中间即可 然后建立一个数组 里面存的就是备选的前一半的字符 然后dfs构造 注意要跳过连续的字符
- * 构造完了之后直接把前一半颠倒了添加即可"
- */
+
 public class PalindromePermutation2 {
     public static void main(String[] args) {
         String k = "ewewi";
@@ -23,13 +14,22 @@ public class PalindromePermutation2 {
         System.out.println(generatePalindromes(k));
     }
 
-    //最好的
+    /**
+     * "Given a string s, return all the palindromic permutations (without duplicates) of it.
+     * Return an empty list if no palindromic permutation could be form.
+     * For example:
+     * Given s = ""aabb"", return [""abba"", ""baab""].
+     * Given s = ""abc"", return []."
+     * "对于回文 只要构造前一半就行
+     * 对于奇数的那个字符 只留一个放在中间即可 然后建立一个数组 里面存的就是备选的前一半的字符 然后dfs构造 注意要跳过连续的字符
+     * 构造完了之后直接把前一半颠倒了添加即可"
+     */
     public static List<String> generatePalindromes(String s) {
         int odd = 0;
-        String mid = "";
-        List<String> res = new ArrayList<String>();
-        List<Character> list = new ArrayList<Character>();
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        StringBuilder mid = new StringBuilder();
+        List<String> res = new ArrayList<>();
+        List<Character> list = new ArrayList<>();
+        Map<Character, Integer> map = new HashMap<>();
         // step 1. build character count map and count odds
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -44,12 +44,12 @@ public class PalindromePermutation2 {
             char key = entry.getKey();
             int val = entry.getValue();
             if (val % 2 != 0)
-                mid += key;
+                mid.append(key);
             for (int i = 0; i < val / 2; i++)
                 list.add(key);
         }
         // step 3. generate all the permutations
-        getPerm(list, mid, new boolean[list.size()], new StringBuilder(), res);
+        getPerm(list, mid.toString(), new boolean[list.size()], new StringBuilder(), res);
         return res;
     }
 

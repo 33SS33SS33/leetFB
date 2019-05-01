@@ -45,9 +45,6 @@ class RemoveDupFromSortedList2 {
         return dummyHead.next;
     }
 
-    /**
-     * creek-----
-     */
     public static ListNode deleteDuplicatesB(ListNode head) {
         ListNode t = new ListNode(0);
         t.next = head;

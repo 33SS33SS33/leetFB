@@ -27,7 +27,7 @@ public class MajorityEle2 {
      * creek not good ,Time = O(n) and Space = O(n)
      */
     public List<Integer> majorityElementB(int[] nums) {
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i : nums) {
             if (map.containsKey(i)) {
                 map.put(i, map.get(i) + 1);
@@ -35,7 +35,7 @@ public class MajorityEle2 {
                 map.put(i, 1);
             }
         }
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             if (entry.getValue() > nums.length / 3) {
                 result.add(entry.getKey());
@@ -48,13 +48,13 @@ public class MajorityEle2 {
      * creek good Time = O(n) and Space = O(1)
      */
     public List<Integer> majorityElementA(int[] nums) {
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new ArrayList<>();
         Integer n1 = null, n2 = null;
         int c1 = 0, c2 = 0;
         for (int i : nums) {
-            if (n1 != null && i == n1.intValue()) {
+            if (n1 != null && i == n1) {
                 c1++;
-            } else if (n2 != null && i == n2.intValue()) {
+            } else if (n2 != null && i == n2) {
                 c2++;
             } else if (c1 == 0) {
                 c1 = 1;
@@ -69,9 +69,9 @@ public class MajorityEle2 {
         }
         c1 = c2 = 0;
         for (int i : nums) {
-            if (i == n1.intValue()) {
+            if (i == n1) {
                 c1++;
-            } else if (i == n2.intValue()) {
+            } else if (i == n2) {
                 c2++;
             }
         }

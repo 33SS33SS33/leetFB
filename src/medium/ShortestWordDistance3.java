@@ -4,12 +4,6 @@ package medium;
  * Created by GAOSHANSHAN835 on 2016/5/9.
  * This is a follow up of Shortest Word Distance. The only difference is now word1 could be the same as word2.
  * Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.
- * word1 and word2 may be the same and they represent two individual words in the list.
- * For example,
- * Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
- * Given word1 = “makes”, word2 = “coding”, return 1.
- * Given word1 = "makes", word2 = "makes", return 3.
- * Note:
  * You may assume word1 and word2 are both in the list.
  * 加了一个判断条件 就是相同的时候怎么办
  * 还有更简单的写法 在左边
@@ -19,11 +13,18 @@ public class ShortestWordDistance3 {
     public static void main(String[] args) {
         String[] words = {"practice", "makes", "perfect", "coding", "makes"};
         String word1 = "makes";
-        String word2 = "coding";
+        String word2 = "makes";
         System.out.println(new ShortestWordDistance3().shortestWordDistancea(words, word1, word2));
-        System.out.println(new ShortestWordDistance3().shortestWordDistance(words, word1, word2));
+//        System.out.println(new ShortestWordDistance3().shortestWordDistance(words, word1, word2));
     }
 
+    /**
+     * word1 and word2 may be the same and they represent two individual words in the list.
+     * For example,
+     * Assume that words = ["practice", "makes", "perfect", "coding", "makes"].
+     * Given word1 = “makes”, word2 = “coding”, return 1.
+     * Given word1 = "makes", word2 = "makes", return 3.
+     */
     public int shortestWordDistancea(String[] words, String word1, String word2) {
         long dist = Integer.MAX_VALUE, i1 = dist, i2 = -dist;
         boolean same = word1.equals(word2);
@@ -42,7 +43,7 @@ public class ShortestWordDistance3 {
         }
         return (int) dist;
     }
-
+/*
     public int shortestWordDistance(String[] words, String word1, String word2) {
         int p1 = -1;
         int p2 = -1;
@@ -68,6 +69,6 @@ public class ShortestWordDistance3 {
             }
         }
         return min;
-    }
+    }*/
 
 }

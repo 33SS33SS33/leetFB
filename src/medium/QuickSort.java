@@ -10,13 +10,45 @@ class QuickSort {
         QuickSort q = new QuickSort();
         int[] A = {1, 4, 2, 8, 5};
         int[] B = {1, 4, 2, 8, 11};
-        q.sort(A, 0, A.length - 1);
+//        q.sort(A, 0, A.length - 1);
         q.quickSort(B, 0, B.length - 1);
         for (int n : A)
             System.out.print(n + ",");
         System.out.println();
         for (int n : B)
             System.out.print(n + ",");
+    }
+
+    public static void quickSort(int[] arr, int low, int high) {
+        if (arr == null || arr.length == 0)
+            return;
+        if (low >= high)
+            return;
+        // pick the pivot
+        int middle = low + (high - low) / 2;
+        int pivot = arr[middle];
+        // make left < pivot and right > pivot
+        int i = low, j = high;
+        while (i <= j) {
+            while (arr[i] < pivot) {
+                i++;
+            }
+            while (arr[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        // recursively sort two sub parts
+        if (low < j)
+            quickSort(arr, low, j);
+        if (high > i)
+            quickSort(arr, i, high);
     }
 
     /**
@@ -58,39 +90,5 @@ class QuickSort {
         return left;
     }
 
-    /**
-     * creek-------
-     */
-    public static void quickSort(int[] arr, int low, int high) {
-        if (arr == null || arr.length == 0)
-            return;
-        if (low >= high)
-            return;
-        // pick the pivot
-        int middle = low + (high - low) / 2;
-        int pivot = arr[middle];
-        // make left < pivot and right > pivot
-        int i = low, j = high;
-        while (i <= j) {
-            while (arr[i] < pivot) {
-                i++;
-            }
-            while (arr[j] > pivot) {
-                j--;
-            }
-            if (i <= j) {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-                i++;
-                j--;
-            }
-        }
-        // recursively sort two sub parts
-        if (low < j)
-            quickSort(arr, low, j);
-        if (high > i)
-            quickSort(arr, i, high);
-    }
 
 }

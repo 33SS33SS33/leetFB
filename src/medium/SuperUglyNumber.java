@@ -27,7 +27,7 @@ import java.util.Arrays;
  */
 public class SuperUglyNumber {
 
-    public int nthSuperUglyNumber(int n, int[] primes) {
+    public int superUglyNumber(int n, int[] primes) {
         int[] d = new int[n];
         d[0] = 1;
         int[] p = new int[primes.length];

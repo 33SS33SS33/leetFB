@@ -18,6 +18,23 @@ package medium;
  * http://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/"
  */
 public class RangeSumQueryMutable {
+
+    int[] nums;
+
+    public RangeSumQueryMutable(int[] nums) {
+        for(int i = 1; i < nums.length; i++)
+            nums[i] += nums[i - 1];
+
+        this.nums = nums;
+    }
+
+    public int sumRangea(int i, int j) {
+        if(i == 0)
+            return nums[j];
+        return nums[j] - nums[i - 1];
+    }
+
+
     class SegmentTreeNode {
         int start, end;
         SegmentTreeNode left, right;
@@ -34,9 +51,9 @@ public class RangeSumQueryMutable {
 
     SegmentTreeNode root = null;
 
-    public RangeSumQueryMutable(int[] nums) {
+/*    public RangeSumQueryMutable(int[] nums) {
         root = buildTree(nums, 0, nums.length - 1);
-    }
+    }*/
 
     private SegmentTreeNode buildTree(int[] nums, int start, int end) {
         if (start > end) {

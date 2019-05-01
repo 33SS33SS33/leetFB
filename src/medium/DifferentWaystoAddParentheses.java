@@ -1,19 +1,13 @@
 package medium;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given a string of numbers and operators, return all possible results from computing all the different possible ways
  * to group numbers and operators. The valid operators are +, - and *.
- * Example 1
- * Input: "2-1-1".
- * ((2-1)-1) = 0
- * (2-(1-1)) = 2
- * Output: [0, 2]
+ * <p>
  * 很重要的题目 可以用动归 DP 备忘录 未实现
  * 主要思路就是首先将输入的input分割 变成数字或者加减乘除的形式
  * Basic idea is using each operator to divide the whole string into three part:
@@ -35,17 +29,24 @@ import java.util.Scanner;
 public class DifferentWaystoAddParentheses {
     public static void main(String[] args) {
         String s = "2-1-1";
-        System.out.println(new DifferentWaystoAddParentheses().diffWaysToComputea(s).toString());
+        System.out.println(new DifferentWaystoAddParentheses().differentWaystoAddParentheses(s).toString());
     }
 
-    public List<Integer> diffWaysToComputea(String input) {
-        List<Integer> ret = new LinkedList<Integer>();
+    /**
+     * Example 1
+     * Input: "2-1-1".
+     * ((2-1)-1) = 0
+     * (2-(1-1)) = 2
+     * Output: [0, 2]
+     */
+    public List<Integer> differentWaystoAddParentheses(String input) {
+        List<Integer> ret = new LinkedList<>();
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) == '-' || input.charAt(i) == '*' || input.charAt(i) == '+') {
                 String part1 = input.substring(0, i);
                 String part2 = input.substring(i + 1);
-                List<Integer> part1Ret = diffWaysToComputea(part1);
-                List<Integer> part2Ret = diffWaysToComputea(part2);
+                List<Integer> part1Ret = differentWaystoAddParentheses(part1);
+                List<Integer> part2Ret = differentWaystoAddParentheses(part2);
                 for (Integer p1 : part1Ret) {
                     for (Integer p2 : part2Ret) {
                         int c = 0;
