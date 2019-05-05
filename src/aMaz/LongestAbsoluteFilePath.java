@@ -8,8 +8,10 @@ package aMaz;
  * subdir1
  * subdir2
  * file.ext
- * The directory dir contains an empty sub-directory subdir1 and a sub-directory subdir2 containing a file file.ext.
- * Given a string representing the file system in the above format, return the length of the longest absolute path to file in the abstracted file system.
+ * The directory dir contains an empty sub-directory subdir1
+ * and a sub-directory subdir2 containing a file file.ext.
+ * Given a string representing the file system in the above format,
+ * return the length of the longest absolute path to file in the abstracted file system.
  * If there is no file in the system, return 0.
  */
 public class LongestAbsoluteFilePath {

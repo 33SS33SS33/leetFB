@@ -1,12 +1,6 @@
 package aMaz;
 
-/**
- * Given a binary tree, determine if it is height-balanced.
- * For this problem, a height-balanced binary tree is defined as a binary tree
- * in which the depth of the two subtrees of every node never differ by more than 1.
- * Tags: Tree, DFS
- * 还是自底向上的得到深度值 然后计算
- */
+
 class BalancedBinaryTree {
     public static void main(String[] args) {
         TreeNode head = new BalancedBinaryTree().buildTree();
@@ -14,6 +8,13 @@ class BalancedBinaryTree {
     }
 
     //http://blog.csdn.net/linhuanmars/article/details/23731355
+    /**
+     * Given a binary tree, determine if it is height-balanced.
+     * For this problem, a height-balanced binary tree is defined as a binary tree
+     * in which the depth of the two subtrees of every node never differ by more than 1.
+     * Tags: Tree, DFS
+     * 还是自底向上的得到深度值 然后计算
+     */
     public boolean balancedBinaryTree(TreeNode root) {
         if (root == null)
             return true;

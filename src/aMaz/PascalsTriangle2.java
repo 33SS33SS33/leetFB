@@ -22,7 +22,7 @@ class PascalsTriangle2 {
     }
 
     public List<Integer> getRowa(int rowIndex) {
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
         if (rowIndex < 0)
             return list;
         for (int i = 0; i < rowIndex + 1; i++) {
@@ -42,7 +42,7 @@ class PascalsTriangle2 {
      * i = 3, 1, 3, 3, 1
      */
     public List<Integer> getRow(int k) {
-        List<Integer> row = new ArrayList<Integer>(k + 1);
+        List<Integer> row = new ArrayList<>(k + 1);
         row.add(1);
         for (int i = 1; i <= k; i++) { // repeat k times
             for (int j = i - 1; j >= 1; j--) { // do it backwards
@@ -57,7 +57,7 @@ class PascalsTriangle2 {
      * creek
      */
     public List<Integer> getRowB(int rowIndex) {
-        ArrayList<Integer> result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
         if (rowIndex < 0)
             return result;
         result.add(1);

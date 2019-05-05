@@ -11,10 +11,7 @@ import java.util.Stack;
  * Tags: Stack, Data Structure
  * 用一个tuple来记录当前的最小值
  * Standard solution, two ss a minStack to store minimums
- */
-
-
-/**
+ * <p>
  * DP, one stack
  * build a static wrapper class for items in stack
  * including its value and current min

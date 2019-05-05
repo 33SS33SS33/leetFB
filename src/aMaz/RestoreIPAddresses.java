@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Given a string containing only digits, restore it by returning all possible (medium)
- * valid IP address combinations.
- * For example:
- * Given "25525511135",
- * return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
  * Tags: Backtracking, String
  * 用DFS
  * 递归的将数字串分成四个部分，每个部分满足0<=p<=255。要注意一些边界case，
@@ -29,12 +24,15 @@ class RestoreIPAddresses {
 
 
     /**
-     * 最好的
+     * Given a string containing only digits, restore it by returning all possible (medium)
+     * valid IP address combinations.
+     * Given "25525511135",
+     * return ["255.255.11.135", "255.255.111.35"]. (Order does not matter)
      * Figure out what is a valid IP address
      * Use backtracking to insert dots into string
      */
     public static List<String> restoreIPAddressesA(String s) {
-        List<String> res = new ArrayList<String>();
+        List<String> res = new ArrayList<>();
         if (s.length() < 4 && s.length() > 12)
             return res;
         backtrack(s, 3, res, "");

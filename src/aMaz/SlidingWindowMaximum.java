@@ -8,17 +8,6 @@ import java.util.Deque;
  * Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right.
  * You can only see the k numbers in the window.
  * Each time the sliding window moves right by one position. Return the max sliding window.
- * For example,
- * Given nums = [1,3,-1,-3,5,3,6,7], and k = 3.
- * Window position                Max
- * ---------------               -----
- * [1  3  -1] -3  5  3  6  7       3
- * 1 [3  -1  -3] 5  3  6  7       3
- * 1  3 [-1  -3  5] 3  6  7       5
- * 1  3  -1 [-3  5  3] 6  7       5
- * 1  3  -1  -3 [5  3  6] 7       6
- * 1  3  -1  -3  5 [3  6  7]      7
- * Therefore, return the max sliding window as [3,3,5,5,6,7].
  * Could you solve it in linear time?
  * 遍历数组nums，使用双端队列deque维护滑动窗口内有可能成为最大值元素的数组下标
  * 由于数组中的每一个元素至多只会入队、出队一次，因此均摊时间复杂度为O(n)
@@ -31,7 +20,7 @@ import java.util.Deque;
 public class SlidingWindowMaximum {
     public static void main(String[] args) {
         int[] A = {1, 3, -1, -3, 5, 3, 6, 7};
-        int[] res1 = maxSlidingWindowa(A, 3);
+        int[] res1 = slidingWindowMaximum(A, 3);
 //        int[] res = maxSlidingWindow(A, 3);
         for (int i : res1) {
             System.out.print(i + " ");
@@ -41,14 +30,28 @@ public class SlidingWindowMaximum {
 
     /**
      * best
-     * We scan the array from 0 to n-1, keep "promising" elements in the deque. The algorithm is amortized O(n) as each element is put and polled once.
-     * At each i, we keep "promising" elements, which are potentially max number in window [i-(k-1),i] or any subsequent window. This means
-     * If an element in the deque and it is out of i-(k-1), we discard them. We just need to poll from the head, as we are using a deque and elements are ordered as the sequence in the array
-     * Now only those elements within [i-(k-1),i] are in the deque. We then discard elements smaller than a[i] from the tail. This is because if a[x] <a[i] and x<i,
-     * then a[x] has no chance to be the "max" in [i-(k-1),i], or any other subsequent window: a[i] would always be a better candidate.
-     * As a result elements in the deque are ordered in both sequence in array and their value. At each step the head of the deque is the max element in [i-(k-1),i]
+     * We scan the array from 0 to n-1, keep "promising" elements in the deque.
+     * The algorithm is amortized O(n) as each element is put and polled once.
+     * At each i, we keep "promising" elements, which are potentially max number in window [i-(k-1),i] or any subsequent window.
+     * This means If an element in the deque and it is out of i-(k-1), we discard them.
+     * We just need to poll from the head, as we are using a deque and elements are ordered as the sequence in the array
+     * Now only those elements within [i-(k-1),i] are in the deque. We then discard elements smaller than a[i] from the tail.
+     * This is because if a[x] <a[i] and x<i, then a[x] has no chance to be the "max" in [i-(k-1),i],
+     * or any other subsequent window: a[i] would always be a better candidate.
+     * As a result elements in the deque are ordered in both sequence in array and their value.
+     * At each step the head of the deque is the max element in [i-(k-1),i]
+     * * Given nums = [1,3,-1,-3,5,3,6,7], and k = 3.
+     * Window position                Max
+     * ---------------               -----
+     * [1  3  -1] -3  5  3  6  7       3
+     * 1 [3  -1  -3] 5  3  6  7       3
+     * 1  3 [-1  -3  5] 3  6  7       5
+     * 1  3  -1 [-3  5  3] 6  7       5
+     * 1  3  -1  -3 [5  3  6] 7       6
+     * 1  3  -1  -3  5 [3  6  7]      7
+     * Therefore, return the max sliding window as [3,3,5,5,6,7].
      */
-    public static int[] maxSlidingWindowa(int[] a, int k) {
+    public static int[] slidingWindowMaximum(int[] a, int k) {
         if (a == null || k <= 0) {
             return new int[0];
         }

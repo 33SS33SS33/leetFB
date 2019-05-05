@@ -5,25 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * Given a binary tree, return the bottom-up level order traversal of its
- * nodes' values. (ie, from left to right, level by level from leaf to root).
- * For example:
- * Given binary tree {3,9,20,#,#,15,7},
- * 3
- * / \
- * 9  20
- * /  \
- * 15   7
- * return its bottom-up level order traversal as:
- * [
- * [15,7],
- * [9,20],
- * [3]
- * ]
- * Tags: Tree, BFS
- * DFS BFS都行 遍历的时候存一下当前结点在的level即可 然后插入位置用负数来选择就可以了
- */
+
 class BinaryTreeLevelOrderTraversalII {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -42,12 +24,27 @@ class BinaryTreeLevelOrderTraversalII {
     }
 
     /**
-     * 每次插入链表的头结点
      * Use a level list to store the nodes of this level
      * Add root to it to begin
      * Build next level with current level, add current level value to result
      * Assign next level to current level
      * Add curLevel to first of result each time to get reverse order
+     * Given a binary tree, return the bottom-up level order traversal of its
+     * nodes' values. (ie, from left to right, level by level from leaf to root).
+     * Given binary tree {3,9,20,#,#,15,7},
+     * 3
+     * / \
+     * 9  20
+     * /  \
+     * 15   7
+     * return its bottom-up level order traversal as:
+     * [
+     * [15,7],
+     * [9,20],
+     * [3]
+     * ]
+     * Tags: Tree, BFS
+     * DFS BFS都行 遍历的时候存一下当前结点在的level即可 然后插入位置用负数来选择就可以了 每次插入链表的头结点
      */
     public List<List<Integer>> binaryTreeLevelOrderTraversalII(TreeNode root) {
         List<List<Integer>> res = new LinkedList<>();

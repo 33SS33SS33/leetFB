@@ -18,8 +18,8 @@ class SingleNumber {
     public static void main(String[] args) {
         int[] A = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7};
         System.out.println(singleNumbera(A));
-        System.out.println(singleNumberb(A));
-        System.out.println(singleNumberc(A));
+//        System.out.println(singleNumberb(A));
+//        System.out.println(singleNumberc(A));
     }
 
     /**
@@ -41,8 +41,8 @@ class SingleNumber {
      * hashtable, store the value and remove when appears second time
      * the only number left is the one
      */
-    public static int singleNumberc(int[] A) {
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+/*    public static int singleNumberc(int[] A) {
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < A.length; i++) {
             if (!map.containsKey(A[i]))
                 map.put(A[i], 1);
@@ -53,16 +53,16 @@ class SingleNumber {
         for (Integer key : map.keySet())
             res = key;
         return res;
-    }
+    }*/
 
-    public static int singleNumberb(int[] A) {
-        HashSet<Integer> set = new HashSet<Integer>();
+/*    public static int singleNumberb(int[] A) {
+        HashSet<Integer> set = new HashSet<>();
         for (int n : A) {
             if (!set.add(n))
                 set.remove(n);
         }
         Iterator<Integer> it = set.iterator();
         return it.next();
-    }
+    }*/
 
 }

@@ -3,7 +3,7 @@ package aMaz;
 import java.util.Arrays;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/5/7.
+ * Created by GAOSHANSHAN835 on 2016/5/7. TODO
  * Given n nodes labeled from 0 to n - 1 and a list of undirected edges (each edge is a pair of nodes),
  * write a function to check whether these edges make up a valid tree.
  * For example:
@@ -23,9 +23,6 @@ public class GraphValidTree {
         System.out.println(graphValidTree(5, edges2));
     }
 
-    /**TODO
-     * 啊啊？？
-     */
     //http://www.geeksforgeeks.org/union-find/
     //https://discuss.leetcode.com/topic/21712/ac-java-union-find-solution/6
     public static boolean graphValidTree(int n, int[][] edges) {

@@ -2,16 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/8.
- * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
- * reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
- * You must do this in-place without altering the nodes' values.
- * For example,
- * Given {1,2,3,4}, reorder it to {1,4,2,3}.
- * Tags: Linkedlist
- * 一共分三分步
- * 第一步是用快慢指针找到链表的中点 然后把链表从中点分成两部分 （记得处理前一部分的最后一个元素 让他的next = None）
- * 第二步 把第二部分的链表倒序反转（记得处理第二部分的第一个元素 让他的next=None ）
- * 第三部 将第二部分的元素每隔一个插入第一部分的链表里（记得要处理当第一部分的指针下一个已经是None但是第二部分还有不止一个元素的情况）
  */
 class ReorderList {
     public static void main(String[] args) {
@@ -29,7 +19,15 @@ class ReorderList {
     }
 
     /**
-     * Find mid point, then split list into 2 halves  最好的
+     * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+     * reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+     * You must do this in-place without altering the nodes' values.
+     * Given {1,2,3,4}, reorder it to {1,4,2,3}.
+     * 第一步是用快慢指针找到链表的中点 然后把链表从中点分成两部分(记得处理前一部分的最后一个元素 让他的next = None）
+     * 第二步 把第二部分的链表倒序反转（记得处理第二部分的第一个元素 让他的next=None ）
+     * 第三部 将第二部分的元素每隔一个插入第一部分的链表里（
+     * 记得要处理当第一部分的指针下一个已经是None但是第二部分还有不止一个元素的情况）
+     * Find mid point, then split list into 2 halves
      * Reverse latter half, then merge two lists
      */
     private void reorderList(ListNode head) {
@@ -84,7 +82,6 @@ class ReorderList {
         }
         return;
     }*/
-
     static ListNode buildTestList1() {
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);

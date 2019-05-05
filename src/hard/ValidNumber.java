@@ -50,7 +50,7 @@ class ValidNumber {
                     return false; // exp can't have '.' or dots
                 dot = true;
             } else if (c == 'e') { // e appear
-                if (exp || num == false)
+                if (exp || !num)
                     return false; // already e but not num
                 exp = true; // is exp, see whether is num from now
                 num = false;

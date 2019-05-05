@@ -5,7 +5,8 @@ import java.util.Queue;
 
 /**
  * Created by shanshan on 16/6/17.
- * Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
+ * Given a stream of integers and a window size,
+ * calculate the moving average of all integers in the sliding window.
  * For example,
  * MovingAverage m = new MovingAverage(3);
  * m.next(1) = 1

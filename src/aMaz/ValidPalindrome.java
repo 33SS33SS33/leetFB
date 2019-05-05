@@ -1,18 +1,6 @@
 package aMaz;
 
-/**
- * Given a string, determine if it is a palindrome, considering only
- * alphanumeric characters and ignoring cases.
- * For example,
- * "A man, a plan, a canal: Panama" is a palindrome.
- * "race a car" is not a palindrome.
- * Note:
- * Have you consider that the string might be empty? This is a good question to
- * ask during an interview.
- * For the purpose of this problem, we define empty string as valid palindrome.
- * Tags: Two pointers, String
- * 用l<r判断比较好 否则会越界 记得每个循环都加上l<r的判断
- */
+
 class ValidPalindrome {
     public static void main(String[] args) {
         System.out.println(validPalindrome(""));
@@ -23,6 +11,19 @@ class ValidPalindrome {
 //        System.out.println(validPalindromec("A man, a plan, a canal: Panama"));
     }
 
+    /**
+     * Given a string, determine if it is a palindrome, considering only
+     * alphanumeric characters and ignoring cases.
+     * For example,
+     * "A man, a plan, a canal: Panama" is a palindrome.
+     * "race a car" is not a palindrome.
+     * Note:
+     * Have you consider that the string might be empty? This is a good question to
+     * ask during an interview.
+     * For the purpose of this problem, we define empty string as valid palindrome.
+     * Tags: Two pointers, String
+     * 用l<r判断比较好 否则会越界 记得每个循环都加上l<r的判断
+     */
     public static boolean validPalindrome(String s) {
         if (s.isEmpty()) {
             return true;

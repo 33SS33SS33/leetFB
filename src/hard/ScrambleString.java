@@ -46,11 +46,11 @@ import java.util.Arrays;
  * 这两个字符串是不是长度相等 排序之后是不是相等
  */
 
-class ScrambleStr {
+class ScrambleString {
     public static void main(String[] args) {
         String s1 = "great";
         String s2 = "rgtae";
-        System.out.println(ScrambleStr(s1, s2));
+        System.out.println(scrambleString(s1, s2));
     }
 
     /**
@@ -64,7 +64,7 @@ class ScrambleStr {
      * first to test if the corresponding parts are anagrams. If not, skip
      * directly.
      */
-    static boolean ScrambleStr(String s1, String s2) {
+    static boolean scrambleString(String s1, String s2) {
         if (s1 == null || s2 == null || s1.length() != s2.length())
             return false;
         if (s1.equals(s2))
@@ -77,11 +77,11 @@ class ScrambleStr {
         if (!Arrays.equals(c1, c2))
             return false; // not anagram, can't be scramble
         for (int i = 1; i < s1.length(); i++) {
-            if (ScrambleStr(s1.substring(0, i), s2.substring(0, i))
-                    && ScrambleStr(s1.substring(i), s2.substring(i)))
+            if (scrambleString(s1.substring(0, i), s2.substring(0, i))
+                    && scrambleString(s1.substring(i), s2.substring(i)))
                 return true;
-            if (ScrambleStr(s1.substring(0, i), s2.substring(s2.length() - i))
-                    && ScrambleStr(s1.substring(i), s2.substring(0, s2.length() - i)))
+            if (scrambleString(s1.substring(0, i), s2.substring(s2.length() - i))
+                    && scrambleString(s1.substring(i), s2.substring(0, s2.length() - i)))
                 return true;
         }
         return false; // didn't pass the test

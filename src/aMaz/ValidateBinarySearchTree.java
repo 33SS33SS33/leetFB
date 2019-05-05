@@ -4,18 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * Given a binary tree, determine if it is a valid binary searchinRotatedSortedArrayb tree (BST).
- * Assume a BST is defined as follows:
- * The left subtree of a node contains only nodes with keys less than the node's key.
- * The right subtree of a node contains only nodes with keys greater than the node's key.
- * Both the left and right subtrees must also be binary searchinRotatedSortedArrayb trees.
- * Tags: Tree, DFS
- * 使用先序遍历
- * 如果访问了左节点  则当前点得值是左节点的最大值
- * 如果访问了右节点  则当前点得值是右节点的最小值
- * 然后递归更新最大最小值即可
- */
 class ValidateBinarySearchTree {
     public static void main(String[] args) {
         TreeNode r = new TreeNode(Integer.MAX_VALUE);
@@ -29,6 +17,18 @@ class ValidateBinarySearchTree {
 
     //best TODO
     //https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
+    /**
+     * Given a binary tree, determine if it is a valid binary search tree (BST).
+     * Assume a BST is defined as follows:
+     * The left subtree of a node contains only nodes with keys less than the node's key.
+     * The right subtree of a node contains only nodes with keys greater than the node's key.
+     * Both the left and right subtrees must also be binary searchinRotatedSortedArrayb trees.
+     * Tags: Tree, DFS
+     * 使用先序遍历
+     * 如果访问了左节点  则当前点得值是左节点的最大值
+     * 如果访问了右节点  则当前点得值是右节点的最小值
+     * 然后递归更新最大最小值即可
+     */
     public boolean isValidBSTA(TreeNode root) {
         if (root == null)
             return true;
@@ -138,7 +138,7 @@ class ValidateBinarySearchTree {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

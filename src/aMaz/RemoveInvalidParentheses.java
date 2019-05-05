@@ -3,13 +3,7 @@ package aMaz;
 import java.util.*;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/5/6. HARD TODO
- * Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
- * Note: The input string may contain letters other than the parentheses ( and ).
- * Examples:
- * "()())()" -> ["()()()", "(())()"]
- * "(a)())()" -> ["(a)()()", "(a())()"]
- * ")(" -> [""]
+ * Created by GAOSHANSHAN835 on 2016/5/6.  TODO
  * DFS BFS
  */
 public class RemoveInvalidParentheses {
@@ -25,7 +19,14 @@ public class RemoveInvalidParentheses {
         System.out.println(removeInvalidParentheses(s3));
     }
 
-    //最好的
+    /**HARD
+     * Remove the minimum number of invalid parentheses in order to make the input string valid.
+     * Return all possible results.
+     * Note: The input string may contain letters other than the parentheses ( and ).
+     * "()())()" -> ["()()()", "(())()"]
+     * "(a)())()" -> ["(a)()()", "(a())()"]
+     * ")(" -> [""]
+     */
     public static List<String> removeInvalidParentheses(String s) {
         List<String> ans = new ArrayList<>();
         if (s == null || s.length() == 0)
@@ -52,7 +53,7 @@ public class RemoveInvalidParentheses {
     }
 
     /**
-     *  BFS
+     * BFS
      */
     public static List<String> removeInvalidParenthesesb(String s) {
         List<String> res = new ArrayList<>();

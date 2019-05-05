@@ -5,16 +5,6 @@ import java.util.Map;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/23. TODO
- * Given two strings s and t, determine if they are isomorphic.
- * Two strings are isomorphic if the characters in s can be replaced to get t.
- * All occurrences of a character must be replaced with another character while preserving the order of characters.
- * No two characters may map to the same character but a character may map to itself.
- * Input: s = "egg", t = "add" Output: true
- * Input: s = "foo", t = "bar" Output: false
- * Input: s = "paper", t = "title"Output: true
- * Note:
- * You may assume both s and t have the same length.
- * 有很多解法 很重要的题目
  */
 public class IsomorphicStrings {
     public static void main(String[] args) {
@@ -31,7 +21,18 @@ public class IsomorphicStrings {
      * occuring in the current i-th position simultaneously is a mistake. We could use a
      * map for storing but as we deal with chars which are basically ints and can be used as
      * indices we can do the whole thing with an array
+     * *---- Given two strings s and t, determine if they are isomorphic.
+     * Two strings are isomorphic if the characters in s can be replaced to get t.
+     * All occurrences of a character must be replaced with
+     * another character while preserving the order of characters.
+     * No two characters may map to the same character but a character may map to itself.
+     * Input: s = "egg", t = "add" Output: true
+     * Input: s = "foo", t = "bar" Output: false
+     * Input: s = "paper", t = "title"Output: true
+     * Note:
+     * You may assume both s and t have the same length. 有很多解法 很重要的题目
      */
+
     public boolean isomorphicStrings(String s1, String s2) {
         int[] m = new int[512];
         for (int i = 0; i < s1.length(); i++) {

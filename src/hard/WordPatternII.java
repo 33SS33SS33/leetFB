@@ -26,8 +26,8 @@ public class WordPatternII {
         System.out.println(new WordPatternII().wordPatternMatch("aabb", "xyzabcxzyabc"));
     }
 
-    Map<Character, String> map = new HashMap();
-    Set<String> set = new HashSet();
+    private Map<Character, String> map = new HashMap<>();
+    private Set<String> set = new HashSet<>();
 
     public boolean wordPatternMatch(String pattern, String str) {
         if (pattern.isEmpty())

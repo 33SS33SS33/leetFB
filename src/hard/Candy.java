@@ -15,8 +15,7 @@ package hard;
 class Candy {
     public static void main(String[] args) {
         int[] ratings = {1, 3, 4, 6, 2};
-
-        System.out.println(new Candy().candyA(ratings));
+        System.out.println(new Candy().candy(ratings));
     }
 
     /**
@@ -27,7 +26,7 @@ class Candy {
      * Simplify second traversal by calculate and decide max right away
      * And also calculate the sum
      */
-    public int candyA(int[] ratings) {
+    public int candy(int[] ratings) {
         int[] candies = new int[ratings.length];
         candies[0] = 1;
         for (int i = 1; i < ratings.length; i++)

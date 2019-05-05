@@ -17,11 +17,11 @@ public class MergeSortLinkedList {
         n4.next = n5;
         n5.next = n6;
 
-        n1 = mergeSortB(n1);
+        n1 = mergeSortLinkedList(n1);
         printList(n1);
     }
 
-    private static ListNode mergeSortB(ListNode head) {
+    private static ListNode mergeSortLinkedList(ListNode head) {
         if (head == null || head.next == null)
             return head;
         ListNode walker = head;
@@ -33,12 +33,12 @@ public class MergeSortLinkedList {
         ListNode head2 = walker.next;
         walker.next = null;
         ListNode head1 = head;
-        head1 = mergeSortB(head1);
-        head2 = mergeSortB(head2);
-        return merge2(head1, head2);
+        head1 = mergeSortLinkedList(head1);
+        head2 = mergeSortLinkedList(head2);
+        return merge(head1, head2);
     }
 
-    private static ListNode merge2(ListNode head1, ListNode head2) {
+    private static ListNode merge(ListNode head1, ListNode head2) {
         ListNode helper = new ListNode(0);
         helper.next = head1;
         ListNode pre = helper;

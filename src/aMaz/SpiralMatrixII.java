@@ -1,16 +1,6 @@
 package aMaz;
 
 /**
- * Given an integer n, generate a square matrix filled with elements from 1 to
- * n^2 in spiral order.
- * For example,
- * Given n = 3,
- * You should return the following matrix:
- * [
- * [ 1, 2, 3 ],
- * [ 8, 9, 4 ],
- * [ 7, 6, 5 ]
- * ]
  * Tags: Array
  */
 class SpiralMatrixII {
@@ -25,7 +15,14 @@ class SpiralMatrixII {
     }
 
     /**
-     * 更清晰
+     * Given an integer n, generate a square matrix filled with elements from 1 to
+     * n^2 in spiral order.
+     * Given n = 3,You should return the following matrix:
+     * [
+     * [ 1, 2, 3 ],
+     * [ 8, 9, 4 ],
+     * [ 7, 6, 5 ]
+     * ]
      * 每个元素只访问一次，时间复杂度是O(n^2)
      * use startR, endR, startC, endC to mark the range
      * update relative range whenever finish filling up a row or column

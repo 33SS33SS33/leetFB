@@ -12,8 +12,7 @@ package aMaz;
  * 如果只有一颗子树找到了节点 就先返回这个节点 然后上面那个子树再决定谁是祖先
  * 比如查找5和4的情况 当查找到3得左子树 然后碰见了5 直接返回 这时候3的右子树会返回None
  * 所以就可以知道4节点是在5节点下面的 直接返回5节点就行了  (4节点其实没有被查询)
- * 右边还有迭代的解法
- * 未实现
+ * 右边还有迭代的解法 未实现
  */
 class LowestCommonAncestorofABinaryTree {
     public static void main(String[] args) {

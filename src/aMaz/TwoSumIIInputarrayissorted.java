@@ -2,7 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- * 还是two sum 的题 直接用了哈希表来解 也可以用two pointer 还有binary search
  */
 public class TwoSumIIInputarrayissorted {
     public static void main(String[] args) {
@@ -16,6 +15,7 @@ public class TwoSumIIInputarrayissorted {
     }
 
     /**
+     * 还是two sum的题 直接用了哈希表来解 也可以用two pointer 还有binary search
      * input array is sorted creek!
      */
     public int[] twoSumInputArrayIsSorted(int[] numbers, int target) {

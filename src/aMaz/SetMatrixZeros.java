@@ -1,7 +1,6 @@
 package aMaz;
 
 /**
- * Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
  * Tags: Array
  */
 class SetMatrixZeros {
@@ -18,6 +17,8 @@ class SetMatrixZeros {
     }
 
     /**
+     * Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
+     * <p>
      * Go through the matrix and use first row and first col to remember which
      * cols and rows are to be sets
      * Use two flags for whether first row and first col should be set

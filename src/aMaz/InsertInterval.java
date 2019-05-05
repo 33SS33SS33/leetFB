@@ -5,23 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given a set of non-overlapping intervals, insert a new interval into the HARD TODO
- * intervals (merge if necessary).
- * You may assume that the intervals were initially sorted according to their
- * start times.
- * Example 1:
- * Given intervals [1,3],[6,9], insert and merge [2,5] in as [1,5],[6,9].
- * Example 2:
- * Given [1,2],[3,5],[6,7],[8,10],[12,16], insert and merge [4,9] in as
- * [1,2],[3,10],[12,16].
- * This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
- * Tags: Array, Sort
- * 和mergeIntervals差不多 但是要考虑更多的情况
- * 因为插入的话  可能会new的那个区间会整个插入到当前区间的前面 而没有 merge
- * 然后也会有merge的情况 而且merge的时候 还要考虑start的大小 不光考虑end
- * 当merge完成 res的就不是空的了  之后只需要考虑intervals剩下的元素要不要和末尾的merge或者直接插入 这部分就和上题一样了
- * 还有更简单的解法 未实现
- * 可以先找出来不用merge的那些  然后分成左右两部分  剩下的merge了就可以
+ * HARD TODO
  */
 class InsertInterval {
     public static void main(String[] args) {
@@ -37,6 +21,21 @@ class InsertInterval {
 //        System.out.print(res.toString());
     }
 
+    /**
+     * Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).
+     * You may assume that the intervals were initially sorted according to their start times.
+     * Given intervals [1,3],[6,9], insert and merge [2,5] in as [1,5],[6,9].
+     * Given [1,2],[3,5],[6,7],[8,10],[12,16], insert and merge [4,9] in as [1,2],[3,10],[12,16].
+     * This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].
+     * Tags: Array, Sort
+     * 和mergeIntervals差不多 但是要考虑更多的情况
+     * 因为插入的话  可能会new的那个区间会整个插入到当前区间的前面 而没有 merge
+     * 然后也会有merge的情况 而且merge的时候 还要考虑start的大小 不光考虑end
+     * 当merge完成 res的就不是空的了  之后只需要考虑intervals剩下的元素要不要和末尾的merge或者直接插入
+     * 这部分就和上题一样了
+     * 还有更简单的解法 未实现
+     * 可以先找出来不用merge的那些  然后分成左右两部分  剩下的merge了就可以
+     */
     public List<Interval> insertInterval(List<Interval> intervals, Interval newInterval) {
         if (intervals == null || newInterval == null) {
             return intervals;

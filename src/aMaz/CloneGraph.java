@@ -1,6 +1,9 @@
 package aMaz;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
@@ -28,7 +31,6 @@ import java.util.*;
  * 然后就遍历图中的节点  首先就是检查当前节点的邻居在不在字典里 要是不在 就建立键值对
  * 然后把当前这个邻居添加进当前结点键值对的邻居里 然后邻居入队列
  * 要是本来邻居就在字典里  访问过了 只需把这个邻居加入到当前结点的键值对的邻居里即可
- * 第二遍看了思路 重要
  */
 class CloneGraph {
     public static void main(String[] args) {
@@ -36,9 +38,32 @@ class CloneGraph {
     }
 
     /**
-     * 最好的
+     *  Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
+     * OJ's undirected graph serialization:Nodes are labeled uniquely.
+     * We use # as a separator for each node, and , as a separator for node label
+     * and each neighbor of the node.
+     * As an example, consider the serialized graph {0,1,2#1,2#2,2}.
+     * The graph has a total of three nodes, and therefore contains three parts as
+     * separated by #.
+     * First node is labeled as 0. Connect node 0 to both nodes 1 and 2.
+     * Second node is labeled as 1. Connect node 1 to node 2.
+     * Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming
+     * a self-cycle.
+     * Visually, the graph looks like the following:
+     * 1
+     * / \
+     * /   \
+     * 0 --- 2
+     * / \
+     * \_/
+     * Tags: DFS, BFS, Graph
+     * 遍历方法可以BFS可以DFS 右边的链接都有
+     * 需要用一个dic来保存 图中的节点（key）和复制的节点（value）
+     * 然后就遍历图中的节点  首先就是检查当前节点的邻居在不在字典里 要是不在 就建立键值对
+     * 然后把当前这个邻居添加进当前结点键值对的邻居里 然后邻居入队列
+     * 要是本来邻居就在字典里  访问过了 只需把这个邻居加入到当前结点的键值对的邻居里即可
      */
-    public HashMap<Integer, UndirectedGraphNode> map = new HashMap();
+    public HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
 
     public UndirectedGraphNode cloneGraphA(UndirectedGraphNode node) {
         if (node == null)
@@ -60,7 +85,7 @@ class CloneGraph {
     public UndirectedGraphNode cloneGraphB(UndirectedGraphNode node) {
         if (node == null)
             return null;
-        LinkedList<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+        LinkedList<UndirectedGraphNode> queue = new LinkedList<>();
         HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
         UndirectedGraphNode newHead = new UndirectedGraphNode(node.label);
         queue.add(node);
@@ -74,8 +99,7 @@ class CloneGraph {
                     map.put(aNeighbor, copy);
                     map.get(curr).neighbors.add(copy);
                     queue.add(aNeighbor);
-                }
-                else {
+                } else {
                     map.get(curr).neighbors.add(map.get(aNeighbor));
                 }
             }
@@ -89,7 +113,7 @@ class CloneGraph {
     public UndirectedGraphNode cloneGraphD(UndirectedGraphNode node) {
         if (node == null)
             return null;
-        LinkedList<UndirectedGraphNode> stack = new LinkedList<UndirectedGraphNode>();
+        LinkedList<UndirectedGraphNode> stack = new LinkedList<>();
         HashMap<UndirectedGraphNode, UndirectedGraphNode> map = new HashMap<UndirectedGraphNode, UndirectedGraphNode>();
         stack.push(node);
         UndirectedGraphNode copy = new UndirectedGraphNode(node.label);
@@ -134,7 +158,7 @@ class CloneGraph {
     }
 
     class UndirectedGraphNode {
-        int                       label;
+        int label;
         List<UndirectedGraphNode> neighbors;
 
         UndirectedGraphNode(int x) {

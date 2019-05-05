@@ -1,17 +1,5 @@
 package aMaz;
 
-/**
- * Given a linked list and a value x, palindromePartition it such that all nodes less
- * than x come before nodes greater than or equal to x.
- * You should preserve the original relative order of the nodes in each of the two partitions.
- * Given 1->4->3->2->5->2 and x = 3,
- * return 1->2->2->4->3->5.
- * Tags: Linkedlist, Two Pointers
- * 创建两个队列 一个是小于x的 一个是大于等于x的
- * 然后遍历链表  然后将当前元素分配到两个队列 再将两个队列连起来即可
- * 注意要仔细处理结尾 否则会有环
- * hi_curr.next = None
- */
 class PartitionList {
     public static void main(String[] args) {
         ListNode head = buildTestList1();
@@ -24,7 +12,16 @@ class PartitionList {
     }
 
     /**
-     * Build left and right lists and concatenate 最好的
+     * Given a linked list and a value x, palindromePartition it such that all nodes less
+     * than x come before nodes greater than or equal to x.
+     * You should preserve the original relative order of the nodes in each of the two partitions.
+     * Given 1->4->3->2->5->2 and x = 3,
+     * return 1->2->2->4->3->5.
+     * Tags: Linkedlist, Two Pointers
+     * 创建两个队列 一个是小于x的 一个是大于等于x的
+     * 然后遍历链表  然后将当前元素分配到两个队列 再将两个队列连起来即可
+     * 注意要仔细处理结尾 否则会有环
+     * hi_curr.next = None
      */
     public static ListNode partitionList(ListNode head, int x) {
         if (head == null || head.next == null)

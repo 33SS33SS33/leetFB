@@ -2,15 +2,15 @@ package aMaz;
 
 /**
  * Created by shanshan on 2/12/19. TODO
- * Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root.
+ * Given a binary tree, find the length of the longest path where
+ * each node in the path has the same value. This path may or may not pass through the root.
  * Note: The length of path between two nodes is represented by the number of edges between them.
  * Input:
  * 1
  * / \
  * 4   5
  * / \   \
- * 4   4   5
- * Output:2
+ * 4   4   5  Output:2
  */
 public class LongestUnivaluePath {
     public int longestUnivaluePath(TreeNode root) {

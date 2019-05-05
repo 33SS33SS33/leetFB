@@ -6,13 +6,15 @@ import java.util.PriorityQueue;
 
 /**
  * Created by shanshan on 2/13/19.TODO
- * Given a string S, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.
- * If possible, output any possible result.  If not possible, return the empty string.
- * Input: S = "aab"Output: "aba"
- * Input: S = "aaab"Output: ""
- * S will consist of lowercase letters and have length in range [1, 500].
  */
 public class ReorganizeString {
+    /**
+     * Given a string S, check if the letters can be rearranged so that
+     * two characters that are adjacent to each other are not the same.
+     * If possible output any possible result.If not return the empty string.
+     * Input: S = "aab" Output: "aba"  Input: S = "aaab" Output: ""
+     * S will consist of lowercase letters and have length in range [1, 500].
+     */
     public String reorganizeString(String S) {
         // Create map of each char to its count
         Map<Character, Integer> map = new HashMap<>();

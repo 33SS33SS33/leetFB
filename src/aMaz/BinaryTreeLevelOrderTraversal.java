@@ -5,25 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * Given a binary tree, return the level order traversal of its nodes' values.
- * (ie, from left to right, level by level).
- * For example:
- * Given binary tree {3,9,20,#,#,15,7},
- * 3
- * / \
- * 9  20
- * /  \
- * 15   7
- * return its level order traversal as:
- * [
- * [3],
- * [9,20],
- * [15,7]
- * ]
- * Tags: Tree, BFS
- * 使用BFS 注意BFS判断一下level是不是为空
- */
+
 class BinaryTreeLevelOrderTraversal {
     public static void main(String[] args) {
         TreeNode root = buildTree();
@@ -31,7 +13,18 @@ class BinaryTreeLevelOrderTraversal {
     }
 
     /**
-     * Queue  最好的~~~~
+     * Given a binary tree, return the level order traversal of its nodes' values.
+     * (ie, from left to right, level by level).
+     * Given binary tree {3,9,20,#,#,15,7},
+     * 3
+     * / \
+     * 9  20
+     * /  \
+     * 15   7
+     * return its level order traversal as:
+     * [[3],[9,20],[15,7]]
+     * Tags: Tree, BFS
+     * 使用BFS 注意BFS判断一下level是不是为空
      * Get size of the queue each time
      * Iterate that many times to build current level
      */
@@ -73,7 +66,7 @@ class BinaryTreeLevelOrderTraversal {
     }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

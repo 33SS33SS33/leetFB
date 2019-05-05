@@ -1,20 +1,6 @@
 package aMaz;
 
 /**
- * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
- * Integers in each row are sorted in ascending from left to right.
- * Integers in each column are sorted in ascending from top to bottom.
- * For example,
- * Consider the following matrix:
- * [
- * [1,   4,  7, 11, 15],
- * [2,   5,  8, 12, 19],
- * [3,   6,  9, 16, 22],
- * [10, 13, 14, 17, 24],
- * [18, 21, 23, 26, 30]
- * ]
- * Given target = 5, return true.
- * Given target = 20, return false.
  * 首先row设置从第一行开始 列从最后一行开始  先移动列
  * 直到当前比target小  那么就往下移动行 如果碰见了元素超过了 target 就继续向左移动列
  */
@@ -27,7 +13,18 @@ public class Searcha2DMatrixII {
     }
 
     /**
-     * 最好的
+     * * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+     * Integers in each row are sorted in ascending from left to right.
+     * Integers in each column are sorted in ascending from top to bottom.
+     * [
+     * [1,   4,  7, 11, 15],
+     * [2,   5,  8, 12, 19],
+     * [3,   6,  9, 16, 22],
+     * [10, 13, 14, 17, 24],
+     * [18, 21, 23, 26, 30]
+     * ]
+     * Given target = 5, return true.
+     * Given target = 20, return false.
      * Search Space Reduction
      * Because the rows and columns of the matrix are sorted (from left-to-right and top-to-bottom, respectively),
      * we can prune O(m) or O(n) elements when looking at any particular value.

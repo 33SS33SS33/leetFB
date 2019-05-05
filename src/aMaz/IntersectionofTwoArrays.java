@@ -6,14 +6,7 @@ import java.util.Set;
 
 /**
  * Created by shanshan on 16/6/17.
- * Given two arrays, write a function to compute their intersection.
- * Example:
- * Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
- * Note:
- * Each element in the result must be unique.
- * The result can be in any order.
  */
-
 public class IntersectionofTwoArrays {
     public static void main(String[] args) {
         int[] num1 = {1, 2, 2, 1};
@@ -28,6 +21,12 @@ public class IntersectionofTwoArrays {
         }
     }
 
+    /**
+     * Given two arrays, write a function to compute their intersection.
+     * Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
+     * Note: Each element in the result must be unique.
+     * The result can be in any order.
+     */
     public static int[] intersectionofTwoArrays(int[] nums1, int[] nums2) {
         Set<Integer> set = new HashSet<>();
         Set<Integer> intersect = new HashSet<>();

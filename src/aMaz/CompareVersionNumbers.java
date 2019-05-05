@@ -1,19 +1,6 @@
 package aMaz;
 
-/**
- * Compare two version numbers version1 and version1.
- * If version1 > version2 return 1, if version1 < version2 return -1, otherwise return 0.
- * You may assume that the version strings are non-empty and contain only
- * digits and the . character.
- * The . character does not represent a decimal point and is used to separate
- * number sequences.
- * For instance, 2.5 is not "two and a half" or "half way to version three", it
- * is the fifth second-level revision of the second first-level revision.
- * Here is an example of version numbers ordering:
- * 0.1 < 1.1 < 1.2 < 13.37
- * Tags: String
- * 就是用.来切分 切了之后挨个比较 可能有一个字符串会溢出 就自动给个0
- */
+
 class CompareVersionNumbers {
     public static void main(String[] args) {
         String v1 = "001.3.3.7.000";
@@ -22,8 +9,21 @@ class CompareVersionNumbers {
     }
 
     /**
-     * Compare each level and compare the rest 最好的
+     * Compare each level and compare the rest
      * Note the input can be complex than the example, more dots, more zeros
+     * <p>
+     * Compare two version numbers version1 and version1.
+     * If version1 > version2 return 1, if version1 < version2 return -1, otherwise return 0.
+     * You may assume that the version strings are non-empty and contain only
+     * digits and the . character.
+     * The . character does not represent a decimal point and is used to separate
+     * number sequences.
+     * For instance, 2.5 is not "two and a half" or "half way to version three", it
+     * is the fifth second-level revision of the second first-level revision.
+     * Here is an example of version numbers ordering:
+     * 0.1 < 1.1 < 1.2 < 13.37
+     * Tags: String
+     * 就是用.来切分 切了之后挨个比较 可能有一个字符串会溢出 就自动给个0
      */
     static int compareVersionNumbers(String version1, String version2) {
         if (version1 == null && version2 == null)

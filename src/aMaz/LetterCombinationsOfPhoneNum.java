@@ -4,18 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Given a digit string, return all possible letter combinations that the
- * number could represent.
- * A mapping of digit to letters (just like on the telephone buttons) is given
- * below.
- * Input:Digit string "23"
- * Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
- * Note:
- * Although the above answer is in lexicographical order, your answer could be
- * in any order you want.
- * Tags: Backtracking, String
- */
+
 class LetterCombinationsOfPhoneNum {
     public static void main(String[] args) {
         System.out.println(new LetterCombinationsOfPhoneNum().letterCombinations("23"));
@@ -24,6 +13,12 @@ class LetterCombinationsOfPhoneNum {
 
     /**
      * Backtracking to generate all combinations
+     * Given a digit string, return all possible letter combinations that the number could represent.
+     * A mapping of digit to letters (just like on the telephone buttons) is given below.
+     * Input:Digit string "23" Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+     * Note: Although the above answer is in lexicographical order, your answer could be
+     * in any order you want.
+     * Tags: Backtracking, String
      */
     private static final String[] LETTERS = {"",     // 0
             "",     // 1
@@ -61,7 +56,7 @@ class LetterCombinationsOfPhoneNum {
      * https://discuss.leetcode.com/topic/8465/my-java-solution-with-fifo-queue/6
      */
     public List<String> letterCombinations(String digits) {
-        LinkedList<String> ans = new LinkedList<String>();
+        LinkedList<String> ans = new LinkedList<>();
         String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         ans.add("");
         for (int i = 0; i < digits.length(); i++) {

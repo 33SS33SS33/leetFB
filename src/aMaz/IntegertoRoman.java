@@ -1,23 +1,23 @@
 package aMaz;
 
-/**
- * Given an integer, zigZagConversion it to a roman numeral.
- * Input is guaranteed to be within the range from 1 to 3999.
- * Tags: Math, String
- */
 class IntegertoRoman {
     public static void main(String[] args) {
         System.out.println(new IntegertoRoman().intToRomanA(3));
         System.out.println(new IntegertoRoman().intToRoman(3));
-       // System.out.println(new IntegertoRoman().intToRomanB(3));
+        // System.out.println(new IntegertoRoman().intToRomanB(3));
     }
 
-    public static final int[]    intDict   = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-    public static final String[] romanDict = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V",
-            "IV", "I" };
+    public static final int[] intDict = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    public static final String[] romanDict = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V",
+            "IV", "I"};
 
-    //best
     //https://leetcode.com/problems/integer-to-roman/discuss/6310/My-java-solution-easy-to-understand
+
+    /**
+     * Given an integer, zigZagConversion it to a roman numeral.
+     * Input is guaranteed to be within the range from 1 to 3999.
+     * Tags: Math, String
+     */
     public String intToRomanA(int num) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < intDict.length; i++) {

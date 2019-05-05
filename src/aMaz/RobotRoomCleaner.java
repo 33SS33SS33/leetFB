@@ -61,9 +61,7 @@ public class RobotRoomCleaner {
 
     interface Robot {
         public boolean move();
-
         public void turnRight();
-
         public void clean();
     }
 }

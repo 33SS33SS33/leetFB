@@ -2,11 +2,6 @@ package hard;
 
 /**
  * Created by GAOSHANSHAN835 on 2015/12/29.
- * Given a string S, you are allowed to zigZagConversion it to a palindrome by adding characters in front of it.
- * Find and return the shortest palindrome you can find by performing this transformation.
- * For example:
- * Given "aacecaaa", return "aaacecaaa".
- * Given "abcd", return "dcbabcd".
  * 这道题其实就是让你找以index 0开始的最长的回文子串  找到之后就把缺的补齐即可
  * 即补充完成之后的回文串中心必定在原字符串中，所以原字符串以第一个字符为起点必然存在至少一个回文串（长度可以为1），
  * 那么任务就变为找到原字符串中以第一个字符为起点最长的回文串，
@@ -25,14 +20,18 @@ package hard;
 public class ShortestPalindrome {
     public static void main(String[] args) {
         String s = "abcd";
-        System.out.println(shortestPalindromea(s));
-        System.out.println(shortestPalindromea("aabba"));
+        System.out.println(shortestPalindrome(s));
+        System.out.println(shortestPalindrome("aabba"));
     }
 
     /**
-     * 最好的
+     * Given a string S, you are allowed to zigZagConversion it to a palindrome by adding characters in front of it.
+     * Find and return the shortest palindrome you can find by performing this transformation.
+     * For example:
+     * Given "aacecaaa", return "aaacecaaa".
+     * Given "abcd", return "dcbabcd".
      */
-    public static String shortestPalindromea(String s) {
+    public static String shortestPalindrome(String s) {
         int j = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             if (s.charAt(i) == s.charAt(j)) {
@@ -43,7 +42,7 @@ public class ShortestPalindrome {
             return s;
         }
         String suffix = s.substring(j);
-        return new StringBuffer(suffix).reverse().toString() + shortestPalindromea(s.substring(0, j)) + suffix;
+        return new StringBuffer(suffix).reverse().toString() + shortestPalindrome(s.substring(0, j)) + suffix;
     }
 
 }

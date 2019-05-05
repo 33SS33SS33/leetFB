@@ -3,7 +3,6 @@ package aMaz;
 /**
  * Given n, how many structurally unique BST's (binary search trees) that store
  * values 1...n?
- * For example,
  * Given n = 3, there are a total of 5 unique BST's.
  * 1         3     3      2      1
  * \       /     /      / \      \
@@ -14,10 +13,9 @@ package aMaz;
  * 和UniqueBST2 思路一样
  * 假设count(i)表示如果当前根是(i)那么一共有多少种BST组合
  * 那么count(i) = count(i-1) + count(n-i) 就是他的左子树的所有组合  加上他的右子树的所有组合
- * 而要求出所有的BST组合  那就是等于 count(1) + count(2) + …. count(n)
- * 然后就可以迭代求解
+ * 而要求出所有的BST组合  那就是等于 count(1) + count(2) + …. count(n)然后就可以迭代求解
  * 设立一个rec数组来存每一个count(i) 然后大循环遍历1-n 小循环则求出当前的count(i)
- * 不要用迭代  会超时
+ * 不要用迭代会超时
  */
 class UniqueBinarySearchTrees {
     public static void main(String[] args) {

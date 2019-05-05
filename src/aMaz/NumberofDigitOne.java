@@ -2,15 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.  HARD TODO
- * Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
- * Given n = 13,Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
- * 整体思想是尝试把每一位固定为1然后看看有多少种组合
- * 首先把一位设置为1 然后取出1左边的高位  然后再取出1右边的低位
- * 然后求出一共有多少种组合  这里有一种情况就是如果当前位本来就是1 所以要在高位减1 然后低位加上尾部的数字  并没有太搞懂
- * 首先比如数字 223 然后假设指针到了中间的那个2 那么按照算法 前面应该是3 然后直接乘以10 就是30个 因为 正好是 010-019 110-119 210-219
- * 如果数字变成了213 那么就不能有210-219 所以前面变成了2 然后乘以10 加上4 就是24个 010-019 110-119 210-213
- * 最后如果是203 那么前面变成了2 而且尾部的也什么都没有了 因为中间位是0 所以是20个 010-019 110-119
- * 每次右移一位和1与
  */
 public class NumberofDigitOne {
     public static void main(String[] args) {
@@ -18,8 +9,16 @@ public class NumberofDigitOne {
     }
 
     /**
-     * Go through the digit positions by using position multiplier m with values 1, 10, 100,
-     * 1000, etc.
+     * HARD ~Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
+     * Given n = 13,Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
+     * 整体思想是尝试把每一位固定为1然后看看有多少种组合
+     * 首先把一位设置为1 然后取出1左边的高位  然后再取出1右边的低位
+     * 然后求出一共有多少种组合  这里有一种情况就是如果当前位本来就是1 所以要在高位减1 然后低位加上尾部的数字  并没有太搞懂
+     * 首先比如数字 223 然后假设指针到了中间的那个2 那么按照算法 前面应该是3 然后直接乘以10 就是30个 因为 正好是 010-019 110-119 210-219
+     * 如果数字变成了213 那么就不能有210-219 所以前面变成了2 然后乘以10 加上4 就是24个 010-019 110-119 210-213
+     * 最后如果是203 那么前面变成了2 而且尾部的也什么都没有了 因为中间位是0 所以是20个 010-019 110-119
+     * 每次右移一位和1与
+     * Go through the digit positions by using position multiplier m with values 1, 10, 100, 1000, etc.
      * For each position, split the decimal representation into two parts, for example split
      * n=3141592 into a=31415 and b=92 when we're at m=100 for analyzing the
      * hundreds-digit. And then we know that the hundreds-digit of n is 1 for prefixes "" to

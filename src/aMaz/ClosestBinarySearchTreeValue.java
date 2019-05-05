@@ -2,20 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * Given a non-empty binary search tree and a target value, find the value in the BST that is closest to the target.
- * Note:
- * Given target value is a floating point.
- * You are guaranteed to have only one unique value in the BST that is closest to the target."
- * Input: root = [4,2,5,1,3], target = 3.714286
- * 4
- * / \
- * 2   5
- * / \
- * 1   3
- * Output: 4
- * 就是小了就往右走 大了就往左走
- * 每次都计算一下最小值即可
- * "
  */
 public class ClosestBinarySearchTreeValue {
     public static void main(String[] args) {
@@ -34,6 +20,19 @@ public class ClosestBinarySearchTreeValue {
         System.out.println(closestBinarySearchTreeValueb(root, 7));
     }
 
+    /**
+     * Given a non-empty binary search tree and a target value,
+     * find the value in the BST that is closest to the target.
+     * Note: Given target value is a floating point.
+     * You are guaranteed to have only one unique value in the BST that is closest to the target.
+     * Input: root = [4,2,5,1,3], target = 3.714286
+     * 4
+     * / \
+     * 2   5
+     * / \
+     * 1   3  Output: 4
+     * 就是小了就往右走 大了就往左走 每次都计算一下最小值即可
+     */
     public static int closestBinarySearchTreeValueb(TreeNode root, double target) {
         int ret = root.val;
         while (root != null) {

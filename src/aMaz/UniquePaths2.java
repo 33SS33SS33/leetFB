@@ -1,23 +1,6 @@
 package aMaz;
 
-/**
- * Follow up for "Unique Paths":
- * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
- * The robot can only move either down or right at any point in time.
- * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
- * Now consider if some obstacles are added to the grids. How many unique paths would there be?
- * An obstacle and empty space is marked as 1 and 0 respectively in the grid.
- * For example,
- * There is one obstacle in the middle of a 3x3 grid as illustrated below.
- * [
- * [0,0,0],
- * [0,1,0],
- * [0,0,0]
- * ]
- * The total number of unique paths is 2.
- * Note: m and n will be at most 100.
- * Tags: Array, DP
- */
+
 class UniquePaths2 {
     public static void main(String[] args) {
         int[][] obstacleGrid = new int[3][3];
@@ -32,6 +15,22 @@ class UniquePaths2 {
      * for the grid paths at the rth row and cth column
      * paths[r][c] = obstacleGrid[r][c] == 1 ? 0
      * : paths[r + 1][c] + paths[r][c + 1];
+     * <p>
+     * Follow up for "Unique Paths":
+     * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+     * The robot can only move either down or right at any point in time.
+     * The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+     * Now consider if some obstacles are added to the grids.
+     * How many unique paths would there be?
+     * An obstacle and empty space is marked as 1 and 0 respectively in the grid.
+     * There is one obstacle in the middle of a 3x3 grid as illustrated below.
+     * [
+     * [0,0,0],
+     * [0,1,0],
+     * [0,0,0]
+     * ]
+     * The total number of unique paths is 2.
+     * Note: m and n will be at most 100. Tags: Array, DP
      */
     public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
         if (obstacleGrid == null)

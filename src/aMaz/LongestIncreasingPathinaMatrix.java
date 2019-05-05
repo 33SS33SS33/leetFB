@@ -2,26 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/23. HARD
- * Given an integer matrix, find the length of the longest increasing path.
- * From each cell, you can either move to four directions: left, right, up or down.
- * You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
- * Example 1:
- * nums = [
- * [9,9,4],
- * [6,6,8],
- * [2,1,1]
- * ]
- * Return 4
- * The longest increasing path is [1, 2, 6, 9].
- * Example 2:
- * nums = [
- * [3,4,5],
- * [3,2,6],
- * [2,2,1]
- * ]
- * Return 4
- * The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
- * Depth-first Search Topological Sort Memoization
  */
 public class LongestIncreasingPathinaMatrix {
     public static void main(String[] args) {
@@ -37,6 +17,21 @@ public class LongestIncreasingPathinaMatrix {
      * Get matrix max from every cell's max
      * Use matrix[x][y] <= matrix[i][j] so we don't need a visited[m][n] array
      * The key is to cache the distance because it's highly possible to revisit a cell
+     * <p>
+     * HARD, Given an integer matrix, find the length of the longest increasing path.
+     * From each cell, you can either move to four directions: left, right, up or down.
+     * You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
+     * nums = [
+     * [9,9,4],
+     * [6,6,8],
+     * [2,1,1]
+     * ] Return 4 The longest increasing path is [1, 2, 6, 9].
+     * nums = [
+     * [3,4,5],
+     * [3,2,6],
+     * [2,2,1]
+     * ] Return 4 The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
+     * Depth-first Search Topological Sort Memoization
      */
     public static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 

@@ -2,13 +2,7 @@ package aMaz;
 
 import java.util.LinkedList;
 
-/**
- * Given a binary tree, find its maximum depth.
- * The maximum depth is the number of nodes along the longest path from the
- * root node down to the farthest leaf node.
- * Tags: Tree, DFS
- * 使用自底向上bottom-up的递归
- */
+
 class MaximumDepthofBinaryTree {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -17,6 +11,11 @@ class MaximumDepthofBinaryTree {
     }
 
     /**
+     * Given a binary tree, find its maximum depth.
+     * The maximum depth is the number of nodes along the longest path from the
+     * root node down to the farthest leaf node.
+     * Tags: Tree, DFS
+     * 使用自底向上bottom-up的递归
      * Recursive, O(n) 递归
      */
     private int maximumDepthofBinaryTree(TreeNode root) {

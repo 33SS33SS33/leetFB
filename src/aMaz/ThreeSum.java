@@ -6,17 +6,6 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- * Given an array S of n integers, are there elements a, b, c in S such that a
- * + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
- * Note:
- * Elements in a triplet (a,b,c) must be in <strong>non-descending</strong>
- * order.
- * (ie, a ≤ b ≤ c)
- * The solution set must not contain <strong>duplicate</strong> triplets.
- * For example, given array S = {-1 0 1 2 -1 -4},
- * A solution set is:
- * (-1, 0, 1)
- * (-1, -1, 2)
  * Tags: Array, Two Pointers
  */
 class ThreeSum {
@@ -27,15 +16,20 @@ class ThreeSum {
     }
 
     /**
-     * 最好的
-     * Two Pointers.  O(N^2) Java solution
-     * Sort given array first.
+     * * Given an array S of n integers, are there elements a, b, c in S such that a
+     * + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+     * Note:
+     * Elements in a triplet (a,b,c) must be in <strong>non-descending</strong> order.
+     * (ie, a ≤ b ≤ c)
+     * The solution set must not contain <strong>duplicate</strong> triplets.
+     * For example, given array S = {-1 0 1 2 -1 -4}, solution set is: (-1, 0, 1) (-1, -1, 2)
+     * Two Pointers.  O(N^2) Java solution Sort given array first.
      * Traverse the array with 1 pointer
      * Use 2 more pointers from both start(i + 1) and end to find target
      * http://blog.csdn.net/linhuanmars/article/details/19711651
      */
     public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
         if (nums == null || nums.length < 3)
             return result;
         Arrays.sort(nums);

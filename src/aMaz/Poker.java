@@ -22,7 +22,7 @@ public class Poker {
     }
 
     /**
-     * 洗牌 （随机乱序）
+     * 洗牌（随机乱序）
      */
     public void shuffle() {
         for (int i = 0, len = cards.length; i < len; i++) {
@@ -35,7 +35,6 @@ public class Poker {
 
     /**
      * 发牌
-     *
      * @param index 发牌的位置
      */
     public Card deal(int index) {

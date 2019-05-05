@@ -4,22 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Given a set of candidate numbers (C) and a target number (T), find all
- * unique combinations in C where the candidate numbers sums to T.
- * The same repeated number may be chosen from C <strong>unlimited</strong>
- * number of times.
- * Note:
- * All numbers (including target) will be positive integers.
- * Elements in a combination (a1, a2, … , ak) must be in non-descending order.
- * (ie, a1 ≤ a2 ≤ … ≤ ak).
- * The solution set must not contain duplicate combinations.
- * For example, given candidate set 2,3,6,7 and target 7,
- * A solution set is:
- * [7]
- * [2, 2, 3]
- * Tags: Backtracking
- */
 class CombinationSum {
     // [2, 3, 6, 7], 7
     public static void main(String[] args) {
@@ -31,7 +15,16 @@ class CombinationSum {
     }
 
     /**
-     * 最好的
+     * Given a set of candidate numbers (C) and a target number (T), find all
+     * unique combinations in C where the candidate numbers sums to T.
+     * The same repeated number may be chosen from C <strong>unlimited</strong> number of times.
+     * Note: All numbers (including target) will be positive integers.
+     * Elements in a combination(a1, a2, … , ak) must be in non-descending order.
+     * (ie, a1 ≤ a2 ≤ … ≤ ak).
+     * The solution set must not contain duplicate combinations.
+     * For example, given candidate set 2,3,6,7 and target 7,
+     * A solution set is:[7] [2, 2, 3]
+     * Tags: Backtracking
      */
     public static List<List<Integer>> combinationSum(int[] nums, int target) {
         List<List<Integer>> list = new ArrayList<>();
@@ -40,14 +33,16 @@ class CombinationSum {
         return list;
     }
 
-    private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
+    private static void backtrack(List<List<Integer>> list, List<Integer> tempList,
+                                  int[] nums, int remain, int start) {
         if (remain == 0) {
             list.add(new ArrayList<>(tempList));
             return;
         }
         for (int i = start; i < nums.length; i++) {
             tempList.add(nums[i]);
-            backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+            // not i + 1 because we can reuse same elements
+            backtrack(list, tempList, nums, remain - nums[i], i);
             tempList.remove(tempList.size() - 1);
         }
     }

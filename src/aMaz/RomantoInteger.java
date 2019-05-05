@@ -3,35 +3,26 @@ package aMaz;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Given a roman numeral, zigZagConversion it to an integer.
- * Input is guaranteed to be within the range from 1 to 3999.
- * Example 1:
- * Input: "III"
- * Output: 3
- * Example 2:
- * Input: "IV"
- * Output: 4
- * Example 3:
- * Input: "IX"
- * Output: 9
- * Example 4:
- * Input: "LVIII"
- * Output: 58
- * Explanation: L = 50, V= 5, III = 3.
- * Tags: Math, String
- */
 class RomantoInteger {
     public static void main(String[] args) {
         String s = "X";
         System.out.println(new RomantoInteger().romantoInteger(s));
     }
 
-    //
+    /**
+     * Given a roman numeral, zigZagConversion it to an integer.
+     * Input is guaranteed to be within the range from 1 to 3999.
+     * Input: "III"  Output: 3
+     * Input: "IV"  Output: 4
+     * Input: "IX"  Output: 9
+     * Input: "LVIII"  Output: 58
+     * Explanation: L = 50, V= 5, III = 3.
+     * Tags: Math, String
+     */
     public int romantoInteger(String s) {
         if (s == null || s.length() == 0)
             return 0;
-        Map<Character, Integer> m = new HashMap<Character, Integer>();
+        Map<Character, Integer> m = new HashMap<>();
         m.put('I', 1);
         m.put('V', 5);
         m.put('X', 10);

@@ -1,24 +1,6 @@
 package aMaz;
 
-/**
- * Given a binary tree, find the maximum path sum. HARD
- * The path may start and end at any node in the tree.
- * For example:
- * Given the below binary tree,
- * 1
- * / \
- * 2   3
- * Return 6.
- * Tags: Tree, DFS
- * For each node like following, there should be four ways existing for max path:
- * 1. Node only
- * 2. L-sub + Node
- * 3. R-sub + Node
- * 4. L-sub + Node + R-sub
- * 后序遍历 然后返回最大值
- * 注意一下返回值  如果是本身节点然后加上左右节点 这个值不应该返回  因为父节点无法使用这个path   所以使用self.res直接对res进行更新
- * 所以返回值只是返回当前节点  带上左或者右某一条路径 或者都不带 值返回本身  所以在处理left和right的时候 要把负数变为0
- */
+
 class BinaryTreeMaximumPathSum {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -26,7 +8,7 @@ class BinaryTreeMaximumPathSum {
     }
 
     /**
-     * * The path may start and end at any node in the tree.
+     * HARD The path may start and end at any node in the tree.
      * A path from start to end, goes up on the tree for 0 or more steps, then goes
      * down for 0 or more steps. Once it goes down, it can't go up. Each path has a
      * highest node, which is also the lowest common ancestor of all other nodes on the path.
@@ -34,6 +16,23 @@ class BinaryTreeMaximumPathSum {
      * maximum path sum with highest node is the input node, update maximum if
      * necessary (2) returns the maximum sum of the path that can be extended to
      * input node's parent.
+     * <p>
+     * Given a binary tree, find the maximum path sum.
+     * The path may start and end at any node in the tree.
+     * Given the below binary tree,
+     * 1
+     * / \
+     * 2   3 Return 6.
+     * Tags: Tree, DFS
+     * For each node like following, there should be four ways existing for max path:
+     * 1. Node only
+     * 2. L-sub + Node
+     * 3. R-sub + Node
+     * 4. L-sub + Node + R-sub
+     * 后序遍历 然后返回最大值
+     * 注意一下返回值  如果是本身节点然后加上左右节点 这个值不应该返回
+     * 因为父节点无法使用这个path   所以使用self.res直接对res进行更新
+     * 所以返回值只是返回当前节点 带上左或者右某一条路径或者都不带值返回本身，所以在处理left和right的时候 要把负数变为0
      */
     int maxValue;
 

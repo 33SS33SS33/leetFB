@@ -5,20 +5,6 @@ import java.util.Queue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * Invert a binary tree.
- Input:
- 4
- /   \
- 2     7
- / \   / \
- 1   3 6   9
- Output:
- 4
- /   \
- 7     2
- / \   / \
- 9   6 3   1
- * 用BFS来翻转
  */
 public class InvertBinaryTree {
     public static void main(String[] args) {
@@ -40,6 +26,22 @@ public class InvertBinaryTree {
 
     }
 
+    /**
+     * Invert a binary tree.
+     * Input:
+     * 4
+     * /   \
+     * 2     7
+     * / \   / \
+     * 1   3 6   9
+     * Output:
+     * 4
+     * /   \
+     * 7     2
+     * / \   / \
+     * 9   6 3   1
+     * 用BFS来翻转
+     */
     public TreeNode invertBinaryTree(TreeNode root) {
         if (root == null)
             return null;

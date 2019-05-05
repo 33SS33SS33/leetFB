@@ -2,11 +2,6 @@ package aMaz;
 
 /**
  * Created by shanshan on 16/6/17.
- Write a function that reverses a string. The input string is given as an array of characters char[].
- Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
- You may assume all the characters consist of printable ascii characters.
- Input: ["h","e","l","l","o"] Output: ["o","l","l","e","h"]
- Input: ["H","a","n","n","a","h"] Output: ["h","a","n","n","a","H"]
  */
 public class ReverseString {
     public static void main(String[] args) {
@@ -16,6 +11,15 @@ public class ReverseString {
 
     }
 
+    /**
+     * Write a function that reverses a string. The input string
+     * is given as an array of characters char[].
+     * Do not allocate extra space for another array, you must do this
+     * by modifying the input array in-place with O(1) extra memory.
+     * You may assume all the characters consist of printable ascii characters.
+     * Input: ["h","e","l","l","o"] Output: ["o","l","l","e","h"]
+     * Input: ["H","a","n","n","a","h"] Output: ["h","a","n","n","a","H"]
+     */
     public String reverseStringa(String s) {
         char[] word = s.toCharArray();
         int i = 0;

@@ -2,15 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- * Given two strings s and t, write a function to determine if t is an anagram of s.
- * For example,
- * s = "anagram", t = "nagaram", return true.
- * s = "rat", t = "car", return false.
- * Note:
- * You may assume the string contains only lowercase alphabets.
- * Follow up:
- * What if the inputs contain unicode characters? How would you adapt your solution to such case?
- * 用哈希表统计或者直接排序就行
  */
 public class ValidAnagram {
     public static void main(String[] args) {
@@ -26,6 +17,14 @@ public class ValidAnagram {
      * alphabet. It increments the bucket value with String s and decrement with string t.
      * So if they are anagrams, all buckets should remain with initial value which is zero.
      * So just checking that and return
+     * <p>
+     * * Given two strings s and t, write a function to determine if t is an anagram of s.
+     * s = "anagram", t = "nagaram", return true.
+     * s = "rat", t = "car", return false.
+     * Note: You may assume the string contains only lowercase alphabets.
+     * Follow up: What if the inputs contain unicode characters?
+     * How would you adapt your solution to such case?
+     * 用哈希表统计或者直接排序就行
      */
     public boolean validAnagram(String s, String t) {
         int[] alphabet = new int[26];

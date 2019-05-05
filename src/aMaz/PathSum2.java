@@ -6,26 +6,6 @@ import java.util.List;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/7.
- * Given a binary tree and a sum, find all root-to-leaf paths where each path's
- * sum equals the given sum.
- * For example:
- * Given the below binary tree and sum = 22,
- * 5
- * / \
- * 4   8
- * /   / \
- * 11  13  4
- * /  \    / \
- * 7    2  5   1
- * return
- * [
- * [5,4,11,2],
- * [5,8,4,5]
- * ]
- * Tags: Tree, DFS
- * 先序遍历二叉树即可
- * 每次从一个节点到下一个节点的时候 就从sum把当前节点的val减掉
- * 然后判断一下到了叶子节点 如果sum等于当前节点的值 就把路径加进去
  */
 class PathSum2 {
     public static void main(String[] args) {
@@ -46,6 +26,23 @@ class PathSum2 {
         System.out.println(new PathSum2().pathSum2b(root, 4).toString());
     }
 
+    /**
+     * Given a binary tree and a sum, find all root-to-leaf paths where each path's
+     * sum equals the given sum.
+     * Given the below binary tree and sum = 22,
+     * 5
+     * / \
+     * 4   8
+     * /   / \
+     * 11  13  4
+     * /  \    / \
+     * 7    2  5   1
+     * return[[5,4,11,2],[5,8,4,5]]
+     * Tags: Tree, DFS
+     * 先序遍历二叉树即可
+     * 每次从一个节点到下一个节点的时候 就从sum把当前节点的val减掉
+     * 然后判断一下到了叶子节点 如果sum等于当前节点的值 就把路径加进去
+     */
     public List<List<Integer>> pathSum2a(TreeNode root, int sum) {
         List<List<Integer>> result = new LinkedList<>();
         List<Integer> currentResult = new LinkedList<>();

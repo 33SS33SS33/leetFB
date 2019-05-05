@@ -35,7 +35,7 @@ public class MaximumFrequencyStack {
         int f = freq.getOrDefault(x, 0) + 1;
         freq.put(x, f);
         maxfreq = Math.max(maxfreq, f);
-        if (!m.containsKey(f)) m.put(f, new Stack<Integer>());
+        if (!m.containsKey(f)) m.put(f, new Stack<>());
         m.get(f).add(x);
     }
 

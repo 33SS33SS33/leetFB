@@ -25,11 +25,10 @@ public class ClosestBinarySearchTreeValue2 {
         System.out.println(new ClosestBinarySearchTreeValue2().closestKValues(head, 4, 2));
     }
 
-    //最好的
     public List<Integer> closestKValues(TreeNode root, double target, int k) {
-        List<Integer> res = new ArrayList<Integer>();
-        Stack<Integer> s1 = new Stack<Integer>(); // predecessors
-        Stack<Integer> s2 = new Stack<Integer>(); // successors
+        List<Integer> res = new ArrayList<>();
+        Stack<Integer> s1 = new Stack<>(); // predecessors
+        Stack<Integer> s2 = new Stack<>(); // successors
         inorder(root, target, false, s1);
         inorder(root, target, true, s2);
         while (k-- > 0) {

@@ -2,25 +2,8 @@ package aMaz;
 
 import java.util.HashMap;
 
-/**
- * Given a string S and a string T, find the minimum window in S which will
- * contain all the characters in T in complexity O(n).
- * For example,
- * S = "ADOBECODEBANC"
- * T = "ABC"
- * Minimum window is "BANC".
- * Note:
- * If there is no such window in S that covers all characters in T, return the empty string "".
- * If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
- * Tags: Hashtable, Two Pointers, String
- * 整体思路就是用两个指针 然后首先往前找到第一个window 然后就缩小start指针 然后再往前继续找
- * count是用来计算现在的窗口缺了几种T的字母 所以当一种都不缺的时候 就是找到了一个window 这时候就要开始进入while 移动start
- * 注意这里移动的时候 dic[s[start]]有可能是负数 就是这个字母出现的次数 多余T的次数  比如 AABC ABC 所以这种情况
- * start应该是移动到B才算停 因为这时候count才为1 表示缺少了一种字母
- * 但是移动的过程中每次都要计算一遍 end-start 这样才能的出来ABC
- * 还有别的解法 未实现
- */
-//HARD TODO
+
+// TODO
 class MinimumWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
@@ -31,7 +14,20 @@ class MinimumWindowSubstring {
         //        System.out.println(res);
     }
 
-    //hard
+    /**
+     * HARD Given a string S and a string T, find the minimum window in S which will
+     * contain all the characters in T in complexity O(n).
+     * S = "ADOBECODEBANC"  T = "ABC"  Minimum window is "BANC".
+     * Note: If there is no such window in S that covers all characters in T, return the empty string "".
+     * If there are multiple such windows,
+     * you are guaranteed that there will always be only one unique minimum window in S.
+     * Tags: Hashtable, Two Pointers, String
+     * 整体思路就是用两个指针 然后首先往前找到第一个window 然后就缩小start指针 然后再往前继续找
+     * count是用来计算现在的窗口缺了几种T的字母 所以当一种都不缺的时候 就是找到了一个window 这时候就要开始进入while 移动start
+     * 注意这里移动的时候 dic[s[start]]有可能是负数 就是这个字母出现的次数 多余T的次数  比如 AABC ABC 所以这种情况
+     * start应该是移动到B才算停 因为这时候count才为1 表示缺少了一种字母
+     * 但是移动的过程中每次都要计算一遍 end-start 这样才能的出来ABC
+     */
     public static String minimumWindowSubstring(String s, String t) {
         HashMap<Character, Integer> map = new HashMap<>();
         for (char c : s.toCharArray())

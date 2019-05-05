@@ -20,8 +20,7 @@ class BestTimetoBuyandSellStock3 {
     }
 
     /**
-     * ganker You may complete at most
-     * <strong>two</strong> transactions.
+     * ganker You may complete at most <strong>two</strong> transactions.
      * 这里我们先解释最多可以进行k次交易的算法，然后最多进行两次我们只需要把k取成2即可。
      * 我们还是使用“局部最优和全局最优解法”。我们维护两种量，一个是当前到达第i天可以最多进行j次交易，最好的利润是多少（global[i][j]），
      * 另一个是当前到达第i天，最多可进行j次交易，并且最后一次交易在当天卖出的最好的利润是多少（local[i][j]）。下面我们来看递推式，全局的比较简单，
@@ -38,6 +37,7 @@ class BestTimetoBuyandSellStock3 {
      * 空间上只需要维护当天数据皆可以，所以是O(k)，当k=2，则是O(1)。
      * http://blog.csdn.net/linhuanmars/article/details/23236995
      */
+    //at most <strong>two</strong> transactions.
     public int bestTimetoBuyandSellStock3(int[] prices) {
         if (prices == null || prices.length == 0)
             return 0;

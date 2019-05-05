@@ -1,10 +1,6 @@
 package hard;
 
 /**
- * Given an array of integers, every element appears three times except for
- * one. Find that single one.
- * Your algorithm should have a linear runtime complexity. Could you implement
- * it without using extra memory?
  * Tags: Bit Manipulation
  * 右边的两个连接是这类题的通用解法
  * https://leetcode.com/discuss/56524/a-general-c-solution-for-these-type-problems
@@ -15,14 +11,18 @@ package hard;
  * 貌似是把符号位给减出来才行 因为符号位第32位不够减 所以才出来了负号
  * python语言自己的问题
  */
-class SingleNum2 {
+class SingleNumberII {
     public static void main(String[] args) {
         int[] A = {1, 1, 1, 2, 2, 2, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7};
-        System.out.println(singleNum(A));
-        System.out.println(singleNumberC(A));
+        System.out.println(singleNumberII(A));
+//        System.out.println(singleNumberC(A));
     }
 
     /**
+     * Given an array of integers, every element appears three times except for
+     * one. Find that single one.
+     * Your algorithm should have a linear runtime complexity. Could you implement
+     * it without using extra memory?
      * Use ones to store those nums only appeared once 最好的
      * twos to store those nums appeared twice
      * ^ - Bitwise exclusive or
@@ -30,7 +30,7 @@ class SingleNum2 {
      * & - Bitwise and
      * | - Bitwise inclusive or
      */
-    public static int singleNum(int[] A) {
+    public static int singleNumberII(int[] A) {
         int ones = 0, twos = 0;
         for (int i = 0; i < A.length; i++) {
             ones = (ones ^ A[i]) & ~twos; // in ones not in twos
@@ -39,11 +39,11 @@ class SingleNum2 {
         return ones; // only appeared once
     }
 
-    /**
+/*    /**
      * 位运算
      * 时间复杂度是O(n)。而空间复杂度需要一个32个元素的数组，也是固定的，因而空间复杂度是O(1)
      * http://blog.csdn.net/linhuanmars/article/details/22645599
-     */
+     *//*
     public static int singleNumberC(int[] A) {
         int[] digits = new int[32];
         for (int i = 0; i < 32; i++) {
@@ -56,6 +56,6 @@ class SingleNum2 {
             res += (digits[i] % 3) << i;
         }
         return res;
-    }
+    }*/
 
 }

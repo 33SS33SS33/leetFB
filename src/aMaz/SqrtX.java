@@ -1,10 +1,5 @@
 package aMaz;
 
-/**
- * Implement int sqrtX(int x).
- * Compute and return the square root of x.
- * Tags: Math, Binary Search
- */
 class SqrtX {
     public static void main(String[] args) {
         int[] nums = {-1, 1, 2, 4, 9, 16, 25};
@@ -14,10 +9,14 @@ class SqrtX {
     }
 
     /**
-     * Validate input first
-     * Binary Search from 1 ~ x
-     * Negative?
-     * Perfect square?
+     * Implement int sqrtX(int x).
+     * Compute and return the square root of x.
+     * Tags: Math, Binary Search
+     * <p>
+     * 1. Validate input first
+     * 2.Binary Search from 1 ~ x
+     * 3.Negative?
+     * 4.Perfect square?
      * Note possible overflows when mid * mid or (left + right) / 2.
      */
     public static int sqrtX(int x) {

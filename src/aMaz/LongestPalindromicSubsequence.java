@@ -2,11 +2,6 @@ package aMaz;
 
 /**
  * Created by krystal on 7/3/17. TODO
- * Given a string s, find the longest palindromic subsequence's length in s.
- * You may assume that the maximum length of s is 1000.
- * Example 1:
- * Input: "bbbab" Output: 4 One possible longest palindromic subsequence is "bbbb".
- * Input: "cbbd" Output: 2 One possible longest palindromic subsequence is "bb".
  */
 
 //https://leetcode.com/problems/longest-palindromic-subsequence/discuss/99101/Straight-forward-Java-DP-solution
@@ -19,6 +14,13 @@ public class LongestPalindromicSubsequence {
         System.out.println(p.longestPalindromicSubsequence(l));
     }
 
+    /**
+     * Given a string s, find the longest palindromic subsequence's length in s.
+     * You may assume that the maximum length of s is 1000.
+     * Example 1:
+     * Input: "bbbab" Output: 4 One possible longest palindromic subsequence is "bbbb".
+     * Input: "cbbd" Output: 2 One possible longest palindromic subsequence is "bb".
+     */
     public int longestPalindromicSubsequence(String s) {
         int[][] dp = new int[s.length()][s.length()];
 

@@ -1,13 +1,10 @@
 package aMaz;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/5/9.
- * "Given a string, determine if a permutation of the string could form a palindrome.
- * For example,
- * ""code"" -> False, ""aab"" -> True, ""carerac"" -> True."
- * 能不能回文就是最多只能有一个字母出现了奇数次
  */
 public class PalindromePermutation {
     public static void main(String[] args) {
@@ -18,6 +15,11 @@ public class PalindromePermutation {
         System.out.println(p.palindromePermutation(k));
     }
 
+    /**
+     * "Given a string, determine if a permutation of the string could form a palindrome.
+     * ""code"" -> False, ""aab"" -> True, ""carerac"" -> True."
+     * 能不能回文就是最多只能有一个字母出现了奇数次
+     */
     public boolean palindromePermutation(String s) {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < s.length(); ++i) {

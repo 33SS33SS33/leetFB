@@ -5,30 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * Given a binary tree, return the zigzag level order traversal of its nodes'
- * values. (ie, from left to right, then right to left for the next level and
- * alternate between).
- * For example:
- * Given binary tree {3,9,20,#,#,15,7},
- * 3
- * / \
- * 9  20
- * /  \
- * 15   7
- * return its zigzag level order traversal as:
- * [
- * [3],
- * [20,9],
- * [15,7]
- * ]
- * Tags: Tree, BFS, Stack
- * 这个题可以用BFS还有DFS BFS比较好
- * 自己的解法类似BFS
- * 把节点一排一排的入栈 有一个direction变量 可以用来规定入栈的顺序 从左到右 还是从右到左
- * 下次就反过来
- * 每次先遍历栈里的元素 这样就得到当前层的答案 再把下一层的入栈
- */
 
 class BinaryTreeZigZagLevelOrderTraversal {
     public static void main(String[] args) {
@@ -38,13 +14,25 @@ class BinaryTreeZigZagLevelOrderTraversal {
     }
 
     /**
-     * 最好的
+     * Given a binary tree, return the zigzag level order traversal of its nodes' values.
+     * (ie, from left to right, then right to left for the next level and alternate between).
+     * Given binary tree {3,9,20,#,#,15,7},
+     * 3
+     * / \
+     * 9  20
+     * /  \
+     * 15   7
+     * return its zigzag level order traversal as:
+     * [[3],[20,9],[15,7]]
+     * Tags: Tree, BFS, Stack
+     * 这个题可以用BFS还有DFS BFS比较好
+     * 把节点一排一排的入栈 有一个direction变量 可以用来规定入栈的顺序 从左到右 还是从右到左 下次就反过来
      * O(n) solution by using LinkedList along with ArrayList.
      * So insertion in the inner list and outer list are both O(1).
      * Using DFS and creating new lists when needed.
      */
     public List<List<Integer>> zigzagLevelOrdera(TreeNode root) {
-        List<List<Integer>> sol = new ArrayList<List<Integer>>();
+        List<List<Integer>> sol = new ArrayList<>();
         travel(root, sol, 0);
         return sol;
     }
@@ -53,7 +41,7 @@ class BinaryTreeZigZagLevelOrderTraversal {
         if (curr == null)
             return;
         if (sol.size() <= level) {
-            List<Integer> newLevel = new LinkedList<Integer>();
+            List<Integer> newLevel = new LinkedList<>();
             sol.add(newLevel);
         }
         List<Integer> collection = sol.get(level);
@@ -72,14 +60,14 @@ class BinaryTreeZigZagLevelOrderTraversal {
      * Toggle it after a level is finished.
      */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<List<Integer>> res = new ArrayList<>();
         if (root == null)
             return res;
-        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         boolean toggle = false;
         while (!q.isEmpty()) {
-            List<Integer> curLevel = new ArrayList<Integer>();
+            List<Integer> curLevel = new ArrayList<>();
             int size = q.size();
             for (int i = 0; i < size; i++) {
                 TreeNode n = q.poll();

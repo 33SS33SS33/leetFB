@@ -5,18 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * You are given a string, S, and a list of words, L, that are all of the same HARD TODO
- * length. Find all starting indices of substring(s) in S that is a
- * concatenation of each word in L exactly once and without any intervening
- * characters.
- * For example, given:
- * S: "barfoothefoobarman"
- * L: ["foo", "bar"]
- * You should return the indices: [0,9].
- * (order does not matter).
- * Tags: Hash Table, Two Pointers, String
- */
 class SubstringWithConcatenationofAllWords {
     public static void main(String[] args) {
         String S = "barfoothefoobarman";
@@ -25,6 +13,13 @@ class SubstringWithConcatenationofAllWords {
     }
 
     /**
+     * You are given a string, S, and a list of words, L, that are all of the same HARD TODO
+     * length. Find all starting indices of substring(s) in S that is a
+     * concatenation of each word in L exactly once and without any intervening characters.
+     * S: "barfoothefoobarman"  L: ["foo", "bar"]
+     * You should return the indices: [0,9]. (order does not matter).
+     * Tags: Hash Table, Two Pointers, String
+     * <p>
      * Build a map for words in L and its relative counts
      * At first I was gonna to use a set for words.
      * Owing to the fact that duplicate is allowed in L, we need to use map instead.

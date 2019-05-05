@@ -2,10 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
- * Remove all elements from a linked list of integers that have value val.
- * Input:  1->2->6->3->4->5->6, val = 6
- * Output: 1->2->3->4->5
- * 用个dummy头就比较方便
  */
 public class RemoveLinkedListElements {
     public static void main(String[] args) {
@@ -14,6 +10,12 @@ public class RemoveLinkedListElements {
         System.out.print(r.removeElements(head, 1));
     }
 
+    /**
+     * Remove all elements from a linked list of integers that have value val.
+     * Input:  1->2->6->3->4->5->6, val = 6
+     * Output: 1->2->3->4->5
+     * 用个dummy头就比较方便
+     */
     public ListNode removeLinkedListElements(ListNode head, int val) {
         ListNode helper = new ListNode(0);
         helper.next = head;

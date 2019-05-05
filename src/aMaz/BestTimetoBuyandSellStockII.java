@@ -1,14 +1,6 @@
 package aMaz;
 
-/**
- * Say you have an array for which the ith element is the price of a given stock on day i.
- * Design an algorithm to find the maximum profit. You may complete
- * <strong>as many transactions as you like</strong> (ie, buy one and sell
- * one share of the stock multiple times). However, you may not engage in
- * multiple transactions at the same time (ie, you must sell the stock
- * before you buy again).
- * Tags: Array, Greedy
- */
+
 class BestTimetoBuyandSellStockII {
     public static void main(String[] args) {
         int[] prices = {1, 2, 10, 100};
@@ -16,6 +8,13 @@ class BestTimetoBuyandSellStockII {
     }
 
     /**
+     * Say you have an array for which the ith element is the price of a given stock on day i.
+     * Design an algorithm to find the maximum profit. You may complete
+     * <strong>as many transactions as you like</strong> (ie, buy one and sell
+     * one share of the stock multiple times). However, you may not engage in
+     * multiple transactions at the same time (ie, you must sell the stock
+     * before you buy again).
+     * Tags: Array, Greedy
      * Sell whenever there is profit. 最好的
      * If next value is bigger, add the difference up to the profit
      */

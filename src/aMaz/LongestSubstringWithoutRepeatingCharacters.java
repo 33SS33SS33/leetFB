@@ -1,14 +1,8 @@
 package aMaz;
 
-import java.util.*;
+import java.util.HashMap;
 
-/**
- * Given a string, find the length of the longest substring without repeating
- * characters. For example, the longest substring without repeating letters for
- * "abcabcbb" is "abc", which the length is 3. For "bbbbb" the longest
- * substring is "b", with the length of 1.
- * Tags: Hashtable, Two pointers, String
- */
+
 class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
         System.out.println(LongestSubstringWithoutRepeatingCharacters("abcabcbb"));
@@ -19,7 +13,6 @@ class LongestSubstringWithoutRepeatingCharacters {
     }
 
     /**
-     * 最好的
      * Traverse the string
      * Get current character
      * Update start point
@@ -31,6 +24,12 @@ class LongestSubstringWithoutRepeatingCharacters {
      * If the character is already in the hashmap,
      * then move the left pointer to the right of the same character last found.
      * Note that the two pointers can only move forward.
+     * <p>
+     * Given a string, find the length of the longest substring without repeating
+     * characters. For example, the longest substring without repeating letters for
+     * "abcabcbb" is "abc", which the length is 3. For "bbbbb" the longest
+     * substring is "b", with the length of 1.
+     * Tags: Hashtable, Two pointers, String
      */
     public static int LongestSubstringWithoutRepeatingCharacters(String s) {
         if (s.length() == 0)

@@ -2,9 +2,6 @@ package aMaz;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/4.
- * Implement strStr().
- * Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
- * Tags: Two Pointers, String
  */
 
 public class ImplementStrStr {
@@ -39,6 +36,10 @@ public class ImplementStrStr {
     /**
      * 两个循环 大循环就是遍历长字符串
      * 然后在长字符串的每个起始位都开始小循环比对字符
+     * * Implement strStr().
+     * Returns the index of the first occurrence of needle in haystack,
+     * or -1 if needle is not part of haystack.
+     * Tags: Two Pointers, String
      */
     public static int strStr(String haystack, String needle) {
         if (haystack == null || needle == null || needle.length() == 0)

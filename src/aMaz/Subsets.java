@@ -6,22 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Given a set of distinct integers, S, return all possible subsets.
- * Note:
- * Elements in a subset must be in non-descending order.
- * The solution set must not contain duplicate subsets.
- * For example,
- * If S = [1,2,3], a solution is:
- * [
- * [3],
- * [1],
- * [2],
- * [1,2,3],
- * [1,3],
- * [2,3],
- * [1,2],
- * []
- * ]
  * Tags: Array, Backtracking, Bit Manipulation
  * 用DP 动态规划
  * [1,2] 和[1,2,3]的子集的差异在于 [1,2,3]是包含了[1,2]的所有子集再加上 把[1,2]所有的子集插入3元素  这两个加起来就是[1,2,3]的子集
@@ -38,9 +22,14 @@ class Subsets {
 
     //所有backtrack
     // https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
-
     /**
-     * 非递归  更好理解
+     * Given a set of distinct integers, S, return all possible subsets.
+     * Note:
+     * Elements in a subset must be in non-descending order.
+     * The solution set must not contain duplicate subsets.
+     * If S = [1,2,3], a solution is:
+     * [[3],[1],[2],[1,2,3],[1,3],[2,3],[1,2],[]
+     * ]
      */
     public static List<List<Integer>> subsets2(int[] S) {
         List<List<Integer>> res = new ArrayList<>();

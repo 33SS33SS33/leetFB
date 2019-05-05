@@ -1,9 +1,10 @@
 package aMaz;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
- * Created by shanshan on 2/6/19.
+ * Created by shanshan on 2/6/19. Medium
  * There is a ball in a mazeFind9 with empty spaces and walls. The ball can go through empty spaces by rolling up, down, left or right,
  * but it won't stop rolling until hitting a wall. When the ball stops, it could choose the next direction.
  * Given the ball's start position, the destination and the mazeFind9, find the shortest distance for the ball to stop at the destination.
@@ -41,7 +42,7 @@ public class TheMazeII {
         int[][] length = new int[m][n]; // record length
         for (int i = 0; i < m * n; i++) length[i / n][i % n] = Integer.MAX_VALUE;
         int[][] dir = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-        PriorityQueue<Point> list = new PriorityQueue<>((o1, o2) -> o1.l - o2.l); // using priority queue
+        PriorityQueue<Point> list = new PriorityQueue<>(Comparator.comparingInt(o -> o.l)); // using priority queue
         list.offer(new Point(start[0], start[1], 0));
         while (!list.isEmpty()) {
             Point p = list.poll();

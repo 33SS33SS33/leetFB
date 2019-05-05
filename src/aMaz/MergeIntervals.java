@@ -2,17 +2,6 @@ package aMaz;
 
 import java.util.*;
 
-/**
- * Given a collection of intervals, merge all overlapping intervals.
- * For example,
- * Given [1,3],[2,6],[8,10],[15,18],
- * return [1,6],[8,10],[15,18].
- * Tags: Array, Sort
- * 首先 将interval数组以start为key排序  然后添加第一个进res  然后遍历interval
- * 每次先检查当前这个interval的start有没有大于res的end  大于的话就直接插入  不大于的话 就说明和之前有区间重合
- * merge即可
- * 但是要 注意 res最后是[1,4] 然后要插入[2,3]这种情况 所以用了 max
- */
 
 class MergeIntervals {
     public static void main(String[] args) {
@@ -28,7 +17,13 @@ class MergeIntervals {
     }
 
     /**
-     * 最好的
+     * Given a collection of intervals, merge all overlapping intervals.
+     * Given [1,3],[2,6],[8,10],[15,18], return [1,6],[8,10],[15,18].
+     * Tags: Array, Sort
+     * 首先 将interval数组以start为key排序  然后添加第一个进res  然后遍历interval
+     * 每次先检查当前这个interval的start有没有大于res的end  大于的话就直接插入,不大于的话就说明和之前有区间重合
+     * merge即可 但是要注意 res最后是[1,4] 然后要插入[2,3]这种情况 所以用了 max
+     * <p>
      * Sort and merge, O(nlogn)
      * Sort the intervals according to their start value
      * Go through the intervals and update last interval

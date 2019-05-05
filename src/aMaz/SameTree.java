@@ -3,9 +3,6 @@ package aMaz;
 import java.util.Stack;
 
 /**
- * Given two binary trees, write a function to check if they are equal or not.
- * Two binary trees are considered equal if they are structurally identical
- * and the nodes have the same value.
  * Tags: Tree, DFS
  * 先序遍历
  */
@@ -34,6 +31,9 @@ class SameTree {
     }
 
     /**
+     * Given two binary trees, write a function to check if they are equal or not.
+     * Two binary trees are considered equal if they are structurally identical
+     * and the nodes have the same value.
      * Recursive, pre-order check
      * If both node's values are the same, left subtrees are same and so right
      * Return true, otherwise return false

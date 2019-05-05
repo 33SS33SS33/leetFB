@@ -4,19 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * Given a binary tree, return the inorder traversal of its nodes' values.
- * For example:
- * Given binary tree {1,#,2,3},
- * 1
- * \
- * 2
- * /
- * 3
- * return [1,3,2].
- * Note: Recursive solution is trivial, could you do it iteratively?
- * Tags: Tree, HashTable, Stack
- */
+
 class BinaryTreeInOrderTraversal {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -36,6 +24,15 @@ class BinaryTreeInOrderTraversal {
     }
 
     /**
+     * Given a binary tree, return the inorder traversal of its nodes' values.
+     * Given binary tree {1,#,2,3},
+     * 1
+     * \
+     * 2
+     * /
+     * 3
+     * return [1,3,2]. Note: Recursive solution is trivial, could you do it iteratively?
+     * Tags: Tree, HashTable, Stack
      * The recursive solution is trivial. 递归法
      * 算法的时间复杂度是O(n), 而空间复杂度则是递归栈的大小，即O(logn)
      */
@@ -56,7 +53,7 @@ class BinaryTreeInOrderTraversal {
     }
 
     /**
-     * -----迭代法  时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)
+     * 迭代法  时间复杂度也是O(n)，空间复杂度是栈的大小O(logn)
      * Stack solution, O(n) Space
      * Use a stack to store TreeNodes
      * Go to left most and add each node

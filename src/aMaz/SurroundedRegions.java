@@ -1,25 +1,6 @@
 package aMaz;
 
-/**
- * Given a 2D board containing 'X' and 'O', capture all regions surrounded by
- * 'X'.
- * A region is captured by flipping all 'O's into 'X's in that surrounded
- * region.
- * For example,
- * X X X X
- * X O O X
- * X X O X
- * X O X X
- * After running your function, the board should be:
- * X X X X
- * X X X X
- * X X X X
- * X O X X
- * Tags: BFS
- * 从矩阵的四条边开始  如果碰到0的元素 就用BFS查找与他临近的元素 然后把这些元素统统置为Y
- * 一直到结束  然后把这些Y的变成O 剩下那些本来为O的就可以变成X
- * 因为和边框上的元素有连接  就说明这些元素没有围起来
- */
+
 class SurroundedRegions {
     public static void main(String[] args) {
         char[][] board = {{'X', 'X', 'X', 'X'}, {'X', 'O', 'O', 'X'}, {'X', 'X', 'O', 'X'},
@@ -34,7 +15,23 @@ class SurroundedRegions {
         }
     }
 
-    //另外一种
+    /**
+     * Given a 2D board containing 'X' and 'O', capture all regions surrounded by 'X'.
+     * A region is captured by flipping all 'O's into 'X's in that surrounded region.
+     * X X X X
+     * X O O X
+     * X X O X
+     * X O X X
+     * After running your function, the board should be:
+     * X X X X
+     * X X X X
+     * X X X X
+     * X O X X
+     * Tags: BFS
+     * 从矩阵的四条边开始, 如果碰到0的元素 就用BFS查找与他临近的元素 然后把这些元素统统置为Y
+     * 一直到结束,然后把这些Y的变成O 剩下那些本来为O的就可以变成X
+     * 因为和边框上的元素有连接  就说明这些元素没有围起来
+     */
     //http://blog.csdn.net/linhuanmars/article/details/22904855
     public void surroundedRegions(char[][] board) {
         if (board == null || board.length == 0)

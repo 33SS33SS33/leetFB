@@ -57,7 +57,7 @@ public class SerializeandDeserializeBT {
     }
 
     public TreeNode deserializeBT(String data) {
-        Deque<String> nodes = new LinkedList<String>();
+        Deque<String> nodes = new LinkedList<>();
         nodes.addAll(Arrays.asList(data.split(spliter)));
         return buildTree(nodes);
     }

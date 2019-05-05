@@ -1,14 +1,12 @@
 package aMaz;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
- * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei),
- * find the minimum number of conference rooms required.
- * For example,
- * Given [[0, 30],[5, 10],[15, 20]], return 2.
- * Input: [[7,10],[2,4]] Output: 1
+ * <p>
  * 最多需要多少房子
  * 一个数组是start排序 一个数组是end 排序  然后就按照最基本的逻辑开房间的逻辑即可
  * 就是在开房间之前检查有几个房间已经end了 end了 就是avail +1 然后用一间房 就avail-1
@@ -25,7 +23,12 @@ public class MeetingRooms2 {
     }
 
     /**
-     * 最好的  uses min heap, average time complexity is O(nlogn).
+     * * Given an array of meeting time intervals consisting of
+     * start and end times [[s1,e1],[s2,e2],...] (si < ei),
+     * find the minimum number of conference rooms required.
+     * For example, Given [[0, 30],[5, 10],[15, 20]], return 2.
+     * Input: [[7,10],[2,4]] Output: 1
+     *  uses min heap, average time complexity is O(nlogn).
      * Sort the intervals by start time
      * Use a min heap to track the minimum end time of merged intervals
      * start with the first meeting, put it to a meeting room

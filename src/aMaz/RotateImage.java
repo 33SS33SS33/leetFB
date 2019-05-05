@@ -1,10 +1,6 @@
 package aMaz;
 
 /**
- * You are given an n x n 2D matrix representing an image.
- * Rotate the image by 90 degrees (clockwise).
- * Follow up:
- * Could you do this in-place?
  * Tags: Array
  */
 class RotateImage {
@@ -20,11 +16,13 @@ class RotateImage {
     }
 
     /**
-     * 最好的
-     * better
+     * You are given an n x n 2D matrix representing an image.
+     * Rotate the image by 90 degrees (clockwise).
+     * Follow up:
+     * Could you do this in-place?
      * Get the length of matrix
      * Do level by level, each level edge by edge
-     * In-place solutions overwrites original matrix  matrix[i][j] = matrix[n-1-j][i]"
+     * In-place solutions overwrites original matrix matrix[i][j] = matrix[n-1-j][i]"
      */
     public void rotateImage(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
