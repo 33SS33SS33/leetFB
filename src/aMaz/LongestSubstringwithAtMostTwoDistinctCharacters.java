@@ -1,5 +1,8 @@
 package aMaz;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by GAOSHANSHAN835 on 2015/12/28. HARD
  */
@@ -35,6 +38,32 @@ public class LongestSubstringwithAtMostTwoDistinctCharacters {
             maxLen = Math.max(j - i + 1, maxLen);
         }
         return maxLen;
+    }
+
+
+
+    public static int soe(int[] A) {
+
+        if (A == null || A.length == 0)
+            return 0;
+        int maxSoFar = 0;
+        int max = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i : A) {
+            if (map.containsKey(i)) {
+                map.put(i, map.get(i) + 1);
+            } else {
+                map.put(i, 1);
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            if (map.containsKey(e.getKey()+1)) {
+                maxSoFar = e.getValue()+map.get(e.getKey()+1);
+            }
+            max=Math.max(max,maxSoFar);
+        }
+        return max;
     }
 
 }

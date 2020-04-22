@@ -34,4 +34,44 @@ class MaximumSubarray {
         return max;
     }
 
+
+    public int longestIncreasingContinuousSubsequence(int[] A) {
+        if (A == null || A.length == 0) {
+            return -1;
+        }
+
+        int n = A.length;
+        int max = 1;
+        int res = 0;
+
+        int length = 1;
+        for (int i = 1; i < n; i++) {
+            if (A[i] > A[i - 1]) {
+                length++;
+            } else {
+                length = 1;
+            }
+//            max = Math.max(max, length);
+            if (length > max) {
+                res = i - 1;
+                max = length;
+            }
+        }
+
+        length = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            if (A[i] > A[i + 1]) {
+                length++;
+            } else {
+                length = 1;
+            }
+            max = Math.max(max, length);
+            if (length > max) {
+                res = i;
+                max = length;
+            }
+        }
+        return res;
+    }
+
 }
