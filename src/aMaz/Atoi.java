@@ -30,10 +30,8 @@ class Atoi {
     }
 
     /**
-     * Whitespace, sign, out of range
-     * Trim the unnecessary whitespaces
-     * initialize a variable as long to store the result
-     * use a boolean as a flag to mark whether its negative
+     * Whitespace, sign, out of range Trim the unnecessary whitespaces
+     * initialize a variable as long to store the result, use a boolean as a flag to mark whether its negative
      * return MAX or MIN if its out of range
      */
     public static int atoi(String str) {
@@ -68,7 +66,6 @@ class Atoi {
         } else if (longRes < Integer.MIN_VALUE) {
             return Integer.MIN_VALUE;
         }
-
         return (int) longRes;
     }
 

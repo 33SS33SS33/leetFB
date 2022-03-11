@@ -24,12 +24,9 @@ class Subsets {
     // https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
     /**
      * Given a set of distinct integers, S, return all possible subsets.
-     * Note:
-     * Elements in a subset must be in non-descending order.
+     * Note:Elements in a subset must be in non-descending order.
      * The solution set must not contain duplicate subsets.
-     * If S = [1,2,3], a solution is:
-     * [[3],[1],[2],[1,2,3],[1,3],[2,3],[1,2],[]
-     * ]
+     * If S = [1,2,3], a solution is:[[3],[1],[2],[1,2,3],[1,3],[2,3],[1,2],[]]
      */
     public static List<List<Integer>> subsets2(int[] S) {
         List<List<Integer>> res = new ArrayList<>();

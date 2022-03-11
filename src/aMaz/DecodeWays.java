@@ -6,23 +6,43 @@ package aMaz;
 class DecodeWays {
     public static void main(String[] args) {
         DecodeWays d = new DecodeWays();
-        System.out.println(d.decodeWaysa("12"));
+        System.out.println(d.numDecodings("12"));
         System.out.println(d.decodeWaysb("12"));
         System.out.println(d.decodeWaysc("12"));
+    }
+
+    public int numDecodings(String s) {
+        if (s.charAt(0) == '0') {
+            return 0;
+        }
+        int n = s.length();
+        int twoBack = 1;
+        int oneBack = 1;
+        for (int i = 1; i < n; i++) {
+            int current = 0;
+            if (s.charAt(i) != '0') {
+                current = oneBack;
+            }
+            int twoDigit = Integer.parseInt(s.substring(i - 1, i + 1));
+            if (twoDigit >= 10 && twoDigit <= 26) {
+                current += twoBack;
+            }
+            twoBack = oneBack;
+            oneBack = current;
+        }
+        return oneBack;
     }
 
     //http://blog.csdn.net/linhuanmars/article/details/24570759
     //最好的  不懂。。。
     /**
-     * A message containing letters from A-Z is being encoded to numbers using the
-     * following mapping:
+     * A message containing letters from A-Z is being encoded to numbers using the following mapping:
      * 'A' -> 1
      * 'B' -> 2
      * ...
      * 'Z' -> 26
      * Given an encoded message containing digits, determine the total number of ways to decode it.
-     * Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12).
-     * The number of ways decoding "12" is 2.
+     * Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12). The number of ways decoding "12" is 2.
      * Tags: DP, String
      */
     public int decodeWaysa(String s) {

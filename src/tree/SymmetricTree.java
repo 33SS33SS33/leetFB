@@ -55,8 +55,7 @@ class SymmetricTree {
     }
 
     /**
-     * 递归
-     * 算法的时间复杂度是树的遍历O(n)，空间复杂度同样与树遍历相同是O(logn)
+     * 递归 算法的时间复杂度是树的遍历O(n)，空间复杂度同样与树遍历相同是O(logn)
      * Recursive, pre-order traversal
      * Check two symmetric nodes a time
      */
@@ -73,8 +72,7 @@ class SymmetricTree {
     }
 
     /**
-     * 非递归方法
-     * 是使用层序遍历来判断对称性质
+     * 非递归方法 是使用层序遍历来判断对称性质
      * Use a stack to store nodes in order
      * Then pop and compare
      * http://blog.csdn.net/linhuanmars/article/details/23072829

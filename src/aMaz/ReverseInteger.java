@@ -3,8 +3,7 @@ package aMaz;
 /**
  * Created by GAOSHANSHAN835 on 2016/1/19.
  * Reverse digits of an integer.
- * Example1: x = 123, return 321
- * Example2: x = -123, return -321
+ * Example1: x = 123, return 321  x = -123, return -321
  */
 public class ReverseInteger {
     public static void main(String[] args) {
@@ -17,9 +16,6 @@ public class ReverseInteger {
         System.out.println(r.reverseIntegerb(b));
     }
 
-    /**
-     * creek This solution is from Sherry, it is succinct and it is pretty.
-     */
     public int reverseInteger(int x) {
         int rev = 0;
         while (x != 0) {
@@ -37,6 +33,10 @@ public class ReverseInteger {
      * 如果不先转为正数也可以，只是在后面要对符号进行一下判断。这种题目考察的就是数字的基本处理，面试的时候尽量不能错，
      * 而且对于corner case要尽量进行考虑，一般来说都是面试的第一道门槛
      * http://blog.csdn.net/linhuanmars/article/details/20024837
+     */
+    /**
+     * Reverse digits of an integer.
+     * Example1: x = 123, return 321  x = -123, return -321
      */
     public int reverseIntegerb(int x) {
         if (x == Integer.MIN_VALUE)

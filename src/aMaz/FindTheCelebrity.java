@@ -13,9 +13,7 @@ class FindTheCelebrity {
     /**
      * The first pass is to pick out the candidate. If candidate knows i, then switch candidate.
      * The second pass is to check whether the candidate is real.
-     * <p>
-     * Given:
-     * function:  isFriend(a, b)
+     * Given: function:  isFriend(a, b)
      * Returns true if b is treated as a friend by a group of persons, say,
      * represented as an array. all the other n - 1 people know him/her but he/she does not know any of them.
      * 可以通过一遍就过滤出来一个候选的
@@ -36,7 +34,6 @@ class FindTheCelebrity {
         }
         return candidate;
     }
-
     public boolean knows(int a, int b) {
         return true;
     }

@@ -12,13 +12,12 @@ public class LongestIncreasingPathinaMatrix {
 
     /**
      * https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/78308/15ms-Concise-Java-Solution
+     /**
      * Do DFS from every cell
      * Compare every 4 direction and skip cells that are out of boundary or smaller
-     * Get matrix max from every cell's max
-     * Use matrix[x][y] <= matrix[i][j] so we don't need a visited[m][n] array
+     * Get matrix max from every cell's max, Use matrix[x][y] <= matrix[i][j] so we don't need a visited[m][n] array
      * The key is to cache the distance because it's highly possible to revisit a cell
-     * <p>
-     * HARD, Given an integer matrix, find the length of the longest increasing path.
+     * Given an integer matrix, find the length of the longest increasing path.
      * From each cell, you can either move to four directions: left, right, up or down.
      * You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).
      * nums = [
@@ -34,7 +33,6 @@ public class LongestIncreasingPathinaMatrix {
      * Depth-first Search Topological Sort Memoization
      */
     public static final int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-
     public int longestIncreasingPath(int[][] matrix) {
         if (matrix.length == 0)
             return 0;
@@ -49,7 +47,6 @@ public class LongestIncreasingPathinaMatrix {
         }
         return max;
     }
-
     public int dfs(int[][] matrix, int i, int j, int m, int n, int[][] cache) {
         if (cache[i][j] != 0)
             return cache[i][j];

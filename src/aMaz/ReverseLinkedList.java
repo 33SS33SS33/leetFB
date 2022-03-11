@@ -21,7 +21,7 @@ class ReverseLinkedList {
         n3.next = n4;
         n4.next = n5;
         ReverseLinkedList r = new ReverseLinkedList();
-        Node reversed = r.reverseLinkedListA(n1);
+        Node reversed = r.reverseLinkedListb(n1);
         Node cur = reversed;
         while (cur != null) {
             System.out.print(cur.next != null ? cur.val + "->" : cur.val);
@@ -43,18 +43,10 @@ class ReverseLinkedList {
         return newHead;
     }
 
-    /**
-     * 递归
-     * Recursive
-     * Divide the list in 2 parts - first node and rest of the linked list
-     * Call reverse for the rest of the linked list
-     * Link rest to first
-     * Fix head pointer
-     */
-    Node reverseLinkedListA(Node head) {
+    Node reverseLinkedListb(Node head) {
         if (head == null || head.next == null)
             return head;
-        Node temp = reverseLinkedListA(head.next);
+        Node temp = reverseLinkedListb(head.next);
         head.next.next = head;
         head.next = null;
         return temp;

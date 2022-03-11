@@ -9,7 +9,7 @@ package aMaz;
  * Tags: Linkedlist, Math
  * 实现中注意维护进位，陷阱的话记住最后还要判一下有没有进位，如果有再生成一位-
  */
-class AddTwoNum {
+public class AddTwoNum {
     public static void main(String[] args) {
         AddTwoNum s = new AddTwoNum();
         ListNode r1 = buildList1();
@@ -54,10 +54,10 @@ class AddTwoNum {
     }
 
     public static class ListNode {
-        int val;
-        ListNode next;
+        public int val;
+        public ListNode next;
 
-        ListNode(int x) {
+        public ListNode(int x) {
             val = x;
             next = null;
         }

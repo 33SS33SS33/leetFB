@@ -18,17 +18,15 @@ class ConvertSortedArrayToBinarySearchTree {
      * 每层递归函数取中间元素，作为当前根和赋上结点值，然后左右结点接上左右区间的递归函数返回值。
      * 时间复杂度还是一次树遍历O(n)，总的空间复杂度是栈空间O(logn)加上结果的空间O(n)，额外空间是O(logn)，总体是O(n)
      */
+    /**
+     * Given an array where elements are sorted in ascending order, zigZagConversion it to a <strong>height balanced</strong> BST.
+     */
     public static TreeNode convertSortedArrayToBinarySearchTree(int[] num) {
         if (num == null || num.length == 0)
             return null;
         return helper(num, 0, num.length - 1);
     }
 
-    /**
-     * Recursive, DFS
-     * Divide into left subtree and right subtree with indices range
-     * Choose mid point as the root of subtree
-     */
     public static TreeNode helper(int[] num, int left, int right) {
         if (left > right)
             return null;

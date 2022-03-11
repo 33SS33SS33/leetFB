@@ -18,9 +18,9 @@ class LongestConsecutiveSequence {
      * 最后比较当前串是不是比当前最大串要长，是则更新。如此继续直到集合为空。如果我们用HashSet来存储数字，则可以认为访问时间是常量的，
      * 那么算法需要一次扫描来建立集合，第二次扫描来找出最长串，所以复杂度是O(2*n)=O(n)，空间复杂度是集合的大小，即O(n)
      * <p>
-     * HARD, Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
-     * Given [100, 4, 200, 1, 3, 2],
-     * The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
+     * HARD,
+     * Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+     * Given [100, 4, 200, 1, 3, 2], The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
      * Your algorithm should run in O(n) complexity.
      * Tags: Array, HashTable
      * We can solve this problem in O(n) time using an Efficient Solution. The idea is to use Hashing.

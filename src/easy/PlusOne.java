@@ -1,10 +1,8 @@
 package easy;
 
 /**
- * Given a non-negative number represented as an array of digits,
- * <strong>plus one</strong> to the number.
- * The digits are stored such that the most significant digit is
- * at the head of the list.
+ * Given a non-negative number represented as an array of digits,<strong>plus one</strong> to the number.
+ * The digits are stored such that the most significant digit is at the head of the list.
  * Tags: Array, Math
  */
 class PlusOne {
@@ -24,6 +22,11 @@ class PlusOne {
         System.out.println("}");
     }
 
+    /**
+     * Given a non-negative number represented as an array of digits,<strong>plus one</strong> to the number.
+     * The digits are stored such that the most significant digit is at the head of the list.
+     * Tags: Array, Math
+     */
     public static int[] plusOnea(int[] digits) {
         if (digits == null || digits.length == 0)
             return digits;

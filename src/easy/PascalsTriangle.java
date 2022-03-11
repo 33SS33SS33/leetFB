@@ -20,15 +20,15 @@ class PascalsTriangle {
     public static void main(String[] args) {
         PascalsTriangle p = new PascalsTriangle();
         int k = 3;
-        System.out.println(p.generatea(k).toString());
-        System.out.println(p.generate(k).toString());
-        System.out.println(p.generateB(k).toString());
+        System.out.println(p.pascalsTriangle(k).toString());
+        System.out.println(p.pascalsTriangleb(k).toString());
+        System.out.println(p.pascalsTrianglec(k).toString());
     }
 
-    /**
-     * 最好的
+     /**
+     * Given numRows, generate the first numRows of Pascal's triangle. For example, given numRows = 5,
      */
-    public List<List<Integer>> generatea(int numRows) {
+    public List<List<Integer>> pascalsTriangle(int numRows) {
         List<List<Integer>> allrows = new ArrayList<List<Integer>>();
         ArrayList<Integer> row = new ArrayList<Integer>();
         for (int i = 0; i < numRows; i++) {
@@ -45,7 +45,7 @@ class PascalsTriangle {
      * calculate element value: K(i)(j)=K(i-1)(j-1)+K(i-1)(j) except for the first and last
      * element
      */
-    public List<List<Integer>> generate(int numRows) {
+    public List<List<Integer>> pascalsTriangleb(int numRows) {
         List<List<Integer>> triangle = new ArrayList<List<Integer>>();
         if (numRows <= 0)
             return triangle;
@@ -70,7 +70,7 @@ class PascalsTriangle {
     /**
      * creek----
      */
-    public ArrayList<ArrayList<Integer>> generateB(int numRows) {
+    public ArrayList<ArrayList<Integer>> pascalsTrianglec(int numRows) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
         if (numRows <= 0)
             return result;
@@ -84,11 +84,9 @@ class PascalsTriangle {
                 cur.add(pre.get(j) + pre.get(j + 1)); //middle
             }
             cur.add(1);//last
-
             result.add(cur);
             pre = cur;
         }
         return result;
     }
-
 }

@@ -34,8 +34,7 @@ public class SerializeandDeserializeBT {
     /**
      * The idea is simple: print the tree in pre-order traversal and use "X" to denote null node and split node with ",".
      * We can use a StringBuilder for building the string on the fly. For deserializing,
-     * we use a Queue to store the pre-order traversal and since we have "X" as null node,
-     * we know exactly how to where to end building subtress.
+     * we use a Queue to store the pre-order traversal and since we have "X" as null node.we know exactly how to where to end building subtress.
      */
     private static final String spliter = ",";
     private static final String NN = "X";

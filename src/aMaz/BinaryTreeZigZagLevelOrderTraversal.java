@@ -53,12 +53,6 @@ class BinaryTreeZigZagLevelOrderTraversal {
         travel(curr.right, sol, level + 1);
     }
 
-    /**
-     * Use queue to do BFS.
-     * Get queue's size to get nodes in each level.
-     * Use a boolean to indicate difference level order.
-     * Toggle it after a level is finished.
-     */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null)

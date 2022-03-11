@@ -1,18 +1,6 @@
 package aMaz;
 
-/**
- * Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
- * Return the quotient after dividing dividend by divisor.
- * The integer division should truncate toward zero.
- * Input: dividend = 10, divisor = 3 Output: 3
- * Input: dividend = 7, divisor = -3 Output: -2
- * Note:
- * Both dividend and divisor will be 32-bit signed integers.
- * The divisor will never be 0.
- * Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1].
- * For the purpose of this problem,assume that your function returns 231 − 1 when the division result overflows.
- * Tags: Math, Binary Search
- */
+
 class DivideTwoIntegers {
     public static void main(String[] args) {
         DivideTwoIntegers d = new DivideTwoIntegers();
@@ -21,6 +9,17 @@ class DivideTwoIntegers {
 //        System.out.println(d.divideTwoIntegersc(100, 3));
     }
 
+    /**
+     * Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
+     * Return the quotient after dividing dividend by divisor.
+     * The integer division should truncate toward zero.
+     * Input: dividend = 10, divisor = 3 Output: 3
+     * Input: dividend = 7, divisor = -3 Output: -2
+     * Note:Both dividend and divisor will be 32-bit signed integers.The divisor will never be 0.
+     * Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1].
+     * For the purpose of this problem,assume that your function returns 231 − 1 when the division result overflows.
+     * Tags: Math, Binary Search
+     */
     public int divideTwoIntegers(int dividend, int divisor) {
         //Reduce the problem to positive long integer to make it easier.
         //Use long to avoid integer overflow cases.

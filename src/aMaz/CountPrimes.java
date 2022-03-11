@@ -13,6 +13,9 @@ public class CountPrimes {
 //        System.out.println(countPrimesB(num));
     }
 
+    /**
+     * Count the number of prime numbers less than a non-negative number, n.
+     */
     public static int countPrimes(int n) {
         if (n <= 2)
             return 0;

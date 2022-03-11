@@ -17,10 +17,8 @@ public class ValidAnagram {
      * alphabet. It increments the bucket value with String s and decrement with string t.
      * So if they are anagrams, all buckets should remain with initial value which is zero.
      * So just checking that and return
-     * <p>
      * * Given two strings s and t, write a function to determine if t is an anagram of s.
-     * s = "anagram", t = "nagaram", return true.
-     * s = "rat", t = "car", return false.
+     * s = "anagram", t = "nagaram", return true. s = "rat", t = "car", return false.
      * Note: You may assume the string contains only lowercase alphabets.
      * Follow up: What if the inputs contain unicode characters?
      * How would you adapt your solution to such case?

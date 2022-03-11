@@ -32,7 +32,20 @@ class WildcardMatching {
         System.out.println(w.wildcardMatchingb("b", "*?*?")); // false
         System.out.println(w.wildcardMatching("b", "*?*?")); // false
     }
-
+    /**
+     * Implement wildcard pattern matching with support for '?' and '*' '?' Matches any single character. HARD TODO
+     * '*' Matches any sequence of characters (including the empty sequence).The matching should cover the entire input string (not partial).
+     * The function prototype should be:bool wildcardMatchingc(const char *s, const char *p)
+     * wildcardMatchingc("aa","a") → false
+     * wildcardMatchingc("aa","aa") → true
+     * wildcardMatchingc("aa", "*") → true
+     * wildcardMatchingc("ab", "?*") → true
+     * wildcardMatchingc("aab", "c*a*b") → false
+     * My own examples:
+     * wildcardMatchingc("aab", "a*a*b") → true
+     * wildcardMatchingc("a", "a*") → true
+     * Tags: DP, Backtracking, Greedy, String
+     */
     public static boolean wildcardMatching(String s, String p) {
         if (s == null && p == null)
             return true;

@@ -3,8 +3,7 @@ package aFB;
 import java.util.Stack;
 
 /**
- * Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle
- * containing all ones and return its area.
+ * Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing all ones and return its area.
  * Tags: Array, Hashtable, Stack, DP
  */
 class MaxRectangle {
@@ -22,8 +21,7 @@ class MaxRectangle {
      * 接下来如果对每一行都做一次Largest Rectangle in Histogram，
      * 从其中选出最大的矩阵，那么它就是整个矩阵中面积最大的子矩阵。
      * 所以完成对一行为底边的矩阵求解复杂度是O(n+n)=O(n)。接下来对每一行都做一次，那么算法总时间复杂度是O(m*n)
-     * row by row
-     * create a height integer array to bigger than column size
+     * row by row create a height integer array to bigger than column size
      * set last height to zero(out of bounds)
      * build new height on each row
      * use stack to store indices

@@ -19,26 +19,19 @@ public class MeetingRooms2 {
         Interval inter2 = new Interval(2, 6);
         Interval inter3 = new Interval(4, 6);
         Interval[] intervals = {inter1, inter2, inter3};
-        System.out.println(meetingRooms2a(intervals));
+        System.out.println(meetingRoomsIIa(intervals));
     }
 
     /**
-     * * Given an array of meeting time intervals consisting of
-     * start and end times [[s1,e1],[s2,e2],...] (si < ei),
+     * Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei),
      * find the minimum number of conference rooms required.
-     * For example, Given [[0, 30],[5, 10],[15, 20]], return 2.
-     * Input: [[7,10],[2,4]] Output: 1
-     *  uses min heap, average time complexity is O(nlogn).
-     * Sort the intervals by start time
-     * Use a min heap to track the minimum end time of merged intervals
-     * start with the first meeting, put it to a meeting room
-     * get the meeting room that finishes earliest
-     * if the current meeting starts right after
-     * there's no need for a new room, merge the interval
-     * otherwise, this meeting needs a new room
-     * don't forget to put the meeting room back
+     * Given [[0, 30],[5, 10],[15, 20]], return 2.Input: [[7,10],[2,4]] Output: 1
+     * uses min heap, average time complexity is O(nlogn).Sort the intervals by start time
+     * Use a min heap to track the minimum end time of merged intervals start with the first meeting, put it to a meeting room
+     * get the meeting room that finishes earliest if the current meeting starts right after there's no need for a new room, merge the interval
+     * otherwise, this meeting needs a new room don't forget to put the meeting room back
      */
-    public static int meetingRooms2a(Interval[] intervals) {
+    public static int meetingRoomsIIa(Interval[] intervals) {
         if (intervals == null || intervals.length == 0)
             return 0;
         Arrays.sort(intervals, Comparator.comparingInt(a -> a.start));

@@ -7,16 +7,12 @@ import java.util.*;
  * the width of each bar is 1, find the area of largest rectangle in the histogram.
  * Above is a histogram where width of each bar is 1, given height =[2,1,5,6,2,3].
  * The largest rectangle is shown in the shaded area, which has area = 10 unit.
- * For example,
- * Given height = [2,1,5,6,2,3],
- * return 10.
- * Tags: Array, Stack
+ * Given height = [2,1,5,6,2,3],return 10. Tags: Array, Stack
  * 主要思路可以看geeksforgeeks
- * 首先 主体思路就是对于每个bar 我们都去求出以当前的bar为最低的bar的面积
- * 然后所有这些面积的最大值就是结果
+ * 首先 主体思路就是对于每个bar 我们都去求出以当前的bar为最低的bar的面积 然后所有这些面积的最大值就是结果
  * 在求以当前bar为最低bar的面积的时候 最难的就是要确定这个最低bar的左边界还有右边界
  * stack解法就是巧妙地解决了这个问题
- * 最重要的  stack里存的是索引 不是值
+ * 最重要的 stack里存的是索引 不是值
  * stack里存的的都是递增的序列 如果碰到小于栈顶的
  * 那么 就计算栈顶的元素的面积 这个元素的面积  左边界就是它自己  右边界就是这个小于它的元素
  * 然后弹出  然后如果栈顶的还是大 那么继续计算  因为存的是索引  所以宽度计算都是正确的

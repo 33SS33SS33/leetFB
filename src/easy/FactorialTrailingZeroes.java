@@ -21,7 +21,9 @@ class FactorialTrailingZeroes {
     }
 
     /**
-     * creek 最好的
+     * Given an integer n, return the number of trailing zeroes in n!.
+     * Note: Your solution should be in logarithmic time complexity.Tag: Math
+     * 处理这个问题也很简单，首先对n÷5，移除所有的单个5，然后÷25，移除额外的5，以此类推。
      */
     public static int trailingZeroesD(int n) {
         if (n < 0)

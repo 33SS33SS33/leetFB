@@ -3,8 +3,7 @@ package aMaz;
 /**
  * Given an unsorted integer array, find the first missing positive integer. HARD TODO
  * For example,
- * Given [1,2,0] return 3,
- * and [3,4,-1,1] return 2.
+ * Given [1,2,0] return 3,and [3,4,-1,1] return 2.
  * Your algorithm should run in O(n) time and uses constant space.
  * Tags: Array
  * 使用了类似桶排序的办法 扫描两边

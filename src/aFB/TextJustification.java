@@ -32,7 +32,7 @@ import java.util.List;
  */
 class TextJustification {
     public static void main(String[] args) {
-        System.out.println(fullJustifya(
+        System.out.println(textJustification(
                 new String[]{"This", "is", "an", "example", "of", "text", "justification."}, 16)
                 .toString());
         System.out.println(fullJustify(
@@ -40,7 +40,7 @@ class TextJustification {
                 .toString());
     }
 
-    public static List<String> fullJustifya(String[] words, int L) {
+    public static List<String> textJustification(String[] words, int L) {
         List<String> list = new LinkedList<String>();
         for (int i = 0, w; i < words.length; i = w) {
             int len = -1;

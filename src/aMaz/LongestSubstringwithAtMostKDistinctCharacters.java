@@ -1,6 +1,5 @@
 package aMaz;
 
-//TODO
 public class LongestSubstringwithAtMostKDistinctCharacters {
     public static void main(String[] args) {
         System.out.println(longestSubstringwithAtMostKDistinctCharacters("eceba", 2));
@@ -10,10 +9,8 @@ public class LongestSubstringwithAtMostKDistinctCharacters {
     //the slide window
 
     /**
-     * Created by shanshan on 16/6/17. HARD
-     * Given a string, find the length of the longest
-     * substring T that contains at most k distinct characters.
-     * For example, Given s = “eceba” and k = 2, Output: 3  T is "ece" which its length is 3.
+     * Given a string, find the length of the longest substring T that contains at most k distinct characters.
+     *  Given s = “eceba” and k = 2, Output: 3  T is "ece" which its length is 3.
      * Input: s = "aa", k = 1 Output: 2 ; T is "aa" which its length is 2.
      * 变形 返回string!!!~~~~
      */

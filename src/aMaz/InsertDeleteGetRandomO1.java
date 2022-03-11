@@ -27,22 +27,17 @@ import java.util.HashMap;
  * randomSet.getRandom();
  */
 public class InsertDeleteGetRandomO1 {
-    public class RandomizedSet {
+
+    public class InsertDeleteGetRandom {
         ArrayList<Integer> nums;
         HashMap<Integer, Integer> locs;
         java.util.Random rand = new java.util.Random();
 
-        /**
-         * Initialize your data structure here.
-         */
-        public RandomizedSet() {
+        public InsertDeleteGetRandom() {
             nums = new ArrayList<Integer>();
             locs = new HashMap<Integer, Integer>();
         }
 
-        /**
-         * Inserts a value to the set. Returns true if the set did not already contain the specified element.
-         */
         public boolean insert(int val) {
             boolean contain = locs.containsKey(val);
             if (contain)
@@ -52,9 +47,6 @@ public class InsertDeleteGetRandomO1 {
             return true;
         }
 
-        /**
-         * Removes a value from the set. Returns true if the set contained the specified element.
-         */
         public boolean remove(int val) {
             boolean contain = locs.containsKey(val);
             if (!contain)
@@ -70,9 +62,6 @@ public class InsertDeleteGetRandomO1 {
             return true;
         }
 
-        /**
-         * Get a random element from the set.
-         */
         public int getRandom() {
             return nums.get(rand.nextInt(nums.size()));
         }

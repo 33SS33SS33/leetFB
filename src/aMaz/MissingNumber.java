@@ -4,15 +4,13 @@ package aMaz;
 public class MissingNumber {
     public static void main(String[] args) {
         int[] A = {1, 2, 0};
-        System.out.println(new MissingNumber().missingNumber2(A));
+        System.out.println(new MissingNumber().missingNumber(A));
         System.out.println(new MissingNumber().missingNumber3(A));
     }
 
     /**
-     * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,
-     * find the one that is missing from the array.
-     * Input: [3,0,1]  Output: 2
-     * Input: [9,6,4,2,3,5,7,0,1]  Output: 8
+     * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,find the one that is missing from the array.
+     * Input: [3,0,1]  Output: 2 Input: [9,6,4,2,3,5,7,0,1]  Output: 8
      * Note:Your algorithm should run in linear runtime complexity.
      * Could you implement it using only constant extra space complexity?
      * Tags: Array, Math, Bit Manipulation
@@ -32,6 +30,7 @@ public class MissingNumber {
      * so in a missing array, what left finally is the missing number.
      * xor all numbers in the array and from 0 to n, the result is the missing number
      */
+
     public int missingNumber3(int[] nums) {
         int xor = 0;
         for (int i = 0; i < nums.length; i++) {
@@ -41,15 +40,18 @@ public class MissingNumber {
     }
 
     /**
-     * avoid overflow
+     * Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,find the one that is missing from the array.
+     * Input: [3,0,1]  Output: 2 Input: [9,6,4,2,3,5,7,0,1]  Output: 8
+     * Note:Your algorithm should run in linear runtime complexity.
+     * Could you implement it using only constant extra space complexity?
+     * Tags: Array, Math, Bit Manipulation
      */
-    public int missingNumber2(int[] nums) {
+    //avoid overflow
+    public int missingNumber(int[] nums) {
         int res = 0;
         for (int i = 0; i < nums.length; i++) {
             res += i + 1 - nums[i];
         }
         return res;
     }
-
-
 }

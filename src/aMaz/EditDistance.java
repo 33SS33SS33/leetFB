@@ -29,12 +29,10 @@ class EditDistance {
      * a) Insert a character
      * b) Delete a character
      * c) Replace a character
-     * Example 1:
      * Input: word1 = "horse", word2 = "ros" Output: 3
      * Explanation: horse -> rorse (replace 'h' with 'r')
      * rorse -> rose (remove 'r')
      * rose -> ros (remove 'e')
-     * Example 2:
      * Input: word1 = "intention", word2 = "execution" Output: 5
      * Explanation: intention -> inention (remove 't')
      * inention -> enention (replace 'i' with 'e')
@@ -63,28 +61,28 @@ class EditDistance {
         return d[m][n];
     }
 
-    /**
+
      //Optimal DP. Reduce table to a row. 一维DP
 
-     public static int minDistanceOptimal(String word1, String word2) {
-     if (word1.equals(word2))
-     return 0;
-     int m = word1.length();
-     int n = word2.length();
-     int[] d = new int[n + 1];
-     d[0] = 0;
-     for (int j = 1; j < n + 1; j++)
-     d[j] = j;
-     for (int i = 1; i < m + 1; i++) {
-     int prev = d[0];
-     d[0] += 1;
-     for (int j = 1; j < n + 1; j++) {
-     int temp = d[j];
-     d[j] = Math.min(Math.min(d[j - 1] + 1, d[j] + 1),
-     word1.charAt(i - 1) == word2.charAt(j - 1) ? prev : prev + 1);
-     prev = temp;
-     }
-     }
-     return d[n];
-     } */
+    public static int minDistanceOptimal(String word1, String word2) {
+        if (word1.equals(word2))
+            return 0;
+        int m = word1.length();
+        int n = word2.length();
+        int[] d = new int[n + 1];
+        d[0] = 0;
+        for (int j = 1; j < n + 1; j++)
+            d[j] = j;
+        for (int i = 1; i < m + 1; i++) {
+            int prev = d[0];
+            d[0] += 1;
+            for (int j = 1; j < n + 1; j++) {
+                int temp = d[j];
+                d[j] = Math.min(Math.min(d[j - 1] + 1, d[j] + 1),
+                        word1.charAt(i - 1) == word2.charAt(j - 1) ? prev : prev + 1);
+                prev = temp;
+            }
+        }
+        return d[n];
+    }
 }

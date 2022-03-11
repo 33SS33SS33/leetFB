@@ -3,17 +3,16 @@ package list;
 /**
  * Given a linked list, return the node where the cycle begins. If there is no
  * cycle, return null.
- * Follow up:
- * Can you solve it without using extra space?
+ * Follow up: Can you solve it without using extra space?
  * Tags: Linkedlist, Two pointers, Math
  */
 class LinkedListCycle2 {
     public static void main(String[] args) {
         ListNode head = buildList();
-        System.out.print(detectCyclea(head).val);
+        System.out.print(linkedListCycleII(head).val);
     }
 
-    public static ListNode detectCyclea(ListNode head) {
+    public static ListNode linkedListCycleII(ListNode head) {
         if (head == null)
             return null;
         ListNode slow = head;

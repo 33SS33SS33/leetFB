@@ -12,11 +12,8 @@ class BestTimetoBuyandSellStockII {
      * Design an algorithm to find the maximum profit. You may complete
      * <strong>as many transactions as you like</strong> (ie, buy one and sell
      * one share of the stock multiple times). However, you may not engage in
-     * multiple transactions at the same time (ie, you must sell the stock
-     * before you buy again).
-     * Tags: Array, Greedy
-     * Sell whenever there is profit. 最好的
-     * If next value is bigger, add the difference up to the profit
+     * multiple transactions at the same time (ie, you must sell the stock before you buy again).
+     * Tags: Array, Greedy If next value is bigger, add the difference up to the profit
      */
     public static int bestTimetoBuyandSellStockII(int[] prices) {
         int max = 0;

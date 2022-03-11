@@ -10,7 +10,7 @@ class PowX {
     public static void main(String[] args) {
         PowX p = new PowX();
         System.out.println(p.powa(2.0, 10));
-        System.out.println(p.power(2.0, 5));
+        System.out.println(p.power(2.0, 10));
     }
 
     public double power(double x, int n) {
@@ -25,9 +25,6 @@ class PowX {
         }
     }
 
-    /**
-     * 递归
-     */
     public double powa(double x, int n) {
         if (n == 0)
             return 1;

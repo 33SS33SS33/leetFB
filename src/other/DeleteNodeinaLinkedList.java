@@ -1,8 +1,7 @@
 package other;
 
 /**
- * Given only a pointer to a node to be deleted in a singly linked list, how do
- * you deleteNodeinaLinkedList it?
+ * Given only a pointer to a node to be deleted in a singly linked list, how do you deleteNodeinaLinkedList it?
  * Tags: LinkedList
  * 其实是把后面的点复制过来 然后把后面的点就删了
  */
@@ -12,8 +11,9 @@ class DeleteNodeinaLinkedList {
     }
 
     /**
-     * Copy the data from the next node to the node to be deleted and deleteNodeinaLinkedList
-     * the next node
+     * Given only a pointer to a node to be deleted in a singly linked list, how do you deleteNodeinaLinkedList it?
+     * Tags: LinkedList
+     * 其实是把后面的点复制过来 然后把后面的点就删了
      */
     void deleteNodeinaLinkedList(Node n) {
         if (n.next == null)
@@ -23,7 +23,6 @@ class DeleteNodeinaLinkedList {
         n.next = temp.next;
         temp = null;
     }
-
     public void deleteNode(Node node) {
         if (node != null && node.next != null) {
             node.val = node.next.val;

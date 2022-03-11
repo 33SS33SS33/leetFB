@@ -35,6 +35,21 @@ public class WordSearchII {
     /**
      * 最好的 Backtracking + Trie     没看懂
      */
+    /**
+     * Given a 2D board and a list of words from the dictionary, find all words in the board.
+     * Each word must be constructed from letters of sequentially adjacent cell, where "adjacent" cells are
+     * those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+     * Given words = ["oath","pea","eat","rain"] and board =
+     * [
+     * ['o','a','a','n'],
+     * ['e','t','a','e'],
+     * ['i','h','k','r'],
+     * ['i','f','l','v']
+     * ]
+     * Return ["eat","oath"]. You may assume that all inputs are consist of lowercase letters a-z.
+     * 使用了字典树 trie tree 然后和第一题的答案结合起来即可
+     * 因为是一个字母一个字母的搜索 所以哈希表不行 必须用字典树才能比较有效率
+     */
     public List<String> wordSearchII(char[][] board, String[] words) {
         List<String> res = new ArrayList<>();
         TrieNode root = buildTrie(words);
@@ -45,7 +60,6 @@ public class WordSearchII {
         }
         return res;
     }
-
     public void dfs(char[][] board, int i, int j, TrieNode p, List<String> res) {
         char c = board[i][j];
         if (c == '#' || p.next[c - 'a'] == null)

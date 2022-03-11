@@ -33,6 +33,13 @@ class FractionToRecurringDecimal {
      * After dot = remainder * 10 / denominator
      * if already showed up, insert parentheses
      */
+    /**
+     * Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
+     * If the fractional part is repeating, enclose the repeating part in parentheses.
+     * Given numerator = 1, denominator = 2, return "0.5".
+     * Given numerator = 2, denominator = 1, return "2".
+     * Given numerator = 2, denominator = 3, return "0.(6)". Tags: Hashtable, Math
+     */
     public String fractionToDecimal(int numerator, int denominator) {
         StringBuilder result = new StringBuilder();
         String sign = (numerator < 0 == denominator < 0 || numerator == 0) ? "" : "-";

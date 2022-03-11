@@ -1,13 +1,11 @@
 package aMaz;
 
 import java.util.Random;
+// * Created by shanshan on 2/1/19.
 
 /**
- * Created by shanshan on 2/1/19.
  * Shuffle a set of numbers without duplicates.
- * Example:
- * // Init an array with set 1, 2, and 3.
- * int[] nums = {1,2,3};
+ * Init an array with set 1, 2, and 3.int[] nums = {1,2,3};
  * Solution solution = new Solution(nums);
  * // Shuffle the array [1,2,3] and return its result. Any permutation of [1,2,3] must equally likely to be returned.
  * solution.shuffle();
@@ -19,22 +17,15 @@ import java.util.Random;
 public class ShuffleanArray {
     private int[] nums;
     private Random random;
-
     public ShuffleanArray(int[] nums) {
         this.nums = nums;
         random = new Random();
     }
 
-    /**
-     * Resets the array to its original configuration and return it.
-     */
     public int[] reset() {
         return nums;
     }
 
-    /**
-     * Returns a random shuffling of the array.
-     */
     public int[] shuffle() {
         if (nums == null) return null;
         int[] a = nums.clone();
@@ -44,7 +35,6 @@ public class ShuffleanArray {
         }
         return a;
     }
-
     private void swap(int[] a, int i, int j) {
         int t = a[i];
         a[i] = a[j];

@@ -15,8 +15,7 @@ class Searcha2DMatrix {
 
     /**
      * * Write an efficient algorithm that searches for a value in an m x n matrix.
-     * This matrix has the following properties:
-     * Integers in each row are sorted from left to right.
+     * This matrix has the following properties: Integers in each row are sorted from left to right.
      * The first integer of each row is greater than the last integer of the previous row.
      * [
      * [1,   3,  5,  7],
@@ -67,7 +66,7 @@ class Searcha2DMatrix {
      * an array zigZagConversion to n * m matrix => a[x] =>matrix[x / m][x % m];
      * disadvantage: 1. m * n may overflow 2. / and % are expensive
      */
-/*    public boolean searcha2DMatrixb(int[][] matrix, int target) {
+    public boolean searcha2DMatrixb(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return false;
         int m = matrix.length;
@@ -87,6 +86,6 @@ class Searcha2DMatrix {
             }
         }
         return false;
-    }*/
+    }
 
 }

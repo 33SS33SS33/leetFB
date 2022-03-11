@@ -17,7 +17,6 @@ class RemoveDuplicatesFromSortedArray {
      * 两个指针 碰到和start不一样的就放到start后面 然后移动start 然后pointer继续找
      * Use count to remember current position
      */
-
     public int removeDuplicatesFromSortedArray(int[] A) {
         int count = 0;
         int len = A.length;

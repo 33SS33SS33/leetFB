@@ -35,7 +35,7 @@ public class ValidParentheses {
             return false;
         }
     }
-
+    /**最好的*/
     public static boolean isValidParentheses(String s) {
         if (s == null || s.length() == 0) {
             return true;

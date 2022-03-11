@@ -3,11 +3,8 @@ package aMaz;
 /**
  * Created by krystal on 5/17/17.
  * Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
- * Examples:
- * s = "leetcode"
- * return 0.
- * s = "loveleetcode",
- * return 2.
+ * s = "leetcode" return 0.
+ * s = "loveleetcode",return 2.
  * Note: You may assume the string contain only lowercase letters.
  */
 public class FirstUniqueCharacterinaString {
@@ -16,6 +13,10 @@ public class FirstUniqueCharacterinaString {
     }
 
     /**
+     * Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
+     * s = "leetcode" return 0.
+     * s = "loveleetcode",return 2.
+     * Note: You may assume the string contain only lowercase letters.
      * solution is pretty straightforward. It takes O(n) and goes through the string twice:
      * Get the frequency of each character.
      * Get the first character that has a frequency of one.

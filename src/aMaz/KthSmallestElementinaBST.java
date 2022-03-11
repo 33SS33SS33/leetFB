@@ -73,9 +73,6 @@ public class KthSmallestElementinaBST {
         return 1 + countNodes(n.left) + countNodes(n.right);
     }
 
-    /**
-     * DFS in-order iterative
-     */
     public int kthSmallestElementinaBSTb(TreeNode root, int k) {
         Stack<TreeNode> st = new Stack<>();
         while (root != null) {

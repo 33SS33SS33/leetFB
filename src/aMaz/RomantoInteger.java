@@ -12,11 +12,8 @@ class RomantoInteger {
     /**
      * Given a roman numeral, zigZagConversion it to an integer.
      * Input is guaranteed to be within the range from 1 to 3999.
-     * Input: "III"  Output: 3
-     * Input: "IV"  Output: 4
-     * Input: "IX"  Output: 9
-     * Input: "LVIII"  Output: 58
-     * Explanation: L = 50, V= 5, III = 3.
+     * Input: "III"  Output: 3 Input: "IV"  Output: 4
+     * Input: "IX"  Output: 9 Input: "LVIII"  Output: 58 Explanation: L = 50, V= 5, III = 3.
      * Tags: Math, String
      */
     public int romantoInteger(String s) {

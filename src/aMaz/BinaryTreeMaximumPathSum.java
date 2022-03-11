@@ -16,7 +16,6 @@ class BinaryTreeMaximumPathSum {
      * maximum path sum with highest node is the input node, update maximum if
      * necessary (2) returns the maximum sum of the path that can be extended to
      * input node's parent.
-     * <p>
      * Given a binary tree, find the maximum path sum.
      * The path may start and end at any node in the tree.
      * Given the below binary tree,
@@ -35,7 +34,6 @@ class BinaryTreeMaximumPathSum {
      * 所以返回值只是返回当前节点 带上左或者右某一条路径或者都不带值返回本身，所以在处理left和right的时候 要把负数变为0
      */
     int maxValue;
-
     public int maxPathSuma(TreeNode root) {
         maxValue = Integer.MIN_VALUE;
         maxPathDown(root);

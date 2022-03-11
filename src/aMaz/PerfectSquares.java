@@ -23,7 +23,6 @@ public class PerfectSquares {
      * 通项公式是 dp[i] = 1 + min (dp[i-j*j] for j*j<=i)
      * 就是看看当前数去掉一个完全平方数 然后找最小值  然后+1(1就是代表这个去掉的完全平方数)
      * DP, bottom-up
-     * given n = 12, return 3 because 12 = 4 + 4 + 4;
      */
     public int perfectSquares(int n) {
         int[] res = new int[n + 1];
