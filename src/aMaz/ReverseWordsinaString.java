@@ -1,5 +1,8 @@
 package aMaz;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 class ReverseWordsinaString {
     public static void main(String[] args) {
@@ -12,22 +15,6 @@ class ReverseWordsinaString {
 //        System.out.println(new ReverseWordsinaString().reverseWordsinaString2(given));
     }
 
-    /**
-     * Trim input string; Split it with a space; Traversal backwards; Trim result to remove last space
-     * <p>
-     * Given an input string, reverse the string word by word.
-     * Given s = "the sky is blue", return "blue is sky the".
-     * Note: A word is defined as a sequence of non-space characters.
-     * Input string may contain leading or trailing spaces. However,
-     * your reversed string should not contain leading or trailing spaces.
-     * You need to reduce multiple spaces between two words to
-     * a single space in the reversed string.
-     * split用来分割 返回的是分割之后的list 默认是用空格
-     * join用来连接 join最前的字符表示用什么字符连接 
-     * [::-1]用来颠倒
-     * 下次写一个不用这些函数的
-     * 进步步骤就是 先去空格 头空格 中间多的空格 尾部空格 然后颠倒整个list
-     */
     public String reverseWordsinaString(String s) {
         if (s == null || s.length() == 0)
             return "";
@@ -44,36 +31,12 @@ class ReverseWordsinaString {
         return res.toString(); // remove last space
     }
 
-    /**
-     * If space, continue
-     * If not, get the word and insert to the front of result
-     * note that result may not contain spaces before or after
-     */
-/*    public String reverseWordsinaString2(String s) {
-        if (s == null || s.length() == 0)
-            return "";
-        String res = "";
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == ' ')
-                continue;
-            else {
-                StringBuilder word = new StringBuilder();
-                while (i < s.length()) {
-                    c = s.charAt(i);
-                    if (c == ' ')
-                        break;
-                    word.append(c);
-                    i++;
-                }
-                res = res.length() == 0 ?
-                        word.toString() :
-                        word.toString() + " " + res; // insert to front of res
-                i--; // reset i
-            }
-        }
-        return res;
-    }*/
-
-
+    public String reverseWords(String s) {
+        // remove leading spaces
+        s = s.trim();
+        // split by multiple spaces
+        List<String> wordList = Arrays.asList(s.split("\\s+"));
+        Collections.reverse(wordList);
+        return String.join(" ", wordList);
+    }
 }

@@ -1,5 +1,6 @@
 package aMaz;
 
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -26,21 +27,25 @@ import java.util.Queue;
  */
 
 public class FindMedianfromDataStream {
-    /**
-     * 最好的 Two Heaps! or Self-balancing Binary Search Trees
-     * https://leetcode.com/problems/find-median-from-data-stream/solution/
-     */
-    private Queue<Long> small = new PriorityQueue(), large = new PriorityQueue();
-
-    public void addNum(int num) {
-        large.add((long) num);
-        small.add(-large.poll()); //TODO
-        if (large.size() < small.size())
-            large.add(-small.poll());
-    }
+    private PriorityQueue<Integer> small = new PriorityQueue<>(Collections.reverseOrder());
+    private PriorityQueue<Integer> large = new PriorityQueue<>();
+    private boolean even = true;
 
     public double findMedian() {
-        return large.size() > small.size() ? large.peek() : (large.peek() - small.peek()) / 2.0;
+        if (even)
+            return (small.peek() + large.peek()) / 2.0;
+        else
+            return small.peek();
     }
 
+    public void addNum(int num) {
+        if (even) {
+            large.offer(num);
+            small.offer(large.poll());
+        } else {
+            small.offer(num);
+            large.offer(small.poll());
+        }
+        even = !even;
+    }
 }
