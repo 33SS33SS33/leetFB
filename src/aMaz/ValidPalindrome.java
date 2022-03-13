@@ -75,24 +75,4 @@ class ValidPalindrome {
     private static boolean isValid(char c) {
         return Character.isLetterOrDigit(c);
     }
-
-    /**
-     * Put letters and numbers in a new string and zigZagConversion to lowercase
-     * O(2n) Time, O(n) Space
-     */
- /*   public static boolean validPalindromec(String s) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : s.toCharArray())
-            if (Character.isLetterOrDigit(c))
-                sb.append(c);
-        String copy = sb.toString().toLowerCase();
-        int length = copy.length();
-        for (int i = 0; i < length / 2; i++) {
-            if (copy.charAt(i) != copy.charAt(length - (i + 1))) {
-                return false;
-            }
-        }
-        return true;
-    }*/
-
 }

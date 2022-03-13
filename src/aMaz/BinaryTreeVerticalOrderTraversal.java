@@ -46,9 +46,7 @@ public class BinaryTreeVerticalOrderTraversal {
         while (!q.isEmpty()) {
             TreeNode node = q.poll();
             int col = cols.poll();
-            if (!map.containsKey(col)) {
-                map.put(col, new ArrayList<>());
-            }
+            map.putIfAbsent(col, new ArrayList<>());
             map.get(col).add(node.val);
             if (node.left != null) {
                 q.add(node.left);
@@ -83,7 +81,7 @@ public class BinaryTreeVerticalOrderTraversal {
     }
 
     static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

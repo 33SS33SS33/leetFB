@@ -1,4 +1,4 @@
-package aMSsssssss;
+package aTOP50facebook;
 
 public class NextPermutation {
     public void nextPermutation(int[] nums) {

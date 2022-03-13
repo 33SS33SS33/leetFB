@@ -1,8 +1,6 @@
 package aMaz;
 
-import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 /**
  * Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not
@@ -30,6 +28,7 @@ class KthLargestElementinanArray {
 
     //多种解法
     //https://discuss.leetcode.com/topic/14597/solution-explained/2
+
     /**
      * O(N lg K) running time + O(K) memory
      */
@@ -43,20 +42,4 @@ class KthLargestElementinanArray {
         }
         return pq.peek();
     }
-
-    /**
-     * Priority Queue
-     * O(n) + k * O(logn)
-     */
-/*    public int kthLargestElementinanArray2(int[] A, int k) {
-        if (k <= 0 || k > A.length)
-            return -1;
-        Queue<Integer> q = new PriorityQueue<Integer>(A.length, Collections.reverseOrder());
-        for (int n : A)
-            q.add(n);
-        int res = 0;
-        for (int i = 0; i < k; i++)
-            res = q.poll();
-        return res;
-    }*/
 }

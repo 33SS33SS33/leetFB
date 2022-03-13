@@ -19,8 +19,7 @@ class PowX {
         double v = power(x, n / 2);
         if (n % 2 == 0) {
             return v * v;
-        }
-        else {
+        } else {
             return v * v * x;
         }
     }
@@ -31,9 +30,6 @@ class PowX {
         if (n < 0) {
             n = -n;
             x = 1 / x;
-  /*          if (-n == Integer.MIN_VALUE) {
-                return x * powa(x, (n - 1));
-            }*/
         }
         return (n % 2 == 0) ? powa(x * x, n / 2) : x * powa(x * x, n / 2);
     }

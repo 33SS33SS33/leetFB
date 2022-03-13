@@ -6,35 +6,25 @@ public class ValidParentheses {
     public static void main(String[] args) {
  /*       Scanner in = new Scanner(System.in);
         String s = in.next();*/
-        System.out.println(validParentheses("{[]}"));
+        System.out.println(isValidParentheses("{[]}"));
+        System.out.println(isValid("{[]}"));
         System.out.println(isValidParentheses("([)]"));
+        System.out.println(isValid("([)]"));
     }
 
-    public static boolean validParentheses(String s) {
-        if (s == null || s.length() == 0) {
-            return true;
-        }
-        Stack<Character> mystack = new Stack<>();
-        for (int i = 0; i < s.length(); i++) {
-            char buff = s.charAt(i);
-            if (buff == '(' || buff == '{' || buff == '[') {
-                mystack.push(buff);
-            } else {
-                if (mystack.isEmpty()) {
-                    return false;
-                } else if ((buff == ')' && mystack.peek() != '(') || (buff == ']' && mystack.peek() != '[') || (buff == '}' && mystack.peek() != '{')) {
-                    return false;
-                } else {
-                    mystack.pop();
-                }
+    public static boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(') stack.push(')');
+            else if (c == '[') stack.push(']');
+            else if (c == '{') stack.push('}');
+            else if (stack.isEmpty() || c != stack.pop()) {
+                return false;
             }
         }
-        if (mystack.empty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return stack.isEmpty();
     }
+
     /**最好的*/
     public static boolean isValidParentheses(String s) {
         if (s == null || s.length() == 0) {

@@ -17,7 +17,13 @@ public class LowestCommonAncestorofaBST {
         n1.right = n4;
         n2.right = n5;
         System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorBST(root, n3, n4).val);
-        System.out.println(new LowestCommonAncestorofaBST().lowestCommonAncestorBSTB(root, n3, n4).val);
+    }
+
+    public aFB.TreeNode lowestCommonAncestor(aFB.TreeNode root, aFB.TreeNode p, aFB.TreeNode q) {
+        if (root == null || root == p || root == q) return root;
+        aFB.TreeNode left = lowestCommonAncestor(root.left, p, q);
+        aFB.TreeNode right = lowestCommonAncestor(root.right, p, q);
+        return left == null ? right : right == null ? left : root;
     }
 
     //迭代
@@ -33,24 +39,9 @@ public class LowestCommonAncestorofaBST {
         return root;
     }
 
-    public TreeNode lowestCommonAncestorBSTB(TreeNode root, TreeNode p, TreeNode q) {
-        if (p.val > q.val)
-            return lowestCommonAncestorBSTB(root, q, p);
-        TreeNode m = root;
-        if (m.val > p.val && m.val < q.val) {
-            return m;
-        }
-        else if (m.val > p.val && m.val > q.val) {
-            return lowestCommonAncestorBSTB(root.left, p, q);
-        }
-        else if (m.val < p.val && m.val < q.val) {
-            return lowestCommonAncestorBSTB(root.right, p, q);
-        }
-        return root;
-    }
 
     public static class TreeNode {
-        int      val;
+        int val;
         TreeNode left;
         TreeNode right;
 

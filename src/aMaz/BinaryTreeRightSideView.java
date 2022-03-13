@@ -2,7 +2,7 @@ package aMaz;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
@@ -48,6 +48,25 @@ public class BinaryTreeRightSideView {
     }
 
     public List<Integer> binaryTreeRightSideViewc(TreeNode root) {
+        List<Integer> ans = new LinkedList<>();
+        if(root==null)   return ans;
+        Deque<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            int size = q.size();
+            for(int i = 0; i<size; i++){
+                TreeNode node = q.poll();
+                if(i==size-1){
+                    ans.add(node.val);
+                }
+                if(node.left!=null) q.add(node.left);
+                if(node.right!=null) q.add(node.right);
+            }
+        }
+        return ans;
+    }
+
+    public List<Integer> binaryTreeRightSideViewd(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
         if (root == null)
             return result;
