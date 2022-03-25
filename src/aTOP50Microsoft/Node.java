@@ -1,7 +1,7 @@
 package aTOP50Microsoft;
 
 public class Node {
-    Node left;
-    Node right;
-    Node next;
+    public  Node left;
+    public Node right;
+    public Node next;
 }

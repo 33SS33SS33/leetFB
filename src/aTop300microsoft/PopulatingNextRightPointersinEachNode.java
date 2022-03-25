@@ -1,4 +1,6 @@
-package aTOP50Microsoft;
+package aTop300microsoft;
+
+import aTOP50Microsoft.Node;
 
 import java.util.LinkedList;
 import java.util.Queue;

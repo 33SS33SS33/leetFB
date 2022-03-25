@@ -2,36 +2,37 @@ package aTOP50Microsoft;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LetterCombinationsofaPhoneNumber {
-    private static final String[] LETTERS = {"",     // 0
-            "",     // 1
-            "abc",  // 2
-            "def",  // 3
-            "ghi",  // 4
-            "jkl",  // 5
-            "mno",  // 6
-            "pqrs", // 7
-            "tuv",  // 8
-            "wxyz"  // 9
-    };
+    private List<String> combinations = new ArrayList<>();
+    private Map<Character, String> letters = Map.of(
+            '2', "abc", '3', "def", '4', "ghi", '5', "jkl",
+            '6', "mno", '7', "pqrs", '8', "tuv", '9', "wxyz");
+    private String phoneDigits;
 
-    public List<String> letterCombinationsA(String digits) {
-        List<String> res = new ArrayList<String>();
-        if (digits == null || digits.length() == 0)
-            return res;
-        helper(digits, 0, "", res);
-        return res;
+    public List<String> letterCombinations(String digits) {
+        if (digits.length() == 0) {
+            return combinations;
+        }
+
+        phoneDigits = digits;
+        backtrack(0, new StringBuilder());
+        return combinations;
     }
 
-    private void helper(String digits, int s, String comb, List<String> res) {
-        if (s == digits.length()) { // all digits done, stop
-            res.add(comb);
-            return;
+    private void backtrack(int index, StringBuilder path) {
+        if (path.length() == phoneDigits.length()) {
+            combinations.add(path.toString());
+            return; // Backtrack
         }
-        String c = LETTERS[digits.charAt(s) - '0']; // note how to get int index
-        for (int i = 0; i < c.length(); i++) { // note its i starts from 0
-            helper(digits, s + 1, comb + c.charAt(i), res); // backtracking
+
+        // Get the letters that the current digit maps to, and loop through them
+        String possibleLetters = letters.get(phoneDigits.charAt(index));
+        for (char letter : possibleLetters.toCharArray()) {
+            path.append(letter);
+            backtrack(index + 1, path);
+            path.deleteCharAt(path.length() - 1);
         }
     }
 }

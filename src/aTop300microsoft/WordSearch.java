@@ -1,4 +1,4 @@
-package aTOP50Microsoft;
+package aTop300microsoft;
 
 /**
  * Given board =

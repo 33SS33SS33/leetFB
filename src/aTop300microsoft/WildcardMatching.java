@@ -1,5 +1,6 @@
-package aTOP50Microsoft;
+package aTop300microsoft;
 
+//https://leetcode.com/problems/wildcard-matching/
 public class WildcardMatching {
     boolean comparison(String str, String pattern) {
         int s = 0, p = 0, match = 0, starIdx = -1;

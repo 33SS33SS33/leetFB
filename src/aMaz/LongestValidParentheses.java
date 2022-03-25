@@ -1,6 +1,6 @@
 package aMaz;
 
-import java.util.LinkedList;
+import java.util.Stack;
 
 //TODO
 class LongestValidParentheses {
@@ -28,25 +28,22 @@ class LongestValidParentheses {
      * Tags: DP, String
      */
     public static int longestValidParentheses(String s) {
-        if (s == null || s.length() == 0)
-            return 0;
-        LinkedList<Integer> stack = new LinkedList<>();
-        int start = 0;
-        int max = 0;
+        int maxans = 0;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 stack.push(i);
             } else {
-                if (stack.isEmpty()) {
-                    start = i + 1;
+                stack.pop();
+                if (stack.empty()) {
+                    stack.push(i);
                 } else {
-                    stack.pop();
-                    max = stack.isEmpty() ?
-                            Math.max(max, i - start + 1) : Math.max(max, i - stack.peek());
+                    maxans = Math.max(maxans, i - stack.peek());
                 }
             }
         }
-        return max;
+        return maxans;
     }
 
 }

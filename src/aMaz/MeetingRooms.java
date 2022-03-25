@@ -15,13 +15,10 @@ public class MeetingRooms {
     }
 
     /**
-     * Given an array of meeting time intervals consisting of
-     * start and end times [[s1,e1],[s2,e2],...] (si < ei),
      * determine if a person could attend all meetings.
      * For example, Given [[0, 30],[5, 10],[15, 20]],return false.
      * Input: [[7,10],[2,4]] Output: true
-     * 一个人能不能参加所有会议
-     * 按照start来排序 如果后一个的start 小于 前一个的end 就return False
+     * 一个人能不能参加所有会议 按照start来排序 如果后一个的start 小于 前一个的end 就return False
      * 会议中间时间没有重叠的话就可以参加
      */
     public boolean meetingRooms(Interval[] intervals) {

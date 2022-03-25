@@ -1,6 +1,5 @@
 package other;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 /**
  * Given a number n, create an array of size 2n such that the array contains 2
