@@ -11,7 +11,7 @@ import java.util.List;
 class ThreeSum {
     public static void main(String[] args) {
         int[] s = {-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> res1 = threeSum(s);
+        List<List<Integer>> res1 = new ThreeSum().threeSum(s);
         System.out.println(res1.toString());
     }
 
@@ -27,34 +27,30 @@ class ThreeSum {
      * Use 2 more pointers from both start(i + 1) and end to find target
      * http://blog.csdn.net/linhuanmars/article/details/19711651
      */
-    public static List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (nums == null || nums.length < 3)
-            return result;
+    public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
-        int len = nums.length;
-        for (int i = 0; i < len; i++) {
-            if (i > 0 && nums[i] == nums[i - 1])
-                continue; // Skip same results
-            int target = 0 - nums[i];
-            int j = i + 1, k = len - 1;
-            while (j < k) {
-                if (nums[j] + nums[k] == target) {
-                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
-                    while (j < k && nums[j] == nums[j + 1])
-                        j++; // Skip same results
-                    while (j < k && nums[k] == nums[k - 1])
-                        k--; // Skip same results
-                    j++;
-                    k--;
-                } else if (nums[j] + nums[k] < target) {
-                    j++;
-                } else {
-                    k--;
-                }
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i < nums.length && nums[i] <= 0; ++i)
+            if (i == 0 || nums[i - 1] != nums[i]) {
+                twoSumII(nums, i, res);
+            }
+        return res;
+    }
+
+    void twoSumII(int[] nums, int i, List<List<Integer>> res) {
+        int lo = i + 1, hi = nums.length - 1;
+        while (lo < hi) {
+            int sum = nums[i] + nums[lo] + nums[hi];
+            if (sum < 0) {
+                ++lo;
+            } else if (sum > 0) {
+                --hi;
+            } else {
+                res.add(Arrays.asList(nums[i], nums[lo++], nums[hi--]));
+                while (lo < hi && nums[lo] == nums[lo - 1])
+                    ++lo;
             }
         }
-        return result;
     }
 
 }

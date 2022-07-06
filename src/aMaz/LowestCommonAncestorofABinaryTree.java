@@ -27,13 +27,13 @@ class LowestCommonAncestorofABinaryTree {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        System.out.println(new LowestCommonAncestorofABinaryTree().lowestCommonAncestor(root, n1, n4).val);
+        System.out.println(new LowestCommonAncestorofABinaryTree().lowestCommonAncestorofABinaryTree(root, n1, n4).val);
     }
 
-    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    public TreeNode lowestCommonAncestorofABinaryTree(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root == p || root == q) return root;
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        TreeNode left = lowestCommonAncestorofABinaryTree(root.left, p, q);
+        TreeNode right = lowestCommonAncestorofABinaryTree(root.right, p, q);
         return left == null ? right : right == null ? left : root;
     }
 

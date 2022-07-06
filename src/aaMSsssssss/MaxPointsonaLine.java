@@ -1,3 +1,4 @@
+/*
 package aaMSsssssss;
 
 import javafx.util.Pair;
@@ -12,10 +13,12 @@ public class MaxPointsonaLine {
     HashMap<Pair<Integer, Integer>, Integer> lines = new HashMap<Pair<Integer, Integer>, Integer>();
     int horizontal_lines;
 
-    /**
+    */
+/**
      * To avoid the precision issue with float/double numbers, using a pair of co-prime numbers to
      * represent the slope.
-     */
+     *//*
+
     private Pair<Integer, Integer> slope_coprime(int x1, int y1, int x2, int y2) {
         int deltaX = x1 - x2, deltaY = y1 - y2;
         if (deltaX == 0)
@@ -32,10 +35,12 @@ public class MaxPointsonaLine {
     }
 
     public Pair<Integer, Integer> add_line(int i, int j, int count, int duplicates) {
-        /*
+        */
+/*
          * Add a line passing through i and j points. Update max number of points on a line
          * containing point i. Update a number of duplicates of i point.
-         */
+         *//*
+
         // rewrite points as coordinates
         int x1 = points[i][0];
         int y1 = points[i][1];
@@ -61,9 +66,11 @@ public class MaxPointsonaLine {
     }
 
     public int max_points_on_a_line_containing_point_i(int i) {
-        /*
+        */
+/*
          * Compute the max number of points for a line containing point i.
-         */
+         *//*
+
         // init lines passing through point i
         lines.clear();
         horizontal_lines = 1;
@@ -101,3 +108,4 @@ public class MaxPointsonaLine {
         return max_count;
     }
 }
+*/

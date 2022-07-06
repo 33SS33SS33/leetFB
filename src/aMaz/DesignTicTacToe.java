@@ -18,8 +18,10 @@ public class DesignTicTacToe {
         rows = new int[n];
         cols = new int[n];
     }
+
     /**
      * Player {player} makes a move at ({row}, {col}).
+     *
      * @return The current winning condition, can be either:
      * 0: No one wins.
      * 1: Player 1 wins.

@@ -13,11 +13,11 @@ import static java.lang.Math.max;
  * index 0 to 1, then 3 steps to the last index.)
  * Tags: Array, Greedy, DP
  */
-class JumpGame2 {
+class JumpGameII {
     public static void main(String[] args) {
         int[] A = {2, 3, 1, 1, 4};
-        System.out.println(new JumpGame2().jumpGame2(A));
-        System.out.println(new JumpGame2().jumpGame2b(A));
+        System.out.println(new JumpGameII().jumpGame2(A));
+        System.out.println(new JumpGameII().jumpGame2b(A));
     }
 
     /**

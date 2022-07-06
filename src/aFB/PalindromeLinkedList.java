@@ -1,5 +1,7 @@
 package aFB;
 
+import java.util.*;
+
 /**
  * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given a singly linked list, determine if it is a palindrome.
@@ -19,12 +21,39 @@ public class PalindromeLinkedList {
     public static void main(String[] args) {
         PalindromeLinkedList r = new PalindromeLinkedList();
         ListNode head = buildList();
-        System.out.println(palindromeLinkedList(head));
+        System.out.println(new PalindromeLinkedList().palindromeLinkedList(head));
         ListNode head3 = buildList();
-        System.out.println(palindromeLinkedListc(head3));
+//        System.out.println(palindromeLinkedListc(head3));
     }
 
-    public static boolean palindromeLinkedList(ListNode head) {
+    /**
+     * Copy into Array List and then Use Two Pointer Technique
+     */
+    public boolean palindromeLinkedList(ListNode head) {
+        List<Integer> vals = new ArrayList<>();
+        // Convert LinkedList into ArrayList.
+        ListNode currentNode = head;
+        while (currentNode != null) {
+            vals.add(currentNode.val);
+            currentNode = currentNode.next;
+        }
+
+        // Use two-pointer technique to check for palindrome.
+        int front = 0;
+        int back = vals.size() - 1;
+        while (front < back) {
+            // Note that we must use ! .equals instead of !=
+            // because we are comparing Integer, not int.
+            if (!vals.get(front).equals(vals.get(back))) {
+                return false;
+            }
+            front++;
+            back--;
+        }
+        return true;
+    }
+
+   /* public static boolean palindromeLinkedList(ListNode head) {
         ListNode m = mid(head);
         m = reverse(m);
         while (m != head && m != null) {
@@ -58,11 +87,12 @@ public class PalindromeLinkedList {
         }
         return prev;
     }
+*/
 
     /**
      * We can create a new list in reversed order and then compare each node. The time and space are O(n)
      */
-    public static boolean palindromeLinkedListc(ListNode head) {
+   /* public static boolean palindromeLinkedListc(ListNode head) {
         if (head == null)
             return true;
         ListNode p = head;
@@ -83,8 +113,7 @@ public class PalindromeLinkedList {
             p2 = p2.next;
         }
         return true;
-    }
-
+    }*/
     static ListNode buildList() {
         ListNode node0 = new ListNode(0);
         ListNode node1 = new ListNode(1);

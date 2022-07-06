@@ -1,11 +1,6 @@
 package aMaz;
 
-/**
- * Given a string S, find the longest palindromic substring in S. You may
- * assume that the maximum length of S is 1000, and there exists one unique
- * longest palindromic substring.
- * Tags: String
- */
+
 class LongestPalindromicSubstring {
     public static void main(String[] args) {
         LongestPalindromicSubstring l = new LongestPalindromicSubstring();
@@ -14,13 +9,10 @@ class LongestPalindromicSubstring {
     }
 
     /**
-     * O(n^2) Time, O(1) Space
-     * Expand from center character and center of two chars
-     * Update result according to the returned length
-     * 基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
-     * 比如串abc,中心可以是a,b,c,或者是ab的间隙，bc的间隙）往两边同时进行扫描，直到不是回文串为止。
-     * 假设字符串的长度为n,那么中心的个数为2*n-1(字符作为中心有n个，间隙有n-1个）。
-     * 对于每个中心往两边扫描的复杂度为O(n),所以时间复杂度为O((2*n-1)*n)=O(n^2),空间复杂度为O(1)
+     * Given a string s, return the longest palindromic substring in s.
+     * Input: s = "babad"
+     * Output: "bab"
+     * Explanation: "aba" is also a valid answer.
      */
     public String longestPalindromeC(String s) {
         if (s == null || s.length() == 0)
@@ -48,6 +40,16 @@ class LongestPalindromicSubstring {
         }
         return s.substring(l + 1, r); // note the range is from l + 1 to r - 1
     }
+    /**
+     * O(n^2) Time, O(1) Space
+     * Expand from center character and center of two chars
+     * Update result according to the returned length
+     * 基本思路是对于每个子串的中心（可以是一个字符，或者是两个字符的间隙，
+     * 比如串abc,中心可以是a,b,c,或者是ab的间隙，bc的间隙）往两边同时进行扫描，直到不是回文串为止。
+     * 假设字符串的长度为n,那么中心的个数为2*n-1(字符作为中心有n个，间隙有n-1个）。
+     * 对于每个中心往两边扫描的复杂度为O(n),所以时间复杂度为O((2*n-1)*n)=O(n^2),空间复杂度为O(1)
+     */
+
 
     /**
      * Manacher's Algorithm, O(n) Time.

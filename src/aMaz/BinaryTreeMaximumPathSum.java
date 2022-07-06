@@ -8,7 +8,8 @@ class BinaryTreeMaximumPathSum {
     }
 
     /**
-     * HARD The path may start and end at any node in the tree.
+     * TODO HARD
+     * The path may start and end at any node in the tree.
      * A path from start to end, goes up on the tree for 0 or more steps, then goes
      * down for 0 or more steps. Once it goes down, it can't go up. Each path has a
      * highest node, which is also the lowest common ancestor of all other nodes on the path.
@@ -34,6 +35,7 @@ class BinaryTreeMaximumPathSum {
      * 所以返回值只是返回当前节点 带上左或者右某一条路径或者都不带值返回本身，所以在处理left和right的时候 要把负数变为0
      */
     int maxValue;
+
     public int maxPathSuma(TreeNode root) {
         maxValue = Integer.MIN_VALUE;
         maxPathDown(root);

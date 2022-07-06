@@ -2,7 +2,6 @@ package aMaz;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,20 +13,39 @@ import java.util.List;
 class Subsets {
     public static void main(String[] args) {
         int[] nums = {2, 1, 5};
-        List<List<Integer>> res2 = subsetsB(nums);
+        List<List<Integer>> res2 = subsets(nums);
         for (List<Integer> l : res2) {
             System.out.println(l.toString());
         }
     }
-
     //所有backtrack
     // https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning
+
     /**
-     * Given a set of distinct integers, S, return all possible subsets.
-     * Note:Elements in a subset must be in non-descending order.
-     * The solution set must not contain duplicate subsets.
+     * Given an integer array nums of unique elements, return all possible subsets (the power set).
+     * The solution set must not contain duplicate subsets. Return the solution in any order.
      * If S = [1,2,3], a solution is:[[3],[1],[2],[1,2,3],[1,3],[2,3],[1,2],[]]
+     * <p>
+     * Remember the start position and do backtracking
+     * Time complexity: O(N*2^N) o generate all subsets and then copy them into output list.
+     * Space complexity O(N)
      */
+    public static List<List<Integer>> subsets(int[] s) {
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(s);
+        subsets(s, 0, new ArrayList<>(), res);
+        return res;
+    }
+
+    public static void subsets(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
+        result.add(new ArrayList<>(set));
+        for (int i = start; i < s.length; i++) {
+            set.add(s[i]); // with i
+            subsets(s, i + 1, set, result); // DFS
+            set.remove(set.size() - 1); // remove last element
+        }
+    }
+
     public static List<List<Integer>> subsets2(int[] S) {
         List<List<Integer>> res = new ArrayList<>();
         res.add(new ArrayList<>());
@@ -44,43 +62,4 @@ class Subsets {
         }
         return res;
     }
-
-    /**
-     * Remember the start position and do backtracking
-     */
-    public static List<List<Integer>> subsetsB(int[] s) {
-        List<List<Integer>> res = new ArrayList<>();
-        Arrays.sort(s);
-        subsetsB(s, 0, new ArrayList<>(), res);
-        return res;
-    }
-
-    public static void subsetsB(int[] s, int start, List<Integer> set, List<List<Integer>> result) {
-        result.add(new ArrayList<>(set));
-        for (int i = start; i < s.length; i++) {
-            set.add(s[i]); // with i
-            subsetsB(s, i + 1, set, result); // DFS
-            set.remove(set.size() - 1); // remove last element
-        }
-    }
-
-    //位运算
-    //https://discuss.leetcode.com/topic/2764/my-solution-using-bit-manipulation/13
-    public List<List<Integer>> subsets(int[] S) {
-        Arrays.sort(S);
-        int totalNumber = 1 << S.length;
-        List<List<Integer>> collection = new ArrayList<>(totalNumber);
-        for (int i = 0; i < totalNumber; i++) {
-            List<Integer> set = new LinkedList<>();
-            for (int j = 0; j < S.length; j++) {
-                if ((i & (1 << j)) != 0) {
-                    set.add(S[j]);
-                }
-            }
-            collection.add(set);
-        }
-        return collection;
-    }
-
-
 }

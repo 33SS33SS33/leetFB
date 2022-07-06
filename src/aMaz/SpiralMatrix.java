@@ -9,7 +9,7 @@ import java.util.List;
 class SpiralMatrix {
     public static void main(String[] args) {
         int[][] matrix = new int[][]{{1, 2, 3, 7}, {4, 5, 6, 9}, {7, 8, 9, 1}};
-        List<Integer> res3 = SpiralMatrixA(matrix);
+        List<Integer> res3 = SpiralMatrix(matrix);
         System.out.println(res3.toString());
     }
 
@@ -22,7 +22,7 @@ class SpiralMatrix {
      * ]
      * You should return [1,2,3,6,9,8,7,4,5].
      */
-    public static List<Integer> SpiralMatrixA(int[][] matrix) {
+    public static List<Integer> SpiralMatrix(int[][] matrix) {
         List<Integer> res = new ArrayList<Integer>();
         if (matrix.length == 0) {
             return res;

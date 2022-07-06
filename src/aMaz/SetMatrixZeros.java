@@ -16,7 +16,8 @@ class SetMatrixZeros {
         }
     }
 
-     // http://blog.csdn.net/linhuanmars/article/details/24066199
+    // http://blog.csdn.net/linhuanmars/article/details/24066199
+
     /**
      * Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
      * Go through the matrix and use first row and first col to remember which cols and rows are to be sets

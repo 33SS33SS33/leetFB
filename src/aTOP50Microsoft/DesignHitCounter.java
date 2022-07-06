@@ -1,6 +1,7 @@
 package aTOP50Microsoft;
 
-import javafx.util.Pair;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Deque;
 import java.util.LinkedList;
@@ -18,7 +19,7 @@ public class DesignHitCounter {
         this.hits = new LinkedList<Pair<Integer, Integer>>();
     }
 
-    public void hit(int timestamp) {
+    /*public void hit(int timestamp) {
         if (this.hits.isEmpty() || this.hits.getLast().getKey() != timestamp) {
             // Insert the new timestamp with count = 1
             this.hits.add(new Pair<Integer, Integer>(timestamp, 1));
@@ -34,7 +35,7 @@ public class DesignHitCounter {
         }
         // Increment total
         this.total++;
-    }
+    }*/
 
     /**
      * Return the number of hits in the past 5 minutes.

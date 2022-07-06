@@ -7,6 +7,7 @@ class UniquePaths {
         System.out.println(uniquePathsDP(10, 20));
 //        System.out.println(uniquePathsMath(10, 20));
     }
+
     /**
      * A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
      * The robot can only move either down or right at any point in time. The robot

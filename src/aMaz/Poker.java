@@ -35,6 +35,7 @@ public class Poker {
 
     /**
      * 发牌
+     *
      * @param index 发牌的位置
      */
     public Card deal(int index) {

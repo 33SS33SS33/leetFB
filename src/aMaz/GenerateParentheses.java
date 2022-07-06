@@ -11,7 +11,7 @@ import java.util.*;
  */
 class GenerateParentheses {
     public static void main(String[] args) {
-        System.out.println(generateParenthesisa(3));
+        System.out.println(generateParenthesis(3));
     }
 
     /**
@@ -20,7 +20,7 @@ class GenerateParentheses {
      * Once we add a '(' we will then discard it and try a ')'
      * which can only close a valid '('. Each of these steps are recursively called.
      */
-    public static List<String> generateParenthesisa(int n) {
+    public static List<String> generateParenthesis(int n) {
         List<String> list = new ArrayList<>();
         backtrack(list, "", 0, 0, n);
         return list;

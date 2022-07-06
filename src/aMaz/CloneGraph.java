@@ -38,7 +38,7 @@ class CloneGraph {
     }
 
     /**
-     *  Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
+     * Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
      * OJ's undirected graph serialization:Nodes are labeled uniquely.
      * We use # as a separator for each node, and , as a separator for node label
      * and each neighbor of the node.

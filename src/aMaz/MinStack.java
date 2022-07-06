@@ -52,6 +52,7 @@ class MinStack {
         // And like before, pop the top of the main stack.
         stack.pop();
     }
+
     public int top() {
         return stack.peek();
     }

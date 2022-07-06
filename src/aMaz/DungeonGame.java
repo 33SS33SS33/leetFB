@@ -32,8 +32,8 @@ package aMaz;
  */
 class DungeonGame {
     public static void main(String[] args) {
-        int[][] dungeon = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
-        int[][] dungeon2 = { { -2, -3, 3 }, { -5, -10, 1 }, { 10, 30, -5 } };
+        int[][] dungeon = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
+        int[][] dungeon2 = {{-2, -3, 3}, {-5, -10, 1}, {10, 30, -5}};
         System.out.println(new DungeonGame().dungeonGamea(dungeon));
     }
 

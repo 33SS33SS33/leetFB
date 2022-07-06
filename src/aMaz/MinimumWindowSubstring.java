@@ -1,21 +1,17 @@
 package aMaz;
 
-import java.util.HashMap;
+import java.util.*;
 
-
-// TODO
 class MinimumWindowSubstring {
     public static void main(String[] args) {
         String S = "ADOBECODEBANC";
         String T = "ABC";
-        String res2 = minimumWindowSubstring(S, T);
-        System.out.println(res2);
-        //        String res = minWindowB(S, T);
-        //        System.out.println(res);
+        System.out.println(minimumWindowSubstring(S, T));
     }
 
     /**
-     * HARD Given a string S and a string T, find the minimum window in S which will
+     * TODO HARD
+     * Given a string S and a string T, find the minimum window in S which will
      * contain all the characters in T in complexity O(n).
      * S = "ADOBECODEBANC"  T = "ABC"  Minimum window is "BANC".
      * Note: If there is no such window in S that covers all characters in T, return the empty string "".

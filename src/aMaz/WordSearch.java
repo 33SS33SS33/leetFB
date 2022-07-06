@@ -25,6 +25,7 @@ class WordSearch {
         System.out.println(wordSearcha(board, word));
         System.out.println(wordSearchb(board, word));
     }
+
     //best
     private char[][] board;
     private int ROWS;

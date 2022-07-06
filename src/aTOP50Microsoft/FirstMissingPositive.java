@@ -2,7 +2,6 @@ package aTOP50Microsoft;
 
 /**
  * Given an unsorted integer array, find the first missing positive integer. HARD TODO
- * For example,
  * Given [1,2,0] return 3,and [3,4,-1,1] return 2.
  * Your algorithm should run in O(n) time and uses constant space.
  * Tags: Array
@@ -27,6 +26,7 @@ class FirstMissingPositive {
      * Correct form [1, 2, 3, 4, ..., #, n]
      * If not in position swap it with A[A[p]-1]
      */
+    //https://leetcode.com/problems/first-missing-positive/solution/
     public static int firstMissingPositive(int[] A) {
         if (A == null || A.length == 0)
             return 1;

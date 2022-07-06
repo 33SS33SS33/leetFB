@@ -1,8 +1,5 @@
 package aMaz;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/5/23. HARD
- */
 public class LongestIncreasingPathinaMatrix {
     public static void main(String[] args) {
         LongestIncreasingPathinaMatrix r = new LongestIncreasingPathinaMatrix();
@@ -11,8 +8,8 @@ public class LongestIncreasingPathinaMatrix {
     }
 
     /**
+     * TODO HARD
      * https://leetcode.com/problems/longest-increasing-path-in-a-matrix/discuss/78308/15ms-Concise-Java-Solution
-     /**
      * Do DFS from every cell
      * Compare every 4 direction and skip cells that are out of boundary or smaller
      * Get matrix max from every cell's max, Use matrix[x][y] <= matrix[i][j] so we don't need a visited[m][n] array
@@ -61,5 +58,4 @@ public class LongestIncreasingPathinaMatrix {
         cache[i][j] = max;
         return max;
     }
-
 }

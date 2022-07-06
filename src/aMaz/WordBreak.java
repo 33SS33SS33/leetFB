@@ -1,13 +1,10 @@
 package aMaz;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Given a string s and a dictionary of words dict, determine if s can be
  * segmented into a space-separated sequence of one or more dictionary words.
- * For example, given
  * s = "leetcode",
  * dict = ["leet", "code"].
  * Return true because "leetcode" can be segmented as "leet code".
@@ -24,10 +21,9 @@ import java.util.Set;
 class WordBreak {
     public static void main(String[] args) {
         String s = "leetcode";
-        String[] words = { "leet", "code", };
-        Set<String> dict = new HashSet<>(Arrays.asList(words));
-        System.out.println(new WordBreak().wordBreak(s, dict));
-        //        System.out.println(new WordBreak().wordBreakB(s, dict));
+        List<String> words=Arrays.asList("leet", "code");
+//        Set<String> dict = new HashSet<>(Arrays.asList(words));
+        System.out.println(new WordBreak().wordBreak(s, words));
     }
 
     /**
@@ -37,40 +33,19 @@ class WordBreak {
      * Traverse from start to current position and check whether current
      * boolean is true and the rest in set
      */
-    public boolean wordBreak(String s, Set<String> dict) {
-        if (s == null || s.length() == 0 || dict == null)
-            return false;
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Set<String> wordDictSet = new HashSet<>(wordDict);
         int len = s.length();
-        boolean[] can = new boolean[len + 1];  //???
-        can[0] = true;
-        for (int i = 1; i <= len; i++) { //注意范围
+        boolean[] dp = new boolean[len + 1];//???!!
+        dp[0] = true;
+        for (int i = 1; i <= len; i++) {//注意范围
             for (int j = 0; j < i; j++) {
-                if (can[j] && dict.contains(s.substring(j, i))) {
-                    can[i] = true;
+                if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
+                    dp[i] = true;
                     break;
                 }
             }
         }
-        return can[len];
+        return dp[len];
     }
-
-    /**
-     * backtracking, TLE 不好
-     */
-/*    public static boolean wordBreakB(String s, Set<String> dict) {
-        if (s == null || dict == null)
-            return false;
-        if (s.equals("") || dict.contains(s))
-            return true;
-        for (int i = 1; i <= s.length(); i++) {
-            String pre = s.substring(0, i);
-            if (dict.contains(pre)) {
-                String post = s.substring(i);
-                if (wordBreakB(post, dict))
-                    return true;
-            }
-        }
-        return false;
-    }*/
-
 }

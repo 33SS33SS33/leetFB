@@ -34,6 +34,7 @@ class FindTheCelebrity {
         }
         return candidate;
     }
+
     public boolean knows(int a, int b) {
         return true;
     }

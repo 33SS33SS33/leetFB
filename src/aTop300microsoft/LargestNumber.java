@@ -3,33 +3,34 @@ package aTop300microsoft;
 import java.util.*;
 
 public class LargestNumber {
+    public static void main(String[] args) {
+        LargestNumber ln = new LargestNumber();
+        int[] num = {3, 30, 34, 5, 9, 0};
+        System.out.println(ln.largestNumber(num));
+    }
+
+    /**
+     * Create a comparator for sorting Convert num to String and compare the concatenated result of them
+     * Note {0, 0} is a special case
+     * Given a list of non negative integers, arrange them such that they form the largest number.
+     * For example, given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+     * Note: The result may be very large, so you need to return a string instead of an integer.Tags: Sort
+     * 要使用cmp函数来排序 比较规则是x+y 和y+x的大小 而且要倒序
+     * 同时要注意[0,0]这种特殊情况
+     */
     public String largestNumber(int[] num) {
+        StringBuilder res = new StringBuilder();
         if (num == null || num.length == 0)
-            return "";
-
-        // Convert int array to String array, so we can sort later on
-        String[] s_num = new String[num.length];
+            return res.toString();
+        String[] str = new String[num.length];
         for (int i = 0; i < num.length; i++)
-            s_num[i] = String.valueOf(num[i]);
-
-        // Comparator to decide which string should come first in concatenation
-        Comparator<String> comp = new Comparator<String>() {
-            @Override
-            public int compare(String str1, String str2) {
-                String s1 = str1 + str2;
-                String s2 = str2 + str1;
-                return s2.compareTo(s1); // reverse order here, so we can do append() later
-            }
-        };
-
-        Arrays.sort(s_num, comp);
-        // An extreme edge case by lc, say you have only a bunch of 0 in your int array
-        if (s_num[0].charAt(0) == '0')
-            return "0";
-
-        StringBuilder sb = new StringBuilder();
-        for (String s : s_num)
-            sb.append(s);
-        return sb.toString();
+            str[i] = num[i] + "";
+        Comparator<String> comp = (s1, s2) -> Long.valueOf(s2 + s1).compareTo(Long.valueOf(s1 + s2));
+        Arrays.sort(str, comp);
+        if (str[0].equals("0"))
+            return "0"; // deal with 0
+        for (String s : str)
+            res.append(s);
+        return res.toString();
     }
 }

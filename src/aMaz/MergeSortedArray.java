@@ -1,6 +1,5 @@
 package aMaz;
 
-
 class MergeSortedArray {
     public static void main(String[] args) {
         int A[] = new int[7];

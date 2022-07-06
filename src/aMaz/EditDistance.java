@@ -62,7 +62,7 @@ class EditDistance {
     }
 
 
-     //Optimal DP. Reduce table to a row. 一维DP
+    //Optimal DP. Reduce table to a row. 一维DP
 
     public static int minDistanceOptimal(String word1, String word2) {
         if (word1.equals(word2))

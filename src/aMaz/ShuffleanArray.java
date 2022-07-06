@@ -17,6 +17,7 @@ import java.util.Random;
 public class ShuffleanArray {
     private int[] nums;
     private Random random;
+
     public ShuffleanArray(int[] nums) {
         this.nums = nums;
         random = new Random();
@@ -35,6 +36,7 @@ public class ShuffleanArray {
         }
         return a;
     }
+
     private void swap(int[] a, int i, int j) {
         int t = a[i];
         a[i] = a[j];

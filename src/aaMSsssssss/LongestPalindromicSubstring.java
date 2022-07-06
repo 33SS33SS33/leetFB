@@ -1,6 +1,12 @@
 package aaMSsssssss;
 
 public class LongestPalindromicSubstring {
+    /**
+     * Given a string s, return the longest palindromic substring in s.
+     * Input: s = "babad"
+     * Output: "bab"
+     * Explanation: "aba" is also a valid answer.
+     */
     public String longestPalindromeC(String s) {
         if (s == null || s.length() == 0)
             return "";

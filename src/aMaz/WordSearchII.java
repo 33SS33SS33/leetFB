@@ -32,6 +32,7 @@ public class WordSearchII {
         //        System.out.println(exist2(board, word));
     }
 //TODO
+    //https://leetcode.com/problems/word-search-ii/solution/
     /**
      * 最好的 Backtracking + Trie     没看懂
      */
@@ -60,6 +61,7 @@ public class WordSearchII {
         }
         return res;
     }
+
     public void dfs(char[][] board, int i, int j, TrieNode p, List<String> res) {
         char c = board[i][j];
         if (c == '#' || p.next[c - 'a'] == null)

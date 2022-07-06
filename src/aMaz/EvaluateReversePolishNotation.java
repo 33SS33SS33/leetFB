@@ -1,15 +1,44 @@
 package aMaz;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
+import java.util.function.BiFunction;
 
 
 class EvaluateReversePolishNotation {
     public static void main(String[] args) {
         String[] tokens = {"2", "1", "+", "3", "*"};
-        // String[] tokens = {"4", "13", "5", "/", "+"};
-        //        String[] tokens = { "3", "-4", "+" };
         System.out.println(evaluateReversePolishNotation(tokens));
-//        System.out.println(evaluateReversePolishNotationb(tokens));
+        System.out.println(new EvaluateReversePolishNotation().evalRPN(tokens));
+    }
+
+    private static final Map<String, BiFunction<Integer, Integer, Integer>> OPERATIONS = new HashMap<>();
+
+    // Ensure this only gets done once for ALL test cases.
+    static {
+        OPERATIONS.put("+", (a, b) -> a + b);
+        OPERATIONS.put("-", (a, b) -> a - b);
+        OPERATIONS.put("*", (a, b) -> a * b);
+        OPERATIONS.put("/", (a, b) -> a / b);
+    }
+
+    public int evalRPN(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+        for (String token : tokens) {
+            if (!OPERATIONS.containsKey(token)) {
+                stack.push(Integer.valueOf(token));
+                continue;
+            }
+            int number2 = stack.pop();
+            int number1 = stack.pop();
+            BiFunction<Integer, Integer, Integer> operation;
+            operation = OPERATIONS.get(token);
+            int result = operation.apply(number1, number2);
+            stack.push(result);
+        }
+        return stack.pop();
+
     }
 
     /**
@@ -52,39 +81,5 @@ class EvaluateReversePolishNotation {
         }
         return S.pop();
     }
-
-    /**
-     * use switch statement
-     */
-/*    public static int evaluateReversePolishNotationb(String[] tokens) {
-        int returnValue = 0;
-        String operators = "+-*//*";
-        Stack<String> stack = new Stack<>();
-        for (String t : tokens) {
-            if (!operators.contains(t)) {
-                stack.push(t);
-            } else {
-                int a = Integer.valueOf(stack.pop());
-                int b = Integer.valueOf(stack.pop());
-                int index = operators.indexOf(t);
-                switch (index) {
-                    case 0:
-                        stack.push(String.valueOf(a + b));
-                        break;
-                    case 1:
-                        stack.push(String.valueOf(b - a));
-                        break;
-                    case 2:
-                        stack.push(String.valueOf(a * b));
-                        break;
-                    case 3:
-                        stack.push(String.valueOf(b / a));
-                        break;
-                }
-            }
-        }
-        returnValue = Integer.valueOf(stack.pop());
-        return returnValue;
-    }*/
 
 }

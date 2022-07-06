@@ -4,7 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingCharacters {
-    public int lengthOfLongestSubstring(String s) {
+    /**
+     * Given a string s, find the length of the longest substring without repeating characters.
+     * Input: s = "abcabcbb"
+     * Output: 3
+     * Explanation: The answer is "abc", with the length of 3.
+     */
+
+    //Sliding Window Optimized
+    public int longestSubstringWithoutRepeatingCharacters(String s) {
         int n = s.length(), ans = 0;
         Map<Character, Integer> map = new HashMap<>(); // current index of character
         // try to extend the range [i, j]

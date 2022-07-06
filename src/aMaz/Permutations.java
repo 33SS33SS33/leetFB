@@ -8,8 +8,8 @@ class Permutations {
         System.out.println(permutations(new int[]{1, 3, 2}));
     }
 
+// https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
     /**
-     * https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
      * Given a collection of numbers, return all possible permutations.
      * [1,2,3] have the following permutations:
      * [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].

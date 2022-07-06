@@ -25,46 +25,14 @@ import java.util.Arrays;
 class RotateArray {
     public static void main(String[] args) {
         RotateArray r = new RotateArray();
-        int[] nums = {1, 2, 3, 4, 5, 6, 7};
-        int k = 3;
-        r.rotateArrayc(nums, k);
-        System.out.println(Arrays.toString(nums));
-
         int[] nums1 = {1, 2, 3, 4, 5, 6, 7};
         int k1 = 3;
-        r.rotateArrayc(nums1, k1);
+        r.rotateArray(nums1, k1);
         System.out.println(Arrays.toString(nums1));
-
-        int[] nums2 = {1, 2, 3, 4, 5, 6, 7};
-        int k2 = 3;
-        r.rotateArrayc(nums2, k2);
-        System.out.println(Arrays.toString(nums2));
-
-        int[] nums3 = {1, 2};
-        int k3 = 2;
-        r.rotateArray(nums3, k3);
-        System.out.println(Arrays.toString(nums3));
     }
 
-    /**
-     * Intermediate Array, Space is O(n) and time is O(n)
-     */
+    //time is O(n),Space is O(1)
     public void rotateArray(int[] nums, int k) {
-        if (k > nums.length)
-            k = k % nums.length;
-        int[] result = new int[nums.length];
-        for (int i = 0; i < k; i++) {
-            result[i] = nums[nums.length - k + i];
-        }
-        int j = 0;
-        for (int i = k; i < nums.length; i++) {
-            result[i] = nums[j];
-            j++;
-        }
-        System.arraycopy(result, 0, nums, 0, nums.length);
-    }
-
-/*    public void rotateArrayb(int[] nums, int k) {
         k %= nums.length;
         reverse(nums, 0, nums.length - 1);
         reverse(nums, 0, k - 1);
@@ -79,57 +47,6 @@ class RotateArray {
             start++;
             end--;
         }
-    }*/
-
-    /**
-     * O(n) Time, O(1) Space
-     * Build a full circle of rotation
-     * Start from current index and repeat exactly "length of array" times
-     * 1. Calculate new index which is current index move k steps forward
-     * If move out of range, just start from beginning again
-     * newIdx = (curIdx + k ) % len
-     * 2. Circle can be the same, for example, n = 6, k = 2
-     * Index will be 0, 2, 4, 0, 2, 4
-     * So save the start index of the circle
-     * If start from there again, move one step forward
-     */
-    public void rotateArrayc(int[] nums, int k) {
-        if (nums == null || nums.length == 0)
-            return;
-        if (nums.length == 1 || k == 0 || k == nums.length)
-            return; // special cases
-        int len = nums.length;
-        k %= len;
-        int idx = 0;
-        int tmp = nums[idx]; // the number to write to new index
-        int tmp2; // save the number at new index
-        for (int i = 0, j = 0; i < len; i++) { // j is the start index of current circle
-            idx = (idx + k) % len;
-            tmp2 = nums[idx];
-            nums[idx] = tmp;
-            tmp = tmp2;
-            if (idx == j) { // circle ends
-                idx = ++j; // move to next circle
-                tmp = nums[idx];
-            }
-        }
     }
-
-    /**
-     * Bubble Rotate  O(1) space, the time is O(n*k)
-     */
-/*    public static void rotateArrayd(int[] arr, int order) {
-        if (arr == null || order < 0) {
-            throw new IllegalArgumentException("Illegal argument!");
-        }
-        for (int i = 0; i < order; i++) {
-            for (int j = arr.length - 1; j > 0; j--) {
-                int temp = arr[j];
-                arr[j] = arr[j - 1];
-                arr[j - 1] = temp;
-            }
-        }
-    }*/
-
 
 }
