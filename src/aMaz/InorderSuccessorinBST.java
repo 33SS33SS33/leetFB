@@ -19,8 +19,23 @@ public class InorderSuccessorinBST {
         n1.left = n3;
         n1.right = n4;
         n2.right = n5;
-        TreeNode res1 = new InorderSuccessorinBST().inorderSuccessorinBST(root, n1);
+        TreeNode res1 = new InorderSuccessorinBST().inorderSuccessorinBSTa(root, n1);
+        TreeNode res2 = new InorderSuccessorinBST().inorderSuccessorinBST(root, n1);
         System.out.println(res1.val);
+        System.out.println(res2.val);
+    }
+
+    public TreeNode inorderSuccessorinBSTa(TreeNode root, TreeNode p) {
+        TreeNode successor = null;
+        while (root != null) {
+            if (p.val >= root.val) {
+                root = root.right;
+            } else {
+                successor = root;
+                root = root.left;
+            }
+        }
+        return successor;
     }
 
     /**
@@ -37,26 +52,6 @@ public class InorderSuccessorinBST {
             TreeNode left = inorderSuccessorinBST(root.left, p);
             return (left != null) ? left : root;
         }
-    }
-
-    public TreeNode predecessor(TreeNode root, TreeNode p) {
-        if (root == null)
-            return null;
-        if (root.val >= p.val) {
-            return predecessor(root.left, p);
-        } else {
-            TreeNode right = predecessor(root.right, p);
-            return (right != null) ? right : root;
-        }
-    }
-
-    public TreeNode inorderSuccessor2(TreeNode root, TreeNode p) {
-        while (root != null && root.val <= p.val)
-            root = root.right;
-        if (root == null)
-            return null;
-        TreeNode left = inorderSuccessor2(root.left, p);
-        return (left != null && left.val > p.val) ? left : root;
     }
 
     public static class TreeNode {

@@ -1,11 +1,26 @@
 package aMaz;
 
+import java.util.*;
 
 public class MissingNumber {
     public static void main(String[] args) {
         int[] A = {1, 2, 0};
+        System.out.println(new MissingNumber().missingNumbera(A));
         System.out.println(new MissingNumber().missingNumber(A));
         System.out.println(new MissingNumber().missingNumber3(A));
+    }
+
+    public int missingNumbera(int[] nums) {
+        Set<Integer> numSet = new HashSet<Integer>();
+        for (int num : nums) numSet.add(num);
+
+        int expectedNumCount = nums.length + 1;
+        for (int number = 0; number < expectedNumCount; number++) {
+            if (!numSet.contains(number)) {
+                return number;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -30,7 +45,6 @@ public class MissingNumber {
      * so in a missing array, what left finally is the missing number.
      * xor all numbers in the array and from 0 to n, the result is the missing number
      */
-
     public int missingNumber3(int[] nums) {
         int xor = 0;
         for (int i = 0; i < nums.length; i++) {

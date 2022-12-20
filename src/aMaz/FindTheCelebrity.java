@@ -1,19 +1,10 @@
 package aMaz;
 
-
 class FindTheCelebrity {
-    class Person {
-
-    }
-
-    public static void main(String[] args) {
-
-    }
-
     /**
      * The first pass is to pick out the candidate. If candidate knows i, then switch candidate.
-     * The second pass is to check whether the candidate is real.
-     * Given: function:  isFriend(a, b)
+     * The second pass is to ch eck whether the candidate is real.
+     * Given: function:  isddFriend(a, b)
      * Returns true if b is treated as a friend by a group of persons, say,
      * represented as an array. all the other n - 1 people know him/her but he/she does not know any of them.
      * 可以通过一遍就过滤出来一个候选的

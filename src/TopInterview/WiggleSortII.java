@@ -1,17 +1,29 @@
-package medium;
+package TopInterview;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/7.
- * Given a random array, re-arrange it to wiggle style.
+ * "Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
+ * Example:
+ * (1) Given nums = [1, 5, 1, 1, 6, 4], one possible answer is [1, 4, 1, 5, 1, 6].
+ * (2) Given nums = [1, 3, 2, 2, 3, 1], one possible answer is [2, 3, 1, 3, 1, 2].
+ * Note:
+ * You may assume all input has valid answer.
+ * Follow Up:
+ * Can you do it in O(n) time and/or in-place with O(1) extra space?"
+ * "大体思路是这样 首先要找出来median 然后用median做一个3way palindromePartition 这样的话
+ * 数组就被分成了两半 前一部分是比median大的 后面哪部分是比median小的  然后就把后一部分和前一部分穿插起来就行了
+ * 但是代码跑的空间不够了   应该是快速选择的时候有问题  未实现"
+ * Given a random array,re-arrange it to wiggle style.
  * i.e.
- * [1] A0 >= A1 <= A2 >= A3 .... .... An.
- * [2] A0 <= A1 >= A2 <= A3 .... .... An.
- * Tags: Sort, Array
+ * [1]A0>=A1<=A2>=A3.... ....An.
+ * [2]A0<=A1>=A2<=A3.... ....An.
+ * Tags:Sort,Array
  */
-class WiggleSortUnsorted {
+
+class WiggleSortII {
     public static void main(String[] args) {
-        int[] A = {1, 2, 8, 9, 3, 5};
-        new WiggleSortUnsorted().wiggleSortUnsorted(A);
+//        int[] A = {1, 2, 8, 9, 3, 5};
+        int[] A = {1, 3, 2, 2, 3, 1};
+        new WiggleSortII().wiggleSortUnsorted(A);
         for (int i = 0; i < A.length; i++) {
             System.out.print(i == A.length - 1 ? A[i] : A[i] + ", ");
         }
@@ -46,6 +58,5 @@ class WiggleSortUnsorted {
             }
         }
     }
-
 }
 

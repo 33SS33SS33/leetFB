@@ -1,7 +1,7 @@
 package easy;
 
 
-class ExcelSheetColNum {
+class ExcelSheetColumnNumber {
     public static void main(String[] args) {
         System.out.println(ExcelSheetColNum("AA"));
     }
@@ -12,11 +12,8 @@ class ExcelSheetColNum {
      * AB -> 28
      * Map A ~ Z to 1 ~ 26
      * next result = current res * 26 + number of current letter
-     */
-    /**
      * Related to question Excel Sheet Column Title
      * Given a column title as appear in an Excel sheet, return its corresponding column number.
-     * For example:
      * A -> 1
      * B -> 2
      * ...
@@ -34,5 +31,4 @@ class ExcelSheetColNum {
         }
         return res;
     }
-
 }

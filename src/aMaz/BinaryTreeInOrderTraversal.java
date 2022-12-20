@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
 class BinaryTreeInOrderTraversal {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
@@ -20,7 +19,6 @@ class BinaryTreeInOrderTraversal {
         n2.right = n5;
         System.out.println(new BinaryTreeInOrderTraversal().binaryTreeInOrderTraversal(root));
         System.out.println(new BinaryTreeInOrderTraversal().binaryTreeInOrderTraversalb(root));
-        System.out.println(new BinaryTreeInOrderTraversal().binaryTreeInOrderTraversalc(root));
     }
 
     /**
@@ -75,54 +73,6 @@ class BinaryTreeInOrderTraversal {
             }
         }
         return result;
-    }
-
-    /**
-     * O(n)，仍然是一个线性算法。空间复杂度的话我们分析过了，只是两个辅助指针，所以是O(1)。
-     * <strong>Morris Traversal</strong>
-     * O(1) space
-     * Use cur for current node, pre for predecessor of cur node
-     * Check whether left subtree exists
-     * If yes, find rightmost node in left subtree
-     * Check whether rightmost node is connected with cur node
-     * If connected, break the connection and visit and move to right subtree
-     * Otherwise, connect and traverse left subtree
-     * If no, visit cur node and traverse right subtree
-     * Morris遍历方法用了线索二叉树，这个方法不需要为每个节点额外分配指针指向其前驱和后继结点，
-     * 而是利用叶子节点中的右空指针指向中序遍历下的后继节点就可以了。
-     * 算法具体分情况如下：
-     * 1. 如果当前结点的左孩子为空，则输出当前结点并将其当前节点赋值为右孩子。
-     * 2. 如果当前节点的左孩子不为空，则寻找当前节点在中序遍历下的前驱节点（也就是当前结点左子树的最右孩子）。接下来分两种情况：
-     * a) 如果前驱节点的右孩子为空，将它的右孩子设置为当前节点（做线索使得稍后可以重新返回父结点）。然后将当前节点更新为当前节点的左孩子。
-     * b) 如果前驱节点的右孩子为当前节点，表明左子树已经访问完，可以访问当前节点。将它的右孩子重新设为空（恢复树的结构）。
-     * 输出当前节点。当前节点更新为当前节点的右孩子。
-     * http://blog.csdn.net/linhuanmars/article/details/20187257
-     */
-    public static List<Integer> binaryTreeInOrderTraversalc(TreeNode root) {
-        List<Integer> res = new ArrayList<Integer>();
-        if (root == null)
-            return res;
-        TreeNode cur = root;
-        TreeNode pre = null;
-        while (cur != null) {
-            if (cur.left == null) {
-                res.add(cur.val); // visit
-                cur = cur.right; // move to right
-            } else {
-                pre = cur.left;
-                while (pre.right != null && pre.right != cur)
-                    pre = pre.right;
-                if (pre.right == null) { // connect with cur
-                    pre.right = cur;
-                    cur = cur.left; // traverse left subtree
-                } else { // left subtree is done
-                    pre.right = null;
-                    res.add(cur.val); // visit
-                    cur = cur.right; // move to right
-                }
-            }
-        }
-        return res;
     }
 
     public static class TreeNode {

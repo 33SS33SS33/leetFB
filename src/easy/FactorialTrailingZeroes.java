@@ -17,22 +17,6 @@ package easy;
 class FactorialTrailingZeroes {
     public static void main(String[] args) {
         System.out.println(trailingZeroes(1025));
-        System.out.println(trailingZeroesD(1025));
-    }
-
-    /**
-     * Given an integer n, return the number of trailing zeroes in n!.
-     * Note: Your solution should be in logarithmic time complexity.Tag: Math
-     * 处理这个问题也很简单，首先对n÷5，移除所有的单个5，然后÷25，移除额外的5，以此类推。
-     */
-    public static int trailingZeroesD(int n) {
-        if (n < 0)
-            return -1;
-        int count = 0;
-        for (long i = 5; n / i >= 1; i *= 5) {
-            count += n / i;
-        }
-        return count;
     }
 
     /**

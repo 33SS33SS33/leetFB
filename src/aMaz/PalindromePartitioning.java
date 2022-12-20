@@ -3,14 +3,13 @@ package aMaz;
 import java.util.ArrayList;
 import java.util.List;
 
-
 class PalindromePartitioning {
     public static void main(String[] args) {
         System.out.println(palindromePartition("aab"));
     }
 
     /**
-     * Given a string s, palindromePartition s such that every substring of the palindromePartition is a palindrome.
+     * Given a string s, palindromePartition s such that EVERY substring of the palindromePartition is a palindrome.
      * Return all possible palindrome partitioning of s.
      * For example, given s = "aab", Return
      * [ ["aa","b"], ["a","a","b"] ]   Tags: Backtracking
@@ -27,12 +26,13 @@ class PalindromePartitioning {
         partition(s, 0, res, new ArrayList<>());
         return res;
     }
+
     public static void partition(String s, int pos, List<List<String>> res, List<String> cut) {
         if (pos == s.length()) { // note the stop condition
             res.add(new ArrayList<>(cut)); // dereference
             return;
         }
-        for (int i = pos + 1; i <= s.length(); i++) {// start from 1??
+        for (int i = pos + 1; i <= s.length(); i++) {// start from 1??because substring(pos,i)
             String prefix = s.substring(pos, i);
             if (isPalindrome(prefix)) {
                 cut.add(prefix);
@@ -41,6 +41,7 @@ class PalindromePartitioning {
             }
         }
     }
+
     private static boolean isPalindrome(String str) {
         int s = 0;
         int e = str.length() - 1;

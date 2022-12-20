@@ -6,7 +6,7 @@ package list;
  * Follow up: Can you solve it without using extra space?
  * Tags: Linkedlist, Two pointers, Math
  */
-class LinkedListCycle2 {
+class LinkedListCycleII {
     public static void main(String[] args) {
         ListNode head = buildList();
         System.out.print(linkedListCycleII(head).val);
@@ -56,5 +56,4 @@ class LinkedListCycle2 {
             next = null;
         }
     }
-
 }

@@ -1,8 +1,8 @@
 package aMaz;
 
-class IntersectionOfTwoLinkedList {
+import java.util.*;
 
-
+class IntersectionofTwoLinkedList {
     /**
      * Write a program to find the node at which the intersection of two singly
      * linked lists begins.
@@ -27,6 +27,24 @@ class IntersectionOfTwoLinkedList {
      * 比如A长度是5 B长度是6 当A走到头的时候B还差一个 所以当B到头的是
      * 另一个B刚走了一个 然后另一个是从A开始 这样两个就是同步的了
      */
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> nodesInB = new HashSet<ListNode>();
+        while (headB != null) {
+            nodesInB.add(headB);
+            headB = headB.next;
+        }
+        while (headA != null) {
+            // if we find the node pointed to by headA,
+            // in our set containing nodes of B, then return the node
+            if (nodesInB.contains(headA)) {
+                return headA;
+            }
+            headA = headA.next;
+        }
+        return null;
+    }
+
+    //不理解
     public ListNode intersectionOfTwoLinkedList(ListNode headA, ListNode headB) {
         if (null == headA || null == headB)
             return null;
@@ -37,36 +55,6 @@ class IntersectionOfTwoLinkedList {
         }
         return curA;
     }
-
-  /*  public ListNode intersectionOfTwoLinkedListb(ListNode headA, ListNode headB) {
-        int lenA = length(headA), lenB = length(headB);
-        // move headA and headB to the same start point
-        while (lenA > lenB) {
-            headA = headA.next;
-            lenA--;
-        }
-        while (lenA < lenB) {
-            headB = headB.next;
-            lenB--;
-        }
-        // find the intersection until end
-        while (headA != headB) {
-            headA = headA.next;
-            headB = headB.next;
-        }
-        return headA;
-    }
-
-    private int length(ListNode n) {
-        if (n == null)
-            return 0;
-        int length = 0;
-        while (n != null) {
-            length++;
-            n = n.next;
-        }
-        return length;
-    }*/
 
     public static class ListNode {
         int val;

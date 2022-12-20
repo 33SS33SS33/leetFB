@@ -2,16 +2,11 @@ package aMaz;
 
 import java.util.Arrays;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/4/8.
- */
 public class PerfectSquares {
     public static void main(String[] args) {
         PerfectSquares ps = new PerfectSquares();
-//        int res = ps.perfectSquaresb(13);
-//        System.out.println("res: " + res);
-        int res = ps.perfectSquares(13);
-        System.out.println("res: " + res);
+        System.out.println("res: " + ps.perfectSquares(12));
+        System.out.println("res: " + ps.perfectSquares(13));
     }
 
     /**

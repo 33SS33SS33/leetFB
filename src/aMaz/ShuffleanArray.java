@@ -1,7 +1,6 @@
 package aMaz;
 
 import java.util.Random;
-// * Created by shanshan on 2/1/19.
 
 /**
  * Shuffle a set of numbers without duplicates.
@@ -15,31 +14,36 @@ import java.util.Random;
  * solution.shuffle();
  */
 public class ShuffleanArray {
-    private int[] nums;
-    private Random random;
+    private int[] array;
+    private int[] original;
+
+    Random rand = new Random();
+
+    private int randRange(int min, int max) {
+        return rand.nextInt(max - min) + min;
+    }
+
+    private void swapAt(int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 
     public ShuffleanArray(int[] nums) {
-        this.nums = nums;
-        random = new Random();
+        array = nums;
+        original = nums.clone();
     }
 
     public int[] reset() {
-        return nums;
+        array = original;
+        original = original.clone();
+        return original;
     }
 
     public int[] shuffle() {
-        if (nums == null) return null;
-        int[] a = nums.clone();
-        for (int j = 1; j < a.length; j++) {
-            int i = random.nextInt(j + 1);
-            swap(a, i, j);
+        for (int i = 0; i < array.length; i++) {
+            swapAt(i, randRange(i, array.length));
         }
-        return a;
-    }
-
-    private void swap(int[] a, int i, int j) {
-        int t = a[i];
-        a[i] = a[j];
-        a[j] = t;
+        return array;
     }
 }

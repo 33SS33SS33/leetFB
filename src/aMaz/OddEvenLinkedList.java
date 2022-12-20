@@ -1,8 +1,5 @@
 package aMaz;
 
-/**
- * Created by GAOSHANSHAN835 on 2016/4/15.
- */
 public class OddEvenLinkedList {
     public static void main(String[] args) {
         ListNode head = buildList();
@@ -19,6 +16,8 @@ public class OddEvenLinkedList {
      * The first node is considered odd, the second node even and so on ..."
      * 就是当长度为奇数和长度为偶数的时候 都画个图 来思考一下就行
      * 将一个链表内的奇数元素放在前面，偶数元素放在后面
+     * Time complexity : O(n)O(n). There are total nn nodes and we visit each node once.
+     * Space complexity : O(1)O(1). All we need is the four pointers.
      */
     public static ListNode oddEvenLinkedList(ListNode head) {
         if (head != null) {
@@ -33,35 +32,6 @@ public class OddEvenLinkedList {
         }
         return head;
     }
-
-/*    public static ListNode oddEvenLinkedListb(ListNode head) {
-        //输入合法性判断
-        if (head == null) {
-            return null;
-        } else if (head.next == null) {
-            return head;
-        }
-        ListNode odd = new ListNode(0);  //奇数链表：仅存放奇数位置节点
-        ListNode oddCurr = odd;          //奇数链表的链表尾节点
-        ListNode even = new ListNode(0); //偶数链表：仅存放偶数位置节点
-        ListNode evenCurr = even;        //偶数链表的链表尾节点
-        //分别生成奇数链表和偶数链表
-        ListNode tmp = head;
-        int counter = 0;
-        while (tmp != null) {
-            counter++;
-            if (counter % 2 != 0) {
-                oddCurr.next = new ListNode(tmp.val);
-                oddCurr = oddCurr.next;
-            } else {
-                evenCurr.next = new ListNode(tmp.val);
-                evenCurr = evenCurr.next;
-            }
-            tmp = tmp.next;
-        }
-        oddCurr.next = even.next; //偶数链表接在奇数链表后面
-        return odd.next;
-    }*/
 
     public static ListNode buildList() {
         ListNode node0 = new ListNode(0);
@@ -87,5 +57,4 @@ public class OddEvenLinkedList {
             next = null;
         }
     }
-
 }

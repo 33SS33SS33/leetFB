@@ -2,7 +2,6 @@ package aMaz;
 
 import java.util.LinkedList;
 
-
 class MaximumDepthofBinaryTree {
     public static void main(String[] args) {
         TreeNode head = buildTree();
@@ -11,8 +10,7 @@ class MaximumDepthofBinaryTree {
     }
 
     /**
-     * Given a binary tree, find its maximum depth.
-     * The maximum depth is the number of nodes along the longest path from the
+     * Given a binary tree, find its maximum depth.The maximum depth is the number of nodes along the longest path from the
      * root node down to the farthest leaf node.
      * Tags: Tree, DFS
      * 使用自底向上bottom-up的递归
@@ -26,36 +24,27 @@ class MaximumDepthofBinaryTree {
         return Math.max(left, right) + 1;
     }
 
-    /**
-     * 非递归解法一般采用层序遍历(相当于图的BFS），因为如果使用其他遍历方式也需要同样的复杂度O(n).
-     * 层序遍历理解上直观一些，维护到最后的level便是树的深度
-     */
     public int maximumDepthofBinaryTreeb(TreeNode root) {
-        if (root == null)
-            return 0;
-        int level = 0;
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        int curNum = 1; //num of nodes left in current level
-        int nextNum = 0; //num of nodes in next level
-        while (!queue.isEmpty()) {
-            TreeNode n = queue.poll();
-            curNum--;
-            if (n.left != null) {
-                queue.add(n.left);
-                nextNum++;
-            }
-            if (n.right != null) {
-                queue.add(n.right);
-                nextNum++;
-            }
-            if (curNum == 0) {
-                curNum = nextNum;
-                nextNum = 0;
-                level++;
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        LinkedList<Integer> depths = new LinkedList<>();
+        if (root == null) return 0;
+
+        stack.add(root);
+        depths.add(1);
+
+        int depth = 0, current_depth = 0;
+        while (!stack.isEmpty()) {
+            root = stack.pollLast();
+            current_depth = depths.pollLast();
+            if (root != null) {
+                depth = Math.max(depth, current_depth);
+                stack.add(root.left);
+                stack.add(root.right);
+                depths.add(current_depth + 1);
+                depths.add(current_depth + 1);
             }
         }
-        return level;
+        return depth;
     }
 
     private static TreeNode buildTree() {

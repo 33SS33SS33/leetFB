@@ -20,7 +20,7 @@ public class LongestSubstringwithAtMostKDistinctCharacters {
         for (int j = 0; j < s.length(); j++) {
             if (count[s.charAt(j)]++ == 0)
                 num++;
-            if (num > k) {
+            if (num > k)  {
                 while (--count[s.charAt(i++)] > 0) ;
                 num--;
             }

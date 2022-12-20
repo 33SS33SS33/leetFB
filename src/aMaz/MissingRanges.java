@@ -3,20 +3,14 @@ package aMaz;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by GAOSHANSHAN835 on 2015/12/28.
- */
 public class MissingRanges {
     public static void main(String[] args) {
         int[] vals = {0, 1, 3, 50, 75};
-        List<String> res1 = findMissingRanges1(vals, 0, 99);
-        List<String> res = findMissingRanges(vals, 0, 99);
+        List<String> res1 = new MissingRanges().findMissingRanges(vals, 0, 99);
         for (String s : res1) {
             System.out.println(s);
         }
     }
-
-    //TODO
 
     /**
      * Given a sorted integer array where the range of elements
@@ -25,36 +19,23 @@ public class MissingRanges {
      * 就是需要在数组里相减就行
      * 注意数组的预处理 比如在算两个边界的时候 要+1和-1 以及把边界插入进数组
      */
-    public static List<String> findMissingRanges1(int[] A, int lower, int upper) {
+    public List<String> findMissingRanges(int[] nums, int lower, int upper) {
         List<String> result = new ArrayList<>();
-        int pre = lower - 1;
-        for (int i = 0; i <= A.length; i++) {
-            int after = i == A.length ? upper + 1 : A[i];
-            if (pre + 2 == after) {
-                result.add(String.valueOf(pre + 1));
-            } else if (pre + 2 < after) {
-                result.add(String.valueOf(pre + 1) + "->" + String.valueOf(after - 1));
+        int prev = lower - 1;
+        for (int i = 0; i <= nums.length; i++) {
+            int curr = (i < nums.length) ? nums[i] : upper + 1;
+            if (prev + 1 <= curr - 1) {
+                result.add(formatRange(prev + 1, curr - 1));
             }
-            pre = after;
+            prev = curr;
         }
         return result;
     }
 
-    public static List<String> findMissingRanges(int[] vals, int start, int end) {
-        List<String> ranges = new ArrayList<>();
-        int prev = start - 1;
-        for (int i = 0; i <= vals.length; i++) {
-            int curr = (i == vals.length) ? end + 1 : vals[i]; //??
-            if (curr - prev >= 2) {
-                ranges.add(getRange(prev + 1, curr - 1));
-            }
-            prev = curr;
+    private String formatRange(int lower, int upper) {
+        if (lower == upper) {
+            return String.valueOf(lower);
         }
-        return ranges;
+        return lower + "->" + upper;
     }
-
-    private static String getRange(int from, int to) {
-        return (from == to) ? String.valueOf(from) : from + "->" + to;
-    }
-
 }

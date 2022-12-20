@@ -1,9 +1,8 @@
 package aMaz;
 
-import java.util.Stack;
+import java.util.LinkedList;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/18.
  * Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
  * Note:
  * You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
@@ -51,13 +50,26 @@ public class KthSmallestElementinaBST {
         n2.right = n5;
         System.out.println(new KthSmallestElementinaBST().kthSmallestElementinaBST(root, k));
         System.out.println(new KthSmallestElementinaBST().kthSmallestElementinaBSTb(root, k));
-//        System.out.println(new KthSmallestElementinaBST().kthSmallestB(root, k));
+    }
+
+    //best
+    public int kthSmallestElementinaBST(TreeNode root, int k) {
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        while (true) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (--k == 0) return root.val;
+            root = root.right;
+        }
     }
 
     /**
      * Binary Search (dfs): most preferable
      */
-    public int kthSmallestElementinaBST(TreeNode root, int k) {
+    public int kthSmallestElementinaBSTb(TreeNode root, int k) {
         int count = countNodes(root.left);
         if (k <= count) {
             return kthSmallestElementinaBST(root.left, k);
@@ -72,48 +84,6 @@ public class KthSmallestElementinaBST {
             return 0;
         return 1 + countNodes(n.left) + countNodes(n.right);
     }
-
-    public int kthSmallestElementinaBSTb(TreeNode root, int k) {
-        Stack<TreeNode> st = new Stack<>();
-        while (root != null) {
-            st.push(root);
-            root = root.left;
-        }
-        while (k != 0) {
-            TreeNode n = st.pop();
-            k--;
-            if (k == 0)
-                return n.val;
-            TreeNode right = n.right;
-            while (right != null) {
-                st.push(right);
-                right = right.left;
-            }
-        }
-        return -1; // never hit if k is valid
-    }
-
-    /**
-     * creek We can inorder traverse the tree and get the kth smallest element. Time is O(n).
-     */
-/*    public int kthSmallestB(TreeNode root, int k) {
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        int result = 0;
-        while (!stack.isEmpty() || p != null) {
-            if (p != null) {
-                stack.push(p);
-                p = p.left;
-            } else {
-                TreeNode t = stack.pop();
-                k--;
-                if (k == 0)
-                    result = t.val;
-                p = t.right;
-            }
-        }
-        return result;
-    }*/
 
     public static class TreeNode {
         int val;

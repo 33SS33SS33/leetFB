@@ -10,7 +10,6 @@ class LinkedListCycle {
     /**
      * Runnner's technique 最好的
      * Check the next and next next of faster node is slower node or not.
-     * <p>
      * Given a linked list, determine if it has a cycle in it.
      * Follow up: Can you solve it without using extra space?
      * Tags: Linkedlist, Two pointers

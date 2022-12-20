@@ -1,13 +1,13 @@
-package aMaz;
+package TopInterview;
 
 /**
  * Tags: Array
  */
-class SetMatrixZeros {
+class SetMatrixZeroes {
     public static void main(String[] args) {
         int[][] matrix = new int[][]{{1, 2, 0}, {4, 3, 2}, {1, 0, 5}};
-        SetMatrixZeros a = new SetMatrixZeros();
-        a.setMatrixZeros(matrix);
+        SetMatrixZeroes a = new SetMatrixZeroes();
+        a.setMatrixZeroes(matrix);
         for (int[] i : matrix) {
             for (int j : i) {
                 System.out.print(j);
@@ -25,7 +25,7 @@ class SetMatrixZeros {
      * 这样的做法只需要两个额外变量，所以空间复杂度是O(1)。
      * 时间上来说上面三种方法都是一样的，需要进行两次扫描，一次确定行列置0情况，一次对矩阵进行实际的置0操作，所以总的时间复杂度是O(m*n)。
      */
-    public static void setMatrixZeros(int[][] matrix) {
+    public static void setMatrixZeroes(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
             return;
         int row = matrix.length;

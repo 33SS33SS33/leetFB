@@ -1,16 +1,14 @@
 package aMaz;
 
 /**
- * Created by GAOSHANSHAN835 on 2016/1/18.
  * Count the number of prime numbers less than a non-negative number, n.
  * 埃拉托斯特尼筛法
  */
 public class CountPrimes {
     public static void main(String[] args) {
         int num = 19;
-//        System.out.println(countPrimesa(num));
+        System.out.println(countPrimes(10));
         System.out.println(countPrimes(num));
-//        System.out.println(countPrimesB(num));
     }
 
     /**
@@ -31,39 +29,4 @@ public class CountPrimes {
         }
         return count;
     }
-
-/*    public static int countPrimesa(int n) {
-        if (n <= 1) return 0;
-        boolean[] notPrime = new boolean[n];
-        notPrime[0] = true;
-        notPrime[1] = true;
-        for (int i = 2; i < Math.sqrt(n); i++) {
-            if (!notPrime[i]) {
-                for (int j = 2; j * i < n; j++) {
-                    notPrime[i * j] = true;
-                }
-            }
-        }
-        int count = 0;
-        for (int i = 2; i < notPrime.length; i++) {
-            if (!notPrime[i]) count++;
-        }
-        return count;
-    }*/
-
-/*    public static int countPrimesB(int n) {
-        if (n < 2)
-            return 0;
-        BitSet b = new BitSet();
-        b.set(0);
-        b.set(1);
-        for (int p = 2; p * 2 < n; p = b.nextClearBit(p + 1)) {
-            for (int i = 2; p * i < n; i++) {
-                b.set(p * i);
-            }
-        }
-        b.flip(0, n);
-        return b.cardinality();
-    }*/
-
 }
