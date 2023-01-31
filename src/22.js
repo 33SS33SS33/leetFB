@@ -77,3 +77,29 @@ function getOperationSystemVersion() {
     }
     return "other";
 }
+function getIP() {
+    if (typeof window != 'undefined') {
+        var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+        if (RTCPeerConnection) (() => {
+            var rtc = new RTCPeerConnection()
+            rtc.createDataChannel('');
+            rtc.createOffer(offerDesc => {
+                rtc.setLocalDescription(offerDesc)
+            }, e => {
+                console.log(e)
+            })
+
+            rtc.onicecandidate = (evt) => {
+                if (evt.candidate) {
+                    console.log('evt:', evt.candidate)
+                    let ip_rule = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/
+                    var ip_addr = ip_rule.exec(evt.candidate.candidate)[1]
+                    console.log('ip_addr:', ip_addr)
+                }
+            }
+        })()
+        else {
+            console.log("没有找到")
+        }
+    }
+}
